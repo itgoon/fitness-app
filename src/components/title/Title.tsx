@@ -16,7 +16,7 @@ export interface TitleProps {
 const Title = ({ children, sub }: TitleProps) => {
   return (
     <Flex gap={12} direction="column">
-      <Typography variant="h5">{children}</Typography>
+      <Typography variant="h4">{children}</Typography>
       {sub && (
         <Typography wrap="wrap" variant="b3" color="--dark-color" opacity="0.6">
           {sub}

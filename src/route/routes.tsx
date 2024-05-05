@@ -9,38 +9,60 @@ export interface RouteProps {
   element?: any;
   menu?: boolean;
   children?: RouteProps[];
-  header?: boolean;
-  bottom?: boolean;
-  icon?: SidebarIcon;
+  isHeader?: boolean;
+  isBottom?: boolean;
 }
 
 const routes: RouteProps[] = [
   {
     //트레이너
-    name: "trainer",
+    name: "",
     path: "/trainer",
     element: CustomLayout,
     children: [
       {
         name: "trainer", //
         path: "/trainer/main",
-        element: Pg.Trainer.MainPage,
-        bottom: false
+        element: Pg.Trainer.MainPage
+      },
+      {
+        name: "trainer", //
+        path: "/trainer/alarm",
+        element: Pg.Trainer.AlarmPage
+      },
+      {
+        name: "trainer", //
+        path: "/trainer/member",
+        element: Pg.Trainer.MemberPage
+      },
+      {
+        name: "trainer", //
+        path: "/trainer/member/detail",
+        element: Pg.Trainer.MemberDetailPage
+      },
+      {
+        name: "trainer", //
+        path: "/trainer/schedule",
+        element: Pg.Trainer.SchedulePage
+      },
+      {
+        name: "trainer", //
+        path: "/trainer/setting",
+        element: Pg.Trainer.SettingPage
       }
     ]
   },
 
   //회원
   {
-    name: "member",
+    name: "",
     path: "/member",
     element: CustomLayout,
     children: [
       {
         name: "member", //캠퍼스명
         path: "/member/main",
-        element: Pg.Member.MainPage,
-        bottom: false
+        element: Pg.Member.MainPage
       }
     ]
   }

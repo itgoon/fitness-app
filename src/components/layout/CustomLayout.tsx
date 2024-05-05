@@ -4,6 +4,7 @@ import { useRecoilState } from "recoil";
 import CP from "@/components";
 import { useEffect, useLayoutEffect, useState } from "react";
 import CustomHeader from "./CustomHeader";
+import CustomBottom from "./CustomBottom";
 import { Response } from "@/global";
 import { ResultCode } from "@/utils/constants/enums";
 
@@ -12,20 +13,11 @@ const CustomLayout = () => {
   const location = useLocation();
 
   const [layout, setLayout] = useRecoilState(Store.Layout.layoutState);
-  const [header, setHeader] = useRecoilState(Store.Layout.headerState);
-
   return (
-    <CP.Styled.Layout isHeader={true} isBottom={true}>
-      {layout.header && (
-        <CustomHeader
-          prefix={header?.prefix}
-          suffix={header?.suffix}
-          preOnClick={header?.preOnClick}
-          sufOnClick={header?.sufOnClick}
-          title={header?.title}
-        ></CustomHeader>
-      )}
+    <CP.Styled.Layout isHeader={layout?.header ? layout.header : true} isBottom={layout?.bottom ? layout.bottom : true}>
+      {layout.header &&  <CustomHeader/>}
       <Outlet />
+      {layout.bottom &&  <CustomBottom/>}
     </CP.Styled.Layout>
   );
 };

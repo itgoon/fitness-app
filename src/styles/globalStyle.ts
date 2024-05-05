@@ -40,6 +40,7 @@ const GlobalStyles = createGlobalStyle`
  --social-google-color : #CB4F40;
  --social-naver-color :  #00C300;
  --social-apple-color : #000000;
+ --social-kakao-color : #FFFF00;
 
  --menu-commute-color : #936EE9;
  --menu-employee-color : #F99959;

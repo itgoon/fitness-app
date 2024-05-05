@@ -17,59 +17,14 @@ export const IconNames = [
 ] as const;
 export type IconNameType = (typeof IconNames)[number];
 export const MuiIconNames = [
-  "Menu",
-  "Add",
-  "Close",
-  "ArrowBack",
-  "ArrowDropDown",
-  "ArrowDropUp",
-  "ArrowForwardIos",
-  "DisabledByDefaultOutlined",
-  "KeyboardArrowDownOutlined",
-  "KeyboardArrowRight",
-  "KeyboardArrowLeft",
-  "HighlightOff",
-  "HelpOutlineOutlined",
-  "Check",
-  "AddOutlined",
-  "Remove",
-
-  "TimelapseOutlined", //출퇴근관리
-  "MenuBook", //근로계약
-  "ManageAccounts", //직원관리
-  "LocalActivity", //급여관리
-  "Done",
-  "AddCircle",
-  "VerticalAlignBottomOutlined",
-
-  //사이드바
   "Home",
-  "Store",
-  "Group",
-  "AccessTimeFilled",
-  "FactCheck",
-  "MonetizationOn",
-  "Settings",
-  "Logout",
-
-  "Notifications",
-  "NotificationsNone",
-
-  "MoreVert",
-  "ModeEdit",
+  "QrCode2",
+  "Groups",
   "CalendarMonth",
-  "KeyboardArrowLeft",
-  "FileOpen",
-
-  "AdminPanelSettings",
-  "Description",
-  "Info",
-  "AssignmentInd",
-  "Assignment",
-  "Doorbell",
-  "Autorenew",
-  "Calculate",
-  "InfoOutlined"
+  "Settings",
+  "Search",
+  "KeyboardArrowRight",
+  "Notifications"
 ] as const;
 export type MuiIconNameType = (typeof MuiIconNames)[number];
 
@@ -97,8 +52,6 @@ const Icon: React.FC<IconProps> = ({
   type = "mui",
   color
 }) => {
-  if (muiName === "HighlightOff") return; //임시
-
   if (type === "mui") {
     if (!muiName) return <></>;
     const Icon = MuiIcon[muiName];

@@ -27,6 +27,7 @@ import Switch from "./switch";
 import Image from "./image";
 
 import Clock from "./clock";
+import Timeline from "./timeline";
 
 import * as Layout from "./layout";
 import * as Styled from "./styled";
@@ -59,7 +60,8 @@ const CP = {
   TimerProgress,
   Image,
   ButtonRadio,
-  Clock
+  Clock,
+  Timeline
 };
 
 export type { ButtonProps };

@@ -159,6 +159,11 @@ export const Button = styled(MuiButton)<ButtonProps>`
 
   color: var(--white-color) !important;
   ${(props) =>
+    props.type === "round" && 
+    css` 
+    box-shadow: 0px 1px 10px #0000000f;
+    `}
+  ${(props) =>
     props.type === "text" &&
     css`
       color: ${props.color
@@ -376,8 +381,7 @@ export const CardWrapper = styled(MuiButton)<CardProps>`
   border-radius: ${({ radius, size }) =>
     radius ? radius : size && size === "lg" ? "4px" : "8px"} !important;
 
-  box-shadow: 0px 1px 10px #0000000f;
-  // box-shadow: 0px 1px 10px red;
+  box-shadow: 0px 1px 10px #0000000f; 
 
   div > img:not(.MuiAvatar-fallback) {
     border-radius: ${({ radius, size }) =>
