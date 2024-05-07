@@ -1,12 +1,10 @@
 import CP from "@/components";
-import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { useRecoilState } from "recoil";
+import { MuiIconNameType } from "@/components/icon/Icon";
 import Store from "@/store";
-
-import { MemberSortList } from "@/utils/constants";
-import { TrainerMemberList } from "@/utils/constants/dummyData";
-
+import { useRecoilState } from "recoil";
+import { useNavigate } from "react-router-dom";
+import { useState } from "react";
+import Bridge from "@/utils/bridge";
 /**
  ****************************************
  * 트레이너 > 설정 화면
@@ -14,7 +12,20 @@ import { TrainerMemberList } from "@/utils/constants/dummyData";
  */
 
 const SettingPage = () => {
-  return <CP.Styled.Wrapper>{"트레이너 > 설정 화면"}</CP.Styled.Wrapper>;
+  const navigate = useNavigate();
+  const [store, setStore] = useRecoilState(Store.Auth.storeState);
+
+  const onLogout = () => {
+    setStore(undefined);
+    navigate("/login");
+  };
+  return (
+    <CP.Styled.Wrapper padding="var(--layout-padding)">
+      <CP.Button type="text" onClick={onLogout}>
+        로그아웃
+      </CP.Button>
+    </CP.Styled.Wrapper>
+  );
 };
 
 export default SettingPage;

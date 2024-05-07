@@ -81,7 +81,7 @@ const Radio = ({
           >
             <Typography variant="c2"> {item.label}</Typography>
             {checkActive(item) && (
-              <Icon muiName="Check" size={15} color="--white-color" />
+              <Icon name="Check" size={15} color="--white-color" />
             )}
           </button>
         );

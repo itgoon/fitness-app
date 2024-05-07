@@ -82,7 +82,7 @@ const Datepicker = ({
                     : ""}
               </Typography>
 
-              <Icon muiName="CalendarMonth" size={20} color="--light-color" />
+              <Icon name="CalendarMonth" size={20} color="--light-color" />
             </Styled.Flex>
           </Styled.EmptyButton>
         )}

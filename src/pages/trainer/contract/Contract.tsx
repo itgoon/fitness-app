@@ -9,16 +9,23 @@ import { TrainerMemberList } from "@/utils/constants/dummyData";
 
 /**
  ****************************************
- * 트레이너 > 회원관리 화면
+ * 트레이너 > 세션(계약) 화면
  ****************************************
  */
+const ContractFilterList = [
+  { label: "전체", value: "" },
+  { label: "PT 30회권", value: "PT 30회권" },
+  { label: "PT 20회권", value: "PT 20회권" },
+  { label: "PT 15회권", value: "PT 15회권" }
+];
 
-const MemberPage = () => {
+const SchedulePage = () => {
   const navigate = useNavigate();
 
   const [list, setList] = useState<any[]>(TrainerMemberList);
   const [state, setState] = useState({
     sort: "",
+    filter: "",
     search: ""
   });
 
@@ -26,7 +33,7 @@ const MemberPage = () => {
     return (
       <CP.Card
         onClick={() =>
-          navigate(`/trainer/member/detail?name=${String(item?.name)}`)
+          navigate(`/trainer/contract/detail?name=${String(item?.name)}`)
         }
       >
         <CP.Styled.Flex justify="space-between" items="center" padding="10px">
@@ -50,12 +57,10 @@ const MemberPage = () => {
               <CP.Typography variant="b1" color="--dark-color">
                 {item.production}
               </CP.Typography>
-              {item?.rest !== undefined && (
-                <CP.Typography
-                  variant="c2"
-                  color="--error-color"
-                >{`잔여 ${item.rest}회차`}</CP.Typography>
-              )}
+              <CP.Typography
+                variant="c2"
+                color="--error-color"
+              >{`잔여 ${item.rest}회차`}</CP.Typography>
             </CP.Styled.Flex>
 
             <CP.Typography
@@ -83,6 +88,15 @@ const MemberPage = () => {
               selected={state.sort}
               onSelect={(e) => setState({ ...state, sort: e })}
             />
+            <CP.Select
+              list={ContractFilterList}
+              size="sm"
+              placeholder="필터"
+              title="필터 선택"
+              selected={state.filter}
+              onSelect={(e) => setState({ ...state, filter: e })}
+            />
+
             <CP.Input
               suffix={<CP.Icon name="dashicons:search" color="--light-color" />}
               size="sm"
@@ -94,19 +108,8 @@ const MemberPage = () => {
             <CP.Styled.Div overflow="hidden" height="auto">
               {list?.length > 0 ? (
                 <CP.CardWrap>
-                  {list?.filter((item) => item.isToday)?.length > 0 && (
-                    <CP.Title>오늘자 PT</CP.Title>
-                  )}
                   {list
-                    ?.filter((item) => item.isToday)
-                    ?.map((item) => settingListItem(item))}
-
-                  {list?.filter((item) => item.isToday)?.length > 0 && (
-                    <CP.Styled.Division padding={30} />
-                  )}
-
-                  {list
-                    ?.filter((item) => !item.isToday)
+                    ?.filter((item) => item?.rest !== undefined)
                     ?.map((item) => settingListItem(item))}
                 </CP.CardWrap>
               ) : (
@@ -119,7 +122,7 @@ const MemberPage = () => {
                 >
                   <CP.Icon name="healthicons:no-outline" size={140} />
                   <CP.Typography variant="h5" color="--light-color">
-                    회원이 없습니다.
+                    작성된 계약서가 없습니다.
                   </CP.Typography>
                 </CP.Styled.Flex>
               )}
@@ -131,4 +134,4 @@ const MemberPage = () => {
   );
 };
 
-export default MemberPage;
+export default SchedulePage;

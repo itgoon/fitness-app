@@ -13,7 +13,15 @@ const CustomHeader = () => {
   return (
     <>
       <Top>
-        <CP.Styled.Flex width="24px" items="center"></CP.Styled.Flex>
+        <CP.Styled.Flex width="24px" items="center">
+          {location?.pathname.indexOf("/main") === -1 && (
+            <CP.Icon
+              name="humbleicons:arrow-go-back"
+              color="--dark-color"
+              onClick={() => navigate(-1)}
+            />
+          )}
+        </CP.Styled.Flex>
 
         <CP.Typography variant="h5">
           {store?.name ? store.name : ""}
@@ -21,9 +29,13 @@ const CustomHeader = () => {
 
         <CP.Styled.Flex width="24px">
           <CP.Icon
-            muiName="Notifications"
-            color="--secondary-color"
-            onClick={() => navigate("/trainer/alarm")}
+            name="icon-park-outline:setting-two"
+            color={
+              location?.pathname === "/trainer/setting"
+                ? "--primary-color"
+                : "--dark-color"
+            }
+            onClick={() => navigate("/trainer/setting")}
           />
         </CP.Styled.Flex>
       </Top>

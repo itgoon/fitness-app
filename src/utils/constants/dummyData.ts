@@ -15,10 +15,8 @@ export const TrainerMainTimeline = [
 
 export const TrainerMainAlarm = [
   { time: "09:00", message: "A회원 입장하셨습니다." },
-  { time: "11:20", message: "B회원 퇴장하셨습니다." },
   { time: "11:30", message: "A회원님 PT 시간입니다." },
   { time: "09:00", message: "A회원 입장하셨습니다." },
-  { time: "11:20", message: "B회원 퇴장하셨습니다." },
   { time: "11:30", message: "A회원님 PT 시간입니다." }
 ];
 
@@ -57,11 +55,11 @@ export const TrainerMemberList = [
     name: "D회원",
     age: 17,
     gender: "f",
-    production: "20회 PT권",
+    production: "6개월 회원권",
     rest: 9,
     start_date: "2023-12-20",
     end_date: "2024-04-30",
-    isToday: false
+    isToday: undefined
   },
   {
     name: "E회원",
@@ -77,8 +75,8 @@ export const TrainerMemberList = [
     name: "F회원",
     age: 29,
     gender: "m",
-    production: "30회 PT권",
-    rest: 23,
+    production: "6개월 회원권",
+    rest: undefined,
     start_date: "2024-03-01",
     end_date: "2024-09-30",
     isToday: false

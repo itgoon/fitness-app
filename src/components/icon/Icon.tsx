@@ -1,7 +1,17 @@
 /* eslint-disable no-empty */
+
 import * as MuiIcon from "@mui/icons-material";
 import * as React from "react";
 import { StyleIcon } from "../styled";
+
+import Box, { BoxProps } from "@mui/material/Box";
+import { IconifyIcon } from "@iconify/react";
+import { forwardRef } from "react";
+import { Icon as IconiIcon } from "@iconify/react";
+
+//-----------------------------------------------------
+
+export type IconifyProps = IconifyIcon | string;
 
 export type IconUnit = "svg" | "png";
 export const IconNames = [
@@ -16,22 +26,13 @@ export const IconNames = [
   "nodata"
 ] as const;
 export type IconNameType = (typeof IconNames)[number];
-export const MuiIconNames = [
-  "Home",
-  "QrCode2",
-  "Groups",
-  "CalendarMonth",
-  "Settings",
-  "Search",
-  "KeyboardArrowRight",
-  "Notifications"
-] as const;
-export type MuiIconNameType = (typeof MuiIconNames)[number];
+export const IconifyNames = [] as const;
+export type IconifyNameType = (typeof IconifyNames)[number];
 
-export interface IconProps {
-  type?: "img" | "mui"; //가져온 이미지 / mui 이미지
-  muiName?: MuiIconNameType;
-  name?: IconNameType;
+export interface IconProps extends BoxProps {
+  type?: "img" | "iconify"; //가져온 이미지 / mui 이미지
+  // name?: IconifyNameType;
+  name?: IconifyProps;
   color?: string;
 
   isLabel?: boolean;
@@ -40,45 +41,57 @@ export interface IconProps {
   style?: React.CSSProperties;
   size?: number;
   onClick?: () => void;
+  sx?: any;
 }
 
-const Icon: React.FC<IconProps> = ({
-  name,
-  muiName,
-  unit = "svg",
-  style,
-  size,
-  onClick,
-  type = "mui",
-  color
-}) => {
-  if (type === "mui") {
-    if (!muiName) return <></>;
-    const Icon = MuiIcon[muiName];
+const Icon = forwardRef<SVGElement, IconProps>(
+  (
+    {
+      name,
+      // name,
+      unit = "svg",
+      style,
+      size = 20,
+      onClick,
+      type = "iconify",
+      color,
+      sx,
+      ...other
+    },
+    ref
+  ) => {
+    if (type === "iconify") {
+      return (
+        <Box
+          ref={ref}
+          component={IconiIcon}
+          className="component-iconify"
+          icon={name}
+          onClick={onClick}
+          sx={{
+            width: size,
+            height: size,
+            color: color ? `var(${color})` : "var(--dark-color)",
+            cursor: onClick ? "pointer" : "default",
+            ...sx
+          }}
+          style={style}
+          {...other}
+        />
+      );
+    }
 
-    return (
-      <Icon
-        onClick={onClick}
-        style={{
-          color: color && `var(${color})`,
-          width: size ? size : "24px",
-          height: size ? size : "24px",
-          ...style
-        }}
-      />
-    );
-  } else {
     return (
       <StyleIcon
         color={color}
         src={"/images/icons/" + name + "." + unit}
-        alt={name}
+        alt={name + ""}
         size={size}
         onClick={onClick}
         style={style}
       />
     );
   }
-};
+);
 
 export default Icon;

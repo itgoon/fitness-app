@@ -42,7 +42,7 @@ const MenuItem = ({ children, list, onClick, isOpen }: MenuItemProps) => {
         {children ? (
           children
         ) : (
-          <Icon muiName="MoreVert" size={14} color="--light-color" />
+          <Icon name="MoreVert" size={14} color="--light-color" />
         )}
       </Styled.EmptyButton>
 

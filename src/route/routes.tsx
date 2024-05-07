@@ -47,6 +47,17 @@ const routes: RouteProps[] = [
       },
       {
         name: "trainer", //
+        path: "/trainer/contract/detail",
+        element: Pg.Trainer.ContractDetailPage
+      },
+
+      {
+        name: "trainer", //
+        path: "/trainer/contract",
+        element: Pg.Trainer.ContractPage
+      },
+      {
+        name: "trainer", //
         path: "/trainer/setting",
         element: Pg.Trainer.SettingPage
       }
@@ -63,6 +74,16 @@ const routes: RouteProps[] = [
         name: "member", //캠퍼스명
         path: "/member/main",
         element: Pg.Member.MainPage
+      },
+      {
+        name: "member", //
+        path: "/member/alarm",
+        element: Pg.Trainer.AlarmPage
+      },
+      {
+        name: "member", //
+        path: "/member/schedule",
+        element: Pg.Member.SchedulePage
       }
     ]
   }

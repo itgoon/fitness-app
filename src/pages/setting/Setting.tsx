@@ -13,8 +13,19 @@ import Bridge from "@/utils/bridge";
 
 const SettingPage = () => {
   const navigate = useNavigate();
+  const [store, setStore] = useRecoilState(Store.Auth.storeState);
 
-  return <> 설정</>;
+  const onLogout = () => {
+    setStore(undefined);
+    navigate("/login");
+  };
+  return (
+    <CP.Styled.Wrapper>
+      <CP.Button type="text" onClick={onLogout}>
+        로그아웃
+      </CP.Button>
+    </CP.Styled.Wrapper>
+  );
 };
 
 export default SettingPage;

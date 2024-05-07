@@ -97,7 +97,7 @@ const Select = ({
               value={settingValue}
               endAdornment={
                 <InputAdornment position="end">
-                  <Icon muiName={open ? "ArrowDropUp" : "ArrowDropDown"} />
+                  <Icon name={open ? "ArrowDropUp" : "ArrowDropDown"} />
                 </InputAdornment>
               }
               onClick={() => setOpen(!open)}
@@ -121,7 +121,7 @@ const Select = ({
                 {settingValue ? settingValue : placeholder ? placeholder : ""}
               </Typography>
               <Icon
-                muiName={open ? "ArrowDropUp" : "ArrowDropDown"}
+                name={open ? "ArrowDropUp" : "ArrowDropDown"}
                 color={!settingValue ? "--light-color" : "--white-color"}
                 size={14}
               />
