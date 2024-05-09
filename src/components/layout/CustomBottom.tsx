@@ -36,7 +36,7 @@ const CustomHeader = () => {
             ? TrainerMenuList.map((item) => {
                 return (
                   <CP.Icon
-                    size={36}
+                    size={item?.path !== undefined ? 30 : 50}
                     name={item.icon}
                     color={
                       location?.pathname === item.path
@@ -54,7 +54,7 @@ const CustomHeader = () => {
             : MemberMenuList.map((item) => {
                 return (
                   <CP.Icon
-                    size={36}
+                    size={item?.path !== undefined ? 30 : 50}
                     name={item.icon}
                     color={
                       location?.pathname === item.path
@@ -71,6 +71,29 @@ const CustomHeader = () => {
               })}
         </CP.Styled.Flex>
       </Bottom>
+      {/* <div
+        style={{
+          width: "90px",
+          height: "90px",
+          borderRadius: "50px",
+          position: "absolute",
+          left: "50%",
+          bottom: "0px",
+          transform: "translate(-50%, 0%)",
+          display: "flex",
+          justifyContent: "center"
+        }}
+      >
+        <div
+          style={{
+            width: "80%",
+            height: "80%",
+            borderRadius: "50px",
+            boxShadow: "0px -2px 6px #0000000f",
+            background: "#ffffff 0% 0% no-repeat padding-box"
+          }}
+        ></div>
+      </div> */}
       <CP.Modal open={isQRCode} onClose={() => setIsQRCode(false)}>
         <CP.Icon
           name="material-symbols-light:qr-code-2"

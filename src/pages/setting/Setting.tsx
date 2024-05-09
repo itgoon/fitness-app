@@ -1,5 +1,4 @@
 import CP from "@/components";
-import { MuiIconNameType } from "@/components/icon/Icon";
 import Store from "@/store";
 import { useRecoilState } from "recoil";
 import { useNavigate } from "react-router-dom";

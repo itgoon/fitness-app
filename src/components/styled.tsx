@@ -159,9 +159,9 @@ export const Button = styled(MuiButton)<ButtonProps>`
 
   color: var(--white-color) !important;
   ${(props) =>
-    props.type === "round" && 
-    css` 
-    box-shadow: 0px 1px 10px #0000000f;
+    props.type === "round" &&
+    css`
+      box-shadow: 0px 1px 10px #0000000f;
     `}
   ${(props) =>
     props.type === "text" &&
@@ -381,7 +381,7 @@ export const CardWrapper = styled(MuiButton)<CardProps>`
   border-radius: ${({ radius, size }) =>
     radius ? radius : size && size === "lg" ? "4px" : "8px"} !important;
 
-  box-shadow: 0px 1px 10px #0000000f; 
+  box-shadow: 0px 1px 10px #0000000f;
 
   div > img:not(.MuiAvatar-fallback) {
     border-radius: ${({ radius, size }) =>
@@ -952,24 +952,133 @@ export const TimerProgressWrapper = styled(Flex)<any>`
       flex: 1;
     }
   }
+`;
 
-  // position: relative;
-  // width: 100%;
-  // height: 100%;
-  // & span {
-  //   transform: rotate(270deg);
+export const CalendarMonthWrapper = styled(Div)`
+  .Mui-selected {
+    background-color: var(--primary-color) !important;
+    font-weight: 700 !important;
 
-  //   &:first-child {
-  //     --CircularProgress-progressColor: var(--white-color);
-  //     --_progress-thickness: 4px;
+    &:hover {
+      background: var(--primary-color) !important;
+    }
+  }
+  .MuiPickersDay-root:focus {
+    background: transparent !important;
+  }
+
+  // .MuiDateCalendar-root {
+  //   padding: 0px 20px;
+  //   box-sizing: border-box;
+  //   width: 100%;
+  //   height: auto;
+
+  //   aspect-ratio: 334 / 320;
+  //   max-height: none !important;
+
+  //   .MuiDayCalendar-weekDayLabel,
+  //   .MuiPickersDay-root {
+  //     flex: 1;
   //   }
-  //   &:last-child {
-  //     position: absolute;
-  //     top: 0;
-  //     left: 0;
-  //     --CircularProgress-progressColor: var(--primary-color);
-  //     --CircularProgress-trackColor: var(--transparent-color);
-  //     --_progress-thickness: 5px;
+  //   .MuiPickersDay-root:focus {
+  //     background: transparent;
+  //   }
+  //   .Mui-selected {
+  //     color: var(--primary-color);
+  //     background: transparent;
+  //     justify-content: center;
+  //     font-weight: 700;
+
+  //     &:hover {
+  //       background: transparent;
+  //     }
+
+  //     .MuiTouchRipple-root {
+  //       height: 100%;
+  //       aspect-ratio: 1/1;
+  //       border-radius: 50px;
+  //       border: 1px solid var(--primary-color);
+  //       top: 50%;
+  //       left: 50%;
+  //       transform: translate(-50%, -50%);
+  //       // opacity: 0.5;
+  //     }
   //   }
   // }
+`;
+
+export const CalendarWeekWrapper = styled(Flex)`
+  height: calc(100% - 100px);
+
+  width: 100%;
+  overflow: auto;
+
+  flex-direction: column;
+  .rbc-allday-cell {
+    display: none;
+  }
+
+  .rbc-time-header {
+    background: var(--light-color);
+    .rbc-header {
+      width: 80px;
+      padding: 10px;
+
+      .rbc-button-link > span {
+        color: #fff;
+        font-weight: 700;
+      }
+    }
+  }
+  .rbc-today {
+    background: var(--light-color);
+  }
+
+  .rbc-time-content {
+    overflow: auto;
+    > div {
+      background: var(--white-color);
+
+      .rbc-label {
+        color: #fff;
+        font-weight: 700;
+      }
+    }
+    & > div:first-child {
+      background: var(--light-color);
+    }
+
+    .rbc-timeslot-group {
+      min-height: 50px;
+      .rbc-time-slot {
+        height: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+
+      & > div:last-child {
+        display: none;
+      }
+    }
+  }
+
+  .rbc-events-container {
+    margin-right: 0px;
+
+    .rbc-event {
+      padding: 5px;
+      border-radius: 0px;
+      .rbc-event-label {
+        display: none;
+      }
+      .rbc-event-content {
+        font-size: 15px;
+      }
+    }
+  }
+
+  .rbc-current-time-indicator {
+    display: none;
+  }
 `;
