@@ -42,7 +42,7 @@ const CustomHeader = () => {
                     size={36}
                     name={item.icon}
                     color={
-                      location?.pathname === item.path
+                      item.path && location?.pathname?.indexOf(item.path) !== -1
                         ? "--primary-color"
                         : "--dark-color"
                     }
@@ -60,7 +60,7 @@ const CustomHeader = () => {
                     size={36}
                     name={item.icon}
                     color={
-                      location?.pathname === item.path
+                      item.path && location?.pathname?.indexOf(item.path) !== -1
                         ? "--primary-color"
                         : "--dark-color"
                     }

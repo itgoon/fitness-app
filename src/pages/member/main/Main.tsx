@@ -87,7 +87,11 @@ const MainPage = () => {
                     radius="8px"
                     items="center"
                     direction="column"
-                    border={isToday ? "2px solid var(--primary-color)" : ""}
+                    border={
+                      isToday
+                        ? "2px solid var(--primary-color)"
+                        : "2px solid var(--border-color)"
+                    }
                     gap={4}
                     bg={shcd ? "--transparent-color" : "--disabled-color"}
                     padding="8px 0px"
@@ -124,63 +128,6 @@ const MainPage = () => {
                 </CP.Card>
               );
             })}
-
-            {/* {[...Array(ScheduleList.length)]?.map((item, index) => {
-              const shcd = data?.find((sc) => sc.weekday === index);
-
-              const wk = dayjs(weekStart, DateReqFormat).add(index, "d");
-              const date = dayjs(weekStart, DateReqFormat)
-                .add(index, "d")
-                .format("DD");
-
-              const isToday =
-                wk.format(DateFormat) === dayjs().format(DateFormat);
-              return (
-                <CP.Card width="62px" height="auto" size="md">
-                  <CP.Styled.Flex
-                    radius="8px"
-                    items="center"
-                    direction="column"
-                    border={isToday ? "2px solid var(--primary-color)" : ""}
-                    gap={4}
-                    padding="8px 0px"
-                  >
-                    <CP.Typography
-                      variant="c1"
-                      color={isToday ? "--primary-color" : "--light-color"}
-                    >
-                      {isToday ? "오늘" : wk.format("ddd")}
-                    </CP.Typography>
-                    <CP.Typography variant="h4">{date}</CP.Typography>
-
-                    {shcd ? (
-                      <div>
-                        <CP.Typography variant="c1" color="--primary-color">
-                          {shcd?.startTime ? shcd.startTime : "-"}
-                        </CP.Typography>
-                        <CP.Typography
-                          variant="c1"
-                          color="--danger-color"
-                          opacity="0.6"
-                        >
-                          {shcd?.endTime ? shcd.endTime : "-"}
-                        </CP.Typography>
-                      </div>
-                    ) : (
-                      <CP.Styled.Div width="25px">
-                        <CP.Typography
-                          wrap="wrap"
-                          variant="c1"
-                          color="--light-color"
-                        >
-                          일정없음
-                        </CP.Typography>
-                      </CP.Styled.Div>
-                    )}
-                  </CP.Styled.Flex>
-                </CP.Card>
-              );
-            })} */}
           </CP.CardWrap>
         </CP.Menu>
 

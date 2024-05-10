@@ -21,8 +21,8 @@ const GlobalStyles = createGlobalStyle`
       --setting-icon-color : #ACB4BE;
 
 
-    --primary-color : #FF00FF; //#23B2E9; 
-    --primary-bg-color :#FF00FF33; 
+    --primary-color :   #4682B4; //#23B2E9; 
+    --primary-bg-color :#4682B433; 
     --primary-disabled-color :#A6CEDE;
 
     

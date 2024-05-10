@@ -93,7 +93,7 @@ const LoginPage = () => {
               <CP.Styled.Division />
             </CP.Styled.Flex>
 
-            <CP.Styled.Flex width="260px" direction="column" gap={8}>
+            <CP.Styled.Flex width="280px" direction="column" gap={8}>
               <CP.Button
                 type="round"
                 width="100%"

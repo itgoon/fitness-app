@@ -1098,7 +1098,7 @@ export const CalendarWeekWrapper = styled(Flex)`
 
 export const BubbleButton = styled(EmptyButton)<{ width?: string }>`
   width: ${({ width }) => (width ? width : "auto")};
-  aspect-ratio: 1 /1;
+  aspect-ratio: 1 / 1;
   padding: 10px;
   border-radius: 50px;
   box-shadow: 0px 1px 10px #0000000f;
