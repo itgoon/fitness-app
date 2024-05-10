@@ -23,7 +23,7 @@ const CustomHeader = () => {
           )}
         </CP.Styled.Flex>
 
-        <CP.Typography variant="h5">
+        <CP.Typography variant="h4">
           {store?.name ? store.name : ""}
         </CP.Typography>
 

@@ -33,6 +33,7 @@ import Scheduler from "./scheduler";
 
 import * as Layout from "./layout";
 import * as Styled from "./styled";
+import ModalPrograss from "./modalPrograss";
 
 const CP = {
   Styled,
@@ -47,6 +48,7 @@ const CP = {
   CardWrap,
   Checkbox,
   Modal,
+  ModalPrograss,
   Avatar,
   Icon,
   Select,

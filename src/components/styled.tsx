@@ -8,6 +8,7 @@ import { MultiSectionDigitalClock } from "@mui/x-date-pickers/MultiSectionDigita
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { Drawer } from "@mui/material";
 import { Card as MuiCard } from "@mui/material";
+import { linearProgressClasses } from "@mui/material/LinearProgress";
 import {
   TextField,
   TextFieldProps,
@@ -22,6 +23,7 @@ import {
 import { RadioProps } from "./radio/Radio";
 import { CardProps } from "./card/Card";
 import { PopoverProps } from "./popover/Popover";
+import ModalPrograss from "./modalPrograss";
 
 type DivProps = {
   width?: string;
@@ -381,7 +383,7 @@ export const CardWrapper = styled(MuiButton)<CardProps>`
   border-radius: ${({ radius, size }) =>
     radius ? radius : size && size === "lg" ? "4px" : "8px"} !important;
 
-  box-shadow: 0px 1px 10px #0000000f;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 10px;
 
   div > img:not(.MuiAvatar-fallback) {
     border-radius: ${({ radius, size }) =>
@@ -510,8 +512,6 @@ export const StyleDialog = styled(Dialog)`
     border-radius: 4px;
   }
   & .MuiDialogContent-root {
-    padding: 24px 22px 28px 22px;
-
     & > h1 {
       padding-bottom: 16px;
     }
@@ -1007,6 +1007,19 @@ export const CalendarMonthWrapper = styled(Div)`
   // }
 `;
 
+export const QRProgressWrapper = styled(Div)`
+  .MuiLinearProgress-root {
+    background-color: var(--primary-bg-color) !important;
+    height: 6px !important;
+    border-radius: 5px !important;
+  }
+
+  .MuiLinearProgress-bar {
+    background: var(--primary-color);
+    height: 6px !important;
+    border-radius: 5px !important;
+  }
+`;
 export const CalendarWeekWrapper = styled(Flex)`
   height: calc(100% - 100px);
 
@@ -1081,4 +1094,13 @@ export const CalendarWeekWrapper = styled(Flex)`
   .rbc-current-time-indicator {
     display: none;
   }
+`;
+
+export const BubbleButton = styled(EmptyButton)<{ width?: string }>`
+  width: ${({ width }) => (width ? width : "auto")};
+  aspect-ratio: 1 /1;
+  padding: 10px;
+  border-radius: 50px;
+  box-shadow: 0px 1px 10px #0000000f;
+  margin: 10px;
 `;

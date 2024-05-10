@@ -5,7 +5,10 @@ import { useRecoilState } from "recoil";
 import Store from "@/store";
 
 import { MemberSortList } from "@/utils/constants";
-import { TrainerMemberList } from "@/utils/constants/dummyData";
+import {
+  TrainerMemberList,
+  TrainerMemberSelectList
+} from "@/utils/constants/dummyData";
 import { DateFormat, TimeFormat } from "@/utils/formatUtil";
 import dayjs from "dayjs";
 import { SchedulerProps } from "@/components/scheduler/Scheduler";
@@ -48,7 +51,7 @@ const ScheduleModalPage = ({ open, onDismiss, data, onDelete }: Props) => {
             ) : (
               <CP.Select
                 title={"회원 선택"}
-                list={[]}
+                list={TrainerMemberSelectList}
                 placeholder="회원 선택"
               />
             )}

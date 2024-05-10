@@ -3,6 +3,7 @@ import { DialogActions, DialogContent } from "@mui/material";
 import { ReactNode } from "react";
 import Typography from "../typography";
 import Button from "../button";
+
 type ModalTypes = "alert" | "confirm";
 
 export interface ModalProps {
@@ -20,6 +21,7 @@ export interface ModalProps {
   okText?: string;
   cancelText?: string;
   title?: string;
+  padding?: string;
   // okColor?: ButtonColor;
 }
 
@@ -33,17 +35,18 @@ const Modal = ({
   onCancel,
   okText,
   cancelText,
-  title
+  title,
+  padding
 }: ModalProps) => {
   return (
     <Styled.StyleDialog open={open} onClose={onClose}>
-      <DialogContent>
+
+      <DialogContent style={{ padding : padding ? padding : '24px 22px 28px 22px'}}>
         {title && (
           <Typography variant="h6" color="--white-color-999" wrap="wrap">
             {title}
           </Typography>
-        )}
-
+        )} 
         <div>
           {typeof children === "string" ? (
             <Typography variant="b2" color="--white-color-800" wrap="wrap">
@@ -53,6 +56,7 @@ const Modal = ({
             children
           )}
         </div>
+
       </DialogContent>
 
       {type ? (
