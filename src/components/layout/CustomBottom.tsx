@@ -105,7 +105,20 @@ const CustomHeader = () => {
           style={{ width: "100%", height: "100%", aspectRatio: "1/1" }}
         />
       </CP.Modal>
-      <CP.Modal open={isMemberCard} onClose={() => { setIsMemberCard(false) }} padding="0px">
+      <CP.Modal open={isMemberCard}
+        onClose={() => {
+          setIsMemberCard(false);
+
+          if(QRPrograss){
+            setTimeout(()=>{
+              setQRPrograss(false) 
+            }, 500)
+          }
+      
+          // QRPrograss ? setQRPrograss(false) : setQRPrograss(false)
+        }}
+        padding="0px">
+
         {QRPrograss ? <CP.ModalPrograss onClick={() => setQRPrograss(false)} timeType="잔여 시간" timeUnit="초"></CP.ModalPrograss> : (
           <>
             <CP.Styled.Div bg={"--social-google-color"} height="230px" padding={"20px 15px 20px 15px"} >

@@ -966,47 +966,9 @@ export const CalendarMonthWrapper = styled(Div)`
     }
   }
   .MuiPickersDay-root:focus {
-    background: transparent !important;
+    // background: transparent !important;
   }
 
-  // .MuiDateCalendar-root {
-  //   padding: 0px 20px;
-  //   box-sizing: border-box;
-  //   width: 100%;
-  //   height: auto;
-
-  //   aspect-ratio: 334 / 320;
-  //   max-height: none !important;
-
-  //   .MuiDayCalendar-weekDayLabel,
-  //   .MuiPickersDay-root {
-  //     flex: 1;
-  //   }
-  //   .MuiPickersDay-root:focus {
-  //     background: transparent;
-  //   }
-  //   .Mui-selected {
-  //     color: var(--primary-color);
-  //     background: transparent;
-  //     justify-content: center;
-  //     font-weight: 700;
-
-  //     &:hover {
-  //       background: transparent;
-  //     }
-
-  //     .MuiTouchRipple-root {
-  //       height: 100%;
-  //       aspect-ratio: 1/1;
-  //       border-radius: 50px;
-  //       border: 1px solid var(--primary-color);
-  //       top: 50%;
-  //       left: 50%;
-  //       transform: translate(-50%, -50%);
-  //       // opacity: 0.5;
-  //     }
-  //   }
-  // }
 `;
 
 export const QRProgressWrapper = styled(Div)`
