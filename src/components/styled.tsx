@@ -8,6 +8,7 @@ import { MultiSectionDigitalClock } from "@mui/x-date-pickers/MultiSectionDigita
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { Drawer } from "@mui/material";
 import { Card as MuiCard } from "@mui/material";
+import   { linearProgressClasses } from '@mui/material/LinearProgress';
 import {
   TextField,
   TextFieldProps,
@@ -22,6 +23,7 @@ import {
 import { RadioProps } from "./radio/Radio";
 import { CardProps } from "./card/Card";
 import { PopoverProps } from "./popover/Popover";
+import ModalPrograss from "./modalPrograss";
 
 type DivProps = {
   width?: string;
@@ -510,7 +512,7 @@ export const StyleDialog = styled(Dialog)`
     border-radius: 4px;
   }
   & .MuiDialogContent-root {
-    padding: 24px 22px 28px 22px;
+ 
 
     & > h1 {
       padding-bottom: 16px;
@@ -973,3 +975,18 @@ export const TimerProgressWrapper = styled(Flex)<any>`
   //   }
   // }
 `;
+
+export const QRProgressWrapper = styled(Div)`
+
+.MuiLinearProgress-root {
+  background-color: #faa !important;
+  height: 6px !important;
+  border-radius: 5px !important; 
+}
+
+.MuiLinearProgress-bar { 
+  background: #f00;
+  height: 6px !important;
+  border-radius: 5px !important;
+}
+`

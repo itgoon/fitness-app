@@ -14,11 +14,14 @@ import { useEffect } from "react";
 const LoginPage = () => {
   const navigate = useNavigate();
   const [store, setStore] = useRecoilState(Store.Auth.storeState);
+  // 주소 연락처 
+  // 시작일 종료일
+  // 회원권 데이터 더미 만들기 
   const [user, setUser] = useRecoilState(Store.Auth.userState);
 
   //테스트용 카카오 > 트레이너 로그인
   const onKakaoLogin = () => {
-    setStore({ name: "리온짐", id: "1" });
+    setStore({ name: "리온짐", id: "1", place: "경기도 부천시- ", phone: "01071802384" });
     setUser({ name: "A", id: "a1", isTrainer: true });
 
     navigate("/trainer/main");
@@ -26,8 +29,9 @@ const LoginPage = () => {
 
   //테스트용 애플 > 회원 로그인
   const onAppleLogin = () => {
-    setStore({ name: "리온짐", id: "1" });
-    setUser({ name: "B", id: "b1", isTrainer: false });
+    setStore({ name: "리온짐", id: "1", place: "경기도 부천시- ", phone: "01071802384"  });
+    setUser({ name: "김가현 회원님", id: "b1", start_date: "2024.04.02",
+    end_date: "2025.04.02", production: "pt 3개월", isTrainer: false });
     navigate("/member/main");
   };
 

@@ -51,7 +51,8 @@ const MainPage = () => {
   return (
     <>
       <CP.Styled.Wrapper overflow="auto" padding="16px 0px 50px 0px">
-        <CP.Styled.Flex
+        {/* <CP.Styled.Flex 
+        
           padding="0px 16px 24px 16px"
           gap={24}
           direction="column"
@@ -93,6 +94,7 @@ const MainPage = () => {
             </CP.Styled.Flex>
           </CP.Styled.Flex>
         </CP.Styled.Flex>
+        */}
 
         <CP.Menu title="이번주 스케줄" isCard>
           <CP.CardWrap
