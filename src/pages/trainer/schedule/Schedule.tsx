@@ -126,6 +126,10 @@ const SchedulePage = () => {
     });
   };
 
+  const onDelete = (id: string) => {
+    setList(list?.filter((item) => item.id !== id));
+  };
+
   return (
     <>
       <CP.Styled.Wrapper>
@@ -157,6 +161,7 @@ const SchedulePage = () => {
           </CP.Styled.Flex>
         </CP.Styled.Flex>
 
+        {/* <CP.Calendar /> */}
         <CP.Scheduler
           date={date}
           onChangeData={(e) => setDate(e)}
@@ -179,6 +184,7 @@ const SchedulePage = () => {
         open={detailModal.open}
         onDismiss={() => setDetailModal({ open: false, data: undefined })}
         data={detailModal.data}
+        onDelete={(id: string) => onDelete(id)}
       />
       {/* <CP.Modal
         open={detailModal.open}

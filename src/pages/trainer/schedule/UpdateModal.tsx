@@ -21,8 +21,9 @@ interface Props {
   open: boolean;
   onDismiss: () => void;
   data?: any;
+  onDelete?: (e: string) => void;
 }
-const ScheduleModalPage = ({ open, onDismiss, data }: Props) => {
+const ScheduleModalPage = ({ open, onDismiss, data, onDelete }: Props) => {
   const [state, setState] = useState<any>(undefined);
 
   useEffect(() => {
@@ -85,8 +86,30 @@ const ScheduleModalPage = ({ open, onDismiss, data }: Props) => {
         </CP.Styled.Flex>
 
         <CP.Styled.Flex justify="flex-end" gap={10}>
-          <CP.Button type="text"> 수정</CP.Button>
-          <CP.Button type="text"> 삭제</CP.Button>
+          {data?.id ? (
+            <>
+              <CP.Button type="text"> 수정</CP.Button>
+              {onDelete && (
+                <CP.Button
+                  type="text"
+                  onClick={() => {
+                    onDelete(data?.id);
+                    onDismiss();
+                  }}
+                >
+                  삭제
+                </CP.Button>
+              )}
+            </>
+          ) : (
+            <>
+              <CP.Button type="text"> 등록</CP.Button>
+              <CP.Button type="text" onClick={onDismiss}>
+                {" "}
+                취소
+              </CP.Button>
+            </>
+          )}
         </CP.Styled.Flex>
       </CP.Modal>
     </>
