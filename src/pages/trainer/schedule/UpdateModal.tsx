@@ -6,7 +6,7 @@ import Store from "@/store";
 
 import { MemberSortList } from "@/utils/constants";
 import { TrainerMemberList } from "@/utils/constants/dummyData";
-import { DateFormat } from "@/utils/formatUtil";
+import { DateFormat, TimeFormat } from "@/utils/formatUtil";
 import dayjs from "dayjs";
 import { SchedulerProps } from "@/components/scheduler/Scheduler";
 import { ModalType } from "@/utils/constants/enums";
@@ -23,11 +23,19 @@ interface Props {
   data?: any;
 }
 const ScheduleModalPage = ({ open, onDismiss, data }: Props) => {
-  const [state, setState] = useState(data);
+  const [state, setState] = useState<any>(undefined);
 
   useEffect(() => {
+    if (!open) return setState(undefined);
+
+    console.log({ data });
+
     setState(data);
-  }, [data]);
+  }, [data, open]);
+
+  useEffect(() => {
+    console.log({ state });
+  }, [state]);
 
   return (
     <>
@@ -63,7 +71,10 @@ const ScheduleModalPage = ({ open, onDismiss, data }: Props) => {
               selected={state?.start_time}
               onSelect={(e) => setState({ ...state, start_time: e })}
               list={[...Array(48)]?.map((_, index) => {
-                const val = `${index < 10 ? `0${index}` : index}:${index % 2 === 0 ? "30" : "00"}`;
+                const val = dayjs("00:00", TimeFormat)
+                  .add(index * 30, "minute")
+                  .format(TimeFormat);
+
                 return {
                   label: val,
                   value: val
