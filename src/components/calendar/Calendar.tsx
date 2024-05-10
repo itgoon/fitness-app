@@ -4,8 +4,12 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 
+import { PickersDay, PickersDayProps } from "@mui/x-date-pickers/PickersDay";
 import "moment/locale/ko";
+import Badge from "@mui/material/Badge";
 import { CalendarMonthWrapper } from "../styled";
+import Icon from "../icon";
+
 export interface CalendarProps {
   type?: "week" | "month";
   value?: string;
@@ -24,11 +28,48 @@ const Calendar = ({
   min,
   max
 }: CalendarProps) => {
+  const eventList = [
+    { date: "2024-05-01", type: "PT" },
+    { date: "2024-05-04", type: "IN" },
+    { date: "2024-05-11", type: "IN" },
+    { date: "2024-05-14", type: "PT" }
+  ];
+
+  const eventDay = (props: PickersDayProps<Dayjs>) => {
+    console.log({ props });
+    const { day, outsideCurrentMonth, ...other } = props;
+
+    const ev = eventList?.find(
+      (item) => item.date === props.day.format(format)
+    );
+
+    return (
+      <Badge
+        key={props.day.toString()}
+        overlap="circular"
+        badgeContent={
+          ev ? (
+            <Icon
+              name="material-symbols:circle"
+              size={7}
+              color={ev.type === "PT" ? "--red-color" : "--blue-color"}
+            />
+          ) : undefined
+        }
+      >
+        <PickersDay
+          {...other}
+          outsideCurrentMonth={outsideCurrentMonth}
+          day={day}
+        />
+      </Badge>
+    );
+  };
   return (
     <CalendarMonthWrapper>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
-          value={value ? dayjs(value).format(format) : dayjs()}
+          value={value ? dayjs(value, format) : dayjs()}
           onChange={(newValue) =>
             onChange
               ? onChange(newValue.format(format))
@@ -37,6 +78,14 @@ const Calendar = ({
           sx={style}
           minDate={min ? dayjs(min, format) : undefined}
           maxDate={max ? dayjs(max, format) : undefined}
+          slots={{
+            day: eventDay
+          }}
+          slotProps={{
+            day: {
+              eventList
+            } as any
+          }}
         />
       </LocalizationProvider>
     </CalendarMonthWrapper>
