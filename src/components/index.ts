@@ -28,6 +28,8 @@ import Image from "./image";
 
 import Clock from "./clock";
 import Timeline from "./timeline";
+import Calendar from "./calendar";
+import Scheduler from "./scheduler";
 
 import * as Layout from "./layout";
 import * as Styled from "./styled";
@@ -63,7 +65,9 @@ const CP = {
   Image,
   ButtonRadio,
   Clock,
-  Timeline
+  Timeline,
+  Calendar,
+  Scheduler
 };
 
 export type { ButtonProps };

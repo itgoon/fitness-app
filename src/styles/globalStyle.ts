@@ -11,7 +11,7 @@ const GlobalStyles = createGlobalStyle`
   --layout-padding: 16px;
   --layout-padding-horizontal : 0px 16px; 
 
-     --background-color : #F9F9F9;
+     --background-color :  #F9F9F9;
      
       --border-color :#72717166;
       --bg-color :#7271710D;
@@ -21,7 +21,7 @@ const GlobalStyles = createGlobalStyle`
       --setting-icon-color : #ACB4BE;
 
 
-    --primary-color : #808000; //#23B2E9; 
+    --primary-color : #FF00FF; //#23B2E9; 
     --primary-bg-color :#23B2E90D; 
     --primary-disabled-color :#A6CEDE;
 
@@ -58,6 +58,8 @@ const GlobalStyles = createGlobalStyle`
 
 
 
+    --red-color : #f00;
+    --blue-color : #00f;
     --error-color : #FC5356; 
 
     --white-color: #fff;
@@ -109,6 +111,9 @@ const GlobalStyles = createGlobalStyle`
 
   .hiddenScroll::-webkit-scrollbar {
     display: none; 
+}
+.MuiDrawer-root {
+  z-index : 9999;
 }
  
  

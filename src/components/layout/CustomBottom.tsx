@@ -22,12 +22,13 @@ const MemberMenuList: { icon: IconifyProps; path?: string }[] = [
 const CustomHeader = () => {
   const navigate = useNavigate();
   const location = useLocation();
-
-  const [user, setUser] = useRecoilState(Store.Auth.userState);
   const [store, setStore] = useRecoilState(Store.Auth.storeState);
+  const [user, setUser] = useRecoilState(Store.Auth.userState);
   const [isQRCode, setIsQRCode] = useState(false);
   const [isMemberCard, setIsMemberCard] = useState(false);
   const [QRPrograss, setQRPrograss] = useState(false);
+
+  if (!user) return;
 
   return (
     <>
@@ -52,6 +53,7 @@ const CustomHeader = () => {
                 />
               );
             })
+
             : MemberMenuList.map((item) => {
               return (
                 <CP.Icon
@@ -70,9 +72,32 @@ const CustomHeader = () => {
                 />
               );
             })}
+
         </CP.Styled.Flex>
       </Bottom>
-
+      {/* <div
+        style={{
+          width: "90px",
+          height: "90px",
+          borderRadius: "50px",
+          position: "absolute",
+          left: "50%",
+          bottom: "0px",
+          transform: "translate(-50%, 0%)",
+          display: "flex",
+          justifyContent: "center"
+        }}
+      >
+        <div
+          style={{
+            width: "80%",
+            height: "80%",
+            borderRadius: "50px",
+            boxShadow: "0px -2px 6px #0000000f",
+            background: "#ffffff 0% 0% no-repeat padding-box"
+          }}
+        ></div>
+      </div> */}
       <CP.Modal open={isQRCode} onClose={() => setIsQRCode(false)}>
         <CP.Icon
           name="material-symbols-light:qr-code-2"
@@ -80,9 +105,8 @@ const CustomHeader = () => {
           style={{ width: "100%", height: "100%", aspectRatio: "1/1" }}
         />
       </CP.Modal>
-
-      <CP.Modal open={isMemberCard} onClose={() => {setIsMemberCard(false)}} padding="0px">
-        {QRPrograss ? <CP.ModalPrograss onClick={() => setQRPrograss(false)} timeType="잔여 시간" timeUnit="초"></CP.ModalPrograss>: ( 
+      <CP.Modal open={isMemberCard} onClose={() => { setIsMemberCard(false) }} padding="0px">
+        {QRPrograss ? <CP.ModalPrograss onClick={() => setQRPrograss(false)} timeType="잔여 시간" timeUnit="초"></CP.ModalPrograss> : (
           <>
             <CP.Styled.Div bg={"--social-google-color"} height="230px" padding={"20px 15px 20px 15px"} >
               <CP.Styled.Div style={{ display: "flex" }} padding={"0 0 15px 0"} >
@@ -97,7 +121,7 @@ const CustomHeader = () => {
                     <CP.Icon
                       name="material-symbols-light:qr-code-2"
                       color="--dark-color"
-                      style={{ width: "100%", height: "100%", aspectRatio: "1/1", backgroundColor: "#fff", borderRadius:"4px"}}
+                      style={{ width: "100%", height: "100%", aspectRatio: "1/1", backgroundColor: "#fff", borderRadius: "4px" }}
                     />
 
                   </CP.Styled.EmptyButton>
@@ -133,10 +157,9 @@ const CustomHeader = () => {
               <CP.Typography variant="h4" weight="normal">
                 {user?.production}
               </CP.Typography>
-            </CP.Styled.Div> 
+            </CP.Styled.Div>
           </>
         )}
-
       </CP.Modal>
     </>
   );
