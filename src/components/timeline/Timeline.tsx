@@ -59,7 +59,7 @@ const Timeline = ({ list = [] }: TimelineProps) => {
             </TimelineSeparator>
             <TimelineContent>
               {typeof item.content === "string" ? (
-                <CardWrap padding="0px">
+                <CardWrap padding="10px">
                   <Card radius="50px" height="auto">
                     <Div padding="6px 16px">
                       <Typography

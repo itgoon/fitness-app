@@ -1,9 +1,9 @@
 import CP from "@/components";
 import { ReactNode, useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import Store from "@/store";
 
+import { useLocation, useNavigate } from "react-router-dom";
 import { MemberSortList } from "@/utils/constants";
 import {
   ContractInfo,
@@ -15,11 +15,12 @@ import dayjs from "dayjs";
 
 /**
  ****************************************
- * 트레이너 > 세션관리 > 상세 화면
+ * 회원 > 세션관리 > 상세 화면
  ****************************************
  */
 
 const MemberDetailPage = () => {
+  const navigate = useNavigate();
   const location = useLocation();
   const [name, setName] = useState<string>("");
   const [data, setData] = useState(ContractInfo);
@@ -55,9 +56,15 @@ const MemberDetailPage = () => {
   return (
     <CP.Styled.Wrapper
       height={"100%"}
-      padding={"24px 16px 16px 16px"}
+      padding={"0px 16px 16px 16px"}
       overflow="auto"
     >
+      <CP.Button type="text" onClick={() => navigate("/member/contract")}>
+        <CP.Icon name="icon-park-outline:left" color={"--light-color"} />
+        <CP.Typography color="--light-color" variant="b1">
+          리스트 보기
+        </CP.Typography>
+      </CP.Button>
       <CP.Styled.Flex
         justify="center"
         direction="column"

@@ -97,7 +97,9 @@ const Select = ({
               value={settingValue}
               endAdornment={
                 <InputAdornment position="end">
-                  <Icon name={open ? "ArrowDropUp" : "ArrowDropDown"} />
+                  <Icon
+                    name={open ? "mingcute:up-line" : "mingcute:down-line"}
+                  />
                 </InputAdornment>
               }
               onClick={() => setOpen(!open)}
@@ -121,7 +123,7 @@ const Select = ({
                 {settingValue ? settingValue : placeholder ? placeholder : ""}
               </Typography>
               <Icon
-                name={open ? "ArrowDropUp" : "ArrowDropDown"}
+                name={open ? "mingcute:up-line" : "mingcute:down-line"}
                 color={!settingValue ? "--light-color" : "--white-color"}
                 size={14}
               />

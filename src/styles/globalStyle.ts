@@ -22,7 +22,7 @@ const GlobalStyles = createGlobalStyle`
 
 
     --primary-color : #FF00FF; //#23B2E9; 
-    --primary-bg-color :#23B2E90D; 
+    --primary-bg-color :#FF00FF33; 
     --primary-disabled-color :#A6CEDE;
 
     

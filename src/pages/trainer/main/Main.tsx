@@ -6,12 +6,17 @@ import {
 import { DateFormat, TimeFormat } from "@/utils/formatUtil";
 import dayjs from "dayjs";
 import { useEffect, useLayoutEffect, useState } from "react";
+import { useSign } from "@/hooks/useSign";
 
 /**
  ****************************************
  * 트레이너 메인 화면
  ****************************************
  */
+interface SignProps {
+  data: string;
+  date: string;
+}
 
 const MonthList: { label: string; cnt: number }[] = [
   { label: "레슨", cnt: 7 },
@@ -22,6 +27,16 @@ const MonthList: { label: string; cnt: number }[] = [
 const MainPage = () => {
   const [isMonthList, setIsMonthList] = useState(false);
   const [alarmList, setAlarmList] = useState<any[]>(TrainerMainAlarm);
+  const { signRef, clear, getFile, isSigned, setIsSigned, getOriginalFile } =
+    useSign();
+
+  const [sign, setSign] = useState<SignProps>({
+    data: "",
+    date: ""
+  });
+
+  const [isSignModal, setIsSignModal] = useState(false);
+
   return (
     <CP.Styled.Wrapper overflow="auto">
       {/* <CP.Styled.Flex padding='20px 0px'direction='column' gap={24}  height='100%'> */}
@@ -30,12 +45,12 @@ const MainPage = () => {
         gap={24}
         direction="column"
       >
-        <CP.Styled.Div height="140px">
+        <CP.Styled.Div>
           <CP.Styled.Div padding=" var(--layout-padding)">
             <CP.Title>{dayjs().format("YYYY년 M월")}</CP.Title>
           </CP.Styled.Div>
 
-          <CP.CardWrap direction="row" style={{ paddingTop: "0px" }}>
+          <CP.CardWrap direction="row" style={{ paddingTop: "5px" }}>
             {MonthList?.map((item) => {
               if (!item) return;
 
@@ -46,7 +61,6 @@ const MainPage = () => {
                       variant="h6"
                       style={{ position: "absolute", top: 8, left: 12 }}
                     >
-                      {" "}
                       {item.label}
                     </CP.Typography>
                     <CP.Typography
@@ -71,13 +85,13 @@ const MainPage = () => {
                 return {
                   time: item.time,
                   content: (
-                    <CP.CardWrap padding="0px">
+                    <CP.CardWrap padding="5px">
                       <CP.Card radius="50px" height="auto">
                         <CP.Styled.Flex
-                          padding="6px 12px"
+                          padding="4px 12px"
                           items="center"
                           justify="space-between"
-                          style={{ minHeight: 48 }}
+                          style={{ minHeight: 40 }}
                         >
                           <div>
                             <CP.Typography
@@ -105,7 +119,15 @@ const MainPage = () => {
                             dayjs(
                               `${dayjs().format(DateFormat)} ${item.time}`,
                               `${DateFormat} ${TimeFormat}`
-                            ) && <CP.Button type="text">서명</CP.Button>}
+                            ) && (
+                            <CP.Button
+                              type="text"
+                              style={{ height: "auto" }}
+                              onClick={() => setIsSignModal(true)}
+                            >
+                              서명
+                            </CP.Button>
+                          )}
                           {/* <CP.MenuItem
                             list={[
                               { label: "변경", value: "변경" },
@@ -152,11 +174,11 @@ const MainPage = () => {
                       padding={"12px"}
                     >
                       <CP.Styled.Flex justify="space-between">
-                        <CP.Typography variant="b1" wrap="wrap" align="start">
+                        <CP.Typography variant="b2" wrap="wrap" align="start">
                           {item.message}
                         </CP.Typography>
 
-                        <CP.Typography variant="b2" wrap="wrap" align="end">
+                        <CP.Typography variant="c2" wrap="wrap" align="end">
                           {item.time}
                         </CP.Typography>
                       </CP.Styled.Flex>
@@ -182,6 +204,64 @@ const MainPage = () => {
       </CP.Styled.Flex>
 
       {/* </CP.Styled.Flex> */}
+      <CP.Popover
+        open={isSignModal}
+        onClose={() => setIsSignModal(false)}
+        direction="bottom"
+      >
+        <CP.Styled.Flex
+          gap={16}
+          direction="column"
+          padding={"var(--layout-padding)"}
+        >
+          <CP.Styled.Flex justify="space-between">
+            <CP.Typography variant="h6">서명 입력</CP.Typography>
+            <CP.Styled.StyleA variant="b2" onClick={clear}>
+              지우기
+            </CP.Styled.StyleA>
+          </CP.Styled.Flex>
+          <CP.Styled.Div
+            border="1px solid var(--light-color)"
+            width="100%"
+            height="250px"
+          >
+            <CP.Sign
+              width="250px"
+              height="250px"
+              placeholder="서명"
+              defaultValue={sign?.data ? sign.data : undefined}
+              signRef={signRef}
+              isSigned={isSigned}
+              setIsSigned={setIsSigned}
+            ></CP.Sign>
+          </CP.Styled.Div>
+          <CP.Styled.Flex justify={!isSigned ? "space-between" : "flex-end"}>
+            <CP.Typography
+              style={{ width: "50%" }}
+              variant="b2"
+              color="--error-color"
+            >
+              {!isSigned ? "서명을 입력해주세요." : ""}
+            </CP.Typography>
+            <CP.Styled.Flex
+              gap={8}
+              width={"50%"}
+              justify="flex-end"
+              padding="0px 0px 8px 0px"
+            >
+              <CP.Button onClick={() => setIsSignModal(false)}>취소</CP.Button>
+              <CP.Button
+                disabled={!isSigned}
+                onClick={() => {
+                  setIsSignModal(false);
+                }}
+              >
+                저장
+              </CP.Button>
+            </CP.Styled.Flex>
+          </CP.Styled.Flex>
+        </CP.Styled.Flex>
+      </CP.Popover>
     </CP.Styled.Wrapper>
   );
 };
