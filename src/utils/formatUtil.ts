@@ -4,6 +4,7 @@ export const TimeFormat = "HH:mm";
 
 export const DateFormat = "YYYY.MM.DD";
 export const DateReqFormat = "YYYY-MM-DD";
+export const DateViewFormat = "YYYY년 M월 D일";
 
 export const DateResFormat = "yyyy-MM-dd HH:mm:ss";
 

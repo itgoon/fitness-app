@@ -104,11 +104,18 @@ const CustomHeader = () => {
           style={{ width: "100%", height: "100%", aspectRatio: "1/1" }}
         />
       </CP.Modal>
-
       <CP.Modal
         open={isMemberCard}
         onClose={() => {
           setIsMemberCard(false);
+
+          if (QRPrograss) {
+            setTimeout(() => {
+              setQRPrograss(false);
+            }, 500);
+          }
+
+          // QRPrograss ? setQRPrograss(false) : setQRPrograss(false)
         }}
         padding="0px"
       >

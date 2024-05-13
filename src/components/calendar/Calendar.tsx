@@ -4,17 +4,18 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 
-import { PickersDay, PickersDayProps } from "@mui/x-date-pickers/PickersDay";
+import "react-big-calendar/lib/css/react-big-calendar.css";
 import "moment/locale/ko";
-import Badge from "@mui/material/Badge";
 import { CalendarMonthWrapper } from "../styled";
 import Icon from "../icon";
 
+import { PickersDay, PickersDayProps } from "@mui/x-date-pickers";
+import { Badge } from "@material-ui/core";
+
 export interface CalendarProps {
-  type?: "week" | "month";
   value?: string;
   format?: string;
-  onChange?: (e: string) => void;
+  onChange?: (newValue: string) => void;
   style?: any;
   min?: string;
   max?: string;
@@ -36,7 +37,6 @@ const Calendar = ({
   ];
 
   const eventDay = (props: PickersDayProps<Dayjs>) => {
-    console.log({ props });
     const { day, outsideCurrentMonth, ...other } = props;
 
     const ev = eventList?.find(
@@ -69,11 +69,10 @@ const Calendar = ({
     <CalendarMonthWrapper>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
+          //  value={value ? dayjs(value).format(format) : dayjs()}
           value={value ? dayjs(value, format) : dayjs()}
           onChange={(newValue) =>
-            onChange
-              ? onChange(newValue.format(format))
-              : console.log(newValue.format(format))
+            onChange ? onChange(newValue.format(format)) : {}
           }
           sx={style}
           minDate={min ? dayjs(min, format) : undefined}
