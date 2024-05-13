@@ -84,6 +84,16 @@ const MainPage = () => {
               list={TrainerMainTimeline.map((item) => {
                 return {
                   time: item.time,
+                  color:
+                    dayjs() >
+                    dayjs(
+                      `${dayjs().format(DateFormat)} ${item.time}`,
+                      `${DateFormat} ${TimeFormat}`
+                    )
+                      ? "grey"
+                      : item?.type === "PT"
+                        ? "primary"
+                        : "secondary",
                   content: (
                     <CP.CardWrap padding="5px">
                       <CP.Card radius="50px" height="auto">
@@ -119,15 +129,16 @@ const MainPage = () => {
                             dayjs(
                               `${dayjs().format(DateFormat)} ${item.time}`,
                               `${DateFormat} ${TimeFormat}`
-                            ) && (
-                            <CP.Button
-                              type="text"
-                              style={{ height: "auto" }}
-                              onClick={() => setIsSignModal(true)}
-                            >
-                              서명
-                            </CP.Button>
-                          )}
+                            ) &&
+                            item.type === "PT" && (
+                              <CP.Button
+                                type="text"
+                                style={{ height: "auto" }}
+                                onClick={() => setIsSignModal(true)}
+                              >
+                                서명
+                              </CP.Button>
+                            )}
                           {/* <CP.MenuItem
                             list={[
                               { label: "변경", value: "변경" },

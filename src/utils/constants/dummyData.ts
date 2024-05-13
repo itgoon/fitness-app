@@ -1,16 +1,16 @@
 export const TrainerMainTimeline = [
-  { time: "09:00", content: "A회원 PT" },
-  { time: "11:20", content: "B회원 PT" },
-  { time: "11:30", content: "C회원 상담" },
-  { time: "13:00", content: "D회원 PT" },
-  { time: "16:30", content: "E회원 PT" },
-  { time: "17:00", content: "A회원 PT" },
-  { time: "17:30", content: "B회원 PT" },
-  { time: "18:30", content: "C회원 상담" },
-  { time: "20:00", content: "D회원 PT" },
-  { time: "21:30", content: "E회원 PT" },
-  { time: "22:00", content: "A회원 PT" },
-  { time: "23:00", content: "B회원 PT" }
+  { time: "09:00", content: "A회원 PT", type: "PT" },
+  { time: "11:20", content: "B회원 PT", type: "PT" },
+  { time: "11:30", content: "C회원 상담", type: "상담" },
+  { time: "13:00", content: "D회원 PT", type: "PT" },
+  { time: "16:30", content: "E회원 PT", type: "PT" },
+  { time: "17:00", content: "A회원 PT", type: "PT" },
+  { time: "17:30", content: "B회원 PT", type: "PT" },
+  { time: "18:30", content: "C회원 상담", type: "상담" },
+  { time: "20:00", content: "D회원 PT", type: "PT" },
+  { time: "21:30", content: "E회원 PT", type: "PT" },
+  { time: "22:00", content: "A회원 PT", type: "PT" },
+  { time: "23:00", content: "B회원 PT", type: "PT" }
 ];
 
 export const TrainerMainAlarm = [

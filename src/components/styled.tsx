@@ -1104,3 +1104,15 @@ export const BubbleButton = styled(EmptyButton)<{ width?: string }>`
   box-shadow: 0px 1px 10px #0000000f;
   margin: 10px;
 `;
+
+export const TimelineWrapper = styled.div`
+  .MuiTimelineDot-filledGrey {
+    background-color: var(--disabled-color);
+  }
+  .MuiTimelineDot-filledPrimary {
+    background-color: var(--primary-color);
+  }
+  .MuiTimelineDot-filledSecondary {
+    background-color: var(--secondary-color);
+  }
+`;
