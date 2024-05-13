@@ -8,18 +8,44 @@ import { IconifyProps } from "../icon/Icon";
 import { TrainerMemberList } from "@/utils/constants/dummyData";
 import styled from "styled-components";
 
-const TrainerMenuList: { icon: IconifyProps; path?: string }[] = [
-  { icon: "solar:home-smile-angle-linear", path: "/trainer/main" },
-  { icon: "fluent:person-16-regular", path: "/trainer/member" },
-  { icon: "material-symbols-light:qr-code-2" },
-  { icon: "solar:calendar-line-duotone", path: "/trainer/schedule" },
-  { icon: "clarity:contract-line", path: "/trainer/contract" }
-];
-const MemberMenuList: { icon: IconifyProps; path?: string }[] = [
-  { icon: "solar:home-smile-angle-linear", path: "/member/main" },
-  { icon: "solar:card-2-broken" },
-  { icon: "solar:calendar-line-duotone", path: "/member/schedule" }
-];
+const TrainerMenuList: { icon: IconifyProps; path?: string; label?: string }[] =
+  [
+    {
+      icon: "solar:home-smile-angle-linear",
+      path: "/trainer/main",
+      label: "홈"
+    },
+    {
+      icon: "fluent:person-16-regular",
+      path: "/trainer/member",
+      label: "회원"
+    },
+    { icon: "material-symbols-light:qr-code-2" },
+    {
+      icon: "solar:calendar-line-duotone",
+      path: "/trainer/schedule",
+      label: "일정"
+    },
+    {
+      icon: "clarity:contract-line",
+      path: "/trainer/contract",
+      label: "계약서"
+    }
+  ];
+const MemberMenuList: { icon: IconifyProps; path?: string; label?: string }[] =
+  [
+    {
+      icon: "solar:home-smile-angle-linear",
+      path: "/member/main",
+      label: "홈"
+    },
+    { icon: "fluent:card-ui-20-regular" },
+    {
+      icon: "solar:calendar-line-duotone",
+      path: "/member/schedule",
+      label: "일정"
+    }
+  ];
 const CustomHeader = () => {
   const navigate = useNavigate();
   const location = useLocation();
@@ -38,38 +64,74 @@ const CustomHeader = () => {
           {user?.isTrainer
             ? TrainerMenuList.map((item) => {
                 return (
-                  <CP.Icon
-                    size={36}
-                    name={item.icon}
-                    color={
-                      item.path && location?.pathname?.indexOf(item.path) !== -1
-                        ? "--primary-color"
-                        : "--dark-color"
-                    }
-                    onClick={() => {
-                      item?.path !== undefined
-                        ? navigate(item.path)
-                        : setIsQRCode(true);
-                    }}
-                  />
+                  <CP.Styled.Flex
+                    direction="column"
+                    width="auto"
+                    gap={2}
+                    items="center"
+                  >
+                    <CP.Icon
+                      size={item?.path !== undefined ? 25 : 45}
+                      name={item.icon}
+                      color={
+                        item.path &&
+                        location?.pathname?.indexOf(item.path) !== -1
+                          ? "--primary-color"
+                          : "--dark-color"
+                      }
+                      onClick={() => {
+                        item?.path !== undefined
+                          ? navigate(item.path)
+                          : setIsQRCode(true);
+                      }}
+                    />
+                    <CP.Typography
+                      color={
+                        item.path &&
+                        location?.pathname?.indexOf(item.path) !== -1
+                          ? "--primary-color"
+                          : "--dark-color"
+                      }
+                    >
+                      {item.label}
+                    </CP.Typography>
+                  </CP.Styled.Flex>
                 );
               })
             : MemberMenuList.map((item) => {
                 return (
-                  <CP.Icon
-                    size={36}
-                    name={item.icon}
-                    color={
-                      item.path && location?.pathname?.indexOf(item.path) !== -1
-                        ? "--primary-color"
-                        : "--dark-color"
-                    }
-                    onClick={() => {
-                      item?.path !== undefined
-                        ? navigate(item.path)
-                        : setIsMemberCard(true);
-                    }}
-                  />
+                  <CP.Styled.Flex
+                    direction="column"
+                    width="auto"
+                    gap={2}
+                    items="center"
+                  >
+                    <CP.Icon
+                      size={item?.path !== undefined ? 25 : 45}
+                      name={item.icon}
+                      color={
+                        item.path &&
+                        location?.pathname?.indexOf(item.path) !== -1
+                          ? "--primary-color"
+                          : "--dark-color"
+                      }
+                      onClick={() => {
+                        item?.path !== undefined
+                          ? navigate(item.path)
+                          : setIsMemberCard(true);
+                      }}
+                    />
+                    <CP.Typography
+                      color={
+                        item.path &&
+                        location?.pathname?.indexOf(item.path) !== -1
+                          ? "--primary-color"
+                          : "--dark-color"
+                      }
+                    >
+                      {item.label}
+                    </CP.Typography>
+                  </CP.Styled.Flex>
                 );
               })}
         </CP.Styled.Flex>

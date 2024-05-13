@@ -38,7 +38,9 @@ const MemberDetailPage = () => {
     return (
       <>
         <br />
-        <CP.Typography variant="b3">{title}</CP.Typography>
+        <CP.Typography variant="b3" wrap="wrap">
+          {title}
+        </CP.Typography>
         <CP.Styled.Div padding="0px  0px 0px 12px">
           {typeof content === "string" ? (
             <CP.Typography variant="b4" wrap="wrap">
@@ -106,7 +108,11 @@ const MemberDetailPage = () => {
           <CP.Typography variant="h6">회원약관</CP.Typography>
           {TermList.map((item) => {
             return (
-              <CP.Typography variant="b3" style={{ marginLeft: "8px" }}>
+              <CP.Typography
+                variant="b3"
+                wrap="wrap"
+                style={{ marginLeft: "8px", textIndent: "-8px" }}
+              >
                 <CP.Icon
                   name="material-symbols:circle"
                   size={5}
