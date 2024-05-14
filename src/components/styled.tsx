@@ -966,7 +966,6 @@ export const CalendarMonthWrapper = styled(Div)`
   .MuiPickersDay-root:focus {
     // background: transparent !important;
   }
-
 `;
 
 export const QRProgressWrapper = styled(Div)`
@@ -1068,29 +1067,45 @@ export const BubbleButton = styled(EmptyButton)<{ width?: string }>`
 `;
 
 export const CarouselWrapper = styled.div`
-padding: 0px;
-border-radius: 4px;
-height: 440px;
-overflow: hidden;
+  padding: 0px;
+  border-radius: 4px;
+  height: 440px;
+  overflow: hidden;
 
-.slick-list {
+  .slick-list {
+    height: auto;
 
-  height: auto;
+    h1 {
+      display: inline-block;
+      padding: 15px 15px 15px 15px;
+    }
 
-  h1 {
-    display: inline-block;
-    padding: 15px 15px 15px 15px;
+    img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      align-items: center; // 이미지가 정방향이 아닐 경우 가운데 위치
+    }
   }
-
-  img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    align-items: center; // 이미지가 정방향이 아닐 경우 가운데 위치
+  .slick-track {
+    display: flex;
+    align-items: center;
   }
-}
-.slick-track {
-  display: flex;
-  align-items: center;
-}
+  .slick-dots {
+    > li {
+      margin: 0px;
+      width: 13px;
+      > button {
+        width: inherit;
+
+        &::before {
+          color: var(--primary-color);
+        }
+      }
+    }
+
+    .slick-active > button::before {
+      color: var(--primary-color);
+    }
+  }
 `;
