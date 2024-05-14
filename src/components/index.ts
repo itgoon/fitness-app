@@ -34,6 +34,7 @@ import Scheduler from "./scheduler";
 import * as Layout from "./layout";
 import * as Styled from "./styled";
 import ModalPrograss from "./modalPrograss";
+import Carousel from "./\bcarousel";
 
 const CP = {
   Styled,
@@ -45,6 +46,7 @@ const CP = {
   Layout,
   Typography,
   Card,
+  Carousel,
   CardWrap,
   Checkbox,
   Modal,

@@ -84,6 +84,16 @@ const routes: RouteProps[] = [
         name: "member", //
         path: "/member/schedule",
         element: Pg.Member.SchedulePage
+      },
+      {
+        name: "member", //
+        path: "/member/contract",
+        element: Pg.Member.ContractPage
+      },
+      {
+        name: "member", //
+        path: "/member/contract/detail",
+        element: Pg.Member.ContractDetailPage
       }
     ]
   }

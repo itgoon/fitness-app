@@ -39,7 +39,6 @@ const Calendar = ({
 
   const eventDay = (props: PickersDayProps<Dayjs>) => { 
     const { day, outsideCurrentMonth, ...other } = props;
-
     const ev = eventList?.find(
       (item) => item.date === props.day.format(format)
     );
@@ -66,12 +65,10 @@ const Calendar = ({
       </Badge>
     );
   };
-
   return (
     <CalendarMonthWrapper>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
-          //  value={value ? dayjs(value).format(format) : dayjs()}
           value={value ? dayjs(value, format) : dayjs()}
           onChange={(newValue) => onChange ? onChange(newValue.format(format)) : {}} 
           sx={style}

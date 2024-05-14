@@ -8,7 +8,7 @@ import { MultiSectionDigitalClock } from "@mui/x-date-pickers/MultiSectionDigita
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { Drawer } from "@mui/material";
 import { Card as MuiCard } from "@mui/material";
-import   { linearProgressClasses } from '@mui/material/LinearProgress';
+import { linearProgressClasses } from "@mui/material/LinearProgress";
 import {
   TextField,
   TextFieldProps,
@@ -383,7 +383,7 @@ export const CardWrapper = styled(MuiButton)<CardProps>`
   border-radius: ${({ radius, size }) =>
     radius ? radius : size && size === "lg" ? "4px" : "8px"} !important;
 
-  box-shadow: 0px 1px 10px #0000000f;
+  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 10px;
 
   div > img:not(.MuiAvatar-fallback) {
     border-radius: ${({ radius, size }) =>
@@ -512,8 +512,6 @@ export const StyleDialog = styled(Dialog)`
     border-radius: 4px;
   }
   & .MuiDialogContent-root {
- 
-
     & > h1 {
       padding-bottom: 16px;
     }
@@ -972,19 +970,18 @@ export const CalendarMonthWrapper = styled(Div)`
 `;
 
 export const QRProgressWrapper = styled(Div)`
+  .MuiLinearProgress-root {
+    background-color: var(--primary-bg-color) !important;
+    height: 6px !important;
+    border-radius: 5px !important;
+  }
 
-.MuiLinearProgress-root {
-  background-color: #faa !important;
-  height: 6px !important;
-  border-radius: 5px !important; 
-}
-
-.MuiLinearProgress-bar { 
-  background: #f00;
-  height: 6px !important;
-  border-radius: 5px !important;
-}
-`
+  .MuiLinearProgress-bar {
+    background: var(--primary-color);
+    height: 6px !important;
+    border-radius: 5px !important;
+  }
+`;
 export const CalendarWeekWrapper = styled(Flex)`
   height: calc(100% - 100px);
 
@@ -1059,4 +1056,41 @@ export const CalendarWeekWrapper = styled(Flex)`
   .rbc-current-time-indicator {
     display: none;
   }
+`;
+
+export const BubbleButton = styled(EmptyButton)<{ width?: string }>`
+  width: ${({ width }) => (width ? width : "auto")};
+  aspect-ratio: 1 / 1;
+  padding: 10px;
+  border-radius: 50px;
+  box-shadow: 0px 1px 10px #0000000f;
+  margin: 10px;
+`;
+
+export const CarouselWrapper = styled.div`
+padding: 0px;
+border-radius: 4px;
+height: 440px;
+overflow: hidden;
+
+.slick-list {
+
+  height: auto;
+
+  h1 {
+    display: inline-block;
+    padding: 15px 15px 15px 15px;
+  }
+
+  img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+    align-items: center; // 이미지가 정방향이 아닐 경우 가운데 위치
+  }
+}
+.slick-track {
+  display: flex;
+  align-items: center;
+}
 `;

@@ -61,6 +61,7 @@ const SchedulePage = () => {
                 variant="c2"
                 color="--error-color"
               >{`잔여 ${item.rest}회차`}</CP.Typography>
+              <CP.Tag state="Available" />
             </CP.Styled.Flex>
 
             <CP.Typography

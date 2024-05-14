@@ -5,7 +5,10 @@ import { useRecoilState } from "recoil";
 import Store from "@/store";
 
 import { MemberSortList } from "@/utils/constants";
-import { TrainerMemberList } from "@/utils/constants/dummyData";
+import {
+  TrainerMemberList,
+  TrainerMemberSelectList
+} from "@/utils/constants/dummyData";
 import { DateFormat, DateReqFormat, TimeFormat } from "@/utils/formatUtil";
 import dayjs from "dayjs";
 import { SchedulerProps } from "@/components/scheduler/Scheduler";
@@ -126,6 +129,10 @@ const SchedulePage = () => {
     });
   };
 
+  const onDelete = (id: string) => {
+    setList(list?.filter((item) => item.id !== id));
+  };
+
   return (
     <>
       <CP.Styled.Wrapper>
@@ -137,7 +144,7 @@ const SchedulePage = () => {
         >
           <CP.Select
             size="sm"
-            list={[]}
+            list={TrainerMemberSelectList}
             placeholder="회원선택"
             title="회원 선택"
             // selected={state.filter}
@@ -157,6 +164,7 @@ const SchedulePage = () => {
           </CP.Styled.Flex>
         </CP.Styled.Flex>
 
+        {/* <CP.Calendar /> */}
         <CP.Scheduler
           date={date}
           onChangeData={(e) => setDate(e)}
@@ -179,6 +187,7 @@ const SchedulePage = () => {
         open={detailModal.open}
         onDismiss={() => setDetailModal({ open: false, data: undefined })}
         data={detailModal.data}
+        onDelete={(id: string) => onDelete(id)}
       />
       {/* <CP.Modal
         open={detailModal.open}

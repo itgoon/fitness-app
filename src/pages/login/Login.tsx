@@ -14,14 +14,19 @@ import { useEffect } from "react";
 const LoginPage = () => {
   const navigate = useNavigate();
   const [store, setStore] = useRecoilState(Store.Auth.storeState);
-  // 주소 연락처 
+  // 주소 연락처
   // 시작일 종료일
-  // 회원권 데이터 더미 만들기 
+  // 회원권 데이터 더미 만들기
   const [user, setUser] = useRecoilState(Store.Auth.userState);
 
   //테스트용 카카오 > 트레이너 로그인
   const onKakaoLogin = () => {
-    setStore({ name: "리온짐", id: "1", place: "경기도 부천시- ", phone: "01071802384" });
+    setStore({
+      name: "리온짐",
+      id: "1",
+      place: "경기도 부천시- ",
+      phone: "01071802384"
+    });
     setUser({ name: "A", id: "a1", isTrainer: true });
 
     navigate("/trainer/main");
@@ -29,9 +34,20 @@ const LoginPage = () => {
 
   //테스트용 애플 > 회원 로그인
   const onAppleLogin = () => {
-    setStore({ name: "리온짐", id: "1", place: "경기도 부천시- ", phone: "01071802384"  });
-    setUser({ name: "김가현 회원님", id: "b1", start_date: "2024.04.02",
-    end_date: "2025.04.02", production: "pt 3개월", isTrainer: false });
+    setStore({
+      name: "리온짐",
+      id: "1",
+      place: "경기 부천시 원미구 신흥로 256 1층 ",
+      phone: "0507-1359-9775"
+    });
+    setUser({
+      name: "A회원",
+      id: "b1",
+      start_date: "2024.04.02",
+      end_date: "2025.04.02",
+      production: "30회 PT권",
+      isTrainer: false
+    });
     navigate("/member/main");
   };
 
@@ -54,14 +70,16 @@ const LoginPage = () => {
               justify="center"
               items="center"
               radius="100px"
-              bg="--light-color"
               height="200px"
               width="200px"
-            >
-              <CP.Typography variant="h2" color="--white-color">
-                Logo
-              </CP.Typography>
-            </CP.Styled.Flex>
+              style={{
+                backgroundImage: "url(/images/dummy/gym_logo.jpeg)",
+                backgroundSize: "cover",
+                boxShadow: "rgba(0, 0, 0, 0.2) 0px 1px 10px",
+                backgroundRepeat: "no-repeat",
+                backgroundPosition: "center center"
+              }}
+            ></CP.Styled.Flex>
 
             <CP.Styled.Flex
               items="center"
@@ -69,13 +87,13 @@ const LoginPage = () => {
               gap={16}
             >
               <CP.Styled.Division />
-              <CP.Typography variant="b4" color="--light-color" opacity="0.8">
+              <CP.Typography variant="b2" color="--light-color" opacity="0.8">
                 SNS로그인
               </CP.Typography>
               <CP.Styled.Division />
             </CP.Styled.Flex>
 
-            <CP.Styled.Flex width="260px" direction="column" gap={8}>
+            <CP.Styled.Flex width="280px" direction="column" gap={8}>
               <CP.Button
                 type="round"
                 width="100%"

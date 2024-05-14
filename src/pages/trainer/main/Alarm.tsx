@@ -14,7 +14,7 @@ import { TrainerMemberList } from "@/utils/constants/dummyData";
  */
 
 const AlarmPage = () => {
-  return <CP.Styled.Wrapper>{"트레이너 > 알림 화면"}</CP.Styled.Wrapper>;
+  return <CP.Styled.Wrapper>{" 알림 화면"}</CP.Styled.Wrapper>;
 };
 
 export default AlarmPage;
