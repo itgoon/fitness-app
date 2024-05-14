@@ -27,7 +27,7 @@ const dummyData = [
     count: 6,
     product: "30회 PT권",
     type: "PT",
-    date: "2024-05-07",
+    date: "2024-05-13",
     start_time: "11:00",
     duration: 50,
     color: "#f00"
@@ -39,7 +39,7 @@ const dummyData = [
     count: 4,
     type: "PT",
     product: "20회 PT권",
-    date: "2024-05-08",
+    date: "2024-05-14",
     start_time: "14:30",
     duration: 50,
     color: "#999"
@@ -49,7 +49,7 @@ const dummyData = [
     member: "C회원",
     count: 6,
     type: "PT",
-    date: "2024-05-09",
+    date: "2024-05-16",
     start_time: "16:00",
     product: "50회 PT권",
     duration: 50,

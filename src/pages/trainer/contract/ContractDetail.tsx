@@ -12,6 +12,7 @@ import {
 } from "@/utils/constants/dummyData";
 import { DateReqFormat, castToPrice } from "@/utils/formatUtil";
 import dayjs from "dayjs";
+import { useSign } from "@/hooks/useSign";
 
 /**
  ****************************************
@@ -23,6 +24,18 @@ const MemberDetailPage = () => {
   const location = useLocation();
   const [name, setName] = useState<string>("");
   const [data, setData] = useState(ContractInfo);
+
+  const [sign, setSign] = useState({ data: "", original: "" });
+  const [trainerSign, setTrainerSign] = useState({ data: "", original: "" });
+  const [isSignModal, setIsSignModal] = useState<{
+    open: boolean;
+    target: "member" | "trainer";
+  }>({
+    open: false,
+    target: "member"
+  });
+  const { signRef, clear, getFile, isSigned, setIsSigned, getOriginalFile } =
+    useSign();
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
@@ -38,9 +51,7 @@ const MemberDetailPage = () => {
     return (
       <>
         <br />
-        <CP.Typography variant="b3" wrap="wrap">
-          {title}
-        </CP.Typography>
+        <CP.Typography variant="b3">{title}</CP.Typography>
         <CP.Styled.Div padding="0px  0px 0px 12px">
           {typeof content === "string" ? (
             <CP.Typography variant="b4" wrap="wrap">
@@ -54,6 +65,42 @@ const MemberDetailPage = () => {
     );
   };
 
+  const settingSignImage = (
+    data?: string,
+    target: "member" | "trainer" = "member"
+  ) => {
+    return (
+      <CP.Styled.Flex
+        justify="center"
+        height="200px"
+        items="center"
+        bg={"--disabled-color"}
+        radius="8px"
+      >
+        {data ? (
+          <CP.Image
+            src={data}
+            height={"inherit"}
+            style={{ height: "100%", width: "100%" }}
+            onClick={() => {
+              setIsSigned(false);
+              setIsSignModal({ open: true, target: target });
+            }}
+          />
+        ) : (
+          <CP.Button
+            color="--white-color-500"
+            type="round"
+            width="150px"
+            onClick={() => setIsSignModal({ open: true, target: target })}
+          >
+            서명 작성
+            <CP.Icon name="mage:edit" size={16} color="--white-color" />
+          </CP.Button>
+        )}
+      </CP.Styled.Flex>
+    );
+  };
   return (
     <CP.Styled.Wrapper
       height={"100%"}
@@ -110,8 +157,10 @@ const MemberDetailPage = () => {
             return (
               <CP.Typography
                 variant="b3"
-                wrap="wrap"
-                style={{ marginLeft: "8px", textIndent: "-8px" }}
+                style={{
+                  marginLeft: "8px",
+                  whiteSpace: "normal"
+                }}
               >
                 <CP.Icon
                   name="material-symbols:circle"
@@ -136,15 +185,103 @@ const MemberDetailPage = () => {
           )}
         </CP.Styled.Flex>
 
-        <CP.Styled.Flex gap={80} width="80%">
-          <CP.Typography variant="b1">{`회원서명 : `}</CP.Typography>
-          <CP.Typography variant="b1">{`담당자 : `}</CP.Typography>
+        <CP.Styled.Flex width="100%" gap={8}>
+          <CP.Styled.Flex
+            flex={1}
+            justify="center"
+            items="center"
+            gap={8}
+            direction="column"
+          >
+            <CP.Typography variant="b1">{`회원서명 : ${name}`}</CP.Typography>
+            {settingSignImage(sign?.data, "member")}
+          </CP.Styled.Flex>
+          <CP.Styled.Flex
+            flex={1}
+            justify="center"
+            items="center"
+            gap={8}
+            direction="column"
+          >
+            <CP.Typography variant="b1">{`담당자 : 리온짐`}</CP.Typography>
+            {settingSignImage(trainerSign?.data, "trainer")}
+          </CP.Styled.Flex>
         </CP.Styled.Flex>
 
         <CP.Typography variant="h5">
-          {dayjs(data.regDate, DateReqFormat).format("YYYY년 M월 D일")}{" "}
+          {dayjs(data.regDate, DateReqFormat).format("YYYY년 M월 D일")}
         </CP.Typography>
       </CP.Styled.Flex>
+      <CP.Popover
+        open={isSignModal.open}
+        onClose={() => {
+          setIsSigned(false);
+          setIsSignModal({ open: false, target: "member" });
+        }}
+        direction="bottom"
+      >
+        <CP.Styled.Flex
+          gap={16}
+          direction="column"
+          padding={"var(--layout-padding)"}
+        >
+          <CP.Styled.Flex justify="space-between">
+            <CP.Typography variant="h6">서명 입력</CP.Typography>
+            <CP.Styled.StyleA variant="b2" onClick={clear}>
+              지우기
+            </CP.Styled.StyleA>
+          </CP.Styled.Flex>
+          <CP.Styled.Div
+            border="1px solid var(--light-color)"
+            width="100%"
+            height="250px"
+          >
+            <CP.Sign
+              width="250px"
+              height="250px"
+              placeholder="서명"
+              defaultValue={sign?.data ? sign.data : undefined}
+              signRef={signRef}
+              isSigned={isSigned}
+              setIsSigned={setIsSigned}
+            ></CP.Sign>
+          </CP.Styled.Div>
+          <CP.Styled.Flex justify={!isSigned ? "space-between" : "flex-end"}>
+            <CP.Typography
+              style={{ width: "50%" }}
+              variant="b2"
+              color="--error-color"
+            >
+              {!isSigned ? "서명을 입력해주세요." : ""}
+            </CP.Typography>
+            <CP.Styled.Flex gap={8} width={"50%"} justify="flex-end">
+              <CP.Button
+                onClick={() => {
+                  setIsSigned(false);
+                  setIsSignModal({ open: false, target: "member" });
+                }}
+              >
+                취소
+              </CP.Button>
+              <CP.Button
+                onClick={() => {
+                  if (isSignModal?.target === "member")
+                    setSign({ data: getFile(), original: getOriginalFile() });
+                  else
+                    setTrainerSign({
+                      data: getFile(),
+                      original: getOriginalFile()
+                    });
+
+                  setIsSignModal({ open: false, target: "member" });
+                }}
+              >
+                저장
+              </CP.Button>
+            </CP.Styled.Flex>
+          </CP.Styled.Flex>
+        </CP.Styled.Flex>
+      </CP.Popover>
     </CP.Styled.Wrapper>
   );
 };

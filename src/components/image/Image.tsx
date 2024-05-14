@@ -19,16 +19,7 @@ const Image = ({
   React.ImgHTMLAttributes<HTMLImageElement>,
   HTMLImageElement
 >) => {
-  return (
-    <img
-      {...props}
-      src={
-        (src && src.indexOf("http") !== -1) || src?.indexOf("data:image") !== -1
-          ? src
-          : `/crew-pulse${src}`
-      }
-    />
-  );
+  return <img {...props} src={src} />;
 };
 
 export default Image;
