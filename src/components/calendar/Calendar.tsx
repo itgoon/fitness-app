@@ -5,10 +5,11 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "moment/locale/ko";
-import { FixCalendarMonthWrapper, CalendarMonthWrapper} from "../styled";
+import { FixCalendarMonthWrapper} from "../styled";
 import Icon from '../icon'
 import { PickersDay, PickersDayProps } from "@mui/x-date-pickers";
 import { Badge, } from "@material-ui/core";
+import 'dayjs/locale/ko';
 
 export interface CalendarProps { 
   value?: string;
@@ -63,22 +64,22 @@ const Calendar = ({
       </Badge>
     );
   };
+ 
   return (
     <FixCalendarMonthWrapper>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
+      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko" dateFormats={{monthAndYear : 'YYYY년 M월'}}>
         <DateCalendar
           value={value ? dayjs(value, format) : dayjs()}
           onChange={(newValue) => onChange ? onChange(newValue.format(format)) : {}} 
           sx={style}
           minDate={min ? dayjs(min, format) : undefined}
           maxDate={max ? dayjs(max, format) : undefined}
+          
           slots={{
             day: eventDay
           }}
           slotProps={{
-            day: {
-              eventList
-            } as any
+            day: {eventList} as any,
           }}
         />
       </LocalizationProvider>

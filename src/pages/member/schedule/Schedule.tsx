@@ -98,7 +98,7 @@ const SchedulePage = () => {
         )}
 
         <CP.CardWrap style={{ flexWrap: "nowrap" }}>
-          <CP.Typography variant="h6" style={{display: "inline-block", paddingLeft: "10px"}}>{newValue ? dayjs(newValue, DateReqFormat).format(DateViewFormat) : dayjs().format(DateViewFormat)}</CP.Typography>
+          <CP.Typography variant="h5" style={{display: "inline-block", paddingLeft: "10px"}}>{newValue ? dayjs(newValue, DateReqFormat).format(DateViewFormat) : dayjs().format(DateViewFormat)}</CP.Typography>
           {newValueData?.type === "PT" ? (<CP.Card height="auto">
             <CP.Styled.Flex
               direction="column"
@@ -163,10 +163,6 @@ const SchedulePage = () => {
                 items="center"
                 width="100%"
               >
-                <CP.Typography variant="h6">
-                  {newValue ? dayjs(newValue, DateReqFormat).format(DateViewFormat) : dayjs().format(DateViewFormat)} 식단
-                </CP.Typography>
-
                 <CP.MenuItem
                   list={[
                     { label: "피드백 등록", value: "등록" },

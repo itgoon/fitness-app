@@ -1104,8 +1104,26 @@ export const FixCalendarMonthWrapper = styled(Div)`
     width: 100%;
     margint: 0;
 
+    .MuiYearCalendar-root {
+      width: 100% !important;
+      margin: 0 auto;
+
+      .MuiPickersYear-root {
+        
+        .MuiPickersYear-yearButton {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          height: 37px;
+        }
+        .Mui-selected {
+          background-color: var(--primary-color) !important;
+        }
+      }
+    }
+
     .MuiPickersCalendarHeader-root {
-      margin-top: 10px;
+      // margin-top: 10px;
     }
 
     .MuiDayCalendar-header{
@@ -1114,6 +1132,12 @@ export const FixCalendarMonthWrapper = styled(Div)`
 
       .MuiTypography-root {
         font-size: 0.85rem !important;
+      }
+      .MuiDayCalendar-weekDayLabel[aria-label="토요일"] {
+        color: var(--blue-color) !important;
+      }
+      .MuiDayCalendar-weekDayLabel[aria-label="일요일"] {
+        color: var(--red-color) !important;
       }
     }
 
@@ -1135,70 +1159,15 @@ export const FixCalendarMonthWrapper = styled(Div)`
               &:hover {
                 background: var(--primary-color) !important;
               }
-            }
+        }
+        .MuiPickersDay-root[aria-colindex="7"] {
+          color: var(--blue-color) !important;
+        }
+        .MuiPickersDay-root[aria-colindex="1"] {
+          color: var(--red-color) !important;
+        }
       }
     }
-  }  
-  
-    
+  }     
 `
-  ;
-
-// export const FixCalendarMonthWrapper = styled(Div)`
-//   .Mui-selected {
-//     background-color: var(--primary-color) !important;
-//     font-weight: 700 !important;
-
-//     &:hover {
-//       background: var(--primary-color) !important;
-//     }
-//   }
-
-//   .MuiDateCalendar-root {
-//     width: 410px;
-
-//     .MuiPickersCalendarHeader-root{
-//       .MuiButtonBase-root {
-//         padding: 8px 0px;
-//       }
-//     }
-//     .MuiPickersFadeTransitionGroup-root {
-//       .MuiTypography-root {
-//         font-size: 0.9rem;
-//         width: 50px;
-//       }
-//       .MuiDayCalendar-weekContainer {
-//         margin: 6px 0;
-//         .MuiBadge-root {
-//           .MuiPickersDay-root {
-//             font-size: 0.85rem;
-//             width: 50px;
-//           }
-//           .Mui-selected {
-//             position: relative;
-//             background-color: var(--primary-color) !important;
-//             color: #fff;
-//             margin: 0px 8px;
-//             width: 35px !important;
-//             height: 35px !important;
-
-//             // &:after {
-//             //   content: '14';
-//             //   position: absolute;
-//             //   top: 0px;
-//             //   left: 10%;
-//             //   width: 35px;
-//             //   height: 35px;
-//             //   border-radius: 50%;
-//             //   background-color: var(--primary-color) !important;
-
-//             // }
-//           }
-//         }
-//       }
-
-//     }
-
-//   }
-
-// `;
+;
