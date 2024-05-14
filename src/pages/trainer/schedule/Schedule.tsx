@@ -54,6 +54,40 @@ const dummyData = [
     product: "50회 PT권",
     duration: 50,
     color: "#00f"
+  },
+  {
+    id: "3",
+    member: "B회원",
+    count: 6,
+    product: "30회 PT권",
+    type: "PT",
+    date: "2024-05-16",
+    start_time: "12:00",
+    duration: 50,
+    color: "#f00"
+  },
+
+  {
+    id: "4",
+    member: "A회원",
+    count: 4,
+    type: "PT",
+    product: "20회 PT권",
+    date: "2024-05-17",
+    start_time: "15:30",
+    duration: 50,
+    color: "#999"
+  },
+  {
+    id: "5",
+    member: "C회원",
+    count: 6,
+    type: "PT",
+    date: "2024-05-12",
+    start_time: "09:30",
+    product: "50회 PT권",
+    duration: 50,
+    color: "#00f"
   }
 ];
 const SchedulePage = () => {
@@ -62,6 +96,13 @@ const SchedulePage = () => {
   const [detailModal, setDetailModal] = useState<{ open: boolean; data: any }>({
     open: false,
     data: undefined
+  });
+  const [getDataModal, setGetDataModal] = useState<{
+    open: boolean;
+    data: any;
+  }>({
+    open: false,
+    data: ""
   });
 
   const settingList = useMemo(() => {
@@ -157,7 +198,12 @@ const SchedulePage = () => {
             justify="flex-end"
             items="flex-end"
           >
-            <CP.Button size="sm">이전 주 데이터 가져오기</CP.Button>
+            <CP.Button
+              size="sm"
+              onClick={() => setGetDataModal({ ...getDataModal, open: true })}
+            >
+              이전 주 데이터 가져오기
+            </CP.Button>
             <CP.Button size="sm" onClick={() => onCreate()}>
               등록
             </CP.Button>
@@ -189,14 +235,24 @@ const SchedulePage = () => {
         data={detailModal.data}
         onDelete={(id: string) => onDelete(id)}
       />
-      {/* <CP.Modal
-        open={detailModal.open}
-        onClose={() => setDetailModal({ open: false, data: undefined })}
+
+      <CP.Modal
+        open={getDataModal.open}
+        onClose={() => setGetDataModal({ open: false, data: undefined })}
+        type="confirm"
       >
-        <CP.Styled.Flex direction="column">
-          <CP.Typography variant="h4">{}</CP.Typography>
+        <CP.Styled.Flex direction="column" gap={10}>
+          <CP.Typography variant="h6">
+            가져올 회원을 선택해주세요.
+          </CP.Typography>
+          <CP.Select
+            isAll
+            selected={getDataModal?.data}
+            onSelect={(e) => setGetDataModal({ ...getDataModal, data: e })}
+            list={TrainerMemberSelectList}
+          />
         </CP.Styled.Flex>
-      </CP.Modal> */}
+      </CP.Modal>
     </>
   );
 };
