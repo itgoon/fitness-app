@@ -10,6 +10,7 @@ import GlobalStyles from "./styles/globalStyle";
 import "./styles/font/font.css";
 import { CookiesProvider } from "react-cookie";
 import Config from "env/Config";
+import CustomStyleProvider from "./provider/CustomStyleProvider";
 
 declare global {
   interface Window {
@@ -21,7 +22,7 @@ function App() {
   return (
     <RecoilRoot>
       <StylesProvider injectFirst>
-        <GlobalStyles />
+        <CustomStyleProvider />
         <SnackbarProvider>
           <CookiesProvider>
             <BrowserRouter basename={`/`}>

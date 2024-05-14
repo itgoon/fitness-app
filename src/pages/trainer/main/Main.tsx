@@ -161,7 +161,7 @@ const MainPage = () => {
             padding={"var(--layout-padding)"}
             style={{ paddingTop: "0px" }}
           >
-            <CP.Title>오늘의 알림</CP.Title>
+            <CP.Title>오늘 알림</CP.Title>
           </CP.Styled.Div>
           {alarmList?.length > 0 ? (
             //  <CP.Styled.Div height='100%' width='100%' >

@@ -104,6 +104,7 @@ const SchedulePage = () => {
     open: false,
     data: ""
   });
+  const [state, setState] = useState({ filter: "" });
 
   const settingList = useMemo(() => {
     if (!list) return [];
@@ -188,8 +189,8 @@ const SchedulePage = () => {
             list={TrainerMemberSelectList}
             placeholder="회원선택"
             title="회원 선택"
-            // selected={state.filter}
-            // onSelect={(e) => setState({ ...state, filter: e })}
+            selected={state.filter}
+            onSelect={(e) => setState({ ...state, filter: e })}
           />
 
           <CP.Styled.Flex

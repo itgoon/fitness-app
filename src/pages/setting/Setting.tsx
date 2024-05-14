@@ -19,7 +19,7 @@ const SettingPage = () => {
     navigate("/login");
   };
   return (
-    <CP.Styled.Wrapper>
+    <CP.Styled.Wrapper padding="--layout-padding">
       <CP.Button type="text" onClick={onLogout}>
         로그아웃
       </CP.Button>

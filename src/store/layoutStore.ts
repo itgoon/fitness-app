@@ -5,6 +5,13 @@ import { localStorageEffect } from "@/utils/localStorage";
 
 export type CustomRouteProps = Omit<RouteProps, "element" | "children">;
 
+//primary color
+export const colorState = atom<string>({
+  key: `colorState`,
+  default: "#f00",
+  effects: [localStorageEffect("colorState")]
+});
+
 //모달(alert)
 export const windowState = atom<ModalProps>({
   key: `modal_${new Date().getTime()}`,
@@ -22,18 +29,15 @@ export const loadingState = atom<boolean>({
   effects: [localStorageEffect("loadingState")]
 });
 
-
 //레이아웃 State
-export const layoutState = atom<{ header: boolean; bottom: boolean}>({
+export const layoutState = atom<{ header: boolean; bottom: boolean }>({
   key: `layoutState`,
   default: {
     header: false,
-    bottom: false, 
+    bottom: false
   },
   effects: [localStorageEffect("layoutState")]
 });
-
-
 
 //route
 export const routeState = atom<CustomRouteProps[]>({

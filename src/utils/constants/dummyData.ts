@@ -199,3 +199,13 @@ export const TrainerMemberSelectList = [
   { label: "D회원", value: "D" },
   { label: "E회원", value: "E" }
 ];
+
+export const PrimaryColorList = [
+  "#228B22",
+  "#FF6347",
+  "#4682B4",
+  "#9400D3",
+  "#FF00FF",
+  "#778899",
+  "#BDB76B"
+];

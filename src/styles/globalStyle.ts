@@ -1,6 +1,6 @@
 import { createGlobalStyle } from "styled-components";
 
-const GlobalStyles = createGlobalStyle` 
+const GlobalStyles = createGlobalStyle<{ color?: string }>` 
 
 * {
     font-family: "Pretendard",'Apple SD Gothic Neo';
@@ -21,8 +21,8 @@ const GlobalStyles = createGlobalStyle`
       --setting-icon-color : #ACB4BE;
 
 
-    --primary-color :    #4682B4; //#23B2E9; 
-    --primary-bg-color :#4682B433; 
+    --primary-color :  ${({ color }) => (color ? color : "#CCC")} ;// #4682B4; //#23B2E9; 
+    --primary-bg-color :${({ color }) => (color ? `${color}33` : "#CCC33")};   //#4682B433; 
     --primary-disabled-color :#A6CEDE;
 
     
