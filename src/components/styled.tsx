@@ -1098,6 +1098,52 @@ export const CarouselWrapper = styled.div`
 }
 `;
 
+export const FixCalendarMonthWrapper = styled(Div)`
+ 
+  .MuiDateCalendar-root {
+    width: 100%;
+    margint: 0;
+
+    .MuiPickersCalendarHeader-root {
+      margin-top: 10px;
+    }
+
+    .MuiDayCalendar-header{
+      justify-content: space-evenly !important;
+      -webkit-justify-content: space-evenly !important;
+
+      .MuiTypography-root {
+        font-size: 0.85rem !important;
+      }
+    }
+
+    .MuiDayCalendar-weekContainer  {
+      justify-content: space-evenly !important;
+      -webkit-justify-content: space-evenly !important;
+      
+      .MuiBadge-root {
+
+        .MuiPickersDay-root {
+         
+          font-size: 0.85rem !important;
+          
+        }
+        .Mui-selected {
+              background-color: var(--primary-color) !important;
+              font-weight: 700 !important;
+          
+              &:hover {
+                background: var(--primary-color) !important;
+              }
+            }
+      }
+    }
+  }  
+  
+    
+`
+  ;
+
 // export const FixCalendarMonthWrapper = styled(Div)`
 //   .Mui-selected {
 //     background-color: var(--primary-color) !important;
@@ -1156,22 +1202,3 @@ export const CarouselWrapper = styled.div`
 //   }
 
 // `;
-export const FixCalendarMonthWrapper = styled(Div)`
- 
-  .MuiDateCalendar-root {
-    width: 100%;
-    margint: 0;
-
-    .MuiPickersCalendarHeader-root {
-      margin-top: 5px;
-    }
-    
-    .muiTypography-root {
-      width: 55px; 
-      font-size: 0.9rem;
-    }
-  }  
-  
-    
-`
-  ;
