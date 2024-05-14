@@ -3,16 +3,16 @@ import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "moment/locale/ko";
-import { CalendarMonthWrapper } from "../styled";
-import Icon from "../icon";
-
+import { FixCalendarMonthWrapper} from "../styled";
+import Icon from '../icon'
 import { PickersDay, PickersDayProps } from "@mui/x-date-pickers";
-import { Badge } from "@material-ui/core";
+import { Badge, } from "@material-ui/core";
+import 'dayjs/locale/ko';
+import { useEffect, useRef } from "react";
 
-export interface CalendarProps {
+export interface CalendarProps { 
   value?: string;
   format?: string;
   onChange?: (newValue: string) => void;
@@ -38,7 +38,6 @@ const Calendar = ({
 
   const eventDay = (props: PickersDayProps<Dayjs>) => {
     const { day, outsideCurrentMonth, ...other } = props;
-
     const ev = eventList?.find(
       (item) => item.date === props.day.format(format)
     );
@@ -66,10 +65,9 @@ const Calendar = ({
     );
   };
   return (
-    <CalendarMonthWrapper>
-      <LocalizationProvider dateAdapter={AdapterDayjs}>
+    <FixCalendarMonthWrapper>
+      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko" dateFormats={{monthAndYear : 'YYYY년 M월'}}>
         <DateCalendar
-          //  value={value ? dayjs(value).format(format) : dayjs()}
           value={value ? dayjs(value, format) : dayjs()}
           onChange={(newValue) =>
             onChange ? onChange(newValue.format(format)) : {}
@@ -77,17 +75,16 @@ const Calendar = ({
           sx={style}
           minDate={min ? dayjs(min, format) : undefined}
           maxDate={max ? dayjs(max, format) : undefined}
+          
           slots={{
             day: eventDay
           }}
           slotProps={{
-            day: {
-              eventList
-            } as any
+            day: {eventList} as any,
           }}
         />
       </LocalizationProvider>
-    </CalendarMonthWrapper>
+    </FixCalendarMonthWrapper>
   );
 };
 

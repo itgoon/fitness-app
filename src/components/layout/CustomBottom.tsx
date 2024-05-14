@@ -104,26 +104,19 @@ const CustomHeader = () => {
           style={{ width: "100%", height: "100%", aspectRatio: "1/1" }}
         />
       </CP.Modal>
-      <CP.Modal
-        open={isMemberCard}
+      <CP.Modal open={isMemberCard}
         onClose={() => {
           setIsMemberCard(false);
 
-          if (QRPrograss) {
-            setTimeout(() => {
-              setQRPrograss(false);
-            }, 500);
+          if(QRPrograss){
+            setTimeout(()=>{
+              setQRPrograss(false) 
+            }, 500)
           }
         }}
-        padding="0px"
-      >
-        {QRPrograss ? (
-          <CP.ModalPrograss
-            onClick={() => setQRPrograss(false)}
-            timeType="잔여 시간"
-            timeUnit="초"
-          ></CP.ModalPrograss>
-        ) : (
+        padding="0px">
+
+        {QRPrograss ? <CP.ModalPrograss onClick={() => setQRPrograss(false)} timeType="잔여 시간" timeUnit="초"></CP.ModalPrograss> : (
           <>
             <CardImageDiv
               style={{
