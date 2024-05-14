@@ -1121,11 +1121,7 @@ export const FixCalendarMonthWrapper = styled(Div)`
         }
       }
     }
-
-    .MuiPickersCalendarHeader-root {
-      // margin-top: 10px;
-    }
-
+    
     .MuiDayCalendar-header{
       justify-content: space-evenly !important;
       -webkit-justify-content: space-evenly !important;
@@ -1166,6 +1162,11 @@ export const FixCalendarMonthWrapper = styled(Div)`
         .MuiPickersDay-root[aria-colindex="1"] {
           color: var(--red-color) !important;
         }
+        .MuiPickersDay-root[aria-colindex="7"].Mui-selected,
+        .MuiPickersDay-root[aria-colindex="1"].Mui-selected  {
+          color: #fff !important;
+        }
+        
       }
     }
   }     

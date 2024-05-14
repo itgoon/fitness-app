@@ -72,7 +72,7 @@ const dummydata = [
 const SchedulePage = () => {
   const [newValue, setNewValue] = useState(dayjs().format(DateReqFormat));
   const [openCarousel, setOpenCarousel] = useState(null);
-  
+
   const calendarHandlechange = (newChangeDate: any) => setNewValue(newChangeDate);
   const carouselSelectedKey = (idx: any) => setOpenCarousel(idx)
   const findData = () => {
@@ -82,7 +82,7 @@ const SchedulePage = () => {
     return null;
   }
   const newValueData = findData();
-  
+
   const { eat1, eat2, eat3, eat4 } = newValueData?.diet || {};
   const { videoUrl1, videoUrl2 } = newValueData?.video || {};
 
@@ -98,7 +98,14 @@ const SchedulePage = () => {
         )}
 
         <CP.CardWrap style={{ flexWrap: "nowrap" }}>
-          <CP.Typography variant="h5" style={{display: "inline-block", paddingLeft: "10px"}}>{newValue ? dayjs(newValue, DateReqFormat).format(DateViewFormat) : dayjs().format(DateViewFormat)}</CP.Typography>
+
+          <CP.Styled.Flex style={{ alignItems: "center", justifyContent: "space-between", padding: "5px" }}>
+            <CP.Typography variant="h5" >{newValue ? dayjs(newValue, DateReqFormat).format(DateViewFormat) : dayjs().format(DateViewFormat)}</CP.Typography>
+            <CP.Styled.EmptyButton
+              onClick={() => setNewValue(dayjs().format(DateReqFormat))}
+              style={{ color: "var(--black-color)", width: "auto" }}>today</CP.Styled.EmptyButton>
+          </CP.Styled.Flex>
+
           {newValueData?.type === "PT" ? (<CP.Card height="auto">
             <CP.Styled.Flex
               direction="column"
@@ -163,6 +170,7 @@ const SchedulePage = () => {
                 items="center"
                 width="100%"
               >
+                <CP.Typography variant="b2" color="--black-color">식단</CP.Typography>
                 <CP.MenuItem
                   list={[
                     { label: "피드백 등록", value: "등록" },
