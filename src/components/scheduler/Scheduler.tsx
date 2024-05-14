@@ -51,8 +51,7 @@ const localizer = momentLocalizer(moment);
 const Scheduler = ({
   date = moment().format(DateReqFormat),
   onChangeData,
-  list,
-  style,
+  list, 
   onChange,
   onSelect,
   onCreate
