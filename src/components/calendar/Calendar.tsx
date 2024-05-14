@@ -3,12 +3,10 @@ import dayjs, { Dayjs } from "dayjs";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "moment/locale/ko";
 import { FixCalendarMonthWrapper, CalendarMonthWrapper} from "../styled";
 import Icon from '../icon'
-
 import { PickersDay, PickersDayProps } from "@mui/x-date-pickers";
 import { Badge, } from "@material-ui/core";
 
@@ -85,8 +83,6 @@ const Calendar = ({
         />
       </LocalizationProvider>
     </FixCalendarMonthWrapper>
-
-
   );
 };
 

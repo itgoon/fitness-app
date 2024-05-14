@@ -1,5 +1,5 @@
 import CP from "@/components";
-import dayjs, { Dayjs } from "dayjs";
+import dayjs from "dayjs";
 
 import { ReactHTML, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
@@ -8,8 +8,7 @@ import Store from "@/store";
 
 import { MemberSortList } from "@/utils/constants";
 import { TrainerMemberList } from "@/utils/constants/dummyData";
-import Calendar from "@/components/calendar";
-import { DateFormat, DateReqFormat, DateViewFormat } from "@/utils/formatUtil";
+import { DateReqFormat, DateViewFormat } from "@/utils/formatUtil";
 import Carousel from "@/components/carousel";
 
 /**
@@ -90,17 +89,15 @@ const SchedulePage = () => {
   return (
     <>
       <CP.Styled.Wrapper>
-        {/* header 415 */}
         <CP.Calendar value={newValue} onChange={(calendarHandlechange)} format={DateReqFormat} />
 
         {openCarousel !== null && (
-          <CP.Modal open={true} onClose={() => setOpenCarousel(null)} padding={"0"}>
+          <CP.Modal open={true} onClose={() => setOpenCarousel(null)} >
             <Carousel newValueData={newValueData} openCarousel={openCarousel} />
           </CP.Modal>
         )}
 
         <CP.CardWrap style={{ flexWrap: "nowrap" }}>
-          {/* left 5px */}
           <CP.Typography variant="h6" style={{display: "inline-block", paddingLeft: "10px"}}>{newValue ? dayjs(newValue, DateReqFormat).format(DateViewFormat) : dayjs().format(DateViewFormat)}</CP.Typography>
           {newValueData?.type === "PT" ? (<CP.Card height="auto">
             <CP.Styled.Flex

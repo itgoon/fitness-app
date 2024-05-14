@@ -953,7 +953,6 @@ export const CalendarMonthWrapper = styled(Div)`
   .MuiPickersDay-root:focus {
     // background: transparent !important;
   }
-
 `;
 
 export const QRProgressWrapper = styled(Div)`
@@ -1055,90 +1054,124 @@ export const BubbleButton = styled(EmptyButton) <{ width?: string }>`
 `;
 
 export const CarouselWrapper = styled.div`
-padding: 0px;
-border-radius: 4px;
-height: 440px;
-overflow: hidden;
+  padding: 0px;
+  border-radius: 4px;
+  height: 440px;
+  overflow: hidden;
 
-.slick-list {
+  .slick-list {
+    height: auto;
 
-  height: auto;
+    h1 {
+      display: inline-block;
+      padding: 15px 15px 15px 15px;
+    }
 
-  h1 {
-    display: inline-block;
-    padding: 15px 15px 15px 15px;
-  }
-
-  img {
-    width: 100%;
-    height: 350px;
-    object-fit: cover;
-    align-items: center; // 이미지가 정방향이 아닐 경우 가운데 위치
-  }
-}
-.slick-track {
-  display: flex;
-  align-items: center;
-}
-`;
-
-export const FixCalendarMonthWrapper = styled(Div)`
-  .Mui-selected {
-    background-color: var(--primary-color) !important;
-    font-weight: 700 !important;
-
-    &:hover {
-      background: var(--primary-color) !important;
+    img {
+      width: 100%;
+      height: 350px;
+      object-fit: cover;
+      align-items: center; // 이미지가 정방향이 아닐 경우 가운데 위치
     }
   }
- 
-  .MuiDateCalendar-root {
-    width: 410px;
-    
-    .MuiPickersCalendarHeader-root{
+  .slick-track {
+    display: flex;
+    align-items: center;
+  }
 
-      .MuiButtonBase-root {
-        padding: 8px 0px;
-      }
-    }
-    .MuiPickersFadeTransitionGroup-root {
-      .MuiTypography-root {
-        font-size: 0.9rem;
-        width: 50px;
-      }
-      .MuiDayCalendar-weekContainer {
-        margin: 6px 0;
-        .MuiBadge-root {
-          .MuiPickersDay-root {
-            font-size: 0.85rem;
-            width: 50px;
-          }
-          .Mui-selected {
-            position: relative;
-            // background-color: #fff !important;
-            background-color: var(--primary-color) !important;
-            color: #fff;
-            margin: 0px 8px;
-            width: 35px !important;
-            height: 35px !important;
-            
-            // &:after {
-            //   content: '14';
-            //   position: absolute;
-            //   top: 0px;
-            //   left: 10%;
-            //   width: 35px;
-            //   height: 35px;
-            //   border-radius: 50%;
-            //   background-color: var(--primary-color) !important;
-              
-            // }
-          }
+  .slick-dots {
+    > li {
+      margin: 0px;
+      width: 13px;
+      > button {
+        width: inherit;
+
+        &::before {
+          color: var(--primary-color);
         }
       }
-
     }
-
+    .slick-active > button::before {
+      color: var(--primary-color);
+    }
   }
-
+}
 `;
+
+// export const FixCalendarMonthWrapper = styled(Div)`
+//   .Mui-selected {
+//     background-color: var(--primary-color) !important;
+//     font-weight: 700 !important;
+
+//     &:hover {
+//       background: var(--primary-color) !important;
+//     }
+//   }
+
+//   .MuiDateCalendar-root {
+//     width: 410px;
+
+//     .MuiPickersCalendarHeader-root{
+//       .MuiButtonBase-root {
+//         padding: 8px 0px;
+//       }
+//     }
+//     .MuiPickersFadeTransitionGroup-root {
+//       .MuiTypography-root {
+//         font-size: 0.9rem;
+//         width: 50px;
+//       }
+//       .MuiDayCalendar-weekContainer {
+//         margin: 6px 0;
+//         .MuiBadge-root {
+//           .MuiPickersDay-root {
+//             font-size: 0.85rem;
+//             width: 50px;
+//           }
+//           .Mui-selected {
+//             position: relative;
+//             background-color: var(--primary-color) !important;
+//             color: #fff;
+//             margin: 0px 8px;
+//             width: 35px !important;
+//             height: 35px !important;
+
+//             // &:after {
+//             //   content: '14';
+//             //   position: absolute;
+//             //   top: 0px;
+//             //   left: 10%;
+//             //   width: 35px;
+//             //   height: 35px;
+//             //   border-radius: 50%;
+//             //   background-color: var(--primary-color) !important;
+
+//             // }
+//           }
+//         }
+//       }
+
+//     }
+
+//   }
+
+// `;
+export const FixCalendarMonthWrapper = styled(Div)`
+ 
+  .MuiDateCalendar-root {
+    width: 100%;
+    margint: 0;
+
+    .MuiPickersCalendarHeader-root {
+      margin-top: 5px;
+    }
+    
+    .muiTypography-root {
+      width: 55px; 
+      font-size: 0.9rem;
+    }
+  }  
+  
+    
+`
+  ;
