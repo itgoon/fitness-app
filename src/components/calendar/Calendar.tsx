@@ -10,6 +10,7 @@ import Icon from '../icon'
 import { PickersDay, PickersDayProps } from "@mui/x-date-pickers";
 import { Badge, } from "@material-ui/core";
 import 'dayjs/locale/ko';
+import { useEffect, useRef } from "react";
 
 export interface CalendarProps { 
   value?: string;
@@ -64,7 +65,7 @@ const Calendar = ({
       </Badge>
     );
   };
- 
+
   return (
     <FixCalendarMonthWrapper>
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko" dateFormats={{monthAndYear : 'YYYY년 M월'}}>

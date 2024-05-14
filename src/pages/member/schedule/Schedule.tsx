@@ -101,9 +101,10 @@ const SchedulePage = () => {
 
           <CP.Styled.Flex style={{ alignItems: "center", justifyContent: "space-between", padding: "5px" }}>
             <CP.Typography variant="h5" >{newValue ? dayjs(newValue, DateReqFormat).format(DateViewFormat) : dayjs().format(DateViewFormat)}</CP.Typography>
-            <CP.Styled.EmptyButton
+            {/* <CP.Styled.Button
+              type="text"
               onClick={() => setNewValue(dayjs().format(DateReqFormat))}
-              style={{ color: "var(--black-color)", width: "auto" }}>today</CP.Styled.EmptyButton>
+              style={{ color: "var(--black-color)", width: "auto" }}>today</CP.Styled.Button> */}
           </CP.Styled.Flex>
 
           {newValueData?.type === "PT" ? (<CP.Card height="auto">
