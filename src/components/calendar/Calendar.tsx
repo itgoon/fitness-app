@@ -6,7 +6,7 @@ import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "moment/locale/ko";
-import {  CalendarMonthWrapper} from "../styled";
+import { FixCalendarMonthWrapper, CalendarMonthWrapper} from "../styled";
 import Icon from '../icon'
 
 import { PickersDay, PickersDayProps } from "@mui/x-date-pickers";
@@ -66,7 +66,7 @@ const Calendar = ({
     );
   };
   return (
-    <CalendarMonthWrapper>
+    <FixCalendarMonthWrapper>
       <LocalizationProvider dateAdapter={AdapterDayjs}>
         <DateCalendar
           value={value ? dayjs(value, format) : dayjs()}
@@ -84,7 +84,7 @@ const Calendar = ({
           }}
         />
       </LocalizationProvider>
-    </CalendarMonthWrapper>
+    </FixCalendarMonthWrapper>
 
 
   );

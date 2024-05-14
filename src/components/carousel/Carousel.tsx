@@ -7,12 +7,12 @@ import CP from '..';
 import { DummyDataItem } from "@/pages/member/schedule/Schedule";
 
 interface CarouselProps {
-  ev: DummyDataItem;
+  newValueData: DummyDataItem;
   openCarousel: any
 }
 
 const Carousel = ({
-  ev,
+  newValueData,
   openCarousel
 }: CarouselProps) => {
   
@@ -26,7 +26,7 @@ const Carousel = ({
   return (
     <CP.Styled.CarouselWrapper>
       <Slider {...settings} >
-        {ev?.diet && Object.values(ev?.diet || {}).map((item, idx) => (
+        {newValueData?.diet && Object.values(newValueData?.diet || {}).map((item, idx) => (
           <CP.Styled.Div key={idx}>
             <CP.Styled.Typography variant="b1">{item.title}</CP.Styled.Typography>
             <img src={`../../public/images/dummy/${item.imgPath}`}/>

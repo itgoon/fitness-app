@@ -62,14 +62,14 @@ export const Div = styled.div<DivProps>`
   border-radius: ${({ radius }) => radius && radius};
   text-align: ${({ textAlign }) => textAlign && textAlign};
 `;
-export const Layout = styled(Div)<{ isHeader: boolean; isBottom: boolean }>`
+export const Layout = styled(Div) <{ isHeader: boolean; isBottom: boolean }>`
   width: inherit;
   height: inherit;
   padding-top: ${({ isHeader }) => (isHeader ? headerHeight : 0)}px;
   padding-bottom: ${({ isBottom }) => (isBottom ? bottomHeight : 0)}px;
   background: var(--background-color);
 `;
-export const Wrapper = styled(Div)<{ isTab?: boolean }>`
+export const Wrapper = styled(Div) <{ isTab?: boolean }>`
   width: ${({ width }) => (width ? width : "100%")};
   height: ${({ height }) => (height ? height : "100%")};
   overflow: ${({ overflow }) => (overflow ? overflow : "hidden")};
@@ -77,7 +77,7 @@ export const Wrapper = styled(Div)<{ isTab?: boolean }>`
   padding: ${({ padding }) => (padding ? padding : "0px")};
 `;
 
-export const Flex = styled(Div)<{ wrap?: string }>`
+export const Flex = styled(Div) <{ wrap?: string }>`
   display: flex;
   flex: ${({ flex }) => flex && flex};
   flex-wrap: ${({ wrap }) => wrap && wrap};
@@ -86,7 +86,7 @@ export const Flex = styled(Div)<{ wrap?: string }>`
   align-items: ${({ items }) => (items ? items : "flex-start")};
   justify-content: ${({ justify }) => (justify ? justify : "flex-start")};
 `;
-export const Top = styled(Flex)<{ isBorder?: boolean }>`
+export const Top = styled(Flex) <{ isBorder?: boolean }>`
   position: absolute;
   background: var(--background-color);
   border-bottom: ${({ isBorder }) =>
@@ -148,7 +148,7 @@ export const InputWrapper = styled.div<{
   }
 `;
 
-export const Button = styled(MuiButton)<ButtonProps>`
+export const Button = styled(MuiButton) <ButtonProps>`
   height: ${({ size }) => (size === "lg" ? 40 : size === "md" ? 36 : 28)}px;
   background-color: ${({ defaultColor, disabled }) =>
     disabled
@@ -184,8 +184,8 @@ export const Button = styled(MuiButton)<ButtonProps>`
     css`
       h1 {
         color: ${props.defaultColor
-          ? `var(${props.defaultColor})`
-          : "var(--primary-color)"} !important;
+        ? `var(${props.defaultColor})`
+        : "var(--primary-color)"} !important;
       }
 
       padding: 7px 10px !important;
@@ -279,7 +279,7 @@ export const RadioButtonWrapper = styled.div<{
   }
 `;
 
-export const Datepicker = styled(DateCalendar)<{
+export const Datepicker = styled(DateCalendar) <{
   height?: number;
   month?: string;
 }>`
@@ -351,12 +351,12 @@ export const TimePicker = styled(MultiSectionDigitalClock)`
   }
 `;
 
-export const Popover = styled(Drawer)<{ anchor: "right" | "left" | "bottom" }>`
+export const Popover = styled(Drawer) <{ anchor: "right" | "left" | "bottom" }>`
   & .MuiDrawer-paperAnchorBottom {
     border-radius: 15px 15px 0px 0px;
   }
 `;
-export const CardWrapper = styled(MuiButton)<CardProps>`
+export const CardWrapper = styled(MuiButton) <CardProps>`
   padding: 0px !important;
   width: ${({ width }) => (width ? width : "100%")};
 
@@ -387,7 +387,7 @@ export const CardWrapper = styled(MuiButton)<CardProps>`
 
   div > img:not(.MuiAvatar-fallback) {
     border-radius: ${({ radius, size }) =>
-      radius ? radius : size && size === "lg" ? "4px" : "8px"};
+    radius ? radius : size && size === "lg" ? "4px" : "8px"};
   }
 
   & > div {
@@ -400,7 +400,7 @@ export const CardWrapper = styled(MuiButton)<CardProps>`
     background: var(--white-color);
   }
 `;
-export const CardWrapper2 = styled(Div)<{
+export const CardWrapper2 = styled(Div) <{
   bg?: string;
   height?: string;
   width?: string;
@@ -549,7 +549,7 @@ export const StyleDialog = styled(Dialog)`
   }
 `;
 
-export const Absolute = styled(Div)<{
+export const Absolute = styled(Div) <{
   x?: number;
   y?: number;
   position: "topRight" | "topLeft" | "bottomRight" | "bottomLeft";
@@ -613,7 +613,7 @@ export const Division = styled.div<{
     `}
 `;
 
-export const StyleA = styled.a.attrs({ href: "javascript:void(0)" })<
+export const StyleA = styled.a.attrs({ href: "javascript:void(0)" }) <
   Omit<TypographyProps, "style" | "children">
 >`
   color: var(--primary-color);
@@ -638,7 +638,7 @@ export const StyleIcon = styled.img<{ size?: number; color?: string }>`
     `};
 `;
 
-export const Tag = styled(Div)<{ color: string }>`
+export const Tag = styled(Div) <{ color: string }>`
   box-sizing: border-box;
   padding: 2px 8px 1px 8px;
   border-radius: 4px;
@@ -648,9 +648,8 @@ export const Tag = styled(Div)<{ color: string }>`
 
 const typoVariant = (variant: TypographyProps["variant"]) => {
   return `
-      ${
-        variant === "h1" &&
-        css`
+      ${variant === "h1" &&
+    css`
           font-size: 32px;
           line-height: 42px;
           font-weight: 700;
@@ -658,11 +657,10 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-bold,
             Apple SD Gothic Neo;
         `
-      };
+    };
 
-      ${
-        variant === "h2" &&
-        css`
+      ${variant === "h2" &&
+    css`
           font-size: 28px;
           line-height: 40px;
           font-weight: 700;
@@ -670,10 +668,9 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-bold,
             Apple SD Gothic Neo;
         `
-      };
-      ${
-        variant === "h3" &&
-        css`
+    };
+      ${variant === "h3" &&
+    css`
           font-size: 24px;
           line-height: 30px;
           font-weight: 700;
@@ -681,10 +678,9 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-bold,
             Apple SD Gothic Neo;
         `
-      };
-      ${
-        variant === "h4" &&
-        css`
+    };
+      ${variant === "h4" &&
+    css`
           font-size: 20px;
           line-height: 28px;
           font-weight: 700;
@@ -692,10 +688,9 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-bold,
             Apple SD Gothic Neo;
         `
-      };
-      ${
-        variant === "h5" &&
-        css`
+    };
+      ${variant === "h5" &&
+    css`
           font-size: 18px;
           line-height: 24px;
           font-weight: 700;
@@ -703,10 +698,9 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-bold,
             Apple SD Gothic Neo;
         `
-      };
-      ${
-        variant === "h6" &&
-        css`
+    };
+      ${variant === "h6" &&
+    css`
           font-size: 16px;
           line-height: 22px;
           font-weight: 700;
@@ -714,10 +708,9 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-bold,
             Apple SD Gothic Neo;
         `
-      };
-      ${
-        variant === "b1" &&
-        css`
+    };
+      ${variant === "b1" &&
+    css`
           font-size: 14px;
           line-height: 20px;
           font-weight: 700;
@@ -725,10 +718,9 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-bold,
             Apple SD Gothic Neo;
         `
-      };
-      ${
-        variant === "b2" &&
-        css`
+    };
+      ${variant === "b2" &&
+    css`
           font-size: 14px;
           line-height: 20px;
           font-weight: 500;
@@ -736,10 +728,9 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-medium,
             Apple SD Gothic Neo;
         `
-      };
-      ${
-        variant === "b3" &&
-        css`
+    };
+      ${variant === "b3" &&
+    css`
           font-size: 14px;
           line-height: 20px;
           font-weight: 400;
@@ -747,10 +738,9 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-regular,
             Apple SD Gothic Neo;
         `
-      };
-      ${
-        variant === "b4" &&
-        css`
+    };
+      ${variant === "b4" &&
+    css`
           font-size: 13px;
           line-height: 18px;
           font-weight: 400;
@@ -758,10 +748,9 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-regular,
             Apple SD Gothic Neo;
         `
-      };
-      ${
-        variant === "c1" &&
-        css`
+    };
+      ${variant === "c1" &&
+    css`
           font-size: 12px;
           line-height: 18px;
           font-weight: 700;
@@ -769,10 +758,9 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-bold,
             Apple SD Gothic Neo;
         `
-      };
-      ${
-        variant === "c2" &&
-        css`
+    };
+      ${variant === "c2" &&
+    css`
           font-size: 12px;
           line-height: 18px;
           font-weight: 500;
@@ -780,10 +768,9 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-medium,
             Apple SD Gothic Neo;
         `
-      };
-      ${
-        variant === "ht" &&
-        css`
+    };
+      ${variant === "ht" &&
+    css`
           font-size: 11px;
           line-height: 16px;
           font-weight: 500;
@@ -791,7 +778,7 @@ const typoVariant = (variant: TypographyProps["variant"]) => {
             Pretendard-medium,
             Apple SD Gothic Neo;
         `
-      };
+    };
     `;
 };
 
@@ -830,7 +817,7 @@ export const TabWrapper = styled.div`
 export const ExtraText = styled(Typography).attrs({
   color: "--light-color",
   opacity: "0.6"
-})<{ error?: boolean }>`
+}) <{ error?: boolean }>`
   padding-top: 4px;
   // margin-left: 16px;
   padding-left: 12px;
@@ -909,7 +896,7 @@ export const AntSwitch = styled(Switch)(() => ({
   }
 }));
 
-export const TimerProgressWrapper = styled(Flex)<any>`
+export const TimerProgressWrapper = styled(Flex) <any>`
   flex-direction: column;
   position: relative;
   justify-content: center;
@@ -1058,7 +1045,7 @@ export const CalendarWeekWrapper = styled(Flex)`
   }
 `;
 
-export const BubbleButton = styled(EmptyButton)<{ width?: string }>`
+export const BubbleButton = styled(EmptyButton) <{ width?: string }>`
   width: ${({ width }) => (width ? width : "auto")};
   aspect-ratio: 1 / 1;
   padding: 10px;
@@ -1093,4 +1080,65 @@ overflow: hidden;
   display: flex;
   align-items: center;
 }
+`;
+
+export const FixCalendarMonthWrapper = styled(Div)`
+  .Mui-selected {
+    background-color: var(--primary-color) !important;
+    font-weight: 700 !important;
+
+    &:hover {
+      background: var(--primary-color) !important;
+    }
+  }
+ 
+  .MuiDateCalendar-root {
+    width: 410px;
+    
+    .MuiPickersCalendarHeader-root{
+
+      .MuiButtonBase-root {
+        padding: 8px 0px;
+      }
+    }
+    .MuiPickersFadeTransitionGroup-root {
+      .MuiTypography-root {
+        font-size: 0.9rem;
+        width: 50px;
+      }
+      .MuiDayCalendar-weekContainer {
+        margin: 6px 0;
+        .MuiBadge-root {
+          .MuiPickersDay-root {
+            font-size: 0.85rem;
+            width: 50px;
+          }
+          .Mui-selected {
+            position: relative;
+            // background-color: #fff !important;
+            background-color: var(--primary-color) !important;
+            color: #fff;
+            margin: 0px 8px;
+            width: 35px !important;
+            height: 35px !important;
+            
+            // &:after {
+            //   content: '14';
+            //   position: absolute;
+            //   top: 0px;
+            //   left: 10%;
+            //   width: 35px;
+            //   height: 35px;
+            //   border-radius: 50%;
+            //   background-color: var(--primary-color) !important;
+              
+            // }
+          }
+        }
+      }
+
+    }
+
+  }
+
 `;

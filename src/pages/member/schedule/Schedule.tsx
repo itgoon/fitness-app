@@ -10,7 +10,7 @@ import { MemberSortList } from "@/utils/constants";
 import { TrainerMemberList } from "@/utils/constants/dummyData";
 import Calendar from "@/components/calendar";
 import { DateFormat, DateReqFormat, DateViewFormat } from "@/utils/formatUtil";
-import Carousel from "@/components/\bcarousel";
+import Carousel from "@/components/carousel";
 
 /**
  ****************************************
@@ -18,26 +18,26 @@ import Carousel from "@/components/\bcarousel";
  ****************************************
  */
 interface DietItem {
-  title: string;
-  imgPath: string;
+  title?: string;
+  imgPath?: string | URL;
 }
 
 interface DietData {
-  eat1: DietItem;
-  eat2: DietItem;
-  eat3: DietItem;
-  eat4: DietItem;
+  eat1?: DietItem;
+  eat2?: DietItem;
+  eat3?: DietItem;
+  eat4?: DietItem;
 }
 
 export interface DummyDataItem {
   date: string;
-  type: "PT" | "IN";
+  type: string;
   user_data: string;
-  video: {
-    videoUrl1: string;
-    videoUrl2: string;
+  video?: {
+    videoUrl1?: string | URL;
+    videoUrl2?: string | URL;
   };
-  diet: DietData;
+  diet?: DietData;
 }
 const dummydata = [
   {
@@ -82,26 +82,27 @@ const SchedulePage = () => {
     }
     return null;
   }
-  const ev = findData();
+  const newValueData = findData();
   
-  const { eat1, eat2, eat3, eat4 } = ev?.diet || {};
-  const { videoUrl1, videoUrl2 } = ev?.video || {};
+  const { eat1, eat2, eat3, eat4 } = newValueData?.diet || {};
+  const { videoUrl1, videoUrl2 } = newValueData?.video || {};
 
   return (
     <>
       <CP.Styled.Wrapper>
+        {/* header 415 */}
         <CP.Calendar value={newValue} onChange={(calendarHandlechange)} format={DateReqFormat} />
 
         {openCarousel !== null && (
           <CP.Modal open={true} onClose={() => setOpenCarousel(null)} padding={"0"}>
-            <Carousel ev={ev} openCarousel={openCarousel} />
+            <Carousel newValueData={newValueData} openCarousel={openCarousel} />
           </CP.Modal>
-        )
-        }
+        )}
 
         <CP.CardWrap style={{ flexWrap: "nowrap" }}>
-          <CP.Typography variant="h6">{newValue ? dayjs(newValue, DateReqFormat).format(DateViewFormat) : dayjs().format(DateViewFormat)}</CP.Typography>
-          {ev?.type === "PT" ? (<CP.Card height="auto">
+          {/* left 5px */}
+          <CP.Typography variant="h6" style={{display: "inline-block", paddingLeft: "10px"}}>{newValue ? dayjs(newValue, DateReqFormat).format(DateViewFormat) : dayjs().format(DateViewFormat)}</CP.Typography>
+          {newValueData?.type === "PT" ? (<CP.Card height="auto">
             <CP.Styled.Flex
               direction="column"
               height={"inherit"}
@@ -116,7 +117,7 @@ const SchedulePage = () => {
                 <CP.Styled.Flex direction="column" gap={6} width="55%">
                   <CP.Styled.Flex gap={4} items="flex-end">
                     <CP.Typography variant="b1" color="--dark-color">
-                      {ev?.user_data}
+                      {newValueData?.user_data}
                     </CP.Typography>
                     <CP.Typography
                       variant="c2"
@@ -131,7 +132,7 @@ const SchedulePage = () => {
               </CP.Styled.Flex>
 
               <CP.Styled.Flex gap={10} wrap="nowrap" overflow="auto">
-                {ev?.video ? ev?.video && Object.values(ev.video).map((item) => {
+                {newValueData?.video ? newValueData?.video && Object.values(newValueData.video).map((item) => {
                   return (
                     <CP.Styled.Div
                       style={{
@@ -180,7 +181,7 @@ const SchedulePage = () => {
               </CP.Styled.Flex>
 
               <CP.Styled.Flex gap={10} wrap="nowrap" overflow="auto">
-                {ev?.diet ? ev?.diet && Object.values(ev.diet).map((item, idx) => {
+                {newValueData?.diet ? newValueData?.diet && Object.values(newValueData.diet).map((item, idx) => {
                   return (
                     <CP.Styled.Div
                       key={idx}
