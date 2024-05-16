@@ -142,7 +142,13 @@ const MemberDetailPage = () => {
               가격 : {castToPrice(data.price)}
             </CP.Typography>
             <CP.Typography variant="b2" inline>
-              옵션 : {data.option}
+              옵션 :
+              {data.option?.map((item, index) => {
+                let ret = "";
+                if (index > 0 && index < data?.option?.length) ret += ", ";
+                ret += item;
+                return ret;
+              })}
             </CP.Typography>
             <CP.Typography variant="b2" inline>
               시작일 :{" "}
