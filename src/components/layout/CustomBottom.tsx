@@ -98,12 +98,10 @@ const CustomHeader = () => {
         ></div>
       </div> */}
       <CP.Modal open={isQRCode} onClose={() => setIsQRCode(false)}>
-        <CP.Icon
-          name="material-symbols-light:qr-code-2"
-          color="--dark-color"
-          style={{ width: "100%", height: "100%", aspectRatio: "1/1" }}
-        />
+        <CP.ModalPrograss timeType="잔여 시간" timeUnit="초"></CP.ModalPrograss> 
       </CP.Modal>
+
+      
       <CP.Modal open={isMemberCard}
         onClose={() => {
           setIsMemberCard(false);

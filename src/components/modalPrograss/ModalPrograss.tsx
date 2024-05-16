@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { QRProgressWrapper } from "../styled";
 
 export interface ModalPrograssProps {
-  onClick: () => void;
+  onClick?: () => void;
   timeType?: string;
   timeUnit: "초" | "분" | "시간";
 }
