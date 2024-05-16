@@ -43,44 +43,74 @@ const dummydata = [
     type: "PT",
     user_data: "30회 pt권",
     video: { videoUrl1: "video1.mp4", videoUrl2: "video2.mp4" },
-    diet: { eat1: { title: "아침아침", imgPath: "eat1.png" }, eat2: { title: "점심", imgPath: "eat2.png" }, eat3: { title: "저녁", imgPath: "eat3.jpg" }, eat4: { title: "간식", imgPath: "eat4.jpg" } }
+    diet: {
+      eat1: { title: "아침아침", imgPath: "eat1.png" },
+      eat2: { title: "점심", imgPath: "eat2.png" },
+      eat3: { title: "저녁", imgPath: "eat3.jpg" },
+      eat4: { title: "간식", imgPath: "eat4.jpg" }
+    }
   },
   {
     date: "2024-05-04",
     type: "IN",
     user_data: "30회 pt권",
     video: { videoUrl1: "", videoUrl2: "" },
-    diet: { eat1: { title: "아침", imgPath: "eat1.png" }, eat2: { title: "점심", imgPath: "eat2.png" }, eat3: { title: "저녁", imgPath: "eat3.jpg" }, eat4: { title: "간식", imgPath: "eat4.jpg" } }
+    diet: {
+      eat1: { title: "아침", imgPath: "eat1.png" },
+      eat2: { title: "점심", imgPath: "eat2.png" },
+      eat3: { title: "저녁", imgPath: "eat3.jpg" },
+      eat4: { title: "간식", imgPath: "eat4.jpg" }
+    }
   },
   {
     date: "2024-05-11",
     type: "IN",
     user_data: "30회 pt권",
     video: { videoUrl1: "", videoUrl2: "" },
-    diet: { eat1: { title: "아침", imgPath: "eat3.jpg" }, eat2: { title: "점심", imgPath: "eat1.png" }, eat3: { title: "저녁", imgPath: "eat2.png" }, eat4: { title: "간식", imgPath: "eat4.jpg" } }
+    diet: {
+      eat1: { title: "아침", imgPath: "eat3.jpg" },
+      eat2: { title: "점심", imgPath: "eat1.png" },
+      eat3: { title: "저녁", imgPath: "eat2.png" },
+      eat4: { title: "간식", imgPath: "eat4.jpg" }
+    }
   },
   {
     date: "2024-05-14",
     type: "PT",
     user_data: "30회 pt권",
     video: { videoUrl1: "video3.mp4", videoUrl2: "video4.mp4" },
-    diet: { eat1: { title: "아침", imgPath: "eat3.jpg" }, eat2: { title: "점심", imgPath: "eat2.png" }, eat3: { title: "저녁", imgPath: "eat1.png" }, eat4: { title: "간식", imgPath: "eat4.jpg" } }
+    diet: {
+      eat1: { title: "아침", imgPath: "eat3.jpg" },
+      eat2: { title: "점심", imgPath: "eat2.png" },
+      eat3: { title: "저녁", imgPath: "eat1.png" },
+      eat4: { title: "간식", imgPath: "eat4.jpg" }
+    }
   },
   {
     date: "2024-05-16",
     type: "IN",
     user_data: "30회 pt권",
     video: { videoUrl1: "", videoUrl2: "" },
-    diet: { eat1: { title: "아침", imgPath: "eat3.jpg" }, eat2: { title: "점심", imgPath: "eat1.png" }, eat3: { title: "저녁", imgPath: "eat2.png" }, eat4: { title: "간식", imgPath: "eat4.jpg" } }
+    diet: {
+      eat1: { title: "아침", imgPath: "eat3.jpg" },
+      eat2: { title: "점심", imgPath: "eat1.png" },
+      eat3: { title: "저녁", imgPath: "eat2.png" },
+      eat4: { title: "간식", imgPath: "eat4.jpg" }
+    }
   },
   {
     date: "2024-05-17",
     type: "PT",
     user_data: "30회 pt권",
     video: { videoUrl1: "video3.mp4", videoUrl2: "video4.mp4" },
-    diet: { eat1: { title: "아침", imgPath: "eat3.jpg" }, eat2: { title: "점심", imgPath: "eat2.png" }, eat3: { title: "저녁", imgPath: "eat1.png" }, eat4: { title: "간식", imgPath: "eat4.jpg" } }
-  },
-]
+    diet: {
+      eat1: { title: "아침", imgPath: "eat3.jpg" },
+      eat2: { title: "점심", imgPath: "eat2.png" },
+      eat3: { title: "저녁", imgPath: "eat1.png" },
+      eat4: { title: "간식", imgPath: "eat4.jpg" }
+    }
+  }
+];
 const MemberDetailPage = () => {
   const location = useLocation();
   const [name, setName] = useState<string>("");
@@ -94,22 +124,20 @@ const MemberDetailPage = () => {
     setName(_name ? _name : "");
   }, [location]);
 
-  // 임종한 
+  // 임종한
   const [newValue, setNewValue] = useState(dayjs().format(DateReqFormat));
   const [openCarousel, setOpenCarousel] = useState(null);
-  const carouselSelectedKey = (idx: any) => setOpenCarousel(idx)
+  const carouselSelectedKey = (idx: any) => setOpenCarousel(idx);
   const findData = () => {
     if (newValue) {
       return dummydata?.find((item) => item.date === newValue);
     }
     return null;
-  }
+  };
   const newValueData = findData();
 
   const { eat1, eat2, eat3, eat4 } = newValueData?.diet || {};
   const { videoUrl1, videoUrl2 } = newValueData?.video || {};
-
-
 
   return (
     <>
@@ -171,7 +199,13 @@ const MemberDetailPage = () => {
                 >{`2,000,000원`}</CP.Typography>
               </CP.Styled.Flex>
 
-              <CP.Icon name="icon-park-outline:right" color="--light-color" />
+              <CP.Icon
+                onClick={() =>
+                  navigate(`/trainer/contract/detail?name=${String(name)}`)
+                }
+                name="icon-park-outline:right"
+                color="--light-color"
+              />
             </CP.Styled.Flex>
           </CP.Card>
 
@@ -283,32 +317,38 @@ const MemberDetailPage = () => {
               </CP.Styled.Flex>
 
               {openCarousel !== null && (
-                <CP.Modal open={true} onClose={() => setOpenCarousel(null)} >
-                  <Carousel newValueData={newValueData} openCarousel={openCarousel} />
+                <CP.Modal open={true} onClose={() => setOpenCarousel(null)}>
+                  <Carousel
+                    newValueData={newValueData}
+                    openCarousel={openCarousel}
+                  />
                 </CP.Modal>
               )}
 
               <CP.Styled.Flex gap={10} wrap="nowrap" overflow="auto">
-                {newValueData?.diet ? newValueData?.diet && Object.values(newValueData.diet).map((item, idx) => {
-                  return (
-                    <CP.Styled.Div
-                      key={idx}
-                      onClick={() => carouselSelectedKey(idx)}
-                      style={{
-                        backgroundImage: `url(/images/dummy/${item.imgPath})`,
-                        backgroundSize: "cover",
-                        minWidth: "90px"
-                      }}
-                      height="70px"
-                      radius="8px"
-                      width="90px"
-                    />
-                  );
-                }) : (
-                  <CP.Typography
-                    variant="c2"
-                    color="--black-color"
-                  > 식단이 등록되지 않았습니다. 등록하시겠습니까?</CP.Typography>
+                {newValueData?.diet ? (
+                  newValueData?.diet &&
+                  Object.values(newValueData.diet).map((item, idx) => {
+                    return (
+                      <CP.Styled.Div
+                        key={idx}
+                        onClick={() => carouselSelectedKey(idx)}
+                        style={{
+                          backgroundImage: `url(/images/dummy/${item.imgPath})`,
+                          backgroundSize: "cover",
+                          minWidth: "90px"
+                        }}
+                        height="70px"
+                        radius="8px"
+                        width="90px"
+                      />
+                    );
+                  })
+                ) : (
+                  <CP.Typography variant="c2" color="--black-color">
+                    {" "}
+                    식단이 등록되지 않았습니다. 등록하시겠습니까?
+                  </CP.Typography>
                 )}
               </CP.Styled.Flex>
             </CP.Styled.Flex>
