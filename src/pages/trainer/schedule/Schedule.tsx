@@ -102,7 +102,7 @@ const SchedulePage = () => {
     data: any;
   }>({
     open: false,
-    data: ""
+    data: "전체"
   });
   const [state, setState] = useState({ filter: "" });
 
@@ -247,10 +247,12 @@ const SchedulePage = () => {
             가져올 회원을 선택해주세요.
           </CP.Typography>
           <CP.Select
-            isAll
+            // isAll
             selected={getDataModal?.data}
             onSelect={(e) => setGetDataModal({ ...getDataModal, data: e })}
-            list={TrainerMemberSelectList}
+            list={[{ label: "전체", value: "전체" }].concat(
+              TrainerMemberSelectList
+            )}
           />
         </CP.Styled.Flex>
       </CP.Modal>

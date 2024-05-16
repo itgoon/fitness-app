@@ -69,8 +69,20 @@ const ScheduleModalPage = ({ open, onDismiss, data, onDelete }: Props) => {
             </div>
           </CP.Styled.Flex>
           <CP.Styled.Flex gap={12} items="center">
+            <CP.Typography variant="b1">일자</CP.Typography>
+            <CP.Datepicker
+              placeholder={"일자 선택"}
+              value={state?.date}
+              onChange={(e) => setState({ ...state, date: e })}
+            />
+
             <CP.Typography variant="b1">시간</CP.Typography>
-            <CP.Select
+            <CP.Timepicker
+              placeholder={"시간 선택"}
+              value={state?.start_time}
+              onChange={(e) => setState({ ...state, start_time: e })}
+            />
+            {/* <CP.Select
               placeholder={"시간 선택"}
               selected={state?.start_time}
               onSelect={(e) => setState({ ...state, start_time: e })}
@@ -84,7 +96,7 @@ const ScheduleModalPage = ({ open, onDismiss, data, onDelete }: Props) => {
                   value: val
                 };
               })}
-            />
+            /> */}
           </CP.Styled.Flex>
         </CP.Styled.Flex>
 

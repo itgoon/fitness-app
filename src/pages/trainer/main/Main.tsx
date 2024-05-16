@@ -3,6 +3,7 @@ import {
   TrainerMainAlarm,
   TrainerMainTimeline
 } from "@/utils/constants/dummyData";
+import { useNavigate } from "react-router-dom";
 import { DateFormat, TimeFormat } from "@/utils/formatUtil";
 import dayjs from "dayjs";
 import { useEffect, useLayoutEffect, useState } from "react";
@@ -25,6 +26,7 @@ const MonthList: { label: string; cnt: number }[] = [
 ];
 
 const MainPage = () => {
+  const navigate = useNavigate();
   const [isMonthList, setIsMonthList] = useState(false);
   const [alarmList, setAlarmList] = useState<any[]>(TrainerMainAlarm);
   const { signRef, clear, getFile, isSigned, setIsSigned, getOriginalFile } =
@@ -161,7 +163,15 @@ const MainPage = () => {
             padding={"var(--layout-padding)"}
             style={{ paddingTop: "0px" }}
           >
-            <CP.Title>오늘 알림</CP.Title>
+            <CP.Styled.Flex width="100%" justify="space-between">
+              <CP.Typography variant="h5">오늘 알림</CP.Typography>
+              <CP.Styled.StyleA
+                variant="c2"
+                onClick={() => navigate("/trainer/alarm")}
+              >
+                전체 알림
+              </CP.Styled.StyleA>
+            </CP.Styled.Flex>
           </CP.Styled.Div>
           {alarmList?.length > 0 ? (
             //  <CP.Styled.Div height='100%' width='100%' >
