@@ -84,8 +84,9 @@ const dummydata = [
 ]
 
 const SchedulePage = () => {
+
   const [newValue, setNewValue] = useState(dayjs().format(DateReqFormat));
-  const calendarHandlechange = (newChangeDate: any) => setNewValue(newChangeDate);
+  const calendarHandlechange = (newChangeDate: any) => setNewValue(newChangeDate)
 
   const [openCarousel, setOpenCarousel] = useState(null);
   const carouselSelectedKey = (idx: any) => setOpenCarousel(idx)
@@ -105,16 +106,14 @@ const SchedulePage = () => {
       <CP.Styled.Wrapper>
         <CP.Calendar value={newValue} onChange={(calendarHandlechange)} format={DateReqFormat} />
 
-
-
         <CP.CardWrap style={{ flexWrap: "nowrap" }}>
 
           <CP.Styled.Flex style={{ alignItems: "center", justifyContent: "space-between", padding: "5px" }}>
             <CP.Typography variant="h5" >{newValue ? dayjs(newValue, DateReqFormat).format(DateViewFormat) : dayjs().format(DateViewFormat)}</CP.Typography>
-            {/* <CP.Styled.Button
+            <CP.Styled.Button
               type="text"
               onClick={() => setNewValue(dayjs().format(DateReqFormat))}
-              style={{ color: "var(--black-color)", width: "auto" }}>today</CP.Styled.Button> */}
+              style={{ color: "var(--black-color)", width: "auto" }}>today</CP.Styled.Button>
           </CP.Styled.Flex>
 
           {newValueData?.type === "PT" ? (<CP.Card height="auto">

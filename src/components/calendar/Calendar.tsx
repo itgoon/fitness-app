@@ -5,14 +5,14 @@ import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import "moment/locale/ko";
-import { FixCalendarMonthWrapper} from "../styled";
+import { FixCalendarMonthWrapper } from "../styled";
 import Icon from '../icon'
 import { PickersDay, PickersDayProps } from "@mui/x-date-pickers";
 import { Badge, } from "@material-ui/core";
 import 'dayjs/locale/ko';
-import { useEffect, useRef } from "react";
+import { useEffect, useState } from "react";
 
-export interface CalendarProps { 
+export interface CalendarProps {
   value?: string;
   format?: string;
   onChange?: (newValue: string) => void;
@@ -66,23 +66,29 @@ const Calendar = ({
       </Badge>
     );
   };
+
+  const handleMonthChange = (newMonth: any) => {
+    console.log(newMonth, newMonth.format(format));
+    const val = `${newMonth.format('YYYY-MM-')}${value ? dayjs(value, format).format('DD') : '01'}`;
+    console.log({ val })
+    if (onChange) onChange(val)
+  };
+
   return (
     <FixCalendarMonthWrapper>
-      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko" dateFormats={{monthAndYear : 'YYYY년 M월'}}>
+      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko" dateFormats={{ monthAndYear: "YYYY년 M월" }}>
         <DateCalendar
           value={value ? dayjs(value, format) : dayjs()}
-          onChange={(newValue) =>
-            onChange ? onChange(newValue.format(format)) : {}
-          }
+          onChange={(newValue) => { onChange ? onChange(newValue.format(format)) : {} }}
           sx={style}
           minDate={min ? dayjs(min, format) : undefined}
           maxDate={max ? dayjs(max, format) : undefined}
-          
+          onMonthChange={handleMonthChange}
           slots={{
             day: eventDay
           }}
           slotProps={{
-            day: {eventList} as any,
+            day: { eventList } as any,
           }}
         />
       </LocalizationProvider>
