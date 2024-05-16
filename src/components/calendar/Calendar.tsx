@@ -33,7 +33,9 @@ const Calendar = ({
     { date: "2024-05-01", type: "PT" },
     { date: "2024-05-04", type: "IN" },
     { date: "2024-05-11", type: "IN" },
-    { date: "2024-05-14", type: "PT" }
+    { date: "2024-05-14", type: "PT" },
+    { date: "2024-05-16", type: "PT" },
+    { date: "2024-05-17", type: "PT" },
   ];
 
   const eventDay = (props: PickersDayProps<Dayjs>) => {
