@@ -67,13 +67,27 @@ const dummydata = [
     video: { videoUrl1: "video3.mp4", videoUrl2: "video4.mp4" },
     diet: { eat1: { title: "아침", imgPath: "eat3.jpg" }, eat2: { title: "점심", imgPath: "eat2.png" }, eat3: { title: "저녁", imgPath: "eat1.png" }, eat4: { title: "간식", imgPath: "eat4.jpg" } }
   },
+  {
+    date: "2024-05-16",
+    type: "IN",
+    user_data: "30회 pt권",
+    video: { videoUrl1: "", videoUrl2: "" },
+    diet: { eat1: { title: "아침", imgPath: "eat3.jpg" }, eat2: { title: "점심", imgPath: "eat1.png" }, eat3: { title: "저녁", imgPath: "eat2.png" }, eat4: { title: "간식", imgPath: "eat4.jpg" } }
+  },
+  {
+    date: "2024-05-17",
+    type: "PT",
+    user_data: "30회 pt권",
+    video: { videoUrl1: "video3.mp4", videoUrl2: "video4.mp4" },
+    diet: { eat1: { title: "아침", imgPath: "eat3.jpg" }, eat2: { title: "점심", imgPath: "eat2.png" }, eat3: { title: "저녁", imgPath: "eat1.png" }, eat4: { title: "간식", imgPath: "eat4.jpg" } }
+  },
 ]
 
 const SchedulePage = () => {
   const [newValue, setNewValue] = useState(dayjs().format(DateReqFormat));
-  const [openCarousel, setOpenCarousel] = useState(null);
-
   const calendarHandlechange = (newChangeDate: any) => setNewValue(newChangeDate);
+
+  const [openCarousel, setOpenCarousel] = useState(null);
   const carouselSelectedKey = (idx: any) => setOpenCarousel(idx)
   const findData = () => {
     if (newValue) {
@@ -91,11 +105,7 @@ const SchedulePage = () => {
       <CP.Styled.Wrapper>
         <CP.Calendar value={newValue} onChange={(calendarHandlechange)} format={DateReqFormat} />
 
-        {openCarousel !== null && (
-          <CP.Modal open={true} onClose={() => setOpenCarousel(null)} >
-            <Carousel newValueData={newValueData} openCarousel={openCarousel} />
-          </CP.Modal>
-        )}
+
 
         <CP.CardWrap style={{ flexWrap: "nowrap" }}>
 
@@ -181,6 +191,12 @@ const SchedulePage = () => {
                   <CP.Icon name="charm:menu-kebab" />
                 </CP.MenuItem>
               </CP.Styled.Flex>
+
+              {openCarousel !== null && (
+                <CP.Modal open={true} onClose={() => setOpenCarousel(null)} >
+                  <Carousel newValueData={newValueData} openCarousel={openCarousel} />
+                </CP.Modal>
+              )}
 
               <CP.Styled.Flex gap={10} wrap="nowrap" overflow="auto">
                 {newValueData?.diet ? newValueData?.diet && Object.values(newValueData.diet).map((item, idx) => {
