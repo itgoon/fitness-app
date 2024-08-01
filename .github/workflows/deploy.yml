@@ -20,7 +20,6 @@ jobs:
     steps:
       - name: Use repository source
         uses: actions/checkout@v3
-
       - name: Use node.js
         uses: actions/setup-node@v3
         with:
