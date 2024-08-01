@@ -27,6 +27,7 @@
     },
     "types": ["vite-plugin-svgr/client"]
   },
+  "exclude": ["node_modules"],
   "include": ["**/*.tsx", "src/**/*"],
   // "include": ["src", "custom.d.ts"],
   "references": [

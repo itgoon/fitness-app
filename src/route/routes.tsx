@@ -1,6 +1,5 @@
 import CustomLayout from "@/components/layout/CustomLayout";
 import * as Pg from "@/pages";
-import { SidebarIcon } from "@/utils/constants/enums";
 
 export interface RouteProps {
   title?: string;
