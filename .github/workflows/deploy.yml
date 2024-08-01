@@ -17,6 +17,13 @@ jobs:
     concurrency:
       group: ${{ github.workflow }}
       cancel-in-progress: true
+    strategy:
+      fail-fast: false
+      matrix:
+        pnpm:
+          - 8.14.1
+        os:
+          - ubuntu-latest
     steps:
       - name: Use repository source
         uses: actions/checkout@v3
