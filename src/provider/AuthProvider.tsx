@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
 /**
@@ -8,9 +9,9 @@ const AuthProvider = ({ children }: { children: any }) => {
   const navigate = useNavigate();
   const location = useLocation();
 
-  // useEffect(() => {
-  //   if (location?.pathname === "/") navigate("/login");
-  // }, [location]);
+  useEffect(() => {
+    if (location?.pathname === "/") navigate("/login");
+  }, [location]);
   return children;
 };
 

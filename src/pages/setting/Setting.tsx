@@ -14,7 +14,7 @@ const SettingPage = () => {
 
   const onLogout = () => {
     setStore(undefined);
-    navigate("/");
+    navigate("/login");
   };
   return (
     <CP.Styled.Wrapper padding="--layout-padding">
