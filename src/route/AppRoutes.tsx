@@ -1,6 +1,6 @@
+import AuthProvider from "@/provider/AuthProvider";
 import { Route, Routes } from "react-router-dom";
 import routes from "./routes";
-import AuthProvider from "@/provider/AuthProvider";
 
 import * as Pg from "@/pages";
 
@@ -8,7 +8,7 @@ const AppRoutes = () => {
   return (
     <AuthProvider>
       <Routes>
-        <Route path="/login" element={<Pg.LoginPage />} />
+        <Route path="/" element={<Pg.LoginPage />} />
 
         {routes.map((route) => {
           return (

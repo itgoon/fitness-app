@@ -1,10 +1,8 @@
 import CP from "@/components";
 import Store from "@/store";
-import { useRecoilState } from "recoil";
-import { useNavigate } from "react-router-dom";
-import { useState } from "react";
-import Bridge from "@/utils/bridge";
 import { PrimaryColorList } from "@/utils/constants/dummyData";
+import { useNavigate } from "react-router-dom";
+import { useRecoilState } from "recoil";
 /**
  ****************************************
  * 트레이너 > 설정 화면
@@ -18,7 +16,7 @@ const SettingPage = () => {
 
   const onLogout = () => {
     setStore(undefined);
-    navigate("/login");
+    navigate("/");
   };
   return (
     <CP.Styled.Wrapper>
