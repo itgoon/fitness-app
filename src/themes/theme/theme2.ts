@@ -1,31 +1,3 @@
-// import { ThemeMode } from "@/utils/constants/enums";
-// import { ThemeOptions } from "@mui/material/styles";
-
-// const theme2LightColor: ThemeOptions["palette"] = {
-//   main: { name: "theme2", color: "#2196f3" },
-//   primary: {
-//     main: "#2196f3"
-//   },
-//   secondary: {
-//     main: "#ef9a9a"
-//   }
-// };
-
-// const theme2DarkColor: ThemeOptions["palette"] = {
-//   main:{ name : "theme2", color : '#1976d2'},
-//   primary: {
-//     main: "#1976d2"
-//   },
-//   secondary: {
-//     main: "#e57373"
-//   }
-// };
-
-// const theme2Color = (mode: string): ThemeOptions["palette"] =>
-//   mode === ThemeMode.LIGHT ? theme2LightColor : theme2DarkColor;
-
-// export default theme2Color;
-//material-ui
 import { ThemeMode } from "@/utils/constants/enums";
 import { ThemeOptions } from "@mui/material/styles";
 import { contrastText } from ".";

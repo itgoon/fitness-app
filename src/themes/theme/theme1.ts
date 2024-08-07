@@ -3,7 +3,7 @@ import { ThemeMode } from "@/utils/constants/enums";
 import { ThemeOptions } from "@mui/material/styles";
 import { contrastText } from ".";
 
-// ==============================|| PRESET THEME - DEFAULT ||============================== //
+// ==============================|| PRESET THEME - THEME1 - DEFAULT ||============================== //
 
 const theme1Color = (mode: ThemeMode): ThemeOptions["palette"] => {
   let primaryColors = [
