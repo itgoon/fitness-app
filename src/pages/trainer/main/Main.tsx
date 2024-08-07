@@ -109,23 +109,10 @@ const MainPage = () => {
                           style={{ minHeight: 40 }}
                         >
                           <div>
-                            <CP.Typography
-                              align="start"
-                              variant="b1"
-                              color="--light-color"
-                              wrap="wrap"
-                              inline
-                            >
+                            <CP.Typography variant="b1">
                               {item.time}
                             </CP.Typography>
-                            <CP.Typography
-                              align="start"
-                              variant="b2"
-                              color="--dark-color"
-                              wrap="wrap"
-                              inline
-                              style={{ marginLeft: "4px" }}
-                            >
+                            <CP.Typography variant="b2">
                               {item.content}
                             </CP.Typography>
                           </div>
@@ -198,13 +185,11 @@ const MainPage = () => {
                       padding={"12px"}
                     >
                       <CP.Styled.Flex justify="space-between">
-                        <CP.Typography variant="b2" wrap="wrap" align="start">
+                        <CP.Typography variant="b2">
                           {item.message}
                         </CP.Typography>
 
-                        <CP.Typography variant="c2" wrap="wrap" align="end">
-                          {item.time}
-                        </CP.Typography>
+                        <CP.Typography variant="c2">{item.time}</CP.Typography>
                       </CP.Styled.Flex>
                     </CP.Styled.Flex>
                   </CP.Card>
@@ -263,7 +248,6 @@ const MainPage = () => {
             <CP.Typography
               // style={{ width: "50%" }}
               variant="b2"
-              color={theme.palette.secondary}
               style={{ width: "50%" }}
             >
               {!isSigned ? "서명을 입력해주세요." : ""}

@@ -1,12 +1,11 @@
 import Store from "@/store";
-import { useMemo, useState } from "react";
+import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
-import CP from "..";
-import { Bottom } from "../styled";
-import { IconifyProps } from "../icon/Icon";
-import { TrainerMemberList } from "@/utils/constants/dummyData";
 import styled from "styled-components";
+import CP from "..";
+import { IconifyProps } from "../icon/Icon";
+import { Bottom } from "../styled";
 
 const TrainerMenuList: { icon: IconifyProps; path?: string }[] = [
   { icon: "solar:home-smile-angle-linear", path: "/trainer/main" },
@@ -98,23 +97,29 @@ const CustomHeader = () => {
         ></div>
       </div> */}
       <CP.Modal open={isQRCode} onClose={() => setIsQRCode(false)}>
-        <CP.ModalPrograss timeType="잔여 시간" timeUnit="초"></CP.ModalPrograss> 
+        <CP.ModalPrograss timeType="잔여 시간" timeUnit="초"></CP.ModalPrograss>
       </CP.Modal>
 
-      
-      <CP.Modal open={isMemberCard}
+      <CP.Modal
+        open={isMemberCard}
         onClose={() => {
           setIsMemberCard(false);
 
-          if(QRPrograss){
-            setTimeout(()=>{
-              setQRPrograss(false) 
-            }, 500)
+          if (QRPrograss) {
+            setTimeout(() => {
+              setQRPrograss(false);
+            }, 500);
           }
         }}
-        padding="0px">
-
-        {QRPrograss ? <CP.ModalPrograss onClick={() => setQRPrograss(false)} timeType="잔여 시간" timeUnit="초"></CP.ModalPrograss> : (
+        padding="0px"
+      >
+        {QRPrograss ? (
+          <CP.ModalPrograss
+            onClick={() => setQRPrograss(false)}
+            timeType="잔여 시간"
+            timeUnit="초"
+          ></CP.ModalPrograss>
+        ) : (
           <>
             <CardImageDiv
               style={{

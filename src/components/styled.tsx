@@ -1,4 +1,4 @@
-import { Drawer, Button as MuiButton } from "@mui/material";
+import { Drawer, Button as MuiButton, TypographyProps } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import Switch from "@mui/material/Switch";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
@@ -8,7 +8,6 @@ import { ButtonProps } from "./button";
 import { CardProps } from "./card/Card";
 import { InputProps } from "./input/Input";
 import { RadioProps } from "./radio/Radio";
-import { TypographyProps } from "./typography/Typography";
 
 type DivProps = {
   width?: string;
@@ -435,33 +434,6 @@ export const TagDiv = styled.div<{
   text-align: center;
 `;
 
-export const Typography = styled.h1<
-  Omit<TypographyProps, "style" | "children">
->`
-  text-transform: none;
-  display: ${({ inline }) => inline && "inline"};
-
-  margin: 0px;
-  font-weight: 400;
-  font-size: 12px;
-  white-space: ${({ wrap }) => (wrap ? wrap : "nowrap")};
-
-  ${({ variant }) =>
-    variant &&
-    css`
-      ${typoVariant(variant)}
-    `}
-
-  font-weight: ${({ weight }) => weight && weight};
-  opacity: ${({ opacity }) => opacity && opacity};
-  font-size: ${({ size }) => size && size};
-  text-align: ${({ align }) => align && align};
-
-  & > svg {
-    vertical-align: middle;
-  }
-`;
-
 export const CheckboxWrapper = styled.label<{
   color: string;
   opacity?: string;
@@ -601,7 +573,6 @@ export const StyleA = styled.a.attrs({ href: "javascript:void(0)" })<
 >`
   color: var(--primary-color);
   opacity: 0.8;
-  white-space: ${({ wrap }) => (wrap ? wrap : "nowrap")};
 
   ${({ variant }) =>
     variant &&
@@ -810,7 +781,7 @@ export const TabWrapper = styled.div`
     }
   }
 `;
-export const ExtraText = styled(Typography).attrs({
+export const ExtraText = styled.p.attrs({
   color: "--light-color",
   opacity: "0.6"
 })<{ error?: boolean }>`

@@ -1,5 +1,5 @@
-import CP from "@/components";
 import Store from "@/store";
+import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { Outlet, useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -15,18 +15,16 @@ const CustomLayout = () => {
 
   const [layout, setLayout] = useRecoilState(Store.Layout.layoutState);
   return (
-    <CP.Styled.Layout
-      // style={{ background: "linear-gradient(#e664651A, #9198e51A)" }}
-      style={{
-        background: theme?.palette?.bg?.main ? theme.palette.bg.main : ""
+    <Box
+      sx={{
+        width: "100%",
+        overflow: "auto"
       }}
-      isHeader={layout?.header ? layout.header : true}
-      isBottom={layout?.bottom ? layout.bottom : true}
     >
       {layout.header && <CustomHeader />}
       <Outlet />
       {layout.bottom && <CustomBottom />}
-    </CP.Styled.Layout>
+    </Box>
   );
 };
 

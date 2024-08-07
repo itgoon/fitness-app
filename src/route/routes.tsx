@@ -24,37 +24,37 @@ const routes: RouteProps[] = [
         path: "/trainer/main",
         element: Pg.Trainer.MainPage
       },
-      {
-        name: "trainer", //
-        path: "/trainer/alarm",
-        element: Pg.Trainer.AlarmPage
-      },
-      {
-        name: "trainer", //
-        path: "/trainer/member",
-        element: Pg.Trainer.MemberPage
-      },
-      {
-        name: "trainer", //
-        path: "/trainer/member/detail",
-        element: Pg.Trainer.MemberDetailPage
-      },
-      {
-        name: "trainer", //
-        path: "/trainer/schedule",
-        element: Pg.Trainer.SchedulePage
-      },
-      {
-        name: "trainer", //
-        path: "/trainer/contract/detail",
-        element: Pg.Trainer.ContractDetailPage
-      },
+      // {
+      //   name: "trainer", //
+      //   path: "/trainer/alarm",
+      //   element: Pg.Trainer.AlarmPage
+      // },
+      // {
+      //   name: "trainer", //
+      //   path: "/trainer/member",
+      //   element: Pg.Trainer.MemberPage
+      // },
+      // {
+      //   name: "trainer", //
+      //   path: "/trainer/member/detail",
+      //   element: Pg.Trainer.MemberDetailPage
+      // },
+      // {
+      //   name: "trainer", //
+      //   path: "/trainer/schedule",
+      //   element: Pg.Trainer.SchedulePage
+      // },
+      // {
+      //   name: "trainer", //
+      //   path: "/trainer/contract/detail",
+      //   element: Pg.Trainer.ContractDetailPage
+      // },
 
-      {
-        name: "trainer", //
-        path: "/trainer/contract",
-        element: Pg.Trainer.ContractPage
-      },
+      // {
+      //   name: "trainer", //
+      //   path: "/trainer/contract",
+      //   element: Pg.Trainer.ContractPage
+      // },
       {
         name: "trainer", //
         path: "/trainer/setting",
@@ -73,27 +73,27 @@ const routes: RouteProps[] = [
         name: "member", //캠퍼스명
         path: "/member/main",
         element: Pg.Member.MainPage
-      },
-      {
-        name: "member", //
-        path: "/member/alarm",
-        element: Pg.Trainer.AlarmPage
-      },
-      {
-        name: "member", //
-        path: "/member/schedule",
-        element: Pg.Member.SchedulePage
-      },
-      {
-        name: "member", //
-        path: "/member/contract",
-        element: Pg.Member.ContractPage
-      },
-      {
-        name: "member", //
-        path: "/member/contract/detail",
-        element: Pg.Member.ContractDetailPage
       }
+      // {
+      //   name: "member", //
+      //   path: "/member/alarm",
+      //   element: Pg.Trainer.AlarmPage
+      // },
+      // {
+      //   name: "member", //
+      //   path: "/member/schedule",
+      //   element: Pg.Member.SchedulePage
+      // },
+      // {
+      //   name: "member", //
+      //   path: "/member/contract",
+      //   element: Pg.Member.ContractPage
+      // },
+      // {
+      //   name: "member", //
+      //   path: "/member/contract/detail",
+      //   element: Pg.Member.ContractDetailPage
+      // }
     ]
   }
 ];

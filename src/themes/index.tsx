@@ -7,6 +7,7 @@ import {
   Theme,
   ThemeOptions,
   ThemeProvider,
+  TypographyVariantsOptions,
   createTheme
 } from "@mui/material/styles";
 // project import
@@ -17,7 +18,7 @@ import { ThemeMode } from "@/utils/constants/enums";
 import { useRecoilState } from "recoil";
 import { colorThemes, commonDarkColor, commonLightColor } from "./theme";
 // import CustomShadows from './shadows';
-// import Typography from './typography';
+import Typography from "./overrides/typography";
 
 // types
 export type ColorList =
@@ -44,6 +45,9 @@ export default function ThemeCustomization({
   const [mode] = useRecoilState(Store.Layout.modeState);
   const [color] = useRecoilState(Store.Layout.colorState);
 
+  const themeTypography: TypographyVariantsOptions =
+    useMemo<TypographyVariantsOptions>(() => Typography(), []);
+
   const commonTheme: ThemeOptions["palette"] = useMemo(
     () => (mode === ThemeMode.LIGHT ? commonLightColor : commonDarkColor),
     [mode]
@@ -66,9 +70,11 @@ export default function ThemeCustomization({
         mode: mode,
         ...commonTheme,
         ...colorTheme
-      }
+      },
+
+      typography: themeTypography
     }),
-    [mode, color]
+    [mode, color, themeTypography]
   );
 
   console.log({ themeOptions }, { mode });
