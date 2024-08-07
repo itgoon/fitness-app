@@ -1,16 +1,14 @@
-import { StylesProvider } from "@material-ui/core";
 import { SnackbarProvider } from "notistack";
+import { CookiesProvider } from "react-cookie";
 import { BrowserRouter } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import "./App.css";
-import WindowProvider from "./provider/WindowProvider";
-import LoadingProvider from "./provider/LoadingProvider";
-import { AppRoutes } from "./route";
-import GlobalStyles from "./styles/globalStyle";
-import "./styles/font/font.css";
-import { CookiesProvider } from "react-cookie";
-import Config from "env/Config";
 import CustomStyleProvider from "./provider/CustomStyleProvider";
+import LoadingProvider from "./provider/LoadingProvider";
+import WindowProvider from "./provider/WindowProvider";
+import { AppRoutes } from "./route";
+import "./styles/font/font.css";
+import ThemeCustomization from "./themes";
 
 declare global {
   interface Window {
@@ -21,7 +19,8 @@ declare global {
 function App() {
   return (
     <RecoilRoot>
-      <StylesProvider injectFirst>
+      <ThemeCustomization>
+        {/* <StylesProvider injectFirst> */}
         <CustomStyleProvider />
         <SnackbarProvider>
           <CookiesProvider>
@@ -32,7 +31,8 @@ function App() {
             </BrowserRouter>
           </CookiesProvider>
         </SnackbarProvider>
-      </StylesProvider>
+        {/* </StylesProvider> */}
+      </ThemeCustomization>
     </RecoilRoot>
   );
 }

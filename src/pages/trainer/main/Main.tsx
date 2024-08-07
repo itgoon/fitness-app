@@ -1,13 +1,14 @@
 import CP from "@/components";
+import { useSign } from "@/hooks/useSign";
 import {
   TrainerMainAlarm,
   TrainerMainTimeline
 } from "@/utils/constants/dummyData";
-import { useNavigate } from "react-router-dom";
 import { DateFormat, TimeFormat } from "@/utils/formatUtil";
+import { useTheme } from "@mui/material/styles";
 import dayjs from "dayjs";
-import { useEffect, useLayoutEffect, useState } from "react";
-import { useSign } from "@/hooks/useSign";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 /**
  ****************************************
@@ -26,6 +27,8 @@ const MonthList: { label: string; cnt: number }[] = [
 ];
 
 const MainPage = () => {
+  const theme = useTheme();
+
   const navigate = useNavigate();
   const [isMonthList, setIsMonthList] = useState(false);
   const [alarmList, setAlarmList] = useState<any[]>(TrainerMainAlarm);
@@ -258,9 +261,10 @@ const MainPage = () => {
           </CP.Styled.Div>
           <CP.Styled.Flex justify={!isSigned ? "space-between" : "flex-end"}>
             <CP.Typography
-              style={{ width: "50%" }}
+              // style={{ width: "50%" }}
               variant="b2"
-              color="--error-color"
+              color={theme.palette.secondary}
+              style={{ width: "50%" }}
             >
               {!isSigned ? "서명을 입력해주세요." : ""}
             </CP.Typography>

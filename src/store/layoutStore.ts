@@ -1,9 +1,17 @@
 import { ModalProps } from "@/components/modal/Modal";
 import { RouteProps } from "@/route/routes";
-import { atom } from "recoil";
+import { ThemeMode } from "@/utils/constants/enums";
 import { localStorageEffect } from "@/utils/localStorage";
+import { atom } from "recoil";
 
 export type CustomRouteProps = Omit<RouteProps, "element" | "children">;
+
+//dark / light
+export const modeState = atom<ThemeMode>({
+  key: `modeState`,
+  default: ThemeMode.LIGHT,
+  effects: [localStorageEffect("modeState")]
+});
 
 //primary color
 export const colorState = atom<string>({

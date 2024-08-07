@@ -1,5 +1,6 @@
-import * as Styled from "../styled";
+import { PaletteColor } from "@mui/material/styles";
 import { ReactNode } from "react";
+import * as Styled from "../styled";
 
 export type TypoVariantType =
   | "h1"
@@ -19,7 +20,7 @@ export type TypoVariantType =
 export interface TypographyProps {
   variant?: TypoVariantType;
   children: ReactNode;
-  color?: string;
+  color?: string | PaletteColor;
   weight?: string;
   size?: string;
   wrap?: string;
@@ -48,7 +49,7 @@ const Typography = ({
       inline={inline}
       className={className}
       variant={variant}
-      color={color}
+      // color={color}
       weight={weight}
       size={size}
       wrap={wrap}
