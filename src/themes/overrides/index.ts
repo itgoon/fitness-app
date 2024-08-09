@@ -49,7 +49,7 @@ import Button from "./Button";
 // import ToggleButton from './ToggleButton';
 // import Tooltip from './Tooltip';
 // import TreeItem from './TreeItem';
-// import Typography from "./Typography";
+// import Typography from "./typography";
 // import SelectInputBase from './Select';
 // import DialogAction from './DialogActions';
 // import CalendarCard from './CalendarCard';
