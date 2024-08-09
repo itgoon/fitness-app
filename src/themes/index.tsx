@@ -12,13 +12,13 @@ import {
 } from "@mui/material/styles";
 // project import
 // import useConfig from 'hooks/useConfig';
-import componentsOverride from "./overrides";
 import Store from "@/store";
 import { ThemeMode } from "@/utils/constants/enums";
 import { useRecoilState } from "recoil";
 import { colorThemes, commonDarkColor, commonLightColor } from "./theme";
-// import CustomShadows from './shadows';
 import Typography from "./typography";
+import ComponentsOverrides from "./overrides";
+// import CustomShadows from './shadows';
 
 // types
 export type ColorList =
@@ -79,7 +79,7 @@ export default function ThemeCustomization({
 
   console.log({ themeOptions }, { mode });
   const themes: Theme = createTheme(themeOptions);
-  themes.components = componentsOverride(themes);
+  themes.components = ComponentsOverrides(themes);
 
   return (
     <StyledEngineProvider injectFirst>
