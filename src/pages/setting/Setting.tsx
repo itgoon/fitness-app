@@ -16,13 +16,7 @@ const SettingPage = () => {
     setStore(undefined);
     navigate("/login");
   };
-  return (
-    <CP.Styled.Wrapper padding="--layout-padding">
-      <CP.Button type="text" onClick={onLogout}>
-        로그아웃
-      </CP.Button>
-    </CP.Styled.Wrapper>
-  );
+  return <>SettingPage</>;
 };
 
 export default SettingPage;

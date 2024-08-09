@@ -132,7 +132,6 @@ export const InputWrapper = styled.div<{
 `;
 
 export const Button = styled(MuiButton)<ButtonProps>`
-  height: ${({ size }) => (size === "lg" ? 40 : size === "md" ? 36 : 28)}px;
   background-color: ${({ defaultColor, disabled }) =>
     disabled
       ? "var(--disabled-color)"
