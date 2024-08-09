@@ -1,5 +1,5 @@
 import Avatar from "./avatar";
-import Button, { ButtonProps } from "./button";
+import Button from "./button";
 import Datepicker from "./datepicker";
 import Input from "./input";
 import Popover from "./popover";
@@ -71,7 +71,5 @@ const CP = {
   Calendar,
   Scheduler
 };
-
-export type { ButtonProps };
 
 export default CP;
