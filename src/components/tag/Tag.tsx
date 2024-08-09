@@ -1,6 +1,6 @@
+import { Box } from "@mui/material";
 import * as Styled from "../styled";
 import Typography from "../typography";
-import { TypoVariantType } from "../typography/Typography";
 
 export const StateTag = {
   Available: { label: "유효", color: "--danger-color" },
@@ -10,18 +10,16 @@ export const StateTag = {
 export interface TagProps {
   state: "Available" | "Expiration";
 }
-
+``;
 const Tag = ({ state }: TagProps) => {
   const content = StateTag[state];
 
   if (!content) return;
 
   return (
-    <Styled.Tag color={content.color}>
-      <Typography color="--white-color" weight="700">
-        {content.label}
-      </Typography>
-    </Styled.Tag>
+    <Box color={content.color}>
+      <Typography color="--white-color">{content.label}</Typography>
+    </Box>
   );
 };
 

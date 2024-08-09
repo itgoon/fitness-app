@@ -24,7 +24,6 @@ import MenuItem from "./menuItem";
 import TimerProgress from "./timerProgress";
 import Timepicker from "./timepicker";
 import Switch from "./switch";
-import Image from "./image";
 
 import Clock from "./clock";
 import Timeline from "./timeline";
@@ -64,7 +63,6 @@ const CP = {
   MenuItem,
   Switch,
   TimerProgress,
-  Image,
   ButtonRadio,
   Clock,
   Timeline,
