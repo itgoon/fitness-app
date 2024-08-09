@@ -62,10 +62,8 @@ const customVariant = () => {
   };
 };
 export default function Typography(): TypographyVariantsOptions {
-  // fontFamily: FontFamily
   return {
     htmlFontSize: 16,
-    // fontFamily,
     fontWeightLight: 300,
     fontWeightRegular: 400,
     fontWeightMedium: 500,

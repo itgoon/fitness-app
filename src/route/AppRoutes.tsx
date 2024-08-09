@@ -9,6 +9,7 @@ const AppRoutes = () => {
     <AuthProvider>
       <Routes>
         <Route path="/login" element={<Pg.LoginPage />} />
+        <Route path="/oauth" element={<Pg.LoginAuthPage />} />
 
         {routes.map((route) => {
           return (

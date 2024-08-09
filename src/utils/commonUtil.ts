@@ -1,4 +1,6 @@
+import { colorThemes } from "@/themes/theme";
 import { isAndroid, isIOS } from "react-device-detect";
+import { ThemeMode } from "./constants/enums";
 export const uuid = () => {
   return "xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx".replace(/[xy]/g, function (c) {
     const r = (Math.random() * 16) | 0;
@@ -63,4 +65,13 @@ export const checkJsonData = (data: { [key: string]: any }): boolean => {
   });
 
   return ret;
+};
+
+export const getColor = (color: string, mode: ThemeMode) => {
+  const themeList = colorThemes(mode);
+
+  if (!themeList) return;
+  const _theme = themeList?.find((item) => item?.main?.name === color);
+
+  return _theme ? _theme : themeList[0];
 };

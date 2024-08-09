@@ -16,8 +16,9 @@ import {
 import Store from "@/store";
 import { ThemeMode } from "@/utils/constants/enums";
 import { useRecoilState } from "recoil";
-import { colorThemes, commonDarkColor, commonLightColor } from "./theme";
+import { commonDarkColor, commonLightColor } from "./theme";
 // import CustomShadows from './shadows';
+import { getColor } from "@/utils/commonUtil";
 import Typography from "./overrides/typography";
 
 // types
@@ -52,17 +53,11 @@ export default function ThemeCustomization({
     () => (mode === ThemeMode.LIGHT ? commonLightColor : commonDarkColor),
     [mode]
   );
-  const colorTheme = useMemo(() => {
-    const themeList = colorThemes(mode);
-    console.log({ themeList }, { mode });
-    if (!themeList) return;
+  const colorTheme = useMemo(
+    () => getColor(color, mode),
 
-    console.log({ themeList }, { color });
-    const _theme = themeList?.find((item) => item?.main?.name === color);
-    console.log({ _theme });
-
-    return _theme ? _theme : themeList[0];
-  }, [color, mode]);
+    [color, mode]
+  );
 
   const themeOptions: ThemeOptions = useMemo(
     () => ({
