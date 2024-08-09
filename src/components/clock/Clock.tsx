@@ -1,7 +1,6 @@
-import { memo, useCallback, useEffect, useMemo, useState } from "react";
-import { Flex } from "../styled";
+import { memo, useEffect, useState } from "react";
 import dayjs from "dayjs";
-import Typography from "../typography";
+import { Box, Typography } from "@mui/material";
 
 const Clock = () => {
   const [time, setTime] = useState(dayjs());
@@ -14,12 +13,19 @@ const Clock = () => {
   }, []);
 
   return (
-    <Flex direction="column" gap={8} items="center">
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        gap: 8,
+        alignItems: "center"
+      }}
+    >
       <Typography variant="b1" color="--light-color">
         {dayjs().format("YYYY년 M월 D일 (ddd)")}
       </Typography>
       <Typography variant="h3">{time.format("HH:mm:ss")}</Typography>
-    </Flex>
+    </Box>
   );
 };
 
