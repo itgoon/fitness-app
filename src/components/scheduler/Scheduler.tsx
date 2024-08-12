@@ -1,30 +1,14 @@
 import { DateReqFormat } from "@/utils/formatUtil";
-
-import { DemoContainer, DemoItem } from "@mui/x-date-pickers/internals/demo";
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
 
 import "moment/locale/ko";
-import {
-  CalendarMonthWrapper,
-  CalendarWeekWrapper,
-  Div,
-  EmptyButton,
-  Flex
-} from "../styled";
-import Datepicker from "../datepicker";
+import { CalendarWeekWrapper, Flex } from "../styled";
 import Typography from "../typography";
 
-import { useEffect, useMemo, useRef, useState } from "react";
-import { ScheduleList } from "@/utils/constants";
-import { ViewState, EditingState } from "@devexpress/dx-react-scheduler";
+import { useMemo } from "react";
 import { Calendar as BigCalendar, momentLocalizer } from "react-big-calendar";
-import Modal from "../modal";
 import Icon from "../icon";
 import Button from "../button";
 
@@ -51,7 +35,7 @@ const localizer = momentLocalizer(moment);
 const Scheduler = ({
   date = moment().format(DateReqFormat),
   onChangeData,
-  list, 
+  list,
   onChange,
   onSelect,
   onCreate

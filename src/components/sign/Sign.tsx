@@ -1,10 +1,10 @@
 import { useWindowSize } from "@/hooks/useWindowSize";
+import { Box } from "@mui/material";
 import { RefObject } from "react";
 import {
   default as ReactSignatureCanvas,
   default as SignatureCanvas
 } from "react-signature-canvas";
-import styled from "styled-components";
 
 export interface SignProps {
   signRef: RefObject<ReactSignatureCanvas>;
@@ -38,7 +38,19 @@ const Sign = ({
       }}
     >
       <div style={style}></div>
-      {!isSigned && <CanvasPlaceholder>{placeholder}</CanvasPlaceholder>}
+      {!isSigned && (
+        <Box
+          sx={{
+            position: "absolute",
+            top: "50%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+            color: "#666"
+          }}
+        >
+          {placeholder}
+        </Box>
+      )}
       <SignatureCanvas
         ref={signRef}
         penColor="black"
@@ -60,11 +72,3 @@ const Sign = ({
 };
 
 export default Sign;
-
-const CanvasPlaceholder = styled.div`
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #666;
-`;

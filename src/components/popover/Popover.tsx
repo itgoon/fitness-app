@@ -1,14 +1,5 @@
-import { Drawer } from "@mui/material";
-import { ReactNode } from "react";
-import * as Styled from "../styled";
-
-export interface PopoverProps {
-  open: boolean;
-  onClose: (e: boolean) => void;
-  direction?: "right" | "left" | "bottom";
-  children?: ReactNode;
-  padding?: string;
-}
+import { Box, Drawer } from "@mui/material";
+import { PopoverProps } from "./types";
 
 const Popover = ({
   direction = "left",
@@ -18,14 +9,17 @@ const Popover = ({
   padding
 }: PopoverProps) => {
   return (
-    <Styled.Popover
+    <Drawer
+      sx={{
+        "& .MuiDrawer-paperAnchorBottom": { borderRadius: "15px 15px 0px 0px" }
+      }}
       anchor={direction}
       open={open}
       onClose={onClose}
       draggable={true}
     >
-      <Styled.Div padding={padding}> {children}</Styled.Div>
-    </Styled.Popover>
+      <Box padding={padding}> {children}</Box>
+    </Drawer>
   );
 };
 

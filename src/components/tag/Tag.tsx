@@ -1,5 +1,4 @@
 import { Box } from "@mui/material";
-import * as Styled from "../styled";
 import Typography from "../typography";
 
 export const StateTag = {

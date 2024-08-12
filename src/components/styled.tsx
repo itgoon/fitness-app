@@ -320,24 +320,6 @@ export const Datepicker = styled(DateCalendar)<{
   }
 `;
 
-export const TimePicker = styled(MultiSectionDigitalClock)`
-  .MuiList-root {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-
-    & > li {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-`;
-
-export const Popover = styled(Drawer)<{ anchor: "right" | "left" | "bottom" }>`
-  & .MuiDrawer-paperAnchorBottom {
-    border-radius: 15px 15px 0px 0px;
-  }
-`;
 export const CardWrapper = styled(MuiButton)<CardProps>`
   padding: 0px !important;
   width: ${({ width }) => (width ? width : "100%")};
@@ -861,51 +843,6 @@ export const AntSwitch = styled(Switch)(() => ({
     boxSizing: "border-box"
   }
 }));
-
-export const TimerProgressWrapper = styled(Flex)<any>`
-  flex-direction: column;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  & > div:first-child {
-    width: 80%;
-    // background : #f00;
-
-    & svg {
-      left: 0;
-
-      &:first-child > circle {
-        transition-delay: 1s !important;
-        transform: rotate(${({ rotate }) => rotate && rotate}deg, 55, 55);
-      }
-
-      &:nth-child(3) {
-        // background : #FF0;
-        transform: rotate(
-          ${({ circleRotate }) => circleRotate && circleRotate}deg
-        );
-
-        & > circle {
-          height: 16px;
-          width: 16px;
-          box-shadow: 0px 1px 4px #00091e4d;
-        }
-      }
-    }
-  }
-  & .workText {
-    width: 100%;
-    height: 50px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 65%;
-    & div > div {
-      padding: 0px 8px;
-      flex: 1;
-    }
-  }
-`;
 
 export const CalendarMonthWrapper = styled(Div)`
   .Mui-selected {
