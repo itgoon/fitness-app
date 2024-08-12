@@ -13,19 +13,13 @@ import {
 // project import
 // import useConfig from 'hooks/useConfig';
 import Store from "@/store";
+import { getColor } from "@/utils/commonUtil";
 import { ThemeMode } from "@/utils/constants/enums";
 import { useRecoilState } from "recoil";
-<<<<<<< HEAD
-import { commonDarkColor, commonLightColor } from "./theme";
-// import CustomShadows from './shadows';
-import { getColor } from "@/utils/commonUtil";
-import Typography from "./overrides/typography";
-=======
-import { colorThemes, commonDarkColor, commonLightColor } from "./theme";
-import Typography from "./typography";
 import ComponentsOverrides from "./overrides";
+import { commonDarkColor, commonLightColor } from "./theme";
+import Typography from "./typography";
 // import CustomShadows from './shadows';
->>>>>>> 2c73a94ce7dbc8ef996b13dac5302dcfb49a432f
 
 // types
 export type ColorList =
@@ -72,7 +66,6 @@ export default function ThemeCustomization({
         ...commonTheme,
         ...colorTheme
       },
-
       typography: themeTypography
     }),
     [mode, color, themeTypography]

@@ -1,7 +1,7 @@
 import * as MUIICON from "@mui/icons-material";
 // import * as SVGICON from 'assets/svgs';
-import { IconProps } from "./types";
 import { useMemo } from "react";
+import { IconProps } from "./types";
 
 // type AntDesignIconsType = keyof typeof ANTDICON;
 // type SVGIconsType = keyof typeof SVGICON;
@@ -11,7 +11,13 @@ export type IconsType = MUIIconsType;
 
 // ----------------------------------------------------------------------
 
-export default function Icon({ name, size = 24, color, onClick }: IconProps) {
+export default function Icon({
+  name,
+  size = 24,
+  color,
+  onClick,
+  style
+}: IconProps) {
   // const LibraryIcon = (ANTDICON as any)[name] || (MUIICON as any)[name];
   // const Component = LibraryIcon || (SVGICON as any)[name];
   const LibraryIcon = (MUIICON as any)[name];
@@ -35,5 +41,7 @@ export default function Icon({ name, size = 24, color, onClick }: IconProps) {
     [size, color, onClick]
   );
 
-  return LibraryIcon ? <LibraryIcon {...styleProps} onClick={onClick} /> : null;
+  return LibraryIcon ? (
+    <LibraryIcon {...styleProps} onClick={onClick} style={style} />
+  ) : null;
 }

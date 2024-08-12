@@ -29,36 +29,26 @@ const LoginPage = () => {
     const link = `https://kauth.kakao.com/oauth/authorize?client_id=${REST_API_KEY}&redirect_uri=${REDIRECT_URI}&response_type=code`;
 
     window.location.href = link;
-
-    // setStore({
-    //   name: "리온짐",
-    //   id: "1",
-    //   place: "경기도 부천시- ",
-    //   phone: "01071802384"
-    // });
-    // setUser({ name: "A", id: "a1", isTrainer: true });
-
-    // navigate("/trainer/main");
   };
 
   // //테스트용 애플 > 회원 로그인
-  // const onAppleLogin = () => {
-  //   setStore({
-  //     name: "리온짐",
-  //     id: "1",
-  //     place: "경기 부천시 원미구 신흥로 256 1층 ",
-  //     phone: "0507-1359-9775"
-  //   });
-  //   setUser({
-  //     name: "A회원",
-  //     id: "b1",
-  //     start_date: "2024.04.02",
-  //     end_date: "2025.04.02",
-  //     production: "30회 PT권",
-  //     isTrainer: false
-  //   });
-  //   navigate("/member/main");
-  // };
+  const onAppleLogin = () => {
+    setStore({
+      name: "리온짐",
+      id: "1",
+      place: "경기 부천시 원미구 신흥로 256 1층 ",
+      phone: "0507-1359-9775"
+    });
+    setUser({
+      name: "A회원",
+      id: "b1",
+      start_date: "2024.04.02",
+      end_date: "2025.04.02",
+      production: "30회 PT권",
+      isTrainer: false
+    });
+    navigate("/member/main");
+  };
 
   return (
     <>
@@ -97,6 +87,7 @@ const LoginPage = () => {
             </Button>
             <Button
               variant="outlined"
+              onClick={onAppleLogin}
               sx={{
                 boxShadow: "rgba(0, 0, 0, 0.2) 0px 1px 10px"
               }}

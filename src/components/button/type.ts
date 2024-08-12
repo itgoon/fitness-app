@@ -1,5 +1,3 @@
-import { ReactNode } from "react";
+import { ButtonProps as MuiButtonProps } from "@mui/material";
 
-export type ButtonProps = {
-  children: ReactNode;
-};
+export interface ButtonProps extends MuiButtonProps {}
