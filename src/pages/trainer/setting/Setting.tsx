@@ -116,6 +116,7 @@ const SettingPage = () => {
 
             <Box
               sx={{
+                display: "flex",
                 width: "auto",
                 overflow: "auto",
                 gap: 20,
