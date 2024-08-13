@@ -4,8 +4,6 @@ import Switch from "@mui/material/Switch";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { MultiSectionDigitalClock } from "@mui/x-date-pickers/MultiSectionDigitalClock";
 import styled, { css } from "styled-components";
-import { CardProps } from "./card/Card";
-import { InputProps } from "./input/Input";
 import { RadioProps } from "./radio/Radio";
 
 type DivProps = {
@@ -320,50 +318,6 @@ export const Datepicker = styled(DateCalendar)<{
   }
 `;
 
-export const CardWrapper = styled(MuiButton)<CardProps>`
-  padding: 0px !important;
-  width: ${({ width }) => (width ? width : "100%")};
-
-  height: ${({ height, size }) =>
-    height
-      ? height
-      : size && size === "md"
-        ? "88px"
-        : size === "lg"
-          ? "120px"
-          : size === "sm"
-            ? "72px"
-            : "auto"};
-  min-height: ${({ height, size }) =>
-    height
-      ? height
-      : size && size === "md"
-        ? "88px"
-        : size === "lg"
-          ? "120px"
-          : size === "sm"
-            ? "72px"
-            : "auto"};
-  border-radius: ${({ radius, size }) =>
-    radius ? radius : size && size === "lg" ? "4px" : "8px"} !important;
-
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 10px;
-
-  div > img:not(.MuiAvatar-fallback) {
-    border-radius: ${({ radius, size }) =>
-      radius ? radius : size && size === "lg" ? "4px" : "8px"};
-  }
-
-  & > div {
-    border-radius: inherit;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--white-color);
-  }
-`;
 export const CardWrapper2 = styled(Div)<{
   bg?: string;
   height?: string;
@@ -966,50 +920,6 @@ export const TimelineWrapper = styled.div`
   .MuiTimelineDot-filledSecondary {
     background-color: var(--secondary-color);
   }
-`;
-export const CarouselWrapper = styled.div`
-  padding: 0px;
-  border-radius: 4px;
-  height: 440px;
-  overflow: hidden;
-
-  .slick-list {
-    height: auto;
-
-    h1 {
-      display: inline-block;
-      padding: 15px 15px 15px 15px;
-    }
-
-    img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      align-items: center; // 이미지가 정방향이 아닐 경우 가운데 위치
-    }
-  }
-  .slick-track {
-    display: flex;
-    align-items: center;
-  }
-
-  .slick-dots {
-    > li {
-      margin: 0px;
-      width: 13px;
-      > button {
-        width: inherit;
-
-        &::before {
-          color: var(--primary-color);
-        }
-      }
-    }
-    .slick-active > button::before {
-      color: var(--primary-color);
-    }
-  }
-}
 `;
 
 export const FixCalendarMonthWrapper = styled(Div)`

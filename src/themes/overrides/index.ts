@@ -13,6 +13,7 @@ import { merge } from "lodash";
 // import Autocomplete from './Autocomplete';
 // import Badge from './Badge';
 import Button from "./Button";
+import Radio from "./Radio";
 // import ButtonBase from './ButtonBase';
 // import ButtonGroup from './ButtonGroup';
 // import CardContent from './CardContent';

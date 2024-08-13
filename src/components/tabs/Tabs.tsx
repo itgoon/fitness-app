@@ -1,5 +1,5 @@
-import { Tab, Tabs as MTabs, Box } from "@mui/material";
-import { CustomTabPanelProps, TabsProps } from "./type";
+import { Tab, Tabs as CustomTabs, Box } from "@mui/material";
+import { CustomTabPanelProps, TabsProps } from "./types";
 
 /**
  * ******************************************************
@@ -22,11 +22,11 @@ function TabPanel({ value, index, children, ...props }: CustomTabPanelProps) {
 export default function Tabs({ list, ...props }: TabsProps) {
   return (
     <Box>
-      <MTabs {...props}>
+      <CustomTabs {...props}>
         {list?.map((tab, key) => (
           <Tab label={tab.label} value={tab.value} key={key} />
         ))}
-      </MTabs>
+      </CustomTabs>
     </Box>
   );
 }

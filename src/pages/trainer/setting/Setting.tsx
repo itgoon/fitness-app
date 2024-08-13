@@ -2,6 +2,7 @@ import CP from "@/components";
 import Store from "@/store";
 import { colorThemes } from "@/themes/theme";
 import { ThemeMode } from "@/utils/constants/enums";
+import { Box } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 import { useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
@@ -24,7 +25,16 @@ const SettingPage = () => {
   };
   return (
     <CP.Styled.Wrapper>
-      <CP.CardWrap>
+      <Box
+        sx={{
+          width: 100 + "%",
+          height: 100 + "%",
+          display: "flex",
+          flexDirection: "column",
+          gap: 12,
+          padding: 16
+        }}
+      >
         <div>
           <CP.Styled.Flex
             padding={"16px"}
@@ -136,7 +146,7 @@ const SettingPage = () => {
         <CP.Button onClick={onLogout} style={{ textDecoration: "underline" }}>
           로그아웃
         </CP.Button>
-      </CP.CardWrap>
+      </Box>
     </CP.Styled.Wrapper>
   );
 };

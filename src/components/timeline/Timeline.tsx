@@ -27,8 +27,8 @@ const Timeline = ({ list = [] }: TimelineProps) => {
   return (
     <Box>
       <MuiTimeline
-        style={{ padding: "0px" }}
         sx={{
+          padding: "0px",
           [`& .${timelineItemClasses.root}:before`]: {
             flex: 0,
             padding: 0
