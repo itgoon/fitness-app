@@ -54,11 +54,6 @@ const CustomHeader = () => {
                         ? "--primary-color"
                         : "--dark-color"
                     }
-                    onClick={() => {
-                      item?.path !== undefined
-                        ? navigate(item.path)
-                        : setIsQRCode(true);
-                    }}
                   />
                 );
               })
@@ -72,11 +67,11 @@ const CustomHeader = () => {
                         ? "--primary-color"
                         : "--dark-color"
                     }
-                    onClick={() => {
-                      item?.path !== undefined
-                        ? navigate(item.path)
-                        : setIsMemberCard(true);
-                    }}
+                    // onClick={() => {
+                    //   item?.path !== undefined
+                    //     ? navigate(item.path)
+                    //     : setIsMemberCard(true);
+                    // }}
                   />
                 );
               })}
@@ -174,10 +169,7 @@ const CustomHeader = () => {
                 <Button
                   variant="text"
                   sx={{ width: "auto" }}
-                  onClick={() => {
-                    setIsMemberCard(false);
-                    navigate(`/member/contract/detail?name=${user?.name}`);
-                  }}
+                  onClick={() => setIsMemberCard(false)}
                 >
                   <CP.Typography>
                     계약

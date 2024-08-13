@@ -13,7 +13,6 @@ const Avatar = ({ src, size, variant = "circular" }: AvatarProps) => {
       src={src}
       sx={{ width: size ? size : 40, height: size ? size : 40 }}
       variant={variant}
-      style={{ borderRadius: "" }}
     />
   );
 };

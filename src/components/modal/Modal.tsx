@@ -29,7 +29,7 @@ export default function Modal({
                 <Typography variant="body1" children={title} />
               </DialogTitle>
               {content && (
-                <DialogContent sx={{ typography: "body2", padding: 0, pb: 2 }}>
+                <DialogContent sx={{ padding: 0, pb: 2 }}>
                   {" "}
                   {content}{" "}
                 </DialogContent>
