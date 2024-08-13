@@ -46,12 +46,14 @@ const Timepicker = ({
                 display: "felx",
                 height: "40px",
                 border: "1px solid var(--border-color)",
-                bg: disabled ? "--disabeld-color" : "--white-color",
+                backgroundColor: disabled
+                  ? "--disabeld-color"
+                  : "--white-color",
                 padding: "12px",
-                items: "center",
-                radius: "4px",
+                alignItems: "center",
+                boderRadius: "4px",
                 position: "relative",
-                justify: title ? "space-between" : "center"
+                justifyContent: title ? "space-between" : "center"
               }}
             >
               {title && (

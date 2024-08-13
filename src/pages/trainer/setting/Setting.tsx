@@ -42,8 +42,8 @@ const SettingPage = () => {
               padding: "16px",
               display: "flex",
               width: "100%",
-              items: "center",
-              direction: "column",
+              alignItems: "center",
+              flexDirection: "column",
               gap: 8
             }}
           >
@@ -78,9 +78,9 @@ const SettingPage = () => {
                       sx={{
                         width: "30px",
                         height: "30px",
-                        radius: "50px",
+                        borderRadius: "50px",
                         position: "relative",
-                        background: color,
+                        backgroundColor: color,
                         marginBottom: "5px"
                       }}
                     >
@@ -105,8 +105,8 @@ const SettingPage = () => {
               padding: "16px",
               display: "flex",
               width: "100%",
-              items: "center",
-              direction: "column",
+              alignItems: "center",
+              flexDirection: "column",
               gap: 8
             }}
           >
@@ -138,7 +138,7 @@ const SettingPage = () => {
                       sx={{
                         width: "30px",
                         height: "30px",
-                        radius: "50px",
+                        borderRadius: "50px",
                         position: "relative",
                         background: item,
                         border: `1px solid ${theme.palette.grey[300]}`,

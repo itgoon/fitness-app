@@ -62,7 +62,7 @@ const ModalPrograss = ({ onClick, timeType, timeUnit }: ModalPrograssProps) => {
             height: "6px !important",
             borderRadius: "5px !important",
             " .MuiLinearProgress-bar": {
-              background: "var(--primary-color)",
+              backgroundColor: "var(--primary-color)",
               height: "6px !important",
               borderRadius: "5px !important"
             }
