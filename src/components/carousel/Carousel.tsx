@@ -1,40 +1,47 @@
-import * as Styled from "../styled";
 import Typography from "../typography";
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-import Slider from 'react-slick';
-import CP from '..';
-import { DummyDataItem } from "@/pages/member/schedule/Schedule";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import Slider from "react-slick";
+import { Box } from "@mui/material";
 
 interface CarouselProps {
   newValueData: any;
-  openCarousel: any
+  openCarousel: any;
 }
 
-const Carousel = ({
-  newValueData,
-  openCarousel
-}: CarouselProps) => {
-  
+const Carousel = ({ newValueData, openCarousel }: CarouselProps) => {
   const settings = {
     arrows: false,
     dots: true,
     infinite: false,
-    initialSlide: openCarousel,    
-  }
+    initialSlide: openCarousel
+  };
 
   return (
-    <CP.Styled.CarouselWrapper>
-      <Slider {...settings} >
-        {newValueData?.diet && Object.values(newValueData?.diet || {}).map((item:any, idx) => (
-          <CP.Styled.Div key={idx}>
-            <CP.Styled.Typography variant="b1">{  ''}</CP.Styled.Typography>
-            <img src={item.imgPath ? `../../public/images/dummy/${item.imgPath}` : ''}/>
-          </CP.Styled.Div>
-        ))}
+    <Box
+      sx={{
+        padding: "0px",
+        borderRadius: "4px",
+        height: "440px",
+        overflow: "hidden"
+      }}
+    >
+      <Slider {...settings}>
+        {newValueData?.diet &&
+          Object.values(newValueData?.diet || {}).map((item: any, idx) => (
+            <Box key={idx}>
+              <Typography variant="b1">{""}</Typography>
+              <img
+                src={
+                  item.imgPath
+                    ? `../../public/images/dummy/${item.imgPath}`
+                    : ""
+                }
+              />
+            </Box>
+          ))}
       </Slider>
-    </CP.Styled.CarouselWrapper>
-
+    </Box>
   );
 };
 

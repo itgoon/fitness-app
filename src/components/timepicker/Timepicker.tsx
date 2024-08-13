@@ -1,27 +1,14 @@
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker as MuiDatepicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs, { Dayjs } from "dayjs";
-import * as Styled from "../styled";
-import { TimePicker as MuiTimePicker } from "@mui/x-date-pickers/TimePicker";
 import Typography from "../typography";
-import { DesktopTimePicker } from "@mui/x-date-pickers/DesktopTimePicker";
-import { ReactNode, useState } from "react";
-import { DateReqFormat, TimeFormat } from "@/utils/formatUtil";
+import { useState } from "react";
+import { TimeFormat } from "@/utils/formatUtil";
 import { MultiSectionDigitalClock } from "@mui/x-date-pickers/MultiSectionDigitalClock";
 import Popover from "../popover";
 import Button from "../button";
-export interface TimepickerProps {
-  value?: string; // YYYY-MM-DD
-  format?: string;
-  onChange?: (value: string) => void;
-  placeholder?: string;
-  children?: ReactNode;
-  title?: string;
-  width?: string;
-  disabled?: boolean;
-  isRef?: any;
-}
+import { TimepickerProps } from "./types";
+import { Box } from "@mui/material";
 
 const Timepicker = ({
   value,
@@ -44,8 +31,9 @@ const Timepicker = ({
   };
 
   return (
-    <Styled.Div width={width ? width : "100%"}>
-      <Styled.EmptyButton
+    <Box sx={{ width: "100%" }}>
+      <Button
+        variant="text"
         onClick={() => (disabled ? {} : setIsOpen(!isOpen))}
         ref={isRef}
       >
@@ -53,15 +41,18 @@ const Timepicker = ({
           children
         ) : (
           <>
-            <Styled.Flex
-              height={"40px"}
-              border="1px solid var(--border-color)"
-              bg={disabled ? "--disabeld-color" : "--white-color"}
-              padding="12px"
-              items="center"
-              radius="4px"
-              position="relative"
-              justify={title ? "space-between" : "center"}
+            <Box
+              sx={{
+                display: "felx",
+                height: "40px",
+                border: "1px solid var(--border-color)",
+                bg: disabled ? "--disabeld-color" : "--white-color",
+                padding: "12px",
+                items: "center",
+                radius: "4px",
+                position: "relative",
+                justify: title ? "space-between" : "center"
+              }}
             >
               {title && (
                 <Typography variant="b2" color="--light-color">
@@ -75,10 +66,10 @@ const Timepicker = ({
                   {placeholder ? placeholder : ""}
                 </Typography>
               )}
-            </Styled.Flex>
+            </Box>
           </>
         )}
-      </Styled.EmptyButton>
+      </Button>
 
       <Popover
         open={isOpen}
@@ -89,39 +80,39 @@ const Timepicker = ({
         direction="bottom"
       >
         <LocalizationProvider dateAdapter={AdapterDayjs}>
-          {/* <Styled.TimePicker /> */}
-
-          <Styled.Flex direction="column">
-            <Styled.Flex padding="8px 16px" justify="flex-end">
+          <Box sx={{ display: "flex", flexDirection: "column" }}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "space-between",
+                padding: "8px, 16px"
+              }}
+            >
               <Button
-                type="text"
                 onClick={() => {
                   if (changeValue) onChange(changeValue.format(format));
                   setIsOpen(false);
                 }}
               >
-                <Typography color="--primary-color" variant="h6" weight="500">
+                <Typography color="--primary-color" variant="h6">
                   완료
                 </Typography>
               </Button>
-            </Styled.Flex>
-            <Styled.TimePicker
-              value={
-                changeValue
-                // value
-                //   ? dayjs(
-                //       `${dayjs().format(DateReqFormat)} ${value}`,
-                //       `${DateReqFormat} ${format}`
-                //     )
-                //   : undefined
-              }
-              // onChange={(e) => onChange(dayjs(e).format(format))}
-              onChange={(e) => handleChange(e)}
+            </Box>
+            <MultiSectionDigitalClock
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                flex: 1,
+                li: { width: "100%", justifyContent: "center" }
+              }}
+              value={changeValue}
+              onChange={(e: Dayjs) => handleChange(e)}
             />
-          </Styled.Flex>
+          </Box>
         </LocalizationProvider>
       </Popover>
-    </Styled.Div>
+    </Box>
   );
 };
 

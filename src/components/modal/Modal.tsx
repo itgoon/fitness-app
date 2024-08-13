@@ -1,96 +1,60 @@
-import * as Styled from "../styled";
-import { DialogActions, DialogContent } from "@mui/material";
-import { ReactNode } from "react";
-import Typography from "../typography";
-import Button from "../button";
+import Button from "@mui/material/Button";
+import Dialog from "@mui/material/Dialog";
+import DialogActions from "@mui/material/DialogActions";
+import DialogContent from "@mui/material/DialogContent";
+import DialogTitle from "@mui/material/DialogTitle";
 
-type ModalTypes = "alert" | "confirm";
+import { Box, Typography } from "@mui/material";
+import { ModalProps } from "./types";
 
-export interface ModalProps {
-  open: boolean;
-  onClose: () => void;
-  className?: string;
-  contentClassName?: string;
-  bottom?: ReactNode;
-  close?: boolean;
-  style?: any;
-  children?: ReactNode;
-  type?: ModalTypes;
-  onOk?: () => void;
-  onCancel?: () => void;
-  okText?: string;
-  cancelText?: string;
-  title?: string;
-  padding?: string;
-  // okColor?: ButtonColor;
-}
+// ----------------------------------------------------------------------
 
-const Modal = ({
-  open,
-  onClose,
-  bottom,
-  children,
-  type,
-  onOk,
-  onCancel,
-  okText,
-  cancelText,
-  title,
-  padding
-}: ModalProps) => {
+export default function Modal({
+  maxWidth = "xs",
+  clickMsg,
+  closeMsg,
+  titIcon,
+  btnIcon,
+  ...props
+}: ModalProps) {
+  const { open, onClick, title, content, onClose } = { ...props };
   return (
-    <Styled.StyleDialog open={open} onClose={onClose}>
-
-      <DialogContent style={{ padding : padding ? padding : '24px 22px 28px 22px'}}>
-        {title && (
-          <Typography variant="h6" color="--white-color-999" wrap="wrap">
-            {title}
-          </Typography>
-        )} 
-        <div>
-          {typeof children === "string" ? (
-            <Typography variant="b2" color="--white-color-800" wrap="wrap">
-              {children}
-            </Typography>
-          ) : (
-            children
-          )}
-        </div>
-
-      </DialogContent>
-
-      {type ? (
-        <DialogActions>
-          {type === "confirm" ? (
-            <>
+    <>
+      <Dialog fullWidth maxWidth={maxWidth} onClose={onClose} open={open}>
+        <Box sx={{ padding: "32px 32px 24px 32px" }}>
+          <Box sx={{ display: "flex", gap: 2 }}>
+            {titIcon && titIcon}
+            <Box>
+              <DialogTitle sx={{ pb: 2 }}>
+                <Typography variant="body1" children={title} />
+              </DialogTitle>
+              {content && (
+                <DialogContent sx={{ typography: "body2", padding: 0, pb: 2 }}>
+                  {" "}
+                  {content}{" "}
+                </DialogContent>
+              )}
+            </Box>
+          </Box>
+          <DialogActions sx={{ pt: 1, pr: 0 }}>
+            <Button
+              onClick={onClose}
+              variant="outlined"
+              children={closeMsg}
+              size={"small"}
+            />
+            {clickMsg && (
               <Button
-                type="text"
-                onClick={onCancel ? () => onCancel() : () => onClose()}
-              >
-                {cancelText ? cancelText : "취소"}
-              </Button>
-              <Button
-                type="text"
-                onClick={onOk ? () => onOk() : () => onClose()}
-              >
-                {okText ? okText : "확인"}
-              </Button>
-            </>
-          ) : type === "alert" ? (
-            <Button type="text" onClick={onOk ? () => onOk() : () => onClose()}>
-              {okText ? okText : "확인"}
-            </Button>
-          ) : (
-            <></>
-          )}
-        </DialogActions>
-      ) : bottom ? (
-        bottom
-      ) : (
-        <></>
-      )}
-    </Styled.StyleDialog>
+                onClick={onClick}
+                variant="contained"
+                children={clickMsg}
+                size={"small"}
+                startIcon={btnIcon && btnIcon}
+              />
+            )}
+          </DialogActions>
+        </Box>
+      </Dialog>
+    </>
   );
-};
-
-export default Modal;
+}

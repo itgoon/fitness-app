@@ -1,12 +1,8 @@
-import { Drawer, Button as MuiButton, TypographyProps } from "@mui/material";
+import { Button as MuiButton, TypographyProps } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import Switch from "@mui/material/Switch";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-import { MultiSectionDigitalClock } from "@mui/x-date-pickers/MultiSectionDigitalClock";
 import styled, { css } from "styled-components";
-import { CardProps } from "./card/Card";
-import { InputProps } from "./input/Input";
-import { RadioProps } from "./radio/Radio";
 
 type DivProps = {
   width?: string;
@@ -51,13 +47,6 @@ export const Layout = styled(Div)<{ isHeader: boolean; isBottom: boolean }>`
   padding-top: ${({ isHeader }) => (isHeader ? headerHeight : 0)}px;
   padding-bottom: ${({ isBottom }) => (isBottom ? bottomHeight : 0)}px;
 `;
-export const Wrapper = styled(Div)<{ isTab?: boolean }>`
-  width: ${({ width }) => (width ? width : "100%")};
-  height: ${({ height }) => (height ? height : "100%")};
-  overflow: ${({ overflow }) => (overflow ? overflow : "hidden")};
-  color: var(--black-color);
-  padding: ${({ padding }) => (padding ? padding : "0px")};
-`;
 
 export const Flex = styled(Div)<{ wrap?: string }>`
   display: flex;
@@ -95,39 +84,6 @@ export const Bottom = styled(Flex)`
   box-shadow: 0px -2px 6px #0000000f;
 
   justify-content: ${({ justify }) => (justify ? justify : "space-between")};
-`;
-
-export const InputWrapper = styled.div<{
-  size: InputProps["size"];
-  style: any;
-}>`
-  width: 100%;
-
-  & .MuiInputBase-root {
-    width: inherit;
-    height: ${({ size }) => (size === "lg" ? 48 : size === "md" ? 40 : 24)}px;
-    background: var(--white-color);
-
-    & .MuiInputBase-input {
-      & :-internal-autofill-selected {
-        background-color: #ffa !important;
-      }
-
-      width: inherit;
-      height: inherit;
-      padding: ${({ size }) => (size === "lg" ? 16 : size === "md" ? 12 : 4)}px;
-      box-sizing: border-box;
-      background: var(--white-color) !important;
-      color-schema: var(--white-color) !important;
-      & ::focus {
-        background: transparent;
-      }
-
-      fieldset {
-        border-color: var(--border-color);
-      }
-    }
-  }
 `;
 
 export const Button = styled(MuiButton)<any>`
@@ -182,83 +138,6 @@ export const Button = styled(MuiButton)<any>`
         fill: ${props.color ? `var(${props.color})` : "var(--primary-color)"};
       }
     `};
-`;
-
-export const EmptyButton = styled.button`
-  width: 100%;
-  background: var(--transparent-color);
-  padding: 0px;
-
-  &:hover,
-  :active {
-    border-color: var(--transparent-color);
-  }
-  &:focus {
-    outline: 0px;
-  }
-`;
-
-export const RadioWrapper = styled.div`
-  width: 100%;
-  & .MuiFormGroup-root {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-
-    & label {
-      display: flex;
-    }
-  }
-`;
-export const RadioButtonWrapper = styled.div<{
-  wrap: "wrap" | "nowrap";
-  color: RadioProps["color"];
-}>`
-  display: inline-flex;
-  gap: 4px;
-  flex-wrap: ${({ wrap }) => wrap && wrap};
-  width: 100%;
-  & button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: 1px solid var(--light-color);
-    opacity: 0.6;
-    padding: 6px 15px;
-    box-sizing: border-box;
-    min-width: 64px;
-    width: auto;
-    background-color: var(--white-color);
-    border-radius: 50px;
-    white-space: nowrap;
-
-    height: 24px;
-
-    & h1 {
-      color: var(--light-color);
-    }
-  }
-  & .radio-checked {
-    opacity: 1;
-    border-color: ${({ color }) => color && `var(${color})`} !important;
-    background-color: ${({ color }) => color && `var(${color})`} !important;
-    padding: 6px 10px 6px 15px;
-
-    & h1 {
-      color: var(--white-color);
-    }
-  }
-
-  .radio-disabled {
-    background: var(--disabled-color);
-  }
-  svg {
-    padding-left: 7px;
-  }
 `;
 
 export const Datepicker = styled(DateCalendar)<{
@@ -320,68 +199,6 @@ export const Datepicker = styled(DateCalendar)<{
   }
 `;
 
-export const TimePicker = styled(MultiSectionDigitalClock)`
-  .MuiList-root {
-    display: flex;
-    flex-direction: column;
-    flex: 1;
-
-    & > li {
-      width: 100%;
-      justify-content: center;
-    }
-  }
-`;
-
-export const Popover = styled(Drawer)<{ anchor: "right" | "left" | "bottom" }>`
-  & .MuiDrawer-paperAnchorBottom {
-    border-radius: 15px 15px 0px 0px;
-  }
-`;
-export const CardWrapper = styled(MuiButton)<CardProps>`
-  padding: 0px !important;
-  width: ${({ width }) => (width ? width : "100%")};
-
-  height: ${({ height, size }) =>
-    height
-      ? height
-      : size && size === "md"
-        ? "88px"
-        : size === "lg"
-          ? "120px"
-          : size === "sm"
-            ? "72px"
-            : "auto"};
-  min-height: ${({ height, size }) =>
-    height
-      ? height
-      : size && size === "md"
-        ? "88px"
-        : size === "lg"
-          ? "120px"
-          : size === "sm"
-            ? "72px"
-            : "auto"};
-  border-radius: ${({ radius, size }) =>
-    radius ? radius : size && size === "lg" ? "4px" : "8px"} !important;
-
-  box-shadow: rgba(0, 0, 0, 0.1) 0px 1px 10px;
-
-  div > img:not(.MuiAvatar-fallback) {
-    border-radius: ${({ radius, size }) =>
-      radius ? radius : size && size === "lg" ? "4px" : "8px"};
-  }
-
-  & > div {
-    border-radius: inherit;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    background: var(--white-color);
-  }
-`;
 export const CardWrapper2 = styled(Div)<{
   bg?: string;
   height?: string;
@@ -791,25 +608,6 @@ export const ExtraText = styled.p.attrs({
   opacity: ${({ error }) => error && 1};
 `;
 
-export const SelectWrapper = styled(Div)`
-  padding: 15px 0px;
-
-  button {
-    background-color: var(--transparent-color);
-    color: var(--dark-color);
-    width: 100%;
-    text-align: left;
-    border-radius: 0px;
-    height: 48px;
-  }
-
-  .select-selected {
-    background-color: var(--dark-color);
-    color: var(--white-color);
-    font-weight: 700;
-  }
-`;
-
 export const AntSwitch = styled(Switch)(() => ({
   width: 20,
   height: 16,
@@ -862,51 +660,6 @@ export const AntSwitch = styled(Switch)(() => ({
   }
 }));
 
-export const TimerProgressWrapper = styled(Flex)<any>`
-  flex-direction: column;
-  position: relative;
-  justify-content: center;
-  align-items: center;
-  & > div:first-child {
-    width: 80%;
-    // background : #f00;
-
-    & svg {
-      left: 0;
-
-      &:first-child > circle {
-        transition-delay: 1s !important;
-        transform: rotate(${({ rotate }) => rotate && rotate}deg, 55, 55);
-      }
-
-      &:nth-child(3) {
-        // background : #FF0;
-        transform: rotate(
-          ${({ circleRotate }) => circleRotate && circleRotate}deg
-        );
-
-        & > circle {
-          height: 16px;
-          width: 16px;
-          box-shadow: 0px 1px 4px #00091e4d;
-        }
-      }
-    }
-  }
-  & .workText {
-    width: 100%;
-    height: 50px;
-    position: absolute;
-    transform: translate(-50%, -50%);
-    left: 50%;
-    top: 65%;
-    & div > div {
-      padding: 0px 8px;
-      flex: 1;
-    }
-  }
-`;
-
 export const CalendarMonthWrapper = styled(Div)`
   .Mui-selected {
     background-color: var(--primary-color) !important;
@@ -921,19 +674,6 @@ export const CalendarMonthWrapper = styled(Div)`
   }
 `;
 
-export const QRProgressWrapper = styled(Div)`
-  .MuiLinearProgress-root {
-    background-color: var(--primary-bg-color) !important;
-    height: 6px !important;
-    border-radius: 5px !important;
-  }
-
-  .MuiLinearProgress-bar {
-    background: var(--primary-color);
-    height: 6px !important;
-    border-radius: 5px !important;
-  }
-`;
 export const CalendarWeekWrapper = styled(Flex)`
   height: calc(100% - 100px);
 
@@ -1010,15 +750,6 @@ export const CalendarWeekWrapper = styled(Flex)`
   }
 `;
 
-export const BubbleButton = styled(EmptyButton)<{ width?: string }>`
-  width: ${({ width }) => (width ? width : "auto")};
-  aspect-ratio: 1 / 1;
-  padding: 10px;
-  border-radius: 50px;
-  box-shadow: 0px 1px 10px #0000000f;
-  margin: 10px;
-`;
-
 export const TimelineWrapper = styled.div`
   .MuiTimelineDot-filledGrey {
     background-color: var(--disabled-color);
@@ -1029,50 +760,6 @@ export const TimelineWrapper = styled.div`
   .MuiTimelineDot-filledSecondary {
     background-color: var(--secondary-color);
   }
-`;
-export const CarouselWrapper = styled.div`
-  padding: 0px;
-  border-radius: 4px;
-  height: 440px;
-  overflow: hidden;
-
-  .slick-list {
-    height: auto;
-
-    h1 {
-      display: inline-block;
-      padding: 15px 15px 15px 15px;
-    }
-
-    img {
-      width: 100%;
-      height: 350px;
-      object-fit: cover;
-      align-items: center; // 이미지가 정방향이 아닐 경우 가운데 위치
-    }
-  }
-  .slick-track {
-    display: flex;
-    align-items: center;
-  }
-
-  .slick-dots {
-    > li {
-      margin: 0px;
-      width: 13px;
-      > button {
-        width: inherit;
-
-        &::before {
-          color: var(--primary-color);
-        }
-      }
-    }
-    .slick-active > button::before {
-      color: var(--primary-color);
-    }
-  }
-}
 `;
 
 export const FixCalendarMonthWrapper = styled(Div)`

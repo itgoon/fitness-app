@@ -1,44 +1,32 @@
-import { ReactNode } from "react";
-import * as Styled from "../styled";
-import Typography from "../typography";
-import { TypoVariantType } from "../typography/Typography";
+import { Tab, Tabs as CustomTabs, Box } from "@mui/material";
+import { CustomTabPanelProps, TabsProps } from "./type";
 
-import { Tabs as MuiTabs, Tab as MuiTab } from "@mui/material";
-import { TabWrapper } from "../styled";
-
-export interface TabsProps {
-  list: { label: string; value: any }[];
-  height?: string;
-  active?: any;
-  onChange?: (idx: any) => void;
-  textVariant?: TypoVariantType;
-  style?: any;
-}
-
-const Tabs = ({ list, textVariant, onChange, active }: TabsProps) => {
+/**
+ * ******************************************************
+ * Tabs 버튼 기능
+ * ******************************************************
+ */
+function TabPanel({ value, index, children, ...props }: CustomTabPanelProps) {
   return (
-    <TabWrapper>
-      <MuiTabs
-        value={active ? list?.findIndex((item) => item.value === active) : ""}
-        // value={isActive}
-        indicatorColor="primary"
-        textColor="inherit"
-        variant="fullWidth"
-        aria-label="full width tabs example"
-      >
-        {list?.map((item) => (
-          <MuiTab
-            onClick={() => (onChange ? onChange(item.value) : {})}
-            label={
-              <Typography variant={textVariant ? textVariant : "h6"}>
-                {item.label}
-              </Typography>
-            }
-          />
-        ))}
-      </MuiTabs>
-    </TabWrapper>
+    <div
+      role="tabpanel"
+      hidden={value !== index}
+      id={`simple-tabpanel-${index}`}
+      aria-labelledby={`simple-tab-${index}`}
+      {...props}
+    >
+      {value === index && <Box sx={{ p: 3 }}>{children}</Box>}
+    </div>
   );
-};
-
-export default Tabs;
+}
+export default function Tabs({ list, ...props }: TabsProps) {
+  return (
+    <Box>
+      <CustomTabs {...props}>
+        {list?.map((tab, key) => (
+          <Tab label={tab.label} value={tab.value} key={key} />
+        ))}
+      </CustomTabs>
+    </Box>
+  );
+}

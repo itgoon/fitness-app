@@ -13,6 +13,7 @@ import { merge } from "lodash";
 // import Autocomplete from './Autocomplete';
 // import Badge from './Badge';
 import Button from "./Button";
+import Radio from "./Radio";
 // import ButtonBase from './ButtonBase';
 // import ButtonGroup from './ButtonGroup';
 // import CardContent from './CardContent';
@@ -24,7 +25,7 @@ import Button from "./Button";
 // import Fab from './Fab';
 // import FormHelperText from './FormHelperText';
 // import IconButton from './IconButton';
-// import InputBase from './InputBase';
+import InputBase from "./InputBase";
 // import InputLabel from './InputLabel';
 // import LinearProgress from './LinearProgress';
 // import Link from './Link';
@@ -35,7 +36,6 @@ import Button from "./Button";
 // import Pagination from './Pagination';
 // import PaginationItem from './PaginationItem';
 // import Popover from './Popover';
-// import Radio from './Radio';
 // import Slider from './Slider';
 // import Switch from './Switch';
 // import Tab from './Tab';
@@ -65,7 +65,7 @@ export default function ComponentsOverrides(theme: Theme) {
     // AlertTitle(),
     // Autocomplete(),
     // Badge(theme),
-    Button(theme)
+    Button(theme),
     // ButtonBase(),
     // ButtonGroup(),
     // CardContent(),
@@ -78,7 +78,7 @@ export default function ComponentsOverrides(theme: Theme) {
     // Fab(theme),
     // FormHelperText(),
     // IconButton(theme),
-    // InputBase(theme),
+    InputBase(theme),
     // InputLabel(theme),
     // LinearProgress(),
     // Link(),
@@ -89,7 +89,7 @@ export default function ComponentsOverrides(theme: Theme) {
     // Pagination(),
     // PaginationItem(theme),
     // Popover(theme),
-    // Radio(theme),
+    Radio()
     // Slider(theme),
     // Switch(theme),
     // Tab(theme),

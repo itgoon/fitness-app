@@ -1,16 +1,9 @@
-import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker as MuiDatepicker } from "@mui/x-date-pickers/DatePicker";
-import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
-import dayjs from "dayjs";
-import * as Styled from "../styled";
 import Typography from "../typography";
-import { ReactNode, useEffect, useState } from "react";
-import Input from "../input";
-import { Div } from "../styled";
+import { ReactNode, useState } from "react";
 import Icon from "../icon";
 import Menu from "@mui/material/Menu";
 import { MenuItem as MuiMenuItem } from "@mui/material";
-import { DateFormat } from "@/utils/formatUtil";
+import Button from "../button";
 
 export interface MenuItemProps {
   children?: ReactNode;
@@ -38,20 +31,19 @@ const MenuItem = ({ children, list, onClick, isOpen }: MenuItemProps) => {
 
   return (
     <>
-      <Styled.EmptyButton style={{ width: "auto" }} onClick={handleClick}>
+      <Button variant="text" sx={{ width: "auto" }} onClick={handleClick}>
         {children ? (
           children
         ) : (
           <Icon name="MoreVert" size={14} color="--light-color" />
         )}
-      </Styled.EmptyButton>
+      </Button>
 
       <Menu
         id="basic-menu"
         anchorEl={anchorEl}
         open={open}
         onClose={() => setOpen(false)}
-        // onClose={() => (isOpen ? isOpen(false) : {})}
         MenuListProps={{
           "aria-labelledby": "basic-button",
           style: { padding: "0px" }

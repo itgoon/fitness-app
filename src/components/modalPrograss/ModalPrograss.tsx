@@ -1,8 +1,9 @@
-import * as Styled from "../styled";
 import LinearProgress from "@mui/material/LinearProgress";
-import CP from "..";
 import { useEffect, useState } from "react";
-import { QRProgressWrapper } from "../styled";
+import Button from "../button";
+import Typography from "../typography";
+import Icon from "../icon";
+import { Box } from "@mui/material";
 
 export interface ModalPrograssProps {
   onClick?: () => void;
@@ -49,28 +50,32 @@ const ModalPrograss = ({ onClick, timeType, timeUnit }: ModalPrograssProps) => {
   };
 
   return (
-    <QRProgressWrapper>
-      <CP.Styled.Div padding="15px">
-        <CP.Styled.EmptyButton onClick={onClick}>
-          <CP.Icon
-            name="material-symbols-light:qr-code-2"
-            color="--dark-color"
-            style={{ width: "100%", height: "100%", aspectRatio: "1/1" }}
-          />
-        </CP.Styled.EmptyButton>
+    <Box>
+      <Box sx={{ padding: "15px" }}>
+        <Button onClick={onClick}>
+          <Icon name="QrCode2" />
+        </Button>
 
-        <LinearProgress variant="determinate" value={resetTestprogress()} />
+        <LinearProgress
+          sx={{
+            backgroundColor: "var(--primary-bg-color) !important",
+            height: "6px !important",
+            borderRadius: "5px !important",
+            " .MuiLinearProgress-bar": {
+              background: "var(--primary-color)",
+              height: "6px !important",
+              borderRadius: "5px !important"
+            }
+          }}
+          variant="determinate"
+          value={resetTestprogress()}
+        />
 
-        <CP.Styled.Typography
-          variant="b1"
-          weight="normal"
-          inline={false}
-          style={{ marginTop: "5px" }}
-        >
+        <Typography sx={{ marginTop: "5px" }}>
           {`${timeType} : ${resetTestTimer()} ${timeUnit}`}
-        </CP.Styled.Typography>
-      </CP.Styled.Div>
-    </QRProgressWrapper>
+        </Typography>
+      </Box>
+    </Box>
   );
 };
 

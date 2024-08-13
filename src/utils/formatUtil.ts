@@ -1,5 +1,7 @@
 import dayjs from "dayjs";
-
+import "dayjs/locale/ko";
+import duration from "dayjs/plugin/duration";
+dayjs.extend(duration);
 export const TimeFormat = "HH:mm";
 
 export const DateFormat = "YYYY.MM.DD";

@@ -1,18 +1,24 @@
-import { DateReqFormat } from "@/utils/formatUtil";
-import dayjs, { Dayjs } from "dayjs";
+// mui import
+import { PickersDay, PickersDayProps } from "@mui/x-date-pickers";
+import { Badge } from "@material-ui/core";
+import { Box } from "@mui/material";
+
+// mui calendar
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-import "react-big-calendar/lib/css/react-big-calendar.css";
-import "moment/locale/ko";
-import { FixCalendarMonthWrapper} from "../styled";
-import Icon from '../icon'
-import { PickersDay, PickersDayProps } from "@mui/x-date-pickers";
-import { Badge, } from "@material-ui/core";
-import 'dayjs/locale/ko';
-import { useEffect, useRef } from "react";
 
-export interface CalendarProps { 
+// calendar util
+import "moment/locale/ko";
+import "react-big-calendar/lib/css/react-big-calendar.css";
+import "dayjs/locale/ko";
+import { DateReqFormat } from "@/utils/formatUtil";
+import dayjs, { Dayjs } from "dayjs";
+
+// component import
+import Icon from "../icon";
+
+export interface CalendarProps {
   value?: string;
   format?: string;
   onChange?: (newValue: string) => void;
@@ -35,7 +41,7 @@ const Calendar = ({
     { date: "2024-05-11", type: "IN" },
     { date: "2024-05-14", type: "PT" },
     { date: "2024-05-16", type: "PT" },
-    { date: "2024-05-17", type: "PT" },
+    { date: "2024-05-17", type: "PT" }
   ];
 
   const eventDay = (props: PickersDayProps<Dayjs>) => {
@@ -51,7 +57,7 @@ const Calendar = ({
         badgeContent={
           ev ? (
             <Icon
-              name="material-symbols:circle"
+              name="ArrowCircleLeftSharp"
               size={7}
               color={ev.type === "PT" ? "--red-color" : "--blue-color"}
             />
@@ -67,8 +73,12 @@ const Calendar = ({
     );
   };
   return (
-    <FixCalendarMonthWrapper>
-      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko" dateFormats={{monthAndYear : 'YYYY년 M월'}}>
+    <Box>
+      <LocalizationProvider
+        dateAdapter={AdapterDayjs}
+        adapterLocale="ko"
+        dateFormats={{ monthAndYear: "YYYY년 M월" }}
+      >
         <DateCalendar
           value={value ? dayjs(value, format) : dayjs()}
           onChange={(newValue) =>
@@ -77,16 +87,15 @@ const Calendar = ({
           sx={style}
           minDate={min ? dayjs(min, format) : undefined}
           maxDate={max ? dayjs(max, format) : undefined}
-          
           slots={{
             day: eventDay
           }}
           slotProps={{
-            day: {eventList} as any,
+            day: { eventList } as any
           }}
         />
       </LocalizationProvider>
-    </FixCalendarMonthWrapper>
+    </Box>
   );
 };
 

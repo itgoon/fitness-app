@@ -1,7 +1,4 @@
-import * as Styled from "../styled";
-import { AntSwitch } from "../styled";
-import Typography from "../typography";
-import { TypoVariantType } from "../typography/Typography";
+import { Switch as MuiSwitch } from "@mui/material";
 
 interface SwitchProps {
   checked?: boolean;
@@ -9,8 +6,8 @@ interface SwitchProps {
 }
 const Switch = ({ checked, onChange }: SwitchProps) => {
   return (
-    <AntSwitch
-      defaultChecked
+    <MuiSwitch
+      // defaultChecked
       inputProps={{ "aria-label": "ant design" }}
       checked={checked}
       onChange={onChange ? onChange : () => {}}

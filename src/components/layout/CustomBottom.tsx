@@ -4,20 +4,22 @@ import { useLocation, useNavigate } from "react-router-dom";
 import { useRecoilState } from "recoil";
 import styled from "styled-components";
 import CP from "..";
-import { IconifyProps } from "../icon/Icon";
 import { Bottom } from "../styled";
+import { IconsType } from "../icon/Icon";
+import { Box } from "@mui/material";
+import Button from "../button";
 
-const TrainerMenuList: { icon: IconifyProps; path?: string }[] = [
-  { icon: "solar:home-smile-angle-linear", path: "/trainer/main" },
-  { icon: "fluent:person-16-regular", path: "/trainer/member" },
-  { icon: "material-symbols-light:qr-code-2" },
-  { icon: "solar:calendar-line-duotone", path: "/trainer/schedule" },
-  { icon: "clarity:contract-line", path: "/trainer/contract" }
+const TrainerMenuList: { icon: IconsType; path?: string }[] = [
+  { icon: "Home", path: "/trainer/main" },
+  { icon: "Person", path: "/trainer/member" },
+  { icon: "QrCode2" },
+  { icon: "CalendarMonth", path: "/trainer/schedule" },
+  { icon: "ContactPage", path: "/trainer/contract" }
 ];
-const MemberMenuList: { icon: IconifyProps; path?: string }[] = [
-  { icon: "solar:home-smile-angle-linear", path: "/member/main" },
-  { icon: "solar:card-2-broken" },
-  { icon: "solar:calendar-line-duotone", path: "/member/schedule" }
+const MemberMenuList: { icon: IconsType; path?: string }[] = [
+  { icon: "Home", path: "/member/main" },
+  { icon: "CreditCardOff" },
+  { icon: "CalendarMonth", path: "/member/schedule" }
 ];
 const CustomHeader = () => {
   const navigate = useNavigate();
@@ -33,7 +35,14 @@ const CustomHeader = () => {
   return (
     <>
       <Bottom>
-        <CP.Styled.Flex width="100%" justify="space-between" items="center">
+        <Box
+          sx={{
+            width: "100%",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center"
+          }}
+        >
           {user?.isTrainer
             ? TrainerMenuList.map((item) => {
                 return (
@@ -71,31 +80,9 @@ const CustomHeader = () => {
                   />
                 );
               })}
-        </CP.Styled.Flex>
+        </Box>
       </Bottom>
-      {/* <div
-        style={{
-          width: "90px",
-          height: "90px",
-          borderRadius: "50px",
-          position: "absolute",
-          left: "50%",
-          bottom: "0px",
-          transform: "translate(-50%, 0%)",
-          display: "flex",
-          justifyContent: "center"
-        }}
-      >
-        <div
-          style={{
-            width: "80%",
-            height: "80%",
-            borderRadius: "50px",
-            boxShadow: "0px -2px 6px #0000000f",
-            background: "#ffffff 0% 0% no-repeat padding-box"
-          }}
-        ></div>
-      </div> */}
+
       <CP.Modal open={isQRCode} onClose={() => setIsQRCode(false)}>
         <CP.ModalPrograss timeType="잔여 시간" timeUnit="초"></CP.ModalPrograss>
       </CP.Modal>
@@ -111,7 +98,6 @@ const CustomHeader = () => {
             }, 500);
           }
         }}
-        padding="0px"
       >
         {QRPrograss ? (
           <CP.ModalPrograss
@@ -121,45 +107,47 @@ const CustomHeader = () => {
           ></CP.ModalPrograss>
         ) : (
           <>
-            <CardImageDiv
-              style={{
-                backgroundImage: "url(/images/dummy/gym_img.jpeg)",
-                backgroundSize: "cover"
+            <Box
+              sx={{
+                backgroundSize: "cover",
+                position: "relative",
+                isolation: "isolate",
+                height: "230px",
+                padding: "20px 15px 20px 15px",
+                "& ::before": {
+                  position: "absolute",
+                  content: "",
+                  top: "0px",
+                  left: "0px",
+                  width: "100%",
+                  zIndex: "-1",
+                  height: "100%",
+                  inset: "0",
+                  background: "#fff",
+                  opacity: "0.1",
+                  backgroundImage: "url(/images/dummy/gym_img.jpeg)",
+                  backgroundSize: "cover"
+                }
               }}
-              height="230px"
-              padding={"20px 15px 20px 15px"}
             >
-              <CP.Styled.Div style={{ display: "flex" }} padding={"0 0 15px 0"}>
-                <CP.Styled.Flex
-                  direction="column"
-                  gap={8}
+              <Box sx={{ display: "flex", padding: "0 0 15px 0" }}>
+                <Box
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    gap: 8,
+                    padding: "10px 0 0 0"
+                  }}
                   flex={3}
-                  padding={"10px 0 0 0"}
                 >
-                  <CP.Typography variant="h3" wrap="wrap">
-                    {store?.name}
-                  </CP.Typography>
-                  <CP.Typography
-                    variant="b1"
-                    color="--white-color-999"
-                    wrap="wrap"
-                  >
-                    {store?.place}
-                  </CP.Typography>
-                  <CP.Typography
-                    variant="b1"
-                    color="--white-color-999"
-                    wrap="wrap"
-                  >
-                    {store?.phone}
-                  </CP.Typography>
-                </CP.Styled.Flex>
-
-                <CP.Styled.Div flex={1}>
-                  <CP.Styled.EmptyButton onClick={() => setQRPrograss(true)}>
+                  <CP.Typography>{store?.name}</CP.Typography>
+                  <CP.Typography>{store?.place}</CP.Typography>
+                  <CP.Typography>{store?.phone}</CP.Typography>
+                </Box>
+                <Box flex={1}>
+                  <Button variant="text" onClick={() => setQRPrograss(true)}>
                     <CP.Icon
-                      name="material-symbols-light:qr-code-2"
-                      color="--dark-color"
+                      name="QrCode2"
                       style={{
                         width: "100%",
                         height: "100%",
@@ -168,47 +156,41 @@ const CustomHeader = () => {
                         borderRadius: "4px"
                       }}
                     />
-                  </CP.Styled.EmptyButton>
-                </CP.Styled.Div>
-              </CP.Styled.Div>
-            </CardImageDiv>
+                  </Button>
+                </Box>
+              </Box>
+            </Box>
 
-            <CP.Styled.Div padding={"16px"}>
-              <CP.Styled.Div
-                style={{ display: "flex", justifyContent: "space-between" }}
-                padding="0 0 20px 0"
+            <Box padding={"16px"}>
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "space-between",
+                  padding: "0 0 20px 0"
+                }}
               >
                 <CP.Typography variant="h4">{user?.name}</CP.Typography>
 
-                <CP.Styled.EmptyButton
-                  style={{ width: "auto" }}
+                <Button
+                  variant="text"
+                  sx={{ width: "auto" }}
                   onClick={() => {
                     setIsMemberCard(false);
                     navigate(`/member/contract/detail?name=${user?.name}`);
                   }}
                 >
-                  {/* padding 값 변경하기  */}
-                  <CP.Typography
-                    variant="b1"
-                    color={"--primary-color"}
-                    align={"end"}
-                  >
+                  <CP.Typography>
                     계약
-                    <CP.Icon
-                      name="icon-park-outline:right"
-                      color={"--primary-color"}
-                    />
+                    <CP.Icon name={"East"} color={"--primary-color"} />
                   </CP.Typography>
-                </CP.Styled.EmptyButton>
-              </CP.Styled.Div>
+                </Button>
+              </Box>
 
-              <CP.Typography variant="h6" weight="normal">
+              <CP.Typography>
                 {user?.start_date} ~ {user?.end_date}
               </CP.Typography>
-              <CP.Typography variant="h6" weight="normal">
-                {user?.production}
-              </CP.Typography>
-            </CP.Styled.Div>
+              <CP.Typography>{user?.production}</CP.Typography>
+            </Box>
           </>
         )}
       </CP.Modal>

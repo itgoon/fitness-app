@@ -1,31 +1,14 @@
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import { DatePicker as MuiDatepicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import dayjs, { Dayjs } from "dayjs";
-import * as Styled from "../styled";
 import Typography from "../typography";
-import { ReactNode, useEffect, useMemo, useState } from "react";
-import Input from "../input";
-import { Div } from "../styled";
+import { ReactNode, useMemo, useState } from "react";
 import Icon from "../icon";
 import { DateFormat } from "@/utils/formatUtil";
-import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-import Popover from "../popover";
-import { PickersCalendarHeader } from "@mui/x-date-pickers/PickersCalendarHeader";
+import { Box, Button } from "@mui/material";
+import { DatePickerProps } from "./types";
 
 dayjs.locale("ko");
-
-export interface DatePickerProps {
-  value?: string; // YYYY-MM-DD
-  format?: string;
-  onChange?: (value: string) => void;
-  children?: ReactNode;
-  placeholder?: string;
-  maxDate?: Dayjs;
-  isRef?: any;
-  title?: string;
-  subTitle?: string;
-}
 
 const Datepicker = ({
   value,
@@ -51,21 +34,24 @@ const Datepicker = ({
   }, [value, isOpen, document]);
 
   return (
-    <Styled.Div>
-      <Styled.EmptyButton onClick={() => setIsOpen(!isOpen)}>
+    <Box>
+      <Button onClick={() => setIsOpen(!isOpen)}>
         {children ? (
           children
         ) : (
-          <Styled.EmptyButton ref={isRef}>
-            <Styled.Flex
-              height={"40px"}
-              border="1px solid var(--border-color)"
-              bg="--white-color"
-              padding="12px"
-              items="center"
-              radius="4px"
-              position="relative"
-              justify="space-between"
+          <Button ref={isRef}>
+            <Box
+              sx={{
+                display: "flex",
+                justifyContent: "center",
+                height: 40,
+                border: "1px solid var(--border-color)",
+                backgroundColor: "var(--white-color)",
+                padding: "12px",
+                alignItems: "center",
+                radius: 4,
+                position: "relative"
+              }}
             >
               <Typography
                 variant="b2"
@@ -83,48 +69,50 @@ const Datepicker = ({
               </Typography>
 
               <Icon name="CalendarMonth" size={20} color="--light-color" />
-            </Styled.Flex>
-          </Styled.EmptyButton>
+            </Box>
+          </Button>
         )}
-      </Styled.EmptyButton>
-      <Popover
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-        direction="bottom"
+      </Button>
+
+      <Box
+        sx={{
+          display: "flex",
+          flexDirection: "column",
+          gap: 8,
+          padding: "30px 16px 16px 16px"
+        }}
       >
-        <Styled.Flex direction="column" gap={8} padding={"30px 16px 16px 16px"}>
-          {title && <Typography variant="h4">{title}</Typography>}
-          {subTitle && (
-            <Typography variant="b2" color="--light-color">
-              {subTitle}
-            </Typography>
+        {title && <Typography variant="h4">{title}</Typography>}
+        {subTitle && (
+          <Typography variant="b2" color="--light-color">
+            {subTitle}
+          </Typography>
+        )}
+        <LocalizationProvider
+          dateAdapter={AdapterDayjs}
+          dateFormats={{ monthAndYear: "YYYY년 MM월" }}
+        >
+          {value === "" ? (
+            <Datepicker
+              onChange={(e) => {
+                onChange(dayjs(e).format(format));
+                setIsOpen(false);
+              }}
+              maxDate={maxDate ? maxDate : undefined}
+            />
+          ) : (
+            <Datepicker
+              value={dayjs(value, format)}
+              onChange={(e) => {
+                onChange(dayjs(e).format(format));
+                setIsOpen(false);
+              }}
+              maxDate={maxDate ? maxDate : undefined}
+            />
           )}
-          <LocalizationProvider
-            dateAdapter={AdapterDayjs}
-            dateFormats={{ monthAndYear: "YYYY년 MM월" }}
-          >
-            {value === "" ? (
-              <Styled.Datepicker
-                onChange={(e) => {
-                  onChange(dayjs(e).format(format));
-                  setIsOpen(false);
-                }}
-                maxDate={maxDate ? maxDate : undefined}
-              />
-            ) : (
-              <Styled.Datepicker
-                value={dayjs(value, format)}
-                onChange={(e) => {
-                  onChange(dayjs(e).format(format));
-                  setIsOpen(false);
-                }}
-                maxDate={maxDate ? maxDate : undefined}
-              />
-            )}
-          </LocalizationProvider>
-        </Styled.Flex>
-      </Popover>
-    </Styled.Div>
+        </LocalizationProvider>
+      </Box>
+    </Box>
   );
 };
 
