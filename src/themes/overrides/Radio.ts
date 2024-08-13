@@ -1,5 +1,4 @@
 // material-ui
-import { Theme } from "@mui/material/styles";
 import { CheckboxProps } from "@mui/material/Checkbox";
 
 // ==============================|| RADIO - COLORS ||============================== //
@@ -45,7 +44,7 @@ function radioStyle(size?: CheckboxProps["size"]) {
 
 // ==============================|| OVERRIDES - CHECKBOX ||============================== //
 
-export default function Radio(theme: Theme) {
+export default function Radio() {
   return {
     MuiRadio: {
       defaultProps: {

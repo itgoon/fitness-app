@@ -47,13 +47,6 @@ export const Layout = styled(Div)<{ isHeader: boolean; isBottom: boolean }>`
   padding-top: ${({ isHeader }) => (isHeader ? headerHeight : 0)}px;
   padding-bottom: ${({ isBottom }) => (isBottom ? bottomHeight : 0)}px;
 `;
-export const Wrapper = styled(Div)<{ isTab?: boolean }>`
-  width: ${({ width }) => (width ? width : "100%")};
-  height: ${({ height }) => (height ? height : "100%")};
-  overflow: ${({ overflow }) => (overflow ? overflow : "hidden")};
-  color: var(--black-color);
-  padding: ${({ padding }) => (padding ? padding : "0px")};
-`;
 
 export const Flex = styled(Div)<{ wrap?: string }>`
   display: flex;
@@ -145,36 +138,6 @@ export const Button = styled(MuiButton)<any>`
         fill: ${props.color ? `var(${props.color})` : "var(--primary-color)"};
       }
     `};
-`;
-
-export const EmptyButton = styled.button`
-  width: 100%;
-  background: var(--transparent-color);
-  padding: 0px;
-
-  &:hover,
-  :active {
-    border-color: var(--transparent-color);
-  }
-  &:focus {
-    outline: 0px;
-  }
-`;
-
-export const RadioWrapper = styled.div`
-  width: 100%;
-  & .MuiFormGroup-root {
-    display: flex;
-    width: 100%;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-
-    & label {
-      display: flex;
-    }
-  }
 `;
 
 export const Datepicker = styled(DateCalendar)<{
@@ -645,25 +608,6 @@ export const ExtraText = styled.p.attrs({
   opacity: ${({ error }) => error && 1};
 `;
 
-export const SelectWrapper = styled(Div)`
-  padding: 15px 0px;
-
-  button {
-    background-color: var(--transparent-color);
-    color: var(--dark-color);
-    width: 100%;
-    text-align: left;
-    border-radius: 0px;
-    height: 48px;
-  }
-
-  .select-selected {
-    background-color: var(--dark-color);
-    color: var(--white-color);
-    font-weight: 700;
-  }
-`;
-
 export const AntSwitch = styled(Switch)(() => ({
   width: 20,
   height: 16,
@@ -804,15 +748,6 @@ export const CalendarWeekWrapper = styled(Flex)`
   .rbc-current-time-indicator {
     display: none;
   }
-`;
-
-export const BubbleButton = styled(EmptyButton)<{ width?: string }>`
-  width: ${({ width }) => (width ? width : "auto")};
-  aspect-ratio: 1 / 1;
-  padding: 10px;
-  border-radius: 50px;
-  box-shadow: 0px 1px 10px #0000000f;
-  margin: 10px;
 `;
 
 export const TimelineWrapper = styled.div`

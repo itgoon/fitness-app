@@ -1,11 +1,6 @@
 import * as Styled from "../styled";
-import {
-  ButtonProps as ButtonCompProps,
-  Button as MuiButton
-} from "@mui/material";
 import { ReactNode } from "react";
 import Typography from "../typography";
-import { TypoVariantType } from "../typography/Typography";
 import { Div, Flex } from "../styled";
 import styled from "styled-components";
 
@@ -64,14 +59,7 @@ const Menu = ({
         </Flex>
         {subTitle && (
           <Div>
-            <Typography
-              wrap="wrap"
-              variant="b3"
-              color="--dark-color"
-              opacity="0.6"
-            >
-              {subTitle}
-            </Typography>
+            <Typography>{subTitle}</Typography>
           </Div>
         )}
       </Div>

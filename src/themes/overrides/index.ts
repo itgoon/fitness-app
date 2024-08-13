@@ -89,7 +89,7 @@ export default function ComponentsOverrides(theme: Theme) {
     // Pagination(),
     // PaginationItem(theme),
     // Popover(theme),
-    Radio(theme)
+    Radio()
     // Slider(theme),
     // Switch(theme),
     // Tab(theme),

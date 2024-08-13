@@ -1,4 +1,5 @@
 import CP from "@/components";
+import Button from "@/components/button";
 import Store from "@/store";
 import { colorThemes } from "@/themes/theme";
 import { ThemeMode } from "@/utils/constants/enums";
@@ -24,7 +25,7 @@ const SettingPage = () => {
     navigate("/login");
   };
   return (
-    <CP.Styled.Wrapper>
+    <Box>
       <Box
         sx={{
           width: 100 + "%",
@@ -36,20 +37,27 @@ const SettingPage = () => {
         }}
       >
         <div>
-          <CP.Styled.Flex
-            padding={"16px"}
-            width="100%"
-            items="center"
-            direction="column"
-            gap={8}
+          <Box
+            sx={{
+              padding: "16px",
+              display: "flex",
+              width: "100%",
+              items: "center",
+              direction: "column",
+              gap: 8
+            }}
           >
-            <CP.Styled.Flex>
+            <Box sx={{ display: "flex" }}>
               <CP.Typography variant="h6">테마 색상 선택</CP.Typography>
-            </CP.Styled.Flex>
-            <CP.Styled.Flex
-              width="auto"
-              overflow="auto"
-              gap={20}
+            </Box>
+            <Box
+              sx={{
+                width: "auto",
+                display: "flex",
+                overflow: "auto",
+                gap: 20
+              }}
+
               // justify="space-between"
             >
               {colorThemes(mode).map((item) => {
@@ -58,19 +66,23 @@ const SettingPage = () => {
                 const color = item.main.color;
                 const name = item.main.name;
                 return (
-                  <CP.Styled.EmptyButton
+                  <Button
+                    variant="text"
                     onClick={() => {
                       console.log("eccc");
                       setColor(name);
                     }}
                     style={{ width: "auto" }}
                   >
-                    <CP.Styled.Div
-                      width="30px"
-                      height="30px"
-                      radius="50px"
-                      position="relative"
-                      style={{ background: color, marginBottom: "5px" }}
+                    <Box
+                      sx={{
+                        width: "30px",
+                        height: "30px",
+                        radius: "50px",
+                        position: "relative",
+                        background: color,
+                        marginBottom: "5px"
+                      }}
                     >
                       {/* {color === item && (
                         <CP.Icon
@@ -79,31 +91,34 @@ const SettingPage = () => {
                           style={{ position: "absolute", top: 5, right: 5 }}
                         />
                       )} */}
-                    </CP.Styled.Div>
-                  </CP.Styled.EmptyButton>
+                    </Box>
+                  </Button>
                 );
               })}
-            </CP.Styled.Flex>
-          </CP.Styled.Flex>
+            </Box>
+          </Box>
         </div>
 
         <div>
-          <CP.Styled.Flex
-            padding={"16px"}
-            width="100%"
-            items="center"
-            direction="column"
-            gap={8}
+          <Box
+            sx={{
+              padding: "16px",
+              display: "flex",
+              width: "100%",
+              items: "center",
+              direction: "column",
+              gap: 8
+            }}
           >
-            <CP.Styled.Flex>
+            <Box sx={{ display: "flex" }}>
               <CP.Typography variant="h6">모드 선택</CP.Typography>
-            </CP.Styled.Flex>
+            </Box>
 
-            <CP.Styled.Flex
-              width="auto"
-              overflow="auto"
-              gap={20}
-              style={{
+            <Box
+              sx={{
+                width: "auto",
+                overflow: "auto",
+                gap: 20,
                 padding: "6px 20px",
                 borderRadius: "10px"
               }}
@@ -111,19 +126,20 @@ const SettingPage = () => {
             >
               {[theme.palette.common.white, theme.palette.common.black].map(
                 (item, index) => (
-                  <CP.Styled.EmptyButton
+                  <Button
+                    variant="text"
                     onClick={() => {
                       console.log("e");
                       setMode(index === 0 ? ThemeMode.LIGHT : ThemeMode.DARK);
                     }}
                     style={{ width: "auto" }}
                   >
-                    <CP.Styled.Div
-                      width="30px"
-                      height="30px"
-                      radius="50px"
-                      position="relative"
-                      style={{
+                    <Box
+                      sx={{
+                        width: "30px",
+                        height: "30px",
+                        radius: "50px",
+                        position: "relative",
                         background: item,
                         border: `1px solid ${theme.palette.grey[300]}`,
                         marginBottom: "5px"
@@ -135,19 +151,19 @@ const SettingPage = () => {
                         color={theme.palette.grey[400]}
                         style={{ position: "absolute", top: 5, right: 5 }}
                       /> */}
-                    </CP.Styled.Div>
-                  </CP.Styled.EmptyButton>
+                    </Box>
+                  </Button>
                 )
               )}
-            </CP.Styled.Flex>
-          </CP.Styled.Flex>
+            </Box>
+          </Box>
         </div>
 
         <CP.Button onClick={onLogout} style={{ textDecoration: "underline" }}>
           로그아웃
         </CP.Button>
       </Box>
-    </CP.Styled.Wrapper>
+    </Box>
   );
 };
 

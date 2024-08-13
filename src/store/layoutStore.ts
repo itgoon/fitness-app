@@ -1,4 +1,4 @@
-import { ModalProps } from "@/components/modal/Modal";
+import { ModalProps } from "@/components/modal/types";
 import { RouteProps } from "@/route/routes";
 import { ThemeMode } from "@/utils/constants/enums";
 import { localStorageEffect } from "@/utils/localStorage";
@@ -25,8 +25,14 @@ export const windowState = atom<ModalProps>({
   key: `modal_${new Date().getTime()}`,
   default: {
     open: false,
+    title: "",
+    content: undefined,
     onClose: () => {},
-    children: ""
+    onClick: () => {},
+    clickMsg: "",
+    closeMsg: "",
+    btnIcon: undefined,
+    titIcon: undefined
   },
   effects: [localStorageEffect("modalState")]
 });

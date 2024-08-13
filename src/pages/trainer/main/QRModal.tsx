@@ -20,7 +20,7 @@ const QRCodeModal = ({ isQRCode, onDismiss }: Props) => {
       }
     >
       <CP.Icon
-        name="material-symbols-light:qr-code-2"
+        name="QrCode2"
         color="--dark-color"
         style={{ width: "100%", height: "100%", aspectRatio: "1/1" }}
       />

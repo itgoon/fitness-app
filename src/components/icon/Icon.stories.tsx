@@ -14,6 +14,6 @@ type Story = StoryObj<typeof Component>;
 
 export const Icon: Story = {
   args: {
-    name: "app-logo"
+    name: "Apple"
   }
 };
