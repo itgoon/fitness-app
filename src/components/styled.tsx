@@ -4,7 +4,6 @@ import Switch from "@mui/material/Switch";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
 import { MultiSectionDigitalClock } from "@mui/x-date-pickers/MultiSectionDigitalClock";
 import styled, { css } from "styled-components";
-import { ButtonProps } from "./button";
 import { CardProps } from "./card/Card";
 import { InputProps } from "./input/Input";
 import { RadioProps } from "./radio/Radio";
@@ -131,7 +130,7 @@ export const InputWrapper = styled.div<{
   }
 `;
 
-export const Button = styled(MuiButton)<ButtonProps>`
+export const Button = styled(MuiButton)<any>`
   height: ${({ size }) => (size === "lg" ? 40 : size === "md" ? 36 : 28)}px;
   background-color: ${({ defaultColor, disabled }) =>
     disabled

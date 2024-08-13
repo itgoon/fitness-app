@@ -22,8 +22,8 @@ const CustomHeader = () => {
           <Box display={"flex"} justifyContent={"space-between"} width={"24px"}>
             {location?.pathname.indexOf("/main") === -1 && (
               <CP.Icon
-                name="humbleicons:arrow-go-back"
-                color="--dark-color"
+                // name="humbleicons:arrow-go-back"
+                name="ArrowBackIos"
                 onClick={() => navigate(-1)}
               />
             )}
@@ -33,12 +33,9 @@ const CustomHeader = () => {
           </CP.Typography>
           <Box width={"24px"}>
             <CP.Icon
-              name="icon-park-outline:setting-two"
-              color={
-                location?.pathname === "/trainer/setting"
-                  ? "--primary-color"
-                  : "--dark-color"
-              }
+              name="Settings"
+              // name="icon-park-outline:setting-two"
+
               onClick={() => navigate("/trainer/setting")}
             />
           </Box>
