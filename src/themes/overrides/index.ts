@@ -25,7 +25,7 @@ import Radio from "./Radio";
 // import Fab from './Fab';
 // import FormHelperText from './FormHelperText';
 // import IconButton from './IconButton';
-// import InputBase from './InputBase';
+import InputBase from "./InputBase";
 // import InputLabel from './InputLabel';
 // import LinearProgress from './LinearProgress';
 // import Link from './Link';
@@ -78,7 +78,7 @@ export default function ComponentsOverrides(theme: Theme) {
     // Fab(theme),
     // FormHelperText(),
     // IconButton(theme),
-    // InputBase(theme),
+    InputBase(theme),
     // InputLabel(theme),
     // LinearProgress(),
     // Link(),

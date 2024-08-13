@@ -1,10 +1,8 @@
-import { Drawer, Button as MuiButton, TypographyProps } from "@mui/material";
+import { Button as MuiButton, TypographyProps } from "@mui/material";
 import Dialog from "@mui/material/Dialog";
 import Switch from "@mui/material/Switch";
 import { DateCalendar } from "@mui/x-date-pickers/DateCalendar";
-import { MultiSectionDigitalClock } from "@mui/x-date-pickers/MultiSectionDigitalClock";
 import styled, { css } from "styled-components";
-import { RadioProps } from "./radio/Radio";
 
 type DivProps = {
   width?: string;
@@ -95,39 +93,6 @@ export const Bottom = styled(Flex)`
   justify-content: ${({ justify }) => (justify ? justify : "space-between")};
 `;
 
-export const InputWrapper = styled.div<{
-  size: InputProps["size"];
-  style: any;
-}>`
-  width: 100%;
-
-  & .MuiInputBase-root {
-    width: inherit;
-    height: ${({ size }) => (size === "lg" ? 48 : size === "md" ? 40 : 24)}px;
-    background: var(--white-color);
-
-    & .MuiInputBase-input {
-      & :-internal-autofill-selected {
-        background-color: #ffa !important;
-      }
-
-      width: inherit;
-      height: inherit;
-      padding: ${({ size }) => (size === "lg" ? 16 : size === "md" ? 12 : 4)}px;
-      box-sizing: border-box;
-      background: var(--white-color) !important;
-      color-schema: var(--white-color) !important;
-      & ::focus {
-        background: transparent;
-      }
-
-      fieldset {
-        border-color: var(--border-color);
-      }
-    }
-  }
-`;
-
 export const Button = styled(MuiButton)<any>`
   height: ${({ size }) => (size === "lg" ? 40 : size === "md" ? 36 : 28)}px;
   background-color: ${({ defaultColor, disabled }) =>
@@ -209,53 +174,6 @@ export const RadioWrapper = styled.div`
     & label {
       display: flex;
     }
-  }
-`;
-export const RadioButtonWrapper = styled.div<{
-  wrap: "wrap" | "nowrap";
-  color: RadioProps["color"];
-}>`
-  display: inline-flex;
-  gap: 4px;
-  flex-wrap: ${({ wrap }) => wrap && wrap};
-  width: 100%;
-  & button {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-    border: 1px solid var(--light-color);
-    opacity: 0.6;
-    padding: 6px 15px;
-    box-sizing: border-box;
-    min-width: 64px;
-    width: auto;
-    background-color: var(--white-color);
-    border-radius: 50px;
-    white-space: nowrap;
-
-    height: 24px;
-
-    & h1 {
-      color: var(--light-color);
-    }
-  }
-  & .radio-checked {
-    opacity: 1;
-    border-color: ${({ color }) => color && `var(${color})`} !important;
-    background-color: ${({ color }) => color && `var(${color})`} !important;
-    padding: 6px 10px 6px 15px;
-
-    & h1 {
-      color: var(--white-color);
-    }
-  }
-
-  .radio-disabled {
-    background: var(--disabled-color);
-  }
-  svg {
-    padding-left: 7px;
   }
 `;
 
@@ -812,19 +730,6 @@ export const CalendarMonthWrapper = styled(Div)`
   }
 `;
 
-export const QRProgressWrapper = styled(Div)`
-  .MuiLinearProgress-root {
-    background-color: var(--primary-bg-color) !important;
-    height: 6px !important;
-    border-radius: 5px !important;
-  }
-
-  .MuiLinearProgress-bar {
-    background: var(--primary-color);
-    height: 6px !important;
-    border-radius: 5px !important;
-  }
-`;
 export const CalendarWeekWrapper = styled(Flex)`
   height: calc(100% - 100px);
 

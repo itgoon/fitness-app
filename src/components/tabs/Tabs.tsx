@@ -1,5 +1,5 @@
 import { Tab, Tabs as CustomTabs, Box } from "@mui/material";
-import { CustomTabPanelProps, TabsProps } from "./types";
+import { CustomTabPanelProps, TabsProps } from "./type";
 
 /**
  * ******************************************************

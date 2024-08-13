@@ -2,15 +2,13 @@ import { DateReqFormat } from "@/utils/formatUtil";
 import moment from "moment";
 import "react-big-calendar/lib/css/react-big-calendar.css";
 import withDragAndDrop from "react-big-calendar/lib/addons/dragAndDrop";
-
 import "moment/locale/ko";
-import { CalendarWeekWrapper, Flex } from "../styled";
 import Typography from "../typography";
-
 import { useMemo } from "react";
 import { Calendar as BigCalendar, momentLocalizer } from "react-big-calendar";
 import Icon from "../icon";
 import Button from "../button";
+import { Box } from "@mui/material";
 
 interface ListProps {
   id: string;
@@ -64,35 +62,45 @@ const Scheduler = ({
   }, [date]);
   return (
     <>
-      <Flex
-        height={"40px"}
-        justify="space-between"
-        items="center"
-        padding="5px 16px"
+      <Box
+        sx={{
+          height: "40px",
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "center",
+          padding: "5px 16px"
+        }}
       >
-        <Flex width="50%" gap={15}>
+        <Box sx={{ width: "50%", gap: 15 }}>
           <Typography variant="h6">{titleSetting}</Typography>
           <Icon
             onClick={() =>
               onChangeData(moment(date).add(-7, "day").format(DateReqFormat))
             }
-            name={"icon-park-outline:left"}
+            name={"ArrowBack"}
           ></Icon>
           <Icon
             onClick={() =>
               onChangeData(moment(date).add(7, "day").format(DateReqFormat))
             }
-            name={"icon-park-outline:right"}
+            name={"East"}
           ></Icon>
-        </Flex>
+        </Box>
         <Button
-          type="text"
+          variant={"text"}
           onClick={() => onChangeData(moment().format(DateReqFormat))}
         >
           Today
         </Button>
-      </Flex>
-      <CalendarWeekWrapper>
+      </Box>
+      <Box
+        sx={{
+          height: "calc(100% - 100px)",
+          width: "100%",
+          overflow: "auto",
+          flexDirection: "column"
+        }}
+      >
         <DragAndDropCalendar
           localizer={localizer}
           events={list}
@@ -116,7 +124,7 @@ const Scheduler = ({
           eventPropGetter={eventSetting}
           // components={{ toolbar: Toolbar }}
         />
-      </CalendarWeekWrapper>
+      </Box>
     </>
   );
 };
