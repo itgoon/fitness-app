@@ -1,61 +1,65 @@
-import { ModalProps } from "@/components/modal/types";
-import { RouteProps } from "@/route/routes";
-import { ThemeMode } from "@/utils/constants/enums";
-import { localStorageEffect } from "@/utils/localStorage";
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
-export type CustomRouteProps = Omit<RouteProps, "element" | "children">;
-
-//dark / light
-export const modeState = atom<ThemeMode>({
-  key: `modeState`,
-  default: ThemeMode.LIGHT,
-  effects: [localStorageEffect("modeState")]
-});
-
-//primary color
-export const colorState = atom<string>({
-  key: `colorState`,
-  default: "#f00",
-  effects: [localStorageEffect("colorState")]
-});
-
-//모달(alert)
-export const windowState = atom<ModalProps>({
-  key: `modal_${new Date().getTime()}`,
-  default: {
-    open: false,
-    title: "",
-    content: undefined,
-    onClose: () => {},
-    onClick: () => {},
-    clickMsg: "",
-    closeMsg: "",
-    btnIcon: undefined,
-    titIcon: undefined
-  },
-  effects: [localStorageEffect("modalState")]
-});
-//로딩
+// 로딩
 export const loadingState = atom<boolean>({
   key: `loading_${new Date().getTime()}`,
   default: false,
-  effects: [localStorageEffect("loadingState")]
 });
 
-//레이아웃 State
-export const layoutState = atom<{ header: boolean; bottom: boolean }>({
-  key: `layoutState`,
+export type ModalType =
+  | undefined
+  | 'reason'
+  | 'point'
+  | 'withdrawal'
+  | 'findStore'
+  | 'memberLoginHistory'
+  | 'license'
+  | 'memberInfo'
+  | 'memberAuth';
+
+export const modalState = atom<{
+  open: boolean;
+  type: ModalType;
+  onClose: VoidFunction;
+  data: any;
+}>({
+  key: `modal_${new Date().getTime()}`,
   default: {
-    header: false,
-    bottom: false
+    open: false,
+    type: undefined,
+    onClose: () => {},
+    data: undefined,
   },
-  effects: [localStorageEffect("layoutState")]
 });
 
-//route
-export const routeState = atom<CustomRouteProps[]>({
-  key: `routeState`,
-  default: [],
-  effects: [localStorageEffect("routeState")]
+export const alertState = atom<{
+  open: boolean;
+  title: string;
+  subtitle?: string | undefined;
+  onClose: VoidFunction;
+}>({
+  key: `alert_modal_${new Date().getTime()}`,
+  default: {
+    open: false,
+    title: '',
+    subtitle: undefined,
+    onClose: () => {},
+  },
+});
+
+export const confirmState = atom<{
+  open: boolean;
+  title: string;
+  content: any;
+  onClose: VoidFunction;
+  onClick: VoidFunction;
+}>({
+  key: `confirm_modal_${new Date().getTime()}`,
+  default: {
+    open: false,
+    title: '',
+    content: undefined,
+    onClose: () => {},
+    onClick: () => {},
+  },
 });

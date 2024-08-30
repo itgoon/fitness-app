@@ -1,0 +1,1 @@
+const s=e=>typeof e=="object"&&Object.keys(e).length===0||!e||e===void 0||e===""||e===null,u=e=>{const t=new Date,r=new Date(Number(e.substring(0,4)),Number(e.substring(4,6)),Number(e.substring(6,8)));return t.getFullYear()-r.getFullYear()+1};export{u as c,s as i};

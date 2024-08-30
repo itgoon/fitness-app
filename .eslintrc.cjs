@@ -7,6 +7,10 @@ module.exports = {
     "plugin:react-hooks/recommended",
     "plugin:storybook/recommended"
   ],
+  // parser: "@typescript-eslint/parser",
+  // parserOptions: {
+  //   sourceType: "module"
+  // },
   ignorePatterns: ["dist", ".eslintrc.cjs"], // ESLint 무시할 파일 또는 디렉토리 설정
   plugins: ["react", "jsx-a11y", "react-hooks", "prettier", "react-refresh"], // React Refresh 플러그인 사용
   rules: {
@@ -14,6 +18,8 @@ module.exports = {
       "warn",
       { allowConstantExport: true }
     ],
+    "unused-imports/no-unused-imports": "off",
+
     indent: ["error", 2],
     "no-empty": "warn",
     semi: ["error", "always"]
