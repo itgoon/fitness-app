@@ -10,6 +10,7 @@ import MenuItem from "@mui/material/MenuItem";
 import Select from "@mui/material/Select";
 import TextField, { TextFieldProps } from "@mui/material/TextField";
 import { SxProps, Theme } from "@mui/material/styles";
+import { ReactNode } from "react";
 
 // ----------------------------------------------------------------------
 
@@ -17,7 +18,7 @@ type RHFSelectProps = TextFieldProps & {
   name: string;
   native?: boolean;
   maxHeight?: boolean | number;
-  children: React.ReactNode;
+  children: ReactNode;
   PaperPropsSx?: SxProps<Theme>;
 };
 
@@ -48,13 +49,13 @@ export function RHFSelect({
                 sx: {
                   ...(!native && {
                     maxHeight:
-                      typeof maxHeight === "number" ? maxHeight : "unset",
+                      typeof maxHeight === "number" ? maxHeight : "unset"
                   }),
-                  ...PaperPropsSx,
-                },
-              },
+                  ...PaperPropsSx
+                }
+              }
             },
-            sx: { textTransform: "capitalize" },
+            sx: { textTransform: "capitalize" }
           }}
           error={!!error}
           helperText={error ? error?.message : helperText}
@@ -75,7 +76,7 @@ type RHFMultiSelectProps = FormControlProps & {
   chip?: boolean;
   checkbox?: boolean;
   placeholder?: string;
-  helperText?: React.ReactNode;
+  helperText?: ReactNode;
   options: {
     label: string;
     value: string;

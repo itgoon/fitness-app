@@ -1,23 +1,27 @@
-import { useMemo } from 'react';
-import merge from 'lodash/merge';
+import React, { useMemo } from "react";
+import merge from "lodash/merge";
 
-import CssBaseline from '@mui/material/CssBaseline';
-import { createTheme, ThemeOptions, ThemeProvider as MuiThemeProvider } from '@mui/material/styles';
+import CssBaseline from "@mui/material/CssBaseline";
+import {
+  createTheme,
+  ThemeOptions,
+  ThemeProvider as MuiThemeProvider
+} from "@mui/material/styles";
 
-import { useLocales } from 'src/locales';
+import { useLocales } from "src/locales";
 
-import { useSettingsContext } from 'src/components/settings';
+import { useSettingsContext } from "src/components/settings";
 
 // system
-import { palette } from './palette';
-import { shadows } from './shadows';
-import RTL from './options/rightToLeft';
-import { typography } from './typography';
+import { palette } from "./palette";
+import { shadows } from "./shadows";
+import RTL from "./options/rightToLeft";
+import { typography } from "./typography";
 // options
-import { customShadows } from './customShadows';
-import { componentsOverrides } from './overrides';
-import { createPresets } from './options/presets';
-import { createContrast } from './options/contrast';
+import { customShadows } from "./customShadows";
+import { componentsOverrides } from "./overrides";
+import { createPresets } from "./options/presets";
+import { createContrast } from "./options/contrast";
 
 // ----------------------------------------------------------------------
 
@@ -39,23 +43,23 @@ export default function ThemeProvider({ children }: Props) {
       palette: {
         ...palette(settings.themeMode),
         ...presets.palette,
-        ...contrast.palette,
+        ...contrast.palette
       },
       customShadows: {
         ...customShadows(settings.themeMode),
-        ...presets.customShadows,
+        ...presets.customShadows
       },
       direction: settings.themeDirection,
       shadows: shadows(settings.themeMode),
       shape: { borderRadius: 8 },
-      typography,
+      typography
     }),
     [
       settings.themeMode,
       settings.themeDirection,
       presets.palette,
       presets.customShadows,
-      contrast.palette,
+      contrast.palette
     ]
   );
 

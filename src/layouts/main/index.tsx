@@ -1,5 +1,6 @@
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
+import { ReactNode } from "react";
 
 import { useResponsive } from "src/hooks/useResponsive";
 
@@ -7,7 +8,7 @@ import { useResponsive } from "src/hooks/useResponsive";
 
 type Props = {
   image?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export default function MainLayout({ children, image }: Props) {

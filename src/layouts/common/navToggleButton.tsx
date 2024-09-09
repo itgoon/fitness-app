@@ -1,14 +1,14 @@
-import { useTheme } from '@mui/material/styles';
-import IconButton, { IconButtonProps } from '@mui/material/IconButton';
+import { useTheme } from "@mui/material/styles";
+import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 
-import { useResponsive } from 'src/hooks/useResponsive';
+import { useResponsive } from "src/hooks/useResponsive";
 
-import { bgBlur } from 'src/theme/css';
+import { bgBlur } from "src/theme/css";
 
-import Iconify from 'src/components/iconify';
-import { useSettingsContext } from 'src/components/settings';
+import Iconify from "src/components/iconify";
+import { useSettingsContext } from "src/components/settings";
 
-import { NAV } from '../configLayout';
+import { NAV } from "../configLayout";
 
 // ----------------------------------------------------------------------
 
@@ -17,7 +17,7 @@ export default function NavToggleButton({ sx, ...other }: IconButtonProps) {
 
   const settings = useSettingsContext();
 
-  const lgUp = useResponsive('up', 'lg');
+  const lgUp = useResponsive("up", "lg");
 
   if (!lgUp) {
     return null;
@@ -27,29 +27,32 @@ export default function NavToggleButton({ sx, ...other }: IconButtonProps) {
     <IconButton
       size="small"
       onClick={() =>
-        settings.onUpdate('themeLayout', settings.themeLayout === 'vertical' ? 'mini' : 'vertical')
+        settings.onUpdate(
+          "themeLayout",
+          settings.themeLayout === "vertical" ? "mini" : "vertical"
+        )
       }
       sx={{
         p: 0.5,
         top: 32,
-        position: 'fixed',
+        position: "fixed",
         left: NAV.W_VERTICAL - 12,
         zIndex: theme.zIndex.appBar + 1,
         border: `dashed 1px ${theme.palette.divider}`,
         ...bgBlur({ opacity: 0.48, color: theme.palette.background.default }),
-        '&:hover': {
-          bgcolor: 'background.default',
+        "&:hover": {
+          bgcolor: "background.default"
         },
-        ...sx,
+        ...sx
       }}
       {...other}
     >
       <Iconify
         width={16}
         icon={
-          settings.themeLayout === 'vertical'
-            ? 'eva:arrow-ios-back-fill'
-            : 'eva:arrow-ios-forward-fill'
+          settings.themeLayout === "vertical"
+            ? "eva:arrow-ios-back-fill"
+            : "eva:arrow-ios-forward-fill"
         }
       />
     </IconButton>

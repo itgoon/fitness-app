@@ -1,17 +1,17 @@
-import * as Yup from 'yup';
-import { useForm } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from "yup";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import { useBoolean } from 'src/hooks/useBoolean';
+import { useBoolean } from "src/hooks/useBoolean";
 
-import FormProvider, { RHFTextField } from 'src/components/hookForm';
+import FormProvider, { RHFTextField } from "src/components/hookForm";
 
-import { useState } from 'react';
-import { ReqLogin } from '../../../types/auth';
-import StepFlow from '../register/StepFlow';
-import Step1 from './Step1';
-import Step2 from './Step2';
-import Step3 from './Step3';
+import { useState } from "react";
+import { ReqLogin } from "../../../types/auth";
+import StepFlow from "../register/StepFlow";
+import Step1 from "./Step1";
+import Step2 from "./Step2";
+import Step3 from "./Step3";
 
 // ----------------------------------------------------------------------
 
@@ -22,17 +22,17 @@ import Step3 from './Step3';
  */
 export default function ForgotView() {
   const LoginSchema = Yup.object().shape({
-    userId: Yup.string().required('이메일을 입력해주새요.'),
-    password: Yup.string().required('비밀번호를 입력해주세요.'),
+    userId: Yup.string().required("이메일을 입력해주새요."),
+    password: Yup.string().required("비밀번호를 입력해주세요.")
   });
 
   const methods = useForm<any>({
     resolver: yupResolver(LoginSchema),
     defaultValues: {
-      email: '',
-      password: '',
-      confirmPassword: '',
-    },
+      email: "",
+      password: "",
+      confirmPassword: ""
+    }
   });
 
   const [activeStep, setActiveStep] = useState(0);
@@ -43,7 +43,7 @@ export default function ForgotView() {
 
   const {
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting }
   } = methods;
 
   const onSubmit = handleSubmit(async (data: ReqLogin) => {

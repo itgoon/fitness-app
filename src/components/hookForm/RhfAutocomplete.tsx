@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField";
 import { countries } from "src/assets/data";
 
 import Iconify from "src/components/iconify";
+import { ReactNode } from "react";
 
 // ----------------------------------------------------------------------
 
@@ -15,13 +16,13 @@ interface Props<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 > extends AutocompleteProps<T, Multiple, DisableClearable, FreeSolo> {
   name: string;
   label?: string;
   placeholder?: string;
   type?: "country" | string;
-  helperText?: React.ReactNode;
+  helperText?: ReactNode;
   isView?: boolean;
 }
 
@@ -29,7 +30,7 @@ export default function RHFAutocomplete<
   T,
   Multiple extends boolean | undefined,
   DisableClearable extends boolean | undefined,
-  FreeSolo extends boolean | undefined,
+  FreeSolo extends boolean | undefined
 >({
   name,
   label,
@@ -94,8 +95,8 @@ export default function RHFAutocomplete<
                   helperText: error ? error?.message : helperText,
                   inputProps: {
                     ...params.inputProps,
-                    autoComplete: "new-password",
-                  },
+                    autoComplete: "new-password"
+                  }
                 };
 
                 if (multiple) {
@@ -114,8 +115,8 @@ export default function RHFAutocomplete<
                           position="start"
                           sx={{
                             ...(!country.code && {
-                              display: "none",
-                            }),
+                              display: "none"
+                            })
                           }}
                         >
                           <Iconify
@@ -123,7 +124,7 @@ export default function RHFAutocomplete<
                             sx={{ mr: -0.5, ml: 0.5 }}
                           />
                         </InputAdornment>
-                      ),
+                      )
                     }}
                   />
                 );
@@ -170,7 +171,7 @@ export default function RHFAutocomplete<
                 helperText={error ? error?.message : helperText}
                 inputProps={{
                   ...params.inputProps,
-                  autoComplete: "new-password",
+                  autoComplete: "new-password"
                 }}
               />
             )}
@@ -188,6 +189,6 @@ export function getCountry(inputValue: string) {
   const option = countries.filter((country) => country.label === inputValue)[0];
 
   return {
-    ...option,
+    ...option
   };
 }

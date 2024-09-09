@@ -2,15 +2,10 @@
 
 - Node 16.x || 18.x
 
-## USING YARN (Recommend)
+## USING PNPM
 
-- yarn install
-- yarn dev
-
-## USING NPM
-
-- npm i OR npm i --legacy-peer-deps
-- npm run dev
+- pnpm i OR pnpm i --legacy-peer-deps
+- pnpm run dev
 
 ## Project Structure on Flat Design
 
@@ -33,8 +28,8 @@
 │   │     │      ├───list ( 사용자 리스트 페이지 ) : 사용자 목록 페이지 UI화면
 │   │     │      ├───new ( 사용자 등록 페이지 ) : 사용자 등록 페이지 UI화면
 │   │     ├───403 ( 사용자 폴더 ) : 권한 오류시 UI화면
-│   │     ├───404 ( 사용자 폴더 ) : 존재하지 않는 페이지 접근시 UI화면 
-│   │     ├───500 ( 사용자 폴더 ) : 서버 오류 발생시 UI화면 
+│   │     ├───404 ( 사용자 폴더 ) : 존재하지 않는 페이지 접근시 UI화면
+│   │     ├───500 ( 사용자 폴더 ) : 서버 오류 발생시 UI화면
 │   │     │
 │   ├───layout ( layout 상위 페이지 ) : 프로젝트 화면별 레이아웃 파일 생성 및 관리 폴더
 │   │     ├───auth ( 인증 폴더 ) : 인증관련 화면 레이아웃 생성 및 관리 폴더
@@ -49,12 +44,12 @@
 │   │     │
 │   ├───components ( 컴포넌트 상위 페이지 ) : 화면을 구성하는 각 요소 단위를 컴포넌트화 하여 생성 및 관리 해주는 폴더 ex) table, label, loadingScreen
 │   │     │
-│   ├───type ( 타입 상위 페이지 ) : 화면에서 사용되는 데이터들의 타입을 지정해주고 생성 및 관리하는 폴더 
+│   ├───type ( 타입 상위 페이지 ) : 화면에서 사용되는 데이터들의 타입을 지정해주고 생성 및 관리하는 폴더
 │   │     │
 │   ├───route ( 라우트 상위 페이지 ) : 화면 경로 및 url을 지정 및 생성, 관리 폴더
 │   │     ├───components ( 컴포넌트 라우트 폴더 ) : 컴포넌트 ex) 로그인 등 의 페이지 에서 이동기능의 컴포넌트 생성 및 관리 폴더
 │   │     ├───hook ( 공통 폴더 ) : params, pathname등의 값을 생성및 관리 해주는 파일 생성 및 관리
-│   │     ├───main ( 어드민 폴더 ) : 
+│   │     ├───main ( 어드민 폴더 ) :
 │   │     │     ├───dashboard ( 어드민 폴더 ) : 로그인 이후 어드민 페이지 내부 모든 경로 생성및 관리 폴더
 │   │     │     ├───index ( 로그인 폴더 ) : 사이트 접속시 생성되는 화면(현재는 로그인 페이지로 설정)
 │   │     │     ├───main ( 메인 라우트 폴더 ) : 프로젝트 와 오류시 상황에 맞는 오류페이지를 표시해 주는 폴더
@@ -67,57 +62,57 @@
 
     MUI-component를 사용해 프로 젝트를 구성 했으며 간단하게 사용법을 설명드리면
 
-  1. MUI 템플릿 불러오기: 필요한 컴포넌트를 사용하기 위해 해당 컴포넌트를 불러옵니다.
+1. MUI 템플릿 불러오기: 필요한 컴포넌트를 사용하기 위해 해당 컴포넌트를 불러옵니다.
 
-  - import { Button, TextField, Typography } from '@mui/material';
+- import { Button, TextField, Typography } from '@mui/material';
 
-  2. MUI 템플릿 사용하기
+2. MUI 템플릿 사용하기
 
-    <div>
-      <Typography variant="h1">Hello, MUI!</Typography>
-      <TextField label="Enter something" variant="outlined" />
-      <Button variant="contained" color="primary">
-        Click Me
-      </Button>
-    </div>
+   <div>
+     <Typography variant="h1">Hello, MUI!</Typography>
+     <TextField label="Enter something" variant="outlined" />
+     <Button variant="contained" color="primary">
+       Click Me
+     </Button>
+   </div>
 
-    3. MUI 템플릿 커스터마이징하기
+   3. MUI 템플릿 커스터마이징하기
 
-       MUI 컴포넌트는 다양한 props를 통해 커스터마이징할 수 있습니다. 예를 들어, Button 컴포넌트의 경우 variant와 color props를 
-       사용하여 스타일을 변경할 수 있습니다.
+      MUI 컴포넌트는 다양한 props를 통해 커스터마이징할 수 있습니다. 예를 들어, Button 컴포넌트의 경우 variant와 color props를
+      사용하여 스타일을 변경할 수 있습니다.
 
-    <Button variant="outlined" color="secondary">
-        Click Me
-    </Button>
+   <Button variant="outlined" color="secondary">
+       Click Me
+   </Button>
 
-    4. 스타일에 타입 인터페이스 사용하기
-        
-        타입스크립트를 사용하여 MUI의 스타일을 타입 안전하게 관리할 수 있습니다. 예를 들어, 아래와 같이 컴포넌트의 스타일을 지정할 수 있습니다.
+   4. 스타일에 타입 인터페이스 사용하기
 
-    import React from 'react';
-    import { Button, ButtonProps } from '@mui/material';
+      타입스크립트를 사용하여 MUI의 스타일을 타입 안전하게 관리할 수 있습니다. 예를 들어, 아래와 같이 컴포넌트의 스타일을 지정할 수 있습니다.
 
-    interface MyButtonProps extends ButtonProps {
-        // 추가적인 커스텀 props 정의
-    }
+   import React from 'react';
+   import { Button, ButtonProps } from '@mui/material';
 
-    const MyButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
-        return <Button {...props}>{children}</Button>;
-    };
+   interface MyButtonProps extends ButtonProps {
+   // 추가적인 커스텀 props 정의
+   }
 
-    export default MyButton;
+   const MyButton: React.FC<MyButtonProps> = ({ children, ...props }) => {
+   return <Button {...props}>{children}</Button>;
+   };
+
+   export default MyButton;
 
 ### API
 
-  1. api폴더에 파일 생성
-  (ex. 로그인 관련 api라면 `api/auth.ts` 생성)
+1. api폴더에 파일 생성
+   (ex. 로그인 관련 api라면 `api/auth.ts` 생성)
 
-  2. api 호출은 해당 컴포넌트에서 호출
+2. api 호출은 해당 컴포넌트에서 호출
 
-  3. api 통신 때 데이터 가공이 필요하면 service폴더에서 파일 생성 후 함수를 만들어 데이터를 가공하여 전달
-  (ex. 로그인 관련 service라면 `service/authSErvice.ts` 생성)
+3. api 통신 때 데이터 가공이 필요하면 service폴더에서 파일 생성 후 함수를 만들어 데이터를 가공하여 전달
+   (ex. 로그인 관련 service라면 `service/authSErvice.ts` 생성)
 
-  4. service파일을 service/index.ts에 연결
+4. service파일을 service/index.ts에 연결
 
 ### CustomModal ( Custom Modal, Alert, Confirm )
 
@@ -144,7 +139,7 @@ const {openModal, openAlert, openConfirm} = useModal();
 
   openConfirm({
     title: '타이틀',
-    content: '서브타이틀', //string, element 
+    content: '서브타이틀', //string, element
     onClick: () => {} //성공 후 제어
     onClose: () => {} //닫기 후 처리
   });
