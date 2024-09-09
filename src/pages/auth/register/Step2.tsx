@@ -1,10 +1,17 @@
-import { Box, Button, IconButton, InputAdornment, TextField, Typography } from '@mui/material';
-import { Stack } from '@mui/system';
-import { RHFTextField } from 'src/components/hookForm';
-import { ChangeEvent, useEffect, useState } from 'react';
-import { useBoolean } from 'src/hooks/useBoolean';
-import Iconify from 'src/components/iconify';
-import { StepProps } from './Step1';
+import {
+  Box,
+  Button,
+  IconButton,
+  InputAdornment,
+  TextField,
+  Typography
+} from "@mui/material";
+import { Stack } from "@mui/system";
+import { RHFTextField } from "src/components/hookForm";
+import { ChangeEvent, useEffect, useState } from "react";
+import { useBoolean } from "src/hooks/useBoolean";
+import Iconify from "src/components/iconify";
+import { StepProps } from "./Step1";
 
 const INITIAL_TIMER = 180;
 const CODE_LENGTH = 6;
@@ -16,7 +23,7 @@ export default function Step2({ onNext }: StepProps) {
   const [isVerified, setIsVerified] = useState(false);
   const [timer, setTimer] = useState(INITIAL_TIMER);
   const [isActive, setIsActive] = useState(false);
-  const [verificationCode, setVerificationCode] = useState('');
+  const [verificationCode, setVerificationCode] = useState("");
   const [canResendCode, setCanResendCode] = useState(false);
 
   useEffect(() => {
@@ -42,7 +49,7 @@ export default function Step2({ onNext }: StepProps) {
 
   // 인증번호 입력
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const numbersOnly = e.target.value.replace(/\D/g, '');
+    const numbersOnly = e.target.value.replace(/\D/g, "");
     if (numbersOnly.length <= CODE_LENGTH) {
       setVerificationCode(numbersOnly);
     }
@@ -69,7 +76,11 @@ export default function Step2({ onNext }: StepProps) {
 
   return (
     <Stack spacing={2.5}>
-      <RHFTextField name="email" label="이메일" placeholder="example@email.com" />
+      <RHFTextField
+        name="email"
+        label="이메일"
+        placeholder="example@email.com"
+      />
       <RHFTextField
         type="password"
         name="password"
@@ -79,13 +90,19 @@ export default function Step2({ onNext }: StepProps) {
           endAdornment: (
             <InputAdornment position="end">
               <IconButton onClick={password.onToggle} edge="end">
-                <Iconify icon={password.value ? 'solar:eye-bold' : 'solar:eye-closed-bold'} />
+                <Iconify
+                  icon={
+                    password.value ? "solar:eye-bold" : "solar:eye-closed-bold"
+                  }
+                />
               </IconButton>
             </InputAdornment>
-          ),
+          )
         }}
       />
-      <Typography>8 ~ 20자의 영문, 숫자를 조합하여 비밀번호를 입력해주세요.</Typography>
+      <Typography>
+        8 ~ 20자의 영문, 숫자를 조합하여 비밀번호를 입력해주세요.
+      </Typography>
       <RHFTextField
         type="password"
         name="confirm-password"
@@ -95,49 +112,57 @@ export default function Step2({ onNext }: StepProps) {
             <InputAdornment position="end">
               <IconButton onClick={confirmPassword.onToggle} edge="end">
                 <Iconify
-                  icon={confirmPassword.value ? 'solar:eye-bold' : 'solar:eye-closed-bold'}
+                  icon={
+                    confirmPassword.value
+                      ? "solar:eye-bold"
+                      : "solar:eye-closed-bold"
+                  }
                 />
               </IconButton>
             </InputAdornment>
-          ),
+          )
         }}
       />
       <RHFTextField name="name" label="이름" />
-      <Box sx={{ display: 'flex', gap: '8px' }}>
+      <Box sx={{ display: "flex", gap: "8px" }}>
         <RHFTextField
           type="number"
           name="phone"
           label="휴대폰 번호"
           placeholder="-를 제외한 숫자를 입력해주세요."
         />
-        <Button variant="outlined" onClick={sendCode} sx={{ height: '53px' }}>
+        <Button variant="outlined" onClick={sendCode} sx={{ height: "53px" }}>
           인증하기
         </Button>
       </Box>
 
       {isActive && (
         <>
-          <Box sx={{ position: 'relative' }}>
+          <Box sx={{ position: "relative" }}>
             <TextField
               placeholder="인증번호 입력"
               value={verificationCode}
               onChange={onChange}
-              sx={{ width: '100%' }}
+              sx={{ width: "100%" }}
             />
             <Box
               sx={{
-                position: 'absolute',
-                right: '12px',
-                top: '50%',
-                transform: 'translateY(-50%)',
+                position: "absolute",
+                right: "12px",
+                top: "50%",
+                transform: "translateY(-50%)"
               }}
             >
               {formatTimer()}
             </Box>
           </Box>
           <Typography>
-            인증번호가 전송되지 않으셨나요?{' '}
-            <Button component="span" onClick={resendCode} disabled={!canResendCode}>
+            인증번호가 전송되지 않으셨나요?{" "}
+            <Button
+              component="span"
+              onClick={resendCode}
+              disabled={!canResendCode}
+            >
               인증번호 재전송
             </Button>
           </Typography>
@@ -155,7 +180,7 @@ export default function Step2({ onNext }: StepProps) {
         가입 완료
       </Button>
 
-      <Typography sx={{ textAlign: 'center' }}>
+      <Typography sx={{ textAlign: "center" }}>
         회원가입을 하시면 이용약관 및 개인정보보호 정책에 동의합니다.
       </Typography>
     </Stack>

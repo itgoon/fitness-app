@@ -1,7 +1,8 @@
-import react from '@vitejs/plugin-react-swc';
-import path from 'path';
-import { defineConfig } from 'vite';
-import checker from 'vite-plugin-checker';
+import react from "@vitejs/plugin-react-swc";
+import path from "path";
+import { defineConfig } from "vite";
+import checker from "vite-plugin-checker";
+import svgr from "vite-plugin-svgr";
 
 // ----------------------------------------------------------------------
 
@@ -11,32 +12,33 @@ export default defineConfig({
     checker({
       typescript: true,
       eslint: {
-        lintCommand: 'eslint "./src/**/*.{js,jsx,ts,tsx}"',
+        lintCommand: 'eslint "./src/**/*.{js,jsx,ts,tsx}"'
       },
       overlay: {
-        initialIsOpen: false,
-      },
+        initialIsOpen: false
+      }
     }),
+    svgr()
   ],
   build: {
     // outDir: path.join(__dirname, 'build'),
-    outDir: 'build',
-    chunkSizeWarningLimit: 1600,
+    outDir: "build",
+    chunkSizeWarningLimit: 1600
   },
   resolve: {
     alias: [
       {
         find: /^~(.+)/,
-        replacement: path.join(process.cwd(), 'node_modules/$1'),
+        replacement: path.join(process.cwd(), "node_modules/$1")
       },
       {
         find: /^src(.+)/,
-        replacement: path.join(process.cwd(), 'src/$1'),
-      },
-    ],
+        replacement: path.join(process.cwd(), "src/$1")
+      }
+    ]
   },
   server: {
-    port: 3000,
+    port: 3000
     // proxy: {
     //   '/anchor/api': {
     //     // 프록시가 적용될 요청 경로의 시작 부분. 클라이언트가 보낸 요청의 URL이 api로 시작되면 이 설정이 적용된다.
@@ -47,6 +49,6 @@ export default defineConfig({
     // },
   },
   preview: {
-    port: 3000,
-  },
+    port: 3000
+  }
 });

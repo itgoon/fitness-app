@@ -1,34 +1,37 @@
-import { grey } from '../palette';
-import { customShadows } from '../customShadows';
+import { grey } from "../palette";
+import { customShadows } from "../customShadows";
 
 // ----------------------------------------------------------------------
 
-export function createContrast(contrast: 'default' | 'bold', mode: 'light' | 'dark') {
+export function createContrast(
+  contrast: "default" | "bold",
+  mode: "light" | "dark"
+) {
   const theme = {
-    ...(contrast === 'bold' &&
-      mode === 'light' && {
+    ...(contrast === "bold" &&
+      mode === "light" && {
         palette: {
           background: {
-            default: grey[200],
-          },
-        },
-      }),
+            default: grey[200]
+          }
+        }
+      })
   };
 
   const components = {
-    ...(contrast === 'bold' && {
+    ...(contrast === "bold" && {
       MuiCard: {
         styleOverrides: {
           root: {
-            boxShadow: customShadows(mode).z1,
-          },
-        },
-      },
-    }),
+            boxShadow: customShadows(mode).z1
+          }
+        }
+      }
+    })
   };
 
   return {
     ...theme,
-    components,
+    components
   };
 }
