@@ -9,6 +9,7 @@ import svgr from "vite-plugin-svgr";
 export default defineConfig({
   plugins: [
     react(),
+    svgr(),
     checker({
       typescript: true,
       eslint: {
@@ -17,8 +18,7 @@ export default defineConfig({
       overlay: {
         initialIsOpen: false
       }
-    }),
-    svgr()
+    })
   ],
   build: {
     // outDir: path.join(__dirname, 'build'),

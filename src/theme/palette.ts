@@ -109,7 +109,7 @@ export const warning = {
 export const error = {
   lighter: "#FFE9D5",
   light: "#FFAC82",
-  main: "#FF5630",
+  main: "#D50000",
   dark: "#B71D18",
   darker: "#7A0916",
   contrastText: "#FFFFFF"
@@ -124,7 +124,8 @@ export const action = {
   hover: alpha(grey[500], 0.08),
   selected: alpha(grey[500], 0.16),
   disabled: alpha(grey[500], 0.8),
-  disabledBackground: alpha(grey[500], 0.24),
+  // disabledBackground: alpha(grey[500], 0.24),
+  disabledBackground: grey[400],
   focus: alpha(grey[500], 0.24),
   hoverOpacity: 0.08,
   disabledOpacity: 0.48
@@ -150,9 +151,9 @@ export function palette(mode: "light" | "dark") {
     ...base,
     mode: "light",
     text: {
-      primary: grey[800],
+      primary: grey[900],
       secondary: grey[600],
-      disabled: grey[500]
+      disabled: grey[600]
     },
     background: {
       paper: "#FFFFFF",

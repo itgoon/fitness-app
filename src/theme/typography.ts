@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------
-
+import { Variant } from "@mui/material/styles/createTypography";
 import { CSSProperties } from "react";
 
 type tSize = {
@@ -34,6 +34,7 @@ declare module "@mui/material/styles" {
   interface TypographyVariants {
     fontSecondaryFamily: CSSProperties["fontFamily"];
     fontWeightSemiBold: CSSProperties["fontWeight"];
+    // textLabel: Variant;
   }
 }
 
@@ -118,5 +119,11 @@ export const typography = {
     lineHeight: 24 / 14,
     fontSize: pxToRem(14),
     textTransform: "unset"
+  },
+  textLabel: {
+    fontWeight: 600,
+    lineHeight: "18px",
+    fontSize: pxToRem(12),
+    textAlign: "left"
   }
 } as const;

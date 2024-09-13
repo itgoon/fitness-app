@@ -18,11 +18,13 @@ export function textField(theme: Theme) {
     focused: theme.palette.text.primary,
     active: theme.palette.text.secondary,
     placeholder: theme.palette.text.disabled,
+    border: theme.palette.primary.main
   };
 
   const font = {
+    // label: theme.typography.textLabel,
     label: theme.typography.body1,
-    value: theme.typography.body2,
+    value: theme.typography.body2
   };
 
   return {
@@ -30,9 +32,9 @@ export function textField(theme: Theme) {
     MuiFormHelperText: {
       styleOverrides: {
         root: {
-          marginTop: theme.spacing(1),
-        },
-      },
+          marginTop: theme.spacing(1)
+        }
+      }
     },
 
     // LABEL
@@ -40,46 +42,50 @@ export function textField(theme: Theme) {
       styleOverrides: {
         root: {
           ...font.value,
+          fontSize: 12,
+          top: "8px !important",
           color: color.placeholder,
           [`&.${inputLabelClasses.shrink}`]: {
             ...font.label,
             fontWeight: 600,
             color: color.active,
             [`&.${inputLabelClasses.focused}`]: {
-              color: color.focused,
+              color: color.focused
             },
             [`&.${inputLabelClasses.error}`]: {
-              color: theme.palette.error.main,
+              color: theme.palette.error.main
             },
             [`&.${inputLabelClasses.disabled}`]: {
-              color: theme.palette.text.disabled,
+              color: theme.palette.text.disabled
             },
             [`&.${inputLabelClasses.filled}`]: {
-              transform: "translate(12px, 6px) scale(0.75)",
-            },
-          },
-        },
-      },
+              transform: "translate(12px, 6px) scale(0.75)"
+            }
+          }
+        }
+      }
     },
 
     // BASE
     MuiInputBase: {
       styleOverrides: {
         root: {
+          marginTop: "12px !important",
+          color: "#212121",
           [`&.${inputBaseClasses.disabled}`]: {
             "& svg": {
-              color: theme.palette.text.disabled,
-            },
-          },
+              color: theme.palette.text.disabled
+            }
+          }
         },
         input: {
           ...font.value,
           "&::placeholder": {
             opacity: 1,
-            color: color.placeholder,
-          },
-        },
-      },
+            color: color.placeholder
+          }
+        }
+      }
     },
 
     // STANDARD
@@ -87,13 +93,13 @@ export function textField(theme: Theme) {
       styleOverrides: {
         underline: {
           "&:before": {
-            borderBottomColor: alpha(theme.palette.grey[500], 0.32),
+            borderBottomColor: alpha(theme.palette.grey[500], 0.32)
           },
           "&:after": {
-            borderBottomColor: color.focused,
-          },
-        },
-      },
+            borderBottomColor: color.border
+          }
+        }
+      }
     },
 
     // OUTLINED
@@ -102,27 +108,27 @@ export function textField(theme: Theme) {
         root: {
           [`&.${outlinedInputClasses.focused}`]: {
             [`& .${outlinedInputClasses.notchedOutline}`]: {
-              borderColor: color.focused,
-            },
+              borderColor: color.focused
+            }
           },
           [`&.${outlinedInputClasses.error}`]: {
             [`& .${outlinedInputClasses.notchedOutline}`]: {
-              borderColor: theme.palette.error.main,
-            },
+              borderColor: theme.palette.error.main
+            }
           },
           [`&.${outlinedInputClasses.disabled}`]: {
             [`& .${outlinedInputClasses.notchedOutline}`]: {
-              borderColor: theme.palette.action.disabledBackground,
-            },
-          },
+              borderColor: theme.palette.action.disabledBackground
+            }
+          }
         },
         notchedOutline: {
           borderColor: alpha(theme.palette.grey[500], 0.2),
           transition: theme.transitions.create(["border-color"], {
-            duration: theme.transitions.duration.shortest,
-          }),
-        },
-      },
+            duration: theme.transitions.duration.shortest
+          })
+        }
+      }
     },
 
     // FILLED
@@ -132,22 +138,22 @@ export function textField(theme: Theme) {
           borderRadius: theme.shape.borderRadius,
           backgroundColor: alpha(theme.palette.grey[500], 0.08),
           "&:hover": {
-            backgroundColor: alpha(theme.palette.grey[500], 0.16),
+            backgroundColor: alpha(theme.palette.grey[500], 0.16)
           },
           [`&.${filledInputClasses.focused}`]: {
-            backgroundColor: alpha(theme.palette.grey[500], 0.16),
+            backgroundColor: alpha(theme.palette.grey[500], 0.16)
           },
           [`&.${filledInputClasses.error}`]: {
             backgroundColor: alpha(theme.palette.error.main, 0.08),
             [`&.${filledInputClasses.focused}`]: {
-              backgroundColor: alpha(theme.palette.error.main, 0.16),
-            },
+              backgroundColor: alpha(theme.palette.error.main, 0.16)
+            }
           },
           [`&.${filledInputClasses.disabled}`]: {
-            backgroundColor: theme.palette.action.disabledBackground,
-          },
-        },
-      },
+            backgroundColor: theme.palette.action.disabledBackground
+          }
+        }
+      }
     },
 
     MuiTextField: {
@@ -156,33 +162,32 @@ export function textField(theme: Theme) {
           [`.MuiInputBase-input`]: {
             // padding: "13px 12px 13px 10px",
             boxSizing: "border-box",
-
             height: pxSize.md,
 
             "&.MuiInputBase-inputSizeSmall": {
-              height: pxSize.sm,
-            },
+              height: pxSize.sm
+            }
           },
           ["&.isView"]: {
             ".MuiInputBase-root": {
               fieldset: {
-                border: "0px",
-              },
+                border: "0px"
+              }
             },
 
             ".Mui-disabled": {
               color: "currentColor",
-              "-webkit-text-fill-color": "currentColor",
+              "-webkit-text-fill-color": "currentColor"
             },
             ".MuiFormLabel-root": {
-              color: theme.palette.grey[600],
+              color: theme.palette.grey[600]
             },
             button: {
-              display: "none",
-            },
-          },
-        },
-      },
-    },
+              display: "none"
+            }
+          }
+        }
+      }
+    }
   };
 }

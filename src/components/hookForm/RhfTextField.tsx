@@ -52,7 +52,7 @@ export default function RHFTextField({
           helperText={error ? error?.message : helperText}
           {...other}
           InputLabelProps={{
-            shrink: true,
+            shrink: true
           }}
         />
       )}

@@ -10,7 +10,7 @@ const COLORS = [
   "info",
   "success",
   "warning",
-  "error",
+  "error"
 ] as const;
 
 // NEW VARIANT
@@ -55,37 +55,37 @@ export function button(theme: Theme) {
           "&:hover": {
             backgroundColor: lightMode
               ? theme.palette.grey[700]
-              : theme.palette.grey[400],
-          },
+              : theme.palette.grey[400]
+          }
         }),
         // OUTLINED
         ...(outlinedVariant && {
           borderColor: alpha(theme.palette.grey[500], 0.32),
           "&:hover": {
-            backgroundColor: theme.palette.action.hover,
-          },
+            backgroundColor: theme.palette.action.hover
+          }
         }),
         // TEXT
         ...(textVariant && {
           "&:hover": {
-            backgroundColor: theme.palette.action.hover,
-          },
+            backgroundColor: theme.palette.action.hover
+          }
         }),
         // SOFT
         ...(softVariant && {
           color: theme.palette.text.primary,
           backgroundColor: alpha(theme.palette.grey[500], 0.08),
           "&:hover": {
-            backgroundColor: alpha(theme.palette.grey[500], 0.24),
-          },
-        }),
+            backgroundColor: alpha(theme.palette.grey[500], 0.24)
+          }
+        })
       }),
       ...(outlinedVariant && {
         "&:hover": {
           borderColor: "currentColor",
-          boxShadow: "0 0 0 0.5px currentColor",
-        },
-      }),
+          boxShadow: "0 0 0 0.5px currentColor"
+        }
+      })
     };
 
     const colorStyle = COLORS.map((color) => ({
@@ -93,27 +93,29 @@ export function button(theme: Theme) {
         // CONTAINED
         ...(containedVariant && {
           "&:hover": {
-            boxShadow: theme.customShadows[color],
-          },
+            boxShadow: theme.customShadows[color]
+          }
         }),
         // SOFT
         ...(softVariant && {
           color: theme.palette[color][lightMode ? "dark" : "light"],
           backgroundColor: alpha(theme.palette[color].main, 0.16),
           "&:hover": {
-            backgroundColor: alpha(theme.palette[color].main, 0.32),
-          },
-        }),
-      }),
+            backgroundColor: alpha(theme.palette[color].main, 0.32)
+          }
+        })
+      })
     }));
 
     const disabledState = {
       [`&.${buttonClasses.disabled}`]: {
         // SOFT
+        color: theme.palette.common.white,
+        backgroundColor: alpha(theme.palette.primary.main, 0.45),
         ...(softVariant && {
-          backgroundColor: theme.palette.action.disabledBackground,
-        }),
-      },
+          backgroundColor: theme.palette.action.disabledBackground
+        })
+      }
     };
 
     const size = {
@@ -124,8 +126,8 @@ export function button(theme: Theme) {
         paddingRight: 8,
         ...(textVariant && {
           paddingLeft: 4,
-          paddingRight: 4,
-        }),
+          paddingRight: 4
+        })
       }),
       ...(mediumSize && {
         paddingLeft: 12,
@@ -133,8 +135,8 @@ export function button(theme: Theme) {
         paddingRight: 12,
         ...(textVariant && {
           paddingLeft: 8,
-          paddingRight: 8,
-        }),
+          paddingRight: 8
+        })
       }),
       ...(largeSize && {
         height: pxSize.lg,
@@ -143,9 +145,9 @@ export function button(theme: Theme) {
         paddingRight: 16,
         ...(textVariant && {
           paddingLeft: 10,
-          paddingRight: 10,
-        }),
-      }),
+          paddingRight: 10
+        })
+      })
     };
 
     return [defaultStyle, ...colorStyle, disabledState, size];
@@ -155,8 +157,8 @@ export function button(theme: Theme) {
     MuiButton: {
       styleOverrides: {
         root: ({ ownerState }: { ownerState: ButtonProps }) =>
-          rootStyles(ownerState),
-      },
-    },
+          rootStyles(ownerState)
+      }
+    }
   };
 }
