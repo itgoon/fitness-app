@@ -73,7 +73,9 @@ export function button(theme: Theme) {
         }),
         // SOFT
         ...(softVariant && {
-          color: theme.palette.text.primary,
+          // disable 기능이 없는 disable color
+          // color: theme.palette.text.primary,
+          color: theme.palette.grey.A100,
           backgroundColor: alpha(theme.palette.grey[500], 0.08),
           "&:hover": {
             backgroundColor: alpha(theme.palette.grey[500], 0.24)
@@ -103,6 +105,15 @@ export function button(theme: Theme) {
           "&:hover": {
             backgroundColor: alpha(theme.palette[color].main, 0.32)
           }
+        }),
+        // TEXT
+        ...(textVariant && {
+          ...(ownerState.color === "secondary" && {
+            color: theme.palette.grey[400],
+            "&:hover": {
+              backgroundColor: alpha(theme.palette.secondary.main, 0.08)
+            }
+          })
         })
       })
     }));
@@ -110,10 +121,15 @@ export function button(theme: Theme) {
     const disabledState = {
       [`&.${buttonClasses.disabled}`]: {
         // SOFT
-        color: theme.palette.common.white,
+        color: theme.palette.grey.A100,
         backgroundColor: alpha(theme.palette.primary.main, 0.45),
         ...(softVariant && {
           backgroundColor: theme.palette.action.disabledBackground
+        }),
+        ...(containedVariant && {
+          color: lightMode
+            ? theme.palette.common.white
+            : theme.palette.grey[800]
         })
       }
     };

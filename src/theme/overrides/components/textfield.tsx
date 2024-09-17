@@ -22,7 +22,7 @@ export function textField(theme: Theme) {
   };
 
   const font = {
-    // label: theme.typography.textLabel,
+    textLabel: theme.typography.textLabel,
     label: theme.typography.body1,
     value: theme.typography.body2
   };
@@ -42,12 +42,11 @@ export function textField(theme: Theme) {
       styleOverrides: {
         root: {
           ...font.value,
-          fontSize: 12,
-          top: "8px !important",
+          fontSize: 18,
+          top: "2px !important",
           color: color.placeholder,
           [`&.${inputLabelClasses.shrink}`]: {
-            ...font.label,
-            fontWeight: 600,
+            ...font.textLabel,
             color: color.active,
             [`&.${inputLabelClasses.focused}`]: {
               color: color.focused
@@ -180,7 +179,7 @@ export function textField(theme: Theme) {
               "-webkit-text-fill-color": "currentColor"
             },
             ".MuiFormLabel-root": {
-              color: theme.palette.grey[600]
+              color: theme.palette.grey[500]
             },
             button: {
               display: "none"

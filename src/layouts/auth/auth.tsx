@@ -1,7 +1,6 @@
 import { Typography } from "@mui/material";
 import Box from "@mui/material/Box";
 import Stack from "@mui/material/Stack";
-import { useTheme } from "@mui/system";
 import { ReactNode } from "react";
 import SeoIllustration from "src/assets/illustrations/seoIllustration";
 
@@ -14,7 +13,8 @@ type Props = {
 };
 
 export default function AuthLayout({ children }: Props) {
-  const mdUp = useResponsive("up", "md");
+  const mdUp = useResponsive("up", 420);
+  const resMaxWidth = mdUp ? 789 : 420;
 
   return (
     <Stack
@@ -25,7 +25,7 @@ export default function AuthLayout({ children }: Props) {
         height: "100vh"
       }}
     >
-      {mdUp && (
+      {/* {mdUp && (
         <Box
           sx={{
             display: "flex",
@@ -49,12 +49,12 @@ export default function AuthLayout({ children }: Props) {
             <SeoIllustration sx={{ width: "480px", height: "360px" }} />
           </Stack>
         </Box>
-      )}
+      )} */}
 
       <Stack
         sx={{
           width: "100%",
-          maxWidth: "420px",
+          maxWidth: resMaxWidth,
           mx: "auto",
           // px: { xs: 2, md: 0 },
           display: "flex",

@@ -3,6 +3,6 @@
 
 export const pxSize = {
   sm: "36px",
-  md: "48px",
-  lg: "53px",
+  md: "40px",
+  lg: "56px"
 };

@@ -37,7 +37,9 @@ export const grey = {
   600: "#757575",
   700: "#616161",
   800: "#424242",
-  900: "#212121"
+  900: "#212121",
+  A50: "#ECEFF1",
+  A100: "#546E7A"
 };
 
 export const primary = {
@@ -125,7 +127,7 @@ export const action = {
   selected: alpha(grey[500], 0.16),
   disabled: alpha(grey[500], 0.8),
   // disabledBackground: alpha(grey[500], 0.24),
-  disabledBackground: grey[400],
+  disabledBackground: grey.A50,
   focus: alpha(grey[500], 0.24),
   hoverOpacity: 0.08,
   disabledOpacity: 0.48
@@ -153,7 +155,7 @@ export function palette(mode: "light" | "dark") {
     text: {
       primary: grey[900],
       secondary: grey[600],
-      disabled: grey[600]
+      disabled: grey[500]
     },
     background: {
       paper: "#FFFFFF",
