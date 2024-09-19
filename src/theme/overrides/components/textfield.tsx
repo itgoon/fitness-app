@@ -43,7 +43,7 @@ export function textField(theme: Theme) {
         root: {
           ...font.value,
           fontSize: 18,
-          top: "2px !important",
+          top: "-1px !important",
           color: color.placeholder,
           [`&.${inputLabelClasses.shrink}`]: {
             ...font.textLabel,
@@ -69,7 +69,7 @@ export function textField(theme: Theme) {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          marginTop: "12px !important",
+          marginTop: "0 !important",
           color: "#212121",
           [`&.${inputBaseClasses.disabled}`]: {
             "& svg": {
@@ -158,6 +158,12 @@ export function textField(theme: Theme) {
     MuiTextField: {
       styleOverrides: {
         root: {
+          "& .MuiInputBase-sizeLarge": {
+            input: {
+              boxSizing: "border-box",
+              height: pxSize.lg
+            }
+          },
           [`.MuiInputBase-input`]: {
             // padding: "13px 12px 13px 10px",
             boxSizing: "border-box",
@@ -167,6 +173,7 @@ export function textField(theme: Theme) {
               height: pxSize.sm
             }
           },
+
           ["&.isView"]: {
             ".MuiInputBase-root": {
               fieldset: {
