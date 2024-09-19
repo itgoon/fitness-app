@@ -6,7 +6,7 @@ import { UseFormReturn, FormProvider as Form } from "react-hook-form";
 type Props = {
   children: ReactNode;
   methods: UseFormReturn<any>;
-  onSubmit?: VoidFunction;
+  onSubmit?: () => void;
   onKeyDown?: KeyboardEventHandler<HTMLFormElement> | undefined;
   onKeyUp?: KeyboardEventHandler<HTMLFormElement> | undefined;
   sx?: CSSProperties;

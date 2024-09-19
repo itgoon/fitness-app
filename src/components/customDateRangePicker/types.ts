@@ -7,9 +7,9 @@ export type DateRangePickerProps = {
   onChangeEndDate: (newValue: Date | null) => void;
   //
   open: boolean;
-  onOpen?: VoidFunction;
-  onClose: VoidFunction;
-  onReset?: VoidFunction;
+  onOpen?: () => void;
+  onClose: () => void;
+  onReset?: () => void;
   //
   selected?: boolean;
   error?: boolean;
@@ -18,7 +18,7 @@ export type DateRangePickerProps = {
   shortLabel?: string;
   //
   title?: string;
-  variant?: 'calendar' | 'input';
+  variant?: "calendar" | "input";
   //
   setStartDate?: React.Dispatch<React.SetStateAction<Date | null>>;
   setEndDate?: React.Dispatch<React.SetStateAction<Date | null>>;

@@ -1,18 +1,18 @@
 import { BreadcrumbsProps } from "@mui/material/Breadcrumbs";
-import React from "react";
+import { ReactElement, ReactNode } from "react";
 
 // ----------------------------------------------------------------------
 
 export type BreadcrumbsLinkProps = {
   name?: string;
   href?: string;
-  icon?: React.ReactElement;
+  icon?: ReactElement;
 };
 
 export interface CustomBreadcrumbsProps extends BreadcrumbsProps {
   heading?: string;
   moreLink?: string[];
   activeLast?: boolean;
-  action?: React.ReactNode;
+  action?: ReactNode;
   links: BreadcrumbsLinkProps[];
 }

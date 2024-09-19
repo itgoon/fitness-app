@@ -1,10 +1,11 @@
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
+import { ReactNode } from "react";
 
 // ----------------------------------------------------------------------
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export default function AuthModernCompactLayout({ children }: Props) {

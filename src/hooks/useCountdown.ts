@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback } from "react";
 
 // ----------------------------------------------------------------------
 
@@ -11,10 +11,10 @@ type ReturnDateType = {
 
 export function useCountdownDate(date: Date): ReturnDateType {
   const [countdown, setCountdown] = useState({
-    days: '00',
-    hours: '00',
-    minutes: '00',
-    seconds: '00',
+    days: "00",
+    hours: "00",
+    minutes: "00",
+    seconds: "00"
   });
 
   useEffect(() => {
@@ -36,15 +36,19 @@ export function useCountdownDate(date: Date): ReturnDateType {
       (distanceToNow % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
     )}`.slice(-2);
 
-    const getMinutes = `0${Math.floor((distanceToNow % (1000 * 60 * 60)) / (1000 * 60))}`.slice(-2);
+    const getMinutes =
+      `0${Math.floor((distanceToNow % (1000 * 60 * 60)) / (1000 * 60))}`.slice(
+        -2
+      );
 
-    const getSeconds = `0${Math.floor((distanceToNow % (1000 * 60)) / 1000)}`.slice(-2);
+    const getSeconds =
+      `0${Math.floor((distanceToNow % (1000 * 60)) / 1000)}`.slice(-2);
 
     setCountdown({
-      days: getDays.toString() || '000',
-      hours: getHours || '000',
-      minutes: getMinutes || '000',
-      seconds: getSeconds || '000',
+      days: getDays.toString() || "000",
+      hours: getHours || "000",
+      minutes: getMinutes || "000",
+      seconds: getSeconds || "000"
     });
   };
 
@@ -52,7 +56,7 @@ export function useCountdownDate(date: Date): ReturnDateType {
     days: countdown.days,
     hours: countdown.hours,
     minutes: countdown.minutes,
-    seconds: countdown.seconds,
+    seconds: countdown.seconds
   };
 }
 
@@ -64,7 +68,7 @@ export function useCountdownDate(date: Date): ReturnDateType {
 type ReturnSecondsType = {
   counting: boolean;
   countdown: number;
-  startCountdown: VoidFunction;
+  startCountdown: () => void;
   setCountdown: React.Dispatch<React.SetStateAction<number>>;
 };
 

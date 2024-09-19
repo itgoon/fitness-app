@@ -1,1 +1,0 @@
-import{t as o,R as e}from"./index-DCohMUSq.js";const s=o();function i({children:r,activeStep:a,onNext:n}){const t=e.Children.toArray(r)[a];return e.isValidElement(t)?e.cloneElement(t,{onNext:n}):t}export{s as S,i as a};

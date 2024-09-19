@@ -1,1 +1,0 @@
-import{j as r,H as e}from"./index-DCohMUSq.js";import{C as t}from"./view-BZ3et8_7.js";import"./upgradeStorageIllustration-BigDtFz4.js";import"./Container-CRU1XRhF.js";function n(){return r.jsxs(r.Fragment,{children:[r.jsx(e,{children:r.jsx("title",{children:" 네이버 연동 화면"})}),r.jsx(t,{})]})}export{n as default};

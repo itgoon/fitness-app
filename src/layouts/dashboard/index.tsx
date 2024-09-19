@@ -3,7 +3,7 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import { useRecoilState } from "recoil";
 /* eslint-disable consistent-return */
-import { useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from "react";
 
 import Box from "@mui/material/Box";
 
@@ -27,7 +27,7 @@ import NavMini from "./navMini";
 // ----------------------------------------------------------------------
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export default function DashboardLayout({ children }: Props) {

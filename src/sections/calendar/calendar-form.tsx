@@ -1,53 +1,60 @@
-import * as Yup from 'yup';
-import { useCallback } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from "yup";
+import { useCallback } from "react";
+import { useForm, Controller } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import LoadingButton from '@mui/lab/LoadingButton';
-import DialogActions from '@mui/material/DialogActions';
-import { MobileDateTimePicker } from '@mui/x-date-pickers/MobileDateTimePicker';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Button from "@mui/material/Button";
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import LoadingButton from "@mui/lab/LoadingButton";
+import DialogActions from "@mui/material/DialogActions";
+import { MobileDateTimePicker } from "@mui/x-date-pickers/MobileDateTimePicker";
 
-import uuidv4 from 'src/utils/uuidv4';
-import { isAfter, fTimestamp } from 'src/utils/formatTime';
+import uuidv4 from "src/utils/uuidv4";
+import { isAfter, fTimestamp } from "src/utils/formatTime";
 
-import { createEvent, updateEvent, deleteEvent } from 'src/api/calendar';
+import { createEvent, updateEvent, deleteEvent } from "src/api/calendar";
 
-import Iconify from 'src/components/iconify';
-import { useSnackbar } from 'src/components/snackbar';
-import { ColorPicker } from 'src/components/colorUtils';
-import FormProvider, { RHFSwitch, RHFTextField } from 'src/components/hookForm';
+import Iconify from "src/components/iconify";
+import { useSnackbar } from "src/components/snackbar";
+import { ColorPicker } from "src/components/colorUtils";
+import FormProvider, { RHFSwitch, RHFTextField } from "src/components/hookForm";
 
-import { ICalendarDate, ICalendarEvent } from 'src/types/calendar';
+import { ICalendarDate, ICalendarEvent } from "src/types/calendar";
 
 // ----------------------------------------------------------------------
 
 type Props = {
   colorOptions: string[];
-  onClose: VoidFunction;
+  onClose: () => void;
   currentEvent?: ICalendarEvent;
 };
 
-export default function CalendarForm({ currentEvent, colorOptions, onClose }: Props) {
+export default function CalendarForm({
+  currentEvent,
+  colorOptions,
+  onClose
+}: Props) {
   const { enqueueSnackbar } = useSnackbar();
 
   const EventSchema = Yup.object().shape({
-    title: Yup.string().max(255).required('Title is required'),
-    description: Yup.string().max(5000, 'Description must be at most 5000 characters'),
+    title: Yup.string().max(255).required("Title is required"),
+    description: Yup.string().max(
+      5000,
+      "Description must be at most 5000 characters"
+    ),
     // not required
     color: Yup.string(),
     allDay: Yup.boolean(),
     start: Yup.mixed(),
-    end: Yup.mixed(),
+    end: Yup.mixed()
   });
 
   const methods = useForm({
     resolver: yupResolver(EventSchema),
-    defaultValues: currentEvent,
+    defaultValues: currentEvent
   });
 
   const {
@@ -55,7 +62,7 @@ export default function CalendarForm({ currentEvent, colorOptions, onClose }: Pr
     watch,
     control,
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting }
   } = methods;
 
   const values = watch();
@@ -70,17 +77,17 @@ export default function CalendarForm({ currentEvent, colorOptions, onClose }: Pr
       allDay: data?.allDay,
       description: data?.description,
       end: data?.end,
-      start: data?.start,
+      start: data?.start
     } as ICalendarEvent;
 
     try {
       if (!dateError) {
         if (currentEvent?.id) {
           await updateEvent(eventData);
-          enqueueSnackbar('Update success!');
+          enqueueSnackbar("Update success!");
         } else {
           await createEvent(eventData);
-          enqueueSnackbar('Create success!');
+          enqueueSnackbar("Create success!");
         }
         onClose();
         reset();
@@ -93,7 +100,7 @@ export default function CalendarForm({ currentEvent, colorOptions, onClose }: Pr
   const onDelete = useCallback(async () => {
     try {
       await deleteEvent(`${currentEvent?.id}`);
-      enqueueSnackbar('Delete success!');
+      enqueueSnackbar("Delete success!");
       onClose();
     } catch (error) {
       console.error(error);
@@ -105,7 +112,12 @@ export default function CalendarForm({ currentEvent, colorOptions, onClose }: Pr
       <Stack spacing={3} sx={{ px: 3 }}>
         <RHFTextField name="title" label="Title" />
 
-        <RHFTextField name="description" label="Description" multiline rows={3} />
+        <RHFTextField
+          name="description"
+          label="Description"
+          multiline
+          rows={3}
+        />
 
         <RHFSwitch name="allDay" label="All day" />
 
@@ -125,8 +137,8 @@ export default function CalendarForm({ currentEvent, colorOptions, onClose }: Pr
               format="dd/MM/yyyy hh:mm a"
               slotProps={{
                 textField: {
-                  fullWidth: true,
-                },
+                  fullWidth: true
+                }
               }}
             />
           )}
@@ -150,8 +162,9 @@ export default function CalendarForm({ currentEvent, colorOptions, onClose }: Pr
                 textField: {
                   fullWidth: true,
                   error: dateError,
-                  helperText: dateError && 'End date must be later than start date',
-                },
+                  helperText:
+                    dateError && "End date must be later than start date"
+                }
               }}
             />
           )}

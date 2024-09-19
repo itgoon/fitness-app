@@ -2,7 +2,6 @@ import {
   Divider,
   Drawer,
   InputAdornment,
-  TextField,
   Typography,
   useTheme
 } from "@mui/material";
@@ -13,6 +12,7 @@ import { useBoolean } from "src/hooks/useBoolean";
 import Condition from "./Conditions/Condition";
 import Wrap from "./Wrap";
 import RegisterHeader from "./RegisterHeader";
+import TextField from "src/components/TextField";
 
 const INITIAL_TIMER = 180;
 const CODE_LENGTH = 6;
@@ -132,11 +132,11 @@ export default function Step2({ onNext }: StepProps) {
             />
 
             <TextField
-              fullWidth
               error={isVerified ? true : false}
               helperText={
                 isVerified ? "잘못된 인증번호 입니다. 다시 입력해주세요." : ""
               }
+              size="large"
               type="number"
               variant="standard"
               label="인증번호"
@@ -164,7 +164,6 @@ export default function Step2({ onNext }: StepProps) {
               children={"혹시 인증번호를 받지 못하셨나요?"}
             />
             <Button
-              fullWidth
               variant="soft"
               onClick={resendCode}
               children={"인증번호 재전송"}
@@ -174,7 +173,6 @@ export default function Step2({ onNext }: StepProps) {
       </Wrap>
       {canResendCode && (
         <Button
-          fullWidth
           variant="contained"
           color={"primary"}
           children={"완료"}

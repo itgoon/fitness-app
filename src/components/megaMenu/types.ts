@@ -1,6 +1,6 @@
-import { StackProps } from '@mui/material/Stack';
-import { Theme, SxProps } from '@mui/material/styles';
-import { ListItemButtonProps } from '@mui/material/ListItemButton';
+import { StackProps } from "@mui/material/Stack";
+import { Theme, SxProps } from "@mui/material/styles";
+import { ListItemButtonProps } from "@mui/material/ListItemButton";
 
 // ----------------------------------------------------------------------
 
@@ -45,7 +45,9 @@ export type NavItemBaseProps = {
   }[];
 };
 
-export type NavItemProps = ListItemButtonProps & NavItemBaseProps & NavItemStateProps;
+export type NavItemProps = ListItemButtonProps &
+  NavItemBaseProps &
+  NavItemStateProps;
 
 export type NavListProps = {
   data: NavItemBaseProps;
@@ -62,7 +64,7 @@ export type NavSubListProps = StackProps & {
   }[];
   slotProps?: SlotProps;
   title?: string;
-  onCloseMenu?: VoidFunction;
+  onCloseMenu?: () => void;
 };
 
 export type NavProps = StackProps & {

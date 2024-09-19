@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import { ReactNode, useMemo } from "react";
 import merge from "lodash/merge";
 
 import CssBaseline from "@mui/material/CssBaseline";
@@ -26,7 +26,7 @@ import { createContrast } from "./options/contrast";
 // ----------------------------------------------------------------------
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export default function ThemeProvider({ children }: Props) {

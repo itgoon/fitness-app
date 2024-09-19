@@ -9,31 +9,31 @@ interface Props {
   openModal: ({
     type,
     data,
-    onClose,
+    onClose
   }: {
     type: ModalType;
     data: any;
-    onClose?: VoidFunction;
+    onClose?: () => void;
   }) => void;
   openAlert: ({
     title,
     subtitle,
-    onClose,
+    onClose
   }: {
     title: string;
     subtitle?: string;
-    onClose?: VoidFunction;
+    onClose?: () => void;
   }) => void;
   openConfirm: ({
     title,
     content,
     onClick,
-    onClose,
+    onClose
   }: {
     title: string;
     content?: any;
-    onClick?: VoidFunction;
-    onClose?: VoidFunction;
+    onClick?: () => void;
+    onClose?: () => void;
   }) => void;
 }
 /**
@@ -51,18 +51,18 @@ export const useModal = (): Props => {
     ({
       type,
       data,
-      onClose,
+      onClose
     }: {
       type: ModalType;
       data: any;
-      onClose?: VoidFunction;
+      onClose?: () => void;
     }) => {
       setModalState({
         ...modalState,
         open: true,
         type,
         data,
-        onClose: onClose || modalState.onClose,
+        onClose: onClose || modalState.onClose
       });
     },
     [modalState]
@@ -72,18 +72,18 @@ export const useModal = (): Props => {
     ({
       title,
       subtitle,
-      onClose,
+      onClose
     }: {
       title: string;
       subtitle?: string;
-      onClose?: VoidFunction;
+      onClose?: () => void;
     }) => {
       setAlertState({
         ...alertState,
         open: true,
         title,
         subtitle,
-        onClose: onClose || alertState.onClose,
+        onClose: onClose || alertState.onClose
       });
     },
     [alertState]
@@ -94,12 +94,12 @@ export const useModal = (): Props => {
       title,
       content,
       onClick,
-      onClose,
+      onClose
     }: {
       title: string;
       content?: any;
-      onClick?: VoidFunction;
-      onClose?: VoidFunction;
+      onClick?: () => void;
+      onClose?: () => void;
     }) => {
       setConfirmState({
         ...confirmState,
@@ -107,7 +107,7 @@ export const useModal = (): Props => {
         title,
         content,
         onClick: onClick || confirmState.onClick,
-        onClose: onClose || confirmState.onClose,
+        onClose: onClose || confirmState.onClose
       });
     },
     [confirmState]

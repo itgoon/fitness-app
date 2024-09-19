@@ -1,8 +1,9 @@
-import { Stack, TextField, Typography } from "@mui/material";
+import { Stack, Typography } from "@mui/material";
 import { useEffect, useState } from "react";
 import Button from "src/components/Button";
 import Wrap from "./Wrap";
 import RegisterHeader from "./RegisterHeader";
+import TextField from "src/components/TextField";
 const stepsChild = [
   { label: "확인", value: "이름을 입력해주세요" },
   { label: "확인", value: "생년월일을 입력해주세요" },
@@ -46,7 +47,7 @@ export default function Step1({ onNext, data, setData }: StepProps) {
           {step === 2 && (
             <>
               <TextField
-                fullWidth
+                size="large"
                 variant="standard"
                 label="휴대폰 번호"
                 placeholder="010 -"
@@ -62,7 +63,7 @@ export default function Step1({ onNext, data, setData }: StepProps) {
           {step >= 1 && (
             <>
               <TextField
-                fullWidth
+                size="large"
                 variant="standard"
                 label="생년월일"
                 placeholder="예) 19900101"
@@ -77,7 +78,7 @@ export default function Step1({ onNext, data, setData }: StepProps) {
           )}
 
           <TextField
-            fullWidth
+            size="large"
             variant="standard"
             label="이름"
             placeholder="홍길동"
@@ -96,7 +97,6 @@ export default function Step1({ onNext, data, setData }: StepProps) {
       </Wrap>
       {!isDisabled && (
         <Button
-          fullWidth
           variant="contained"
           color={"primary"}
           onClick={() => {

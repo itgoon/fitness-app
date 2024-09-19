@@ -1,1 +1,0 @@
-import{j as s,S as n,B as e}from"./index-DCohMUSq.js";function a({filters:o,onDeleteFilter:l,onResetFilters:i,results:r,...t}){return s.jsx(n,{spacing:1.5,...t,children:s.jsxs(e,{sx:{typography:"body2"},children:[s.jsx("strong",{children:r}),s.jsx(e,{component:"span",sx:{color:"text.secondary",ml:.25},children:"results found"})]})})}export{a as U};

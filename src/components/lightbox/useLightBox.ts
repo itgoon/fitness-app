@@ -1,12 +1,12 @@
-import { useState, useCallback } from 'react';
-import { Slide, SlideImage, SlideVideo } from 'yet-another-react-lightbox';
+import { useState, useCallback } from "react";
+import { Slide, SlideImage, SlideVideo } from "yet-another-react-lightbox";
 
 // ----------------------------------------------------------------------
 
 type ReturnType = {
   open: boolean;
   selected: number;
-  onClose: VoidFunction;
+  onClose: () => void;
   onOpen: (slideUrl: string) => void;
   setSelected: React.Dispatch<React.SetStateAction<number>>;
 };
@@ -17,7 +17,7 @@ export default function useLightBox(slides: Slide[]): ReturnType {
   const handleOpen = useCallback(
     (slideUrl: string) => {
       const slideIndex = slides.findIndex((slide) =>
-        slide.type === 'video'
+        slide.type === "video"
           ? (slide as SlideVideo).poster === slideUrl
           : (slide as SlideImage).src === slideUrl
       );
@@ -36,6 +36,6 @@ export default function useLightBox(slides: Slide[]): ReturnType {
     open: selected >= 0,
     onOpen: handleOpen,
     onClose: handleClose,
-    setSelected,
+    setSelected
   };
 }

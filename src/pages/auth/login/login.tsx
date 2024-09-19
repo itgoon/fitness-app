@@ -18,6 +18,7 @@ import { useEffect } from "react";
 import { useNavigate } from "react-router";
 import { useAuth } from "src/hooks/useAuth";
 import { ReqLogin } from "../../../types/auth";
+import Button from "src/components/Button";
 
 // ----------------------------------------------------------------------
 
@@ -38,19 +39,19 @@ export default function LoginView() {
   }, [auth]);
   const LoginSchema = Yup.object().shape({
     userId: Yup.string().required("이메일을 입력해주새요."),
-    password: Yup.string().required("비밀번호를 입력해주세요."),
+    password: Yup.string().required("비밀번호를 입력해주세요.")
   });
 
   const methods = useForm<ReqLogin>({
     resolver: yupResolver(LoginSchema),
     defaultValues: {
       userId: "",
-      password: "",
-    },
+      password: ""
+    }
   });
   const {
     handleSubmit,
-    formState: { isSubmitting },
+    formState: { isSubmitting }
   } = methods;
 
   const onSubmit = handleSubmit(async (data: ReqLogin) => {
@@ -72,83 +73,13 @@ export default function LoginView() {
   });
 
   return (
-    <FormProvider methods={methods} onSubmit={onSubmit}>
-      <Stack spacing={0.5} sx={{ mb: 5 }}>
-        <Typography variant="h4" color="text.primary">
-          로그인
-        </Typography>
-        <Typography variant="body2" color="text.secondary">
-          아직 계정이 없으신가요?{" "}
-          <Typography
-            component="span"
-            variant="subtitle2"
-            color="primary"
-            sx={{ cursor: "pointer" }}
-            onClick={() => navigate("/register")}
-          >
-            이메일 계정으로 가입
-          </Typography>
-        </Typography>
+    <Box>
+      <Typography>오늘을 위한 당신의 스마트 비서</Typography>
+      LoadingButton
+      <Stack>
+        <Button>zkzk</Button>
+        <Button>apple</Button>
       </Stack>
-
-      <Stack spacing={3} sx={{ mb: 1.5 }}>
-        <RHFTextField name="userId" label="이메일" />
-        <RHFTextField
-          name="password"
-          label="비밀번호"
-          type={password.value ? "text" : "password"}
-          InputProps={{
-            endAdornment: (
-              <InputAdornment position="end">
-                <IconButton onClick={password.onToggle} edge="end">
-                  <Iconify
-                    icon={
-                      password.value
-                        ? "solar:eye-bold"
-                        : "solar:eye-closed-bold"
-                    }
-                  />
-                </IconButton>
-              </InputAdornment>
-            ),
-          }}
-        />
-      </Stack>
-
-      <Box
-        sx={{
-          display: "flex",
-          justifyContent: "space-between",
-          alignItems: "center",
-          mb: 3,
-        }}
-      >
-        <Box sx={{ display: "flex", alignItems: "center" }}>
-          <Checkbox />
-          <Typography variant="body2" color="text.primary">
-            로그인 상태 유지
-          </Typography>
-        </Box>
-        <Typography
-          variant="body2"
-          color="info.dark"
-          onClick={() => navigate("/forgot")}
-          sx={{ cursor: "pointer" }}
-        >
-          비밀번호를 잊으셨나요?
-        </Typography>
-      </Box>
-
-      <LoadingButton
-        fullWidth
-        color="primary"
-        size="large"
-        type="submit"
-        variant="contained"
-        loading={isSubmitting}
-      >
-        로그인
-      </LoadingButton>
-    </FormProvider>
+    </Box>
   );
 }

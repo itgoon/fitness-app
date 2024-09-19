@@ -1,25 +1,29 @@
-import { useCallback } from 'react';
-import orderBy from 'lodash/orderBy';
+import { useCallback } from "react";
+import orderBy from "lodash/orderBy";
 
-import Box from '@mui/material/Box';
-import Stack from '@mui/material/Stack';
-import Badge from '@mui/material/Badge';
-import Drawer from '@mui/material/Drawer';
-import Divider from '@mui/material/Divider';
-import Tooltip from '@mui/material/Tooltip';
-import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
-import ListItemText from '@mui/material/ListItemText';
-import ListItemButton from '@mui/material/ListItemButton';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+import Box from "@mui/material/Box";
+import Stack from "@mui/material/Stack";
+import Badge from "@mui/material/Badge";
+import Drawer from "@mui/material/Drawer";
+import Divider from "@mui/material/Divider";
+import Tooltip from "@mui/material/Tooltip";
+import IconButton from "@mui/material/IconButton";
+import Typography from "@mui/material/Typography";
+import ListItemText from "@mui/material/ListItemText";
+import ListItemButton from "@mui/material/ListItemButton";
+import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 
-import { fDateTime } from 'src/utils/formatTime';
+import { fDateTime } from "src/utils/formatTime";
 
-import Iconify from 'src/components/iconify';
-import Scrollbar from 'src/components/scrollbar';
-import { ColorPicker } from 'src/components/colorUtils';
+import Iconify from "src/components/iconify";
+import Scrollbar from "src/components/scrollbar";
+import { ColorPicker } from "src/components/colorUtils";
 
-import { ICalendarEvent, ICalendarFilters, ICalendarFilterValue } from 'src/types/calendar';
+import {
+  ICalendarEvent,
+  ICalendarFilters,
+  ICalendarFilterValue
+} from "src/types/calendar";
 
 // ----------------------------------------------------------------------
 
@@ -29,12 +33,12 @@ type Props = {
   onFilters: (name: string, value: ICalendarFilterValue) => void;
   //
   canReset: boolean;
-  onResetFilters: VoidFunction;
+  onResetFilters: () => void;
   //
   dateError: boolean;
   //
   open: boolean;
-  onClose: VoidFunction;
+  onClose: () => void;
   //
   events: ICalendarEvent[];
   colorOptions: string[];
@@ -55,25 +59,25 @@ export default function CalendarFilters({
   //
   events,
   colorOptions,
-  onClickEvent,
+  onClickEvent
 }: Props) {
   const handleFilterColors = useCallback(
     (newValue: string | string[]) => {
-      onFilters('colors', newValue as string[]);
+      onFilters("colors", newValue as string[]);
     },
     [onFilters]
   );
 
   const handleFilterStartDate = useCallback(
     (newValue: Date | null) => {
-      onFilters('startDate', newValue);
+      onFilters("startDate", newValue);
     },
     [onFilters]
   );
 
   const handleFilterEndDate = useCallback(
     (newValue: Date | null) => {
-      onFilters('endDate', newValue);
+      onFilters("endDate", newValue);
     },
     [onFilters]
   );
@@ -119,7 +123,11 @@ export default function CalendarFilters({
       <Typography variant="subtitle2">Range</Typography>
 
       <Stack spacing={2}>
-        <DatePicker label="Start date" value={filters.startDate} onChange={handleFilterStartDate} />
+        <DatePicker
+          label="Start date"
+          value={filters.startDate}
+          onChange={handleFilterStartDate}
+        />
 
         <DatePicker
           label="End date"
@@ -128,8 +136,8 @@ export default function CalendarFilters({
           slotProps={{
             textField: {
               error: dateError,
-              helperText: dateError && 'End date must be later than start date',
-            },
+              helperText: dateError && "End date must be later than start date"
+            }
           }}
         />
       </Stack>
@@ -143,13 +151,13 @@ export default function CalendarFilters({
       </Typography>
 
       <Scrollbar sx={{ height: 1 }}>
-        {orderBy(events, ['end'], ['desc']).map((event) => (
+        {orderBy(events, ["end"], ["desc"]).map((event) => (
           <ListItemButton
             key={event.id}
             onClick={() => onClickEvent(`${event.id}`)}
             sx={{
               py: 1.5,
-              borderBottom: (theme) => `dashed 1px ${theme.palette.divider}`,
+              borderBottom: (theme) => `dashed 1px ${theme.palette.divider}`
             }}
           >
             <Box
@@ -158,9 +166,9 @@ export default function CalendarFilters({
                 left: 0,
                 width: 0,
                 height: 0,
-                position: 'absolute',
-                borderRight: '10px solid transparent',
-                borderTop: `10px solid ${event.color}`,
+                position: "absolute",
+                borderRight: "10px solid transparent",
+                borderTop: `10px solid ${event.color}`
               }}
             />
 
@@ -175,21 +183,21 @@ export default function CalendarFilters({
                 <Typography
                   variant="caption"
                   component="div"
-                  sx={{ fontSize: 11, color: 'text.disabled' }}
+                  sx={{ fontSize: 11, color: "text.disabled" }}
                 >
                   {event.allDay ? (
-                    fDateTime(event.start, 'dd MMM yy')
+                    fDateTime(event.start, "dd MMM yy")
                   ) : (
                     <>
-                      {`${fDateTime(event.start, 'dd MMM yy p')} - ${fDateTime(
+                      {`${fDateTime(event.start, "dd MMM yy p")} - ${fDateTime(
                         event.end,
-                        'dd MMM yy p'
+                        "dd MMM yy p"
                       )}`}
                     </>
                   )}
                 </Typography>
               }
-              sx={{ display: 'flex', flexDirection: 'column-reverse' }}
+              sx={{ display: "flex", flexDirection: "column-reverse" }}
             />
           </ListItemButton>
         ))}
@@ -203,15 +211,15 @@ export default function CalendarFilters({
       open={open}
       onClose={onClose}
       slotProps={{
-        backdrop: { invisible: true },
+        backdrop: { invisible: true }
       }}
       PaperProps={{
-        sx: { width: 320 },
+        sx: { width: 320 }
       }}
     >
       {renderHead}
 
-      <Divider sx={{ borderStyle: 'dashed' }} />
+      <Divider sx={{ borderStyle: "dashed" }} />
 
       {renderColors}
 

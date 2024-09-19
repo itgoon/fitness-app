@@ -17,7 +17,7 @@ import { HEADER, NAV } from "../configLayout";
 // ----------------------------------------------------------------------
 
 type Props = {
-  onOpenNav?: VoidFunction;
+  onOpenNav?: () => void;
 };
 
 export default function Header({ onOpenNav }: Props) {

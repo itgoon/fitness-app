@@ -1,7 +1,7 @@
-import Carousel, { Settings } from 'react-slick';
-import { useRef, useState, useCallback } from 'react';
+import Carousel, { Settings } from "react-slick";
+import { useRef, useState, useCallback } from "react";
 
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 
 // ----------------------------------------------------------------------
 
@@ -11,9 +11,9 @@ type ReturnType = {
   carouselSettings: Settings;
   carouselRef: React.MutableRefObject<Carousel | null>;
   //
-  onPrev: VoidFunction;
-  onNext: VoidFunction;
-  onSetNav: VoidFunction;
+  onPrev: () => void;
+  onNext: () => void;
+  onSetNav: () => void;
   onTogo: (index: number) => void;
   //
   setNav: React.Dispatch<React.SetStateAction<Carousel | undefined>>;
@@ -29,7 +29,7 @@ export default function useCarousel(props?: Settings): ReturnType {
 
   const [nav, setNav] = useState<Carousel | undefined>(undefined);
 
-  const rtl = theme.direction === 'rtl';
+  const rtl = theme.direction === "rtl";
 
   const carouselSettings = {
     arrows: false,
@@ -37,7 +37,7 @@ export default function useCarousel(props?: Settings): ReturnType {
     rtl,
     beforeChange: (current: number, next: number) => setCurrentIndex(next),
     ...props,
-    fade: !!(props?.fade && !rtl),
+    fade: !!(props?.fade && !rtl)
   };
 
   const onSetNav = useCallback(() => {
@@ -76,6 +76,6 @@ export default function useCarousel(props?: Settings): ReturnType {
     onSetNav,
     //
     setNav,
-    setCurrentIndex,
+    setCurrentIndex
   };
 }

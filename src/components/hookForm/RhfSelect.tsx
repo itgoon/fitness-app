@@ -9,6 +9,7 @@ import FormHelperText from "@mui/material/FormHelperText";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import Select, { SelectProps } from "../Select";
+import { ReactNode } from "react";
 
 // ----------------------------------------------------------------------
 
@@ -50,7 +51,7 @@ type RHFMultiSelectProps = FormControlProps & {
   chip?: boolean;
   checkbox?: boolean;
   placeholder?: string;
-  helperText?: React.ReactNode;
+  helperText?: ReactNode;
   options: {
     label: string;
     value: string;

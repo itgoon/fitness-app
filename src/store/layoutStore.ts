@@ -1,26 +1,26 @@
-import { atom } from 'recoil';
+import { atom } from "recoil";
 
 // 로딩
 export const loadingState = atom<boolean>({
   key: `loading_${new Date().getTime()}`,
-  default: false,
+  default: false
 });
 
 export type ModalType =
   | undefined
-  | 'reason'
-  | 'point'
-  | 'withdrawal'
-  | 'findStore'
-  | 'memberLoginHistory'
-  | 'license'
-  | 'memberInfo'
-  | 'memberAuth';
+  | "reason"
+  | "point"
+  | "withdrawal"
+  | "findStore"
+  | "memberLoginHistory"
+  | "license"
+  | "memberInfo"
+  | "memberAuth";
 
 export const modalState = atom<{
   open: boolean;
   type: ModalType;
-  onClose: VoidFunction;
+  onClose: () => void;
   data: any;
 }>({
   key: `modal_${new Date().getTime()}`,
@@ -28,38 +28,38 @@ export const modalState = atom<{
     open: false,
     type: undefined,
     onClose: () => {},
-    data: undefined,
-  },
+    data: undefined
+  }
 });
 
 export const alertState = atom<{
   open: boolean;
   title: string;
   subtitle?: string | undefined;
-  onClose: VoidFunction;
+  onClose: () => void;
 }>({
   key: `alert_modal_${new Date().getTime()}`,
   default: {
     open: false,
-    title: '',
+    title: "",
     subtitle: undefined,
-    onClose: () => {},
-  },
+    onClose: () => {}
+  }
 });
 
 export const confirmState = atom<{
   open: boolean;
   title: string;
   content: any;
-  onClose: VoidFunction;
-  onClick: VoidFunction;
+  onClose: () => void;
+  onClick: () => void;
 }>({
   key: `confirm_modal_${new Date().getTime()}`,
   default: {
     open: false,
-    title: '',
+    title: "",
     content: undefined,
     onClose: () => {},
-    onClick: () => {},
-  },
+    onClick: () => {}
+  }
 });

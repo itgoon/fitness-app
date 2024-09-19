@@ -1,16 +1,17 @@
-import { ButtonProps } from '@mui/material';
-import { CSSProperties } from 'react';
-import { IconsType } from '../Icon/types';
+import { ButtonProps } from "@mui/material";
+import { CSSProperties } from "react";
+import { IconsType } from "../Icon/types";
 
 export type ButtonDataProps = {
   child: string;
-  variant?: ButtonProps['variant'];
+  variant?: ButtonProps["variant"];
   startIcon?: IconsType;
   endIcon?: IconsType;
   sx?: CSSProperties;
   color?: any;
   borderColor?: any;
-  size?: 'small' | 'medium' | 'large';
+  fullWidth?: boolean;
+  size?: "small" | "medium" | "large";
 };
 
 export type CustomButton = ButtonProps & {

@@ -28,7 +28,7 @@ export const authRoutes = [
       { path: "", element: <LoginPage /> },
       { path: "login", element: <LoginPage /> },
       { path: "register", element: <RegisterPage /> },
-      { path: "forgot", element: <ForgotPage /> },
-    ],
-  },
+      { path: "forgot", element: <ForgotPage /> }
+    ]
+  }
 ];

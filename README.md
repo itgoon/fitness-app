@@ -145,3 +145,18 @@ const {openModal, openAlert, openConfirm} = useModal();
   });
 
 ```
+
+<!-- ijh
+
+회원가입 페이지 제작
+
+반응형 페이지 420px 789px
+
+앞으로 할 일
+페이지  나오는 것을  통해  라우트 정리 및  registerHeader 파일을 공용 헤더로 변경하기
+이 후  register 폴더의  컴포넌트  정리  및 명칭 변경
+
+스플래쉬 페이지 제작
+
+
+ -->

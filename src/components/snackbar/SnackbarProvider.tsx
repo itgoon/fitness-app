@@ -1,23 +1,26 @@
-import { useRef } from 'react';
-import { closeSnackbar, SnackbarProvider as NotistackProvider } from 'notistack';
+import { ReactNode, useRef } from "react";
+import {
+  closeSnackbar,
+  SnackbarProvider as NotistackProvider
+} from "notistack";
 
-import Collapse from '@mui/material/Collapse';
-import IconButton from '@mui/material/IconButton';
+import Collapse from "@mui/material/Collapse";
+import IconButton from "@mui/material/IconButton";
 
-import Iconify from '../iconify';
-import { useSettingsContext } from '../settings';
-import { StyledIcon, StyledNotistack } from './styles';
+import Iconify from "../iconify";
+import { useSettingsContext } from "../settings";
+import { StyledIcon, StyledNotistack } from "./styles";
 
 // ----------------------------------------------------------------------
 
 type Props = {
-  children: React.ReactNode;
+  children: ReactNode;
 };
 
 export default function SnackbarProvider({ children }: Props) {
   const settings = useSettingsContext();
 
-  const isRTL = settings.themeDirection === 'rtl';
+  const isRTL = settings.themeDirection === "rtl";
 
   const notistackRef = useRef<any>(null);
 
@@ -29,7 +32,7 @@ export default function SnackbarProvider({ children }: Props) {
       autoHideDuration={3000}
       TransitionComponent={isRTL ? Collapse : undefined}
       variant="success" // Set default variant
-      anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+      anchorOrigin={{ vertical: "top", horizontal: "right" }}
       iconVariant={{
         info: (
           <StyledIcon color="info">
@@ -50,18 +53,22 @@ export default function SnackbarProvider({ children }: Props) {
           <StyledIcon color="error">
             <Iconify icon="solar:danger-bold" width={24} />
           </StyledIcon>
-        ),
+        )
       }}
       Components={{
         default: StyledNotistack,
         info: StyledNotistack,
         success: StyledNotistack,
         warning: StyledNotistack,
-        error: StyledNotistack,
+        error: StyledNotistack
       }}
       // with close as default
       action={(snackbarId) => (
-        <IconButton size="small" onClick={() => closeSnackbar(snackbarId)} sx={{ p: 0.5 }}>
+        <IconButton
+          size="small"
+          onClick={() => closeSnackbar(snackbarId)}
+          sx={{ p: 0.5 }}
+        >
           <Iconify width={16} icon="mingcute:close-line" />
         </IconButton>
       )}

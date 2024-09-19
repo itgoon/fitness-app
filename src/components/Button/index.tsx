@@ -7,12 +7,14 @@ export default function Button({
   startIcon,
   endIcon,
   borderColor,
+  fullWidth = true,
   isShadow = false,
   ...props
 }: CustomButton) {
   const shadowSx = isShadow === true ? "0 2px 4px rgba(0, 0, 0, 0.02)" : "";
   return (
     <MuiButton
+      fullWidth={fullWidth}
       startIcon={startIcon && <Icon name={startIcon} />}
       endIcon={endIcon && <Icon name={endIcon} />}
       sx={{

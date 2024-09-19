@@ -7,7 +7,7 @@ import Stack, { StackProps } from "@mui/material/Stack";
 type Props = StackProps & {
   filters?: any;
   onDeleteFilter?: (name: string) => void;
-  onResetFilters?: VoidFunction;
+  onResetFilters?: () => void;
   results: number;
 };
 
@@ -70,7 +70,7 @@ function Block({ label, children, sx, ...other }: BlockProps) {
         borderRadius: 1,
         overflow: "hidden",
         borderStyle: "dashed",
-        ...sx,
+        ...sx
       }}
       {...other}
     >
