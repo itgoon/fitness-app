@@ -1,7 +1,7 @@
 import {
   MenuItem,
   Select as MuiSelect,
-  SelectProps as MuiSelectProps,
+  SelectProps as MuiSelectProps
 } from "@mui/material";
 import { useTheme } from "@mui/material/styles";
 
@@ -47,7 +47,7 @@ export default function Select({
             style={{
               color: value
                 ? theme.palette.text.primary
-                : theme.palette.text.disabled,
+                : theme.palette.text.disabled
             }}
           >
             {v?.length ? v : `${isAll ? "전체" : "선택"}`}

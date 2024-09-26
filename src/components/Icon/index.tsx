@@ -1,13 +1,14 @@
-import * as MUIICON from "@mui/icons-material";
-import * as SVGICON from "../../assets/svgs";
-import { useEffect, useMemo, useRef } from "react";
-import { IconProps } from "./types";
+import * as MUIICON from '@mui/icons-material';
+import * as SVGICON from '../../assets/svgs';
+import { useEffect, useMemo, useRef } from 'react';
+import { IconProps } from './types';
 
 // ----------------------------------------------------------------------
 
 export default function Icon({
   name,
   size = 14,
+  height,
   color,
   onClick,
   fill,
@@ -20,9 +21,9 @@ export default function Icon({
 
   useEffect(() => {
     if (svgRef.current && fill) {
-      const paths = svgRef.current.querySelectorAll("path");
+      const paths = svgRef.current.querySelectorAll('path');
       paths.forEach((path) => {
-        path.setAttribute("fill", `${fill} !important`); // fill 속성 설정
+        path.setAttribute('fill', `${fill} !important`); // fill 속성 설정
       });
     }
   }, [fill]);
@@ -33,14 +34,14 @@ export default function Icon({
         ? {
             fontSize: `${size}px`,
             color,
-            cursor: onClick !== undefined ? "pointer" : "auto",
+            cursor: onClick !== undefined ? 'pointer' : 'auto',
             ...sx
           }
         : {
             width: size,
             height: size,
-            color: color || "inhreit",
-            cursor: onClick !== undefined ? "pointer" : "auto",
+            color: color || 'inhreit',
+            cursor: onClick !== undefined ? 'pointer' : 'auto',
             ...sx
           },
       ref: svgRef // ref를 여기서 추가

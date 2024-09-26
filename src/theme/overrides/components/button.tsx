@@ -1,20 +1,20 @@
-import { buttonClasses, ButtonProps } from "@mui/material/Button";
-import { alpha, Theme } from "@mui/material/styles";
-import { pxSize } from "src/utils/style";
+import { buttonClasses, ButtonProps } from '@mui/material/Button';
+import { alpha, Theme } from '@mui/material/styles';
+import { pxSize } from 'src/utils/style';
 
 // ----------------------------------------------------------------------
 
 const COLORS = [
-  "primary",
-  "secondary",
-  "info",
-  "success",
-  "warning",
-  "error"
+  'primary',
+  'secondary',
+  'info',
+  'success',
+  'warning',
+  'error'
 ] as const;
 
 // NEW VARIANT
-declare module "@mui/material/Button" {
+declare module '@mui/material/Button' {
   interface ButtonPropsVariantOverrides {
     soft: true;
   }
@@ -23,24 +23,26 @@ declare module "@mui/material/Button" {
 // ----------------------------------------------------------------------
 
 export function button(theme: Theme) {
-  const lightMode = theme.palette.mode === "light";
+  const lightMode = theme.palette.mode === 'light';
 
   const rootStyles = (ownerState: ButtonProps) => {
-    const inheritColor = ownerState.color === "inherit";
+    const inheritColor = ownerState.color === 'inherit';
 
-    const containedVariant = ownerState.variant === "contained";
+    const containedVariant = ownerState.variant === 'contained';
 
-    const outlinedVariant = ownerState.variant === "outlined";
+    const outlinedVariant = ownerState.variant === 'outlined';
 
-    const textVariant = ownerState.variant === "text";
+    const textVariant = ownerState.variant === 'text';
 
-    const softVariant = ownerState.variant === "soft";
+    const softVariant = ownerState.variant === 'soft';
 
-    const smallSize = ownerState.size === "small";
+    const smallSize = ownerState.size === 'small';
 
-    const mediumSize = !ownerState?.size || ownerState.size === "medium";
+    const mediumSize = !ownerState?.size || ownerState.size === 'medium';
 
-    const largeSize = ownerState.size === "large";
+    const largeSize = ownerState.size === 'large';
+    const startIcon =
+      ownerState.startIcon !== '' || ownerState.startIcon !== undefined;
 
     const defaultStyle = {
       ...(inheritColor && {
@@ -50,9 +52,9 @@ export function button(theme: Theme) {
             ? theme.palette.common.white
             : theme.palette.grey[800],
           backgroundColor: lightMode
-            ? theme.palette.grey[800]
+            ? theme.palette.common.black
             : theme.palette.common.white,
-          "&:hover": {
+          '&:hover': {
             backgroundColor: lightMode
               ? theme.palette.grey[700]
               : theme.palette.grey[400]
@@ -61,13 +63,13 @@ export function button(theme: Theme) {
         // OUTLINED
         ...(outlinedVariant && {
           borderColor: alpha(theme.palette.grey[500], 0.32),
-          "&:hover": {
+          '&:hover': {
             backgroundColor: theme.palette.action.hover
           }
         }),
         // TEXT
         ...(textVariant && {
-          "&:hover": {
+          '&:hover': {
             backgroundColor: theme.palette.action.hover
           }
         }),
@@ -77,15 +79,15 @@ export function button(theme: Theme) {
           // color: theme.palette.text.primary,
           color: theme.palette.grey.A100,
           backgroundColor: alpha(theme.palette.grey[500], 0.08),
-          "&:hover": {
+          '&:hover': {
             backgroundColor: alpha(theme.palette.grey[500], 0.24)
           }
         })
       }),
       ...(outlinedVariant && {
-        "&:hover": {
-          borderColor: "currentColor",
-          boxShadow: "0 0 0 0.5px currentColor"
+        '&:hover': {
+          borderColor: 'currentColor',
+          boxShadow: '0 0 0 0.5px currentColor'
         }
       })
     };
@@ -94,23 +96,23 @@ export function button(theme: Theme) {
       ...(ownerState.color === color && {
         // CONTAINED
         ...(containedVariant && {
-          "&:hover": {
+          '&:hover': {
             boxShadow: theme.customShadows[color]
           }
         }),
         // SOFT
         ...(softVariant && {
-          color: theme.palette[color][lightMode ? "dark" : "light"],
+          color: theme.palette[color][lightMode ? 'dark' : 'light'],
           backgroundColor: alpha(theme.palette[color].main, 0.16),
-          "&:hover": {
+          '&:hover': {
             backgroundColor: alpha(theme.palette[color].main, 0.32)
           }
         }),
         // TEXT
         ...(textVariant && {
-          ...(ownerState.color === "secondary" && {
+          ...(ownerState.color === 'secondary' && {
             color: theme.palette.grey[400],
-            "&:hover": {
+            '&:hover': {
               backgroundColor: alpha(theme.palette.secondary.main, 0.08)
             }
           })
@@ -159,6 +161,7 @@ export function button(theme: Theme) {
         fontSize: 15,
         paddingLeft: 16,
         paddingRight: 16,
+
         ...(textVariant && {
           paddingLeft: 10,
           paddingRight: 10
@@ -166,7 +169,21 @@ export function button(theme: Theme) {
       })
     };
 
-    return [defaultStyle, ...colorStyle, disabledState, size];
+    const iconButtonStyle = {
+      ...(startIcon &&
+        largeSize && {
+          padding: '14px 24px',
+          justifyContent: 'start',
+          '& .MuiButton-startIcon': {
+            paddingRight: 52,
+            margin: 0,
+            '& svg': {
+              // TODO 아이콘 크기에 접근하려면 이곳으로
+            }
+          }
+        })
+    };
+    return [defaultStyle, ...colorStyle, disabledState, size, iconButtonStyle];
   };
 
   return {

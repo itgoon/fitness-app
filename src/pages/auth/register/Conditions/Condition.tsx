@@ -4,8 +4,8 @@ import {
   FormControlLabel,
   Typography,
   TypographyPropsVariantOverrides
-} from "@mui/material";
-import Icon from "src/components/Icon";
+} from '@mui/material';
+import Icon from 'src/components/Icon';
 interface ICondition {
   label: string;
   onClick?: () => void;
@@ -17,14 +17,14 @@ export default function Condition({
   label,
   onClick,
   onChange,
-  variant = "Body16/light",
+  variant = 'Body16/light',
   isChecked
 }: ICondition) {
   return (
     <Box
-      display={"flex"}
-      alignItems={"center"}
-      justifyContent={"space-between"}
+      display={'flex'}
+      alignItems={'center'}
+      justifyContent={'space-between'}
     >
       <FormControlLabel
         label={<Typography variant={variant} children={label} />}
@@ -32,8 +32,8 @@ export default function Condition({
           <Checkbox
             checked={isChecked}
             onChange={onChange}
-            checkedIcon={<Icon name={"CheckSvg"} />}
-            icon={<Icon name={"CheckSvg"} />}
+            checkedIcon={<Icon name={'CheckSvg'} />}
+            icon={<Icon name={'CheckSvg'} />}
           />
         }
       />

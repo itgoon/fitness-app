@@ -1,5 +1,4 @@
 import { memo } from 'react';
-
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import { useTheme } from '@mui/material/styles';
@@ -24,27 +23,27 @@ function NavHorizontal() {
     <AppBar
       component="div"
       sx={{
-        top: HEADER.H_DESKTOP_OFFSET,
+        top: HEADER.H_DESKTOP_OFFSET
       }}
     >
       <Toolbar
         sx={{
           ...bgBlur({
-            color: theme.palette.background.default,
-          }),
+            color: theme.palette.background.default
+          })
         }}
       >
         <Scrollbar
           sx={{
             '& .simplebar-content': {
-              display: 'flex',
-            },
+              display: 'flex'
+            }
           }}
         >
           <NavSectionHorizontal
             data={navData}
             sx={{
-              ...theme.mixins.toolbar,
+              ...theme.mixins.toolbar
             }}
           />
         </Scrollbar>

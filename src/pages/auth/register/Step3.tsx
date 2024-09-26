@@ -7,7 +7,9 @@ export default function Step3() {
 
   return (
     <Stack spacing={2.5}>
-      <Typography sx={{ textAlign: 'center' }}>회원가입이 완료 되었습니다!</Typography>
+      <Typography sx={{ textAlign: 'center' }}>
+        회원가입이 완료 되었습니다!
+      </Typography>
       <Typography sx={{ textAlign: 'center' }}>
         로그인 후 지금 바로 서비스를 이용해 보세요.
       </Typography>

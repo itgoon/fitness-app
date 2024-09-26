@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------
-import { CSSProperties } from "react";
+import { CSSProperties } from 'react';
 
 type tSize = {
   sm: number;
@@ -17,22 +17,22 @@ export function pxToRem(value: number) {
 
 export function responsiveFontSizes({ sm, md, lg }: tSize) {
   return {
-    "@media (min-width:600px)": {
+    '@media (min-width:600px)': {
       fontSize: pxToRem(sm)
     },
-    "@media (min-width:900px)": {
+    '@media (min-width:900px)': {
       fontSize: pxToRem(md)
     },
-    "@media (min-width:1200px)": {
+    '@media (min-width:1200px)': {
       fontSize: pxToRem(lg)
     }
   };
 }
 
-declare module "@mui/material/styles" {
+declare module '@mui/material/styles' {
   interface TypographyVariants {
-    fontSecondaryFamily: CSSProperties["fontFamily"];
-    fontWeightSemiBold: CSSProperties["fontWeight"];
+    fontSecondaryFamily: CSSProperties['fontFamily'];
+    fontWeightSemiBold: CSSProperties['fontWeight'];
     textLabel: CSSProperties;
     subtitle0: CSSProperties;
   }
@@ -42,77 +42,83 @@ declare module "@mui/material/styles" {
   }
 }
 
-declare module "@mui/material/Typography" {
+declare module '@mui/material/Typography' {
   interface TypographyPropsVariantOverrides {
     textLabel: true;
     subtitle0: true;
 
-    "Body24/semiBold": true;
-    "Body20/bold": true;
-    "Body18/bold": true;
-    "Body16/bold": true;
-    "Body16/regular": true;
-    "Body16/light": true;
-    "Body14/bold": true;
-    "Body14/semiBold": true;
-    "Body14/regular": true;
-    "Body12/semiBold": true;
+    'Body24/semiBold': true;
+    'Body20/bold': true;
+    'Body20/light': true;
+    'Body18/bold': true;
+    'Body16/bold': true;
+    'Body16/regular': true;
+    'Body16/light': true;
+    'Body14/bold': true;
+    'Body14/semiBold': true;
+    'Body14/regular': true;
+    'Body12/semiBold': true;
   }
 }
 
-export const primaryFont = "Public Sans, sans-serif";
-export const secondaryFont = "Barlow, sans-serif";
+export const primaryFont = 'Public Sans, sans-serif';
+export const secondaryFont = 'Barlow, sans-serif';
 const customVariant = () => {
   return {
-    "Body24/semiBold": {
+    'Body24/semiBold': {
       fontWeight: 600,
       fontSize: pxToRem(24),
-      lineHeight: "36px"
+      lineHeight: '36px'
     },
-    "Body20/bold": {
+    'Body20/bold': {
       fontWeight: 700,
       fontSize: pxToRem(20),
-      lineHeight: "22px"
+      lineHeight: '22px'
     },
-    "Body18/bold": {
+    'Body20/light': {
+      fontWeight: 400,
+      fontSize: pxToRem(20),
+      lineHeight: '22px'
+    },
+    'Body18/bold': {
       fontWeight: 700,
       fontSize: pxToRem(18),
-      lineHeight: "22px"
+      lineHeight: '22px'
     },
-    "Body16/bold": {
+    'Body16/bold': {
       fontWeight: 700,
       fontSize: pxToRem(16),
-      lineHeight: "22px"
+      lineHeight: '22px'
     },
-    "Body16/regular": {
+    'Body16/regular': {
       fontWeight: 500,
       fontSize: pxToRem(16),
-      lineHeight: "22px"
+      lineHeight: '22px'
     },
-    "Body16/light": {
+    'Body16/light': {
       fontWeight: 400,
       fontSize: pxToRem(16),
-      lineHeight: "22px"
+      lineHeight: '22px'
     },
-    "Body14/bold": {
+    'Body14/bold': {
       fontWeight: 700,
       fontSize: pxToRem(14),
-      lineHeight: "22px"
+      lineHeight: '22px'
     },
-    "Body14/semiBold": {
+    'Body14/semiBold': {
       fontWeight: 600,
       fontSize: pxToRem(14),
-      lineHeight: "22px"
+      lineHeight: '22px'
     },
-    "Body14/regular": {
+    'Body14/regular': {
       fontWeight: 400,
       fontSize: pxToRem(14),
-      lineHeight: "22px"
+      lineHeight: '22px'
     },
-    "Body12/semiBold": {
+    'Body12/semiBold': {
       fontWeight: 600,
       fontSize: pxToRem(12),
-      lineHeight: "22px"
+      lineHeight: '22px'
     }
   };
 };
@@ -189,19 +195,19 @@ export const typography = {
     fontWeight: 700,
     lineHeight: 1.5,
     fontSize: pxToRem(12),
-    textTransform: "uppercase"
+    textTransform: 'uppercase'
   },
   button: {
     fontWeight: 700,
     lineHeight: 24 / 14,
     fontSize: pxToRem(14),
-    textTransform: "unset"
+    textTransform: 'unset'
   },
   textLabel: {
     fontWeight: 400,
-    lineHeight: "18px",
+    lineHeight: '18px',
     fontSize: pxToRem(12),
-    textAlign: "left"
+    textAlign: 'left'
   },
   ...customVariant()
 } as const;

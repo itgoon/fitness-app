@@ -1,6 +1,6 @@
 import { Controller, useFormContext } from "react-hook-form";
 
-import { Select as MuiSelect } from "@mui/material";
+import { Select as MuiSelect, SelectProps } from "@mui/material";
 import Box from "@mui/material/Box";
 import Checkbox from "@mui/material/Checkbox";
 import Chip from "@mui/material/Chip";
@@ -8,7 +8,6 @@ import FormControl, { FormControlProps } from "@mui/material/FormControl";
 import FormHelperText from "@mui/material/FormHelperText";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
-import Select, { SelectProps } from "../Select";
 import { ReactNode } from "react";
 
 // ----------------------------------------------------------------------
@@ -30,7 +29,7 @@ export function RHFSelect({ name, helperText, ...other }: RHFSelectProps) {
         console.log({ field }, { error });
         return (
           <FormControl error={!!error} sx={{ width: "100%" }}>
-            <Select {...other} error={!!error} />
+            <MuiSelect {...other} error={!!error} />
             {(!!error || helperText) && (
               <FormHelperText error={!!error}>
                 {error ? error?.message : helperText}

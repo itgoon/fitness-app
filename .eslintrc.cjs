@@ -5,7 +5,8 @@ module.exports = {
     "eslint:recommended",
     "plugin:react/jsx-runtime",
     "plugin:react-hooks/recommended",
-    "plugin:storybook/recommended"
+    "plugin:storybook/recommended",
+    "prettier"
   ],
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -21,14 +22,58 @@ module.exports = {
     "@typescript-eslint"
   ], // React Refresh 플러그인 사용
   rules: {
-    "react-refresh/only-export-components": [
+    "unused-imports/no-unused-vars": [
       "warn",
-      { allowConstantExport: true }
+      {
+        vars: "all",
+        varsIgnorePattern: "^_",
+        args: "after-used",
+        argsIgnorePattern: "^_"
+      }
     ],
-    "unused-imports/no-unused-imports": "off",
-
-    indent: ["error", 2],
-    "no-empty": "warn",
-    semi: ["error", "always"]
+    "unused-imports/no-unused-imports": "error",
+    "react/jsx-filename-extension": "off",
+    "no-param-reassign": "off",
+    "react/prop-types": "off",
+    "react/require-default-props": "off",
+    "react/no-array-index-key": "off",
+    "react/react-in-jsx-scope": "off",
+    "react/jsx-props-no-spreading": "off",
+    "import/order": "off",
+    "no-console": "off",
+    "no-shadow": "off",
+    "@typescript-eslint/naming-convention": "off",
+    "@typescript-eslint/no-shadow": "off",
+    "import/no-cycle": "off",
+    "import/no-extraneous-dependencies": "off",
+    "jsx-a11y/label-has-associated-control": "off",
+    "jsx-a11y/no-autofocus": "off",
+    "no-restricted-imports": [
+      "error",
+      {
+        patterns: ["@mui/*/*/*", "!@mui/material/test-utils/*"]
+      }
+    ],
+    "no-unused-vars": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    // "@typescript-eslint/no-unused-vars": [
+    //   "error",
+    //   {
+    //     "vars": "all",
+    //     "args": "none"
+    //   }
+    // ],
+    "prettier/prettier": [
+      "warn",
+      {
+        bracketSpacing: true,
+        printWidth: 140,
+        singleQuote: true,
+        trailingComma: "none",
+        tabWidth: 2,
+        useTabs: false,
+        endOfLine: "auto"
+      }
+    ]
   }
 };
