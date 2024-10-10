@@ -1,20 +1,20 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
 
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Drawer from "@mui/material/Drawer";
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Drawer from '@mui/material/Drawer';
 
-import { usePathname } from "src/routes/hooks";
+import { usePathname } from 'src/routes/hooks';
 
-import { useResponsive } from "src/hooks/useResponsive";
+import { useResponsive } from 'src/hooks/useResponsive';
 
-import Logo from "src/components/logo";
-import Scrollbar from "src/components/scrollbar";
-import { NavSectionVertical } from "src/components/navSection";
+import Logo from 'src/components/logo';
+import Scrollbar from 'src/components/scrollbar';
+import { NavSectionVertical } from 'src/components/navSection';
 
-import { NAV } from "../configLayout";
-import { useNavData } from "./configNavigation";
-import NavToggleButton from "../common/navToggleButton";
+import { NAV } from '../configLayout';
+import { useNavData } from './configNavigation';
+import NavToggleButton from '../common/navToggleButton';
 
 // ----------------------------------------------------------------------
 
@@ -26,7 +26,7 @@ type Props = {
 export default function NavVertical({ openNav, onCloseNav }: Props) {
   const pathname = usePathname();
 
-  const lgUp = useResponsive("up", "lg");
+  const lgUp = useResponsive('up', 'lg');
 
   const navData = useNavData();
 
@@ -41,10 +41,10 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
     <Scrollbar
       sx={{
         height: 1,
-        "& .simplebar-content": {
+        '& .simplebar-content': {
           height: 1,
-          display: "flex",
-          flexDirection: "column"
+          display: 'flex',
+          flexDirection: 'column'
         }
       }}
     >
@@ -69,7 +69,7 @@ export default function NavVertical({ openNav, onCloseNav }: Props) {
         <Stack
           sx={{
             height: 1,
-            position: "fixed",
+            position: 'fixed',
             width: NAV.W_VERTICAL,
             borderRight: (theme) => `dashed 1px ${theme.palette.divider}`
           }}

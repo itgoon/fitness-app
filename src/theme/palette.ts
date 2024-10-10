@@ -1,16 +1,16 @@
-import { alpha } from "@mui/material/styles";
+import { alpha } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
 export type ColorSchema =
-  | "primary"
-  | "secondary"
-  | "info"
-  | "success"
-  | "warning"
-  | "error";
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error';
 
-declare module "@mui/material/styles/createPalette" {
+declare module '@mui/material/styles/createPalette' {
   interface TypeBackground {
     neutral: string;
   }
@@ -27,28 +27,28 @@ declare module "@mui/material/styles/createPalette" {
 // SETUP COLORS
 
 export const grey = {
-  0: "#FFFFFF",
-  50: "#FAFAFA",
-  100: "#F5F5F5",
-  200: "#EEEEEE",
-  300: "#E0E0E0",
-  400: "#BDBDBD",
-  500: "#9E9E9E",
-  600: "#757575",
-  700: "#616161",
-  800: "#424242",
-  900: "#212121",
-  A50: "#ECEFF1",
-  A100: "#546E7A"
+  0: '#FFFFFF',
+  50: '#FAFAFA',
+  100: '#F5F5F5',
+  200: '#EEEEEE',
+  300: '#E0E0E0',
+  400: '#BDBDBD',
+  500: '#9E9E9E',
+  600: '#757575',
+  700: '#616161',
+  800: '#424242',
+  900: '#212121',
+  A50: '#ECEFF1',
+  A100: '#546E7A'
 };
 
 export const primary = {
-  lighter: "#E9EBFE",
-  light: "#C7CDFC",
-  main: "#1155F3",
-  dark: "#0041DB",
-  darker: "#001EBF",
-  contrastText: "#FFFFFF"
+  lighter: '#E9EBFE',
+  light: '#C7CDFC',
+  main: '#1155F3',
+  dark: '#0041DB',
+  darker: '#001EBF',
+  contrastText: '#FFFFFF'
 };
 // export const grey = {
 //   0: '#FFFFFF',
@@ -73,53 +73,53 @@ export const primary = {
 // };
 
 export const secondary = {
-  lighter: "#EFD6FF",
-  light: "#C684FF",
-  main: "#8E33FF",
-  dark: "#5119B7",
-  darker: "#27097A",
-  contrastText: "#FFFFFF"
+  lighter: '#EFD6FF',
+  light: '#C684FF',
+  main: '#8E33FF',
+  dark: '#5119B7',
+  darker: '#27097A',
+  contrastText: '#FFFFFF'
 };
 
 export const info = {
-  lighter: "#CAFDF5",
-  light: "#61F3F3",
-  main: "#00B8D9",
-  dark: "#006C9C",
-  darker: "#003768",
-  contrastText: "#FFFFFF"
+  lighter: '#CAFDF5',
+  light: '#61F3F3',
+  main: '#00B8D9',
+  dark: '#006C9C',
+  darker: '#003768',
+  contrastText: '#FFFFFF'
 };
 
 export const success = {
-  lighter: "#D3FCD2",
-  light: "#77ED8B",
-  main: "#22C55E",
-  dark: "#118D57",
-  darker: "#065E49",
-  contrastText: "#ffffff"
+  lighter: '#D3FCD2',
+  light: '#77ED8B',
+  main: '#22C55E',
+  dark: '#118D57',
+  darker: '#065E49',
+  contrastText: '#ffffff'
 };
 
 export const warning = {
-  lighter: "#FFF5CC",
-  light: "#FFD666",
-  main: "#FFAB00",
-  dark: "#B76E00",
-  darker: "#7A4100",
+  lighter: '#FFF5CC',
+  light: '#FFD666',
+  main: '#FFAB00',
+  dark: '#B76E00',
+  darker: '#7A4100',
   contrastText: grey[800]
 };
 
 export const error = {
-  lighter: "#FFE9D5",
-  light: "#FFAC82",
-  main: "#D50000",
-  dark: "#B71D18",
-  darker: "#7A0916",
-  contrastText: "#FFFFFF"
+  lighter: '#FFE9D5',
+  light: '#FFAC82',
+  main: '#D50000',
+  dark: '#B71D18',
+  darker: '#7A0916',
+  contrastText: '#FFFFFF'
 };
 
 export const common = {
-  black: "#000000",
-  white: "#FFFFFF"
+  black: '#000000',
+  white: '#FFFFFF'
 };
 
 export const action = {
@@ -148,18 +148,18 @@ const base = {
 
 // ----------------------------------------------------------------------
 
-export function palette(mode: "light" | "dark") {
+export function palette(mode: 'light' | 'dark') {
   const light = {
     ...base,
-    mode: "light",
+    mode: 'light',
     text: {
       primary: grey[900],
       secondary: grey[600],
       disabled: grey[500]
     },
     background: {
-      paper: "#FFFFFF",
-      default: "#FFFFFF",
+      paper: '#FFFFFF',
+      default: '#FFFFFF',
       neutral: grey[200]
     },
     action: {
@@ -170,9 +170,9 @@ export function palette(mode: "light" | "dark") {
 
   const dark = {
     ...base,
-    mode: "dark",
+    mode: 'dark',
     text: {
-      primary: "#FFFFFF",
+      primary: '#FFFFFF',
       secondary: grey[500],
       disabled: grey[600]
     },
@@ -187,5 +187,5 @@ export function palette(mode: "light" | "dark") {
     }
   };
 
-  return mode === "light" ? light : dark;
+  return mode === 'light' ? light : dark;
 }

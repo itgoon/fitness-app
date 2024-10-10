@@ -19,13 +19,13 @@ export default function NavMini() {
     <Box
       sx={{
         flexShrink: { lg: 0 },
-        width: { lg: NAV.W_MINI },
+        width: { lg: NAV.W_MINI }
       }}
     >
       <NavToggleButton
         sx={{
           top: 22,
-          left: NAV.W_MINI - 12,
+          left: NAV.W_MINI - 12
         }}
       />
 
@@ -36,7 +36,7 @@ export default function NavMini() {
           position: 'fixed',
           width: NAV.W_MINI,
           borderRight: (theme) => `dashed 1px ${theme.palette.divider}`,
-          ...hideScroll.x,
+          ...hideScroll.x
         }}
       >
         <Logo sx={{ mx: 'auto', my: 2 }} />

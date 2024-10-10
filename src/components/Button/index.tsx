@@ -1,4 +1,5 @@
 import { Button as MuiButton } from '@mui/material';
+import Typography from '@mui/material/Typography';
 
 import { CustomButton } from './types';
 import Icon from '../Icon';
@@ -9,11 +10,28 @@ export default function Button({
   borderColor,
   fullWidth = true,
   isShadow = false,
+  children,
   ...props
 }: CustomButton) {
   const shadowSx = isShadow === true ? '0 2px 4px rgba(0, 0, 0, 0.02)' : '';
   const iconSize =
     props.size === 'large' ? 24 : props.size === 'medium' ? 20 : 16;
+
+  const renderChildren = () => {
+    if (startIcon !== undefined || endIcon !== undefined) {
+      return (
+        <Typography
+          sx={{ flex: 1 }}
+          color={'inherit'}
+          // typoVariant ? typoVariant :
+          variant={'Body14/regular'}
+        >
+          {children}
+        </Typography>
+      );
+    }
+    return children;
+  };
   return (
     <MuiButton
       fullWidth={fullWidth}
@@ -25,6 +43,8 @@ export default function Button({
         ...props.sx
       }}
       {...props}
-    />
+    >
+      {renderChildren()}
+    </MuiButton>
   );
 }

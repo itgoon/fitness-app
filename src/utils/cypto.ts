@@ -19,8 +19,11 @@ const CryptoUtil = {
     return `${yyyy}-${MM}-${dd} ${hh}:${mm}`;
   },
   getSecretKey: (): string => {
-    const signBytes = sha256(CryptoUtil.getNowDate(), import.meta.env.VITE_CLP_CLIENT_SECRET_KEY);
+    const signBytes = sha256(
+      CryptoUtil.getNowDate(),
+      import.meta.env.VITE_CLP_CLIENT_SECRET_KEY
+    );
     return CryptoJS.enc.Hex.stringify(signBytes);
-  },
+  }
 };
 export default CryptoUtil;

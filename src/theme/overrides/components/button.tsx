@@ -161,6 +161,7 @@ export function button(theme: Theme) {
         fontSize: 15,
         paddingLeft: 16,
         paddingRight: 16,
+        justifyContent: 'center',
 
         ...(textVariant && {
           paddingLeft: 10,
@@ -173,9 +174,8 @@ export function button(theme: Theme) {
       ...(startIcon &&
         largeSize && {
           padding: '14px 24px',
-          justifyContent: 'start',
+
           '& .MuiButton-startIcon': {
-            paddingRight: 52,
             margin: 0,
             '& svg': {
               // TODO 아이콘 크기에 접근하려면 이곳으로
