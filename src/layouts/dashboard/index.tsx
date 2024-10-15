@@ -1,39 +1,38 @@
 /* eslint-disable no-nested-ternary */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useRecoilState } from "recoil";
+import { useRecoilState } from 'recoil';
 /* eslint-disable consistent-return */
-import { ReactNode, useEffect, useState } from "react";
+import { ReactNode, useEffect, useState } from 'react';
 
-import Box from "@mui/material/Box";
+import Box from '@mui/material/Box';
 
-import { useBoolean } from "src/hooks/useBoolean";
-import { useResponsive } from "src/hooks/useResponsive";
+import { useBoolean } from 'src/hooks/useBoolean';
+import { useResponsive } from 'src/hooks/useResponsive';
 
-import { localStorageGetItem } from "src/utils/storageAvailable";
+import { localStorageGetItem } from 'src/utils/storageAvailable';
 
-import { useTranslate } from "src/locales";
-import Store from "src/store";
+import { useTranslate } from 'src/locales';
+import Store from 'src/store';
 
-import { LoadingScreen } from "src/components/loadingScreen";
-import { useSettingsContext } from "src/components/settings";
+import { LoadingScreen } from 'src/components/loadingScreen';
+import { useSettingsContext } from 'src/components/settings';
 
-import Header from "./header";
-import Main from "./main";
-import NavBottom from "./navBottom";
-import NavHorizontal from "./navHorizontal";
-import NavMini from "./navMini";
+import Main from './main';
+import NavBottom from './navBottom';
+import NavHorizontal from './navHorizontal';
+import NavMini from './navMini';
+import Footer from './footer';
 
 // ----------------------------------------------------------------------
 
 type Props = {
   children: ReactNode;
 };
-
 export default function DashboardLayout({ children }: Props) {
   const settings = useSettingsContext();
 
-  const lgUp = useResponsive("up", "lg");
+  const lgUp = useResponsive('up', 'lg');
 
   const nav = useBoolean();
   const [authInfo, setAuthInfo] = useRecoilState(Store.Auth.authInfoState);
@@ -42,9 +41,9 @@ export default function DashboardLayout({ children }: Props) {
   );
   const [initialize, setInitialize] = useState<boolean>(false);
   const { onChangeLang } = useTranslate();
-  const isHorizontal = settings.themeLayout === "horizontal";
+  const isHorizontal = settings.themeLayout === 'horizontal';
 
-  const isMini = settings.themeLayout === "mini";
+  const isMini = settings.themeLayout === 'mini';
 
   const renderNavMini = <NavMini />;
 
@@ -74,7 +73,7 @@ export default function DashboardLayout({ children }: Props) {
     // // 브랜드 조회
     // await loadGrand();
 
-    const langStorage = localStorageGetItem("i18nextLng");
+    const langStorage = localStorageGetItem('i18nextLng');
     // TODO: Provider로 분리
     await onChangeLang(langStorage);
     setInitialize(true);
@@ -84,20 +83,21 @@ export default function DashboardLayout({ children }: Props) {
 
   return (
     <>
-      <Header onOpenNav={nav.onTrue} />
+      {/* <Header onOpenNav={nav.onTrue} /> */}
 
       <Box
         sx={{
           minHeight: 1,
-          display: "flex",
-          height: "100%",
-          width: "100%",
-          overflow: "hidden",
-          flexDirection: { xs: "column", lg: "row" }
+          display: 'flex',
+          height: '100%',
+          width: '100%',
+          overflow: 'hidden',
+          flexDirection: { xs: 'column', lg: 'row' }
         }}
       >
         <Main>
           {children}
+          <Footer />
           <NavBottom />
         </Main>
       </Box>

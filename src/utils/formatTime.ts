@@ -2,6 +2,17 @@ import { format, getTime, formatDistanceToNow } from 'date-fns';
 
 // ----------------------------------------------------------------------
 
+export const TimeFormat = 'HH:mm';
+
+export const DateFormat = 'YYYY.MM.DD';
+export const MonthFormat = 'YYYY.MM';
+export const YearFormat = 'YYYY';
+export const DateReqFormat = 'YYYY-MM-DD';
+export const DateViewFormat = 'YYYY년 M월 D일';
+export const YearMonthKR = 'YYYY MM월';
+export const YearMonthTextField = 'YYYY. MM';
+
+export const DateResFormat = 'yyyy-MM-dd HH:mm:ss';
 type InputValue = Date | string | number | null | undefined;
 
 export function fDate(date: InputValue, newFormat?: string) {
@@ -29,12 +40,16 @@ export function fTimestamp(date: InputValue) {
 export function fToNow(date: InputValue) {
   return date
     ? formatDistanceToNow(new Date(date), {
-        addSuffix: true,
+        addSuffix: true
       })
     : '';
 }
 
-export function isBetween(inputDate: Date | string | number, startDate: Date, endDate: Date) {
+export function isBetween(
+  inputDate: Date | string | number,
+  startDate: Date,
+  endDate: Date
+) {
   const date = new Date(inputDate);
 
   const results =
@@ -46,7 +61,9 @@ export function isBetween(inputDate: Date | string | number, startDate: Date, en
 
 export function isAfter(startDate: Date | null, endDate: Date | null) {
   const results =
-    startDate && endDate ? new Date(startDate).getTime() > new Date(endDate).getTime() : false;
+    startDate && endDate
+      ? new Date(startDate).getTime() > new Date(endDate).getTime()
+      : false;
 
   return results;
 }

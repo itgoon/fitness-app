@@ -1,11 +1,11 @@
-import Box, { BoxProps } from "@mui/material/Box";
+import Box, { BoxProps } from '@mui/material/Box';
 
-import { useResponsive } from "src/hooks/useResponsive";
+import { useResponsive } from 'src/hooks/useResponsive';
 
-import { useSettingsContext } from "src/components/settings";
+import { useSettingsContext } from 'src/components/settings';
 
-import { Container } from "@mui/material";
-import { HEADER } from "../configLayout";
+import { Container } from '@mui/material';
+import { HEADER } from '../configLayout';
 
 // ----------------------------------------------------------------------
 
@@ -14,9 +14,9 @@ export const SPACING = 8;
 export default function Main({ children, sx, ...other }: BoxProps) {
   const settings = useSettingsContext();
 
-  const lgUp = useResponsive("up", "lg");
+  const lgUp = useResponsive('up', 'lg');
 
-  const isNavMini = settings.themeLayout === "mini";
+  const isNavMini = settings.themeLayout === 'mini';
 
   console.log(HEADER.H_MOBILE + SPACING);
   return (
@@ -28,9 +28,10 @@ export default function Main({ children, sx, ...other }: BoxProps) {
         // display: "flex",
         // flexDirection: "column",
         py: `${HEADER.H_MOBILE + SPACING}px`,
-        height: "100vh",
-        width: "100%",
-        overflow: "hidden",
+        height: '100vh',
+        width: '100%',
+        overflow: 'hidden',
+
         // ...(lgUp && {
         //   px: 2,
         //   py: `${HEADER.H_DESKTOP + SPACING}px`,

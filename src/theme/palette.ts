@@ -38,8 +38,8 @@ export const grey = {
   700: '#616161',
   800: '#424242',
   900: '#212121',
-  A50: '#ECEFF1',
-  A100: '#546E7A'
+  A100: '#546E7A',
+  A200: '#ECEFF1'
 };
 
 export const primary = {
@@ -96,7 +96,7 @@ export const success = {
   main: '#22C55E',
   dark: '#118D57',
   darker: '#065E49',
-  contrastText: '#ffffff'
+  contrastText: '#00C853'
 };
 
 export const warning = {
@@ -105,7 +105,7 @@ export const warning = {
   main: '#FFAB00',
   dark: '#B76E00',
   darker: '#7A4100',
-  contrastText: grey[800]
+  contrastText: '#FF6D00'
 };
 
 export const error = {
@@ -127,7 +127,7 @@ export const action = {
   selected: alpha(grey[500], 0.16),
   disabled: alpha(grey[500], 0.8),
   // disabledBackground: alpha(grey[500], 0.24),
-  disabledBackground: grey.A50,
+  disabledBackground: grey.A200,
   focus: alpha(grey[500], 0.24),
   hoverOpacity: 0.08,
   disabledOpacity: 0.48

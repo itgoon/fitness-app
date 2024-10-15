@@ -2,18 +2,12 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
 import * as Yup from 'yup';
 
-import LoadingButton from '@mui/lab/LoadingButton';
-import IconButton from '@mui/material/IconButton';
-import InputAdornment from '@mui/material/InputAdornment';
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 
 import { useBoolean } from 'src/hooks/useBoolean';
 
-import FormProvider, { RHFTextField } from 'src/components/hookForm';
-import Iconify from 'src/components/iconify';
-
-import { Box, Checkbox, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useAuth } from 'src/hooks/useAuth';

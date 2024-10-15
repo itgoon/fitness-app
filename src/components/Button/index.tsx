@@ -11,6 +11,7 @@ export default function Button({
   fullWidth = true,
   isShadow = false,
   children,
+  typoVariant,
   ...props
 }: CustomButton) {
   const shadowSx = isShadow === true ? '0 2px 4px rgba(0, 0, 0, 0.02)' : '';
@@ -18,13 +19,16 @@ export default function Button({
     props.size === 'large' ? 24 : props.size === 'medium' ? 20 : 16;
 
   const renderChildren = () => {
-    if (startIcon !== undefined || endIcon !== undefined) {
+    if (
+      startIcon !== undefined ||
+      endIcon !== undefined ||
+      typoVariant !== undefined
+    ) {
       return (
         <Typography
           sx={{ flex: 1 }}
           color={'inherit'}
-          // typoVariant ? typoVariant :
-          variant={'Body14/regular'}
+          variant={typoVariant ? typoVariant : 'Body14/regular'}
         >
           {children}
         </Typography>
@@ -32,6 +36,7 @@ export default function Button({
     }
     return children;
   };
+
   return (
     <MuiButton
       fullWidth={fullWidth}

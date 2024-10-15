@@ -1,18 +1,19 @@
-import AppBar from "@mui/material/AppBar";
-import Stack from "@mui/material/Stack";
-import Toolbar from "@mui/material/Toolbar";
-import { useTheme } from "@mui/material/styles";
+import AppBar from '@mui/material/AppBar';
+import Stack from '@mui/material/Stack';
+import Toolbar from '@mui/material/Toolbar';
+import { useTheme } from '@mui/material/styles';
 
-import { useResponsive } from "src/hooks/useResponsive";
+import { useResponsive } from 'src/hooks/useResponsive';
 
-import { bgBlur } from "src/theme/css";
+import { bgBlur } from 'src/theme/css';
 
-import Logo from "src/components/logo";
-import { useSettingsContext } from "src/components/settings";
+import Logo from 'src/components/logo';
+import { useSettingsContext } from 'src/components/settings';
 
-import AccountPopover from "../common/accountPopover";
-import SettingsButton from "../common/settingsButton";
-import { HEADER, NAV } from "../configLayout";
+import AccountPopover from '../common/accountPopover';
+import SettingsButton from '../common/settingsButton';
+import { HEADER, NAV } from '../configLayout';
+import LanguagePopover from '../common/languagePopover';
 
 // ----------------------------------------------------------------------
 
@@ -25,11 +26,11 @@ export default function Header({ onOpenNav }: Props) {
 
   const settings = useSettingsContext();
 
-  const isNavHorizontal = settings.themeLayout === "horizontal";
+  const isNavHorizontal = settings.themeLayout === 'horizontal';
 
-  const isNavMini = settings.themeLayout === "mini";
+  const isNavMini = settings.themeLayout === 'mini';
 
-  const lgUp = useResponsive("up", "lg");
+  const lgUp = useResponsive('up', 'lg');
 
   const offsetTop = isNavHorizontal;
 
@@ -47,10 +48,10 @@ export default function Header({ onOpenNav }: Props) {
         flexGrow={1}
         direction="row"
         alignItems="center"
-        justifyContent="flex-end"
+        justifyContent="center"
         spacing={{ xs: 0.5, sm: 1 }}
       >
-        {/* <LanguagePopover /> */}
+        <LanguagePopover />
         <SettingsButton />
         <AccountPopover />
       </Stack>
@@ -65,7 +66,7 @@ export default function Header({ onOpenNav }: Props) {
         ...bgBlur({
           color: theme.palette.background.default
         }),
-        transition: theme.transitions.create(["height"], {
+        transition: theme.transitions.create(['height'], {
           duration: theme.transitions.duration.shorter
         }),
         ...(lgUp && {
@@ -76,7 +77,7 @@ export default function Header({ onOpenNav }: Props) {
           }),
           ...(isNavHorizontal && {
             width: 1,
-            bgcolor: "background.default",
+            bgcolor: 'background.default',
             height: HEADER.H_DESKTOP_OFFSET,
             borderBottom: `dashed 1px ${theme.palette.divider}`
           }),

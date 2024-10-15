@@ -1,8 +1,8 @@
-import BottomNavigation from "@mui/material/BottomNavigation";
-import BottomNavigationAction from "@mui/material/BottomNavigationAction";
-import { useLayoutEffect, useState } from "react";
-import { useLocation, useNavigate } from "react-router";
-import { useNavData } from "./configNavigation";
+import BottomNavigation from '@mui/material/BottomNavigation';
+import BottomNavigationAction from '@mui/material/BottomNavigationAction';
+import { useLayoutEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router';
+import { useNavData } from './configNavigation';
 
 export default function NavBottom() {
   const navData = useNavData();

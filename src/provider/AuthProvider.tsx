@@ -1,6 +1,4 @@
-import { useEffect } from 'react';
 import { useRecoilState } from 'recoil';
-import { AuthService } from 'src/service';
 
 import Store from 'src/store';
 

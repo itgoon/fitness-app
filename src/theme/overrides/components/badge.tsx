@@ -20,6 +20,9 @@ export function badge(theme: Theme) {
       styleOverrides: {
         dot: {
           borderRadius: '50%',
+          minWidth: 6,
+          height: 6,
+          minHeight: 6
         },
         root: ({ ownerState }: { ownerState: BadgeProps }) => {
           const alway = ownerState.variant === 'alway';
@@ -34,33 +37,33 @@ export function badge(theme: Theme) {
 
           const baseStyles = {
             [`&.${badgeClasses.invisible}`]: {
-              transform: 'unset',
+              transform: 'unset'
             },
-            width: 10,
+            width: 6,
             zIndex: 9,
             padding: 0,
-            height: 10,
+            height: 6,
             minWidth: 'auto',
             '&:before, &:after': {
               content: "''",
               borderRadius: 1,
-              backgroundColor: theme.palette.common.white,
-            },
+              backgroundColor: theme.palette.common.white
+            }
           };
 
           return {
             ...(online && {
               [`& .${badgeClasses.badge}`]: {
                 ...baseStyles,
-                backgroundColor: theme.palette.success.main,
-              },
+                backgroundColor: theme.palette.success.contrastText
+              }
             }),
             ...(busy && {
               [`& .${badgeClasses.badge}`]: {
                 ...baseStyles,
                 backgroundColor: theme.palette.error.main,
-                '&:before': { width: 6, height: 2 },
-              },
+                '&:before': { width: 6, height: 2 }
+              }
             }),
             ...(offline && {
               [`& .${badgeClasses.badge}`]: {
@@ -69,34 +72,24 @@ export function badge(theme: Theme) {
                 '&:before': {
                   width: 6,
                   height: 6,
-                  borderRadius: '50%',
-                },
-              },
+                  borderRadius: '50%'
+                }
+              }
             }),
             ...(alway && {
               [`& .${badgeClasses.badge}`]: {
                 ...baseStyles,
-                backgroundColor: theme.palette.warning.main,
-                '&:before': {
-                  width: 2,
-                  height: 4,
-                  transform: 'translateX(1px) translateY(-1px)',
-                },
-                '&:after': {
-                  width: 2,
-                  height: 4,
-                  transform: 'translateY(1px) rotate(125deg)',
-                },
-              },
+                backgroundColor: theme.palette.warning.contrastText
+              }
             }),
             ...(invisible && {
               [`& .${badgeClasses.badge}`]: {
-                display: 'none',
-              },
-            }),
+                display: 'none'
+              }
+            })
           };
-        },
-      },
-    },
+        }
+      }
+    }
   };
 }

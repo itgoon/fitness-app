@@ -1,52 +1,54 @@
-import merge from "lodash/merge";
+import merge from 'lodash/merge';
 
-import { Theme } from "@mui/material/styles";
+import { Theme } from '@mui/material/styles';
 
-import { accordion } from "./components/accordion";
-import { alert } from "./components/alert";
-import { appBar } from "./components/appbar";
-import { autocomplete } from "./components/autocomplete";
-import { avatar } from "./components/avatar";
-import { backdrop } from "./components/backdrop";
-import { badge } from "./components/badge";
-import { bottomNavigation } from "./components/bottomNavigation";
-import { breadcrumbs } from "./components/breadcrumbs";
-import { button } from "./components/button";
-import { buttonGroup } from "./components/buttonGroup";
-import { card } from "./components/card";
-import { checkbox } from "./components/checkbox";
-import { chip } from "./components/chip";
-import { container } from "./components/container";
-import { cssBaseline } from "./components/cssBaseline";
-import { dataGrid } from "./components/dataGrid";
-import { datePicker } from "./components/datePicker";
-import { dialog } from "./components/dialog";
-import { drawer } from "./components/drawer";
-import { fab } from "./components/fab";
-import { list } from "./components/list";
-import { loadingButton } from "./components/loadingButton";
-import { menu } from "./components/menu";
-import { pagination } from "./components/pagination";
-import { paper } from "./components/paper";
-import { popover } from "./components/popover";
-import { progress } from "./components/progress";
-import { radio } from "./components/radio";
-import { rating } from "./components/rating";
-import { select } from "./components/select";
-import { skeleton } from "./components/skeleton";
-import { slider } from "./components/slider";
-import { stepper } from "./components/stepper";
-import { svgIcon } from "./components/svgIcon";
-import { switches } from "./components/switch";
-import { table } from "./components/table";
-import { tabs } from "./components/tabs";
-import { textField } from "./components/textfield";
-import { timeline } from "./components/timeline";
-import { toggleButton } from "./components/toggleButton";
-import { tooltip } from "./components/tooltip";
-import { treeView } from "./components/treeView";
-import { typography } from "./components/typography";
-import { defaultProps } from "./defaultProps";
+import { accordion } from './components/accordion';
+import { alert } from './components/alert';
+import { appBar } from './components/appbar';
+import { autocomplete } from './components/autocomplete';
+import { avatar } from './components/avatar';
+import { backdrop } from './components/backdrop';
+import { badge } from './components/badge';
+import { bottomNavigation } from './components/bottomNavigation';
+import { breadcrumbs } from './components/breadcrumbs';
+import { button } from './components/button';
+import { buttonGroup } from './components/buttonGroup';
+import { card } from './components/card';
+import { checkbox } from './components/checkbox';
+import { chip } from './components/chip';
+import { container } from './components/container';
+import { cssBaseline } from './components/cssBaseline';
+import { dataGrid } from './components/dataGrid';
+import { datePicker } from './components/datePicker';
+import { dialog } from './components/dialog';
+import { drawer } from './components/drawer';
+import { fab } from './components/fab';
+import { list } from './components/list';
+import { loadingButton } from './components/loadingButton';
+import { menu } from './components/menu';
+import { pagination } from './components/pagination';
+import { paper } from './components/paper';
+import { popover } from './components/popover';
+import { progress } from './components/progress';
+import { radio } from './components/radio';
+import { rating } from './components/rating';
+import { select } from './components/select';
+import { skeleton } from './components/skeleton';
+import { slider } from './components/slider';
+import { stepper } from './components/stepper';
+import { svgIcon } from './components/svgIcon';
+import { switches } from './components/switch';
+import { table } from './components/table';
+import { tabs } from './components/tabs';
+import { textField } from './components/textfield';
+import { timeline } from './components/timeline';
+import { toggleButton } from './components/toggleButton';
+import { tooltip } from './components/tooltip';
+import { treeView } from './components/treeView';
+import { typography } from './components/typography';
+import { defaultProps } from './defaultProps';
+import timePicker from './components/timePicker';
+import { weekCalendar } from './components/weekCalendar';
 
 // ----------------------------------------------------------------------
 
@@ -88,6 +90,7 @@ export function componentsOverrides(theme: Theme) {
     textField(theme),
     accordion(theme),
     typography(theme),
+    timePicker(theme),
     pagination(theme),
     datePicker(theme),
     buttonGroup(theme),
@@ -97,7 +100,8 @@ export function componentsOverrides(theme: Theme) {
     toggleButton(theme),
     loadingButton(theme),
     bottomNavigation(theme),
-    container(theme)
+    container(theme),
+    weekCalendar(theme)
   );
 
   return components;

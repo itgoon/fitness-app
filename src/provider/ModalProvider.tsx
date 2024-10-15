@@ -1,9 +1,9 @@
 /* eslint-disable consistent-return */
-import { useRecoilState } from "recoil";
+import { useRecoilState } from 'recoil';
 
-import AlertModal from "src/containers/modal/AlertModal";
-import ConfirmModal from "src/containers/modal/ConfirmModal";
-import Store from "src/store";
+import AlertModal from 'src/containers/modal/AlertModal';
+import ConfirmModal from 'src/containers/modal/ConfirmModal';
+import Store from 'src/store';
 
 /**
  * Modal Provider
@@ -19,7 +19,7 @@ const ModalProvider = ({ children }: { children: any }) => {
       ...modalState,
       open: false,
       data: undefined,
-      type: undefined,
+      type: undefined
     });
   };
   const render = () => {

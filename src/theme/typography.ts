@@ -49,15 +49,22 @@ declare module '@mui/material/Typography' {
 
     'Body24/semiBold': true;
     'Body20/bold': true;
+    'Body20/semiBold': true;
     'Body20/light': true;
     'Body18/bold': true;
+    'Body18/semiBold': true;
     'Body16/bold': true;
     'Body16/regular': true;
     'Body16/light': true;
+    'Body15/semiBold': true;
+    'Body15/regular': true;
     'Body14/bold': true;
     'Body14/semiBold': true;
     'Body14/regular': true;
+    'Body13/semiBold': true;
+    'Body13/regular': true;
     'Body12/semiBold': true;
+    'Body11/regular': true;
   }
 }
 
@@ -75,6 +82,11 @@ const customVariant = () => {
       fontSize: pxToRem(20),
       lineHeight: '22px'
     },
+    'Body20/semiBold': {
+      fontWeight: 600,
+      fontSize: pxToRem(20),
+      lineHeight: '22px'
+    },
     'Body20/light': {
       fontWeight: 400,
       fontSize: pxToRem(20),
@@ -82,6 +94,11 @@ const customVariant = () => {
     },
     'Body18/bold': {
       fontWeight: 700,
+      fontSize: pxToRem(18),
+      lineHeight: '22px'
+    },
+    'Body18/semiBold': {
+      fontWeight: 600,
       fontSize: pxToRem(18),
       lineHeight: '22px'
     },
@@ -100,6 +117,16 @@ const customVariant = () => {
       fontSize: pxToRem(16),
       lineHeight: '22px'
     },
+    'Body15/semiBold': {
+      fontWeight: 600,
+      fontSize: pxToRem(15),
+      lineHeight: '24px'
+    },
+    'Body15/regular': {
+      fontWeight: 400,
+      fontSize: pxToRem(15),
+      lineHeight: '24px'
+    },
     'Body14/bold': {
       fontWeight: 700,
       fontSize: pxToRem(14),
@@ -115,9 +142,24 @@ const customVariant = () => {
       fontSize: pxToRem(14),
       lineHeight: '22px'
     },
+    'Body13/semiBold': {
+      fontWeight: 600,
+      fontSize: pxToRem(13),
+      lineHeight: '18px'
+    },
+    'Body13/regular': {
+      fontWeight: 400,
+      fontSize: pxToRem(13),
+      lineHeight: '18px'
+    },
     'Body12/semiBold': {
       fontWeight: 600,
       fontSize: pxToRem(12),
+      lineHeight: '22px'
+    },
+    'Body11/regular': {
+      fontWeight: 400,
+      fontSize: pxToRem(11),
       lineHeight: '22px'
     }
   };

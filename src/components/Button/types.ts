@@ -1,4 +1,4 @@
-import { ButtonProps } from '@mui/material';
+import { ButtonProps, TypographyPropsVariantOverrides } from '@mui/material';
 import { CSSProperties, ReactNode } from 'react';
 import { IconsType } from '../Icon/types';
 
@@ -20,4 +20,5 @@ export type CustomButton = ButtonProps & {
   endIcon?: IconsType | null;
   borderColor?: any;
   isShadow?: boolean;
+  typoVariant?: keyof TypographyPropsVariantOverrides;
 };
