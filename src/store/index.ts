@@ -1,8 +1,11 @@
-import * as Layout from "./layoutStore";
-import * as Auth from "./authStore";
+import * as Auth from './authStore';
+import * as Layout from './layoutStore';
+import * as Translate from './translateStore';
+
 const Store = {
   Auth,
-  Layout
+  Translate,
+  Layout,
 };
 
 export default Store;

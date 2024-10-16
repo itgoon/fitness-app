@@ -1,0 +1,191 @@
+import { alpha } from '@mui/material/styles';
+
+// ----------------------------------------------------------------------
+
+export type ColorSchema =
+  | 'primary'
+  | 'secondary'
+  | 'info'
+  | 'success'
+  | 'warning'
+  | 'error';
+
+declare module '@mui/material/styles/createPalette' {
+  interface TypeBackground {
+    neutral: string;
+  }
+  interface SimplePaletteColorOptions {
+    lighter: string;
+    darker: string;
+  }
+  interface PaletteColor {
+    lighter: string;
+    darker: string;
+  }
+}
+
+// SETUP COLORS
+
+export const grey = {
+  0: '#FFFFFF',
+  50: '#FAFAFA',
+  100: '#F5F5F5',
+  200: '#EEEEEE',
+  300: '#E0E0E0',
+  400: '#BDBDBD',
+  500: '#9E9E9E',
+  600: '#757575',
+  700: '#616161',
+  800: '#424242',
+  900: '#212121',
+  A100: '#546E7A',
+  A200: '#ECEFF1'
+};
+
+export const primary = {
+  lighter: '#E9EBFE',
+  light: '#C7CDFC',
+  main: '#1155F3',
+  dark: '#0041DB',
+  darker: '#001EBF',
+  contrastText: '#FFFFFF'
+};
+// export const grey = {
+//   0: '#FFFFFF',
+//   100: '#F9FAFB',
+//   200: '#F4F6F8',
+//   300: '#DFE3E8',
+//   400: '#C4CDD5',
+//   500: '#919EAB',
+//   600: '#637381',
+//   700: '#454F5B',
+//   800: '#212B36',
+//   900: '#161C24',
+// };
+
+// export const primary = {
+//   lighter: "#C8FAD6",
+//   light: "#5BE49B",
+//   main: "#00A76F",
+//   dark: "#007867",
+//   darker: "#004B50",
+//   contrastText: "#FFFFFF"
+// };
+
+export const secondary = {
+  lighter: '#EFD6FF',
+  light: '#C684FF',
+  main: '#8E33FF',
+  dark: '#5119B7',
+  darker: '#27097A',
+  contrastText: '#FFFFFF'
+};
+
+export const info = {
+  lighter: '#CAFDF5',
+  light: '#61F3F3',
+  main: '#00B8D9',
+  dark: '#006C9C',
+  darker: '#003768',
+  contrastText: '#FFFFFF'
+};
+
+export const success = {
+  lighter: '#D3FCD2',
+  light: '#77ED8B',
+  main: '#22C55E',
+  dark: '#118D57',
+  darker: '#065E49',
+  contrastText: '#00C853'
+};
+
+export const warning = {
+  lighter: '#FFF5CC',
+  light: '#FFD666',
+  main: '#FF6D00',
+  dark: '#B76E00',
+  darker: '#FFAB00',
+  contrastText: '#7A4100'
+};
+
+export const error = {
+  lighter: '#FEE8E7',
+  light: '#FFAC82',
+  main: '#FB2C13',
+  dark: '#D50000',
+  darker: '#D50000',
+  contrastText: '#FFFFFF'
+};
+
+export const common = {
+  black: '#000000',
+  white: '#FFFFFF'
+};
+
+export const action = {
+  hover: alpha(grey[500], 0.08),
+  selected: alpha(grey[500], 0.16),
+  disabled: alpha(grey[500], 0.8),
+  // disabledBackground: alpha(grey[500], 0.24),
+  disabledBackground: grey.A200,
+  focus: alpha(grey[500], 0.24),
+  hoverOpacity: 0.08,
+  disabledOpacity: 0.48
+};
+
+const base = {
+  primary,
+  secondary,
+  info,
+  success,
+  warning,
+  error,
+  grey,
+  common,
+  divider: alpha(grey[500], 0.2),
+  action
+};
+
+// ----------------------------------------------------------------------
+
+export function palette(mode: 'light' | 'dark') {
+  const light = {
+    ...base,
+    mode: 'light',
+    text: {
+      primary: grey[900],
+      secondary: grey[600],
+      disabled: grey[500]
+    },
+    background: {
+      paper: '#FFFFFF',
+      default: '#FFFFFF',
+      neutral: grey[200]
+    },
+    action: {
+      ...base.action,
+      active: grey[600]
+    }
+  };
+
+  const dark = {
+    ...base,
+    mode: 'dark',
+    text: {
+      primary: '#FFFFFF',
+      secondary: grey[500],
+      disabled: grey[600]
+    },
+    background: {
+      paper: grey[800],
+      default: grey[900],
+      neutral: alpha(grey[500], 0.12)
+    },
+    action: {
+      ...base.action,
+      active: grey[500]
+    }
+  };
+
+  return mode === 'light' ? light : dark;
+}

@@ -1,47 +1,65 @@
-import { ModalProps } from "@/components/modal/Modal";
-import { RouteProps } from "@/route/routes";
 import { atom } from "recoil";
-import { localStorageEffect } from "@/utils/localStorage";
 
-export type CustomRouteProps = Omit<RouteProps, "element" | "children">;
-
-//primary color
-export const colorState = atom<string>({
-  key: `colorState`,
-  default: "#f00",
-  effects: [localStorageEffect("colorState")]
+// 로딩
+export const loadingState = atom<boolean>({
+  key: `loading_${new Date().getTime()}`,
+  default: false
 });
 
-//모달(alert)
-export const windowState = atom<ModalProps>({
+export type ModalType =
+  | undefined
+  | "reason"
+  | "point"
+  | "withdrawal"
+  | "findStore"
+  | "memberLoginHistory"
+  | "license"
+  | "memberInfo"
+  | "memberAuth";
+
+export const modalState = atom<{
+  open: boolean;
+  type: ModalType;
+  onClose: () => void;
+  data: any;
+}>({
   key: `modal_${new Date().getTime()}`,
   default: {
     open: false,
+    type: undefined,
     onClose: () => {},
-    children: ""
-  },
-  effects: [localStorageEffect("modalState")]
-});
-//로딩
-export const loadingState = atom<boolean>({
-  key: `loading_${new Date().getTime()}`,
-  default: false,
-  effects: [localStorageEffect("loadingState")]
+    data: undefined
+  }
 });
 
-//레이아웃 State
-export const layoutState = atom<{ header: boolean; bottom: boolean }>({
-  key: `layoutState`,
+export const alertState = atom<{
+  open: boolean;
+  title: string;
+  subtitle?: string | undefined;
+  onClose: () => void;
+}>({
+  key: `alert_modal_${new Date().getTime()}`,
   default: {
-    header: false,
-    bottom: false
-  },
-  effects: [localStorageEffect("layoutState")]
+    open: false,
+    title: "",
+    subtitle: undefined,
+    onClose: () => {}
+  }
 });
 
-//route
-export const routeState = atom<CustomRouteProps[]>({
-  key: `routeState`,
-  default: [],
-  effects: [localStorageEffect("routeState")]
+export const confirmState = atom<{
+  open: boolean;
+  title: string;
+  content: any;
+  onClose: () => void;
+  onClick: () => void;
+}>({
+  key: `confirm_modal_${new Date().getTime()}`,
+  default: {
+    open: false,
+    title: "",
+    content: undefined,
+    onClose: () => {},
+    onClick: () => {}
+  }
 });
