@@ -1,5 +1,6 @@
 import { StackProps } from '@mui/material/Stack';
 import { ListItemButtonProps } from '@mui/material/ListItemButton';
+import { ReactElement } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -14,7 +15,7 @@ export type NavItemStateProps = {
 export type NavItemBaseProps = {
   title: string;
   path: string;
-  icon?: React.ReactElement;
+  icon?: ReactElement;
   children?: {
     subheader: string;
     items: {
@@ -24,7 +25,9 @@ export type NavItemBaseProps = {
   }[];
 };
 
-export type NavItemProps = ListItemButtonProps & NavItemBaseProps & NavItemStateProps;
+export type NavItemProps = ListItemButtonProps &
+  NavItemBaseProps &
+  NavItemStateProps;
 
 export type NavListProps = {
   data: NavItemBaseProps;

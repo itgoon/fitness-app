@@ -20,6 +20,7 @@ export default function Step1({ onNext }: StepProps) {
   const navigate = useNavigate();
 
   useEffect(() => {
+    // eslint-disable-next-line no-undef
     let interval: NodeJS.Timeout;
 
     if (isActive) {
