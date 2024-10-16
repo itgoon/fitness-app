@@ -1,17 +1,16 @@
-import { TextField as CustomTextFiled, TextFieldProps } from "@mui/material";
-import { ReactNode } from "react";
+import { TextField as CustomTextFiled, TextFieldProps } from '@mui/material';
 
-declare module "@mui/material/TextField" {
+declare module '@mui/material/TextField' {
   interface TextFieldPropsSizeOverrides {
     large: true;
   }
 }
 type TtextField = TextFieldProps & {
-  size?: "small" | "medium" | "large";
+  size?: 'small' | 'medium' | 'large';
   fullWidth?: boolean;
 };
 export default function TextField({
-  size = "medium",
+  size = 'medium',
   fullWidth = true,
   ...props
 }: TtextField) {
