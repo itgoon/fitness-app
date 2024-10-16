@@ -1,5 +1,3 @@
-import { File } from 'buffer';
-
 import { Response } from 'src/types';
 import * as LicenseApi from 'src/api/license';
 
@@ -8,7 +6,9 @@ import * as LicenseApi from 'src/api/license';
  * @param params
  * @returns
  */
-export const reqGetLicense = async (licenseMemberId: number): Promise<Response<any>> => {
+export const reqGetLicense = async (
+  licenseMemberId: number
+): Promise<Response<any>> => {
   const res = await LicenseApi.reqGetLicense(licenseMemberId);
   if (res.status !== 200) throw new Error(res.statusText);
   return res.data;
@@ -60,7 +60,9 @@ export const reqPutLicense = async (params: {
  * @param params
  * @returns
  */
-export const reqDelLicense = async (licenseMemberId: number): Promise<Response<any>> => {
+export const reqDelLicense = async (
+  licenseMemberId: number
+): Promise<Response<any>> => {
   const res = await LicenseApi.reqDelLicense(licenseMemberId);
   if (res.status !== 200) throw new Error(res.statusText);
   return res.data;

@@ -48,7 +48,6 @@ import { treeView } from './components/treeView';
 import { typography } from './components/typography';
 import { defaultProps } from './defaultProps';
 import timePicker from './components/timePicker';
-import { weekCalendar } from './components/weekCalendar';
 
 // ----------------------------------------------------------------------
 
@@ -67,7 +66,7 @@ export function componentsOverrides(theme: Theme) {
     paper(theme),
     alert(theme),
     radio(theme),
-    select(theme),
+    select(),
     button(theme),
     rating(theme),
     dialog(theme),
@@ -78,7 +77,7 @@ export function componentsOverrides(theme: Theme) {
     stepper(theme),
     tooltip(theme),
     popover(theme),
-    svgIcon(theme),
+    svgIcon(),
     switches(theme),
     checkbox(theme),
     dataGrid(theme),
@@ -90,18 +89,17 @@ export function componentsOverrides(theme: Theme) {
     textField(theme),
     accordion(theme),
     typography(theme),
-    timePicker(theme),
+    timePicker(),
     pagination(theme),
     datePicker(theme),
     buttonGroup(theme),
     breadcrumbs(theme),
-    cssBaseline(theme),
+    cssBaseline(),
     autocomplete(theme),
     toggleButton(theme),
-    loadingButton(theme),
+    loadingButton(),
     bottomNavigation(theme),
-    container(theme),
-    weekCalendar(theme)
+    container()
   );
 
   return components;

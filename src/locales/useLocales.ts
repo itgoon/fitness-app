@@ -17,10 +17,11 @@ import { allLangs, defaultLang } from './configLang';
 export function useLocales() {
   const [authInfo, setAuthInfo] = useRecoilState(Store.Auth.authInfoState);
   const langStorage = localStorageGetItem('i18nextLng');
-  const currentLang = allLangs.find((lang) => lang.value === langStorage) || defaultLang;
+  const currentLang =
+    allLangs.find((lang) => lang.value === langStorage) || defaultLang;
   return {
     allLangs,
-    currentLang,
+    currentLang
   };
 }
 
@@ -57,6 +58,6 @@ export function useTranslate() {
     t,
     i18n,
     ready,
-    onChangeLang,
+    onChangeLang
   };
 }

@@ -1,8 +1,8 @@
-import { Box, Button, TextField, Typography } from "@mui/material";
-import { Stack } from "@mui/system";
-import { ChangeEvent, useEffect, useState } from "react";
-import { useNavigate } from "react-router";
-import { RHFTextField } from "src/components/hookForm";
+import { Box, Button, TextField, Typography } from '@mui/material';
+import { Stack } from '@mui/system';
+import { ChangeEvent, useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { RHFTextField } from 'src/components/hookForm';
 
 const INITIAL_TIMER = 180;
 const CODE_LENGTH = 6;
@@ -15,7 +15,7 @@ export default function Step1({ onNext }: StepProps) {
   const [isVerified, setIsVerified] = useState(false);
   const [timer, setTimer] = useState(INITIAL_TIMER);
   const [isActive, setIsActive] = useState(false);
-  const [verificationCode, setVerificationCode] = useState("");
+  const [verificationCode, setVerificationCode] = useState('');
   const [canResendCode, setCanResendCode] = useState(false);
   const navigate = useNavigate();
 
@@ -42,7 +42,7 @@ export default function Step1({ onNext }: StepProps) {
 
   // 인증번호 입력
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    const numbersOnly = e.target.value.replace(/\D/g, "");
+    const numbersOnly = e.target.value.replace(/\D/g, '');
     if (numbersOnly.length <= CODE_LENGTH) {
       setVerificationCode(numbersOnly);
     }
@@ -69,7 +69,7 @@ export default function Step1({ onNext }: StepProps) {
 
   return (
     <Stack>
-      <Stack spacing={2} sx={{ mb: 5, textAlign: "center" }}>
+      <Stack spacing={2} sx={{ mb: 5, textAlign: 'center' }}>
         <Typography variant="h5">비밀번호를 잊어버리셨나요?</Typography>
         <Typography>
           본인 확인을 위해 계정 정보를 입력해주세요.
@@ -79,39 +79,39 @@ export default function Step1({ onNext }: StepProps) {
 
       <Stack spacing={2.5}>
         <RHFTextField name="userId" label="이메일" />
-        <Box sx={{ display: "flex", gap: "8px" }}>
+        <Box sx={{ display: 'flex', gap: '8px' }}>
           <RHFTextField
             type="number"
             name="phone"
             label="휴대폰 번호"
             placeholder="-를 제외한 숫자를 입력해주세요."
           />
-          <Button variant="outlined" onClick={sendCode} sx={{ height: "53px" }}>
+          <Button variant="outlined" onClick={sendCode} sx={{ height: '53px' }}>
             인증하기
           </Button>
         </Box>
         {isActive && (
           <>
-            <Box sx={{ position: "relative" }}>
+            <Box sx={{ position: 'relative' }}>
               <TextField
                 placeholder="인증번호 입력"
                 value={verificationCode}
                 onChange={onChange}
-                sx={{ width: "100%" }}
+                sx={{ width: '100%' }}
               />
               <Box
                 sx={{
-                  position: "absolute",
-                  right: "12px",
-                  top: "50%",
-                  transform: "translateY(-50%)"
+                  position: 'absolute',
+                  right: '12px',
+                  top: '50%',
+                  transform: 'translateY(-50%)'
                 }}
               >
                 {formatTimer()}
               </Box>
             </Box>
             <Typography>
-              인증번호가 전송되지 않으셨나요?{" "}
+              인증번호가 전송되지 않으셨나요?{' '}
               <Button
                 component="span"
                 onClick={resendCode}
@@ -131,7 +131,7 @@ export default function Step1({ onNext }: StepProps) {
         >
           인증 완료
         </Button>
-        <Button onClick={() => navigate("/login")}>로그인으로 돌아가기</Button>
+        <Button onClick={() => navigate('/login')}>로그인으로 돌아가기</Button>
       </Stack>
     </Stack>
   );

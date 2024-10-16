@@ -1,11 +1,4 @@
-import {
-  List,
-  ListItem,
-  Stack,
-  Typography,
-  styled,
-  useTheme
-} from '@mui/material';
+import { List, ListItem, Stack, Typography, useTheme } from '@mui/material';
 import { usePathname } from 'src/routes/hooks';
 import Logo from '../../components/logo/logo';
 
@@ -42,5 +35,3 @@ export default function Footer() {
   );
   return IsDashboard && mainFooter;
 }
-
-const MainFooter = styled('div');

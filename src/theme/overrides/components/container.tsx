@@ -1,8 +1,6 @@
-import { Theme } from '@mui/material/styles';
-
 // ----------------------------------------------------------------------
 
-export function container(theme: Theme) {
+export function container() {
   return {
     MuiContainer: {
       styleOverrides: {

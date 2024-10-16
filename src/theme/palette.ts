@@ -102,18 +102,18 @@ export const success = {
 export const warning = {
   lighter: '#FFF5CC',
   light: '#FFD666',
-  main: '#FFAB00',
+  main: '#FF6D00',
   dark: '#B76E00',
-  darker: '#7A4100',
-  contrastText: '#FF6D00'
+  darker: '#FFAB00',
+  contrastText: '#7A4100'
 };
 
 export const error = {
-  lighter: '#FFE9D5',
+  lighter: '#FEE8E7',
   light: '#FFAC82',
-  main: '#D50000',
-  dark: '#B71D18',
-  darker: '#7A0916',
+  main: '#FB2C13',
+  dark: '#D50000',
+  darker: '#D50000',
   contrastText: '#FFFFFF'
 };
 

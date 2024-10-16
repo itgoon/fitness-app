@@ -1,5 +1,11 @@
-import { useRef, useState } from 'react';
-import { Step, STATUS, LIFECYCLE, StoreHelpers, CallBackProps } from 'react-joyride';
+import React, { useRef, useState } from 'react';
+import {
+  Step,
+  STATUS,
+  LIFECYCLE,
+  StoreHelpers,
+  CallBackProps
+} from 'react-joyride';
 
 import WalktourProgressBar from './WalktourProgressBar';
 
@@ -56,7 +62,7 @@ export function useWalktour(props: UseWalktourProps): ReturnType {
           />
         )}
       </>
-    ),
+    )
   }));
 
   return {
@@ -64,6 +70,6 @@ export function useWalktour(props: UseWalktourProps): ReturnType {
     run,
     setRun,
     onCallback,
-    setHelpers,
+    setHelpers
   };
 }

@@ -1,7 +1,5 @@
-import * as React from 'react';
-
 import { TextareaAutosize } from '@mui/material';
-import { Theme, styled, SxProps } from '@mui/system';
+import { styled } from '@mui/system';
 
 const blue = {
   100: '#DAECFF',
@@ -9,7 +7,7 @@ const blue = {
   400: '#3399FF',
   500: '#007FFF',
   600: '#0072E5',
-  900: '#003A75',
+  900: '#003A75'
 };
 
 const grey = {
@@ -22,7 +20,7 @@ const grey = {
   600: '#6B7A90',
   700: '#434D5B',
   800: '#303740',
-  900: '#1C2025',
+  900: '#1C2025'
 };
 
 const Textarea = styled(TextareaAutosize)(

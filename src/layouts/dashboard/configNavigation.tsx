@@ -1,12 +1,12 @@
-import { useMemo } from "react";
+import { useMemo } from 'react';
 
-import { paths } from "src/routes/paths";
+import { paths } from 'src/routes/paths';
 
-import { useTranslate } from "src/locales";
+import { useTranslate } from 'src/locales';
 
-import SvgColor from "src/components/svgColor";
+import SvgColor from 'src/components/svgColor';
 
-import Iconify from "../../components/iconify";
+import Iconify from '../../components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -40,20 +40,20 @@ export function useNavData() {
   const data = useMemo(
     () => [
       {
-        // subheader: t("오비서"),
+        subheader: t('오비서'),
         items: [
           {
-            title: t("대시보드"),
+            title: t('대시보드'),
             path: paths.dashboard.root,
             icon: ICONS.dashboard
           },
           {
-            title: "예약하기",
+            title: '예약하기',
             path: paths.reservation.root,
             icon: ICONS.user
           },
           {
-            title: "마이페이지",
+            title: '마이페이지',
             path: paths.myPage.root,
             icon: ICONS.user
           }

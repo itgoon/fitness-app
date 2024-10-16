@@ -1,8 +1,7 @@
-import Box from "@mui/material/Box";
-import { alpha } from "@mui/material/styles";
-import Typography from "@mui/material/Typography";
-import Stack, { StackProps } from "@mui/material/Stack";
-import { ReactNode } from "react";
+import { alpha } from '@mui/material/styles';
+import Typography from '@mui/material/Typography';
+import Stack, { StackProps } from '@mui/material/Stack';
+import { ReactNode } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -45,7 +44,7 @@ export default function EmptyContent({
         <Typography
           variant="h6"
           component="span"
-          sx={{ mt: 1, color: "text.disabled", textAlign: "center" }}
+          sx={{ mt: 1, color: 'text.disabled', textAlign: 'center' }}
         >
           {title}
         </Typography>
@@ -54,7 +53,7 @@ export default function EmptyContent({
       {description && (
         <Typography
           variant="caption"
-          sx={{ mt: 1, color: "text.disabled", textAlign: "center" }}
+          sx={{ mt: 1, color: 'text.disabled', textAlign: 'center' }}
         >
           {description}
         </Typography>

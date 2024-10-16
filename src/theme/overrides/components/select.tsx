@@ -1,24 +1,21 @@
-import { Theme } from "@mui/material/styles";
-
 // ----------------------------------------------------------------------
 
-const size = {};
-export function select(theme: Theme) {
+export function select() {
   return {
     MuiSelect: {
       styleOverrides: {
         root: {
-          ".MuiSelect-select": {
-            padding: "13px 14px",
-          },
+          '.MuiSelect-select': {
+            padding: '13px 14px'
+          }
         },
         icon: {
           right: 10,
           width: 18,
           height: 18,
-          top: "calc(50% - 9px)",
-        },
-      },
+          top: 'calc(50% - 9px)'
+        }
+      }
     },
     MuiNativeSelect: {
       styleOverrides: {
@@ -26,9 +23,9 @@ export function select(theme: Theme) {
           right: 10,
           width: 18,
           height: 18,
-          top: "calc(50% - 9px)",
-        },
-      },
-    },
+          top: 'calc(50% - 9px)'
+        }
+      }
+    }
   };
 }

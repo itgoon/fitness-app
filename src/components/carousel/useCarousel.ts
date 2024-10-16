@@ -1,7 +1,8 @@
-import Carousel, { Settings } from "react-slick";
-import { useRef, useState, useCallback } from "react";
+import Carousel, { Settings } from 'react-slick';
+import { useRef, useState, useCallback } from 'react';
+import React from 'react';
 
-import { useTheme } from "@mui/material/styles";
+import { useTheme } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
@@ -29,7 +30,7 @@ export default function useCarousel(props?: Settings): ReturnType {
 
   const [nav, setNav] = useState<Carousel | undefined>(undefined);
 
-  const rtl = theme.direction === "rtl";
+  const rtl = theme.direction === 'rtl';
 
   const carouselSettings = {
     arrows: false,

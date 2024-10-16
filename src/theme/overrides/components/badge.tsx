@@ -79,7 +79,7 @@ export function badge(theme: Theme) {
             ...(alway && {
               [`& .${badgeClasses.badge}`]: {
                 ...baseStyles,
-                backgroundColor: theme.palette.warning.contrastText
+                backgroundColor: theme.palette.warning.main
               }
             }),
             ...(invisible && {

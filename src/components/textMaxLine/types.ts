@@ -1,7 +1,8 @@
-import { LinkProps } from "@mui/material/Link";
-import { TypographyProps } from "@mui/material/Typography";
-import { Variant } from "@mui/material/styles/createTypography";
-import { ReactNode } from "react";
+import { LinkProps } from '@mui/material/Link';
+import { TypographyProps } from '@mui/material/Typography';
+// eslint-disable-next-line no-restricted-imports
+import { Variant } from '@mui/material/styles/createTypography';
+import { ReactNode } from 'react';
 
 // ----------------------------------------------------------------------
 

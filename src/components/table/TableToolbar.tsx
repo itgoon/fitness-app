@@ -1,11 +1,10 @@
-import { useCallback } from 'react';
+import React, { useCallback } from 'react';
 
 import Stack from '@mui/material/Stack';
 import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
 import TextField from '@mui/material/TextField';
 import InputLabel from '@mui/material/InputLabel';
-import IconButton from '@mui/material/IconButton';
 import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
@@ -34,7 +33,7 @@ export default function UserTableToolbar({
   dateError,
   StatusOptions,
   DutyOptions,
-  TypeOptions,
+  TypeOptions
 }: Props) {
   const { t } = useTranslate();
   const placeholderText = t('검색어를 입력하세요...');
@@ -50,7 +49,9 @@ export default function UserTableToolbar({
     (event: SelectChangeEvent<string[]>) => {
       onFilters(
         'service',
-        typeof event.target.value === 'string' ? event.target.value.split(',') : event.target.value
+        typeof event.target.value === 'string'
+          ? event.target.value.split(',')
+          : event.target.value
       );
     },
     [onFilters]
@@ -60,7 +61,9 @@ export default function UserTableToolbar({
     (event: SelectChangeEvent<string[]>) => {
       onFilters(
         'service',
-        typeof event.target.value === 'string' ? event.target.value.split(',') : event.target.value
+        typeof event.target.value === 'string'
+          ? event.target.value.split(',')
+          : event.target.value
       );
     },
     [onFilters]
@@ -74,17 +77,17 @@ export default function UserTableToolbar({
         alignItems={{ xs: 'flex-end', md: 'center' }}
         direction={{
           xs: 'column',
-          md: 'row',
+          md: 'row'
         }}
         sx={{
           p: 2.5,
-          pr: { xs: 2.5, md: 1 },
+          pr: { xs: 2.5, md: 1 }
         }}
       >
         <FormControl
           sx={{
             flexShrink: 0,
-            width: { xs: 1, md: 180 },
+            width: { xs: 1, md: 180 }
           }}
         >
           <InputLabel>{t('상태')}</InputLabel>
@@ -93,12 +96,18 @@ export default function UserTableToolbar({
             value={filters.service}
             onChange={handleFilterService}
             input={<OutlinedInput label="Service" />}
-            renderValue={(selected) => selected.map((value) => value).join(', ')}
+            renderValue={(selected) =>
+              selected.map((value) => value).join(', ')
+            }
             sx={{ textTransform: 'capitalize' }}
           >
             {StatusOptions.map((option) => (
               <MenuItem key={option} value={option}>
-                <Checkbox disableRipple size="small" checked={filters.service.includes(option)} />
+                <Checkbox
+                  disableRipple
+                  size="small"
+                  checked={filters.service.includes(option)}
+                />
                 {option}
               </MenuItem>
             ))}
@@ -108,7 +117,7 @@ export default function UserTableToolbar({
         <FormControl
           sx={{
             flexShrink: 0,
-            width: { xs: 1, md: 180 },
+            width: { xs: 1, md: 180 }
           }}
         >
           <InputLabel>{t('직무')}</InputLabel>
@@ -130,7 +139,7 @@ export default function UserTableToolbar({
         <FormControl
           sx={{
             flexShrink: 0,
-            width: { xs: 1, md: 180 },
+            width: { xs: 1, md: 180 }
           }}
         >
           <InputLabel>{t('상태')}</InputLabel>
@@ -140,12 +149,18 @@ export default function UserTableToolbar({
             value={filters.service}
             onChange={handleFilterService}
             input={<OutlinedInput label="Service" />}
-            renderValue={(selected) => selected.map((value) => value).join(', ')}
+            renderValue={(selected) =>
+              selected.map((value) => value).join(', ')
+            }
             sx={{ textTransform: 'capitalize' }}
           >
             {TypeOptions.map((option) => (
               <MenuItem key={option} value={option}>
-                <Checkbox disableRipple size="small" checked={filters.service.includes(option)} />
+                <Checkbox
+                  disableRipple
+                  size="small"
+                  checked={filters.service.includes(option)}
+                />
                 {option}
               </MenuItem>
             ))}
@@ -155,7 +170,7 @@ export default function UserTableToolbar({
         <FormControl
           sx={{
             flexShrink: 0,
-            width: { xs: 1, md: 180 },
+            width: { xs: 1, md: 180 }
           }}
         >
           <InputLabel>{t('상태')}</InputLabel>
@@ -170,14 +185,24 @@ export default function UserTableToolbar({
           >
             {TypeOptions.map((option) => (
               <MenuItem key={option} value={option}>
-                <Checkbox disableRipple size="small" checked={filters.service.includes(option)} />
+                <Checkbox
+                  disableRipple
+                  size="small"
+                  checked={filters.service.includes(option)}
+                />
                 {option}
               </MenuItem>
             ))}
           </Select>
         </FormControl>
 
-        <Stack direction="row" alignItems="center" spacing={2} flexGrow={1} sx={{ width: 1 }}>
+        <Stack
+          direction="row"
+          alignItems="center"
+          spacing={2}
+          flexGrow={1}
+          sx={{ width: 1 }}
+        >
           <TextField
             fullWidth
             value={filters.name}
@@ -186,9 +211,12 @@ export default function UserTableToolbar({
             InputProps={{
               startAdornment: (
                 <InputAdornment position="start">
-                  <Iconify icon="eva:search-fill" sx={{ color: 'text.disabled' }} />
+                  <Iconify
+                    icon="eva:search-fill"
+                    sx={{ color: 'text.disabled' }}
+                  />
                 </InputAdornment>
-              ),
+              )
             }}
           />
         </Stack>

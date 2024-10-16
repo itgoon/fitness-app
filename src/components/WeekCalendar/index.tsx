@@ -4,14 +4,13 @@ import { IWeekCalendar } from './types';
 import { Badge, Box, Stack, Typography, useTheme } from '@mui/material';
 import Button from '../Button';
 import { useEffect, useState } from 'react';
-
-const WeekList = ['일', '월', '화', '수', '목', '금', '토'];
+import { DateReqFormat } from '../../utils/formatTime';
 
 dayjs.locale('ko');
 
 export default function WeekCalendar({
   date,
-  format = 'YYYY-MM-DD',
+  format = DateReqFormat,
   onClick,
   onChangeMonth,
   monthCount,
@@ -24,18 +23,16 @@ export default function WeekCalendar({
   useEffect(() => {
     settingDate();
   }, [date]);
+
   const settingDate = () => {
     let list: string[] = [];
     [...Array(7)].map((_, index) => {
-      list.push(
-        dayjs()
-          .add(index - 1, 'day')
-          .format(format)
-      );
+      list.push(dayjs().add(index, 'day').format(format));
     });
 
     setDateList(list);
   };
+
   return (
     <Box
       className={'weekCalendar'}
@@ -43,6 +40,7 @@ export default function WeekCalendar({
     >
       {dateList.map((item, index) => {
         let cnt: number = 0;
+        const isToday = dayjs(date).format(format) === item ? true : false;
 
         if (monthCount) {
           const evtCount = monthCount?.find((evt) => item === evt.date);
@@ -56,15 +54,15 @@ export default function WeekCalendar({
           >
             <Stack gap={1}>
               <Typography
-                variant={date === item ? 'Body13/semiBold' : 'Body13/regular'}
-                color={date === item ? black : grey600}
+                variant={isToday ? 'Body13/semiBold' : 'Body13/regular'}
+                color={isToday ? black : grey600}
               >
-                {WeekList[index]}
+                {dayjs(item, format).format('dd')}
               </Typography>
               <Stack gap={0.5}>
                 <Typography
-                  variant={date === item ? 'Body15/semiBold' : 'Body15/regular'}
-                  color={date === item ? black : grey600}
+                  variant={isToday ? 'Body15/semiBold' : 'Body15/regular'}
+                  color={isToday ? black : grey600}
                 >
                   {dayjs(item, format).format('D')}
                 </Typography>

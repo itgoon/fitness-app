@@ -1,8 +1,6 @@
 // ==============================|| OVERRIDES - BUTTON ||============================== //
 
-import { Theme } from '@mui/material';
-
-export default function timePicker(theme: Theme) {
+export default function timePicker() {
   return {
     MuiMultiSectionDigitalClock: {
       styleOverrides: {

@@ -1,6 +1,7 @@
 import { StackProps } from '@mui/material/Stack';
 import { Theme, SxProps } from '@mui/material/styles';
 import { ListItemButtonProps } from '@mui/material/ListItemButton';
+import { ReactElement } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -24,8 +25,8 @@ export type NavItemStateProps = {
 export type NavItemBaseProps = {
   title: string;
   path: string;
-  icon?: React.ReactElement;
-  info?: React.ReactElement;
+  icon?: ReactElement;
+  info?: ReactElement;
   caption?: string;
   disabled?: boolean;
   roles?: string[];
@@ -55,7 +56,6 @@ export type NavGroupProps = {
   items: NavItemBaseProps[];
   slotProps?: SlotProps;
 };
-
 export type NavProps = StackProps & {
   data: {
     subheader: string;

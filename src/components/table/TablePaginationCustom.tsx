@@ -1,6 +1,9 @@
 import Box from '@mui/material/Box';
 import { Theme, SxProps } from '@mui/material/styles';
-import TablePagination, { TablePaginationProps } from '@mui/material/TablePagination';
+import TablePagination, {
+  TablePaginationProps
+} from '@mui/material/TablePagination';
+import React from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -24,7 +27,7 @@ export default function TablePaginationCustom({
         component="div"
         {...other}
         sx={{
-          borderTopColor: 'transparent',
+          borderTopColor: 'transparent'
         }}
       />
     </Box>

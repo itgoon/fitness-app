@@ -5,6 +5,7 @@ import TableHead from '@mui/material/TableHead';
 import TableCell from '@mui/material/TableCell';
 import { Theme, SxProps } from '@mui/material/styles';
 import TableSortLabel from '@mui/material/TableSortLabel';
+import React from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -17,7 +18,7 @@ const visuallyHidden = {
   overflow: 'hidden',
   position: 'absolute',
   whiteSpace: 'nowrap',
-  clip: 'rect(0 0 0 0)',
+  clip: 'rect(0 0 0 0)'
 } as const;
 
 // ----------------------------------------------------------------------
@@ -41,7 +42,7 @@ export default function TableHeadCustom({
   numSelected = 0,
   onSort,
   onSelectAllRows,
-  sx,
+  sx
 }: Props) {
   return (
     <TableHead sx={sx}>
@@ -76,7 +77,9 @@ export default function TableHeadCustom({
 
                 {orderBy === headCell.id ? (
                   <Box sx={{ ...visuallyHidden }}>
-                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
+                    {order === 'desc'
+                      ? 'sorted descending'
+                      : 'sorted ascending'}
                   </Box>
                 ) : null}
               </TableSortLabel>

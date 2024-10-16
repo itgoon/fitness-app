@@ -1,4 +1,5 @@
 import { useTheme } from '@mui/material/styles';
+// eslint-disable-next-line no-restricted-imports
 import { Variant } from '@mui/material/styles/createTypography';
 
 import { useWidth } from 'src/hooks/useResponsive';

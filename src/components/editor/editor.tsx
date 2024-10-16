@@ -1,6 +1,4 @@
-/* eslint-disable perfectionist/sort-imports */
 import 'src/utils/highlight';
-
 import ReactQuill from 'react-quill';
 
 import { alpha } from '@mui/material/styles';
@@ -21,17 +19,17 @@ export default function Editor({
 }: EditorProps) {
   const modules = {
     toolbar: {
-      container: `#${id}`,
+      container: `#${id}`
     },
     history: {
       delay: 500,
       maxStack: 100,
-      userOnly: true,
+      userOnly: true
     },
     syntax: true,
     clipboard: {
-      matchVisual: false,
-    },
+      matchVisual: false
+    }
   };
 
   return (
@@ -41,10 +39,10 @@ export default function Editor({
           ...(error && {
             border: (theme) => `solid 1px ${theme.palette.error.main}`,
             '& .ql-editor': {
-              bgcolor: (theme) => alpha(theme.palette.error.main, 0.08),
-            },
+              bgcolor: (theme) => alpha(theme.palette.error.main, 0.08)
+            }
           }),
-          ...sx,
+          ...sx
         }}
       >
         <Toolbar id={id} simple={simple} />

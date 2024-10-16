@@ -1,5 +1,7 @@
 // ----------------------------------------------------------------------
 
+import React from 'react';
+
 export type DateRangePickerProps = {
   startDate: Date | null;
   endDate: Date | null;
@@ -18,7 +20,7 @@ export type DateRangePickerProps = {
   shortLabel?: string;
   //
   title?: string;
-  variant?: "calendar" | "input";
+  variant?: 'calendar' | 'input';
   //
   setStartDate?: React.Dispatch<React.SetStateAction<Date | null>>;
   setEndDate?: React.Dispatch<React.SetStateAction<Date | null>>;

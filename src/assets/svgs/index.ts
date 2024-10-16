@@ -5,5 +5,23 @@ import RightArrowSvg from './arrow_right.svg?react';
 import CheckSvg from './checkbox_ic.svg?react';
 import AppLogoSmall from './app_logo_small.svg?react';
 import Kakao from './kakao.svg?react';
+import Red from './red.svg?react';
+import Blue from './blue.svg?react';
+import Orange from './orange.svg?react';
+import Green from './green.svg?react';
+import Location from './Location.svg?react';
+import Receipt from './Receipt.svg?react';
 
-export { LeftArrow, RightArrowSvg, CheckSvg, AppLogoSmall, Kakao };
+export {
+  LeftArrow,
+  RightArrowSvg,
+  CheckSvg,
+  AppLogoSmall,
+  Kakao,
+  Red,
+  Orange,
+  Blue,
+  Green,
+  Location,
+  Receipt
+};
