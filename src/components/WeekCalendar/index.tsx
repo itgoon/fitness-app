@@ -6,6 +6,8 @@ import Button from '../Button';
 import { useEffect, useState } from 'react';
 import { DateReqFormat } from '../../utils/formatTime';
 
+// const WeekList = ['토', '일', '월', '화', '수', '목', '금'];
+
 export default function WeekCalendar({
   date,
   format = DateReqFormat,
@@ -24,11 +26,11 @@ export default function WeekCalendar({
 
   const settingDate = () => {
     let list: string[] = [];
-    [...Array(7)].map((_, index) => {
+    for (let index = 0; index < 7; index++) {
       list.push(dayjs(date).subtract(index, 'day').format(format));
-    });
+    }
 
-    setDateList(list);
+    setDateList(list.reverse());
   };
 
   return (
@@ -36,16 +38,10 @@ export default function WeekCalendar({
       className={'weekCalendar'}
       sx={{ display: 'flex', padding: '12px', ...layoutSx }}
     >
-      {dateList.reverse().map((item, key) => {
-        const isToday = dayjs(date).format(format) === item ? true : false;
-        let isBadge = false;
+      {dateList.map((item, key) => {
+        const isToday = dayjs(date).isSame(item, 'day');
+        const isBadge = monthCount?.some((evt) => item === evt.date) || false;
 
-        if (monthCount) {
-          const badgeCount = monthCount?.find((evt) => item === evt.date);
-          if (badgeCount) {
-            isBadge = true;
-          }
-        }
         return (
           <Button
             sx={{ flex: 1, minWidth: 46, minHeight: 60 }}

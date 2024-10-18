@@ -41,7 +41,7 @@ export default function DashboardPage() {
   return (
     <Stack>
       <Wrap padding={'0 !important'}>
-        <WeekCalendar date={dayjs('2024-10-20')} monthCount={dummyMonthCount} />
+        <WeekCalendar date={dayjs('2024-10-21')} monthCount={dummyMonthCount} />
       </Wrap>
 
       <Wrap gap={1} padding={4}>
