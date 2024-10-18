@@ -1,13 +1,10 @@
 import dayjs from 'dayjs';
-import 'dayjs/locale/ko';
-dayjs.locale('ko');
 
 import { Divider, Stack, Typography, useTheme } from '@mui/material';
 import WeekCalendar from '../../components/WeekCalendar';
 import { useState } from 'react';
 import Button from '../../components/Button';
 import Wrap from './wrap/Wrap';
-import { MontFormatKR } from '../../utils/formatTime';
 import ReservationCard from '../../components/reservationCard/ReservationCard';
 /**
  * ******************************************************
@@ -20,7 +17,13 @@ const workMsg = (isWorking) =>
   isWorking
     ? '오늘도 목표를 향해 같이 달려가봐요'
     : '오늘 운동을 시작하지 않으셨네요!';
-
+const Message = ({ name, workMessage }) => (
+  <>
+    <span>{name} 님,</span>
+    <br />
+    <span>{workMessage}</span>
+  </>
+);
 export default function DashboardPage() {
   const [date, setDate] = useState(dayjs());
   const theme = useTheme();
@@ -29,6 +32,11 @@ export default function DashboardPage() {
 
   const [isWorking, setIsWorking] = useState(false);
   const [alaram, setAlaram] = useState(false);
+
+  const toggleWorkingState = () => {
+    setIsWorking((prev) => !prev);
+    setAlaram((prev) => !prev);
+  };
 
   return (
     <Stack>
@@ -39,16 +47,13 @@ export default function DashboardPage() {
       <Wrap gap={1} padding={4}>
         <Typography
           variant="Body18/semiBold"
-          children={`${date.format(MontFormatKR)} ${date.format('dddd')}`}
+          children={`${date.format('M월 D일 dddd')}`}
           color={grey}
         />
-
         <Typography
           variant="Body20/semiBold"
           lineHeight={'30px'}
-          dangerouslySetInnerHTML={{
-            __html: `${name}님,<br/> ${workMsg(isWorking)}`
-          }}
+          children={<Message name={name} workMessage={workMsg(isWorking)} />}
         />
 
         {isWorking && (
@@ -59,16 +64,21 @@ export default function DashboardPage() {
             sx={{ backgroundColor: blgrey, borderRadius: 1 }}
           >
             <Stack gap={0.5}>
-              <Typography variant="Body14/regular" color={grey}>
-                운동시작
-              </Typography>
-              <Typography variant="Body20/bold">11:01</Typography>
+              <Typography
+                variant="Body14/regular"
+                color={grey}
+                children={'운동시작'}
+              />
+              <Typography variant="Body20/bold" children={'11:01'} />
             </Stack>
             <Stack gap={0.5}>
-              <Typography variant="Body14/regular" color={grey}>
-                총 운동 시간
-              </Typography>
-              <Typography variant="Body20/bold">0시간 0분</Typography>
+              <Typography
+                variant="Body14/regular"
+                color={grey}
+                children={'총 운동 시간'}
+              />
+
+              <Typography variant="Body20/bold" children={'0시간 0분'} />
             </Stack>
           </Stack>
         )}
@@ -79,10 +89,7 @@ export default function DashboardPage() {
           variant={!isWorking ? 'contained' : 'outlined'}
           children={!isWorking ? '운동시작' : '운동종료'}
           sx={{ marginTop: 2, marginBottom: '-12px' }}
-          onClick={() => {
-            setIsWorking(!isWorking);
-            setAlaram(!alaram);
-          }}
+          onClick={toggleWorkingState}
         />
       </Wrap>
       <Wrap gap={1.5} sx={{ padding: '0 !important' }}>

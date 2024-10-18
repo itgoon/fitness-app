@@ -6,8 +6,6 @@ import Button from '../Button';
 import { useEffect, useState } from 'react';
 import { DateReqFormat } from '../../utils/formatTime';
 
-dayjs.locale('ko');
-
 export default function WeekCalendar({
   date,
   format = DateReqFormat,
@@ -38,7 +36,7 @@ export default function WeekCalendar({
       className={'weekCalendar'}
       sx={{ display: 'flex', padding: '12px', ...layoutSx }}
     >
-      {dateList.map((item, index) => {
+      {dateList.map((item, key) => {
         const isToday = dayjs(date).format(format) === item ? true : false;
         let isBadge = false;
 
@@ -51,7 +49,8 @@ export default function WeekCalendar({
         return (
           <Button
             sx={{ flex: 1, minWidth: 46, minHeight: 60 }}
-            onClick={() => onClick && onClick(item)}
+            onClick={() => console.log(item)}
+            key={key}
           >
             <Stack gap={1}>
               <Typography

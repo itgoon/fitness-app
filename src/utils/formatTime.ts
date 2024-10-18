@@ -1,5 +1,8 @@
 import { format, getTime, formatDistanceToNow } from 'date-fns';
+import dayjs from 'dayjs';
 
+import 'dayjs/locale/ko';
+dayjs.locale('ko');
 // ----------------------------------------------------------------------
 
 export const TimeFormat = 'HH:mm';

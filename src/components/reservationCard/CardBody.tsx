@@ -35,7 +35,7 @@ export default function CardBody({ chipLabel }: ICardBody) {
             <Typography variant="Body14/regular">place</Typography>
           </Content>
           <Content>
-            <Icon size={16} name="Receipt" />
+            <Icon color={'#BDBDBD'} size={16} name="Receipt" />
             <Typography variant="Body14/regular">num</Typography>
           </Content>
         </Stack>
