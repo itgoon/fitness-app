@@ -39,14 +39,15 @@ export default function WeekCalendar({
       sx={{ display: 'flex', padding: '12px', ...layoutSx }}
     >
       {dateList.map((item, index) => {
-        let cnt: number = 0;
         const isToday = dayjs(date).format(format) === item ? true : false;
+        let isBadge = false;
 
         if (monthCount) {
-          const evtCount = monthCount?.find((evt) => item === evt.date);
-          cnt = evtCount?.count ? evtCount?.count : 0;
+          const badgeCount = monthCount?.find((evt) => item === evt.date);
+          if (badgeCount) {
+            isBadge = true;
+          }
         }
-
         return (
           <Button
             sx={{ flex: 1, minWidth: 46, minHeight: 60 }}
@@ -57,9 +58,9 @@ export default function WeekCalendar({
                 variant={isToday ? 'Body13/semiBold' : 'Body13/regular'}
                 color={isToday ? black : grey600}
               >
-                {dayjs(item, format).format('dd')}
+                {isToday ? '오늘' : dayjs(item, format).format('dd')}
               </Typography>
-              <Stack gap={0.5}>
+              <Stack>
                 <Typography
                   variant={isToday ? 'Body15/semiBold' : 'Body15/regular'}
                   color={isToday ? black : grey600}
@@ -70,11 +71,15 @@ export default function WeekCalendar({
                   sx={{
                     display: 'flex',
                     gap: 1,
-                    ml: 1
+                    ml: 1.4
                   }}
                 >
-                  <Badge color="warning" variant="alway" />
-                  <Badge color="success" variant="online" />
+                  {isBadge && (
+                    <>
+                      <Badge color="warning" variant="alway" />
+                      <Badge color="success" variant="online" />
+                    </>
+                  )}
                 </Box>
               </Stack>
             </Stack>

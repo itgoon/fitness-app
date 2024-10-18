@@ -5,7 +5,7 @@ interface IWrap {
   children: ReactNode | ReactElement;
   sx?: CSSProperties;
   gap?: number;
-  padding?: number;
+  padding?: number | string;
 }
 export default function Wrap({ children, gap, padding, sx }: IWrap) {
   return (
@@ -17,7 +17,7 @@ export default function Wrap({ children, gap, padding, sx }: IWrap) {
       >
         {children}
       </Stack>
-      <Divider color={'#ECEFF1'} sx={{ height: 8 }} />
+      <Divider sx={{ borderBottomWidth: 8 }} />
     </>
   );
 }

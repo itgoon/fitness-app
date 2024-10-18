@@ -14,6 +14,13 @@ import ReservationCard from '../../components/reservationCard/ReservationCard';
  * 대시보드 화면
  * ******************************************************
  */
+const dummyMonthCount = [{ date: '2024-10-18', count: 1 }];
+const name = '홍길동';
+const workMsg = (isWorking) =>
+  isWorking
+    ? '오늘도 목표를 향해 같이 달려가봐요'
+    : '오늘 운동을 시작하지 않으셨네요!';
+
 export default function DashboardPage() {
   const [date, setDate] = useState(dayjs());
   const theme = useTheme();
@@ -22,17 +29,12 @@ export default function DashboardPage() {
 
   const [isWorking, setIsWorking] = useState(false);
   const [alaram, setAlaram] = useState(false);
-  const name = '홍길동';
-  const workMsg = isWorking
-    ? '오늘도 목표를 향해 같이 달려가봐요'
-    : '오늘 운동을 시작하지 않으셨네요!';
 
   return (
     <Stack>
-      <Stack>
-        <WeekCalendar date={date} />
-        <Divider color={'#ECEFF1'} sx={{ height: 8 }} />
-      </Stack>
+      <Wrap padding={'0 !important'}>
+        <WeekCalendar date={date} monthCount={dummyMonthCount} />
+      </Wrap>
 
       <Wrap gap={1} padding={4}>
         <Typography
@@ -45,7 +47,7 @@ export default function DashboardPage() {
           variant="Body20/semiBold"
           lineHeight={'30px'}
           dangerouslySetInnerHTML={{
-            __html: `${name}님,<br/> ${workMsg}`
+            __html: `${name}님,<br/> ${workMsg(isWorking)}`
           }}
         />
 
