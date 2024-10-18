@@ -12,7 +12,7 @@ export const MonthFormat = 'YYYY.MM';
 export const YearFormat = 'YYYY';
 export const DateReqFormat = 'YYYY-MM-DD';
 export const DateViewFormat = 'YYYY년 M월 D일';
-export const MontFormatKR = 'M월 D일';
+export const MontFormatKR = 'M월 D일 dddd';
 export const YearMonthKR = 'YYYY MM월';
 export const YearMonthTextField = 'YYYY. MM';
 

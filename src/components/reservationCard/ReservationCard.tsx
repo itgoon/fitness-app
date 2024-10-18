@@ -10,7 +10,6 @@ export default function ReservationCard({
   chipLabel
 }: IReservationCard) {
   const dateKR = dayjs(date).format(MontFormatKR);
-  const day = dayjs(date).format('dddd');
   const chipState =
     chipLabel === 'warning'
       ? '예약'
@@ -21,7 +20,7 @@ export default function ReservationCard({
   return (
     <Stack gap={1.5} sx={{ ...layoutSx }}>
       <Stack direction={'row'} alignItems={'center'} gap={1}>
-        <Typography variant="Body18/semiBold">{`${dateKR} ${day}`}</Typography>
+        <Typography variant="Body18/semiBold">{`${dateKR}`}</Typography>
         <Chip size={'small'} color={chipLabel} label={chipState} />
       </Stack>
 

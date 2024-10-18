@@ -6,6 +6,7 @@ import { useState } from 'react';
 import Button from '../../components/Button';
 import Wrap from './wrap/Wrap';
 import ReservationCard from '../../components/reservationCard/ReservationCard';
+import { MontFormatKR } from '../../utils/formatTime';
 /**
  * ******************************************************
  * 대시보드 화면
@@ -25,7 +26,6 @@ const Message = ({ name, workMessage }) => (
   </>
 );
 export default function DashboardPage() {
-  const [date, setDate] = useState(dayjs());
   const theme = useTheme();
   const grey = theme.palette.grey[500];
   const blgrey = theme.palette.grey.A200;
@@ -41,13 +41,13 @@ export default function DashboardPage() {
   return (
     <Stack>
       <Wrap padding={'0 !important'}>
-        <WeekCalendar date={date} monthCount={dummyMonthCount} />
+        <WeekCalendar date={dayjs('2024-10-20')} monthCount={dummyMonthCount} />
       </Wrap>
 
       <Wrap gap={1} padding={4}>
         <Typography
           variant="Body18/semiBold"
-          children={`${date.format('M월 D일 dddd')}`}
+          children={`${dayjs().format(MontFormatKR)}`}
           color={grey}
         />
         <Typography
@@ -115,7 +115,7 @@ export default function DashboardPage() {
           />
         ) : (
           <ReservationCard
-            date={date}
+            date={dayjs()}
             chipLabel="warning"
             layoutSx={{ padding: '8px 20px 32px' }}
           />

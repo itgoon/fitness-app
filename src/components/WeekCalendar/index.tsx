@@ -25,7 +25,7 @@ export default function WeekCalendar({
   const settingDate = () => {
     let list: string[] = [];
     [...Array(7)].map((_, index) => {
-      list.push(dayjs().add(index, 'day').format(format));
+      list.push(dayjs(date).subtract(index, 'day').format(format));
     });
 
     setDateList(list);
@@ -36,7 +36,7 @@ export default function WeekCalendar({
       className={'weekCalendar'}
       sx={{ display: 'flex', padding: '12px', ...layoutSx }}
     >
-      {dateList.map((item, key) => {
+      {dateList.reverse().map((item, key) => {
         const isToday = dayjs(date).format(format) === item ? true : false;
         let isBadge = false;
 
