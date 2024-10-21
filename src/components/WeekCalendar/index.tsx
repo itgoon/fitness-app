@@ -22,7 +22,7 @@ export default function WeekCalendar({
   const [dateList, setDateList] = useState<string[]>([]);
   useEffect(() => {
     settingDate();
-  }, [date]);
+  }, []);
 
   const settingDate = () => {
     let list: string[] = [];

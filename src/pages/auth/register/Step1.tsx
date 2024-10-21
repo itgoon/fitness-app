@@ -4,6 +4,7 @@ import Button from 'src/components/Button';
 import Wrap from './Wrap';
 import RegisterHeader from './RegisterHeader';
 import TextField from 'src/components/TextField';
+import TimePicker from '../../../components/TimePicker';
 const stepsChild = [
   { label: '확인', value: '이름을 입력해주세요' },
   { label: '확인', value: '생년월일을 입력해주세요' },
@@ -94,6 +95,7 @@ export default function Step1({ onNext, data, setData }: StepProps) {
             }}
           />
         </Stack>
+        <TimePicker value={'07:05'} />
       </Wrap>
       {!isDisabled && (
         <Button
