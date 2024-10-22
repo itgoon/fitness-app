@@ -6,12 +6,11 @@ import Button from '../Button';
 import { useEffect, useState } from 'react';
 import { DateReqFormat } from '../../utils/formatTime';
 
-// const WeekList = ['토', '일', '월', '화', '수', '목', '금'];
-
 export default function WeekCalendar({
   date,
   format = DateReqFormat,
-  monthCount,
+  greenBadge,
+  orangeBadge,
   layoutSx
 }: IWeekCalendar) {
   const theme = useTheme();
@@ -38,7 +37,8 @@ export default function WeekCalendar({
     >
       {dateList.map((item, key) => {
         const isToday = dayjs(date).isSame(item, 'day');
-        const isBadge = monthCount?.some((evt) => item === evt.date) || false;
+        const isGreen = greenBadge?.some((evt) => item === evt.date) || false;
+        const isOrange = orangeBadge?.some((evt) => item === evt.date) || false;
 
         return (
           <Button
@@ -67,12 +67,8 @@ export default function WeekCalendar({
                     ml: 1.4
                   }}
                 >
-                  {isBadge && (
-                    <>
-                      <Badge color="warning" variant="alway" />
-                      <Badge color="success" variant="online" />
-                    </>
-                  )}
+                  {isOrange && <Badge color="warning" variant="alway" />}
+                  {isGreen && <Badge color="success" variant="online" />}
                 </Box>
               </Stack>
             </Stack>

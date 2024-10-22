@@ -5,5 +5,5 @@ export interface ITimePicker {
   open: boolean;
   onClose: (arg: boolean) => void;
 
-  isStart: boolean;
+  title: string;
 }

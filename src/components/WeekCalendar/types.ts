@@ -8,6 +8,7 @@ type count = {
 export interface IWeekCalendar {
   date?: string | Dayjs;
   format?: string;
-  monthCount?: count[];
+  greenBadge?: count[];
+  orangeBadge?: count[];
   layoutSx?: CSSProperties;
 }

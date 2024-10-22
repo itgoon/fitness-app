@@ -18,7 +18,7 @@ export default function ReservationCard({
         : '출석';
 
   return (
-    <Stack gap={1.5} sx={{ ...layoutSx }}>
+    <Stack gap={1.5} sx={{ padding: '8px 20px 32px', ...layoutSx }}>
       <Stack direction={'row'} alignItems={'center'} gap={1}>
         <Typography variant="Body18/semiBold">{`${dateKR}`}</Typography>
         <Chip size={'small'} color={chipLabel} label={chipState} />

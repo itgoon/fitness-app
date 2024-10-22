@@ -17,7 +17,8 @@ import TimePicker from '../../components/TimePicker';
  * 대시보드 화면
  * ******************************************************
  */
-const dummyMonthCount = [{ date: '2024-10-18', count: 1 }];
+const dummyMonthCount1 = [{ date: '2024-10-18', count: 1 }];
+const dummyMonthCount2 = [{ date: '2024-10-19', count: 1 }];
 const name = '홍길동';
 const workMsg = (isWorking) =>
   isWorking
@@ -80,7 +81,11 @@ export default function DashboardPage() {
   return (
     <Stack>
       <Wrap padding={'0 !important'}>
-        <WeekCalendar date={dayjs()} monthCount={dummyMonthCount} />
+        <WeekCalendar
+          date={dayjs()}
+          greenBadge={dummyMonthCount1}
+          orangeBadge={dummyMonthCount2}
+        />
       </Wrap>
 
       <Wrap gap={1} padding={4}>
@@ -161,11 +166,7 @@ export default function DashboardPage() {
             children={'알림 내용이 없습니다.'}
           />
         ) : (
-          <ReservationCard
-            date={dayjs()}
-            chipLabel="warning"
-            layoutSx={{ padding: '8px 20px 32px' }}
-          />
+          <ReservationCard date={dayjs()} chipLabel="warning" />
         )}
       </Wrap>
       <TimePicker
@@ -174,7 +175,11 @@ export default function DashboardPage() {
           setIsStart(false);
           setIsEnd(false);
         }}
-        isStart={isStart}
+        title={
+          isStart
+            ? '운동 시작 시간을 선택해주세요'
+            : '운동 종료 시간을 선택해주세요'
+        }
         onClick={saveWorkTime}
         onChange={handleTimeChange}
       ></TimePicker>
