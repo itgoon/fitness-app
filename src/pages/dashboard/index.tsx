@@ -6,7 +6,12 @@ import { useState } from 'react';
 import Button from '../../components/Button';
 import Wrap from './wrap/Wrap';
 import ReservationCard from '../../components/reservationCard/ReservationCard';
-import { MontFormatKR } from '../../utils/formatTime';
+import {
+  DateFormat,
+  MontFormatKR,
+  TimeDateFormat
+} from '../../utils/formatTime';
+import TimePicker from '../../components/TimePicker';
 /**
  * ******************************************************
  * 대시보드 화면
@@ -25,6 +30,7 @@ const Message = ({ name, workMessage }) => (
     <span>{workMessage}</span>
   </>
 );
+
 export default function DashboardPage() {
   const theme = useTheme();
   const grey = theme.palette.grey[500];
@@ -33,9 +39,42 @@ export default function DashboardPage() {
   const [isWorking, setIsWorking] = useState(false);
   const [alaram, setAlaram] = useState(false);
 
+  const [isStart, setIsStart] = useState(false);
+  const [isEnd, setIsEnd] = useState(false);
+  const [startValue, setStartValue] = useState('00:00');
+  const [endValue, setEndValue] = useState('00:00');
+  const [totalTime, setTotalTime] = useState('0시간 0분');
+
   const toggleWorkingState = () => {
     setIsWorking((prev) => !prev);
     setAlaram((prev) => !prev);
+  };
+
+  const handleTimeChange = (value) => {
+    value = value ? dayjs(value).format('HH:mm') : '00:00';
+    if (isStart) {
+      setStartValue(value);
+    } else {
+      setEndValue(value);
+    }
+  };
+
+  const saveWorkTime = () => {
+    if (isStart) {
+      setIsStart((prev) => !prev);
+    } else {
+      setIsEnd((prev) => !prev);
+    }
+    if (startValue !== '00:00' && endValue !== '00:00') {
+      const today = dayjs().format(DateFormat); // 오늘 날짜 더해서 파싱
+
+      const startTime = dayjs(`${today} ${startValue}`, TimeDateFormat);
+      const endTime = dayjs(`${today} ${endValue}`, TimeDateFormat);
+      const total = endTime.diff(startTime, 'minute');
+      const hours = Math.floor(total / 60);
+      const min = total % 60;
+      setTotalTime(`${hours} 시간 ${min} 분`);
+    }
   };
 
   return (
@@ -68,8 +107,16 @@ export default function DashboardPage() {
                 variant="Body14/regular"
                 color={grey}
                 children={'운동시작'}
+                onClick={() => setIsStart((prev) => !prev)}
               />
-              <Typography variant="Body20/bold" children={'11:01'} />
+              <Typography variant="Body20/bold" children={startValue} />
+              <Typography
+                variant="Body14/regular"
+                color={grey}
+                children={'운동종료'}
+                onClick={() => setIsEnd((prev) => !prev)}
+              />
+              <Typography variant="Body20/bold" children={endValue} />
             </Stack>
             <Stack gap={0.5}>
               <Typography
@@ -78,7 +125,7 @@ export default function DashboardPage() {
                 children={'총 운동 시간'}
               />
 
-              <Typography variant="Body20/bold" children={'0시간 0분'} />
+              <Typography variant="Body20/bold" children={totalTime} />
             </Stack>
           </Stack>
         )}
@@ -121,6 +168,16 @@ export default function DashboardPage() {
           />
         )}
       </Wrap>
+      <TimePicker
+        open={isStart || isEnd}
+        onClose={() => {
+          setIsStart(false);
+          setIsEnd(false);
+        }}
+        isStart={isStart}
+        onClick={saveWorkTime}
+        onChange={handleTimeChange}
+      ></TimePicker>
     </Stack>
   );
 }

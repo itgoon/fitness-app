@@ -16,6 +16,7 @@ export const MontFormatKR = 'M월 D일 dddd';
 export const YearMonthKR = 'YYYY MM월';
 export const YearMonthTextField = 'YYYY. MM';
 
+export const TimeDateFormat = 'yyyy-MM-dd HH:mm';
 export const DateResFormat = 'yyyy-MM-dd HH:mm:ss';
 type InputValue = Date | string | number | null | undefined;
 

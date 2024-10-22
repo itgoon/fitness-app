@@ -9,9 +9,9 @@ export default function timePicker() {
           ul: {
             width: '100%',
             border: 'none !important',
-            maxHeight: 256,
-            paddingTop: 40,
-            paddingBottom: 40,
+            // maxHeight: 256,
+            // paddingTop: 40,
+            // paddingBottom: 40,
             msOverflowStyle: 'none' /* 인터넷 익스플로러 */,
             scrollbarWidth: 'none' /* 파이어폭스 */,
             li: {
@@ -19,7 +19,14 @@ export default function timePicker() {
               maxHeight: 44,
               margin: 0,
               padding: 0,
-              justifyContent: 'center'
+              justifyContent: 'center',
+              '&:first-of-type': {
+                marginTop: 0
+              },
+              // 여기에 타겟 선택자 적용
+              '&:not(:last-of-type)': {
+                marginBottom: 0 // 예시로 margin-bottom을 적용
+              }
             }
           }
         }
@@ -27,3 +34,4 @@ export default function timePicker() {
     }
   };
 }
+// .css-j3fs9z-MuiList-root-MuiMultiSectionDigitalClockSection-root
