@@ -29,7 +29,7 @@ export default function NavBottom() {
 
   return (
     <BottomNavigation
-      sx={{ maxHeight: 64 }}
+      sx={{ maxHeight: 64, gap: 1.5, px: 2 }}
       showLabels
       value={location?.pathname}
       onChange={(event, newValue) => {
@@ -42,6 +42,7 @@ export default function NavBottom() {
       {list?.map((item) => {
         return (
           <BottomNavigationAction
+            sx={{ minWidth: 64, padding: 0 }}
             label={item.title}
             icon={item?.icon}
             value={item.path}

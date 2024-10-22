@@ -31,10 +31,10 @@ const ICONS = {
   list: <Iconify icon="ic:baseline-list" />,
   new: <Iconify icon="mdi:add-circle" />,
   naver: <Iconify icon="simple-icons:naver" />,
-  more: <Icon name="MoreSvg" />,
+  more: <Icon name="MoreSvg" size={32} />,
   calendar: <Icon name="Calendar" size={32} />,
-  home: <Icon name="HomeSvg" />,
-  feed: <Icon name="FeedSvg" />,
+  home: <Icon name="HomeSvg" size={32} />,
+  feed: <Icon name="FeedSvg" size={32} />,
   memberShip: <Icon name="Membership" size={32} />
 };
 
