@@ -11,8 +11,6 @@ import { DateReqFormat } from '../../utils/formatTime';
 export default function WeekCalendar({
   date,
   format = DateReqFormat,
-  onClick,
-  onChangeMonth,
   monthCount,
   layoutSx
 }: IWeekCalendar) {

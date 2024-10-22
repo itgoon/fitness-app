@@ -16,7 +16,7 @@ export default function timePicker() {
             scrollbarWidth: 'none' /* 파이어폭스 */,
             li: {
               width: '100%',
-              maxHeight: 44,
+              minHeight: 44,
               margin: 0,
               padding: 0,
               justifyContent: 'center',
