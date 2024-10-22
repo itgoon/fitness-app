@@ -15,7 +15,9 @@ export default function TimePicker({
       open={open}
       onClose={onClose}
       anchor="bottom"
-      sx={{ '.MuiPaper-root': { padding: '32px 20px !important', gap: 3 } }}
+      sx={{
+        '.MuiPaper-root': { padding: '32px 20px 20px !important', gap: 3 }
+      }}
     >
       <Typography variant="Body20/semiBold" children={title} />
       <MultiSectionDigitalClock

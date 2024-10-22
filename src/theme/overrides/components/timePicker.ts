@@ -9,9 +9,9 @@ export default function timePicker() {
           ul: {
             width: '100%',
             border: 'none !important',
-            // maxHeight: 256,
-            // paddingTop: 40,
-            // paddingBottom: 40,
+            maxHeight: 256,
+            paddingTop: 40,
+            marginBottom: 40,
             msOverflowStyle: 'none' /* 인터넷 익스플로러 */,
             scrollbarWidth: 'none' /* 파이어폭스 */,
             li: {
