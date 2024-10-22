@@ -29,6 +29,7 @@ export default function NavBottom() {
 
   return (
     <BottomNavigation
+      sx={{ maxHeight: 64 }}
       showLabels
       value={location?.pathname}
       onChange={(event, newValue) => {
