@@ -157,15 +157,20 @@ export default function DashboardPage() {
           sx={{ padding: '32px 20px 0' }}
         />
         <Divider></Divider>
-        <AlaramCard margin={0} title={'알림 내용이 없습니다.'} />
-        <AlaramCard
-          isEmpty={false}
-          title="새로운 서명요청이 있습니다!"
-          dataList={dummyCardData}
-          onClick={() => console.log('click')}
-          onClickMsg="서명하기"
-        />
-        <ReservationCard date={dayjs()} chipLabel="warning" />
+        {!alaram ? (
+          <AlaramCard margin={0} title={'알림 내용이 없습니다.'} />
+        ) : (
+          <>
+            <AlaramCard
+              isEmpty={false}
+              title="새로운 서명요청이 있습니다!"
+              dataList={dummyCardData}
+              onClick={() => console.log('click')}
+              onClickMsg="서명하기"
+            />
+            <ReservationCard date={dayjs()} chipLabel="warning" />
+          </>
+        )}
       </Wrap>
       <TimePicker
         open={isStart || isEnd}
