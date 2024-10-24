@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 
 import { Divider, Stack, Typography, useTheme } from '@mui/material';
-import WeekCalendar from '../../components/WeekCalendar';
 import { useState } from 'react';
 import Button from '../../components/Button';
 import Wrap from './wrap/Wrap';
@@ -11,7 +10,8 @@ import {
   MontFormatKR,
   TimeDateFormat
 } from '../../utils/formatTime';
-import TimePicker from '../../components/TimePicker';
+import TimePicker from '../../components/custom/TimePicker';
+import WeekCalendar from '../../components/custom/WeekCalendar';
 /**
  * ******************************************************
  * 대시보드 화면
