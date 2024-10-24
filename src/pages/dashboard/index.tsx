@@ -4,7 +4,6 @@ import { Divider, Stack, Typography, useTheme } from '@mui/material';
 import { useState } from 'react';
 import Button from '../../components/Button';
 import Wrap from './wrap/Wrap';
-import ReservationCard from '../../components/reservationCard/ReservationCard';
 import {
   DateFormat,
   MontFormatKR,
@@ -12,6 +11,8 @@ import {
 } from '../../utils/formatTime';
 import TimePicker from '../../components/custom/TimePicker';
 import WeekCalendar from '../../components/custom/WeekCalendar';
+import AlaramCard from '../../components/custom/AlaramCard';
+import ReservationCard from '../../components/custom/reservationCard/ReservationCard';
 /**
  * ******************************************************
  * 대시보드 화면
@@ -19,6 +20,11 @@ import WeekCalendar from '../../components/custom/WeekCalendar';
  */
 const dummyMonthCount1 = [{ date: '2024-10-18', count: 1 }];
 const dummyMonthCount2 = [{ date: '2024-10-19', count: 1 }];
+const dummyCardData = [
+  { label: '센터명', value: '리온짐' },
+  { label: '요청 일시', value: '2024년 9월 1일 12시 00분' },
+  { label: '작성 기한', value: '2024년 9월 3일 11시 59분' }
+];
 const name = '홍길동';
 const workMsg = (isWorking) =>
   isWorking
@@ -151,23 +157,15 @@ export default function DashboardPage() {
           sx={{ padding: '32px 20px 0' }}
         />
         <Divider></Divider>
-        {!alaram ? (
-          <Typography
-            variant="Body16/regular"
-            color={grey}
-            sx={{
-              display: 'flex',
-              justifyContent: 'center',
-              backgroundColor: blgrey,
-              py: 1.5,
-              margin: '12px 20px 32px',
-              borderRadius: 1
-            }}
-            children={'알림 내용이 없습니다.'}
-          />
-        ) : (
-          <ReservationCard date={dayjs()} chipLabel="warning" />
-        )}
+        <AlaramCard margin={0} title={'알림 내용이 없습니다.'} />
+        <AlaramCard
+          isEmpty={false}
+          title="새로운 서명요청이 있습니다!"
+          dataList={dummyCardData}
+          onClick={() => console.log('click')}
+          onClickMsg="서명하기"
+        />
+        <ReservationCard date={dayjs()} chipLabel="warning" />
       </Wrap>
       <TimePicker
         open={isStart || isEnd}

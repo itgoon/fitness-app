@@ -1,6 +1,6 @@
 import { Box, Stack, Typography, useTheme } from '@mui/material';
-import Icon from '../Icon';
 import { ICardBody } from './types';
+import Icon from '../../Icon';
 
 const Content = ({ children }: any) => {
   return (

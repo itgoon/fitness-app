@@ -1,8 +1,8 @@
 import { Chip, Stack, Typography } from '@mui/material';
 import dayjs from 'dayjs';
-import { MontFormatKR } from '../../utils/formatTime';
 import CardBody from './CardBody';
 import { IReservationCard } from './types';
+import { MontFormatKR } from '../../../utils/formatTime';
 
 export default function ReservationCard({
   layoutSx,

@@ -2,7 +2,8 @@
 /* eslint-disable no-restricted-syntax */
 
 export const pxSize = {
-  sm: "36px",
-  md: "40px",
-  lg: "56px"
+  xs: '36px',
+  sm: '40px',
+  md: '44px',
+  lg: '56px'
 };
