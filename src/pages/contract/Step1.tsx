@@ -12,6 +12,7 @@ export default function Step1({ onNext }: StepProps) {
   const btnRef = useRef<HTMLDivElement | null>(null);
   const [isBtnVisible, setIsBtnVisible] = useState(false);
 
+  //   TODO: 활성화 단계에서 퀄리티를 더 높일 것 동의 버튼 이라거나
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {
@@ -20,7 +21,7 @@ export default function Step1({ onNext }: StepProps) {
       },
       {
         root: null,
-        threshold: 0.9
+        threshold: 0.09
       }
     );
 
