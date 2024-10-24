@@ -12,7 +12,7 @@ import { fileData } from '../fileThumbnail';
 // ----------------------------------------------------------------------
 
 type Props = {
-  fileRejections: FileRejection[];
+  fileRejections: readonly FileRejection[];
 };
 
 export default function RejectionFiles({ fileRejections }: Props) {
@@ -30,7 +30,7 @@ export default function RejectionFiles({ fileRejections }: Props) {
         textAlign: 'left',
         borderStyle: 'dashed',
         borderColor: 'error.main',
-        bgcolor: (theme) => alpha(theme.palette.error.main, 0.08),
+        bgcolor: (theme) => alpha(theme.palette.error.main, 0.08)
       }}
     >
       {fileRejections.map(({ file, errors }) => {
@@ -43,7 +43,11 @@ export default function RejectionFiles({ fileRejections }: Props) {
             </Typography>
 
             {errors.map((error) => (
-              <Box key={error.code} component="span" sx={{ typography: 'caption' }}>
+              <Box
+                key={error.code}
+                component="span"
+                sx={{ typography: 'caption' }}
+              >
                 - {error.message}
               </Box>
             ))}

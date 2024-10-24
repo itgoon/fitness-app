@@ -1,4 +1,10 @@
-import { Button, IconButton, InputAdornment, Stack, Typography } from '@mui/material';
+import {
+  Button,
+  IconButton,
+  InputAdornment,
+  Stack,
+  Typography
+} from '@mui/material';
 import { RHFTextField } from 'src/components/hookForm';
 import Iconify from 'src/components/iconify';
 import { useBoolean } from 'src/hooks/useBoolean';
@@ -14,7 +20,7 @@ export default function Step2({ onNext }: StepProps) {
   return (
     <Stack>
       <Stack spacing={2} sx={{ mb: 5, textAlign: 'center' }}>
-        <Typography variant="h5">비밀번호 재설정</Typography>
+        <Typography variant="h5" children={'비밀번호 재설정'} />
         <Typography>
           변경하시는 계정이 아래 계정이 맞는지 확인 후
           <br /> 변경하실 새 비밀번호를 입력해주세요.
@@ -32,13 +38,21 @@ export default function Step2({ onNext }: StepProps) {
             endAdornment: (
               <InputAdornment position="end">
                 <IconButton onClick={password.onToggle} edge="end">
-                  <Iconify icon={password.value ? 'solar:eye-bold' : 'solar:eye-closed-bold'} />
+                  <Iconify
+                    icon={
+                      password.value
+                        ? 'solar:eye-bold'
+                        : 'solar:eye-closed-bold'
+                    }
+                  />
                 </IconButton>
               </InputAdornment>
-            ),
+            )
           }}
         />
-        <Typography>8 ~ 20자의 영문, 숫자를 조합하여 비밀번호를 입력해주세요.</Typography>
+        <Typography
+          children={'8 ~ 20자의 영문, 숫자를 조합하여 비밀번호를 입력해주세요.'}
+        />
         <RHFTextField
           type="password"
           name="confirm-password"
@@ -48,11 +62,15 @@ export default function Step2({ onNext }: StepProps) {
               <InputAdornment position="end">
                 <IconButton onClick={confirmPassword.onToggle} edge="end">
                   <Iconify
-                    icon={confirmPassword.value ? 'solar:eye-bold' : 'solar:eye-closed-bold'}
+                    icon={
+                      confirmPassword.value
+                        ? 'solar:eye-bold'
+                        : 'solar:eye-closed-bold'
+                    }
                   />
                 </IconButton>
               </InputAdornment>
-            ),
+            )
           }}
         />
         <Button
@@ -62,9 +80,8 @@ export default function Step2({ onNext }: StepProps) {
           variant="contained"
           type="submit"
           onClick={onNext}
-        >
-          비밀번호 변경
-        </Button>
+          children={'비밀번호 변경'}
+        />
       </Stack>
     </Stack>
   );

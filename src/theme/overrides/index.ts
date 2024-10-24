@@ -48,6 +48,7 @@ import { treeView } from './components/treeView';
 import { typography } from './components/typography';
 import { defaultProps } from './defaultProps';
 import timePicker from './components/timePicker';
+import { divider } from './components/divider';
 
 // ----------------------------------------------------------------------
 
@@ -62,6 +63,7 @@ export function componentsOverrides(theme: Theme) {
     menu(theme),
     list(theme),
     badge(theme),
+    divider(theme),
     table(theme),
     paper(theme),
     alert(theme),
