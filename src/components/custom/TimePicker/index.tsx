@@ -1,9 +1,9 @@
 import { MultiSectionDigitalClock } from '@mui/x-date-pickers';
 import { ITimePicker } from './types';
 import { Drawer, Typography } from '@mui/material';
-import Button from '../Button';
 import { useEffect, useRef, useState } from 'react';
 import { throttle } from 'lodash';
+import Button from '../../Button';
 
 export default function TimePicker({
   open,
@@ -57,7 +57,6 @@ export default function TimePicker({
     >
       <Typography variant="Body20/semiBold" children={title} />
       <MultiSectionDigitalClock
-        defaultValue={5}
         ref={containerRef}
         timeSteps={{ minutes: 1 }}
         views={['hours', 'minutes']}
