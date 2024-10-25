@@ -14,8 +14,10 @@ export default function WeekCalendar({
   layoutSx
 }: IWeekCalendar) {
   const theme = useTheme();
-  const grey600 = theme.palette.grey[600];
-  const black = theme.palette.common.black;
+  const { palette } = theme;
+  const light = palette.mode === 'light';
+  const grey600 = palette.grey[600];
+  const black = light ? palette.common.black : palette.common.white;
   const [dateList, setDateList] = useState<string[]>([]);
   useEffect(() => {
     settingDate();
@@ -60,13 +62,7 @@ export default function WeekCalendar({
                 >
                   {dayjs(item, format).format('D')}
                 </Typography>
-                <Box
-                  sx={{
-                    display: 'flex',
-                    gap: 1,
-                    ml: 1.4
-                  }}
-                >
+                <Box display={'flex'} gap={1} ml={1.4}>
                   {isOrange && <Badge color="warning" variant="alway" />}
                   {isGreen && <Badge color="success" variant="online" />}
                 </Box>

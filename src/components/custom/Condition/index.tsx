@@ -7,20 +7,22 @@ interface ICondition {
   children?: ReactNode;
   layoutSx?: CSSProperties;
 }
+/**
+ * ******************************************************
+ * 약관 및 규정 컴포넌트
+ * ******************************************************
+ */
 export default function Condition({ title, children, layoutSx }: ICondition) {
   const theme = useTheme();
-  const light = theme.palette.mode === 'light';
-  const titleColor = light
-    ? theme.palette.common.white
-    : theme.palette.grey[800];
-
-  const descColor = light
-    ? theme.palette.grey[600]
-    : theme.palette.common.white;
+  const { palette } = theme;
+  const light = palette.mode === 'light';
+  const titleColor = light ? palette.common.white : palette.grey[800];
+  const bgColor = light ? palette.grey[800] : palette.common.white;
+  const descColor = light ? palette.grey[600] : palette.common.white;
 
   return (
     <Stack gap={3} sx={{ ...layoutSx }}>
-      <Box padding={'12px 16px'} bgcolor={theme.palette.grey[800]}>
+      <Box padding={'12px 16px'} bgcolor={bgColor}>
         <Typography
           variant={'Body16/bold'}
           color={titleColor}

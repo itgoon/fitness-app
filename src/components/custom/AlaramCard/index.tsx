@@ -11,9 +11,12 @@ export default function AlaramCard({
   margin
 }: IAlaramCard) {
   const theme = useTheme();
-  const grey500 = theme.palette.grey[500];
-  const grey600 = theme.palette.grey[600];
-  const blgrey = theme.palette.grey.A200;
+  const { palette } = theme;
+  const light = palette.mode === 'light';
+  const grey400 = palette.grey[400];
+  const grey500 = palette.grey[500];
+  const grey600 = palette.grey[600];
+  const blgrey = light ? palette.grey.A200 : grey400;
   return (
     <>
       {isEmpty ? (

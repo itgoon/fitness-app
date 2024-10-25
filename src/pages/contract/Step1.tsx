@@ -7,7 +7,11 @@ import { useEffect, useRef, useState } from 'react';
 export interface StepProps {
   onNext?: () => void;
 }
-
+/**
+ * ******************************************************
+ * 약관 및 규정
+ * ******************************************************
+ */
 export default function Step1({ onNext }: StepProps) {
   const btnRef = useRef<HTMLDivElement | null>(null);
   const [isBtnVisible, setIsBtnVisible] = useState(false);

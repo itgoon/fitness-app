@@ -12,9 +12,15 @@ const Content = ({ children }: any) => {
 
 export default function CardBody({ chipLabel }: ICardBody) {
   const theme = useTheme();
-  const blgrey = theme.palette.grey.A200;
+  const { palette } = theme;
+  const light = palette.mode === 'light';
+  const grey400 = palette.grey[400];
+  const blgrey = light ? palette.grey.A200 : grey400;
+  const iconColor = light ? '#BDBDBD' : '#fff';
+
   const iconName =
     chipLabel === 'warning' ? 'Orange' : chipLabel === 'error' ? 'Red' : 'Blue';
+
   return (
     <Box
       display={'flex'}
@@ -31,11 +37,11 @@ export default function CardBody({ chipLabel }: ICardBody) {
         <Typography variant="Body18/bold">time</Typography>
         <Stack gap={0.5}>
           <Content>
-            <Icon size={16} name="Location" />
+            <Icon size={16} name="Location" color={iconColor} />
             <Typography variant="Body14/regular">place</Typography>
           </Content>
           <Content>
-            <Icon color={'#BDBDBD'} size={16} name="Receipt" />
+            <Icon color={iconColor} size={16} name="Receipt" />
             <Typography variant="Body14/regular">num</Typography>
           </Content>
         </Stack>
