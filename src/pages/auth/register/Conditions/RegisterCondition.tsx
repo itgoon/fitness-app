@@ -3,7 +3,8 @@ import {
   Checkbox,
   FormControlLabel,
   Typography,
-  TypographyPropsVariantOverrides
+  TypographyPropsVariantOverrides,
+  useTheme
 } from '@mui/material';
 import Icon from 'src/components/Icon';
 interface ICondition {
@@ -20,6 +21,9 @@ export default function RegisterCondition({
   variant = 'Body16/light',
   isChecked
 }: ICondition) {
+  const theme = useTheme();
+  const light = theme.palette.mode === 'light';
+  const grey900 = light ? theme.palette.grey[900] : 'white';
   return (
     <Box
       display={'flex'}
@@ -27,7 +31,9 @@ export default function RegisterCondition({
       justifyContent={'space-between'}
     >
       <FormControlLabel
-        label={<Typography variant={variant} children={label} />}
+        label={
+          <Typography variant={variant} children={label} color={grey900} />
+        }
         control={
           <Checkbox
             checked={isChecked}

@@ -17,6 +17,8 @@ export default function AlaramCard({
   const grey500 = palette.grey[500];
   const grey600 = palette.grey[600];
   const blgrey = light ? palette.grey.A200 : grey400;
+  const grey900 = light ? palette.grey[900] : 'white';
+
   return (
     <>
       {isEmpty ? (
@@ -42,7 +44,13 @@ export default function AlaramCard({
           margin={margin ? margin : '12px 20px 24px'}
           bgcolor={blgrey}
         >
-          {title && <Typography variant="Body18/bold" children={title} />}
+          {title && (
+            <Typography
+              variant="Body18/bold"
+              children={title}
+              color={grey900}
+            />
+          )}
 
           <Stack padding={0} gap={1}>
             {dataList?.map((data, key) => (
@@ -52,7 +60,11 @@ export default function AlaramCard({
                   color={grey600}
                   children={data.label}
                 />
-                <Typography variant={'Body15/semiBold'} children={data.value} />
+                <Typography
+                  variant={'Body15/semiBold'}
+                  children={data.value}
+                  color={grey900}
+                />
               </Box>
             ))}
           </Stack>

@@ -1,4 +1,4 @@
-import { Chip, Stack, Typography } from '@mui/material';
+import { Chip, Stack, Typography, useTheme } from '@mui/material';
 import dayjs from 'dayjs';
 import CardBody from './CardBody';
 import { IReservationCard } from './types';
@@ -9,6 +9,9 @@ export default function ReservationCard({
   date,
   chipLabel
 }: IReservationCard) {
+  const theme = useTheme();
+  const light = theme.palette.mode === 'light';
+  const grey900 = light ? theme.palette.grey[900] : 'white';
   const dateKR = dayjs(date).format(MontFormatKR);
   const chipState =
     chipLabel === 'warning'
@@ -20,7 +23,11 @@ export default function ReservationCard({
   return (
     <Stack gap={1.5} sx={{ padding: '8px 20px 32px', ...layoutSx }}>
       <Stack direction={'row'} alignItems={'center'} gap={1}>
-        <Typography variant="Body18/semiBold">{`${dateKR}`}</Typography>
+        <Typography
+          variant="Body18/semiBold"
+          color={grey900}
+          children={dateKR}
+        />
         <Chip size={'small'} color={chipLabel} label={chipState} />
       </Stack>
 

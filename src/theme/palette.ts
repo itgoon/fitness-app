@@ -113,7 +113,7 @@ export const error = {
   light: '#FFAC82',
   main: '#FB2C13',
   dark: '#D50000',
-  darker: '#D50000',
+  darker: '#FF0000',
   contrastText: '#FFFFFF'
 };
 

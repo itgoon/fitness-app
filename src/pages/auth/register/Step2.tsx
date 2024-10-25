@@ -112,15 +112,7 @@ export default function Step2({ onNext }: StepProps) {
 
     return `${minutes}:${seconds < 10 ? `0${seconds}` : seconds}`;
   };
-  {
-    /* <IconButton onClick={password.onToggle} edge="end">
-                <Iconify
-                  icon={
-                    password.value ? "solar:eye-bold" : "solar:eye-closed-bold"
-                  }
-                />
-              </IconButton> */
-  }
+
   return (
     <>
       <Wrap>

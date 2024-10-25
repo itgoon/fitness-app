@@ -15,6 +15,7 @@ export default function CardBody({ chipLabel }: ICardBody) {
   const { palette } = theme;
   const light = palette.mode === 'light';
   const grey400 = palette.grey[400];
+  const grey900 = light ? theme.palette.grey[900] : 'white';
   const blgrey = light ? palette.grey.A200 : grey400;
   const iconColor = light ? '#BDBDBD' : '#fff';
 
@@ -34,15 +35,23 @@ export default function CardBody({ chipLabel }: ICardBody) {
       <Icon name={iconName} size={60} sx={{ margin: '9px 0' }} />
 
       <Stack gap={1}>
-        <Typography variant="Body18/bold">time</Typography>
+        <Typography variant="Body18/bold" children={'time'} color={grey900} />
         <Stack gap={0.5}>
           <Content>
             <Icon size={16} name="Location" color={iconColor} />
-            <Typography variant="Body14/regular">place</Typography>
+            <Typography
+              variant="Body14/regular"
+              children={'place'}
+              color={grey900}
+            />
           </Content>
           <Content>
             <Icon color={iconColor} size={16} name="Receipt" />
-            <Typography variant="Body14/regular">num</Typography>
+            <Typography
+              variant="Body14/regular"
+              children={'num'}
+              color={grey900}
+            />
           </Content>
         </Stack>
       </Stack>

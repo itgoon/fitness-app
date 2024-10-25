@@ -13,6 +13,7 @@ import TimePicker from '../../components/custom/TimePicker';
 import WeekCalendar from '../../components/custom/WeekCalendar';
 import AlaramCard from '../../components/custom/AlaramCard';
 import ReservationCard from '../../components/custom/reservationCard/ReservationCard';
+import { useNavigate } from 'react-router';
 /**
  * ******************************************************
  * 대시보드 화면
@@ -42,9 +43,12 @@ export default function DashboardPage() {
   const theme = useTheme();
   const { palette } = theme;
   const light = palette.mode === 'light';
+  const grey900 = light ? theme.palette.grey[900] : 'white';
   const grey400 = palette.grey[400];
   const grey = light ? palette.grey[500] : palette.grey[600];
   const blgrey = light ? palette.grey.A200 : grey400;
+
+  const navigate = useNavigate();
 
   const [isWorking, setIsWorking] = useState(false);
   const [alaram, setAlaram] = useState(false);
@@ -123,14 +127,22 @@ export default function DashboardPage() {
                 children={'운동시작'}
                 onClick={() => setIsStart((prev) => !prev)}
               />
-              <Typography variant="Body20/bold" children={startValue} />
+              <Typography
+                variant="Body20/bold"
+                children={startValue}
+                color={grey900}
+              />
               <Typography
                 variant="Body14/regular"
                 color={grey}
                 children={'운동종료'}
                 onClick={() => setIsEnd((prev) => !prev)}
               />
-              <Typography variant="Body20/bold" children={endValue} />
+              <Typography
+                variant="Body20/bold"
+                children={endValue}
+                color={grey900}
+              />
             </Stack>
             <Stack gap={0.5}>
               <Typography
@@ -139,7 +151,11 @@ export default function DashboardPage() {
                 children={'총 운동 시간'}
               />
 
-              <Typography variant="Body20/bold" children={totalTime} />
+              <Typography
+                variant="Body20/bold"
+                children={totalTime}
+                color={grey900}
+              />
             </Stack>
           </Stack>
         )}
@@ -158,6 +174,7 @@ export default function DashboardPage() {
           variant="Body18/bold"
           children={'오늘의 알림'}
           sx={{ padding: '32px 20px 0' }}
+          color={grey900}
         />
         <Divider></Divider>
         {!alaram ? (
@@ -168,7 +185,7 @@ export default function DashboardPage() {
               isEmpty={false}
               title="새로운 서명요청이 있습니다!"
               dataList={dummyCardData}
-              onClick={() => console.log('click')}
+              onClick={() => navigate('/contract')}
               onClickMsg="서명하기"
             />
             <ReservationCard date={dayjs()} chipLabel="warning" />
