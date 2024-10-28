@@ -1,6 +1,7 @@
 import { Stack, Typography, useTheme, Box } from '@mui/material';
 import { IAlaramCard } from './types';
 import Button from '../../Button';
+import EmptyCard from '../customCard/EmptyCard';
 
 export default function AlaramCard({
   isEmpty = true,
@@ -13,71 +14,45 @@ export default function AlaramCard({
   const theme = useTheme();
   const { palette } = theme;
   const light = palette.mode === 'light';
-  const grey400 = palette.grey[400];
-  const grey500 = palette.grey[500];
   const grey600 = palette.grey[600];
-  const blgrey = light ? palette.grey.A200 : grey400;
   const grey900 = light ? palette.grey[900] : 'white';
 
   return (
-    <>
-      {isEmpty ? (
-        <Box
-          display={'flex'}
-          justifyContent={'center'}
-          bgcolor={blgrey}
-          py={1.5}
-          margin={margin ? margin : '12px 20px 32px'}
-          borderRadius={1}
-        >
-          <Typography
-            variant="Body16/regular"
-            color={grey500}
-            children={title}
-          />
-        </Box>
-      ) : (
-        <Stack
-          borderRadius={2}
-          padding={'24px 20px'}
-          gap={3}
-          margin={margin ? margin : '12px 20px 24px'}
-          bgcolor={blgrey}
-        >
-          {title && (
+    <EmptyCard
+      borderRadius={2}
+      padding={'24px 20px'}
+      gap={3}
+      margin={'12px 20px 24px'}
+      direction={'column'}
+    >
+      {title && (
+        <Typography variant="Body18/bold" children={title} color={grey900} />
+      )}
+
+      <Stack padding={0} gap={1}>
+        {dataList?.map((data, key) => (
+          <Box key={key} display={'flex'} justifyContent={'space-between'}>
             <Typography
-              variant="Body18/bold"
-              children={title}
+              variant={'Body14/regular'}
+              color={grey600}
+              children={data.label}
+            />
+            <Typography
+              variant={'Body15/semiBold'}
+              children={data.value}
               color={grey900}
             />
-          )}
-
-          <Stack padding={0} gap={1}>
-            {dataList?.map((data, key) => (
-              <Box key={key} display={'flex'} justifyContent={'space-between'}>
-                <Typography
-                  variant={'Body14/regular'}
-                  color={grey600}
-                  children={data.label}
-                />
-                <Typography
-                  variant={'Body15/semiBold'}
-                  children={data.value}
-                  color={grey900}
-                />
-              </Box>
-            ))}
-          </Stack>
-          {onClick && (
-            <Button
-              variant={'contained'}
-              color={'primary'}
-              children={onClickMsg}
-              onClick={onClick}
-            />
-          )}
-        </Stack>
+          </Box>
+        ))}
+      </Stack>
+      {onClick && (
+        <Button
+          variant={'contained'}
+          color={'primary'}
+          children={onClickMsg}
+          onClick={onClick}
+        />
       )}
-    </>
+    </EmptyCard>
   );
 }

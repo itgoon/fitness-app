@@ -14,11 +14,16 @@ import WeekCalendar from '../../components/custom/WeekCalendar';
 import AlaramCard from '../../components/custom/AlaramCard';
 import ReservationCard from '../../components/custom/reservationCard/ReservationCard';
 import { useNavigate } from 'react-router';
+import EmptyCard from '../../components/custom/customCard/EmptyCard';
 /**
  * ******************************************************
  * 대시보드 화면
  * ******************************************************
  */
+const cardDataList = [
+  { iconName: 'Location', label: 'place' },
+  { iconName: 'Receipt', label: 'num' }
+];
 const dummyMonthCount1 = [{ date: '2024-10-18', count: 1 }];
 const dummyMonthCount2 = [{ date: '2024-10-19', count: 1 }];
 const dummyCardData = [
@@ -114,12 +119,7 @@ export default function DashboardPage() {
         />
 
         {isWorking && (
-          <Stack
-            direction={'row'}
-            padding={'20px 24px'}
-            gap={13}
-            sx={{ backgroundColor: blgrey, borderRadius: 1 }}
-          >
+          <EmptyCard direction={'row'} padding={'20px 24px'} gap={13}>
             <Stack gap={0.5}>
               <Typography
                 variant="Body14/regular"
@@ -157,7 +157,7 @@ export default function DashboardPage() {
                 color={grey900}
               />
             </Stack>
-          </Stack>
+          </EmptyCard>
         )}
         <Button
           color="primary"
@@ -178,7 +178,10 @@ export default function DashboardPage() {
         />
         <Divider></Divider>
         {!alaram ? (
-          <AlaramCard margin={0} title={'알림 내용이 없습니다.'} />
+          <EmptyCard
+            margin={'12px 20px 32px'}
+            children={'알림 내용이 없습니다.'}
+          />
         ) : (
           <>
             <AlaramCard
@@ -188,7 +191,11 @@ export default function DashboardPage() {
               onClick={() => navigate('/contract')}
               onClickMsg="서명하기"
             />
-            <ReservationCard date={dayjs()} chipLabel="warning" />
+            <ReservationCard
+              date={dayjs()}
+              chipLabel="warning"
+              cardDataList={cardDataList}
+            />
           </>
         )}
       </Wrap>

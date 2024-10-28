@@ -17,6 +17,8 @@ import Calendar from './Calendar.svg?react';
 import FeedSvg from './Feed.svg?react';
 import MoreSvg from './More.svg?react';
 import CheckSvg from './Check.svg?react';
+import WeightSvg from './weight.svg?react';
+import DumbelSvg from './dumbelSvg.svg?react';
 
 export {
   LeftArrow,
@@ -35,5 +37,7 @@ export {
   Calendar,
   FeedSvg,
   MoreSvg,
-  CheckSvg
+  CheckSvg,
+  WeightSvg,
+  DumbelSvg
 };

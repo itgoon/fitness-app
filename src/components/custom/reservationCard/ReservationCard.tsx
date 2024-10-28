@@ -6,8 +6,10 @@ import { MontFormatKR } from '../../../utils/formatTime';
 
 export default function ReservationCard({
   layoutSx,
+  cardSx,
   date,
-  chipLabel
+  chipLabel,
+  cardDataList
 }: IReservationCard) {
   const theme = useTheme();
   const light = theme.palette.mode === 'light';
@@ -18,7 +20,9 @@ export default function ReservationCard({
       ? '예약'
       : chipLabel === 'error'
         ? '예약취소'
-        : '출석';
+        : chipLabel === 'primary'
+          ? '출석'
+          : '';
 
   return (
     <Stack gap={1.5} sx={{ padding: '8px 20px 32px', ...layoutSx }}>
@@ -28,10 +32,16 @@ export default function ReservationCard({
           color={grey900}
           children={dateKR}
         />
-        <Chip size={'small'} color={chipLabel} label={chipState} />
+        {chipLabel && (
+          <Chip size={'small'} color={chipLabel} label={chipState} />
+        )}
       </Stack>
 
-      <CardBody chipLabel={chipLabel} />
+      <CardBody
+        chipLabel={chipLabel}
+        cardDataList={cardDataList}
+        cardSx={cardSx}
+      />
     </Stack>
   );
 }

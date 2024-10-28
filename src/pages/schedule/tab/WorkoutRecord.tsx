@@ -1,17 +1,35 @@
-import { Box } from '@mui/material';
-import AlaramCard from '../../../components/custom/AlaramCard';
+import { Stack, Typography, useTheme } from '@mui/material';
+import EmptyCard from '../../../components/custom/customCard/EmptyCard';
+import ReservationCard from '../../../components/custom/reservationCard/ReservationCard';
 
-export default function WorkOutRecord() {
+interface IWorkOutRecord {
+  date: string;
+}
+const cardDataList = [{ iconName: 'WeightSvg', label: '72kg' }];
+export default function WorkOutRecord({ date }: IWorkOutRecord) {
+  const theme = useTheme();
+  const { palette } = theme;
+  const light = palette.mode === 'light';
+  const grey500 = light ? palette.grey[500] : 'white';
   return (
-    <Box>
-      <AlaramCard
-        margin={'0'}
-        title={
-          <span style={{ lineHeight: '24px' }}>
+    <Stack gap={3}>
+      <EmptyCard
+        children={
+          <Typography
+            variant={'Body16/regular'}
+            lineHeight="24px"
+            color={grey500}
+          >
             운동 기록을 찾을 수 없어요 <br /> 오늘부터 기록을 채워보세요.
-          </span>
+          </Typography>
         }
       />
-    </Box>
+      <ReservationCard
+        date={date}
+        cardDataList={cardDataList}
+        layoutSx={{ padding: 0 }}
+        cardSx={{ alignItems: 'center' }}
+      ></ReservationCard>
+    </Stack>
   );
 }
