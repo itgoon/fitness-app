@@ -63,7 +63,7 @@ export function button(theme: Theme) {
         }),
         // OUTLINED
         ...(outlinedVariant && {
-          borderColor: alpha(theme.palette.grey[500], 0.32),
+          borderColor: theme.palette.grey[200],
           '&:hover': {
             backgroundColor: theme.palette.action.hover
           }

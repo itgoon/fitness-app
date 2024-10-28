@@ -11,7 +11,9 @@ import { ConfirmDialog } from 'src/components/customDialog';
  */
 
 const ConfirmModal = () => {
-  const [confirmState, setConfirmState] = useRecoilState(Store.Layout.confirmState);
+  const [confirmState, setConfirmState] = useRecoilState(
+    Store.Layout.confirmState
+  );
 
   return (
     <ConfirmDialog
@@ -20,6 +22,8 @@ const ConfirmModal = () => {
         confirmState.onClose();
         setConfirmState({ ...confirmState, open: false });
       }}
+      clickMsg={confirmState.clickMsg}
+      closeMsg={confirmState.closeMsg}
       title={confirmState.title}
       content={confirmState.content}
       onClick={() => {

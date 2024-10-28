@@ -1,9 +1,9 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { useCallback } from "react";
-import { useRecoilState } from "recoil";
+import { useCallback } from 'react';
+import { useRecoilState } from 'recoil';
 
-import Store from "src/store";
-import { ModalType } from "src/store/layoutStore";
+import Store from 'src/store';
+import { ModalType } from 'src/store/layoutStore';
 
 interface Props {
   openModal: ({
@@ -28,12 +28,16 @@ interface Props {
     title,
     content,
     onClick,
-    onClose
+    onClose,
+    clickMsg,
+    closeMsg
   }: {
     title: string;
     content?: any;
     onClick?: () => void;
     onClose?: () => void;
+    clickMsg: string;
+    closeMsg: string;
   }) => void;
 }
 /**
@@ -94,18 +98,24 @@ export const useModal = (): Props => {
       title,
       content,
       onClick,
-      onClose
+      onClose,
+      clickMsg,
+      closeMsg
     }: {
       title: string;
       content?: any;
       onClick?: () => void;
       onClose?: () => void;
+      clickMsg: string;
+      closeMsg: string;
     }) => {
       setConfirmState({
         ...confirmState,
         open: true,
         title,
         content,
+        clickMsg,
+        closeMsg,
         onClick: onClick || confirmState.onClick,
         onClose: onClose || confirmState.onClose
       });

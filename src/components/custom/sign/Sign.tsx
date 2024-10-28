@@ -16,7 +16,6 @@ export default function Sign({ placeholder, date, onClick }: ISign) {
         variant={'Body20/semiBold'}
         children={date}
       />
-
       <Box
         display={'flex'}
         justifyContent={'center'}

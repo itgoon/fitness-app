@@ -1,4 +1,4 @@
-import { atom } from "recoil";
+import { atom } from 'recoil';
 
 // 로딩
 export const loadingState = atom<boolean>({
@@ -8,14 +8,14 @@ export const loadingState = atom<boolean>({
 
 export type ModalType =
   | undefined
-  | "reason"
-  | "point"
-  | "withdrawal"
-  | "findStore"
-  | "memberLoginHistory"
-  | "license"
-  | "memberInfo"
-  | "memberAuth";
+  | 'reason'
+  | 'point'
+  | 'withdrawal'
+  | 'findStore'
+  | 'memberLoginHistory'
+  | 'license'
+  | 'memberInfo'
+  | 'memberAuth';
 
 export const modalState = atom<{
   open: boolean;
@@ -41,7 +41,7 @@ export const alertState = atom<{
   key: `alert_modal_${new Date().getTime()}`,
   default: {
     open: false,
-    title: "",
+    title: '',
     subtitle: undefined,
     onClose: () => {}
   }
@@ -53,13 +53,17 @@ export const confirmState = atom<{
   content: any;
   onClose: () => void;
   onClick: () => void;
+  closeMsg: string;
+  clickMsg: string;
 }>({
   key: `confirm_modal_${new Date().getTime()}`,
   default: {
     open: false,
-    title: "",
+    title: '',
     content: undefined,
     onClose: () => {},
-    onClick: () => {}
+    onClick: () => {},
+    clickMsg: '',
+    closeMsg: ''
   }
 });
