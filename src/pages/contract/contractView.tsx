@@ -16,7 +16,7 @@ export default function ContractView() {
     setActiveStep((prev) => prev + 1);
   };
   return (
-    <Box padding={'40px 20px'}>
+    <Box padding={'40px 20px'} height={'100%'}>
       <StepFlow activeStep={activeStep} onNext={onNext}>
         <Step1 onNext={onNext} />
         <Step2 onNext={onNext} />

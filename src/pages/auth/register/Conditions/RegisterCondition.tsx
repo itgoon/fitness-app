@@ -38,8 +38,8 @@ export default function RegisterCondition({
           <Checkbox
             checked={isChecked}
             onChange={onChange}
-            checkedIcon={<Icon name={'CheckSvg'} />}
-            icon={<Icon name={'CheckSvg'} />}
+            checkedIcon={<Icon name={'CheckBoxSvg'} />}
+            icon={<Icon name={'CheckBoxSvg'} />}
           />
         }
       />

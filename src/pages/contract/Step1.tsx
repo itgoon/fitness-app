@@ -56,7 +56,7 @@ export default function Step1({ onNext }: StepProps) {
           color={'primary'}
           onClick={onNext}
           children={'아래로 내려 동의하기'}
-          sx={{ marginBottom: 3.3 }}
+          sx={{ marginBottom: 8 }}
         />
       </div>
     </Stack>

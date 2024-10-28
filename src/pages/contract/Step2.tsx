@@ -64,39 +64,41 @@ export default function Step2({ onNext }: StepProps) {
     setIsSignOpen(false);
   };
   return (
-    <Stack gap={5}>
-      <ContractTable title={'결제 정보'} list={contractList} />
-      <Stack gap={3}>
-        <Typography
-          display={'flex'}
-          justifyContent={'center'}
-          variant={'Body20/semiBold'}
-          children={'2024년 08월 19일'}
-        />
-        <Box
-          display={'flex'}
-          justifyContent={'center'}
-          alignItems={'center'}
-          bgcolor={blgrey}
-          height={100}
-          borderRadius={0.5}
-          border={!isSigned ? `2px solid ${palette.error.darker}` : 'none'}
-          onClick={() => setIsSignOpen((prev) => !prev)}
-        >
-          {isSigned ? (
-            <img
-              src={sign.data}
-              alt="signature"
-              style={{ height: 'inherit', objectFit: 'contain' }}
-            />
-          ) : (
-            <Typography
-              variant="Body18/regular"
-              color={grey600}
-              children={'클릭해서 서명하기'}
-            />
-          )}
-        </Box>
+    <Stack height={'calc(100% - 24px)'} justifyContent={'space-between'}>
+      <Stack gap={5}>
+        <ContractTable title={'결제 정보'} list={contractList} />
+        <Stack gap={3}>
+          <Typography
+            display={'flex'}
+            justifyContent={'center'}
+            variant={'Body20/semiBold'}
+            children={'2024년 08월 19일'}
+          />
+          <Box
+            display={'flex'}
+            justifyContent={'center'}
+            alignItems={'center'}
+            bgcolor={blgrey}
+            height={100}
+            borderRadius={0.5}
+            border={!isSigned ? `2px solid ${palette.error.darker}` : 'none'}
+            onClick={() => setIsSignOpen((prev) => !prev)}
+          >
+            {isSigned ? (
+              <img
+                src={sign.data}
+                alt="signature"
+                style={{ height: 'inherit', objectFit: 'contain' }}
+              />
+            ) : (
+              <Typography
+                variant="Body18/regular"
+                color={grey600}
+                children={'클릭해서 서명하기'}
+              />
+            )}
+          </Box>
+        </Stack>
       </Stack>
 
       {isSigned && sign.data !== '' && (
@@ -105,7 +107,6 @@ export default function Step2({ onNext }: StepProps) {
           variant={'contained'}
           color={'primary'}
           children={'서명 완료'}
-          sx={{ marginTop: 10.5 }}
           onClick={() =>
             openConfirm({
               title: '',
