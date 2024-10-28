@@ -1,25 +1,26 @@
 // ----------------------------------------------------------------------
 
 const ROOTS = {
-  LOGIN: "/login",
-  REGISTER: "/register",
-  FORGOTPASSWORD: "/forgot",
+  LOGIN: '/login',
+  REGISTER: '/register',
+  FORGOTPASSWORD: '/forgot',
 
-  DASHBOARD: "/dashboard", // 대시보드
-  PARTNER: "/partner",
-  STORE: "/partner/store",
-  EMPLOYEE: "/employee",
-  NAVER: "/naver",
-  RESERVATION: "/reservation",
-  MYPAGE: "/myPage"
+  DASHBOARD: '/dashboard', // 대시보드
+  SCHEDULE: '/schedule', // 대시보드
+  PARTNER: '/partner',
+  STORE: '/partner/store',
+  EMPLOYEE: '/employee',
+  NAVER: '/naver',
+  RESERVATION: '/reservation',
+  MYPAGE: '/myPage'
 };
 
 // ----------------------------------------------------------------------
 
 export const paths = {
-  page403: "/403",
-  page404: "/404",
-  page500: "/500",
+  page403: '/403',
+  page404: '/404',
+  page500: '/500',
   auth: {
     login: `${ROOTS.LOGIN}`,
     register: `${ROOTS.REGISTER}`,
@@ -27,6 +28,9 @@ export const paths = {
   },
   dashboard: {
     root: `${ROOTS.DASHBOARD}`
+  },
+  schedule: {
+    root: `${ROOTS.SCHEDULE}`
   },
   myPage: {
     root: `${ROOTS.MYPAGE}`

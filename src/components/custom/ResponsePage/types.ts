@@ -3,6 +3,7 @@ type list = {
   value: string;
 };
 export interface IResponsePage {
+  title: string;
   iconName?: any;
   iconSize?: number;
   dataList: list[];

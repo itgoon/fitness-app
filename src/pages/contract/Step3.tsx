@@ -15,6 +15,7 @@ export default function Step3() {
       <ResponsePage
         onClick={() => console.log('회원권 보기')}
         onHome={() => navigate('/dashboard')}
+        title={'서명 등록이 완료되었습니다.'}
         closeMsg={'회원권 보기'}
         clickMsg={'홈으로'}
         dataList={signDataList}

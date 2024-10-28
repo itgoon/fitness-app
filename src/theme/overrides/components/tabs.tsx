@@ -8,13 +8,13 @@ export function tabs(theme: Theme) {
     MuiTabs: {
       styleOverrides: {
         indicator: {
-          backgroundColor: theme.palette.text.primary,
+          backgroundColor: theme.palette.text.primary
         },
         scrollButtons: {
           width: 48,
-          borderRadius: '50%',
-        },
-      },
+          borderRadius: '50%'
+        }
+      }
     },
     MuiTab: {
       styleOverrides: {
@@ -23,18 +23,19 @@ export function tabs(theme: Theme) {
           opacity: 1,
           minWidth: 48,
           minHeight: 48,
-          fontWeight: theme.typography.fontWeightSemiBold,
-          '&:not(:last-of-type)': {
-            marginRight: theme.spacing(3),
-            [theme.breakpoints.up('sm')]: {
-              marginRight: theme.spacing(5),
-            },
-          },
+          fontSize: 18,
+          fontWeight: 700,
+          // '&:not(:last-of-type)': {
+          //   marginRight: theme.spacing(3),
+          //   [theme.breakpoints.up('sm')]: {
+          //     marginRight: theme.spacing(5)
+          //   }
+          // },
           [`&:not(.${tabClasses.selected})`]: {
-            color: theme.palette.text.secondary,
-          },
-        },
-      },
-    },
+            color: theme.palette.grey[400]
+          }
+        }
+      }
+    }
   };
 }

@@ -55,7 +55,7 @@ export function useNavData() {
           },
           {
             title: '일정',
-            path: paths.reservation.root,
+            path: paths.schedule.root,
             icon: ICONS.calendar
           },
           {

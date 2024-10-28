@@ -12,6 +12,7 @@ import { IResponsePage } from './types';
 
 export default function ResponsePage({
   iconName = 'CheckSvg',
+  title,
   iconSize = 50,
   dataList,
   onHome,
@@ -27,10 +28,7 @@ export default function ResponsePage({
       <Stack alignItems={'center'} gap={7.5}>
         <Stack alignItems={'center'} gap={2}>
           <Icon name={iconName} size={iconSize} />
-          <Typography
-            variant={'Body20/semiBold'}
-            children={'서명 등록이 완료되었습니다.'}
-          />
+          <Typography variant={'Body20/semiBold'} children={title} />
         </Stack>
         <List sx={{ width: '100%', padding: 0 }}>
           {dataList?.map((li, key) => (

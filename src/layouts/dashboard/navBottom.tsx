@@ -39,6 +39,9 @@ export default function NavBottom() {
         navigate(newValue);
       }}
     >
+      {/* TODO: 선택된 아이콘의 색상을 변경시켜야 함 
+        currentColor를 통해 일괄적으로 색상을 변경시키되 일부 영역은 색상이 변경되지 않도록 해야함
+      */}
       {list?.map((item) => {
         return (
           <BottomNavigationAction
