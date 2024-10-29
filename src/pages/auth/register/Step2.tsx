@@ -9,10 +9,10 @@ import { Stack } from '@mui/system';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import Button from 'src/components/Button';
 import { useBoolean } from 'src/hooks/useBoolean';
-import Condition from './Conditions/Condition';
 import Wrap from './Wrap';
 import RegisterHeader from './RegisterHeader';
 import TextField from 'src/components/TextField';
+import RegisterCondition from './Conditions/RegisterCondition';
 
 const INITIAL_TIMER = 180;
 const CODE_LENGTH = 6;
@@ -192,7 +192,7 @@ export default function Step2({ onNext }: StepProps) {
 
           {/* check list */}
           <Stack gap={2}>
-            <Condition
+            <RegisterCondition
               label="약관 전체 동의"
               variant={'Body16/bold'}
               isChecked={isAll}
@@ -200,19 +200,19 @@ export default function Step2({ onNext }: StepProps) {
             />
 
             <Divider></Divider>
-            <Condition
+            <RegisterCondition
               label="[필수] 오비서 이용약관 동의"
               isChecked={isCheck1}
               onChange={() => setIsCheck1(!isCheck1)}
               onClick={() => console.log('1')}
             />
-            <Condition
+            <RegisterCondition
               label="[필수] 오비서 개인정보 처리 동의"
               isChecked={isCheck2}
               onChange={() => setIsCheck2(!isCheck2)}
               onClick={() => console.log('2')}
             />
-            <Condition
+            <RegisterCondition
               label="[선택] 광고 및 마케팅 수신 동의"
               isChecked={isCheck3}
               onChange={() => setIsCheck3(!isCheck3)}

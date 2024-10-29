@@ -36,7 +36,7 @@ const Logo = forwardRef<HTMLDivElement, LogoProps>(
     const logo = (
       <Box
         component="img"
-        src={`/logo/${isFooter ? 'logo_footer' : isLightMode ? 'logo' : 'logo_dark'}.png`}
+        src={`/logo/${isFooter ? 'logo_footer' : isLightMode ? 'logo_only_image' : 'logo_dark'}.png`}
         draggable="false"
         sx={{
           width: 120,

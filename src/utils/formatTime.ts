@@ -1,5 +1,8 @@
 import { format, getTime, formatDistanceToNow } from 'date-fns';
+import dayjs from 'dayjs';
 
+import 'dayjs/locale/ko';
+dayjs.locale('ko');
 // ----------------------------------------------------------------------
 
 export const TimeFormat = 'HH:mm';
@@ -9,10 +12,11 @@ export const MonthFormat = 'YYYY.MM';
 export const YearFormat = 'YYYY';
 export const DateReqFormat = 'YYYY-MM-DD';
 export const DateViewFormat = 'YYYY년 M월 D일';
-export const MontFormatKR = 'M월 D일';
+export const MontFormatKR = 'M월 D일 dddd';
 export const YearMonthKR = 'YYYY MM월';
 export const YearMonthTextField = 'YYYY. MM';
 
+export const TimeDateFormat = 'yyyy-MM-dd HH:mm';
 export const DateResFormat = 'yyyy-MM-dd HH:mm:ss';
 type InputValue = Date | string | number | null | undefined;
 

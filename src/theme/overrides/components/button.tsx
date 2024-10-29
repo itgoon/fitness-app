@@ -54,6 +54,7 @@ export function button(theme: Theme) {
           backgroundColor: lightMode
             ? theme.palette.common.black
             : theme.palette.common.white,
+          boxShadow: 'none',
           '&:hover': {
             backgroundColor: lightMode
               ? theme.palette.grey[700]
@@ -76,7 +77,6 @@ export function button(theme: Theme) {
         // SOFT
         ...(softVariant && {
           // disable 기능이 없는 disable color
-          // color: theme.palette.text.primary,
           color: theme.palette.grey.A100,
           backgroundColor: alpha(theme.palette.grey[500], 0.08),
           '&:hover': {
@@ -86,8 +86,8 @@ export function button(theme: Theme) {
       }),
       ...(outlinedVariant && {
         '&:hover': {
-          borderColor: 'currentColor',
-          boxShadow: '0 0 0 0.5px currentColor'
+          borderColor: 'currentColor'
+          // boxShadow: '0 0 0 0.5px currentColor'
         }
       })
     };

@@ -34,7 +34,6 @@ export default function MainLayout({ children, image }: Props) {
         }}
       >
         {children}
-        asdf
       </Box>
     </Stack>
   );

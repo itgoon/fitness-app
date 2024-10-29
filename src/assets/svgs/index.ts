@@ -11,6 +11,11 @@ import Orange from './orange.svg?react';
 import Green from './green.svg?react';
 import Location from './Location.svg?react';
 import Receipt from './Receipt.svg?react';
+import Membership from './Membership.svg?react';
+import HomeSvg from './Home.svg?react';
+import Calendar from './Calendar.svg?react';
+import FeedSvg from './Feed.svg?react';
+import MoreSvg from './More.svg?react';
 
 export {
   LeftArrow,
@@ -23,5 +28,10 @@ export {
   Blue,
   Green,
   Location,
-  Receipt
+  Receipt,
+  Membership,
+  HomeSvg,
+  Calendar,
+  FeedSvg,
+  MoreSvg
 };
