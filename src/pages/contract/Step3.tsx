@@ -11,7 +11,7 @@ const signDataList = [
 export default function Step3() {
   const navigate = useNavigate();
   return (
-    <Stack height={'calc(100% - 24px)'} justifyContent={'space-between'}>
+    <Stack justifyContent={'space-between'} height={'100%'}>
       <ResponsePage
         onClick={() => console.log('회원권 보기')}
         onHome={() => navigate('/dashboard')}

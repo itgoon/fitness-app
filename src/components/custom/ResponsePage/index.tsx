@@ -24,7 +24,7 @@ export default function ResponsePage({
   const { palette } = theme;
   const grey500 = palette.grey[500];
   return (
-    <>
+    <Stack justifyContent={'space-between'} height={'100%'}>
       <Stack alignItems={'center'} gap={7.5}>
         <Stack alignItems={'center'} gap={2}>
           <Icon name={iconName} size={iconSize} />
@@ -64,6 +64,6 @@ export default function ResponsePage({
           onClick={onHome}
         />
       </Box>
-    </>
+    </Stack>
   );
 }

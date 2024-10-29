@@ -9,7 +9,7 @@ import { HEADER } from '../configLayout';
 
 // ----------------------------------------------------------------------
 
-export const SPACING = 8;
+export const SPACING = 0;
 
 export default function Main({ children, sx, ...other }: BoxProps) {
   const settings = useSettingsContext();
@@ -17,7 +17,7 @@ export default function Main({ children, sx, ...other }: BoxProps) {
   const lgUp = useResponsive('up', 'lg');
 
   const isNavMini = settings.themeLayout === 'mini';
-
+  const miniHeader = HEADER.H_MOBILE - 8;
   console.log(HEADER.H_MOBILE + SPACING);
   return (
     <Box
@@ -27,7 +27,8 @@ export default function Main({ children, sx, ...other }: BoxProps) {
         // minHeight: 1,
         // display: "flex",
         // flexDirection: "column",
-        // py: `${HEADER.H_MOBILE + SPACING}px`,
+        pt: `${miniHeader}px`,
+        pb: `${HEADER.H_MOBILE + SPACING}px`,
         height: '100vh',
         width: '100%',
         overflow: 'hidden',

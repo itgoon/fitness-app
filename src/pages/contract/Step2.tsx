@@ -64,8 +64,8 @@ export default function Step2({ onNext }: StepProps) {
     setIsSignOpen(false);
   };
   return (
-    <Stack height={'calc(100% - 24px)'} justifyContent={'space-between'}>
-      <Stack gap={5}>
+    <Stack gap={3}>
+      <Stack gap={5} paddingBottom={12.6}>
         <ContractTable title={'결제 정보'} list={contractList} />
         <Stack gap={3}>
           <Typography
