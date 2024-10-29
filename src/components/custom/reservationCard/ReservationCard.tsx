@@ -7,14 +7,15 @@ import { MontFormatKR } from '../../../utils/formatTime';
 export default function ReservationCard({
   layoutSx,
   cardSx,
-  date,
-  chipLabel,
-  cardDataList
+  cardData
 }: IReservationCard) {
   const theme = useTheme();
   const light = theme.palette.mode === 'light';
   const grey900 = light ? theme.palette.grey[900] : 'white';
-  const dateKR = dayjs(date).format(MontFormatKR);
+
+  const dateKR = dayjs(cardData?.date).format(MontFormatKR);
+
+  const chipLabel = cardData?.chipLabel;
   const chipState =
     chipLabel === 'warning'
       ? '예약'
@@ -37,11 +38,7 @@ export default function ReservationCard({
         )}
       </Stack>
 
-      <CardBody
-        chipLabel={chipLabel}
-        cardDataList={cardDataList}
-        cardSx={cardSx}
-      />
+      <CardBody cardData={cardData} cardSx={cardSx} />
     </Stack>
   );
 }

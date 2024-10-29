@@ -1,21 +1,22 @@
-import { Dayjs } from 'dayjs';
 import { CSSProperties } from 'react';
 
 export interface IReservationCard {
-  chipLabel?: 'error' | 'primary' | 'warning';
-  date: string | Dayjs;
   layoutSx?: CSSProperties;
   cardSx?: CSSProperties;
-  cardDataList?: cardDataList[];
+  cardData?: cardData;
 }
 
-type cardDataList = {
-  iconName: any;
-  label: string;
+type cardData = {
+  date: string;
+  time: string;
+  place?: string;
+  count?: string;
+  trainer?: string;
+  weight?: string;
+  chipLabel?: 'error' | 'primary' | 'warning';
 };
 export interface ICardBody {
   time?: string | any;
-  chipLabel?: 'error' | 'primary' | 'warning';
-  cardDataList?: cardDataList[];
+  cardData?: cardData;
   cardSx?: CSSProperties;
 }

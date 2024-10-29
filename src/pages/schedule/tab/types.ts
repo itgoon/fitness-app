@@ -5,3 +5,22 @@ export interface ITabPanel {
   index: number;
   children: ReactNode;
 }
+
+export type cardData = {
+  date: string;
+  time: string;
+  place?: string;
+  count?: string;
+  trainer?: string;
+  weight?: string;
+  chipLabel?: 'error' | 'primary' | 'warning';
+};
+
+// wordkoutRecord
+export interface IWorkOutRecord {
+  cardDataList?: cardData[];
+}
+// ReservationCard
+export interface IReservationList {
+  cardDataList?: cardData[];
+}

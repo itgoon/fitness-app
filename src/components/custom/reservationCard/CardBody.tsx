@@ -1,4 +1,4 @@
-import { Box, Stack, Typography, useTheme } from '@mui/material';
+import { Box, Divider, Stack, Typography, useTheme } from '@mui/material';
 import { ICardBody } from './types';
 import Icon from '../../Icon';
 import EmptyCard from '../customCard/EmptyCard';
@@ -11,17 +11,15 @@ const Content = ({ children }: any) => {
   );
 };
 
-export default function CardBody({
-  chipLabel,
-  cardDataList,
-  cardSx
-}: ICardBody) {
+export default function CardBody({ cardData, cardSx }: ICardBody) {
   const theme = useTheme();
   const { palette } = theme;
   const light = palette.mode === 'light';
+  const grey300 = light ? theme.palette.grey[300] : 'white';
   const grey900 = light ? theme.palette.grey[900] : 'white';
   const iconColor = light ? '#BDBDBD' : '#fff';
 
+  const chipLabel = cardData?.chipLabel;
   const iconName =
     chipLabel === 'warning'
       ? 'Orange'
@@ -30,6 +28,7 @@ export default function CardBody({
         : chipLabel === 'primary'
           ? 'Blue'
           : 'DumbelSvg';
+
   return (
     <EmptyCard
       justifyContent="start"
@@ -41,20 +40,49 @@ export default function CardBody({
       <Icon name={iconName} size={60} sx={{ margin: '9px 0' }} />
 
       <Stack gap={1}>
-        <Typography variant="Body18/bold" children={'time'} color={grey900} />
-        <Stack gap={0.5}>
-          {cardDataList?.map((card, key) => (
-            <Content key={key}>
-              {/* <Icon size={16} name="Location /Receipt" color={iconColor} /> */}
-              <Icon size={16} name={card.iconName} color={iconColor} />
+        <Typography
+          variant="Body18/bold"
+          children={cardData?.time}
+          color={grey900}
+        />
+        {chipLabel != undefined ? (
+          <Stack gap={0.5}>
+            <Content>
+              <Icon size={16} name={'Location'} color={iconColor} />
               <Typography
                 variant="Body14/regular"
-                children={card.label}
+                children={cardData?.place}
                 color={grey900}
               />
             </Content>
-          ))}
-        </Stack>
+            <Content>
+              <Icon size={16} name={'Receipt'} color={iconColor} />
+
+              <Box display={'flex'} gap={1.25}>
+                <Typography
+                  variant="Body14/regular"
+                  children={cardData?.count}
+                  color={grey900}
+                />
+                <Divider sx={{ borderWidth: 1, borderColor: grey300 }} />
+                <Typography
+                  variant="Body14/regular"
+                  children={cardData?.trainer}
+                  color={grey900}
+                />
+              </Box>
+            </Content>
+          </Stack>
+        ) : (
+          <Content>
+            <Icon size={16} name={'WeightSvg'} color={iconColor} />
+            <Typography
+              variant="Body14/regular"
+              children={cardData?.weight}
+              color={grey900}
+            />
+          </Content>
+        )}
       </Stack>
     </EmptyCard>
   );

@@ -15,15 +15,13 @@ import AlaramCard from '../../components/custom/AlaramCard';
 import ReservationCard from '../../components/custom/reservationCard/ReservationCard';
 import { useNavigate } from 'react-router';
 import EmptyCard from '../../components/custom/customCard/EmptyCard';
+import { dummyReservaitonListCard } from '../../utils/dummy';
 /**
  * ******************************************************
  * 대시보드 화면
  * ******************************************************
  */
-const cardDataList = [
-  { iconName: 'Location', label: 'place' },
-  { iconName: 'Receipt', label: 'num' }
-];
+
 const dummyMonthCount1 = [{ date: '2024-10-18', count: 1 }];
 const dummyMonthCount2 = [{ date: '2024-10-19', count: 1 }];
 const dummyCardData = [
@@ -191,11 +189,7 @@ export default function DashboardPage() {
               onClick={() => navigate('/contract')}
               onClickMsg="서명하기"
             />
-            <ReservationCard
-              date={dayjs()}
-              chipLabel="warning"
-              cardDataList={cardDataList}
-            />
+            <ReservationCard cardData={dummyReservaitonListCard[0]} />
           </>
         )}
       </Wrap>
