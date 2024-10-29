@@ -117,30 +117,38 @@ export default function DashboardPage() {
         />
 
         {isWorking && (
-          <EmptyCard direction={'row'} padding={'20px 24px'} gap={13}>
-            <Stack gap={0.5}>
-              <Typography
-                variant="Body14/regular"
-                color={grey}
-                children={'운동시작'}
-                onClick={() => setIsStart((prev) => !prev)}
-              />
-              <Typography
-                variant="Body20/bold"
-                children={startValue}
-                color={grey900}
-              />
-              <Typography
-                variant="Body14/regular"
-                color={grey}
-                children={'운동종료'}
-                onClick={() => setIsEnd((prev) => !prev)}
-              />
-              <Typography
-                variant="Body20/bold"
-                children={endValue}
-                color={grey900}
-              />
+          // padding 20 / 24
+          <EmptyCard
+            direction={'row'}
+            justifyContent={'start'}
+            padding={'24px'}
+            gap={13}
+          >
+            <Stack gap={2}>
+              <Stack gap={0.5} onClick={() => setIsStart((prev) => !prev)}>
+                <Typography
+                  variant="Body14/regular"
+                  color={grey}
+                  children={'운동시작'}
+                />
+                <Typography
+                  variant="Body20/bold"
+                  children={startValue}
+                  color={grey900}
+                />
+              </Stack>
+              <Stack gap={0.5} onClick={() => setIsEnd((prev) => !prev)}>
+                <Typography
+                  variant="Body14/regular"
+                  color={grey}
+                  children={'운동종료'}
+                />
+                <Typography
+                  variant="Body20/bold"
+                  children={endValue}
+                  color={grey900}
+                />
+              </Stack>
             </Stack>
             <Stack gap={0.5}>
               <Typography

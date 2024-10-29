@@ -96,8 +96,10 @@ export default function DashboardLayout({ children }: Props) {
         }}
       >
         <Main>
-          {children}
-          <Footer />
+          <Box>
+            {children}
+            <Footer />
+          </Box>
           <NavBottom />
         </Main>
       </Box>

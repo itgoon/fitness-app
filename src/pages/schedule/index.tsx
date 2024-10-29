@@ -1,9 +1,6 @@
-import { Box, Tab, Tabs } from '@mui/material';
+import { Box } from '@mui/material';
 import { useState } from 'react';
-import WorkOutRecord from './tab/WorkOutRecord';
-import ReservationList from './tab/ReservationList';
-import TabPanel from './tab/TabPanel';
-
+import DatePicker from '../../components/custom/DatePicker';
 /**
  * ******************************************************
  * 일정 화면
@@ -13,7 +10,7 @@ export default function Schedule() {
   const [tabValue, setTabValue] = useState(0);
   return (
     <Box>
-      <Box>
+      {/* <Box>
         <Tabs
           value={tabValue}
           onChange={(e, newValue) => setTabValue(newValue)}
@@ -30,7 +27,8 @@ export default function Schedule() {
         <TabPanel value={tabValue} index={1}>
           <ReservationList />
         </TabPanel>
-      </Box>
+      </Box> */}
+      <DatePicker />
     </Box>
   );
 }
