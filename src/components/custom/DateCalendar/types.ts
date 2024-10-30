@@ -11,3 +11,11 @@ export interface DatePickerProps
   value?: string;
   sx?: CSSProperties;
 }
+
+export type workData = {
+  type: string;
+  date: string;
+};
+export interface IDatePicker {
+  workData?: workData[];
+}

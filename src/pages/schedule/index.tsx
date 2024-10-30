@@ -1,6 +1,10 @@
-import { Box } from '@mui/material';
+import { Box, Divider, Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
 import DateCalendar from '../../components/custom/DateCalendar';
+import TabPanel from './tab/TabPanel';
+import WorkOutRecord from './tab/WorkOutRecord';
+import ReservationList from './tab/ReservationList';
+import { dummyMonthWorkoutList } from '../../utils/dummy';
 /**
  * ******************************************************
  * 일정 화면
@@ -10,7 +14,9 @@ export default function Schedule() {
   const [tabValue, setTabValue] = useState(0);
   return (
     <Box>
-      {/* <Box>
+      <DateCalendar workData={dummyMonthWorkoutList} />
+      <Divider sx={{ borderBottomWidth: 8 }} />
+      <Box pt={3}>
         <Tabs
           value={tabValue}
           onChange={(e, newValue) => setTabValue(newValue)}
@@ -27,8 +33,7 @@ export default function Schedule() {
         <TabPanel value={tabValue} index={1}>
           <ReservationList />
         </TabPanel>
-      </Box> */}
-      <DateCalendar />
+      </Box>
     </Box>
   );
 }
