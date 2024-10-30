@@ -54,3 +54,16 @@ export const dummyReservaitonListCard: cardData[] = [
     chipLabel: 'primary'
   }
 ];
+
+// calendar dummydata
+export const dummyMonthWorkoutList = [
+  { type: 'lesson', date: '2024-10-05' },
+  { type: 'lesson', date: '2024-10-29' },
+  { type: 'workout', date: '2024-10-29' },
+  { type: 'lesson', date: '2024-10-31' },
+  { type: 'workout', date: '2024-10-30' },
+  { type: 'lesson', date: '2024-10-21' },
+  { type: 'workout', date: '2024-10-20' },
+  { type: 'lesson', date: '2024-10-01' },
+  { type: 'workout', date: '2024-10-22' }
+];

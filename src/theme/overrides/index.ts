@@ -49,6 +49,7 @@ import { typography } from './components/typography';
 import { defaultProps } from './defaultProps';
 import timePicker from './components/timePicker';
 import { divider } from './components/divider';
+import { dateCalendar } from './components/dateCalendar';
 
 // ----------------------------------------------------------------------
 
@@ -101,7 +102,8 @@ export function componentsOverrides(theme: Theme) {
     toggleButton(theme),
     loadingButton(),
     bottomNavigation(theme),
-    container()
+    container(),
+    dateCalendar(theme)
   );
 
   return components;

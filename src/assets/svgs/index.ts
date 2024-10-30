@@ -19,6 +19,7 @@ import MoreSvg from './More.svg?react';
 import CheckSvg from './Check.svg?react';
 import WeightSvg from './weight.svg?react';
 import DumbelSvg from './dumbelSvg.svg?react';
+import ExpendMoreSvg from './expend_more.svg?react';
 
 export {
   LeftArrow,
@@ -39,5 +40,6 @@ export {
   MoreSvg,
   CheckSvg,
   WeightSvg,
-  DumbelSvg
+  DumbelSvg,
+  ExpendMoreSvg
 };

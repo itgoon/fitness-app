@@ -1,6 +1,6 @@
 import { Box } from '@mui/material';
 import { useState } from 'react';
-import DatePicker from '../../components/custom/DatePicker';
+import DateCalendar from '../../components/custom/DateCalendar';
 /**
  * ******************************************************
  * 일정 화면
@@ -28,7 +28,7 @@ export default function Schedule() {
           <ReservationList />
         </TabPanel>
       </Box> */}
-      <DatePicker />
+      <DateCalendar />
     </Box>
   );
 }
