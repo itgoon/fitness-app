@@ -30,7 +30,8 @@ interface Props {
     onClick,
     onClose,
     clickMsg,
-    closeMsg
+    closeMsg,
+    clickColor
   }: {
     title: string;
     content?: any;
@@ -38,6 +39,7 @@ interface Props {
     onClose?: () => void;
     clickMsg: string;
     closeMsg: string;
+    clickColor?: any;
   }) => void;
 }
 /**
@@ -100,7 +102,8 @@ export const useModal = (): Props => {
       onClick,
       onClose,
       clickMsg,
-      closeMsg
+      closeMsg,
+      clickColor
     }: {
       title: string;
       content?: any;
@@ -108,6 +111,7 @@ export const useModal = (): Props => {
       onClose?: () => void;
       clickMsg: string;
       closeMsg: string;
+      clickColor?: any;
     }) => {
       setConfirmState({
         ...confirmState,
@@ -117,7 +121,8 @@ export const useModal = (): Props => {
         clickMsg,
         closeMsg,
         onClick: onClick || confirmState.onClick,
-        onClose: onClose || confirmState.onClose
+        onClose: onClose || confirmState.onClose,
+        clickColor
       });
     },
     [confirmState]

@@ -26,6 +26,7 @@ const ConfirmModal = () => {
       closeMsg={confirmState.closeMsg}
       title={confirmState.title}
       content={confirmState.content}
+      clickColor={confirmState.clickColor}
       onClick={() => {
         confirmState.onClick();
         setConfirmState({ ...confirmState, open: false });

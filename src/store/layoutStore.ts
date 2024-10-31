@@ -55,6 +55,7 @@ export const confirmState = atom<{
   onClick: () => void;
   closeMsg: string;
   clickMsg: string;
+  clickColor: any;
 }>({
   key: `confirm_modal_${new Date().getTime()}`,
   default: {
@@ -64,6 +65,7 @@ export const confirmState = atom<{
     onClose: () => {},
     onClick: () => {},
     clickMsg: '',
-    closeMsg: ''
+    closeMsg: '',
+    clickColor: ''
   }
 });

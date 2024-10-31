@@ -21,10 +21,10 @@ export default function ConfirmDialog({
   closeMsg,
   contentStyle,
   maxWidth = 'xs',
+  clickColor = 'primary',
   ...other
 }: ConfirmDialogProps) {
   const { t } = useTranslate();
-  const color = 'primary';
   return (
     <Dialog
       fullWidth
@@ -57,7 +57,7 @@ export default function ConfirmDialog({
         {!action && (
           <Button
             variant="contained"
-            color={color ? color : 'primary'}
+            color={clickColor ? clickColor : 'primary'}
             onClick={onClick}
           >
             {clickMsg}

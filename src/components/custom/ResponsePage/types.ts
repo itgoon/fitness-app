@@ -7,7 +7,7 @@ export interface IResponsePage {
   iconName?: any;
   iconSize?: number;
   dataList: list[];
-  onHome: () => void;
+  onHome?: () => void;
   onClick: () => void;
   closeMsg: string;
   clickMsg: string;

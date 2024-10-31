@@ -12,8 +12,8 @@ import { ReqLogin } from '../../../types/auth';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
-import StepFlow from './StepFlow';
 import { useResponsive } from 'src/hooks/useResponsive';
+import StepFlow from '../../../components/custom/StepFlow';
 
 // ----------------------------------------------------------------------
 

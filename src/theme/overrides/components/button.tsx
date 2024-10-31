@@ -96,6 +96,7 @@ export function button(theme: Theme) {
       ...(ownerState.color === color && {
         // CONTAINED
         ...(containedVariant && {
+          backgroundColor: color === 'error' && `${theme.palette.error.dark}`,
           '&:hover': {
             boxShadow: theme.customShadows[color]
           }
@@ -121,6 +122,13 @@ export function button(theme: Theme) {
           ...(ownerState.color === 'error' && {
             color: theme.palette.error.dark,
             borderColor: theme.palette.grey[200],
+            '&:hover': {
+              backgroundColor: alpha(theme.palette.error.main, 0.08)
+            }
+          }),
+          ...(ownerState.color === 'primary' && {
+            color: theme.palette.grey[900],
+
             '&:hover': {
               backgroundColor: alpha(theme.palette.error.main, 0.08)
             }

@@ -12,6 +12,7 @@ export type ConfirmDialogProps = Omit<DialogProps, 'title' | 'content'> & {
   contentStyle?: React.CSSProperties;
   closeMsg?: string;
   clickMsg?: string;
+  clickColor: any;
 };
 
 export type CustomDialogProps = Omit<DialogProps, 'title' | 'content'> & {

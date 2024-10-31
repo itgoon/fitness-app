@@ -9,6 +9,7 @@ import {
 import Icon from '../../Icon';
 import Button from '../../Button';
 import { IResponsePage } from './types';
+import { useNavigate } from 'react-router';
 
 export default function ResponsePage({
   iconName = 'CheckSvg',
@@ -23,6 +24,7 @@ export default function ResponsePage({
   const theme = useTheme();
   const { palette } = theme;
   const grey500 = palette.grey[500];
+  const navigate = useNavigate();
   return (
     <Stack justifyContent={'space-between'} height={'100%'}>
       <Stack alignItems={'center'} gap={7.5}>
@@ -51,17 +53,19 @@ export default function ResponsePage({
       <Box width={'100%'} display={'flex'} gap={1}>
         <Button
           size={'large'}
+          color="primary"
+          typoVariant={'Body18/semiBold'}
           children={closeMsg}
           variant={'outlined'}
-          color="primary"
           onClick={onClick}
         />
         <Button
           size={'large'}
+          color="primary"
+          typoVariant={'Body18/semiBold'}
           children={clickMsg}
           variant={'contained'}
-          color="primary"
-          onClick={onHome}
+          onClick={() => (onHome ? onHome : navigate('/dashboard'))}
         />
       </Box>
     </Stack>
