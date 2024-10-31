@@ -1,7 +1,6 @@
 import { Box, Chip, Divider, Stack, Typography, useTheme } from '@mui/material';
 
 import { useNavigate } from 'react-router';
-import { useCardContext } from '../../../../hooks/useCard';
 import { chipChange } from '../../../../utils/chipChange';
 import Icon from '../../../../components/Icon';
 import EmptyCard from '../../../../components/custom/customCard/EmptyCard';
@@ -10,8 +9,7 @@ import { getPeriodTime, getTimeDifference } from '../../../../utils/formatTime';
 import ListWrap from './ListWrap';
 import { useModal } from '../../../../hooks/useModal';
 
-export default function DetailStep1({ onNext }) {
-  const { selectedCard } = useCardContext();
+export default function DetailStep1({ onNext, selectedCard }) {
   const navigate = useNavigate();
   const { openConfirm } = useModal();
   const theme = useTheme();
@@ -22,10 +20,6 @@ export default function DetailStep1({ onNext }) {
   };
   const light = theme.palette.mode === 'light';
   const grey600 = light ? theme.palette.grey[600] : 'white';
-
-  if (selectedCard === undefined) {
-    navigate('/schedule');
-  }
 
   const { chipState, date, time } = selectedCard;
   const chip = chipChange(chipState);

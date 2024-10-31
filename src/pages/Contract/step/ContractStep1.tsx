@@ -1,8 +1,8 @@
 import { Stack } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-import Condition from '../../../components/custom/Condition';
 import { dummyCondition, dummyCondition2 } from '../../../utils/dummy';
 import Button from '../../../components/Button';
+import Condition from '../../../components/custom/Condition';
 
 export interface StepProps {
   onNext?: () => void;

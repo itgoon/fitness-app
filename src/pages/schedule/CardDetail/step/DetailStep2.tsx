@@ -1,6 +1,5 @@
 import dayjs from 'dayjs';
 import ResponsePage from '../../../../components/custom/ResponsePage';
-import { useCardContext } from '../../../../hooks/useCard';
 const matchingArray = (selectedCard) => {
   const { time, count, trainer, date } = selectedCard;
 
@@ -14,10 +13,7 @@ const matchingArray = (selectedCard) => {
   return dataList;
 };
 
-export default function DetailStep2({ onNext }) {
-  const { selectedCard } = useCardContext();
-  const { time, count, trainer, date } = selectedCard;
-
+export default function DetailStep2({ selectedCard }) {
   return (
     <ResponsePage
       title={'예약이 취소되었습니다.'}

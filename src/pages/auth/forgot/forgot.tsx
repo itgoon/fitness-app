@@ -6,10 +6,10 @@ import FormProvider from 'src/components/hookForm';
 
 import { useState } from 'react';
 import { ReqLogin } from '../../../types/auth';
-import StepFlow from '../register/StepFlow';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
+import StepFlow from '../../../components/custom/StepFlow';
 
 // ----------------------------------------------------------------------
 
