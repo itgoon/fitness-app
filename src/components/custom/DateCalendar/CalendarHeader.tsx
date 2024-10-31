@@ -29,7 +29,7 @@ export default function CalendarHeader(
         <Typography onClick={viewChange} variant="Body18/semiBold">
           {month}
         </Typography>
-        <Icon size={18} name="ExpendMoreSvg" />
+        <Icon size={18} name="ExpendMoreSvg" onClick={viewChange} />
       </Box>
 
       <Stack paddingX={1.5} gap={1}>

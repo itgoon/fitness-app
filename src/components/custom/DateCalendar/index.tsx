@@ -55,6 +55,9 @@ export default function DateCalendar({ workData }: IDatePicker) {
             highlightedDays
           } as any
         }}
+        sx={{
+          '.MuiPickersFadeTransitionGroup-root': {}
+        }}
       />
     </LocalizationProvider>
   );

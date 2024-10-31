@@ -23,8 +23,17 @@ export function dateCalendar(theme: Theme) {
             maxHeight: 248,
             paddingLeft: 12,
             paddingRight: 12,
+
+            // month & year
+            '&:has(.MuiMonthCalendar-root), &:has(.MuiYearCalendar-root)': {
+              display: 'flex',
+              justifyContent: 'center'
+            },
+            '.MuiYearCalendar-root::-webkit-scrollbar': { display: 'none' },
+
             '> div': {
               maxHeight: 'inherit',
+
               '.MuiDayCalendar-root': { maxHeight: 'inherit' },
               '.MuiDayCalendar-header': {
                 gap: 23.2,
@@ -42,8 +51,10 @@ export function dateCalendar(theme: Theme) {
                   color: headerGrey
                 }
               },
+
               '.MuiPickersSlideTransition-root': {
                 minHeight: 210,
+
                 '.MuiDayCalendar-monthContainer': {
                   '> div': {
                     gap: 23.2,
