@@ -11,11 +11,18 @@ import Orange from './orange.svg?react';
 import Green from './green.svg?react';
 import Location from './Location.svg?react';
 import Receipt from './Receipt.svg?react';
+
 import Membership from './Membership.svg?react';
 import HomeSvg from './Home.svg?react';
 import Calendar from './Calendar.svg?react';
 import FeedSvg from './Feed.svg?react';
 import MoreSvg from './More.svg?react';
+import MembershipColorSvg from './MembershipColorSvg.svg?react';
+import HomeColorSvg from './HomeColor.svg?react';
+import CalendarColorSvg from './CalendarColorSvg.svg?react';
+import FeedColorSvg from './FeedColorSvg.svg?react';
+import MoreColorSvg from './MoreColorSvg.svg?react';
+
 import CheckSvg from './Check.svg?react';
 import WeightSvg from './weight.svg?react';
 import DumbelSvg from './dumbelSvg.svg?react';
@@ -51,5 +58,10 @@ export {
   BlueLargeSvg,
   DumbelLargeSvg,
   CloseSvg,
-  EditSvg
+  EditSvg,
+  MembershipColorSvg,
+  HomeColorSvg,
+  CalendarColorSvg,
+  FeedColorSvg,
+  MoreColorSvg
 };

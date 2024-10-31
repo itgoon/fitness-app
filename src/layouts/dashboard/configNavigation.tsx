@@ -8,6 +8,7 @@ import SvgColor from 'src/components/svgColor';
 
 import Iconify from '../../components/iconify';
 import Icon from '../../components/Icon';
+import { useLocation } from 'react-router';
 
 // ----------------------------------------------------------------------
 
@@ -31,17 +32,22 @@ const ICONS = {
   list: <Iconify icon="ic:baseline-list" />,
   new: <Iconify icon="mdi:add-circle" />,
   naver: <Iconify icon="simple-icons:naver" />,
-  more: <Icon name="MoreSvg" size={32} />,
-  calendar: <Icon name="Calendar" size={32} />,
   home: <Icon name="HomeSvg" size={32} />,
+  calendar: <Icon name="Calendar" size={32} />,
+  memberShip: <Icon name="Membership" size={32} />,
   feed: <Icon name="FeedSvg" size={32} />,
-  memberShip: <Icon name="Membership" size={32} />
+  more: <Icon name="MoreSvg" size={32} />,
+  homeColor: <Icon name="HomeColorSvg" size={32} />,
+  calendarColor: <Icon name="CalendarColorSvg" size={32} />,
+  memberShipColor: <Icon name="MembershipColorSvg" size={32} />,
+  moreColor: <Icon name="MoreColorSvg" size={32} />
 };
 
 // ----------------------------------------------------------------------
 
 export function useNavData() {
   const { t } = useTranslate();
+  const pathname = useLocation().pathname;
 
   const data = useMemo(
     () => [
@@ -51,17 +57,26 @@ export function useNavData() {
           {
             title: t('홈'),
             path: paths.dashboard.root,
-            icon: ICONS.home
+            icon:
+              location.pathname === paths.dashboard.root
+                ? ICONS.homeColor
+                : ICONS.home
           },
           {
             title: '일정',
             path: paths.schedule.root,
-            icon: ICONS.calendar
+            icon:
+              location.pathname === paths.schedule.root
+                ? ICONS.calendarColor
+                : ICONS.calendar
           },
           {
             title: '회원권',
             path: paths.myPage.root,
-            icon: ICONS.memberShip
+            icon:
+              location.pathname === paths.myPage.root
+                ? ICONS.memberShipColor
+                : ICONS.memberShip
           },
           {
             title: '기록',
@@ -71,12 +86,15 @@ export function useNavData() {
           {
             title: '더보기',
             path: paths.myPage.root,
-            icon: ICONS.more
+            icon:
+              location.pathname === paths.myPage.root
+                ? ICONS.moreColor
+                : ICONS.more
           }
         ]
       }
     ],
-    [t]
+    [t, location.pathname]
   );
 
   return data;
