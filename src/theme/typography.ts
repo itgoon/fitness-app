@@ -47,6 +47,7 @@ declare module '@mui/material/Typography' {
     textLabel: true;
     subtitle0: true;
 
+    'Body28/semiBold': true;
     'Body24/semiBold': true;
     'Body20/bold': true;
     'Body20/semiBold': true;
@@ -74,6 +75,11 @@ export const primaryFont = 'Public Sans, sans-serif';
 export const secondaryFont = 'Barlow, sans-serif';
 const customVariant = () => {
   return {
+    'Body28/semiBold': {
+      fontWeight: 600,
+      fontSize: pxToRem(28),
+      lineHeight: '36px'
+    },
     'Body24/semiBold': {
       fontWeight: 600,
       fontSize: pxToRem(24),

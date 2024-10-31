@@ -2,6 +2,8 @@ import { Box, Divider, Stack, Typography, useTheme } from '@mui/material';
 import { ICardBody } from './types';
 import Icon from '../../Icon';
 import EmptyCard from '../customCard/EmptyCard';
+import { chipChange } from '../../../utils/chipChange';
+import { getPeriodTime, getTimeDifference } from '../../../utils/formatTime';
 
 const Content = ({ children }: any) => {
   return (
@@ -19,15 +21,9 @@ export default function CardBody({ cardData, cardSx }: ICardBody) {
   const grey900 = light ? theme.palette.grey[900] : 'white';
   const iconColor = light ? '#BDBDBD' : '#fff';
 
-  const chipLabel = cardData?.chipLabel;
-  const iconName =
-    chipLabel === 'warning'
-      ? 'Orange'
-      : chipLabel === 'error'
-        ? 'Red'
-        : chipLabel === 'primary'
-          ? 'Blue'
-          : 'DumbelSvg';
+  const { chipState, time, count, place, trainer, weight } = cardData;
+
+  const iconName = chipChange(chipState).iconName;
 
   return (
     <EmptyCard
@@ -42,16 +38,20 @@ export default function CardBody({ cardData, cardSx }: ICardBody) {
       <Stack gap={1}>
         <Typography
           variant="Body18/bold"
-          children={cardData?.time}
+          children={
+            chipState != undefined
+              ? getPeriodTime(time)
+              : getTimeDifference(time)
+          }
           color={grey900}
         />
-        {chipLabel != undefined ? (
+        {chipState != undefined ? (
           <Stack gap={0.5}>
             <Content>
               <Icon size={16} name={'Location'} color={iconColor} />
               <Typography
                 variant="Body14/regular"
-                children={cardData?.place}
+                children={place}
                 color={grey900}
               />
             </Content>
@@ -61,13 +61,13 @@ export default function CardBody({ cardData, cardSx }: ICardBody) {
               <Box display={'flex'} gap={1.25}>
                 <Typography
                   variant="Body14/regular"
-                  children={cardData?.count}
+                  children={count}
                   color={grey900}
                 />
                 <Divider sx={{ borderWidth: 1, borderColor: grey300 }} />
                 <Typography
                   variant="Body14/regular"
-                  children={cardData?.trainer}
+                  children={trainer}
                   color={grey900}
                 />
               </Box>
@@ -78,7 +78,7 @@ export default function CardBody({ cardData, cardSx }: ICardBody) {
             <Icon size={16} name={'WeightSvg'} color={iconColor} />
             <Typography
               variant="Body14/regular"
-              children={cardData?.weight}
+              children={weight}
               color={grey900}
             />
           </Content>

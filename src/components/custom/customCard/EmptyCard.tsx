@@ -28,7 +28,7 @@ export default function EmptyCard({
   const light = palette.mode === 'light';
   const grey400 = palette.grey[400];
   const grey500 = palette.grey[500];
-  const grey600 = palette.grey[600];
+  const grey600 = light ? palette.grey[600] : 'white';
   const blgrey = light ? palette.grey.A200 : grey400;
   const grey900 = light ? palette.grey[900] : 'white';
 

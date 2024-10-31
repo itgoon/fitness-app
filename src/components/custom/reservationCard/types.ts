@@ -3,7 +3,7 @@ import { CSSProperties } from 'react';
 export interface IReservationCard {
   layoutSx?: CSSProperties;
   cardSx?: CSSProperties;
-  cardData?: cardData;
+  cardData: cardData;
 }
 
 type cardData = {
@@ -13,10 +13,10 @@ type cardData = {
   count?: string;
   trainer?: string;
   weight?: string;
-  chipLabel?: 'error' | 'primary' | 'warning';
+  chipState?: 'error' | 'primary' | 'warning';
 };
 export interface ICardBody {
   time?: string | any;
-  cardData?: cardData;
+  cardData: cardData;
   cardSx?: CSSProperties;
 }

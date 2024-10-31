@@ -4,14 +4,24 @@ import { IReservationList } from './types';
 import { dummyReservaitonListCard } from '../../../utils/dummy';
 import { Typography, useTheme } from '@mui/material';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
+import { useNavigate } from 'react-router';
+import { useCardContext } from '../../../hooks/useCard';
 
 export default function ReservationList({
   cardDataList = dummyReservaitonListCard
 }: IReservationList) {
+  const { setSelectedCard } = useCardContext();
+  const navigate = useNavigate();
   const theme = useTheme();
   const { palette } = theme;
   const light = palette.mode === 'light';
   const grey500 = light ? palette.grey[500] : 'white';
+
+  const handleCardClick = (card, key) => {
+    navigate(`/schedule/detail/${key}`);
+    setSelectedCard(card);
+  };
+
   return (
     <Stack gap={2}>
       {cardDataList.length === 0 ? (
@@ -29,9 +39,8 @@ export default function ReservationList({
       ) : (
         <>
           {cardDataList?.map((card, key) => (
-            <Box py={1.5}>
+            <Box key={key} py={1.5} onClick={() => handleCardClick(card, key)}>
               <ReservationCard
-                key={key}
                 cardData={card}
                 layoutSx={{ padding: 0 }}
                 cardSx={{ alignItems: 'center' }}

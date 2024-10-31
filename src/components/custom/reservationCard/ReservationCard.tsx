@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import CardBody from './CardBody';
 import { IReservationCard } from './types';
 import { MontFormatKR } from '../../../utils/formatTime';
+import { chipChange } from '../../../utils/chipChange';
 
 export default function ReservationCard({
   layoutSx,
@@ -15,15 +16,8 @@ export default function ReservationCard({
 
   const dateKR = dayjs(cardData?.date).format(MontFormatKR);
 
-  const chipLabel = cardData?.chipLabel;
-  const chipState =
-    chipLabel === 'warning'
-      ? '예약'
-      : chipLabel === 'error'
-        ? '예약취소'
-        : chipLabel === 'primary'
-          ? '출석'
-          : '';
+  const chipState = cardData?.chipState;
+  const chipLabel = chipChange(chipState).chipLabel;
 
   return (
     <Stack gap={1.5} sx={{ padding: '8px 20px 32px', ...layoutSx }}>
@@ -34,7 +28,7 @@ export default function ReservationCard({
           children={dateKR}
         />
         {chipLabel && (
-          <Chip size={'small'} color={chipLabel} label={chipState} />
+          <Chip size={'small'} color={chipState} label={chipLabel} />
         )}
       </Stack>
 

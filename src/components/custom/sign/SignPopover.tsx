@@ -17,7 +17,7 @@ export default function SignPopover({
   const theme = useTheme();
   const { palette } = theme;
   const light = palette.mode === 'light';
-  const grey600 = palette.grey[600];
+  const grey600 = light ? palette.grey[600] : 'white';
   const grey500 = palette.grey[500];
   const grey300 = palette.grey[300];
 

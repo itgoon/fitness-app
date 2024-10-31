@@ -3,7 +3,6 @@ import dayjs from 'dayjs';
 import { Divider, Stack, Typography, useTheme } from '@mui/material';
 import { useState } from 'react';
 import Button from '../../components/Button';
-import Wrap from './wrap/Wrap';
 import {
   DateFormat,
   MontFormatKR,
@@ -16,6 +15,7 @@ import ReservationCard from '../../components/custom/reservationCard/Reservation
 import { useNavigate } from 'react-router';
 import EmptyCard from '../../components/custom/customCard/EmptyCard';
 import { dummyReservaitonListCard } from '../../utils/dummy';
+import Wrap from './Wrap';
 /**
  * ******************************************************
  * 대시보드 화면

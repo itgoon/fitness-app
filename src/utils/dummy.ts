@@ -31,27 +31,27 @@ export const dummyWorkOutRecordList = [
 export const dummyReservaitonListCard: cardData[] = [
   {
     date: '2024-09-19',
-    time: '오전 8:00',
+    time: '8:00',
     place: '리온짐',
     count: '3/ 10회',
     trainer: '홍길동 강사',
-    chipLabel: 'warning'
+    chipState: 'warning'
   },
   {
     date: '2024-09-19',
-    time: '오후 12:00',
+    time: '12:00',
     place: '리온짐',
     count: '3/ 10회',
     trainer: '홍길동 강사',
-    chipLabel: 'error'
+    chipState: 'error'
   },
   {
     date: '2024-09-29',
-    time: '오전 11:00',
+    time: '11:00',
     place: '리온짐',
     count: '3/ 10회',
     trainer: '홍길동 강사',
-    chipLabel: 'primary'
+    chipState: 'primary'
   }
 ];
 

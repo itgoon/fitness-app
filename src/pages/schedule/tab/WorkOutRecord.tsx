@@ -3,15 +3,22 @@ import EmptyCard from '../../../components/custom/customCard/EmptyCard';
 import ReservationCard from '../../../components/custom/reservationCard/ReservationCard';
 import { IWorkOutRecord } from './types';
 import { dummyWorkOutRecordList } from '../../../utils/dummy';
+import { useCardContext } from '../../../hooks/useCard';
+import { useNavigate } from 'react-router';
 
 export default function WorkOutRecord({
   cardDataList = dummyWorkOutRecordList
 }: IWorkOutRecord) {
+  const { setSelectedCard } = useCardContext();
+  const navigate = useNavigate();
   const theme = useTheme();
   const { palette } = theme;
   const light = palette.mode === 'light';
   const grey500 = light ? palette.grey[500] : 'white';
-
+  const handleCardClick = (card, key) => {
+    navigate(`/schedule/detail/${key}`);
+    setSelectedCard(card);
+  };
   return (
     <Stack gap={2}>
       {cardDataList?.length === 0 ? (
@@ -29,7 +36,7 @@ export default function WorkOutRecord({
       ) : (
         <>
           {cardDataList.map((card, key) => (
-            <Box py={1.5}>
+            <Box py={1.5} onClick={() => handleCardClick(card, key)}>
               <ReservationCard
                 key={key}
                 cardData={card}

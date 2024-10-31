@@ -10,6 +10,9 @@ import { AuthGuard } from '../components';
 // Dashboard
 const DashboardPage = lazy(() => import('src/pages/dashboard'));
 const SchedulePage = lazy(() => import('src/pages/schedule'));
+const ScheduleCardDetail = lazy(
+  () => import('src/pages/schedule/cardDetail/CardDetail')
+);
 
 // Employee
 const MyPagePage = lazy(() => import('src/pages/myPage'));
@@ -38,9 +41,12 @@ export const dashboardRoutes = [
         children: [{ element: <DashboardPage />, index: true }]
       },
       {
-        path: 'Schedule',
+        path: 'schedule',
 
-        children: [{ element: <SchedulePage />, index: true }]
+        children: [
+          { element: <SchedulePage />, index: true },
+          { path: 'detail/:id', element: <ScheduleCardDetail /> }
+        ]
       },
       {
         path: 'reservation',

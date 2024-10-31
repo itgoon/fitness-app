@@ -17,6 +17,7 @@ import { SettingsDrawer, SettingsProvider } from 'src/components/settings';
 import SnackbarProvider from 'src/components/snackbar/SnackbarProvider';
 import AuthProvider from './provider/AuthProvider';
 import ModalProvider from './provider/ModalProvider';
+import { CardProvider } from './hooks/useCard';
 
 // ----------------------------------------------------------------------
 
@@ -52,8 +53,10 @@ export default function App() {
                 <AuthProvider>
                   <ModalProvider>
                     <SettingsDrawer />
-                    <ProgressBar />
-                    <Router />
+                    <CardProvider>
+                      <ProgressBar />
+                      <Router />
+                    </CardProvider>
                   </ModalProvider>
                 </AuthProvider>
               </SnackbarProvider>

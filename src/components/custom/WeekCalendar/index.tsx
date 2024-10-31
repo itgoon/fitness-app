@@ -16,7 +16,7 @@ export default function WeekCalendar({
   const theme = useTheme();
   const { palette } = theme;
   const light = palette.mode === 'light';
-  const grey600 = palette.grey[600];
+  const grey600 = light ? palette.grey[600] : palette.common.white;
   const black = light ? palette.common.black : palette.common.white;
   const [dateList, setDateList] = useState<string[]>([]);
   useEffect(() => {

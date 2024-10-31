@@ -14,7 +14,7 @@ export default function AlaramCard({
   const theme = useTheme();
   const { palette } = theme;
   const light = palette.mode === 'light';
-  const grey600 = palette.grey[600];
+  const grey600 = light ? palette.grey[600] : 'white';
   const grey900 = light ? palette.grey[900] : 'white';
 
   return (

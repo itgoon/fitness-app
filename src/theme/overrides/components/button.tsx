@@ -116,6 +116,15 @@ export function button(theme: Theme) {
               backgroundColor: alpha(theme.palette.secondary.main, 0.08)
             }
           })
+        }),
+        ...(outlinedVariant && {
+          ...(ownerState.color === 'error' && {
+            color: theme.palette.error.dark,
+            borderColor: theme.palette.grey[200],
+            '&:hover': {
+              backgroundColor: alpha(theme.palette.error.main, 0.08)
+            }
+          })
         })
       })
     }));

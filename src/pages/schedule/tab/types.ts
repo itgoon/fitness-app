@@ -13,7 +13,7 @@ export type cardData = {
   count?: string;
   trainer?: string;
   weight?: string;
-  chipLabel?: 'error' | 'primary' | 'warning';
+  chipState?: 'error' | 'primary' | 'warning';
 };
 
 // wordkoutRecord

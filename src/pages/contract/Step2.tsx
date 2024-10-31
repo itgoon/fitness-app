@@ -22,7 +22,8 @@ export default function Step2({ onNext }: StepProps) {
   const { palette } = theme;
   const light = palette.mode === 'light';
   const grey400 = palette.grey[400];
-  const grey600 = palette.grey[600];
+  const grey600 = light ? palette.grey[600] : 'white';
+
   const blgrey = light ? palette.grey.A200 : grey400;
 
   // state
