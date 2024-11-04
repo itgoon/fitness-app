@@ -28,10 +28,8 @@ export default function TimePicker({
     const listItems = ulElement.querySelectorAll('li');
     const centerIndex = Math.floor(listItems.length / 2); // 중앙 위치 계산
     const centerLi = listItems[centerIndex];
-    console.log('scroll');
     setCenterItem(centerLi?.textContent || ''); // centerLi가 null일 경우 안전하게 처리
   }, 200); // 200ms마다 실행되도록 제한
-  console.log('centerItem: ', centerItem);
   useEffect(() => {
     const containerElement = containerRef.current;
     if (!containerElement) return;

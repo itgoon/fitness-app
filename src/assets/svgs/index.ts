@@ -26,12 +26,13 @@ import MoreColorSvg from './MoreColorSvg.svg?react';
 import CheckSvg from './Check.svg?react';
 import WeightSvg from './weight.svg?react';
 import DumbelSvg from './dumbelSvg.svg?react';
-import ExpendMoreSvg from './expend_more.svg?react';
+import ExpandMoreSvg from './expand_more.svg?react';
 import OrangeLargeSvg from './OrangeLarge.svg?react';
 import BlueLargeSvg from './BlueLargeSvg.svg?react';
 import DumbelLargeSvg from './DumbelLarge.svg?react';
 import CloseSvg from './CloseSvg.svg?react';
 import EditSvg from './EditSvg.svg?react';
+import BellSvg from './BellSvg.svg?react';
 
 export {
   LeftArrow,
@@ -53,7 +54,7 @@ export {
   CheckSvg,
   WeightSvg,
   DumbelSvg,
-  ExpendMoreSvg,
+  ExpandMoreSvg,
   OrangeLargeSvg,
   BlueLargeSvg,
   DumbelLargeSvg,
@@ -63,5 +64,6 @@ export {
   HomeColorSvg,
   CalendarColorSvg,
   FeedColorSvg,
-  MoreColorSvg
+  MoreColorSvg,
+  BellSvg
 };

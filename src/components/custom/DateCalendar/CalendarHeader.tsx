@@ -11,7 +11,6 @@ export default function CalendarHeader(
 
   const viewChange = () => {
     let newView: DateView = 'month';
-    console.log({ newView });
 
     if (view === 'month') newView = 'year';
     if (onViewChange) onViewChange(newView);
@@ -29,7 +28,7 @@ export default function CalendarHeader(
         <Typography onClick={viewChange} variant="Body18/semiBold">
           {month}
         </Typography>
-        <Icon size={18} name="ExpendMoreSvg" onClick={viewChange} />
+        <Icon size={18} name="ExpandMoreSvg" onClick={viewChange} />
       </Box>
 
       <Stack paddingX={1.5} gap={1}>

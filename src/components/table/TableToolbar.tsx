@@ -69,7 +69,6 @@ export default function UserTableToolbar({
     [onFilters]
   );
 
-  console.log('StatusOptions : ', StatusOptions);
   return (
     <>
       <Stack

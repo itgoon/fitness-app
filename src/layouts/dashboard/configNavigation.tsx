@@ -48,7 +48,6 @@ const ICONS = {
 export function useNavData() {
   const { t } = useTranslate();
   const pathname = useLocation().pathname;
-
   const data = useMemo(
     () => [
       {
@@ -58,43 +57,38 @@ export function useNavData() {
             title: t('홈'),
             path: paths.dashboard.root,
             icon:
-              location.pathname === paths.dashboard.root
-                ? ICONS.homeColor
-                : ICONS.home
+              pathname === paths.dashboard.root ? ICONS.homeColor : ICONS.home
           },
           {
             title: '일정',
             path: paths.schedule.root,
             icon:
-              location.pathname === paths.schedule.root
+              pathname === paths.schedule.root
                 ? ICONS.calendarColor
                 : ICONS.calendar
           },
           {
             title: '회원권',
-            path: paths.myPage.root,
+            path: paths.member.root,
             icon:
-              location.pathname === paths.myPage.root
+              pathname === paths.member.root
                 ? ICONS.memberShipColor
                 : ICONS.memberShip
           },
           {
             title: '기록',
-            path: paths.myPage.root,
+            path: paths.record.root,
             icon: ICONS.feed
           },
           {
             title: '더보기',
-            path: paths.myPage.root,
-            icon:
-              location.pathname === paths.myPage.root
-                ? ICONS.moreColor
-                : ICONS.more
+            path: paths.more.root,
+            icon: pathname === paths.myPage.root ? ICONS.moreColor : ICONS.more
           }
         ]
       }
     ],
-    [t, location.pathname]
+    [t, pathname]
   );
 
   return data;

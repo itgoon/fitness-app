@@ -29,7 +29,6 @@ export default function SignCanvas({
   defaultValue
 }: SignProps) {
   useEffect(() => {
-    console.log({ defaultValue }, Number(height.replace('px', '')));
     if (!defaultValue) return setIsSigned(false);
 
     const _height = Number(height.replace('px', ''));
@@ -39,8 +38,6 @@ export default function SignCanvas({
       height: _height
     });
     setIsSigned(true);
-
-    console.log({ fdata });
   }, [defaultValue, signRef?.current]);
 
   return (

@@ -3,8 +3,12 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { useLayoutEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useNavData } from './configNavigation';
+import { useTheme } from '@mui/material';
 
 export default function NavBottom() {
+  const theme = useTheme();
+  const grey500 =
+    theme.palette.mode === 'light' ? theme.palette.grey[500] : 'white';
   const navData = useNavData();
   const navigate = useNavigate();
   const location = useLocation();
@@ -12,7 +16,6 @@ export default function NavBottom() {
   const [list, setList] = useState<any[]>([]);
 
   useLayoutEffect(() => {
-    console.log({ location });
     if (
       !(
         navData?.length > 0 &&
@@ -23,7 +26,7 @@ export default function NavBottom() {
       return setList([]);
 
     setList(navData[0]?.items);
-  }, [navData]);
+  }, [navData, location]);
 
   console.log({ list });
 
@@ -34,18 +37,23 @@ export default function NavBottom() {
       value={location?.pathname}
       onChange={(event, newValue) => {
         console.log({ event }, { newValue }, event?.target);
-        // setValue(newValue);
 
         navigate(newValue);
       }}
     >
-      {/* TODO: 선택된 아이콘의 색상을 변경시켜야 함 
-        currentColor를 통해 일괄적으로 색상을 변경시키되 일부 영역은 색상이 변경되지 않도록 해야함
-      */}
       {list?.map((item) => {
         return (
           <BottomNavigationAction
-            sx={{ minWidth: 64, padding: 0 }}
+            sx={{
+              minWidth: 64,
+              padding: 0,
+              span: {
+                fontSize: 11,
+                fontWeight: 500,
+                color:
+                  item.path !== location.pathname ? grey500 : 'currentColor'
+              }
+            }}
             label={item.title}
             icon={item?.icon}
             value={item.path}

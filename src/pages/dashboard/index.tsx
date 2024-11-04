@@ -165,6 +165,7 @@ export default function DashboardPage() {
             </Stack>
           </EmptyCard>
         )}
+        {/* 버튼 color primary일때, alpha 색 들어가는거 막기  */}
         <Button
           color="primary"
           typoVariant={'Body18/semiBold'}

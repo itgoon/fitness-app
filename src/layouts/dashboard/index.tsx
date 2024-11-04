@@ -23,6 +23,8 @@ import NavBottom from './navBottom';
 import NavHorizontal from './navHorizontal';
 import NavMini from './navMini';
 import Footer from './footer';
+import CustomBreadcrumbs from '../../components/custom/CustomBreadcrumbs';
+import { useNavigate } from 'react-router';
 
 // ----------------------------------------------------------------------
 
@@ -30,8 +32,8 @@ type Props = {
   children: ReactNode;
 };
 export default function DashboardLayout({ children }: Props) {
+  const navigate = useNavigate();
   const settings = useSettingsContext();
-
   const lgUp = useResponsive('up', 'lg');
 
   const nav = useBoolean();
@@ -82,25 +84,26 @@ export default function DashboardLayout({ children }: Props) {
   if (!initialize) return <LoadingScreen />;
 
   return (
-    <>
-      {/* <Header onOpenNav={nav.onTrue} /> */}
-
-      <Box
-        sx={{
-          minHeight: 1,
-          display: 'flex',
-          height: '100%',
-          width: '100%',
-          overflow: 'hidden',
-          flexDirection: { xs: 'column', lg: 'row' }
-        }}
-      >
-        <Main>
-          {children}
-          <Footer />
-        </Main>
-        <NavBottom />
-      </Box>
-    </>
+    <Box
+      minHeight={1}
+      display={'flex'}
+      height={'100%'}
+      width={'100%'}
+      overflow={'hidden'}
+      flexDirection={{ xs: 'column', lg: 'row' }}
+    >
+      {!(
+        location?.pathname === '/contract' ||
+        location?.pathname === '/schedule/detail'
+      ) &&
+        location?.pathname.indexOf('/notFound') === -1 && (
+          <CustomBreadcrumbs onBack={() => navigate(-1)} />
+        )}
+      <Main>
+        {children}
+        <Footer />
+      </Main>
+      <NavBottom />
+    </Box>
   );
 }

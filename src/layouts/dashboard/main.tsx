@@ -18,7 +18,6 @@ export default function Main({ children, sx, ...other }: BoxProps) {
 
   const isNavMini = settings.themeLayout === 'mini';
   const miniHeader = HEADER.H_MOBILE - 8;
-  console.log(HEADER.H_MOBILE + SPACING);
   return (
     <Box
       component="main"
@@ -27,7 +26,7 @@ export default function Main({ children, sx, ...other }: BoxProps) {
         // minHeight: 1,
         // display: "flex",
         // flexDirection: "column",
-        pt: `${miniHeader}px`,
+        // pt: `${miniHeader}px`,
         pb: `${HEADER.H_MOBILE + SPACING}px`,
         height: '100vh',
         width: '100%',

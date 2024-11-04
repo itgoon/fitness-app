@@ -1,14 +1,14 @@
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from 'react-hook-form';
 
-import { Select as MuiSelect, SelectProps } from "@mui/material";
-import Box from "@mui/material/Box";
-import Checkbox from "@mui/material/Checkbox";
-import Chip from "@mui/material/Chip";
-import FormControl, { FormControlProps } from "@mui/material/FormControl";
-import FormHelperText from "@mui/material/FormHelperText";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import { ReactNode } from "react";
+import { Select as MuiSelect, SelectProps } from '@mui/material';
+import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
+import Chip from '@mui/material/Chip';
+import FormControl, { FormControlProps } from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import { ReactNode } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -26,9 +26,8 @@ export function RHFSelect({ name, helperText, ...other }: RHFSelectProps) {
       name={name}
       control={control}
       render={({ field, fieldState: { error } }) => {
-        console.log({ field }, { error });
         return (
-          <FormControl error={!!error} sx={{ width: "100%" }}>
+          <FormControl error={!!error} sx={{ width: '100%' }}>
             <MuiSelect {...other} error={!!error} />
             {(!!error || helperText) && (
               <FormHelperText error={!!error}>
@@ -75,12 +74,12 @@ export function RHFMultiSelect({
     );
 
     if (!selectedItems.length && placeholder) {
-      return <Box sx={{ color: "text.disabled" }}>{placeholder}</Box>;
+      return <Box sx={{ color: 'text.disabled' }}>{placeholder}</Box>;
     }
 
     if (chip) {
       return (
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
           {selectedItems.map((item) => (
             <Chip key={item.value} size="small" label={item.label} />
           ))}
@@ -88,7 +87,7 @@ export function RHFMultiSelect({
       );
     }
 
-    return selectedItems.map((item) => item.label).join(", ");
+    return selectedItems.map((item) => item.label).join(', ');
   };
 
   return (

@@ -5,6 +5,11 @@ import { useState } from 'react';
 import DetailStep2 from './step/DetailStep2';
 import { useCardContext } from '../../../hooks/useCard';
 
+/**
+ * ******************************************************
+ * 일정 화면 -> 카드 상세
+ * ******************************************************
+ */
 export default function CardDetail() {
   const [activeStep, setActiveStep] = useState(0);
   const onNext = () => {
