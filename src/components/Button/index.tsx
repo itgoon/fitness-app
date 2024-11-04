@@ -12,6 +12,7 @@ export default function Button({
   isShadow = false,
   children,
   typoVariant,
+  typoColor,
   ...props
 }: CustomButton) {
   const shadowSx = isShadow === true ? '0 2px 4px rgba(0, 0, 0, 0.02)' : '';
@@ -27,7 +28,7 @@ export default function Button({
       return (
         <Typography
           sx={{ flex: 1 }}
-          color={'inherit'}
+          color={typoColor ? typoColor : 'inherit'}
           variant={typoVariant ? typoVariant : 'Body14/regular'}
         >
           {children}

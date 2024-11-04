@@ -33,6 +33,9 @@ import DumbelLargeSvg from './DumbelLarge.svg?react';
 import CloseSvg from './CloseSvg.svg?react';
 import EditSvg from './EditSvg.svg?react';
 import BellSvg from './BellSvg.svg?react';
+import QrCardSvg from './Card.svg?react';
+import QrCardSmallSvg from './QRCardSmall.svg?react';
+import QrCardBigSvg from './QRCardBig.svg?react';
 
 export {
   LeftArrow,
@@ -65,5 +68,8 @@ export {
   CalendarColorSvg,
   FeedColorSvg,
   MoreColorSvg,
-  BellSvg
+  BellSvg,
+  QrCardSvg,
+  QrCardSmallSvg,
+  QrCardBigSvg
 };

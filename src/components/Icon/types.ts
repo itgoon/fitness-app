@@ -1,6 +1,6 @@
 import * as MUIICON from '@mui/icons-material';
 import * as SVGICON from '../../assets/svgs';
-import { CSSProperties } from 'react';
+import { CSSProperties, ReactNode } from 'react';
 
 type MUIIconsType = keyof typeof MUIICON;
 type SVGIconsType = keyof typeof SVGICON;
@@ -16,4 +16,5 @@ export type IconProps = {
   sx?: CSSProperties;
   fill?: string;
   className?: string;
+  children?: ReactNode;
 };

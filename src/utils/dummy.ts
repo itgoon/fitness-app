@@ -1,3 +1,4 @@
+import { customerData } from '../components/custom/QrModal/types';
 import { cardData } from '../pages/schedule/tab/types';
 
 export const dummyCondition = [
@@ -10,6 +11,7 @@ export const dummyCondition2 = [
   '4. 강습을 중도 해지하고자 할 경우(환불), 위약금(납부된 전체 금액의 10%)과 함께 진행된 수업료(수업료 정산은 1세션 기준 / [Lv3 70,000 / Lv2 60,000 / Lv1 50,000]를 기준으로 하며, 수업 횟수 정산은 회원 서명이'
 ];
 
+// contractTable
 export const contractList = [
   { label: '이름', value: '김철수' },
   { label: '성별', value: '남성' },
@@ -19,6 +21,15 @@ export const contractList = [
   { label: '결제 방식', value: '카드결제' },
   { label: '결제 금액', value: '550,000원' }
 ];
+
+export const QRCustomerData: customerData = {
+  centerName: { label: '센터명', value: '리온짐' },
+  lesson: { label: '레슨', value: '[Lv1] 10회' },
+  count: { label: '레슨 횟수', value: '10회' },
+  trainer: { label: '담당강사', value: '홍길동' },
+  contractDate: { label: '계약 일자', value: '2024.08.04' },
+  effectiveDate: { label: '유효 일자', value: '2024.11.13' }
+};
 
 // tabs  workoutRecord
 export const dummyWorkOutRecordList = [

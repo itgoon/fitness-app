@@ -5,6 +5,15 @@ import { IReservationCard } from './types';
 import { MontFormatKR } from '../../../utils/formatTime';
 import { chipChange } from '../../../utils/chipChange';
 
+/**
+ * ******************************************************
+ * 예약 내역 알림 카드
+ * 연동 정보 없을 때
+ *
+ * 대시보드 화면
+ * 일정 화면
+ * ******************************************************
+ */
 export default function ReservationCard({
   layoutSx,
   cardSx,

@@ -104,3 +104,8 @@ export function getTimeDifference(timeString) {
   // 결과를 "X시간 Y분" 형식으로 반환
   return `${hours}시간 ${minutes}분`;
 }
+
+// 남은 날짜 계산
+export const getRemainDays = (startDay, endDay) => {
+  return dayjs(endDay).diff(dayjs(startDay), 'day');
+};

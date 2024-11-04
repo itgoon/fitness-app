@@ -36,6 +36,7 @@ const findHeader = (menu: NavItemType[], path: string): NavItemType[] => {
 interface IHeader {
   stepTitle?: string;
 }
+// TODO: 함수 변경 및 menus 구조 변경
 export default function Header({ stepTitle }: IHeader) {
   // state
   const location = useLocation();
