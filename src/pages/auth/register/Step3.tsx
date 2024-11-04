@@ -7,12 +7,15 @@ export default function Step3() {
 
   return (
     <Stack spacing={2.5}>
-      <Typography sx={{ textAlign: 'center' }}>
-        회원가입이 완료 되었습니다!
-      </Typography>
-      <Typography sx={{ textAlign: 'center' }}>
-        로그인 후 지금 바로 서비스를 이용해 보세요.
-      </Typography>
+      <Typography
+        sx={{ textAlign: 'center' }}
+        children={'회원가입이 완료 되었습니다!'}
+      />
+
+      <Typography
+        sx={{ textAlign: 'center' }}
+        children={'로그인 후 지금 바로 서비스를 이용해 보세요.'}
+      />
       <Button
         fullWidth
         color="inherit"
@@ -20,9 +23,8 @@ export default function Step3() {
         type="submit"
         variant="contained"
         onClick={() => navigate('/login')}
-      >
-        로그인 후 이용하기
-      </Button>
+        children={'로그인 후 이용하기'}
+      />
     </Stack>
   );
 }

@@ -31,7 +31,7 @@ export const menus: NavItemType[] = [
     id: 'schedule/detail',
     title: '일정',
     url: '/schedule/detail',
-    isHeader: true,
+    isHeader: false,
     isCard: true,
     cardDate: true
   },

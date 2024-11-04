@@ -10,7 +10,6 @@ import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import Button from 'src/components/Button';
 import { useBoolean } from 'src/hooks/useBoolean';
 import Wrap from './Wrap';
-import RegisterHeader from './RegisterHeader';
 import TextField from 'src/components/TextField';
 import RegisterCondition from './Conditions/RegisterCondition';
 
@@ -114,9 +113,8 @@ export default function Step2({ onNext }: StepProps) {
   };
 
   return (
-    <>
+    <Stack height={'100%'} justifyContent={'space-between'}>
       <Wrap>
-        <RegisterHeader />
         <Stack gap={5} paddingLeft={0.5} paddingRight={0.5}>
           <Stack gap={4}>
             <Typography
@@ -232,6 +230,6 @@ export default function Step2({ onNext }: StepProps) {
           </Stack>
         </Stack>
       </Drawer>
-    </>
+    </Stack>
   );
 }

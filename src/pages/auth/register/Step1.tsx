@@ -2,7 +2,6 @@ import { Stack, Typography } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Button from 'src/components/Button';
 import Wrap from './Wrap';
-import RegisterHeader from './RegisterHeader';
 import TextField from 'src/components/TextField';
 const stepsChild = [
   { label: '확인', value: '이름을 입력해주세요' },
@@ -33,10 +32,8 @@ export default function Step1({ onNext, data, setData }: StepProps) {
   };
 
   return (
-    <>
+    <Stack height={'100%'} justifyContent={'space-between'}>
       <Wrap>
-        <RegisterHeader />
-
         <Stack gap={4} paddingLeft={0.5} paddingRight={0.5}>
           <Typography
             variant="h3"
@@ -111,6 +108,6 @@ export default function Step1({ onNext, data, setData }: StepProps) {
           sx={{ borderRadius: 0 }}
         />
       )}
-    </>
+    </Stack>
   );
 }

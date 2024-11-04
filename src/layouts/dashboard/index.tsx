@@ -23,8 +23,8 @@ import NavBottom from './navBottom';
 import NavHorizontal from './navHorizontal';
 import NavMini from './navMini';
 import Footer from './footer';
-import CustomBreadcrumbs from '../../components/custom/CustomBreadcrumbs';
 import { useNavigate } from 'react-router';
+import Header from '../../components/custom/Header';
 
 // ----------------------------------------------------------------------
 
@@ -96,9 +96,7 @@ export default function DashboardLayout({ children }: Props) {
         location?.pathname === '/contract' ||
         location?.pathname === '/schedule/detail'
       ) &&
-        location?.pathname.indexOf('/notFound') === -1 && (
-          <CustomBreadcrumbs onBack={() => navigate(-1)} />
-        )}
+        location?.pathname.indexOf('/notFound') === -1 && <Header />}
       <Main>
         {children}
         <Footer />

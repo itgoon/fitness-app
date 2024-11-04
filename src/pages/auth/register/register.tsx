@@ -14,6 +14,8 @@ import Step2 from './Step2';
 import Step3 from './Step3';
 import { useResponsive } from 'src/hooks/useResponsive';
 import StepFlow from '../../../components/custom/StepFlow';
+import Header from '../../../components/custom/Header';
+import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -75,17 +77,17 @@ export default function RegisterView() {
       methods={methods}
       onSubmit={onSubmit}
       sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        justifyContent: 'space-between',
         height: '100%'
       }}
     >
-      <StepFlow activeStep={activeStep} onNext={onNext}>
-        <Step1 onNext={onNext} data={data} setData={setData} />
-        <Step2 onNext={onNext} />
-        <Step3 />
-      </StepFlow>
+      <Header stepTitle={'회원가입'} />
+      <Box height={'cala(100% - 56px)'}>
+        <StepFlow activeStep={activeStep} onNext={onNext}>
+          <Step1 onNext={onNext} data={data} setData={setData} />
+          <Step2 onNext={onNext} />
+          <Step3 />
+        </StepFlow>
+      </Box>
     </FormProvider>
   );
 }

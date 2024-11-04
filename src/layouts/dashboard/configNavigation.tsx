@@ -81,6 +81,7 @@ export function useNavData() {
             icon: ICONS.feed
           },
           {
+            //TODO: title 만 검정색인거 해결하기
             title: '더보기',
             path: paths.more.root,
             icon: pathname === paths.myPage.root ? ICONS.moreColor : ICONS.more
