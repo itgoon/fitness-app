@@ -8,7 +8,6 @@ import Button from '../../../../components/Button';
 import { getPeriodTime, getTimeDifference } from '../../../../utils/formatTime';
 import ListWrap from './ListWrap';
 import { useModal } from '../../../../hooks/useModal';
-import QrCard from '../../../../components/custom/QrModal';
 
 export default function DetailStep1({ onNext, selectedCard }) {
   const navigate = useNavigate();
@@ -73,7 +72,6 @@ export default function DetailStep1({ onNext, selectedCard }) {
           }
         />
       )}
-      <QrCard open={true} onClose={() => false} />
     </>
   );
 }

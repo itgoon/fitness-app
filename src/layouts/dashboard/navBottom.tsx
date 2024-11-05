@@ -4,6 +4,7 @@ import { useLayoutEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useNavData } from './configNavigation';
 import { useTheme } from '@mui/material';
+import QrModal from '../../components/custom/QrModal';
 
 export default function NavBottom() {
   const theme = useTheme();
@@ -14,6 +15,9 @@ export default function NavBottom() {
   const location = useLocation();
 
   const [list, setList] = useState<any[]>([]);
+
+  // modal
+  const [isOpen, setIsOpen] = useState(false);
 
   useLayoutEffect(() => {
     if (
@@ -29,40 +33,51 @@ export default function NavBottom() {
   }, [navData, location]);
 
   console.log({ list });
-
+  const openModal = (newValue) => {
+    if (newValue === '/member') {
+      setIsOpen((prev) => !prev);
+    }
+  };
   return (
-    <BottomNavigation
-      sx={{ maxHeight: 64, gap: 1.5, px: 2 }}
-      showLabels
-      value={location?.pathname}
-      onChange={(event, newValue) => {
-        console.log({ event }, { newValue }, event?.target);
-
-        navigate(newValue);
-      }}
-    >
-      {list?.map((item) => {
-        return (
-          <BottomNavigationAction
-            sx={{
-              minWidth: 64,
-              padding: 0,
-              span: {
-                fontSize: 11,
-                fontWeight: 500,
-                color:
-                  item.path !== location.pathname ? grey500 : 'currentColor'
-              }
-            }}
-            label={item.title}
-            icon={item?.icon}
-            value={item.path}
-          />
-        );
-      })}
-      {/* <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
+    <>
+      <BottomNavigation
+        sx={{ maxHeight: 64, gap: 1.5, px: 2 }}
+        showLabels
+        value={location?.pathname}
+        onChange={(event, newValue) => {
+          console.log({ event }, { newValue }, event?.target);
+          if (newValue === '/member') {
+            openModal(newValue);
+          } else {
+            navigate(newValue);
+          }
+        }}
+        onClick={(newValue) => openModal(newValue)}
+      >
+        {list?.map((item) => {
+          return (
+            <BottomNavigationAction
+              sx={{
+                minWidth: 64,
+                padding: 0,
+                span: {
+                  fontSize: 11,
+                  fontWeight: 500,
+                  color:
+                    item.path !== location.pathname ? grey500 : 'currentColor'
+                }
+              }}
+              label={item.title}
+              icon={item?.icon}
+              value={item.path}
+            />
+          );
+        })}
+        {/* <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
       <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
       <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}
-    </BottomNavigation>
+      </BottomNavigation>
+      <QrModal open={isOpen} onClose={() => setIsOpen(false)} />
+    </>
   );
 }

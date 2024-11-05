@@ -22,6 +22,8 @@ export const contractList = [
   { label: '결제 금액', value: '550,000원' }
 ];
 
+// QR 더미
+//  basic QR 데이터
 export const QRCustomerData: customerData = {
   centerName: { label: '센터명', value: '리온짐' },
   lesson: { label: '레슨', value: '[Lv1] 10회' },
@@ -30,6 +32,15 @@ export const QRCustomerData: customerData = {
   contractDate: { label: '계약 일자', value: '2024.08.04' },
   effectiveDate: { label: '유효 일자', value: '2024.11.13' }
 };
+
+export const QRCenterData = [
+  { label: '센터명', value: '리온짐' },
+  { label: '대표', value: '홍길동' },
+  { label: '전화번호', value: '032-123-4567' },
+  { label: '주소', value: '부천시 원미구 신흥로 256 1층' }
+];
+
+//
 
 // tabs  workoutRecord
 export const dummyWorkOutRecordList = [

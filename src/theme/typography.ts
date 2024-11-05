@@ -48,6 +48,7 @@ declare module '@mui/material/Typography' {
     subtitle0: true;
 
     'Body28/semiBold': true;
+    'Body24/bold': true;
     'Body24/semiBold': true;
     'Body20/bold': true;
     'Body20/semiBold': true;
@@ -78,6 +79,11 @@ const customVariant = () => {
     'Body28/semiBold': {
       fontWeight: 600,
       fontSize: pxToRem(28),
+      lineHeight: '36px'
+    },
+    'Body24/bold': {
+      fontWeight: 700,
+      fontSize: pxToRem(24),
       lineHeight: '36px'
     },
     'Body24/semiBold': {
@@ -125,8 +131,9 @@ const customVariant = () => {
       fontSize: pxToRem(16),
       lineHeight: '22px'
     },
+    // TODo: 원래 400이었음 해당 바리안트 검색하고 피그마랑 대조하기
     'Body16/regular': {
-      fontWeight: 400,
+      fontWeight: 500,
       fontSize: pxToRem(16),
       lineHeight: '22px'
     },

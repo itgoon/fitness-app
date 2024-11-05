@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import CalendarHeader from './CalendarHeader';
 import { IDatePicker, workData } from './types';
 import ServerDay from './PickersDay';
+import { Divider } from '@mui/material';
 
 /**
  * 할 일
@@ -12,7 +13,10 @@ import ServerDay from './PickersDay';
  * 해당 디자인에 맞춰 css를 수정할지 picersday 안에 랜더링 되게 할지 정하기
  */
 
-export default function DateCalendar({ workData }: IDatePicker) {
+export default function DateCalendar({
+  workData,
+  isCheckWorkout = true
+}: IDatePicker) {
   const [highlightedDays, setHighlightedDays] = useState<workData[]>([]);
   useEffect(() => {
     if (workData) {
@@ -41,24 +45,27 @@ export default function DateCalendar({ workData }: IDatePicker) {
   };
 
   return (
-    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
-      <CustomDateCalendar
-        showDaysOutsideCurrentMonth
-        slots={{
-          calendarHeader: (e) => {
-            return <CalendarHeader {...e} />;
-          },
-          day: ServerDay
-        }}
-        slotProps={{
-          day: {
-            highlightedDays
-          } as any
-        }}
-        sx={{
-          '.MuiPickersFadeTransitionGroup-root': {}
-        }}
-      />
-    </LocalizationProvider>
+    <>
+      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
+        <CustomDateCalendar
+          showDaysOutsideCurrentMonth
+          slots={{
+            calendarHeader: (e) => {
+              return <CalendarHeader isCheckWorkout={isCheckWorkout} {...e} />;
+            },
+            day: ServerDay
+          }}
+          slotProps={{
+            day: {
+              highlightedDays
+            } as any
+          }}
+          sx={{
+            '.MuiPickersFadeTransitionGroup-root': {}
+          }}
+        />
+      </LocalizationProvider>
+      <Divider sx={{ borderBottomWidth: 8 }} />
+    </>
   );
 }

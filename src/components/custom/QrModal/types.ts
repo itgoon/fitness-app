@@ -14,10 +14,17 @@ export type customerData = {
 export interface IQrCardData {
   customerData?: customerData;
   onClick?: () => void;
+  onClose?: () => void;
 }
 
 export interface IQrModal {
   customerData?: customerData;
+  centerData?: data[];
   open: boolean;
   onClose: () => void;
+}
+
+export interface IExpansionQR {
+  centerData: data[];
+  onBack: () => void;
 }

@@ -1,4 +1,4 @@
-import { Box, Divider, Tab, Tabs } from '@mui/material';
+import { Box, Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
 import DateCalendar from '../../components/custom/DateCalendar';
 import TabPanel from './tab/TabPanel';
@@ -15,7 +15,6 @@ export default function Schedule() {
   return (
     <Box>
       <DateCalendar workData={dummyMonthWorkoutList} />
-      <Divider sx={{ borderBottomWidth: 8 }} />
       <Box pt={3}>
         <Tabs
           value={tabValue}

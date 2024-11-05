@@ -148,7 +148,13 @@ export function button(theme: Theme) {
         ...(containedVariant && {
           color: lightMode
             ? theme.palette.common.white
-            : theme.palette.grey[800]
+            : theme.palette.grey[800],
+          backgroundColor: alpha(theme.palette.primary.main, 0.45)
+        }),
+        ...(outlinedVariant && {
+          backgroundColor: 'transparentColor',
+          borderColor: theme.palette.grey[200],
+          color: theme.palette.grey[400]
         })
       }
     };

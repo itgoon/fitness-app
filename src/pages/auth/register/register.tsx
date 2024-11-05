@@ -81,7 +81,7 @@ export default function RegisterView() {
       }}
     >
       <Header stepTitle={'회원가입'} />
-      <Box height={'cala(100% - 56px)'}>
+      <Box height={'calc(100% - 56px)'}>
         <StepFlow activeStep={activeStep} onNext={onNext}>
           <Step1 onNext={onNext} data={data} setData={setData} />
           <Step2 onNext={onNext} />

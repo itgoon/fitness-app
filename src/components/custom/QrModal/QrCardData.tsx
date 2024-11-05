@@ -5,8 +5,15 @@ import { getRemainDays } from '../../../utils/formatTime';
 import { useEffect, useState } from 'react';
 import Button from '../../Button';
 import { IQrCardData } from './types';
+import { useNavigate } from 'react-router';
 
-export default function QrCardData({ customerData, onClick }: IQrCardData) {
+export default function QrCardData({
+  customerData,
+  onClick,
+  onClose
+}: IQrCardData) {
+  const navigate = useNavigate();
+
   const [isDetail, setIsDetail] = useState(false);
   const [remainDay, setRemainDay] = useState<number>(0);
   const [remainValue, setRemainValue] = useState<number>(0);
@@ -59,7 +66,7 @@ export default function QrCardData({ customerData, onClick }: IQrCardData) {
                   children={`${contractDate.value} ~ ${effectiveDate.value}`}
                 />
               </Stack>
-              <Icon name="QrCardSmallSvg" size={100} />
+              <Icon name="QrCardSmallSvg" size={100} onClick={onClick} />
               <Stack gap={1}>
                 <LinearProgress
                   sx={{
@@ -128,6 +135,10 @@ export default function QrCardData({ customerData, onClick }: IQrCardData) {
               style={{ backgroundColor: 'white' }}
               size="small"
               children={'예약하기'}
+              onClick={() => {
+                navigate('/reservation');
+                onClose && onClose();
+              }}
             />
             <Button
               typoColor={'white'}

@@ -1,8 +1,10 @@
 // ----------------------------------------------------------------------
 
-import { DateView } from '@mui/x-date-pickers';
 import { DatePickerProps as MuiDatePickerProps } from '@mui/x-date-pickers/DatePicker';
 import { CSSProperties } from 'react';
+
+import { DateView, PickersCalendarHeaderProps } from '@mui/x-date-pickers';
+import { Dayjs } from 'dayjs';
 export interface DatePickerProps
   extends Omit<MuiDatePickerProps<Date>, 'onChange' | 'value'> {
   format?: string;
@@ -18,4 +20,10 @@ export type workData = {
 };
 export interface IDatePicker {
   workData?: workData[];
+  isCheckWorkout?: boolean;
+}
+
+// calendar header 확장
+export interface CalendarHeaderProps extends PickersCalendarHeaderProps<Dayjs> {
+  isCheckWorkout?: boolean;
 }
