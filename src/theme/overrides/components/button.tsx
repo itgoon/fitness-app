@@ -128,9 +128,13 @@ export function button(theme: Theme) {
           }),
           ...(ownerState.color === 'primary' && {
             color: theme.palette.grey[900],
-
+            '&:hover': {}
+          }),
+          ...(ownerState.color === 'secondary' && {
+            borderColor: theme.palette.grey[200],
+            color: theme.palette.grey[900],
             '&:hover': {
-              backgroundColor: alpha(theme.palette.error.main, 0.08)
+              borderColor: theme.palette.primary.main
             }
           })
         })

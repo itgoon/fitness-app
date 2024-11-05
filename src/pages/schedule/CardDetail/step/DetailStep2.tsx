@@ -8,7 +8,7 @@ const matchingArray = (selectedCard) => {
     { label: '레슨 시간', value: time },
     { label: '레슨/회차', value: count },
     { label: '담당 강사', value: trainer },
-    { label: '취소 일시', value: dayjs().format('YYYY-MM-dd hh:mm') }
+    { label: '취소 일시', value: dayjs().format('YYYY년 MM월 DD일 hh:mm') }
   ];
   return dataList;
 };

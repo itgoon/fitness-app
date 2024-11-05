@@ -25,7 +25,7 @@ export default function CardDetail() {
   return (
     <>
       <Header stepTitle={stepTitle[activeStep]} />
-      <Stack gap={2.5} px={2.5} height={'100%'}>
+      <Stack gap={2.5} py={5} px={2.5} height={'100%'}>
         <StepFlow activeStep={activeStep} onNext={onNext}>
           <DetailStep1 selectedCard={selectedCard} onNext={onNext} />
           <DetailStep2 selectedCard={selectedCard} />

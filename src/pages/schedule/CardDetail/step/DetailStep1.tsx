@@ -21,14 +21,14 @@ export default function DetailStep1({ onNext, selectedCard }) {
   const light = theme.palette.mode === 'light';
   const grey600 = light ? theme.palette.grey[600] : 'white';
 
-  const { chipState, date, time } = selectedCard;
+  const { chipState, time } = selectedCard;
   const chip = chipChange(chipState);
 
   const isWarning = chipState === 'warning';
   const isUndefined = chipState !== undefined;
   return (
     <>
-      <Box pt={12.5} sx={layoutSx}>
+      <Box pt={6.5} sx={layoutSx}>
         <Icon name={chip.largeIconName} size={60} />
         <Stack gap={0.5}>
           <Typography
