@@ -15,6 +15,7 @@ import { Divider } from '@mui/material';
 
 export default function DateCalendar({
   workData,
+  onChange,
   isCheckWorkout = true
 }: IDatePicker) {
   const [highlightedDays, setHighlightedDays] = useState<workData[]>([]);
@@ -63,6 +64,7 @@ export default function DateCalendar({
           sx={{
             '.MuiPickersFadeTransitionGroup-root': {}
           }}
+          onChange={onChange}
         />
       </LocalizationProvider>
       <Divider sx={{ borderBottomWidth: 8 }} />

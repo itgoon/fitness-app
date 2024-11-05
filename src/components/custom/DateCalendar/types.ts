@@ -21,6 +21,7 @@ export type workData = {
 export interface IDatePicker {
   workData?: workData[];
   isCheckWorkout?: boolean;
+  onChange?: (e: any) => void;
 }
 
 // calendar header 확장

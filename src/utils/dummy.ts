@@ -39,8 +39,7 @@ export const QRCenterData = [
   { label: '전화번호', value: '032-123-4567' },
   { label: '주소', value: '부천시 원미구 신흥로 256 1층' }
 ];
-
-//
+// qr
 
 // tabs  workoutRecord
 export const dummyWorkOutRecordList = [
@@ -49,7 +48,7 @@ export const dummyWorkOutRecordList = [
   { date: '2024-09-21', time: '19:10 ~ 20:00', weight: '72kg' }
 ];
 
-// tabs  reservationList
+// tabs 일정 페이지 reservationList
 export const dummyReservaitonListCard: cardData[] = [
   {
     date: '2024-09-19',
@@ -89,3 +88,5 @@ export const dummyMonthWorkoutList = [
   { type: 'lesson', date: '2024-10-01' },
   { type: 'workout', date: '2024-10-22' }
 ];
+// 일정 페이지
+//

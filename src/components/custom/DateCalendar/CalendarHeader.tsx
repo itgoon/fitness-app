@@ -32,7 +32,7 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
         <Icon size={18} name="ExpandMoreSvg" onClick={viewChange} />
       </Box>
 
-      {!isCheckWorkout && (
+      {isCheckWorkout && (
         <Stack paddingX={1.5} gap={1}>
           <Box display={'flex'} gap={2.5} paddingX={2.3}>
             <Box>

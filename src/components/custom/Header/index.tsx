@@ -48,7 +48,7 @@ export default function Header({ stepTitle }: IHeader) {
     setBreadcrumbs(foundBreadcrumbs);
   }, [currentLocation]);
 
-  if (stepTitle !== undefined) {
+  if (stepTitle !== undefined && stepTitle !== '') {
     return (
       <Box role="presentation" height={56} py={1.88} px={2}>
         <Item isStart={true} title={stepTitle} />

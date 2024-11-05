@@ -17,7 +17,10 @@ export const YearMonthKR = 'YYYY MM월';
 export const YearMonthTextField = 'YYYY. MM';
 
 export const TimeDateFormat = 'yyyy-MM-dd HH:mm';
+export const TimeDateFormatKR = 'YYYY년 MM월 DD일 dddd';
+
 export const DateResFormat = 'yyyy-MM-dd HH:mm:ss';
+
 type InputValue = Date | string | number | null | undefined;
 
 export function fDate(date: InputValue, newFormat?: string) {
@@ -74,8 +77,11 @@ export function isAfter(startDate: Date | null, endDate: Date | null) {
 }
 
 // card 관련 시간 함수
-
-// 오전 오후
+export const getTimeCheck = (time) => {
+  const startHour = parseInt(time.split(':')[0], 10);
+  return startHour < 12 ? `오전 ${time}` : `오후 ${time}`;
+};
+// 00:00~00:00 시간 간격이 있는 값 오전 오후
 export const getPeriodTime = (time) => {
   const startHour = parseInt(time.split('~')[0].trim().split(':')[0], 10);
   return startHour < 12
