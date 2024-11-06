@@ -11,7 +11,7 @@ import Button from 'src/components/Button';
 import { useBoolean } from 'src/hooks/useBoolean';
 import Wrap from './Wrap';
 import TextField from 'src/components/TextField';
-import RegisterCondition from './Conditions/RegisterCondition';
+import RegisterCondition from '../Conditions/RegisterCondition';
 
 const INITIAL_TIMER = 180;
 const CODE_LENGTH = 6;

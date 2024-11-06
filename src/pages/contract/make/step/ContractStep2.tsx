@@ -1,11 +1,11 @@
 import { Box, Stack, Typography, useTheme } from '@mui/material';
-import { useRef, useState } from 'react';
-import { default as ReactSignatureCanvas } from 'react-signature-canvas';
-import { useModal } from '../../../hooks/useModal';
-import { contractList } from '../../../utils/dummy';
-import ContractTable from '../../../components/custom/ContractTable';
-import Button from '../../../components/Button';
-import SignPopover from '../../../components/custom/sign/SignPopover';
+import { useState } from 'react';
+import { useModal } from '../../../../hooks/useModal';
+import { contractList } from '../../../../utils/dummy';
+import ContractTable from '../../../../components/custom/ContractTable';
+import SignPopover from '../../../../components/custom/sign/SignPopover';
+import Button from '../../../../components/Button';
+import { useSign } from '../../../../hooks/useSign';
 
 export interface StepProps {
   onNext?: () => void;
@@ -28,42 +28,19 @@ export default function Step2({ onNext }: StepProps) {
 
   // state
   const [isSignOpen, setIsSignOpen] = useState(false);
-  const [isSigned, setIsSigned] = useState(false);
-  const [sign, setSign] = useState({ data: '', original: '' });
-  const signRef = useRef<ReactSignatureCanvas>(null);
 
   // hook
+  const { signRef, sign, isSigned, setSign, clear, setIsSigned, saveSign } =
+    useSign();
+
   const { openConfirm } = useModal();
 
-  // 서명 패드에 서명한 내용 지우기
-  const clear = () => {
-    signRef.current?.clear();
-    setIsSigned(false);
-  };
-  // 서명 사진 데이터 url 얻는 방법
-  const getFile = (): string => {
-    const data = signRef.current!.toDataURL('image/png');
-
-    return String(data);
-  };
-
-  const getOriginalFIle = () => {
-    return '';
-  };
-
-  const saveSign = () => {
-    if (signRef.current && signRef.current.isEmpty()) {
-      return;
-    } else {
-      setSign({ data: getFile(), original: getOriginalFIle() });
-      setIsSignOpen(false);
-    }
-  };
   const signModalClose = () => {
     setSign({ data: '', original: '' });
     setIsSigned(false);
     setIsSignOpen(false);
   };
+
   return (
     <Stack gap={3}>
       <Stack gap={5} paddingBottom={12.6}>
@@ -87,7 +64,7 @@ export default function Step2({ onNext }: StepProps) {
           >
             {isSigned ? (
               <img
-                src={sign.data}
+                src={sign?.data}
                 alt="signature"
                 style={{ height: 'inherit', objectFit: 'contain' }}
               />
@@ -102,7 +79,7 @@ export default function Step2({ onNext }: StepProps) {
         </Stack>
       </Stack>
 
-      {isSigned && sign.data !== '' && (
+      {isSigned && sign?.data !== '' && (
         <Button
           size={'large'}
           variant={'contained'}
@@ -128,7 +105,10 @@ export default function Step2({ onNext }: StepProps) {
         clear={clear}
         open={isSignOpen}
         onClose={signModalClose}
-        onClick={saveSign}
+        onClick={() => {
+          saveSign();
+          setIsSignOpen(false);
+        }}
       />
     </Stack>
   );

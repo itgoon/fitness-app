@@ -1,7 +1,7 @@
 import { Box, Stack, Typography, useTheme } from '@mui/material';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
 import ReservationCard from '../../../components/custom/reservationCard/ReservationCard';
-import { IWorkOutRecord } from './types';
+import { IWorkOutRecord } from '../types';
 import { dummyWorkOutRecordList } from '../../../utils/dummy';
 import { useCardContext } from '../../../hooks/useCard';
 import { useNavigate } from 'react-router';

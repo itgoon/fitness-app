@@ -144,6 +144,10 @@ export default function QrCardData({
               typoColor={'white'}
               typoVariant={'Body14/semiBold'}
               children={'계약서 보기'}
+              onClick={() => {
+                navigate('/viewcontract');
+                onClose && onClose();
+              }}
             />
           </Stack>
         </Stack>

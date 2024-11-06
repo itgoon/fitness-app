@@ -11,7 +11,6 @@ import { AuthGuard } from '../components';
 const DashboardPage = lazy(() => import('src/pages/dashboard'));
 const SchedulePage = lazy(() => import('src/pages/schedule'));
 const ScheduleCardDetail = lazy(() => import('src/pages/schedule/CardDetail'));
-const ContractPage = lazy(() => import('src/pages/Contract'));
 const MemberPage = lazy(() => import('src/pages/member'));
 const RecordPage = lazy(() => import('src/pages/record'));
 const MorePage = lazy(() => import('src/pages/more'));
@@ -21,7 +20,8 @@ const MyPagePage = lazy(() => import('src/pages/myPage'));
 const ReservationPage = lazy(() => import('src/pages/reservation'));
 
 // contract
-
+const ContractMakePage = lazy(() => import('src/pages/contract/make/index'));
+const ContractViewPage = lazy(() => import('src/pages/contract/view/index'));
 // ----------------------------------------------------------------------
 
 export const dashboardRoutes = [
@@ -61,7 +61,11 @@ export const dashboardRoutes = [
       },
       {
         path: 'contract',
-        children: [{ element: <ContractPage />, index: true }]
+        children: [{ element: <ContractMakePage />, index: true }]
+      },
+      {
+        path: 'viewcontract',
+        children: [{ element: <ContractViewPage />, index: true }]
       },
       {
         path: 'member',

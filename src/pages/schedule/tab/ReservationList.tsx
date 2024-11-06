@@ -1,6 +1,6 @@
 import { Box, Stack } from '@mui/system';
 import ReservationCard from '../../../components/custom/reservationCard/ReservationCard';
-import { IReservationList } from './types';
+import { IReservationList } from '../types';
 import { dummyReservaitonListCard } from '../../../utils/dummy';
 import { Typography, useTheme } from '@mui/material';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';

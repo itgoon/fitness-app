@@ -18,6 +18,7 @@ import SnackbarProvider from 'src/components/snackbar/SnackbarProvider';
 import AuthProvider from './provider/AuthProvider';
 import ModalProvider from './provider/ModalProvider';
 import { CardProvider } from './hooks/useCard';
+import { SignProvider } from './hooks/useSign';
 
 // ----------------------------------------------------------------------
 
@@ -53,10 +54,12 @@ export default function App() {
                 <AuthProvider>
                   <ModalProvider>
                     <SettingsDrawer />
-                    <CardProvider>
-                      <ProgressBar />
-                      <Router />
-                    </CardProvider>
+                    <SignProvider>
+                      <CardProvider>
+                        <ProgressBar />
+                        <Router />
+                      </CardProvider>
+                    </SignProvider>
                   </ModalProvider>
                 </AuthProvider>
               </SnackbarProvider>

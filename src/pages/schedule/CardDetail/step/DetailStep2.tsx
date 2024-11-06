@@ -1,5 +1,6 @@
 import dayjs from 'dayjs';
 import ResponsePage from '../../../../components/custom/ResponsePage';
+import { IStep } from '../../types';
 const matchingArray = (selectedCard) => {
   const { time, count, trainer, date } = selectedCard;
 
@@ -13,7 +14,7 @@ const matchingArray = (selectedCard) => {
   return dataList;
 };
 
-export default function DetailStep2({ selectedCard }) {
+export default function DetailStep2({ selectedCard }: IStep) {
   return (
     <ResponsePage
       title={'예약이 취소되었습니다.'}

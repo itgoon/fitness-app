@@ -45,7 +45,7 @@ export default function ContractTable({ list, title, gap }: IContractTable) {
             </Typography>
             <Typography
               variant="Body16/regular"
-              width={`calc(100% - 100px)`}
+              width={`calc(100% - 90px)`}
               height={48}
               color={black}
               padding={1.5}

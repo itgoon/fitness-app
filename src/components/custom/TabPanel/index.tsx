@@ -1,6 +1,11 @@
 import { Box } from '@mui/material';
-import { ITabPanel } from './types';
+import { ReactNode } from 'react';
 
+interface ITabPanel {
+  value: number;
+  index: number;
+  children: ReactNode;
+}
 export default function TabPanel({ value, index, children }: ITabPanel) {
   return (
     <Box
@@ -8,8 +13,6 @@ export default function TabPanel({ value, index, children }: ITabPanel) {
       hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
-      px={2.5}
-      py={3}
     >
       {children}
     </Box>

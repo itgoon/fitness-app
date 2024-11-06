@@ -1,11 +1,3 @@
-import { ReactNode } from 'react';
-
-export interface ITabPanel {
-  value: number;
-  index: number;
-  children: ReactNode;
-}
-
 export type cardData = {
   date: string;
   time: string;
@@ -23,4 +15,9 @@ export interface IWorkOutRecord {
 // ReservationCard
 export interface IReservationList {
   cardDataList?: cardData[];
+}
+
+export interface IStep {
+  onNext?: () => void;
+  selectedCard?: any;
 }

@@ -1,7 +1,8 @@
 import { Box, Stack, Typography, useTheme } from '@mui/material';
 import Icon from '../../../../components/Icon';
+import { IStep } from '../../types';
 
-export default function ListWrap({ selectedCard }) {
+export default function ListWrap({ selectedCard }: IStep) {
   const { chipState, count, date, place, time, trainer } = selectedCard;
   const startTime = time.split('~')[0];
   const endTime = time.split('~')[1];

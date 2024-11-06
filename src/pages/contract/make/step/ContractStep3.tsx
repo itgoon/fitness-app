@@ -1,5 +1,5 @@
 import { Stack } from '@mui/material';
-import ResponsePage from '../../../components/custom/ResponsePage';
+import ResponsePage from '../../../../components/custom/ResponsePage';
 
 const signDataList = [
   { label: '센터명', value: '리온짐' },

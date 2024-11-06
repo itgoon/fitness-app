@@ -1,22 +1,21 @@
 import { Stack } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
-import { dummyCondition, dummyCondition2 } from '../../../utils/dummy';
-import Button from '../../../components/Button';
-import Condition from '../../../components/custom/Condition';
+import { dummyCondition, dummyCondition2 } from '../../../../utils/dummy';
+import Condition from '../../../../components/custom/Condition';
+import Button from '../../../../components/Button';
 
 export interface StepProps {
   onNext?: () => void;
 }
 /**
  * ******************************************************
- * 약관 및 규정
+ * 대시보드 -> 약관 및 규정
  * ******************************************************
  */
 export default function Step1({ onNext }: StepProps) {
   const btnRef = useRef<HTMLDivElement | null>(null);
   const [isBtnVisible, setIsBtnVisible] = useState(false);
 
-  //   TODO: 활성화 단계에서 퀄리티를 더 높일 것 동의 버튼 이라거나
   useEffect(() => {
     const observer = new IntersectionObserver(
       (entries) => {

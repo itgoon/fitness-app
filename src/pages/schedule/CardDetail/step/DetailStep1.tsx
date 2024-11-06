@@ -1,6 +1,5 @@
 import { Box, Chip, Divider, Stack, Typography, useTheme } from '@mui/material';
 
-import { useNavigate } from 'react-router';
 import { chipChange } from '../../../../utils/chipChange';
 import Icon from '../../../../components/Icon';
 import EmptyCard from '../../../../components/custom/customCard/EmptyCard';
@@ -8,9 +7,9 @@ import Button from '../../../../components/Button';
 import { getPeriodTime, getTimeDifference } from '../../../../utils/formatTime';
 import ListWrap from './ListWrap';
 import { useModal } from '../../../../hooks/useModal';
+import { IStep } from '../../types';
 
-export default function DetailStep1({ onNext, selectedCard }) {
-  const navigate = useNavigate();
+export default function DetailStep1({ onNext, selectedCard }: IStep) {
   const { openConfirm } = useModal();
   const theme = useTheme();
   const layoutSx = {
@@ -64,7 +63,7 @@ export default function DetailStep1({ onNext, selectedCard }) {
             openConfirm({
               title: '',
               content: '정말로 예약을 취소하시겠습니까?',
-              onClick: () => onNext(),
+              onClick: () => onNext && onNext(),
               clickMsg: '예약취소',
               closeMsg: '아니요',
               clickColor: 'error'
