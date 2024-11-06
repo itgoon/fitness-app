@@ -61,9 +61,7 @@ export default function DateCalendar({
               highlightedDays
             } as any
           }}
-          sx={{
-            '.MuiPickersFadeTransitionGroup-root': {}
-          }}
+          sx={isCheckWorkout ? {} : { maxHeight: 288, height: 288 }}
           onChange={onChange}
         />
       </LocalizationProvider>

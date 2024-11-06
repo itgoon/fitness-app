@@ -2,11 +2,13 @@ import { Badge, Box, Divider, Stack, Typography } from '@mui/material';
 import { DateView } from '@mui/x-date-pickers';
 import Icon from '../../Icon';
 import { CalendarHeaderProps } from './types';
+import { useNavigate } from 'react-router';
 
 export default function CalendarHeader(props: CalendarHeaderProps) {
   const { currentMonth, onMonthChange, onViewChange, view, isCheckWorkout } =
     props;
 
+  const navigate = useNavigate();
   const month = currentMonth.format('YYYY년 M월');
 
   const viewChange = () => {
@@ -18,18 +20,32 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
 
   return (
     <Stack className="MuiPickersCalendarHeader-root">
+      {/* header 마무리  */}
       <Box
         display={'flex'}
         alignItems={'center'}
-        justifyContent={'center'}
         gap={1 / 2}
         py={1.87}
+        px={2.87}
         height={56}
       >
-        <Typography onClick={viewChange} variant="Body18/semiBold">
-          {month}
-        </Typography>
-        <Icon size={18} name="ExpandMoreSvg" onClick={viewChange} />
+        {!isCheckWorkout && (
+          <Box>
+            <Icon name={'LeftArrow'} size={16} onClick={() => navigate(-1)} />
+          </Box>
+        )}
+        <Box
+          display={'flex'}
+          flex={1}
+          justifyContent={'center'}
+          alignItems={'center'}
+          gap={1 / 2}
+        >
+          <Typography onClick={viewChange} variant="Body18/semiBold">
+            {month}
+          </Typography>
+          <Icon size={18} name="ExpandMoreSvg" onClick={viewChange} />
+        </Box>
       </Box>
 
       {isCheckWorkout && (

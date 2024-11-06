@@ -33,7 +33,7 @@ export default function ExpansionQR({ centerData, onBack }: IExpansionQR) {
             <Typography
               textAlign={'center'}
               px={4}
-              variant="Body15/regular"
+              variant={'Body15/light'}
               onClick={handleCenter}
               children={'입장 시 시설 담당자나 바코드에 QR코드를 보여주세요.'}
             />

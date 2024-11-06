@@ -36,16 +36,12 @@ export function dateCalendar(theme: Theme) {
 
               '.MuiDayCalendar-root': { maxHeight: 'inherit' },
               '.MuiDayCalendar-header': {
-                gap: 23.2,
+                gap: 14,
                 marginTop: 6,
                 marginBottom: 6,
-                // marginTop: 4,
-                // marginBottom: 4,
-                // paddingLeft: 8,
-                // paddingRight: 8,
+
                 span: {
                   height: 30,
-
                   fontSize: 13,
                   fontWeight: 400,
                   color: headerGrey
@@ -56,25 +52,24 @@ export function dateCalendar(theme: Theme) {
                 minHeight: 210,
 
                 '.MuiDayCalendar-monthContainer': {
+                  height: '100%',
+                  display: 'flex',
+                  flexDirection: 'column',
+
+                  gap: 7,
+                  // 7*4 = 24 + weekLine(24+30*5) + dayline(42) 하면 220 pb 20 공간 딱 남음
                   '> div': {
-                    gap: 23.2,
-                    marginTop: 6,
-                    marginBottom: 6,
-
-                    // marginTop: 4,
-                    // marginBottom: 4,
-                    // paddingLeft: 8,
-                    // paddingRight: 8,
+                    gap: 20,
+                    margin: 0,
                     button: {
+                      width: 30,
                       height: 30,
-
                       '.MuiBadge-badge': {
                         top: '11px',
                         right: '6px'
                       }
                     },
                     '.MuiPickersDay-today, [aria-selected="true"]': {
-                      height: 35,
                       paddingLeft: 8,
                       paddingRight: 8,
                       '.MuiBadge-badge': {

@@ -57,7 +57,7 @@ export default function WeekCalendar({
               </Typography>
               <Stack>
                 <Typography
-                  variant={isToday ? 'Body15/semiBold' : 'Body15/regular'}
+                  variant={isToday ? 'Body15/regular' : 'Body15/light'}
                   color={isToday ? black : grey600}
                 >
                   {dayjs(item, format).format('D')}

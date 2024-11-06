@@ -55,7 +55,7 @@ export default function ServerDay(
             day={day as Dayjs}
             key={key}
           >
-            <Typography color="inherit" variant="Body15/semiBold">
+            <Typography color="inherit" variant="Body15/light">
               {dayjs(day).format('DD')}
             </Typography>
             {renderBadge(work)}
@@ -71,7 +71,7 @@ export default function ServerDay(
         >
           <Typography
             color={outsideCurrentMonth ? `${grey400}` : 'inherit'}
-            variant="Body15/semiBold"
+            variant="Body15/light"
           >
             {dayjs(day).format('DD')}
           </Typography>
