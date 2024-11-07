@@ -48,6 +48,13 @@ export const menus: NavItemType[] = [
     isHeader: false
   },
   {
+    id: 'recordPost',
+    title: '기록 등록',
+    url: '/record/post',
+    isHeader: true,
+    isStart: true
+  },
+  {
     id: 'more',
     title: '더보기',
     url: '/more',

@@ -22,7 +22,7 @@ export function tabs(theme: Theme) {
           padding: 0,
           opacity: 1,
           minWidth: 48,
-          minHeight: 48,
+          minHeight: 50,
           fontSize: 18,
           fontWeight: 700,
           // '&:not(:last-of-type)': {

@@ -1,10 +1,10 @@
 import { Box, Stack, Typography, useTheme } from '@mui/material';
-import DateCalendar from '../../../components/custom/DateCalendar';
 import Button from '../../../components/Button';
 import { useState } from 'react';
 import dayjs from 'dayjs';
 import { TimeDateFormatKR } from '../../../utils/formatTime';
 import { IReservationList, IStep, TimeSlot } from '../types';
+import DateCalendar from '../../../components/custom/calendar/DateCalendar';
 /**
  * ******************************************************
  * step1

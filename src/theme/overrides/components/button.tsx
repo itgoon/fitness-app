@@ -174,10 +174,13 @@ export function button(theme: Theme) {
           paddingRight: 4
         })
       }),
+
       ...(mediumSize && {
         paddingLeft: 12,
         height: pxSize.md,
         paddingRight: 12,
+        fontSize: 16,
+        fontWeight: 600,
         ...(textVariant && {
           paddingLeft: 8,
           paddingRight: 8
@@ -185,7 +188,8 @@ export function button(theme: Theme) {
       }),
       ...(largeSize && {
         height: pxSize.lg,
-        fontSize: 15,
+        fontSize: 18,
+        fontWeight: 600,
         paddingLeft: 16,
         paddingRight: 16,
         justifyContent: 'center',

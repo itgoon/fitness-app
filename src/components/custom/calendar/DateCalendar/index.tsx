@@ -2,15 +2,14 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar as CustomDateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { useEffect, useState } from 'react';
-import CalendarHeader from './CalendarHeader';
-import { IDatePicker, workData } from './types';
 import ServerDay from './PickersDay';
 import { Divider } from '@mui/material';
+import CalendarHeader from '../CalendarHeader';
+import { IDatePicker, workData } from '../types';
 
 /**
- * 할 일
- * 우선 같은날 여러 데이터가 있는 경우 밷지가 나오는 것을 확인하고
- * 해당 디자인에 맞춰 css를 수정할지 picersday 안에 랜더링 되게 할지 정하기
+ * 일정 탭, 레슨 예약 탭에서 사용되는 데이트 캘린더
+ * isCheckWorkout으로 헤더 타입 변경
  */
 
 export default function DateCalendar({
@@ -19,6 +18,7 @@ export default function DateCalendar({
   isCheckWorkout = true
 }: IDatePicker) {
   const [highlightedDays, setHighlightedDays] = useState<workData[]>([]);
+
   useEffect(() => {
     if (workData) {
       setHighlightedDays(reducingArray(workData));
@@ -49,6 +49,7 @@ export default function DateCalendar({
     <>
       <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
         <CustomDateCalendar
+          className="main-calendar"
           showDaysOutsideCurrentMonth
           slots={{
             calendarHeader: (e) => {

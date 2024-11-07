@@ -13,6 +13,7 @@ const SchedulePage = lazy(() => import('src/pages/schedule'));
 const ScheduleCardDetail = lazy(() => import('src/pages/schedule/CardDetail'));
 const MemberPage = lazy(() => import('src/pages/member'));
 const RecordPage = lazy(() => import('src/pages/record'));
+const RecordPostPage = lazy(() => import('src/pages/record/Post'));
 const MorePage = lazy(() => import('src/pages/more'));
 
 // Employee
@@ -51,12 +52,10 @@ export const dashboardRoutes = [
       },
       {
         path: 'reservation',
-
         children: [{ element: <ReservationPage />, index: true }]
       },
       {
         path: 'myPage',
-
         children: [{ element: <MyPagePage />, index: true }]
       },
       {
@@ -73,7 +72,10 @@ export const dashboardRoutes = [
       },
       {
         path: 'record',
-        children: [{ element: <RecordPage />, index: true }]
+        children: [
+          { element: <RecordPage />, index: true },
+          { path: 'post', element: <RecordPostPage /> }
+        ]
       },
       {
         path: 'more',

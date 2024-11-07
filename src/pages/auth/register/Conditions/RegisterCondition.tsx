@@ -43,7 +43,7 @@ export default function RegisterCondition({
           />
         }
       />
-      {onClick && <Icon name="RightArrowSvg" onClick={onClick}></Icon>}
+      {onClick && <Icon name="RegisterRightArrowSvg" onClick={onClick}></Icon>}
     </Box>
   );
 }

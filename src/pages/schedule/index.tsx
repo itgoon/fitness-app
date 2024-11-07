@@ -1,10 +1,10 @@
 import { Box, Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
-import DateCalendar from '../../components/custom/DateCalendar';
 import WorkOutRecord from './tab/WorkOutRecord';
 import ReservationList from './tab/ReservationList';
 import { dummyMonthWorkoutList } from '../../utils/dummy';
 import TabPanel from '../../components/custom/TabPanel';
+import DateCalendar from '../../components/custom/calendar/DateCalendar';
 /**
  * ******************************************************
  * 일정 화면

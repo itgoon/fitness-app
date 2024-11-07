@@ -28,7 +28,7 @@ export default function TabTable() {
       <Stack gap={0.5}>
         <Box sx={{ ...singSx }}>
           <Typography children={'작성일'} />
-          <Typography children={'2024sus 08월 19일'} />
+          <Typography children={'2024년 08월 19일'} />
         </Box>
         <Box sx={{ ...singSx }}>
           {/* TODO: 임의로 높이 변경 */}

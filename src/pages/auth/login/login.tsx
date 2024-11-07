@@ -90,13 +90,20 @@ export default function LoginView() {
           startIcon={'Kakao'}
           size={'large'}
           variant="contained"
-          sx={{ backgroundColor: '#FEE500', color: palette.common.black }}
+          typoVariant={'Body15/regular'}
           children={'카카오 계정으로 시작하기'}
+          sx={{
+            height: 52,
+            backgroundColor: '#FEE500',
+            color: palette.common.black
+          }}
         />
         <Button
           startIcon={'Apple'}
+          typoVariant={'Body15/regular'}
           size={'large'}
           variant="contained"
+          sx={{ height: 52 }}
           children={'Apple 계정으로 시작하기'}
         />
       </Stack>

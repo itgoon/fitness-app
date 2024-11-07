@@ -3,11 +3,13 @@ import TabPanel from '../../../components/custom/TabPanel';
 import { useState } from 'react';
 import TabTable from './tab/TabTable';
 import TabCondition from './tab/TabCondition';
+import Header from '../../../components/custom/Header';
 
 export default function ContractView() {
   const [tabValue, setTabValue] = useState(0);
   return (
     <Box>
+      <Header stepTitle="리온짐" />
       <Box>
         <Tabs
           value={tabValue}

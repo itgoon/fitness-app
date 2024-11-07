@@ -1,13 +1,13 @@
-import { filledInputClasses } from "@mui/material/FilledInput";
-import { inputBaseClasses } from "@mui/material/InputBase";
-import { inputLabelClasses } from "@mui/material/InputLabel";
-import { outlinedInputClasses } from "@mui/material/OutlinedInput";
-import { alpha, Theme } from "@mui/material/styles";
-import { pxSize } from "src/utils/style";
+import { filledInputClasses } from '@mui/material/FilledInput';
+import { inputBaseClasses } from '@mui/material/InputBase';
+import { inputLabelClasses } from '@mui/material/InputLabel';
+import { outlinedInputClasses } from '@mui/material/OutlinedInput';
+import { alpha, Theme } from '@mui/material/styles';
+import { pxSize } from 'src/utils/style';
 
 // ----------------------------------------------------------------------
 
-declare module "@mui/material/TextField" {
+declare module '@mui/material/TextField' {
   interface TextFieldPropsVariantOverrides {
     text: true;
   }
@@ -43,7 +43,7 @@ export function textField(theme: Theme) {
         root: {
           ...font.value,
           fontSize: 18,
-          top: "-1px !important",
+          top: '-1px !important',
           color: color.placeholder,
           [`&.${inputLabelClasses.shrink}`]: {
             ...font.textLabel,
@@ -58,7 +58,7 @@ export function textField(theme: Theme) {
               color: theme.palette.text.disabled
             },
             [`&.${inputLabelClasses.filled}`]: {
-              transform: "translate(12px, 6px) scale(0.75)"
+              transform: 'translate(12px, 6px) scale(0.75)'
             }
           }
         }
@@ -69,17 +69,17 @@ export function textField(theme: Theme) {
     MuiInputBase: {
       styleOverrides: {
         root: {
-          marginTop: "0 !important",
-          color: "#212121",
+          marginTop: '0 !important',
+          color: '#212121',
           [`&.${inputBaseClasses.disabled}`]: {
-            "& svg": {
+            '& svg': {
               color: theme.palette.text.disabled
             }
           }
         },
         input: {
           ...font.value,
-          "&::placeholder": {
+          '&::placeholder': {
             opacity: 1,
             color: color.placeholder
           }
@@ -91,10 +91,10 @@ export function textField(theme: Theme) {
     MuiInput: {
       styleOverrides: {
         underline: {
-          "&:before": {
+          '&:before': {
             borderBottomColor: alpha(theme.palette.grey[500], 0.32)
           },
-          "&:after": {
+          '&:after': {
             borderBottomColor: color.border
           }
         }
@@ -123,7 +123,7 @@ export function textField(theme: Theme) {
         },
         notchedOutline: {
           borderColor: alpha(theme.palette.grey[500], 0.2),
-          transition: theme.transitions.create(["border-color"], {
+          transition: theme.transitions.create(['border-color'], {
             duration: theme.transitions.duration.shortest
           })
         }
@@ -136,7 +136,7 @@ export function textField(theme: Theme) {
         root: {
           borderRadius: theme.shape.borderRadius,
           backgroundColor: alpha(theme.palette.grey[500], 0.08),
-          "&:hover": {
+          '&:hover': {
             backgroundColor: alpha(theme.palette.grey[500], 0.16)
           },
           [`&.${filledInputClasses.focused}`]: {
@@ -158,38 +158,38 @@ export function textField(theme: Theme) {
     MuiTextField: {
       styleOverrides: {
         root: {
-          "& .MuiInputBase-sizeLarge": {
+          '& .MuiInputBase-sizeLarge': {
             input: {
-              boxSizing: "border-box",
+              boxSizing: 'border-box',
               height: pxSize.lg
             }
           },
           [`.MuiInputBase-input`]: {
             // padding: "13px 12px 13px 10px",
-            boxSizing: "border-box",
+            boxSizing: 'border-box',
             height: pxSize.md,
 
-            "&.MuiInputBase-inputSizeSmall": {
+            '&.MuiInputBase-inputSizeSmall': {
               height: pxSize.sm
             }
           },
 
-          ["&.isView"]: {
-            ".MuiInputBase-root": {
+          ['&.isView']: {
+            '.MuiInputBase-root': {
               fieldset: {
-                border: "0px"
+                border: '0px'
               }
             },
 
-            ".Mui-disabled": {
-              color: "currentColor",
-              "-webkit-text-fill-color": "currentColor"
+            '.Mui-disabled': {
+              color: 'currentColor',
+              '-webkit-text-fill-color': 'currentColor'
             },
-            ".MuiFormLabel-root": {
+            '.MuiFormLabel-root': {
               color: theme.palette.grey[500]
             },
             button: {
-              display: "none"
+              display: 'none'
             }
           }
         }

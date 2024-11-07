@@ -1,7 +1,8 @@
 import { Theme } from '@mui/material/styles';
-import { buttonClasses } from '@mui/material/Button';
 
 import Iconify from 'src/components/iconify';
+import Icon from '../../../components/Icon';
+import { pxSize } from '../../../utils/style';
 
 // ----------------------------------------------------------------------
 // MuiPickersLayout  !== dateCalendar랑 다름
@@ -27,15 +28,13 @@ const timeList = [
 
 const switchIcon = () => <Iconify icon="eva:chevron-down-fill" width={24} />;
 
-const leftIcon = () => <Iconify icon="eva:arrow-ios-back-fill" width={124} />;
+const leftIcon = () => <Iconify icon="eva:arrow-ios-back-fill" width={24} />;
 
 const rightIcon = () => (
   <Iconify icon="eva:arrow-ios-forward-fill" width={24} />
 );
 
-const calendarIcon = () => (
-  <Iconify icon="solar:calendar-mark-bold-duotone" width={24} />
-);
+const calendarIcon = () => <Icon name="PickerCalendarSvg" size={24} />;
 
 const clockIcon = () => (
   <Iconify icon="solar:clock-circle-outline" width={24} />
@@ -46,7 +45,7 @@ const desktopTypes = dateList.reduce(
     result[`Mui${currentValue}`] = {
       defaultProps: {
         slots: {
-          openPickerIcon: calendarIcon,
+          // openPickerIcon: calendarIcon,
           leftArrowIcon: leftIcon,
           rightArrowIcon: rightIcon,
           switchViewIcon: switchIcon
@@ -77,17 +76,112 @@ const timeTypes = timeList.reduce(
 );
 
 export function datePicker(theme: Theme) {
+  const { palette } = theme;
+  const light = palette.mode === 'light';
+  const grey900 = palette.grey[900];
+  const grey800 = palette.grey[800];
+  const blue = '#2962FF';
+  const headerGrey = light ? grey800 : grey800;
+  const red = '#D50000';
   return {
+    MuiFormControl: {
+      styleOverrides: {
+        root: {
+          '& .MuiInputBase-root': {
+            padding: 16,
+            height: pxSize.lg,
+            input: {
+              padding: 0,
+              fontSize: 16,
+              fontWeight: 400,
+              color: grey900
+            }
+          }
+        }
+      }
+    },
     MuiPickersLayout: {
       styleOverrides: {
         root: {
-          '& .MuiPickersLayout-actionBar': {
-            [`& .${buttonClasses.root}:last-of-type`]: {
-              backgroundColor: theme.palette.text.primary,
-              color:
-                theme.palette.mode === 'light'
-                  ? theme.palette.common.white
-                  : theme.palette.grey[800]
+          minWidth: 350,
+          minHeight: 344,
+
+          // gap 16 width: 310이 맞지만 적용하면 클릭시 ui가 망가짐
+
+          ' .MuiDateCalendar-root': {
+            // calendar-body
+            maxHeight: '100%',
+            height: '100%',
+            width: 320,
+            '.MuiPickersFadeTransitionGroup-root': {
+              maxHeight: 288,
+              height: 288,
+              paddingTop: 20,
+              paddingBottom: 20,
+              // month & year
+              '&:has(.MuiMonthCalendar-root), &:has(.MuiYearCalendar-root)': {
+                display: 'flex',
+                justifyContent: 'center'
+              },
+              '.MuiYearCalendar-root::-webkit-scrollbar': {
+                display: 'none'
+              },
+
+              '> div': {
+                maxHeight: 'inherit',
+
+                '.MuiDayCalendar-root': {
+                  maxHeight: 'inherit',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  gap: 16
+                },
+                '.MuiDayCalendar-header': {
+                  gap: 13,
+
+                  span: {
+                    height: 18,
+                    fontSize: 13,
+                    fontWeight: 400,
+                    color: headerGrey
+                  }
+                },
+
+                '.MuiPickersSlideTransition-root': {
+                  minHeight: 210,
+
+                  '.MuiDayCalendar-monthContainer': {
+                    height: '100%',
+                    display: 'flex',
+                    flexDirection: 'column',
+
+                    gap: 13,
+                    '> div': {
+                      gap: 13,
+                      margin: 0,
+                      button: {
+                        width: 30,
+                        height: 30,
+                        fontSize: 15
+                      },
+                      '.MuiPickersDay-today, [aria-selected="true"]': {
+                        paddingLeft: 8,
+                        paddingRight: 8
+                      },
+                      '[aria-selected="true"]': {
+                        backgroundColor: blue,
+                        color: 'white !important'
+                      },
+                      '[aria-colindex="1"]': {
+                        color: red
+                      },
+                      '[aria-colindex="7"]': {
+                        color: blue
+                      }
+                    }
+                  }
+                }
+              }
             }
           }
         }
