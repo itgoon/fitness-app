@@ -22,7 +22,13 @@ export default function ExpansionQR({ centerData, onBack }: IExpansionQR) {
   return (
     <>
       {!isCenter ? (
-        <Stack height={456} py={5} px={5.9} sx={layoutSx} onClick={onBack}>
+        <Stack
+          height={456}
+          py={5}
+          alignItems={'center'}
+          sx={layoutSx}
+          onClick={onBack}
+        >
           <Icon name="QrCardBigSvg" size={256} />
           <Stack alignItems={'center'} gap={0.5}>
             <Typography

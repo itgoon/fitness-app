@@ -15,7 +15,8 @@ import { IDatePicker, workData } from '../types';
 export default function DateCalendar({
   workData,
   onChange,
-  isCheckWorkout = true
+  isCheckWorkout = true,
+  isModal
 }: IDatePicker) {
   const [highlightedDays, setHighlightedDays] = useState<workData[]>([]);
 
@@ -53,7 +54,13 @@ export default function DateCalendar({
           showDaysOutsideCurrentMonth
           slots={{
             calendarHeader: (e) => {
-              return <CalendarHeader isCheckWorkout={isCheckWorkout} {...e} />;
+              return (
+                <CalendarHeader
+                  isModal={isModal}
+                  isCheckWorkout={isCheckWorkout}
+                  {...e}
+                />
+              );
             },
             day: ServerDay
           }}
@@ -63,10 +70,10 @@ export default function DateCalendar({
             } as any
           }}
           sx={isCheckWorkout ? {} : { maxHeight: 288, height: 288 }}
-          onChange={onChange}
+          onChange={(e) => onChange && onChange(e)}
         />
       </LocalizationProvider>
-      <Divider sx={{ borderBottomWidth: 8 }} />
+      {!isModal && <Divider sx={{ borderBottomWidth: 8 }} />}
     </>
   );
 }

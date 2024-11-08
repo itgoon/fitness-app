@@ -78,18 +78,26 @@ const timeTypes = timeList.reduce(
 export function datePicker(theme: Theme) {
   const { palette } = theme;
   const light = palette.mode === 'light';
-  const grey900 = palette.grey[900];
+  const grey300 = palette.grey[300];
   const grey800 = palette.grey[800];
+  const grey900 = palette.grey[900];
   const blue = '#2962FF';
   const headerGrey = light ? grey800 : grey800;
   const red = '#D50000';
   return {
-    MuiFormControl: {
+    MuiInputBase: {
       styleOverrides: {
         root: {
-          '& .MuiInputBase-root': {
+          '&.custom-datePicker': {
             padding: 16,
             height: pxSize.lg,
+            border: 1,
+            borderColor: grey300,
+            borderStyle: 'solid',
+            borderRadius: 8,
+            '&:before': {
+              border: 'none'
+            },
             input: {
               padding: 0,
               fontSize: 16,
@@ -100,83 +108,86 @@ export function datePicker(theme: Theme) {
         }
       }
     },
-    MuiPickersLayout: {
+    MuiDialog: {
       styleOverrides: {
         root: {
-          minWidth: 350,
-          minHeight: 344,
+          '&.calendar-modal': {
+            // gap 16 width: 310이 맞지만 적용하면 클릭시 ui가 망가짐
+            ' .MuiPaper-root': {
+              width: '100%',
+              minWidth: 350,
+              maxWidth: 450,
+              // minWidth: 340,
+              ' .MuiDateCalendar-root': {
+                // calendar-body
+                maxHeight: '100%',
+                height: '100%',
+                '.MuiPickersFadeTransitionGroup-root': {
+                  maxHeight: 288,
+                  padding: 20,
+                  // month & year
+                  '&:has(.MuiMonthCalendar-root), &:has(.MuiYearCalendar-root)':
+                    {
+                      display: 'flex',
+                      justifyContent: 'center'
+                    },
+                  '.MuiYearCalendar-root::-webkit-scrollbar': {
+                    display: 'none'
+                  },
 
-          // gap 16 width: 310이 맞지만 적용하면 클릭시 ui가 망가짐
+                  '> div': {
+                    maxHeight: 'inherit',
 
-          ' .MuiDateCalendar-root': {
-            // calendar-body
-            maxHeight: '100%',
-            height: '100%',
-            width: 320,
-            '.MuiPickersFadeTransitionGroup-root': {
-              maxHeight: 288,
-              height: 288,
-              paddingTop: 20,
-              paddingBottom: 20,
-              // month & year
-              '&:has(.MuiMonthCalendar-root), &:has(.MuiYearCalendar-root)': {
-                display: 'flex',
-                justifyContent: 'center'
-              },
-              '.MuiYearCalendar-root::-webkit-scrollbar': {
-                display: 'none'
-              },
-
-              '> div': {
-                maxHeight: 'inherit',
-
-                '.MuiDayCalendar-root': {
-                  maxHeight: 'inherit',
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: 16
-                },
-                '.MuiDayCalendar-header': {
-                  gap: 13,
-
-                  span: {
-                    height: 18,
-                    fontSize: 13,
-                    fontWeight: 400,
-                    color: headerGrey
-                  }
-                },
-
-                '.MuiPickersSlideTransition-root': {
-                  minHeight: 210,
-
-                  '.MuiDayCalendar-monthContainer': {
-                    height: '100%',
-                    display: 'flex',
-                    flexDirection: 'column',
-
-                    gap: 13,
-                    '> div': {
+                    '.MuiDayCalendar-root': {
+                      maxHeight: 'inherit',
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: 13
+                    },
+                    '.MuiDayCalendar-header': {
                       gap: 13,
-                      margin: 0,
-                      button: {
+
+                      span: {
                         width: 30,
-                        height: 30,
-                        fontSize: 15
-                      },
-                      '.MuiPickersDay-today, [aria-selected="true"]': {
-                        paddingLeft: 8,
-                        paddingRight: 8
-                      },
-                      '[aria-selected="true"]': {
-                        backgroundColor: blue,
-                        color: 'white !important'
-                      },
-                      '[aria-colindex="1"]': {
-                        color: red
-                      },
-                      '[aria-colindex="7"]': {
-                        color: blue
+                        height: 18,
+                        fontSize: 13,
+                        fontWeight: 400,
+                        color: headerGrey
+                      }
+                    },
+
+                    '.MuiPickersSlideTransition-root': {
+                      minHeight: 210,
+
+                      '.MuiDayCalendar-monthContainer': {
+                        height: '100%',
+                        display: 'flex',
+                        flexDirection: 'column',
+
+                        gap: 15,
+                        '> div': {
+                          gap: 13,
+                          margin: 0,
+                          button: {
+                            width: 30,
+                            height: 30,
+                            fontSize: 15
+                          },
+                          '.MuiPickersDay-today, [aria-selected="true"]': {
+                            paddingLeft: 8,
+                            paddingRight: 8
+                          },
+                          '[aria-selected="true"]': {
+                            backgroundColor: blue,
+                            color: 'white !important'
+                          },
+                          '[aria-colindex="1"]': {
+                            color: red
+                          },
+                          '[aria-colindex="7"]': {
+                            color: blue
+                          }
+                        }
                       }
                     }
                   }

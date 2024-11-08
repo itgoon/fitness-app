@@ -45,6 +45,9 @@ export function textField(theme: Theme) {
           fontSize: 18,
           top: '-1px !important',
           color: color.placeholder,
+          '&.MuiInputLabel-sizeLarge': {
+            fontSize: 16
+          },
           [`&.${inputLabelClasses.shrink}`]: {
             ...font.textLabel,
             color: color.active,
@@ -161,7 +164,11 @@ export function textField(theme: Theme) {
           '& .MuiInputBase-sizeLarge': {
             input: {
               boxSizing: 'border-box',
-              height: pxSize.lg
+              height: pxSize.lg,
+              padding: '16px 12px',
+              '&::placeholder': {
+                fontSize: 16
+              }
             }
           },
           [`.MuiInputBase-input`]: {

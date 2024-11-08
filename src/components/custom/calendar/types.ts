@@ -18,6 +18,12 @@ export type workData = {
   type: string;
   date: string;
 };
+export interface ICalenderModal {
+  open: boolean;
+  onClose: () => void;
+  onChange: (e: any) => void;
+}
+// calendar
 export interface IDatePicker {
   workData?: workData[];
   isCheckWorkout?: boolean;
