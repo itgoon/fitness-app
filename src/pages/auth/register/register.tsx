@@ -80,7 +80,7 @@ export default function RegisterView() {
         height: '100%'
       }}
     >
-      <Header stepTitle={'회원가입'} />
+      <Header isStart={true} stepTitle={'회원가입'} />
       <Box height={'calc(100% - 56px)'}>
         <StepFlow activeStep={activeStep} onNext={onNext}>
           <Step1 onNext={onNext} data={data} setData={setData} />

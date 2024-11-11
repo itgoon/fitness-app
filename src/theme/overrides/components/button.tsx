@@ -76,12 +76,15 @@ export function button(theme: Theme) {
         }),
         // SOFT
         ...(softVariant && {
-          // disable 기능이 없는 disable color
           color: theme.palette.grey.A100,
           backgroundColor: alpha(theme.palette.grey[500], 0.08),
           '&:hover': {
             backgroundColor: alpha(theme.palette.grey[500], 0.24)
           }
+          // ...(ownerState.color === 'primary' && {
+          //   backgroundColor: alpha(theme.palette.grey[500], 0.08),
+          //   color: theme.palette.primary.main
+          // })
         })
       }),
       ...(outlinedVariant && {
@@ -107,7 +110,21 @@ export function button(theme: Theme) {
           backgroundColor: alpha(theme.palette[color].main, 0.16),
           '&:hover': {
             backgroundColor: alpha(theme.palette[color].main, 0.32)
-          }
+          },
+          ...(ownerState.color === 'primary' && {
+            backgroundColor: '#eeeff1',
+            color: '#007AFF',
+            borderRadius: 14,
+            fontSize: '17px !important',
+            fontWeight: '600 !important'
+          }),
+          ...(ownerState.color === 'secondary' && {
+            backgroundColor: '#e5e5e5',
+            color: '#007AFF',
+            borderRadius: 14,
+            fontSize: '17px !important',
+            fontWeight: '400 !important'
+          })
         }),
         // TEXT
         ...(textVariant && {
@@ -128,7 +145,11 @@ export function button(theme: Theme) {
           }),
           ...(ownerState.color === 'primary' && {
             color: theme.palette.grey[900],
-            '&:hover': {}
+            borderColor: theme.palette.grey[300],
+            '&:hover': {
+              borderColor: theme.palette.primary.main,
+              color: theme.palette.primary.main
+            }
           }),
           ...(ownerState.color === 'secondary' && {
             borderColor: theme.palette.grey[200],

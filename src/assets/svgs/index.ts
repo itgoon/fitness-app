@@ -1,6 +1,7 @@
 // vite 환경에서는 import 경로 끝에 ?react 반드시 붙여야 함
 // 아이콘명 - 파스칼 케이스 적용
 import PickerCalendarSvg from './PickerCalendar.svg?react';
+import PlusSvg from './Plus.svg?react';
 import LeftArrow from './arrow_left.svg?react';
 import RightArrowSvg from './RightArrow.svg?react';
 import RegisterRightArrowSvg from './registerRightArrow.svg?react';
@@ -39,6 +40,7 @@ import QrCardSvg from './Card.svg?react';
 import QrCardSmallSvg from './QRCardSmall.svg?react';
 import QrCardBigSvg from './QRCardBig.svg?react';
 import CameraSvg from './Camera.svg?react';
+import DeleteImageSvg from './DeleteImage.svg?react';
 
 export {
   LeftArrow,
@@ -77,5 +79,7 @@ export {
   QrCardSmallSvg,
   QrCardBigSvg,
   CameraSvg,
-  PickerCalendarSvg
+  PickerCalendarSvg,
+  DeleteImageSvg,
+  PlusSvg
 };

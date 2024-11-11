@@ -5,10 +5,35 @@ import Header from '../../components/custom/Header';
 import WorkoutList from './tab/WorkoutList';
 import DietList from './tab/DietList';
 import EmptyList from './tab/EmptyList';
+import Gallery1 from '../../assets/images/gallery1.jpeg';
+const dietRecords = [
+  {
+    date: '2024-09-11',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery1, Gallery1],
+    imageUrls: [Gallery1, Gallery1, Gallery1, Gallery1]
+  },
+  {
+    date: '2024-09-11',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery1, Gallery1],
+    imageUrls: [Gallery1, Gallery1, Gallery1, Gallery1]
+  },
+  {
+    date: '2024-09-12',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery1, Gallery1],
+    imageUrls: [Gallery1, Gallery1, Gallery1, Gallery1]
+  }
+];
 
 export default function Record() {
   const [tabValue, setTabValue] = useState(0);
-  const [isEmpty, setIsEmpty] = useState(false);
+  const [workoutList, setWorkoutList] = useState([]);
+  const [dietList, setDietList] = useState(dietRecords);
   return (
     <Box height={'100%'}>
       <Header stepTitle="기록" />
@@ -19,15 +44,19 @@ export default function Record() {
           scrollButtons={false}
           variant="fullWidth"
         >
-          <Tab label={'계약서'}></Tab>
-          <Tab label={'정책/규정'}></Tab>
+          <Tab label={'운동'}></Tab>
+          <Tab label={'식단'}></Tab>
         </Tabs>
         <Box height={'calc(100% - 50px)'} padding={2}>
           <TabPanel value={tabValue} index={0}>
-            {isEmpty ? <WorkoutList /> : <EmptyList />}
+            {workoutList.length > 0 ? <WorkoutList /> : <EmptyList />}
           </TabPanel>
           <TabPanel value={tabValue} index={1}>
-            {isEmpty ? <DietList /> : <EmptyList />}
+            {dietList.length > 0 ? (
+              <DietList dietList={dietList} />
+            ) : (
+              <EmptyList />
+            )}
           </TabPanel>
         </Box>
       </Box>

@@ -9,7 +9,7 @@ export default function ContractView() {
   const [tabValue, setTabValue] = useState(0);
   return (
     <Box>
-      <Header stepTitle="리온짐" />
+      <Header isStart={true} stepTitle="리온짐" />
       <Box>
         <Tabs
           value={tabValue}

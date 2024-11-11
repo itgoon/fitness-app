@@ -117,7 +117,6 @@ export default function DashboardPage() {
         />
 
         {isWorking && (
-          // padding 20 / 24
           <EmptyCard
             direction={'row'}
             justifyContent={'start'}

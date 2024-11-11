@@ -19,6 +19,7 @@ export const menus: NavItemType[] = [
     title: '홈',
     url: '/dashboard',
     isHeader: true,
+    isStart: false,
     isEnd: true
   },
   {
@@ -61,8 +62,3 @@ export const menus: NavItemType[] = [
     isHeader: false
   }
 ];
-
-// 1. end, start 로 아이콘 분기 처리
-// url이 없이 step을 통한 url 변경없는 페이지가 대부분임 이런 경우에 처리법
-//
-//

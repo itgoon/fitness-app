@@ -1,12 +1,17 @@
 import { Box, Input, Stack, Typography, useTheme } from '@mui/material';
 import Button from '../../components/Button';
 import Icon from '../../components/Icon';
-import PostItem from './PostItem';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import dayjs from 'dayjs';
 import CalenderModal from '../../components/custom/calendar/CalendarModal';
 import { DateReqFormat } from '../../utils/formatTime';
 import TextField from '../../components/TextField';
+import PostItem from './item/PostItem';
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as Yup from 'yup';
+import { useModal } from '../../hooks/useModal';
+import ImageItem from './item/ImageItem';
 
 export default function Post() {
   const { palette } = useTheme();
@@ -14,91 +19,227 @@ export default function Post() {
   const grey200 = palette.grey[200];
   const grey600 = light ? palette.grey[600] : 'white';
 
-  const [isOpen, setIsOpen] = useState(false);
-  const [data, setData] = useState({
-    date: dayjs().format(DateReqFormat),
-    content: ''
+  const schema = Yup.object().shape({
+    date: Yup.string(),
+    content: Yup.string(),
+    type: Yup.string(),
+    imageName: Yup.array().of(Yup.string()).nullable().default(null),
+    imageUrls: Yup.array().of(Yup.string()).nullable().default(null),
+    imageqty: Yup.number().min(0).default(0)
   });
+  const methods = useForm({
+    mode: 'all',
+    resolver: yupResolver(schema),
+    defaultValues: {
+      date: dayjs().format(DateReqFormat),
+      content: '',
+      type: '',
+      imageName: [],
+      imageUrls: [],
+      imageqty: 0
+    }
+  });
+  const {
+    handleSubmit,
+    formState: { isSubmitting, errors },
+    watch,
+    setValue,
+    getValues
+  } = methods;
+
+  const { openConfirm } = useModal();
+  const [upload, setUpload] = useState(true);
+  const [isOpen, setIsOpen] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
 
+  const contentValue = watch('content');
+  const typeValue = watch('type');
+  const dateValue = watch('date');
+  const imageUrlsValue = watch('imageUrls');
+  const imageqtyValue = watch('imageqty');
+
   useEffect(() => {
-    console.log(data.content);
-    if (data.content.length > 5) {
-      setIsDisable(false);
+    if (contentValue) {
+      if (contentValue?.length > 4 && typeValue !== '') {
+        setIsDisable(false);
+      }
     }
-  }, [data.content]);
+  }, [contentValue]);
 
   const onChange = (e: any) => {
-    setData((prev) => ({ ...prev, date: dayjs(e).format(DateReqFormat) }));
+    setValue('date', dayjs(e).format(DateReqFormat));
   };
 
-  const handleSubmit = () => {};
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      const fileUrl = URL.createObjectURL(file);
+
+      const currentImageNames = watch('imageName') || [];
+      const currentImageUrls = watch('imageUrls') || [];
+
+      setValue('imageName', [...currentImageNames, file.name]);
+      setValue('imageUrls', [...currentImageUrls, fileUrl]),
+        setValue('imageqty', currentImageNames.length + 1);
+    }
+  };
+  const DeleteImage = (key: number) => {
+    const currentImageNames = watch('imageName') || [];
+    const currentImageUrls = watch('imageUrls') || [];
+    const updateImgName = currentImageNames.filter((_, index) => index !== key);
+    const updateImgUrls = currentImageUrls.filter((_, index) => index !== key);
+
+    setValue('imageName', updateImgName);
+    setValue('imageUrls', updateImgUrls);
+    setValue('imageqty', updateImgName.length);
+  };
+
+  const onClick = handleSubmit(async (data) => {
+    console.log({ data });
+    const type = data.type === 'workout' ? '운동 기록을 ' : '식단 기록을 ';
+    openConfirm({
+      title: '',
+      content: `${type}등록하시겠습니까?`,
+      onClick: () => console.log('data 저장', data),
+      onClose: () => console.log('data 저장', data),
+      clickMsg: '네',
+      closeMsg: '아니요'
+    });
+  });
+
+  const fileInputRef = useRef<HTMLInputElement | null>(null);
 
   return (
-    <Stack height={'100%'} pt={3} px={2.5} justifyContent={'space-between'}>
-      <Stack gap={4}>
-        <Stack
-          width={80}
-          height={80}
-          border={`1px solid ${grey200}`}
-          borderRadius={1}
-          justifyContent={'center'}
-          alignItems={'center'}
-        >
-          <Icon name={'CameraSvg'} size={24} />
-          <Box>
-            <Typography
-              color={'#2962FF'}
-              variant={'Body14/regular'}
-              children={'0'}
-            />
-            <Typography
-              color={grey600}
-              variant={'Body14/regular'}
-              children={'/10'}
-            />
+    <Stack height={'100%'} justifyContent={'space-between'}>
+      <Stack>
+        <Stack gap={4}>
+          <Box
+            display={'flex'}
+            gap={2}
+            overflow={'scroll'}
+            width={'100%'}
+            pl={2.5}
+            pt={3}
+          >
+            <Stack
+              minWidth={80}
+              height={80}
+              border={`1px solid ${grey200}`}
+              borderRadius={1}
+              justifyContent={'center'}
+              alignItems={'center'}
+              onClick={() => setUpload((prev) => !prev)}
+            >
+              <input
+                type="file"
+                ref={fileInputRef}
+                onChange={handleFileChange}
+                style={{ display: 'none' }}
+              />
+              <Icon name={'CameraSvg'} size={24} />
+              <Box>
+                <Typography
+                  color={'#2962FF'}
+                  variant={'Body14/regular'}
+                  children={imageqtyValue}
+                />
+                <Typography
+                  color={grey600}
+                  variant={'Body14/regular'}
+                  children={'/10'}
+                />
+              </Box>
+            </Stack>
+
+            {imageUrlsValue &&
+              imageUrlsValue?.map((image, key) => (
+                <ImageItem
+                  key={key}
+                  image={image}
+                  onClick={() => DeleteImage(key)}
+                />
+              ))}
           </Box>
+
+          <Stack px={2.5} gap={4}>
+            <PostItem label="어떤 기록을 남기시나요">
+              <Box display={'flex'} gap={2}>
+                <Button
+                  variant={'outlined'}
+                  color={'primary'}
+                  children={'운동'}
+                  onClick={() => setValue('type', 'workout')}
+                />
+                <Button
+                  variant={'outlined'}
+                  color={'primary'}
+                  children={'식단'}
+                  onClick={() => setValue('type', 'diet')}
+                />
+              </Box>
+            </PostItem>
+            <PostItem label="날짜">
+              <Input
+                className="custom-datePicker"
+                value={dateValue}
+                onClick={() => setIsOpen((prev) => !prev)}
+                endAdornment={<Icon name="PickerCalendarSvg" size={24} />}
+              ></Input>
+              <CalenderModal
+                open={isOpen}
+                onClose={() => setIsOpen((prev) => !prev)}
+                onChange={onChange}
+              />
+            </PostItem>
+            <PostItem label="한줄 메모">
+              <TextField
+                size={'large'}
+                placeholder={'내용을 입력해주세요. (최대 20자)'}
+                onChange={(e) => setValue('content', e.target.value)}
+              ></TextField>
+            </PostItem>
+          </Stack>
         </Stack>
-
-        <PostItem label="어떤 기록을 남기시나요">
-          <Box display={'flex'} gap={2}>
-            <Button variant={'outlined'} children={'운동'} />
-            <Button variant={'outlined'} children={'식단'} />
-          </Box>
-        </PostItem>
-
-        <PostItem label="날짜">
-          <Input
-            className="custom-datePicker"
-            value={data.date}
-            onClick={() => setIsOpen((prev) => !prev)}
-            endAdornment={<Icon name="PickerCalendarSvg" size={24} />}
-          ></Input>
-          <CalenderModal
-            open={isOpen}
-            onClose={() => setIsOpen((prev) => !prev)}
-            onChange={onChange}
-          />
-        </PostItem>
-        <PostItem label="한줄 메모">
-          <TextField
-            size={'large'}
-            placeholder={'내용을 입력해주세요. (최대 20자)'}
-            onChange={(e) =>
-              setData((prev) => ({ ...prev, content: e.target.value }))
-            }
-          ></TextField>
-        </PostItem>
       </Stack>
-
-      <Button
-        variant={'contained'}
-        color={'primary'}
-        size={'large'}
-        typoVariant={'Body18/semiBold'}
-        children={'등록하기'}
-        disabled={isDisable}
-      />
+      {upload ? (
+        <Box px={2.5}>
+          <Button
+            variant={'contained'}
+            color={'primary'}
+            size={'large'}
+            children={'등록하기'}
+            disabled={isDisable}
+            onClick={onClick}
+          />
+        </Box>
+      ) : (
+        <Stack gap={1} px={0.81}>
+          <Stack gap={0.1}>
+            <Button
+              size={'large'}
+              variant={'soft'}
+              color={'secondary'}
+              sx={{ borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}
+              children={'사진 업로드'}
+              onClick={() => fileInputRef?.current?.click()}
+            />
+            <Button
+              size={'large'}
+              variant={'soft'}
+              color={'secondary'}
+              sx={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+              children={'사진 촬영'}
+            />
+          </Stack>
+          <Button
+            size={'large'}
+            variant={'soft'}
+            color={'primary'}
+            children={'취소'}
+            onClick={() => setUpload((prev) => !prev)}
+          />
+        </Stack>
+      )}
     </Stack>
   );
 }
