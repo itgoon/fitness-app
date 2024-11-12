@@ -36,7 +36,7 @@ export default function Condition({ title, children, layoutSx }: ICondition) {
               <Typography
                 key={key}
                 color={descColor}
-                variant={'Body14/regular'}
+                variant={'Body14/light'}
                 children={typo}
               />
               <br />
@@ -45,7 +45,7 @@ export default function Condition({ title, children, layoutSx }: ICondition) {
         ) : (
           <Typography
             color={descColor}
-            variant={'Body14/regular'}
+            variant={'Body14/light'}
             children={children}
           />
         )}

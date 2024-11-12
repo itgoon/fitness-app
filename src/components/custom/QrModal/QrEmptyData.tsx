@@ -23,12 +23,12 @@ export default function QrEmptyData() {
 
       <Stack>
         <Typography
-          variant={'Body14/regular'}
+          variant={'Body14/light'}
           children={'계정 연동이 안된다면 고객센터로 문의해주세요.'}
           color={'white'}
         />
         <Typography
-          variant={'Body14/regular'}
+          variant={'Body14/light'}
           children={'평일 10:00 ~ 19:00 / 문의 032-123-4567'}
           color={'white'}
         />

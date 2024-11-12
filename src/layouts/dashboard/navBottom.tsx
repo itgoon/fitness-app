@@ -32,7 +32,6 @@ export default function NavBottom() {
     setList(navData[0]?.items);
   }, [navData, location]);
 
-  console.log({ list });
   const openModal = (newValue) => {
     if (newValue === '/member') {
       setIsOpen((prev) => !prev);
@@ -45,7 +44,6 @@ export default function NavBottom() {
         showLabels
         value={location?.pathname}
         onChange={(event, newValue) => {
-          console.log({ event }, { newValue }, event?.target);
           if (newValue === '/member') {
             openModal(newValue);
           } else {

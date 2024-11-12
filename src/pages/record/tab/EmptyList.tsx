@@ -5,6 +5,7 @@ export default function EmptyList() {
   const { palette } = useTheme();
   const light = palette.mode === 'light';
   const grey600 = light ? palette.grey[600] : 'white';
+  const primaryligh = palette.primary.light;
 
   const navigate = useNavigate();
   return (
@@ -30,7 +31,7 @@ export default function EmptyList() {
         />
       </Stack>
       <Typography
-        color={'#2962FF'}
+        color={primaryligh}
         variant={'Body16/light'}
         children={'신규 등록'}
         onClick={() => navigate('/record/post')}

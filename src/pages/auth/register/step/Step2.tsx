@@ -21,7 +21,7 @@ interface StepProps {
 }
 
 export default function Step2({ onNext }: StepProps) {
-  const theme = useTheme();
+  const { palette } = useTheme();
 
   const password = useBoolean();
   const confirmPassword = useBoolean();
@@ -140,7 +140,10 @@ export default function Step2({ onNext }: StepProps) {
               InputProps={{
                 endAdornment: (
                   <InputAdornment position="end">
-                    <Typography variant="Body16/regular" color={'#2962FF'}>
+                    <Typography
+                      variant="Body16/regular"
+                      color={palette.primary.light}
+                    >
                       {formatTimer()}
                     </Typography>
                   </InputAdornment>
@@ -150,8 +153,8 @@ export default function Step2({ onNext }: StepProps) {
           </Stack>
           <Stack gap={1.5}>
             <Typography
-              color={theme.palette.grey[600]}
-              variant={'Body14/regular'}
+              color={palette.grey[600]}
+              variant={'Body14/light'}
               children={'혹시 인증번호를 받지 못하셨나요?'}
             />
             <Button

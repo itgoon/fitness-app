@@ -33,11 +33,13 @@ export default function TabTable() {
         <Box sx={{ ...singSx }}>
           {/* TODO: 임의로 높이 변경 */}
           <Typography children={'서명'} />
-          <img
-            src={sign?.data}
-            alt="signature"
-            style={{ width: 150, height: 43, objectFit: 'contain' }}
-          />
+          {sign?.data && (
+            <img
+              src={sign?.data}
+              alt="signature"
+              style={{ width: 150, height: 43, objectFit: 'contain' }}
+            />
+          )}
         </Box>
       </Stack>
     </Stack>

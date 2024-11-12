@@ -17,6 +17,7 @@ export default function Post() {
   const { palette } = useTheme();
   const light = palette.mode === 'light';
   const grey200 = palette.grey[200];
+  const primarylig = palette.primary.light;
   const grey600 = light ? palette.grey[600] : 'white';
 
   const schema = Yup.object().shape({
@@ -95,7 +96,6 @@ export default function Post() {
   };
 
   const onClick = handleSubmit(async (data) => {
-    console.log({ data });
     const type = data.type === 'workout' ? '운동 기록을 ' : '식단 기록을 ';
     openConfirm({
       title: '',
@@ -139,13 +139,13 @@ export default function Post() {
               <Icon name={'CameraSvg'} size={24} />
               <Box>
                 <Typography
-                  color={'#2962FF'}
-                  variant={'Body14/regular'}
+                  color={primarylig}
+                  variant={'Body14/light'}
                   children={imageqtyValue}
                 />
                 <Typography
                   color={grey600}
-                  variant={'Body14/regular'}
+                  variant={'Body14/light'}
                   children={'/10'}
                 />
               </Box>

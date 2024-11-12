@@ -25,6 +25,7 @@ import NavMini from './navMini';
 import Footer from './footer';
 import { useNavigate } from 'react-router';
 import Header from '../../components/custom/Header';
+import { useEditContext } from '../../hooks/useEditState';
 
 // ----------------------------------------------------------------------
 
@@ -43,6 +44,8 @@ export default function DashboardLayout({ children }: Props) {
   );
   const [initialize, setInitialize] = useState<boolean>(false);
   const { onChangeLang } = useTranslate();
+  const { isEdit, toggleEdit } = useEditContext();
+
   const isHorizontal = settings.themeLayout === 'horizontal';
 
   const isMini = settings.themeLayout === 'mini';
@@ -101,7 +104,7 @@ export default function DashboardLayout({ children }: Props) {
         {children}
         <Footer />
       </Main>
-      <NavBottom />
+      {!isEdit && <NavBottom />}
     </Box>
   );
 }

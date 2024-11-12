@@ -33,7 +33,7 @@ export default function AlaramCard({
         {dataList?.map((data, key) => (
           <Box key={key} display={'flex'} justifyContent={'space-between'}>
             <Typography
-              variant={'Body14/regular'}
+              variant={'Body14/light'}
               color={grey600}
               children={data.label}
             />

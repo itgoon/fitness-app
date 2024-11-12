@@ -81,9 +81,11 @@ export function datePicker(theme: Theme) {
   const grey300 = palette.grey[300];
   const grey800 = palette.grey[800];
   const grey900 = palette.grey[900];
-  const blue = '#2962FF';
+  const primarylig = palette.primary.light;
+
   const headerGrey = light ? grey800 : grey800;
-  const red = '#D50000';
+  const errorDk = palette.error.dark;
+
   return {
     MuiInputBase: {
       styleOverrides: {
@@ -178,14 +180,14 @@ export function datePicker(theme: Theme) {
                             paddingRight: 8
                           },
                           '[aria-selected="true"]': {
-                            backgroundColor: blue,
+                            backgroundColor: primarylig,
                             color: 'white !important'
                           },
                           '[aria-colindex="1"]': {
-                            color: red
+                            color: errorDk
                           },
                           '[aria-colindex="7"]': {
-                            color: blue
+                            color: primarylig
                           }
                         }
                       }

@@ -31,7 +31,7 @@ export default function DetailStep1({ onNext, selectedCard }: IStep) {
         <Icon name={chip.largeIconName} size={60} />
         <Stack gap={0.5}>
           <Typography
-            variant={'Body14/regular'}
+            variant={'Body14/light'}
             color={grey600}
             children={isUndefined ? '레슨 예약 시간' : '총 운동 시간'}
           />

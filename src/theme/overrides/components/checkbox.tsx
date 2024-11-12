@@ -1,5 +1,5 @@
-import { Theme } from "@mui/material/styles";
-import { CheckboxProps, checkboxClasses } from "@mui/material/Checkbox";
+import { Theme } from '@mui/material/styles';
+import { CheckboxProps, checkboxClasses } from '@mui/material/Checkbox';
 
 // ----------------------------------------------------------------------
 
@@ -11,14 +11,21 @@ export function checkbox(theme: Theme) {
           const { color } = ownerState;
 
           return {
-            padding: theme.spacing(1),
-            ...(color === "default" && {
+            padding: 0,
+
+            ...(color === 'default' && {
               [`&.${checkboxClasses.checked}`]: {
                 color: theme.palette.text.primary
               }
             }),
-            ...(color === "primary" && {
+            ...(color === 'primary' && {
               color: theme.palette.common.black,
+              [`&.${checkboxClasses.checked}`]: {
+                color: theme.palette.primary.main
+              }
+            }),
+            ...(color === 'success' && {
+              backgroundColor: theme.palette.common.white,
               [`&.${checkboxClasses.checked}`]: {
                 color: theme.palette.primary.main
               }

@@ -8,9 +8,9 @@ export function dateCalendar(theme: Theme) {
   const light = (theme.palette.mode = 'light');
   const { palette } = theme;
   const grey800 = palette.grey[800];
-  const blue = light ? '#2962FF' : '#2962FF';
+  const primarylig = palette.primary.light;
   const headerGrey = light ? grey800 : grey800;
-  const red = light ? '#D50000' : '#D50000';
+  const errorDk = palette.error.dark;
 
   return {
     MuiDateCalendar: {
@@ -79,14 +79,14 @@ export function dateCalendar(theme: Theme) {
                         }
                       },
                       '[aria-selected="true"]': {
-                        backgroundColor: blue,
+                        backgroundColor: primarylig,
                         color: 'white !important'
                       },
                       '[aria-colindex="1"]': {
-                        color: red
+                        color: errorDk
                       },
                       '[aria-colindex="7"]': {
-                        color: blue
+                        color: primarylig
                       }
                     }
                   }

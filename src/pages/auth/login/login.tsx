@@ -52,7 +52,6 @@ export default function LoginView() {
   } = methods;
 
   const onSubmit = handleSubmit(async (data: ReqLogin) => {
-    console.log({ data });
     try {
       login(data);
       // const { meta } = await auth.login({

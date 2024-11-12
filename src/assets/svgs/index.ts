@@ -6,6 +6,7 @@ import LeftArrow from './arrow_left.svg?react';
 import RightArrowSvg from './RightArrow.svg?react';
 import RegisterRightArrowSvg from './registerRightArrow.svg?react';
 import CheckBoxSvg from './checkbox_ic.svg?react';
+import GalleryCheckSvg from './GalleryCheck.svg?react';
 import AppLogoSmall from './app_logo_small.svg?react';
 import Kakao from './kakao.svg?react';
 import Red from './red.svg?react';
@@ -81,5 +82,6 @@ export {
   CameraSvg,
   PickerCalendarSvg,
   DeleteImageSvg,
-  PlusSvg
+  PlusSvg,
+  GalleryCheckSvg
 };

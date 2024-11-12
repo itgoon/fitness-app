@@ -19,6 +19,7 @@ import AuthProvider from './provider/AuthProvider';
 import ModalProvider from './provider/ModalProvider';
 import { CardProvider } from './hooks/useCard';
 import { SignProvider } from './hooks/useSign';
+import { EditProvider } from './hooks/useEditState';
 
 // ----------------------------------------------------------------------
 
@@ -56,8 +57,10 @@ export default function App() {
                     <SettingsDrawer />
                     <SignProvider>
                       <CardProvider>
-                        <ProgressBar />
-                        <Router />
+                        <EditProvider>
+                          <ProgressBar />
+                          <Router />
+                        </EditProvider>
                       </CardProvider>
                     </SignProvider>
                   </ModalProvider>

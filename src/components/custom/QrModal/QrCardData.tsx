@@ -51,7 +51,7 @@ export default function QrCardData({
             >
               <Stack gap={0.5} onClick={() => setIsDetail((prev) => !prev)}>
                 <Typography
-                  variant={'Body14/regular'}
+                  variant={'Body14/light'}
                   color={'#9CAFEC'}
                   children={lesson.value}
                 />
@@ -61,7 +61,7 @@ export default function QrCardData({
                   children={centerName.value}
                 />
                 <Typography
-                  variant={'Body14/regular'}
+                  variant={'Body14/light'}
                   color={'#9CAFEC'}
                   children={`${contractDate.value} ~ ${effectiveDate.value}`}
                 />

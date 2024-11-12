@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { NavItemType, menus } from '../../../data/menus';
 import Item from './Item';
+import { Iheader } from './types';
 
 const findHeader = (menu: NavItemType[], path: string): NavItemType[] => {
   const breadcrumbs: NavItemType[] = [];
@@ -33,11 +34,8 @@ const findHeader = (menu: NavItemType[], path: string): NavItemType[] => {
   return breadcrumbs.length > 0 ? breadcrumbs : [];
 };
 
-interface IHeader {
-  stepTitle?: string;
-}
 // TODO: 함수 변경 및 menus 구조 변경
-export default function Header({ stepTitle }: IHeader) {
+export default function Header({ stepTitle, isStart }: Iheader) {
   // state
   const location = useLocation();
   const currentLocation = location.pathname;
@@ -51,7 +49,7 @@ export default function Header({ stepTitle }: IHeader) {
   if (stepTitle !== undefined && stepTitle !== '') {
     return (
       <Box role="presentation" height={56} py={1.88} px={2}>
-        <Item isStart={true} title={stepTitle} />
+        <Item isStart={isStart} title={stepTitle} />
       </Box>
     );
   }

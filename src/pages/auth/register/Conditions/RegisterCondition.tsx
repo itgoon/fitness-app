@@ -40,6 +40,7 @@ export default function RegisterCondition({
             onChange={onChange}
             checkedIcon={<Icon name={'CheckBoxSvg'} />}
             icon={<Icon name={'CheckBoxSvg'} />}
+            sx={{ padding: 1 }}
           />
         }
       />
