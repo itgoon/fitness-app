@@ -13,7 +13,7 @@ const SchedulePage = lazy(() => import('src/pages/schedule'));
 const ScheduleCardDetail = lazy(() => import('src/pages/schedule/CardDetail'));
 const MemberPage = lazy(() => import('src/pages/member'));
 const RecordPage = lazy(() => import('src/pages/record'));
-const RecordPostPage = lazy(() => import('src/pages/record/Post'));
+const RecordPostPage = lazy(() => import('src/pages/record/post'));
 const MorePage = lazy(() => import('src/pages/more'));
 
 // Employee

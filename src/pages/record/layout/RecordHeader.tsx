@@ -17,7 +17,6 @@ export default function RecordHeader({ isEdit, handleEdit }: IRecordHeader) {
     <Box
       display={'flex'}
       justifyContent={'space-between'}
-      width={'100%'}
       alignItems={'center'}
       px={2}
       py={1.9}
@@ -41,7 +40,7 @@ export default function RecordHeader({ isEdit, handleEdit }: IRecordHeader) {
           sx={{ display: 'flex', justifyContent: 'center' }}
         />
       </Box>
-      <Box width={28} display={'flex'}>
+      <Box width={28} display={'flex'} justifyContent={'end'}>
         {!isEdit ? (
           <Icon
             size={22}

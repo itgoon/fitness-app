@@ -1,8 +1,6 @@
-import { Box, Tab, Tabs } from '@mui/material';
+import { Box } from '@mui/material';
 import { useState } from 'react';
 import TabPanel from '../../components/custom/TabPanel';
-import WorkoutList from './tab/WorkoutList';
-import DietList from './tab/DietList';
 import EmptyList from './tab/EmptyList';
 import MainPng from '../../assets/images/main.png';
 import Gallery1 from '../../assets/images/gallery1.jpeg';
@@ -11,6 +9,10 @@ import Gallery2 from '../../assets/images/gallery2.png';
 import RecordHeader from './layout/RecordHeader';
 import { useEditContext } from '../../hooks/useEditState';
 import RecordBottom from './layout/RecordBottom';
+import Tabs from '../../components/custom/Tabs/Tabs';
+import RecordList from './tab/RecordList';
+import WorkoutTab from './tab/WorkoutTab';
+import DietTab from './tab/DietTab';
 
 export interface radioIndex {
   firstIndex: number[];
@@ -129,28 +131,38 @@ export default function Record() {
             setSelectedIndex([]);
           }}
         />
-        <Box height={'calc(100% - 56px)'}>
+        <Box height={'calc(100% - 56px)'} overflow={'auto'}>
           <Tabs
             value={tabValue}
             onChange={(e, newValue) => setTabValue(newValue)}
-            scrollButtons={false}
-            variant="fullWidth"
-          >
-            <Tab label={'운동'}></Tab>
-            <Tab label={'식단'}></Tab>
-          </Tabs>
+            frLabel={'운동'}
+            secLabel={'식단'}
+          />
           <Box height={'calc(100% - 50px)'} padding={2}>
             <TabPanel value={tabValue} index={0}>
-              {workoutList.length > 0 ? <WorkoutList /> : <EmptyList />}
+              {workoutList.length > 0 ? (
+                <WorkoutTab>
+                  <RecordList
+                    arrList={[]}
+                    isEdit={isEdit}
+                    onChange={handleSelect}
+                    selectedIndex={selectedIndex}
+                  />
+                </WorkoutTab>
+              ) : (
+                <EmptyList />
+              )}
             </TabPanel>
             <TabPanel value={tabValue} index={1}>
               {dietList.length > 0 ? (
-                <DietList
-                  dietList={dietList}
-                  isEdit={isEdit}
-                  onChange={handleSelect}
-                  selectedIndex={selectedIndex}
-                />
+                <DietTab>
+                  <RecordList
+                    arrList={dietList}
+                    isEdit={isEdit}
+                    onChange={handleSelect}
+                    selectedIndex={selectedIndex}
+                  />
+                </DietTab>
               ) : (
                 <EmptyList />
               )}

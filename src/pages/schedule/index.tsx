@@ -1,10 +1,11 @@
-import { Box, Tab, Tabs } from '@mui/material';
+import { Box } from '@mui/material';
 import { useState } from 'react';
 import WorkOutRecord from './tab/WorkOutRecord';
 import ReservationList from './tab/ReservationList';
 import { dummyMonthWorkoutList } from '../../utils/dummy';
 import TabPanel from '../../components/custom/TabPanel';
 import DateCalendar from '../../components/custom/calendar/DateCalendar';
+import Tabs from '../../components/custom/Tabs/Tabs';
 /**
  * ******************************************************
  * 일정 화면
@@ -19,12 +20,9 @@ export default function Schedule() {
         <Tabs
           value={tabValue}
           onChange={(e, newValue) => setTabValue(newValue)}
-          scrollButtons={false}
-          variant="fullWidth"
-        >
-          <Tab label={'운동 기록'}></Tab>
-          <Tab label={'예약 내역'}></Tab>
-        </Tabs>
+          frLabel={'운동 기록'}
+          secLabel={'예약 내역'}
+        />
         <Box px={2.5} py={3}>
           <TabPanel value={tabValue} index={0}>
             <WorkOutRecord />

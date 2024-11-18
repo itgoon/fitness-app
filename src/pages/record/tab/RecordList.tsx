@@ -1,43 +1,31 @@
 import { Box, Checkbox, Stack, Typography, useTheme } from '@mui/material';
 import dayjs from 'dayjs';
-import { DateViewFormat } from '../../../utils/formatTime';
 import Icon from '../../../components/Icon';
+import { DateViewFormat } from '../../../utils/formatTime';
+import { IRecordList } from './types';
 
-type list = {
-  date: string;
-  type: string;
-  content: string;
-  imageName: string[];
-  imageUrls: string[];
-};
-interface IDietList {
-  dietList: list[];
-  isEdit: boolean;
-  onChange: (fr: number, sec: number) => void;
-  selectedIndex: number[][];
-}
-export default function DietList({
-  dietList,
+export default function RecordList({
+  arrList,
   isEdit,
   onChange,
   selectedIndex
-}: IDietList) {
+}: IRecordList) {
   const { palette } = useTheme();
   const light = palette.mode === 'light';
   const grey600 = light ? palette.grey[600] : 'white';
   return (
-    <Stack height={'inherit'} gap={1.5}>
-      {dietList.map((diet, listKey) => {
-        if (diet.imageUrls.length < 0) return;
+    <>
+      {arrList.map((arr, listKey) => {
+        if (arr.imageUrls.length < 0) return;
         return (
           <Stack gap={2} pt={3} key={listKey}>
             <Typography
-              children={dayjs(diet.date).format(DateViewFormat)}
+              children={dayjs(arr.date).format(DateViewFormat)}
               variant={'Body15/light'}
               color={grey600}
             />
             <Box display={'flex'} flexWrap={'wrap'} gap={0.25}>
-              {diet.imageUrls.map((img, imageKey) => (
+              {arr.imageUrls.map((img, imageKey) => (
                 <Box position={'relative'}>
                   <img
                     key={imageKey}
@@ -84,6 +72,6 @@ export default function DietList({
           </Stack>
         );
       })}
-    </Stack>
+    </>
   );
 }
