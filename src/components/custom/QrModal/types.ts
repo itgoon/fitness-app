@@ -25,6 +25,6 @@ export interface IQrModal {
 }
 
 export interface IExpansionQR {
-  centerData: data[];
+  centerData?: data[];
   onBack: () => void;
 }

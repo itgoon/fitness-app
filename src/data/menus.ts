@@ -2,10 +2,11 @@ import { ReactNode } from 'react';
 
 export type NavItemType = {
   isHeader?: boolean;
+  isBottom?: boolean;
   children?: NavItemType[];
   id?: string;
   title?: ReactNode | string;
-  url?: string | undefined;
+  url: string;
   isStart?: boolean;
   isEnd?: boolean;
   isCard?: boolean;
@@ -19,6 +20,7 @@ export const menus: NavItemType[] = [
     title: '홈',
     url: '/dashboard',
     isHeader: true,
+    isBottom: true,
     isStart: false,
     isEnd: true
   },
@@ -26,13 +28,15 @@ export const menus: NavItemType[] = [
     id: 'schedule',
     title: '일정',
     url: '/schedule',
-    isHeader: false
+    isHeader: false,
+    isBottom: true
   },
   {
     id: 'schedule/detail',
     title: '일정',
     url: '/schedule/detail',
     isHeader: false,
+    isBottom: false,
     isCard: true,
     cardDate: true
   },
@@ -40,19 +44,36 @@ export const menus: NavItemType[] = [
     id: 'contract',
     title: '약관 및 규정',
     url: '/contract',
-    isHeader: false
+    isHeader: false,
+    isBottom: false
+  },
+  {
+    id: 'viewcontract',
+    // title: '센터 네임',
+    url: '/viewcontract',
+    isHeader: false,
+    isBottom: false
+  },
+  {
+    id: 'reservation',
+    title: '예약',
+    url: '/reservation',
+    isHeader: false,
+    isBottom: false
   },
   {
     id: 'record',
     title: '기록',
     url: '/record',
-    isHeader: false
+    isHeader: false,
+    isBottom: true
   },
   {
     id: 'recordPost',
     title: '기록 등록',
     url: '/record/post',
     isHeader: true,
+    isBottom: false,
     isStart: true
   },
   {

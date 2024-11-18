@@ -27,7 +27,7 @@ export default function Main({ children, sx, ...other }: BoxProps) {
         // display: "flex",
         // flexDirection: "column",
         // pt: `${miniHeader}px`,
-        pb: `${HEADER.H_MOBILE + SPACING}px`,
+        // pb: `${HEADER.H_MOBILE + SPACING}px`,
         height: '100vh',
         width: '100%',
         overflow: 'hidden',

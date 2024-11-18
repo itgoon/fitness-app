@@ -5,6 +5,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { useNavData } from './configNavigation';
 import { useTheme } from '@mui/material';
 import QrModal from '../../components/custom/QrModal';
+import { QRCenterData, QRCustomerData } from '../../utils/dummy';
 
 export default function NavBottom() {
   const theme = useTheme();
@@ -13,7 +14,6 @@ export default function NavBottom() {
   const navData = useNavData();
   const navigate = useNavigate();
   const location = useLocation();
-
   const [list, setList] = useState<any[]>([]);
 
   // modal
@@ -75,7 +75,12 @@ export default function NavBottom() {
       <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
       <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}
       </BottomNavigation>
-      <QrModal open={isOpen} onClose={() => setIsOpen(false)} />
+      <QrModal
+        centerData={QRCenterData}
+        customerData={QRCustomerData}
+        open={isOpen}
+        onClose={() => setIsOpen(false)}
+      />
     </>
   );
 }

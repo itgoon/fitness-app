@@ -1,11 +1,11 @@
 import { Box, LinearProgress, Stack, Typography } from '@mui/material';
-import Icon from '../../Icon';
 import dayjs from 'dayjs';
 import { getRemainDays } from '../../../utils/formatTime';
 import { useEffect, useState } from 'react';
 import Button from '../../Button';
 import { IQrCardData } from './types';
 import { useNavigate } from 'react-router';
+import QRCode from './QRCode';
 
 export default function QrCardData({
   customerData,
@@ -42,7 +42,7 @@ export default function QrCardData({
     <>
       {!isDetail ? (
         <>
-          {remainDay !== 0 ? (
+          {remainDay > 0 ? (
             <Stack
               height={'100%'}
               justifyContent={'space-between'}
@@ -66,7 +66,9 @@ export default function QrCardData({
                   children={`${contractDate.value} ~ ${effectiveDate.value}`}
                 />
               </Stack>
-              <Icon name="QrCardSmallSvg" size={100} onClick={onClick} />
+              {/* <Icon name="QrCardSmallSvg" size={100} onClick={onClick} />
+               */}
+              <QRCode onClick={onClick} />
               <Stack gap={1}>
                 <LinearProgress
                   sx={{

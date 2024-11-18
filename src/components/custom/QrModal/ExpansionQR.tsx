@@ -1,7 +1,7 @@
 import { Stack, Typography, useTheme } from '@mui/material';
-import Icon from '../../Icon';
 import { IExpansionQR } from './types';
 import React, { useState } from 'react';
+import QRCode from './QRCode';
 
 export default function ExpansionQR({ centerData, onBack }: IExpansionQR) {
   const theme = useTheme();
@@ -29,7 +29,9 @@ export default function ExpansionQR({ centerData, onBack }: IExpansionQR) {
           sx={layoutSx}
           onClick={onBack}
         >
-          <Icon name="QrCardBigSvg" size={256} />
+          <Stack border={'1px solid black'}>
+            <QRCode size={256} margin={1} />
+          </Stack>
           <Stack alignItems={'center'} gap={0.5}>
             <Typography
               variant="Body24/bold"
@@ -53,7 +55,7 @@ export default function ExpansionQR({ centerData, onBack }: IExpansionQR) {
             onClick={handleCenter}
           />
           <Stack>
-            {centerData.map((center, key) => (
+            {centerData?.map((center, key) => (
               <Stack gap={1} py={1} key={key}>
                 <Typography
                   color={gray600}

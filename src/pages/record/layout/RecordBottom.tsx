@@ -28,6 +28,8 @@ export default function RecordBottom({
       position={'absolute'}
       left={0}
       bottom={0}
+      zIndex={999}
+      bgcolor={'white'}
       borderTop={`1px solid ${borderTop}`}
     >
       <Typography

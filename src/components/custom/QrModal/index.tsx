@@ -3,7 +3,6 @@ import QrCardSvg from '../../../assets/svgs/Card.svg';
 import QrCardData from './QrCardData';
 import QrEmptyData from './QrEmptyData';
 import { IQrModal } from './types';
-import { QRCenterData, QRCustomerData } from '../../../utils/dummy';
 import { useEffect, useState } from 'react';
 import ExpansionQR from './ExpansionQR';
 
@@ -19,8 +18,8 @@ import ExpansionQR from './ExpansionQR';
  * ******************************************************
  */
 export default function QrModal({
-  customerData = QRCustomerData,
-  centerData = QRCenterData,
+  customerData,
+  centerData,
   open,
   onClose
 }: IQrModal) {

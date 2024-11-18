@@ -175,6 +175,7 @@ export default function DashboardPage() {
           onClick={toggleWorkingState}
         />
       </Wrap>
+
       <Wrap gap={1.5} sx={{ padding: '0 !important' }}>
         <Typography
           variant="Body18/bold"

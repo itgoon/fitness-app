@@ -34,8 +34,8 @@ export default function ReservationPage() {
 
   return (
     <>
-      <Header stepTitle={stepTitle[activeStep]}></Header>
-      <Box height={'100%'}>
+      <Header isStart={true} stepTitle={stepTitle[activeStep]} />
+      <Box height={'calc(100% - 56px)'}>
         <StepFlow activeStep={activeStep} onNext={onNext}>
           <ReservationStep1
             reservationList={reservationList}

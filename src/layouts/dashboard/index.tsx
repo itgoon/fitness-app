@@ -23,9 +23,10 @@ import NavBottom from './navBottom';
 import NavHorizontal from './navHorizontal';
 import NavMini from './navMini';
 import Footer from './footer';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import Header from '../../components/custom/Header';
 import { useEditContext } from '../../hooks/useEditState';
+import { menus } from '../../data/menus';
 
 // ----------------------------------------------------------------------
 
@@ -53,6 +54,15 @@ export default function DashboardLayout({ children }: Props) {
   const renderNavMini = <NavMini />;
 
   const renderHorizontal = <NavHorizontal />;
+
+  const path = useLocation().pathname;
+  const [isBottom, setIsBottom] = useState(true);
+  useEffect(() => {
+    const hasBottomMenu = menus.some((item) => {
+      return !item.isBottom && path.startsWith(item.url);
+    });
+    setIsBottom(!hasBottomMenu);
+  }, [path]);
 
   useEffect(() => {
     if (initialize) return () => {};
@@ -95,15 +105,18 @@ export default function DashboardLayout({ children }: Props) {
       overflow={'hidden'}
       flexDirection={{ xs: 'column', lg: 'row' }}
     >
-      {!(
+      {/* {!(
         location?.pathname === '/contract' ||
         location?.pathname === '/schedule/detail'
       ) &&
-        location?.pathname.indexOf('/notFound') === -1 && <Header />}
+        location?.pathname.indexOf('/notFound') === -1 && <Header />} */}
+
+      {location?.pathname.indexOf('/notFound') === -1 && <Header />}
       <Main>
         {children}
         <Footer />
       </Main>
+      {/* {isBottom && <NavBottom />} */}
       {!isEdit && <NavBottom />}
     </Box>
   );

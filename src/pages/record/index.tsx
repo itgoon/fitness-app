@@ -74,7 +74,6 @@ export default function Record() {
     const isSelected = selectedIndex.some(
       ([fIndex, sIndex]) => fIndex === firstIndex && sIndex === secondIndex
     );
-    console.log(isSelected);
     if (isSelected) {
       // 선택 해제
       setSelectedIndex((prev) =>
