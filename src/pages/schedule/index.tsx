@@ -2,10 +2,14 @@ import { Box } from '@mui/material';
 import { useState } from 'react';
 import WorkOutRecord from './tab/WorkOutRecord';
 import ReservationList from './tab/ReservationList';
-import { dummyMonthWorkoutList } from '../../utils/dummy';
-import TabPanel from '../../components/custom/TabPanel';
+import {
+  dummyMonthWorkoutList,
+  dummyReservaitonListCard,
+  dummyWorkOutRecordList
+} from '../../utils/dummy';
 import DateCalendar from '../../components/custom/calendar/DateCalendar';
 import Tabs from '../../components/custom/Tabs/Tabs';
+import TabPanel from '../../components/custom/Tabs/TabPanel';
 /**
  * ******************************************************
  * 일정 화면
@@ -25,10 +29,10 @@ export default function Schedule() {
         />
         <Box px={2.5} py={3}>
           <TabPanel value={tabValue} index={0}>
-            <WorkOutRecord />
+            <WorkOutRecord cardDataList={dummyWorkOutRecordList} />
           </TabPanel>
           <TabPanel value={tabValue} index={1}>
-            <ReservationList />
+            <ReservationList cardDataList={dummyReservaitonListCard} />
           </TabPanel>
         </Box>
       </Box>

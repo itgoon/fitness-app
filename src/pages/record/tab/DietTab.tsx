@@ -6,7 +6,7 @@ interface IDietTab {
 }
 export default function DietTab({ children }: IDietTab) {
   return (
-    <Stack height={'inherit'} overflow={'auto'} gap={1.5}>
+    <Stack padding={2} gap={3}>
       {children}
     </Stack>
   );

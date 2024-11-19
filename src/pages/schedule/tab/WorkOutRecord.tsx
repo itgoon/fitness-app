@@ -2,13 +2,10 @@ import { Box, Stack, Typography, useTheme } from '@mui/material';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
 import ReservationCard from '../../../components/custom/reservationCard/ReservationCard';
 import { IWorkOutRecord } from '../types';
-import { dummyWorkOutRecordList } from '../../../utils/dummy';
 import { useCardContext } from '../../../hooks/useCard';
 import { useNavigate } from 'react-router';
 
-export default function WorkOutRecord({
-  cardDataList = dummyWorkOutRecordList
-}: IWorkOutRecord) {
+export default function WorkOutRecord({ cardDataList }: IWorkOutRecord) {
   const { setSelectedCard } = useCardContext();
   const navigate = useNavigate();
   const theme = useTheme();
@@ -35,7 +32,7 @@ export default function WorkOutRecord({
         />
       ) : (
         <>
-          {cardDataList.map((card, key) => (
+          {cardDataList?.map((card, key) => (
             <Box py={1.5} onClick={() => handleCardClick(card, key)}>
               <ReservationCard
                 key={key}

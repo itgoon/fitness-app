@@ -1,10 +1,10 @@
 import { Box } from '@mui/material';
-import TabPanel from '../../../components/custom/TabPanel';
 import { useState } from 'react';
 import TabTable from './tab/TabTable';
 import TabCondition from './tab/TabCondition';
 import Header from '../../../components/custom/Header';
 import Tabs from '../../../components/custom/Tabs/Tabs';
+import TabPanel from '../../../components/custom/Tabs/TabPanel';
 
 export default function ContractView() {
   const [tabValue, setTabValue] = useState(0);

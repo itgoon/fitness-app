@@ -5,8 +5,6 @@ import { useRecoilState } from 'recoil';
 /* eslint-disable consistent-return */
 import { ReactNode, useEffect, useState } from 'react';
 
-import Box from '@mui/material/Box';
-
 import { useBoolean } from 'src/hooks/useBoolean';
 import { useResponsive } from 'src/hooks/useResponsive';
 
@@ -27,6 +25,7 @@ import { useLocation, useNavigate } from 'react-router';
 import Header from '../../components/custom/Header';
 import { useEditContext } from '../../hooks/useEditState';
 import { menus } from '../../data/menus';
+import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -56,13 +55,16 @@ export default function DashboardLayout({ children }: Props) {
   const renderHorizontal = <NavHorizontal />;
 
   const path = useLocation().pathname;
+
   const [isBottom, setIsBottom] = useState(true);
+
   useEffect(() => {
     const hasBottomMenu = menus.some((item) => {
       return !item.isBottom && path.startsWith(item.url);
     });
     setIsBottom(!hasBottomMenu);
-  }, [path]);
+    console.log('dash isEdit: ', isEdit);
+  }, [path, isEdit]);
 
   useEffect(() => {
     if (initialize) return () => {};
@@ -105,19 +107,12 @@ export default function DashboardLayout({ children }: Props) {
       overflow={'hidden'}
       flexDirection={{ xs: 'column', lg: 'row' }}
     >
-      {/* {!(
-        location?.pathname === '/contract' ||
-        location?.pathname === '/schedule/detail'
-      ) &&
-        location?.pathname.indexOf('/notFound') === -1 && <Header />} */}
-
       {location?.pathname.indexOf('/notFound') === -1 && <Header />}
-      <Main>
+      <Main sx={{ paddingBottom: isBottom ? 8 : 0 }}>
         {children}
         <Footer />
       </Main>
-      {/* {isBottom && <NavBottom />} */}
-      {!isEdit && <NavBottom />}
+      {isBottom && !isEdit && <NavBottom />}
     </Box>
   );
 }

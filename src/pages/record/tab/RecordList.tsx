@@ -2,7 +2,7 @@ import { Box, Checkbox, Stack, Typography, useTheme } from '@mui/material';
 import dayjs from 'dayjs';
 import Icon from '../../../components/Icon';
 import { DateViewFormat } from '../../../utils/formatTime';
-import { IRecordList } from './types';
+import { IRecordList } from '../types';
 
 export default function RecordList({
   arrList,
@@ -18,7 +18,7 @@ export default function RecordList({
       {arrList.map((arr, listKey) => {
         if (arr.imageUrls.length < 0) return;
         return (
-          <Stack gap={2} pt={3} key={listKey}>
+          <Stack key={listKey} gap={2}>
             <Typography
               children={dayjs(arr.date).format(DateViewFormat)}
               variant={'Body15/light'}

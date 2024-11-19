@@ -1,6 +1,10 @@
 import { customerData } from '../components/custom/QrModal/types';
 import { cardData } from '../pages/schedule/types';
 
+import MainPng from '../assets/images/main.png';
+import Gallery1 from '../assets/images/gallery1.jpeg';
+import Gallery2 from '../assets/images/gallery2.png';
+
 export const dummyCondition = [
   '이용약관 문구 영역입니다. 이용약관 문구 영역입니다. 이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다. 이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다. 이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다. 이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다. 이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다. 이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.이용약관 문구 영역입니다.'
 ];
@@ -73,6 +77,30 @@ export const dummyReservaitonListCard: cardData[] = [
     count: '3/ 10회',
     trainer: '홍길동 강사',
     chipState: 'primary'
+  },
+  {
+    date: '2024-09-29',
+    time: '11:00',
+    place: '리온짐',
+    count: '3/ 10회',
+    trainer: '홍길동 강사',
+    chipState: 'primary'
+  },
+  {
+    date: '2024-09-29',
+    time: '11:00',
+    place: '리온짐',
+    count: '3/ 10회',
+    trainer: '홍길동 강사',
+    chipState: 'primary'
+  },
+  {
+    date: '2024-09-29',
+    time: '11:00',
+    place: '리온짐',
+    count: '3/ 10회',
+    trainer: '홍길동 강사',
+    chipState: 'primary'
   }
 ];
 
@@ -90,3 +118,77 @@ export const dummyMonthWorkoutList = [
 ];
 // 일정 페이지
 //
+
+// tabs 기록 페이지 식단 데이터
+export const dietRecords = [
+  {
+    date: '2024-09-11',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [MainPng, MainPng, MainPng, MainPng, Gallery1, Gallery1],
+    imageUrls: [MainPng, MainPng, MainPng, MainPng, Gallery1, Gallery1]
+  },
+  {
+    date: '2024-09-12',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2],
+    imageUrls: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2]
+  },
+  {
+    date: '2024-09-12',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2],
+    imageUrls: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2]
+  },
+  {
+    date: '2024-09-12',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2],
+    imageUrls: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2]
+  },
+  {
+    date: '2024-09-12',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2],
+    imageUrls: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2]
+  },
+  {
+    date: '2024-09-12',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2],
+    imageUrls: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2]
+  },
+  {
+    date: '2024-09-13',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2],
+    imageUrls: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2]
+  },
+  {
+    date: '2024-09-14',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2],
+    imageUrls: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2]
+  },
+  {
+    date: '2024-09-19',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2],
+    imageUrls: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2]
+  },
+  {
+    date: '2024-09-19',
+    type: 'diet',
+    content: '첫번째 식단',
+    imageName: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2],
+    imageUrls: [Gallery1, Gallery1, Gallery2, Gallery2, Gallery2]
+  }
+];

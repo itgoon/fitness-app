@@ -10,7 +10,7 @@ export default function WorkoutTab({ children }: IDietTab) {
   const light = palette.mode === 'light';
   const primarylig = palette.primary.light;
   return (
-    <Stack height={'inherit'} overflow={'auto'} gap={1.5}>
+    <Stack padding={2} height={'inherit'} overflow={'auto'} gap={1.5}>
       {children}
     </Stack>
   );

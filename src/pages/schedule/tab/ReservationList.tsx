@@ -1,15 +1,12 @@
 import { Box, Stack } from '@mui/system';
 import ReservationCard from '../../../components/custom/reservationCard/ReservationCard';
 import { IReservationList } from '../types';
-import { dummyReservaitonListCard } from '../../../utils/dummy';
 import { Typography, useTheme } from '@mui/material';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
 import { useNavigate } from 'react-router';
 import { useCardContext } from '../../../hooks/useCard';
 
-export default function ReservationList({
-  cardDataList = dummyReservaitonListCard
-}: IReservationList) {
+export default function ReservationList({ cardDataList }: IReservationList) {
   const { setSelectedCard } = useCardContext();
   const navigate = useNavigate();
   const theme = useTheme();
@@ -24,7 +21,7 @@ export default function ReservationList({
 
   return (
     <Stack gap={2}>
-      {cardDataList.length === 0 ? (
+      {cardDataList?.length === 0 ? (
         <EmptyCard
           children={
             <Typography
