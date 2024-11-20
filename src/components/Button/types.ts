@@ -22,4 +22,6 @@ export type CustomButton = ButtonProps & {
   isShadow?: boolean;
   typoVariant?: keyof TypographyPropsVariantOverrides;
   typoColor?: any;
+  isTopRadius?: boolean;
+  isBottomRadius?: boolean;
 };

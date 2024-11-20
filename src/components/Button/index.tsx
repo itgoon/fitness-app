@@ -13,6 +13,8 @@ export default function Button({
   children,
   typoVariant,
   typoColor,
+  isTopRadius = false,
+  isBottomRadius = false,
   ...props
 }: CustomButton) {
   const shadowSx = isShadow === true ? '0 2px 4px rgba(0, 0, 0, 0.02)' : '';
@@ -37,6 +39,14 @@ export default function Button({
     }
     return children;
   };
+  const topRadius = isTopRadius && {
+    borderBottomLeftRadius: 0,
+    borderBottomRightRadius: 0
+  };
+  const bottomRadius = isBottomRadius && {
+    borderTopLeftRadius: 0,
+    borderTopRightRadius: 0
+  };
 
   return (
     <MuiButton
@@ -46,6 +56,8 @@ export default function Button({
       sx={{
         border: `1px solid ${borderColor}`,
         boxShadow: `${shadowSx} !important`,
+        ...topRadius,
+        ...bottomRadius,
         ...props.sx
       }}
       {...props}

@@ -13,13 +13,23 @@ import CalenderModal from '../../../components/custom/calendar/CalendarModal';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
-
+import Overlay from '../../../components/custom/Overlay/indext';
 /**
  * ******************************************************
  * 기록 등록 화면
  * ******************************************************
  */
 
+// softBtnSx의 타입을 명시
+const softBtnSx: {
+  size: 'small' | 'medium' | 'large';
+  variant: 'soft';
+  color: 'secondary';
+} = {
+  size: 'large',
+  variant: 'soft',
+  color: 'secondary'
+};
 export default function Post() {
   const { palette } = useTheme();
   const light = palette.mode === 'light';
@@ -58,7 +68,7 @@ export default function Post() {
   } = methods;
 
   const { openConfirm } = useModal();
-  const [upload, setUpload] = useState(true);
+  const [upload, setUpload] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [isDisable, setIsDisable] = useState(true);
 
@@ -125,6 +135,7 @@ export default function Post() {
 
   return (
     <Stack height={'100%'} justifyContent={'space-between'}>
+      <Overlay isOpen={upload} />
       <Stack>
         <Stack gap={4}>
           <Box
@@ -193,6 +204,7 @@ export default function Post() {
               </Box>
             </PostItem>
             <PostItem label="날짜">
+              {/* TODO: 컴포넌트로 뺄 수 있으면 빼면 좋을 것  같음 */}
               <Input
                 className="custom-datePicker"
                 value={dateValue}
@@ -215,7 +227,7 @@ export default function Post() {
           </Stack>
         </Stack>
       </Stack>
-      {upload ? (
+      {!upload ? (
         <Box px={2.5}>
           <Button
             variant={'contained'}
@@ -227,27 +239,22 @@ export default function Post() {
           />
         </Box>
       ) : (
-        <Stack gap={1} px={0.81}>
+        <Stack gap={1} px={0.81} zIndex={1}>
           <Stack gap={0.1}>
             <Button
-              size={'large'}
-              variant={'soft'}
-              color={'secondary'}
-              sx={{ borderBottomLeftRadius: 0, borderBottomRightRadius: 0 }}
+              {...softBtnSx}
+              isTopRadius={true}
               children={'사진 업로드'}
               onClick={() => fileInputRef?.current?.click()}
             />
             <Button
-              size={'large'}
-              variant={'soft'}
-              color={'secondary'}
-              sx={{ borderTopLeftRadius: 0, borderTopRightRadius: 0 }}
+              {...softBtnSx}
+              isBottomRadius={true}
               children={'사진 촬영'}
             />
           </Stack>
           <Button
-            size={'large'}
-            variant={'soft'}
+            {...softBtnSx}
             color={'primary'}
             children={'취소'}
             onClick={() => setUpload((prev) => !prev)}

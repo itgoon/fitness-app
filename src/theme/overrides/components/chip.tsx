@@ -99,7 +99,16 @@ export function chip(theme: Theme) {
           backgroundColor: alpha(theme.palette[color].main, 0.16),
           '&:hover': {
             backgroundColor: alpha(theme.palette[color].main, 0.32)
-          }
+          },
+          // #0000008C
+          ...(ownerState.color === 'secondary' && {
+            borderRadius: '99px !important',
+            color: theme.palette.common.white,
+            backgroundColor: '#0000008C',
+            '&:hover': {
+              backgroundColor: '#0000008C'
+            }
+          })
         })
       })
     }));
