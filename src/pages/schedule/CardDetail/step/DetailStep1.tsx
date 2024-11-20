@@ -8,9 +8,11 @@ import { getPeriodTime, getTimeDifference } from '../../../../utils/formatTime';
 import ListWrap from './ListWrap';
 import { useModal } from '../../../../hooks/useModal';
 import { IStep } from '../../types';
+import { useNavigate } from 'react-router';
 
 export default function DetailStep1({ onNext, selectedCard }: IStep) {
   const { openConfirm } = useModal();
+  const navigate = useNavigate();
   const theme = useTheme();
   const layoutSx = {
     display: 'flex',
@@ -25,6 +27,7 @@ export default function DetailStep1({ onNext, selectedCard }: IStep) {
 
   const isWarning = chipState === 'warning';
   const isUndefined = chipState !== undefined;
+  if (selectedCard === null) navigate(-1);
   return (
     <>
       <Box pt={6.5} sx={layoutSx}>

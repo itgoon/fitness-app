@@ -2,7 +2,9 @@ import { Box, Checkbox, Stack, Typography, useTheme } from '@mui/material';
 import dayjs from 'dayjs';
 import Icon from '../../../components/Icon';
 import { DateViewFormat } from '../../../utils/formatTime';
-import { IRecordList } from '../types';
+import { IRecordList, TdietRecordList } from '../types';
+import { useState } from 'react';
+import ImageViewer from './ImageViewer';
 
 export default function RecordList({
   arrList,
@@ -13,10 +15,23 @@ export default function RecordList({
   const { palette } = useTheme();
   const light = palette.mode === 'light';
   const grey600 = light ? palette.grey[600] : 'white';
+
+  const [isOpenView, setIsOpenView] = useState(false);
+  const [imgIndex, setImgIndex] = useState<number>(0);
+  const [clickedImg, setClickedImg] = useState<TdietRecordList | undefined>(
+    undefined
+  );
+
+  const onHandleViewr = (key, arr) => {
+    setImgIndex(key);
+    setClickedImg(arr);
+    setIsOpenView((prev) => !prev);
+  };
+
   return (
     <>
       {arrList.map((arr, listKey) => {
-        if (arr.imageUrls.length < 0) return;
+        if (arr.imageUrls.length < 0) return null;
         return (
           <Stack key={listKey} gap={2}>
             <Typography
@@ -26,9 +41,8 @@ export default function RecordList({
             />
             <Box display={'flex'} flexWrap={'wrap'} gap={0.25}>
               {arr.imageUrls.map((img, imageKey) => (
-                <Box position={'relative'}>
+                <Box position={'relative'} key={imageKey}>
                   <img
-                    key={imageKey}
                     style={{
                       width: 118,
                       height: 118,
@@ -38,6 +52,7 @@ export default function RecordList({
                     }}
                     src={img}
                     alt={img}
+                    onClick={() => onHandleViewr(imageKey, arr)}
                   />
                   {isEdit && (
                     <Box
@@ -50,6 +65,7 @@ export default function RecordList({
                       top={0}
                       left={0}
                       bgcolor={'#0000004D'}
+                      onClick={() => onChange(listKey, imageKey)}
                     >
                       <Checkbox
                         color={'success'}
@@ -57,7 +73,6 @@ export default function RecordList({
                           ([fIndex, sIndex]) =>
                             fIndex === listKey && sIndex === imageKey
                         )}
-                        onChange={() => onChange(listKey, imageKey)}
                         checkedIcon={
                           <Icon name={'GalleryCheckSvg'} size={20} />
                         }
@@ -72,6 +87,13 @@ export default function RecordList({
           </Stack>
         );
       })}
+      {isOpenView && (
+        <ImageViewer
+          imgIndex={imgIndex}
+          clickedImg={clickedImg}
+          onClose={() => setIsOpenView((prev) => !prev)}
+        />
+      )}
     </>
   );
 }

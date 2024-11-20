@@ -18,9 +18,9 @@ export default function Item({ isStart, isEnd, title }: Iheader) {
     >
       {isStart && (
         <Icon
-          name={'LeftArrow'}
+          name={'ArrowBackIosNewRounded'}
           sx={{ marginTop: '-1px', color: '#262626' }}
-          size={16}
+          size={18}
           onClick={() => navigate(-1)}
         />
       )}

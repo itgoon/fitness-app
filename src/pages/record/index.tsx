@@ -12,6 +12,12 @@ import RecordList from './tab/RecordList';
 import EmptyList from './tab/EmptyList';
 import { dietRecords } from '../../utils/dummy';
 
+/**
+ * ******************************************************
+ * 기록 화면
+ * ******************************************************
+ */
+
 export default function Record() {
   const [tabValue, setTabValue] = useState(0);
   const [workoutList, setWorkoutList] = useState([]);
@@ -72,7 +78,7 @@ export default function Record() {
 
   return (
     <>
-      <Box height={'100%'}>
+      <Box>
         <RecordHeader
           isEdit={isEdit}
           handleEdit={() => {

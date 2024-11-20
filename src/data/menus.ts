@@ -80,6 +80,7 @@ export const menus: NavItemType[] = [
     id: 'more',
     title: '더보기',
     url: '/more',
-    isHeader: false
+    isHeader: false,
+    isBottom: true
   }
 ];

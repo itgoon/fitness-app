@@ -60,6 +60,7 @@ declare module '@mui/material/Typography' {
     'Body16/semiBold': true;
     'Body16/regular': true;
     'Body16/light': true;
+    'Body15/Bold': true;
     'Body15/semiBold': true;
     'Body15/regular': true;
     'Body15/light': true;
@@ -143,6 +144,11 @@ const customVariant = () => {
       fontWeight: 400,
       fontSize: pxToRem(16),
       lineHeight: '22px'
+    },
+    'Body15/Bold': {
+      fontWeight: 700,
+      fontSize: pxToRem(15),
+      lineHeight: '24px'
     },
     'Body15/semiBold': {
       fontWeight: 600,

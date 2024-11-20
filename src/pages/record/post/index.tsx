@@ -12,6 +12,13 @@ import TextField from '../../../components/TextField';
 import CalenderModal from '../../../components/custom/calendar/CalendarModal';
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
+import { useNavigate } from 'react-router';
+
+/**
+ * ******************************************************
+ * 기록 등록 화면
+ * ******************************************************
+ */
 
 export default function Post() {
   const { palette } = useTheme();
@@ -19,6 +26,8 @@ export default function Post() {
   const grey200 = palette.grey[200];
   const primarylig = palette.primary.light;
   const grey600 = light ? palette.grey[600] : 'white';
+
+  const navigate = useNavigate();
 
   const schema = Yup.object().shape({
     date: Yup.string(),
@@ -95,13 +104,18 @@ export default function Post() {
     setValue('imageqty', updateImgName.length);
   };
 
+  const uploadPost = () => {
+    // TODO: 데이터 저장 실패시 코드 작성하기
+    // TODO: toast or alert 알림 컴포넌트 만들기
+    navigate('/record');
+  };
   const onClick = handleSubmit(async (data) => {
     const type = data.type === 'workout' ? '운동 기록을 ' : '식단 기록을 ';
     openConfirm({
       title: '',
       content: `${type}등록하시겠습니까?`,
-      onClick: () => console.log('data 저장', data),
-      onClose: () => console.log('data 저장', data),
+      onClick: () => uploadPost(),
+      onClose: () => console.log('on Close data 저장', data),
       clickMsg: '네',
       closeMsg: '아니요'
     });

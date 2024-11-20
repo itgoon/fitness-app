@@ -1,10 +1,6 @@
 // vite 환경에서는 import 경로 끝에 ?react 반드시 붙여야 함
 // 아이콘명 - 파스칼 케이스 적용
 import PickerCalendarSvg from './PickerCalendar.svg?react';
-import PlusSvg from './Plus.svg?react';
-import LeftArrow from './arrow_left.svg?react';
-import RightArrowSvg from './RightArrow.svg?react';
-import RegisterRightArrowSvg from './registerRightArrow.svg?react';
 import CheckBoxSvg from './checkbox_ic.svg?react';
 import GalleryCheckSvg from './GalleryCheck.svg?react';
 import AppLogoSmall from './app_logo_small.svg?react';
@@ -13,40 +9,30 @@ import Red from './red.svg?react';
 import Blue from './blue.svg?react';
 import Orange from './orange.svg?react';
 import Green from './green.svg?react';
-import Location from './Location.svg?react';
 import Receipt from './Receipt.svg?react';
 
 import Membership from './Membership.svg?react';
 import HomeSvg from './Home.svg?react';
 import Calendar from './Calendar.svg?react';
 import FeedSvg from './Feed.svg?react';
-import MoreSvg from './More.svg?react';
 import MembershipColorSvg from './MembershipColorSvg.svg?react';
 import HomeColorSvg from './HomeColor.svg?react';
 import CalendarColorSvg from './CalendarColorSvg.svg?react';
-import FeedColorSvg from './FeedColorSvg.svg?react';
-import MoreColorSvg from './MoreColorSvg.svg?react';
 
 import CheckSvg from './Check.svg?react';
 import WeightSvg from './weight.svg?react';
 import DumbelSvg from './dumbelSvg.svg?react';
-import ExpandMoreSvg from './expand_more.svg?react';
 import OrangeLargeSvg from './OrangeLarge.svg?react';
 import BlueLargeSvg from './BlueLargeSvg.svg?react';
 import DumbelLargeSvg from './DumbelLarge.svg?react';
 import CloseSvg from './CloseSvg.svg?react';
-import EditSvg from './EditSvg.svg?react';
 import BellSvg from './BellSvg.svg?react';
 import QrCardSvg from './Card.svg?react';
-import QrCardSmallSvg from './QRCardSmall.svg?react';
-import QrCardBigSvg from './QRCardBig.svg?react';
 import CameraSvg from './Camera.svg?react';
 import DeleteImageSvg from './DeleteImage.svg?react';
+import FileDownloadSvg from './FileDownlaod.svg?react';
 
 export {
-  LeftArrow,
-  RightArrowSvg,
-  RegisterRightArrowSvg,
   CheckBoxSvg,
   AppLogoSmall,
   Kakao,
@@ -54,34 +40,26 @@ export {
   Orange,
   Blue,
   Green,
-  Location,
   Receipt,
   Membership,
   HomeSvg,
   Calendar,
   FeedSvg,
-  MoreSvg,
   CheckSvg,
   WeightSvg,
   DumbelSvg,
-  ExpandMoreSvg,
   OrangeLargeSvg,
   BlueLargeSvg,
   DumbelLargeSvg,
   CloseSvg,
-  EditSvg,
   MembershipColorSvg,
   HomeColorSvg,
   CalendarColorSvg,
-  FeedColorSvg,
-  MoreColorSvg,
   BellSvg,
   QrCardSvg,
-  QrCardSmallSvg,
-  QrCardBigSvg,
   CameraSvg,
   PickerCalendarSvg,
   DeleteImageSvg,
-  PlusSvg,
-  GalleryCheckSvg
+  GalleryCheckSvg,
+  FileDownloadSvg
 };

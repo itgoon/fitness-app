@@ -4,20 +4,12 @@ import { paths } from 'src/routes/paths';
 
 import { useTranslate } from 'src/locales';
 
-import SvgColor from 'src/components/svgColor';
-
 import Iconify from '../../components/iconify';
 import Icon from '../../components/Icon';
 import { useLocation } from 'react-router';
+import { useTheme } from '@mui/material';
 
 // ----------------------------------------------------------------------
-
-const icon = (name: string) => (
-  <SvgColor
-    src={`/assets/icons/navbar/${name}.svg`}
-    sx={{ width: 1, height: 1 }}
-  />
-);
 
 const ICONS = {
   dashboard: <Iconify icon="mage:dashboard" />,
@@ -32,15 +24,14 @@ const ICONS = {
   list: <Iconify icon="ic:baseline-list" />,
   new: <Iconify icon="mdi:add-circle" />,
   naver: <Iconify icon="simple-icons:naver" />,
-  home: <Icon name="HomeSvg" size={32} />,
-  calendar: <Icon name="Calendar" size={32} />,
-  memberShip: <Icon name="Membership" size={32} />,
-  feed: <Icon name="FeedSvg" size={32} />,
-  more: <Icon name="MoreSvg" size={32} />,
-  homeColor: <Icon name="HomeColorSvg" size={32} />,
-  calendarColor: <Icon name="CalendarColorSvg" size={32} />,
-  memberShipColor: <Icon name="MembershipColorSvg" size={32} />,
-  moreColor: <Icon name="MoreColorSvg" size={32} />
+  home: 'HomeSvg',
+  calendar: 'Calendar',
+  membership: 'Membership',
+  feed: 'FeedSvg',
+  more: 'MoreHorizRounded',
+  homeColor: 'HomeColorSvg',
+  calendarColor: 'CalendarColorSvg',
+  membershipColor: 'MembershipColorSvg'
 };
 
 // ----------------------------------------------------------------------
@@ -48,6 +39,18 @@ const ICONS = {
 export function useNavData() {
   const { t } = useTranslate();
   const pathname = useLocation().pathname;
+  const { palette } = useTheme();
+
+  const renderIcon = (iconName: any) => {
+    const color =
+      iconName.includes('Color') ||
+      iconName === 'FeedSvg' ||
+      iconName === 'MoreHorizRounded'
+        ? 'inherit'
+        : palette.grey[500];
+    return <Icon name={iconName} size={32} color={color} />;
+  };
+
   const data = useMemo(
     () => [
       {
@@ -56,35 +59,37 @@ export function useNavData() {
           {
             title: t('홈'),
             path: paths.dashboard.root,
-            icon:
+            icon: renderIcon(
               pathname === paths.dashboard.root ? ICONS.homeColor : ICONS.home
+            )
           },
           {
             title: '일정',
             path: paths.schedule.root,
-            icon:
+            icon: renderIcon(
               pathname === paths.schedule.root
                 ? ICONS.calendarColor
                 : ICONS.calendar
+            )
           },
           {
             title: '회원권',
             path: paths.member.root,
-            icon:
+            icon: renderIcon(
               pathname === paths.member.root
-                ? ICONS.memberShipColor
-                : ICONS.memberShip
+                ? ICONS.membershipColor
+                : ICONS.membership
+            )
           },
           {
             title: '기록',
             path: paths.record.root,
-            icon: ICONS.feed
+            icon: renderIcon(ICONS.feed)
           },
           {
-            //TODO: title 만 검정색인거 해결하기
             title: '더보기',
             path: paths.more.root,
-            icon: pathname === paths.myPage.root ? ICONS.moreColor : ICONS.more
+            icon: renderIcon(ICONS.more)
           }
         ]
       }

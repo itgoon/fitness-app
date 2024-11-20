@@ -63,7 +63,6 @@ export default function DashboardLayout({ children }: Props) {
       return !item.isBottom && path.startsWith(item.url);
     });
     setIsBottom(!hasBottomMenu);
-    console.log('dash isEdit: ', isEdit);
   }, [path, isEdit]);
 
   useEffect(() => {

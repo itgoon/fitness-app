@@ -48,7 +48,12 @@ export default function CardBody({ cardData, cardSx }: ICardBody) {
         {chipState != undefined ? (
           <Stack gap={0.5}>
             <Content>
-              <Icon size={16} name={'Location'} color={iconColor} />
+              <Icon
+                size={18}
+                name={'LocationOn'}
+                color={iconColor}
+                sx={{ marginLeft: -1 }}
+              />
               <Typography
                 variant="Body14/regular"
                 children={place}

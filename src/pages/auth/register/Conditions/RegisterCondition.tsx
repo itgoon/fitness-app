@@ -44,7 +44,7 @@ export default function RegisterCondition({
           />
         }
       />
-      {onClick && <Icon name="RegisterRightArrowSvg" onClick={onClick}></Icon>}
+      {onClick && <Icon name="ArrowForwardIosRounded" onClick={onClick}></Icon>}
     </Box>
   );
 }

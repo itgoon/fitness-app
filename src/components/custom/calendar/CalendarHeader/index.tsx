@@ -1,10 +1,19 @@
-import { Badge, Box, Divider, Stack, Typography } from '@mui/material';
+import {
+  Badge,
+  Box,
+  Divider,
+  Stack,
+  Typography,
+  useTheme
+} from '@mui/material';
 import { DateView } from '@mui/x-date-pickers';
 import { useNavigate } from 'react-router';
 import Icon from '../../../Icon';
 import { CalendarHeaderProps } from '../types';
 
 export default function CalendarHeader(props: CalendarHeaderProps) {
+  const { palette } = useTheme();
+
   const {
     currentMonth,
     onMonthChange,
@@ -50,8 +59,8 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
             {!isCheckWorkout && (
               <Box>
                 <Icon
-                  name={'LeftArrow'}
-                  size={16}
+                  name={'ArrowBackIosNewRounded'}
+                  size={18}
                   onClick={() => navigate(-1)}
                 />
               </Box>
@@ -61,12 +70,16 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
               flex={1}
               justifyContent={'center'}
               alignItems={'center'}
-              gap={1 / 2}
             >
               <Typography onClick={viewChange} variant="Body18/semiBold">
                 {month}
               </Typography>
-              <Icon size={18} name="ExpandMoreSvg" onClick={viewChange} />
+              <Icon
+                size={26}
+                name="ExpandMoreRounded"
+                onClick={viewChange}
+                color={palette.grey[600]}
+              />
             </Box>
           </Box>
 
@@ -106,7 +119,7 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
             height={56}
           >
             <Icon
-              name={'LeftArrow'}
+              name={'ArrowBackIosRounded'}
               color="#BDBDBD"
               size={15}
               onClick={() => PrevMonth()}
@@ -117,7 +130,7 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
             </Typography>
             <Icon
               color="#BDBDBD"
-              name={'RightArrowSvg'}
+              name={'ArrowForwardIosRounded'}
               size={15}
               onClick={() => NextMonth()}
             />

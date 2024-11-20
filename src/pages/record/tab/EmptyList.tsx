@@ -1,6 +1,12 @@
 import { Stack, Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router';
 
+/**
+ * ******************************************************
+ * 기록 화면 빈 리스트
+ * ******************************************************
+ */
+
 export default function EmptyList() {
   const { palette } = useTheme();
   const light = palette.mode === 'light';
@@ -9,12 +15,7 @@ export default function EmptyList() {
 
   const navigate = useNavigate();
   return (
-    <Stack
-      height={'inherit'}
-      alignItems={'center'}
-      justifyContent={'center'}
-      gap={1.5}
-    >
+    <Stack pt={27} alignItems={'center'} gap={1.5}>
       <Stack alignItems={'center'}>
         <Typography
           variant={'Body20/bold'}

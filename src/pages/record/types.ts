@@ -22,3 +22,10 @@ export interface IRecordList {
   onChange: (fr: number, sec: number) => void;
   selectedIndex: number[][];
 }
+
+// image viewer
+export interface IimageViewer {
+  imgIndex: number;
+  clickedImg?: TdietRecordList;
+  onClose: () => void;
+}

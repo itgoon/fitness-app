@@ -24,9 +24,9 @@ export default function RecordHeader({ isEdit, handleEdit }: IRecordHeader) {
       <Box width={18} display={'flex'}>
         {!isEdit && (
           <Icon
-            name={'PlusSvg'}
-            sx={{ marginTop: '-1px', color: '#262626' }}
-            size={18}
+            name={'AddRounded'}
+            sx={{ marginTop: -1, marginLeft: -2, color: '#262626' }}
+            size={24}
             onClick={() => navigate('/record/post')}
           />
         )}
@@ -42,12 +42,7 @@ export default function RecordHeader({ isEdit, handleEdit }: IRecordHeader) {
       </Box>
       <Box width={28} display={'flex'} justifyContent={'end'}>
         {!isEdit ? (
-          <Icon
-            size={22}
-            name={'MoreSvg'}
-            sx={{ transform: 'rotate(90deg)' }}
-            onClick={handleEdit}
-          />
+          <Icon size={22} name={'MoreVertRounded'} onClick={handleEdit} />
         ) : (
           <Typography
             variant="Body16/light"
