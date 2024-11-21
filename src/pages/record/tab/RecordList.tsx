@@ -10,7 +10,8 @@ export default function RecordList({
   arrList,
   isEdit,
   onChange,
-  selectedIndex
+  selectedIndex,
+  onDelete
 }: IRecordList) {
   const { palette } = useTheme();
   const light = palette.mode === 'light';
@@ -26,6 +27,9 @@ export default function RecordList({
     setImgIndex(key);
     setClickedImg(arr);
     setIsOpenView((prev) => !prev);
+  };
+  const onNext = () => {
+    setImgIndex((prev) => prev + 1);
   };
 
   return (
@@ -90,8 +94,11 @@ export default function RecordList({
       {isOpenView && (
         <ImageViewer
           imgIndex={imgIndex}
+          setImgIndex={setImgIndex}
           clickedImg={clickedImg}
           onClose={() => setIsOpenView((prev) => !prev)}
+          onDelete={onDelete}
+          onNext={onNext}
         />
       )}
     </>

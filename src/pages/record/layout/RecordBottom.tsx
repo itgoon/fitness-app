@@ -1,11 +1,10 @@
 import { Box, Typography, useTheme } from '@mui/material';
 import { useModal } from '../../../hooks/useModal';
+import { IRecordBottom } from '../types';
 
-interface IRecordBottom {
-  selectImageCount: number;
-  onSelectAll: () => void;
-  onDelete: () => void;
-}
+/**
+ * 기록 화면 바텀
+ */
 export default function RecordBottom({
   selectImageCount,
   onSelectAll,

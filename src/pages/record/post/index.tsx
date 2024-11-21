@@ -24,11 +24,9 @@ import Overlay from '../../../components/custom/Overlay/indext';
 const softBtnSx: {
   size: 'small' | 'medium' | 'large';
   variant: 'soft';
-  color: 'secondary';
 } = {
   size: 'large',
-  variant: 'soft',
-  color: 'secondary'
+  variant: 'soft'
 };
 export default function Post() {
   const { palette } = useTheme();
@@ -255,7 +253,7 @@ export default function Post() {
           </Stack>
           <Button
             {...softBtnSx}
-            color={'primary'}
+            color={'secondary'}
             children={'취소'}
             onClick={() => setUpload((prev) => !prev)}
           />

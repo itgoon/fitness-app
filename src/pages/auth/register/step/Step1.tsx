@@ -9,7 +9,7 @@ const stepsChild = [
   { label: '본인인증', value: '휴대폰 번호를 입력해주세요' }
 ];
 export interface StepProps {
-  onNext: () => void;
+  onNext?: () => void;
   data: string;
   setData: (_arg: string) => void;
 }
@@ -99,7 +99,7 @@ export default function Step1({ onNext, data, setData }: StepProps) {
           size="large"
           onClick={() => {
             if (step === 2) {
-              onNext();
+              onNext && onNext();
             } else {
               onClickStep();
             }

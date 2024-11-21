@@ -16,9 +16,6 @@ import { Box } from '@mui/material';
 import Step1 from './step/Step1';
 import Step2 from './step/Step2';
 import Step3 from './step/Step3';
-
-// ----------------------------------------------------------------------
-
 /**
  * ******************************************************
  * 회원가입 화면
@@ -83,8 +80,8 @@ export default function RegisterView() {
       <Header isStart={true} stepTitle={'회원가입'} />
       <Box height={'calc(100% - 56px)'}>
         <StepFlow activeStep={activeStep} onNext={onNext}>
-          <Step1 onNext={onNext} data={data} setData={setData} />
-          <Step2 onNext={onNext} />
+          <Step1 data={data} setData={setData} />
+          <Step2 />
           <Step3 />
         </StepFlow>
       </Box>

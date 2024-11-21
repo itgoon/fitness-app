@@ -4,7 +4,7 @@ import { dummyCondition, dummyCondition2 } from '../../../../utils/dummy';
 import Condition from '../../../../components/custom/Condition';
 import Button from '../../../../components/Button';
 
-export interface StepProps {
+interface StepProps {
   onNext?: () => void;
 }
 /**

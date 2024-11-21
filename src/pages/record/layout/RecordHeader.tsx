@@ -1,11 +1,10 @@
 import { Box, Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router';
 import Icon from '../../../components/Icon';
-
-interface IRecordHeader {
-  isEdit: boolean;
-  handleEdit: () => void;
-}
+import { IRecordHeader } from '../types';
+/**
+ * 기록 화면 헤더
+ */
 export default function RecordHeader({ isEdit, handleEdit }: IRecordHeader) {
   const navigate = useNavigate();
   const theme = useTheme();

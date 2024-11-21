@@ -23,8 +23,8 @@ export default function MakeContract() {
       <Header isStart={true} stepTitle={stepTitle[activeStep]} />
       <Box padding={'40px 20px 0'} height={'calc(100% - 56px)'}>
         <StepFlow activeStep={activeStep} onNext={onNext}>
-          <ContractStep1 onNext={onNext} />
-          <ContractStep2 onNext={onNext} />
+          <ContractStep1 />
+          <ContractStep2 />
           <ContractStep3 />
         </StepFlow>
       </Box>

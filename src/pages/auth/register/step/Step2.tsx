@@ -17,7 +17,7 @@ const INITIAL_TIMER = 180;
 const CODE_LENGTH = 6;
 
 interface StepProps {
-  onNext: () => void;
+  onNext?: () => void;
 }
 
 export default function Step2({ onNext }: StepProps) {

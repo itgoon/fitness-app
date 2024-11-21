@@ -103,6 +103,7 @@ export default function Record() {
                 isEdit={isEdit}
                 onChange={handleSelect}
                 selectedIndex={selectedIndex}
+                onDelete={deleteDietList}
               />
             </DietTab>
           ) : (

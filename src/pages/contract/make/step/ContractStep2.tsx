@@ -7,7 +7,7 @@ import SignPopover from '../../../../components/custom/sign/SignPopover';
 import Button from '../../../../components/Button';
 import { useSign } from '../../../../hooks/useSign';
 
-export interface StepProps {
+interface StepProps {
   onNext?: () => void;
 }
 /**

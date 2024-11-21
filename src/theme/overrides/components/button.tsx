@@ -76,15 +76,14 @@ export function button(theme: Theme) {
         }),
         // SOFT
         ...(softVariant && {
-          color: theme.palette.grey.A100,
-          backgroundColor: alpha(theme.palette.grey[500], 0.08),
+          backgroundColor: '#eeeff1',
+          color: '#007AFF',
+          borderRadius: 14,
+          fontSize: '17px !important',
+          fontWeight: '400 !important',
           '&:hover': {
-            backgroundColor: alpha(theme.palette.grey[500], 0.24)
+            backgroundColor: alpha('#eeeff1', 0.32)
           }
-          // ...(ownerState.color === 'primary' && {
-          //   backgroundColor: alpha(theme.palette.grey[500], 0.08),
-          //   color: theme.palette.primary.main
-          // })
         })
       }),
       ...(outlinedVariant && {
@@ -106,24 +105,20 @@ export function button(theme: Theme) {
         }),
         // SOFT
         ...(softVariant && {
-          color: theme.palette[color][lightMode ? 'dark' : 'light'],
-          backgroundColor: alpha(theme.palette[color].main, 0.16),
+          backgroundColor: '#e5e5e5',
+          color: '#007AFF',
+          borderRadius: 14,
+          fontSize: '17px !important',
+          fontWeight: '400 !important',
           '&:hover': {
-            backgroundColor: alpha(theme.palette[color].main, 0.32)
+            backgroundColor: alpha('#e5e5e5', 0.32)
           },
-          ...(ownerState.color === 'primary' && {
+          ...(ownerState.color === 'secondary' && {
             backgroundColor: '#eeeff1',
-            color: '#007AFF',
-            borderRadius: 14,
-            fontSize: '17px !important',
             fontWeight: '600 !important'
           }),
-          ...(ownerState.color === 'secondary' && {
-            backgroundColor: '#e5e5e5',
-            color: '#007AFF',
-            borderRadius: 14,
-            fontSize: '17px !important',
-            fontWeight: '400 !important'
+          ...(ownerState.color === 'error' && {
+            color: theme.palette.error.dark
           })
         }),
         // TEXT
