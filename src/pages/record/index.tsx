@@ -11,6 +11,7 @@ import DietTab from './tab/DietTab';
 import RecordList from './tab/RecordList';
 import EmptyList from './tab/EmptyList';
 import { dietRecords } from '../../utils/dummy';
+import WorkoutTab from './tab/WorkoutTab';
 
 /**
  * ******************************************************
@@ -22,10 +23,9 @@ export default function Record() {
   const [tabValue, setTabValue] = useState(0);
   const [workoutList, setWorkoutList] = useState([]);
   const [dietList, setDietList] = useState<TdietRecordList[]>(dietRecords);
+  const [selectedIndex, setSelectedIndex] = useState<number[][]>([[0, 0]]);
 
   const { isEdit, toggleEdit } = useEditContext();
-
-  const [selectedIndex, setSelectedIndex] = useState<number[][]>([]);
 
   const handleSelect = (firstIndex: number, secondIndex: number) => {
     const isSelected = selectedIndex.some(
@@ -43,6 +43,10 @@ export default function Record() {
       // 선택 추가
       setSelectedIndex((prev) => [...prev, [firstIndex, secondIndex]]);
     }
+  };
+
+  const onClickImage = (firstIndex: number, secondIndex: number) => {
+    setSelectedIndex([[firstIndex, secondIndex]]);
   };
 
   const deleteDietList = () => {
@@ -75,7 +79,6 @@ export default function Record() {
     });
     setSelectedIndex(selectionArray);
   };
-
   return (
     <>
       <Box>
@@ -93,7 +96,7 @@ export default function Record() {
           secLabel={'식단'}
         />
         <TabPanel value={tabValue} index={0}>
-          <EmptyList />
+          {dietList.length > 0 ? <WorkoutTab>work</WorkoutTab> : <EmptyList />}
         </TabPanel>
         <TabPanel value={tabValue} index={1}>
           {dietList.length > 0 ? (
@@ -102,7 +105,9 @@ export default function Record() {
                 arrList={dietList}
                 isEdit={isEdit}
                 onChange={handleSelect}
+                onClickImage={onClickImage}
                 selectedIndex={selectedIndex}
+                setSelectedIndex={setSelectedIndex}
                 onDelete={deleteDietList}
               />
             </DietTab>

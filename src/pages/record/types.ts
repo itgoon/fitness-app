@@ -16,22 +16,22 @@ export type TdietRecordList = {
 };
 
 // 기록 페이지 리스트
-export interface IRecordList {
-  //  tab diet array
+export interface ICommon {
+  selectedIndex: number[][];
+  setSelectedIndex: (indices: number[][] | any) => void; // 2차원 배열을 인자로 받도록 수정
+  onDelete: () => void;
+}
+
+export interface IRecordList extends ICommon {
+  // tab diet array
   arrList: TdietRecordList[];
   isEdit: boolean;
   onChange: (fr: number, sec: number) => void;
-  onDelete: () => void;
-  selectedIndex: number[][];
+  onClickImage: (fr: number, sec: number) => void;
 }
-// image viewer
-export interface IimageViewer {
-  imgIndex: number;
-  setImgIndex: (arg: any) => void;
+export interface IimageViewer extends ICommon {
   clickedImg?: TdietRecordList;
   onClose: () => void;
-  onDelete: () => void;
-  onNext: () => void;
 }
 
 // 레이아웃

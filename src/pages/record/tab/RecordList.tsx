@@ -9,8 +9,10 @@ import ImageViewer from './ImageViewer';
 export default function RecordList({
   arrList,
   isEdit,
-  onChange,
   selectedIndex,
+  onChange,
+  onClickImage,
+  setSelectedIndex,
   onDelete
 }: IRecordList) {
   const { palette } = useTheme();
@@ -18,18 +20,14 @@ export default function RecordList({
   const grey600 = light ? palette.grey[600] : 'white';
 
   const [isOpenView, setIsOpenView] = useState(false);
-  const [imgIndex, setImgIndex] = useState<number>(0);
   const [clickedImg, setClickedImg] = useState<TdietRecordList | undefined>(
     undefined
   );
 
-  const onHandleViewr = (key, arr) => {
-    setImgIndex(key);
+  const onHandleViewr = (listIndex, imageIndex, arr) => {
+    onClickImage(listIndex, imageIndex);
     setClickedImg(arr);
     setIsOpenView((prev) => !prev);
-  };
-  const onNext = () => {
-    setImgIndex((prev) => prev + 1);
   };
 
   return (
@@ -56,7 +54,7 @@ export default function RecordList({
                     }}
                     src={img}
                     alt={img}
-                    onClick={() => onHandleViewr(imageKey, arr)}
+                    onClick={() => onHandleViewr(listKey, imageKey, arr)}
                   />
                   {isEdit && (
                     <Box
@@ -93,12 +91,11 @@ export default function RecordList({
       })}
       {isOpenView && (
         <ImageViewer
-          imgIndex={imgIndex}
-          setImgIndex={setImgIndex}
+          selectedIndex={selectedIndex}
+          setSelectedIndex={setSelectedIndex}
           clickedImg={clickedImg}
           onClose={() => setIsOpenView((prev) => !prev)}
           onDelete={onDelete}
-          onNext={onNext}
         />
       )}
     </>
