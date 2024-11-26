@@ -12,8 +12,8 @@ export default function RecordList({
   selectedIndex,
   onChange,
   onClickImage,
-  setSelectedIndex,
-  onDelete
+  onDelete,
+  afterChange
 }: IRecordList) {
   const { palette } = useTheme();
   const light = palette.mode === 'light';
@@ -29,6 +29,32 @@ export default function RecordList({
     setClickedImg(arr);
     setIsOpenView((prev) => !prev);
   };
+
+  const viewerDelete = () => {
+    onDelete();
+
+    const updatedData =
+      clickedImg?.imageUrls.filter((_, index) => {
+        return !selectedIndex.some(([_, sIndex]) => sIndex === index);
+      }) || [];
+
+    setClickedImg((prev) => {
+      if (prev) {
+        return {
+          ...prev,
+          imageUrls: updatedData
+        };
+      }
+      return {
+        date: '',
+        type: '',
+        content: '',
+        imageName: [],
+        imageUrls: []
+      };
+    });
+  };
+  //  삭제 까지 완료 // clickedImg 가  Undefined 일때 처리
 
   return (
     <>
@@ -92,10 +118,10 @@ export default function RecordList({
       {isOpenView && (
         <ImageViewer
           selectedIndex={selectedIndex}
-          setSelectedIndex={setSelectedIndex}
           clickedImg={clickedImg}
           onClose={() => setIsOpenView((prev) => !prev)}
-          onDelete={onDelete}
+          afterChange={afterChange}
+          onDelete={viewerDelete}
         />
       )}
     </>

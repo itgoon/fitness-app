@@ -49,9 +49,8 @@ export default function RecordBottom({
           if (selectImageCount !== 0) {
             openConfirm({
               title: '',
-              content: `${selectImageCount}개의 기록을 삭제하시겠습니가?`,
+              content: `${selectImageCount}개의 기록을 삭제하시겠습니까?`,
               onClick: onDelete,
-              onClose: () => {},
               clickMsg: '삭제',
               closeMsg: '취소',
               clickColor: 'error'

@@ -5,6 +5,7 @@ import Overlay from '../../../components/custom/Overlay/indext';
 import { useState } from 'react';
 import Button from '../../../components/Button';
 import CustomCarousel from '../../../components/custom/CustomCarousel/index';
+import { useModal } from '../../../hooks/useModal';
 
 const IconSx = {
   size: 24,
@@ -26,21 +27,16 @@ const BtnSx: {
 export default function ImageViewer({
   clickedImg,
   selectedIndex,
-  setSelectedIndex,
   onClose,
-  onDelete
+  onDelete,
+  afterChange
 }: IimageViewer) {
+  const { openConfirm } = useModal();
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
-  if (clickedImg === undefined) return null;
+  if (clickedImg === undefined || selectedIndex.length === 0) return null;
   const { content, imageUrls } = clickedImg;
-
-  const handleAfterChange = (index) => {
-    setSelectedIndex((prevState: number[][]) => {
-      const currentState = prevState[0] || [0, 0]; // 현재 상태의 첫 번째 요소 가져오기
-      return [[currentState[0], index]]; // 2차원 배열 형태로 반환
-    });
-  };
   const currentIndex = selectedIndex[0][1];
+
   return (
     <Overlay bgcolor="#000">
       <Overlay isOpen={isOverlayOpen} onClose={() => setIsOverlayOpen(false)} />
@@ -66,7 +62,7 @@ export default function ImageViewer({
             list={imageUrls}
             content={content}
             imgIndex={currentIndex}
-            afterChange={handleAfterChange}
+            afterChange={afterChange}
           />
         </Stack>
 
@@ -77,7 +73,16 @@ export default function ImageViewer({
                 children={'기록 삭제'}
                 color={'error'}
                 {...BtnSx}
-                onClick={onDelete}
+                onClick={() =>
+                  openConfirm({
+                    title: '',
+                    content: `기록을 삭제하시겠습니까?`,
+                    onClick: onDelete,
+                    clickMsg: '삭제',
+                    closeMsg: '취소',
+                    clickColor: 'error'
+                  })
+                }
               />
               <Button
                 children={'취소'}

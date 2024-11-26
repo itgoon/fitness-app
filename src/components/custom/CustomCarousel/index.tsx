@@ -41,7 +41,6 @@ export default function CustomCarousel({
       sliderRef.current.slickGoTo(imgIndex);
     }
   }, [imgIndex]);
-
   //TODO: height css고치기
   return (
     <Stack position={'relative'} gap={2}>

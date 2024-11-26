@@ -18,8 +18,9 @@ export type TdietRecordList = {
 // 기록 페이지 리스트
 export interface ICommon {
   selectedIndex: number[][];
-  setSelectedIndex: (indices: number[][] | any) => void; // 2차원 배열을 인자로 받도록 수정
+  // setSelectedIndex: (indices: number[][] | any) => void; // 2차원 배열을 인자로 받도록 수정
   onDelete: () => void;
+  afterChange: (arg: number) => void;
 }
 
 export interface IRecordList extends ICommon {
