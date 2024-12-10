@@ -10,17 +10,12 @@ export default function Item({ isStart, isEnd, title }: Iheader) {
   const black = light ? palette.common.black : palette.common.white;
   const navigate = useNavigate();
   return (
-    <Box
-      display={'flex'}
-      justifyContent={'space-between'}
-      width={'100%'}
-      alignItems={'center'}
-    >
+    <Box display={'flex'} width={'100%'}>
       {isStart && (
         <Icon
           name={'ArrowBackIosNewRounded'}
-          sx={{ marginTop: '-1px', color: '#262626' }}
-          size={18}
+          sx={{ color: '#262626' }}
+          size={24}
           onClick={() => navigate(-1)}
         />
       )}
@@ -29,6 +24,7 @@ export default function Item({ isStart, isEnd, title }: Iheader) {
         {title && (
           <Typography
             variant="Body18/bold"
+            lineHeight={'26px'}
             children={title}
             color={black}
             sx={{ display: 'flex', justifyContent: 'center' }}

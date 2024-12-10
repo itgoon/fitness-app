@@ -37,7 +37,6 @@ export default function QrCardData({
     const thisDay = 100 - (getRemainDays(dayjs(), endDay) + 1) * value;
     setRemainValue(thisDay);
   };
-
   return (
     <>
       {!isDetail ? (
@@ -66,8 +65,7 @@ export default function QrCardData({
                   children={`${contractDate.value} ~ ${effectiveDate.value}`}
                 />
               </Stack>
-              {/* <Icon name="QrCardSmallSvg" size={100} onClick={onClick} />
-               */}
+
               <QRCode onClick={onClick} />
               <Stack gap={1}>
                 <LinearProgress

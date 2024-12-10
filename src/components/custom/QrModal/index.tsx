@@ -3,7 +3,7 @@ import QrCardSvg from '../../../assets/svgs/Card.svg';
 import QrCardData from './QrCardData';
 import QrEmptyData from './QrEmptyData';
 import { IQrModal } from './types';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import ExpansionQR from './ExpansionQR';
 
 /**
@@ -24,9 +24,7 @@ export default function QrModal({
   onClose
 }: IQrModal) {
   const [isBasic, setIsBasic] = useState(false);
-  useEffect(() => {
-    setIsBasic(false);
-  }, []);
+
   return (
     <Dialog
       open={open}

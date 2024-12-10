@@ -74,8 +74,7 @@ declare module '@mui/material/Typography' {
     'Body11/regular': true;
   }
 }
-
-export const primaryFont = 'Public Sans, sans-serif';
+export const primaryFont = 'Pretendard';
 export const secondaryFont = 'Barlow, sans-serif';
 const customVariant = () => {
   return {
