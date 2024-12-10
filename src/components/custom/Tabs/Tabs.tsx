@@ -10,7 +10,7 @@ export default function Tabs({ value, onChange, frLabel, secLabel }: ITabs) {
       variant="fullWidth"
     >
       <Tab label={frLabel} />
-      <Tab label={secLabel}></Tab>
+      <Tab label={secLabel} />
     </CustomTabs>
   );
 }

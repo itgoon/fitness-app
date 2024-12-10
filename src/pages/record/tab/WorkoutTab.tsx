@@ -1,6 +1,5 @@
 import { Stack, useTheme } from '@mui/material';
 import { ReactNode } from 'react';
-
 interface IDietTab {
   children: ReactNode;
 }
