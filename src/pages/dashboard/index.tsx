@@ -98,7 +98,6 @@ export default function DashboardPage() {
     <Stack>
       <Wrap padding={'0 !important'}>
         <WeekCalendar
-          date={dayjs()}
           greenBadge={dummyMonthCount1}
           orangeBadge={dummyMonthCount2}
         />

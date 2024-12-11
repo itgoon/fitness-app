@@ -1,4 +1,3 @@
-import { Dayjs } from 'dayjs';
 import { CSSProperties } from 'react';
 
 type count = {
@@ -6,7 +5,6 @@ type count = {
   count: number;
 };
 export interface IWeekCalendar {
-  date?: string | Dayjs;
   format?: string;
   greenBadge?: count[];
   orangeBadge?: count[];

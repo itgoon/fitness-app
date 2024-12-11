@@ -26,8 +26,7 @@ export default function LoginView() {
   const navigate = useNavigate();
   const { auth, login } = useAuth();
   const password = useBoolean();
-  const theme = useTheme();
-  const { palette } = theme;
+  const { palette } = useTheme();
 
   useEffect(() => {
     if (!auth?.isLoggedIn) return;

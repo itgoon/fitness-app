@@ -7,7 +7,6 @@ import { DateReqFormat } from '../../../utils/formatTime';
 import Button from '../../Button';
 
 export default function WeekCalendar({
-  date,
   format = DateReqFormat,
   greenBadge,
   orangeBadge,
@@ -18,18 +17,23 @@ export default function WeekCalendar({
   const light = palette.mode === 'light';
   const grey600 = light ? palette.grey[600] : palette.common.white;
   const black = light ? palette.common.black : palette.common.white;
-  const [dateList, setDateList] = useState<string[]>([]);
+  const [dateList, setDateList] = useState<
+    { date: string; day: string }[] | []
+  >([]);
   useEffect(() => {
     settingDate();
   }, []);
 
   const settingDate = () => {
-    let list: string[] = [];
-    for (let index = 0; index < 7; index++) {
-      list.push(dayjs(date).subtract(index, 'day').format(format));
-    }
+    const week = ['일', '월', '화', '수', '목', '금', '토'];
+    const firstDay = dayjs().startOf('week');
+    let list = Array.from({ length: 7 }, (_, index) => {
+      const date = firstDay.add(index, 'day');
+      const day = week[dayjs().subtract(index, 'day').day()];
+      return { date: date.format(format), day };
+    });
 
-    setDateList(list.reverse());
+    setDateList(list);
   };
 
   return (
@@ -38,7 +42,7 @@ export default function WeekCalendar({
       sx={{ display: 'flex', padding: '12px', ...layoutSx }}
     >
       {dateList.map((item, key) => {
-        const isToday = dayjs(date).isSame(item, 'day');
+        const isToday = dayjs().isSame(dayjs(item.date, format), 'day');
         const isGreen = greenBadge?.some((evt) => item === evt.date) || false;
         const isOrange = orangeBadge?.some((evt) => item === evt.date) || false;
 
@@ -52,16 +56,15 @@ export default function WeekCalendar({
               <Typography
                 variant={isToday ? 'Body13/semiBold' : 'Body13/regular'}
                 color={isToday ? black : grey600}
-              >
-                {isToday ? '오늘' : dayjs(item, format).format('dd')}
-              </Typography>
+                children={isToday ? '오늘' : item.day}
+              />
               <Stack>
                 <Typography
                   variant={isToday ? 'Body15/regular' : 'Body15/light'}
                   color={isToday ? black : grey600}
-                >
-                  {dayjs(item, format).format('D')}
-                </Typography>
+                  children={dayjs(item.date).format('D')}
+                />
+
                 <Box display={'flex'} gap={1} ml={1.4}>
                   {isOrange && <Badge color="warning" variant="alway" />}
                   {isGreen && <Badge color="success" variant="online" />}

@@ -14,7 +14,7 @@ export default function Item({ isStart, isEnd, title }: Iheader) {
       {isStart && (
         <Icon
           name={'ArrowBackIosNewRounded'}
-          sx={{ color: '#262626' }}
+          sx={{ marginTop: 2 }}
           size={24}
           onClick={() => navigate(-1)}
         />
@@ -31,7 +31,7 @@ export default function Item({ isStart, isEnd, title }: Iheader) {
           />
         )}
       </Box>
-      {isEnd && <Icon size={22} name={'BellSvg'} />}
+      {isEnd && <Icon size={24} name={'BellSvg'} />}
     </Box>
   );
 }

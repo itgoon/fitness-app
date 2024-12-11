@@ -9,7 +9,11 @@ export default function CalenderModal({
 }: ICalenderModal) {
   return (
     <Dialog className="calendar-modal" open={open} onClose={onClose}>
-      <DateCalendar onChange={onChange} isModal={true}></DateCalendar>
+      <DateCalendar
+        onChange={onChange}
+        isModal={true}
+        isBadge={false}
+      ></DateCalendar>
     </Dialog>
   );
 }

@@ -19,51 +19,44 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
     onMonthChange,
     onViewChange,
     view,
-    isCheckWorkout,
+    isBadge,
     isModal = false
   } = props;
 
   const navigate = useNavigate();
   const month = currentMonth.format('YYYY년 M월');
 
-  const viewChange = () => {
-    let newView: DateView = 'month';
-
-    if (view === 'month') newView = 'year';
-    if (onViewChange) {
-      onViewChange(newView);
-
-      console.log(onViewChange);
-    }
+  const toggleView = () => {
+    const newView: DateView = view === 'month' ? 'year' : 'month';
+    onViewChange?.(newView);
   };
-  const NextMonth = () => {
-    onMonthChange(currentMonth.add(1, 'month'), 'left');
-  };
-  const PrevMonth = () => {
-    onMonthChange(currentMonth.subtract(1, 'month'), 'right');
+
+  const changeMonth = (direction: 'next' | 'prev') => {
+    const newMonth =
+      direction === 'next'
+        ? currentMonth.add(1, 'month')
+        : currentMonth.subtract(1, 'month');
+    onMonthChange(newMonth, direction === 'next' ? 'left' : 'right');
   };
 
   return (
     <>
       {!isModal ? (
         <Stack className="MuiPickersCalendarHeader-root">
-          {/* header 마무리  */}
           <Box
             display={'flex'}
             alignItems={'center'}
-            gap={1 / 2}
-            py={1.87}
-            px={2.87}
+            gap={0.5}
+            py={'15px'}
+            px={'16px'}
             height={56}
           >
-            {!isCheckWorkout && (
-              <Box>
-                <Icon
-                  name={'ArrowBackIosNewRounded'}
-                  size={18}
-                  onClick={() => navigate(-1)}
-                />
-              </Box>
+            {!isBadge && (
+              <Icon
+                name={'ArrowBackIosNewRounded'}
+                size={22}
+                onClick={() => navigate(-1)}
+              />
             )}
             <Box
               display={'flex'}
@@ -71,19 +64,19 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
               justifyContent={'center'}
               alignItems={'center'}
             >
-              <Typography onClick={viewChange} variant="Body18/semiBold">
+              <Typography onClick={toggleView} variant="Body18/semiBold">
                 {month}
               </Typography>
               <Icon
-                size={26}
+                size={29}
                 name="ExpandMoreRounded"
-                onClick={viewChange}
+                onClick={toggleView}
                 color={palette.grey[600]}
               />
             </Box>
           </Box>
 
-          {isCheckWorkout && (
+          {isBadge && (
             <Stack paddingX={1.5} gap={1}>
               <Box display={'flex'} gap={2.5} paddingX={2.3}>
                 <Box>
@@ -109,7 +102,6 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
         </Stack>
       ) : (
         <Stack className="MuiPickersCalendarHeader-root">
-          {/* header 마무리  */}
           <Box
             display={'flex'}
             alignItems={'center'}
@@ -121,18 +113,17 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
             <Icon
               name={'ArrowBackIosRounded'}
               color="#BDBDBD"
-              size={15}
-              onClick={() => PrevMonth()}
-              sx={{}}
+              size={20}
+              onClick={() => changeMonth('prev')}
             />
-            <Typography variant="Body18/semiBold" onClick={viewChange}>
+            <Typography variant="Body18/semiBold" onClick={toggleView}>
               {month}
             </Typography>
             <Icon
               color="#BDBDBD"
               name={'ArrowForwardIosRounded'}
-              size={15}
-              onClick={() => NextMonth()}
+              size={20}
+              onClick={() => changeMonth('next')}
             />
           </Box>
         </Stack>

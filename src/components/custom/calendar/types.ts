@@ -26,13 +26,13 @@ export interface ICalenderModal {
 // calendar
 export interface IDatePicker {
   workData?: workData[];
-  isCheckWorkout?: boolean;
+  isBadge?: boolean;
   isModal?: boolean;
   onChange?: (e: any) => void;
 }
 
 // calendar header 확장
 export interface CalendarHeaderProps extends PickersCalendarHeaderProps<Dayjs> {
-  isCheckWorkout?: boolean;
+  isBadge?: boolean;
   isModal?: boolean;
 }

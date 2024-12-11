@@ -40,10 +40,9 @@ export default function ReservationPage() {
           <ReservationStep1
             reservationList={reservationList}
             setReservationList={setReservationList}
-            onNext={onNext}
           />
-          <ReservationStep2 reservationData={reservationData} onNext={onNext} />
-          <ReservationStep3 reservationData={reservationData} onNext={onNext} />
+          <ReservationStep2 reservationData={reservationData} />
+          <ReservationStep3 reservationData={reservationData} />
         </StepFlow>
       </Box>
     </>

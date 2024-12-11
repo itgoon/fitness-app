@@ -12,7 +12,7 @@ export type customerData = {
   effectiveDate: data;
 };
 export interface IQrCardData {
-  customerData?: customerData;
+  customerData: customerData;
   onClick?: () => void;
   onClose?: () => void;
 }

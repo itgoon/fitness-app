@@ -20,46 +20,36 @@ export default function RecordList({
   const grey600 = light ? palette.grey[600] : 'white';
 
   const [isOpenView, setIsOpenView] = useState(false);
-  const [clickedImg, setClickedImg] = useState<TdietRecordList | undefined>(
-    undefined
-  );
+  const [clickedImg, setClickedImg] = useState<TdietRecordList>({
+    date: '',
+    type: '',
+    content: '',
+    imageName: [],
+    imageUrls: []
+  });
 
-  const onHandleViewr = (listIndex, imageIndex, arr) => {
+  const onHandleViewr = (listIndex: number, imageIndex: number, arr: any) => {
     onClickImage(listIndex, imageIndex);
     setClickedImg(arr);
-    setIsOpenView((prev) => !prev);
+    setIsOpenView(true);
   };
 
   const viewerDelete = () => {
     onDelete();
 
-    const updatedData =
-      clickedImg?.imageUrls.filter((_, index) => {
-        return !selectedIndex.some(([_, sIndex]) => sIndex === index);
-      }) || [];
-
-    setClickedImg((prev) => {
-      if (prev) {
-        return {
-          ...prev,
-          imageUrls: updatedData
-        };
-      }
-      return {
-        date: '',
-        type: '',
-        content: '',
-        imageName: [],
-        imageUrls: []
-      };
+    const updatedData = clickedImg?.imageUrls.filter((_, index) => {
+      return !selectedIndex.some(([_, sIndex]) => sIndex === index);
     });
+    setClickedImg((prev) => ({
+      ...prev,
+      imageUrls: updatedData
+    }));
   };
-  //  삭제 까지 완료 // clickedImg 가  Undefined 일때 처리
 
   return (
     <>
       {arrList.map((arr, listKey) => {
-        if (arr.imageUrls.length < 0) return null;
+        if (arr.imageUrls.length === 0) return null;
         return (
           <Stack key={listKey} gap={2}>
             <Typography
@@ -69,11 +59,10 @@ export default function RecordList({
             />
             <Box display={'flex'} flexWrap={'wrap'} gap={0.25}>
               {arr.imageUrls.map((img, imageKey) => (
-                <Box position={'relative'} key={imageKey}>
+                <Box position={'relative'} key={imageKey} width={'32.9%'}>
                   <img
                     style={{
-                      width: 118,
-                      height: 118,
+                      aspectRatio: '1/1',
                       objectFit: 'cover',
                       backgroundSize: 'cover',
                       backgroundRepeat: 'no-repeat'
@@ -84,8 +73,8 @@ export default function RecordList({
                   />
                   {isEdit && (
                     <Box
-                      width={118}
-                      height={118}
+                      width={'100%'}
+                      height={'100%'}
                       display={'flex'}
                       justifyContent={'end'}
                       alignItems={'end'}
@@ -102,7 +91,7 @@ export default function RecordList({
                             fIndex === listKey && sIndex === imageKey
                         )}
                         checkedIcon={
-                          <Icon name={'GalleryCheckSvg'} size={20} />
+                          <Icon name={'CheckCircleOutlineRounded'} size={20} />
                         }
                         icon={<Icon name={'GalleryCheckSvg'} size={20} />}
                         sx={{ mr: 0.63, mb: 0.63 }}

@@ -63,10 +63,7 @@ export default function ReservationStep1({
 
   return (
     <Box>
-      <DateCalendar
-        isCheckWorkout={false}
-        onChange={(e) => reservationDateChange(e)}
-      />
+      <DateCalendar onChange={(e) => reservationDateChange(e)} />
 
       <Stack px={2.5} gap={3}>
         <Stack py={4} gap={3}>

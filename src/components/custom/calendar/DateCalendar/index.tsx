@@ -9,13 +9,13 @@ import { IDatePicker, workData } from '../types';
 
 /**
  * 일정 탭, 레슨 예약 탭에서 사용되는 데이트 캘린더
- * isCheckWorkout으로 헤더 타입 변경
+ * isBadge 헤더 타입 변경
  */
 
 export default function DateCalendar({
   workData,
   onChange,
-  isCheckWorkout = true,
+  isBadge = false,
   isModal
 }: IDatePicker) {
   const [highlightedDays, setHighlightedDays] = useState<workData[]>([]);
@@ -55,11 +55,7 @@ export default function DateCalendar({
           slots={{
             calendarHeader: (e) => {
               return (
-                <CalendarHeader
-                  isModal={isModal}
-                  isCheckWorkout={isCheckWorkout}
-                  {...e}
-                />
+                <CalendarHeader isModal={isModal} isBadge={isBadge} {...e} />
               );
             },
             day: ServerDay
@@ -69,7 +65,7 @@ export default function DateCalendar({
               highlightedDays
             } as any
           }}
-          sx={isCheckWorkout ? {} : { maxHeight: 288, height: 288 }}
+          sx={isBadge ? {} : { maxHeight: 288, height: 288 }}
           onChange={(e) => onChange && onChange(e)}
         />
       </LocalizationProvider>

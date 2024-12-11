@@ -4,6 +4,7 @@ import { CheckboxProps, checkboxClasses } from '@mui/material/Checkbox';
 // ----------------------------------------------------------------------
 
 export function checkbox(theme: Theme) {
+  const palette = theme.palette;
   return {
     MuiCheckbox: {
       styleOverrides: {
@@ -15,23 +16,27 @@ export function checkbox(theme: Theme) {
 
             ...(color === 'default' && {
               [`&.${checkboxClasses.checked}`]: {
-                color: theme.palette.text.primary
+                color: ''
               }
             }),
             ...(color === 'primary' && {
-              color: theme.palette.common.black,
+              color: palette.common.black,
               [`&.${checkboxClasses.checked}`]: {
-                color: theme.palette.primary.main
+                color: palette.primary.main
               }
             }),
             ...(color === 'success' && {
-              backgroundColor: theme.palette.common.white,
+              backgroundColor: palette.common.white,
               [`&.${checkboxClasses.checked}`]: {
-                color: theme.palette.primary.main
+                backgroundColor: palette.common.white,
+                color: palette.primary.main
+              },
+              svg: {
+                fill: palette.primary.main
               }
             }),
             [`&.${checkboxClasses.disabled}`]: {
-              color: theme.palette.action.disabled
+              color: palette.action.disabled
             }
           };
         }

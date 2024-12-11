@@ -19,7 +19,7 @@ export default function Schedule() {
   const [tabValue, setTabValue] = useState(0);
   return (
     <Box>
-      <DateCalendar workData={dummyMonthWorkoutList} />
+      <DateCalendar isBadge={true} workData={dummyMonthWorkoutList} />
       <Box pt={3}>
         <Tabs
           value={tabValue}
