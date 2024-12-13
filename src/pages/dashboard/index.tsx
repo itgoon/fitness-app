@@ -14,21 +14,24 @@ import AlaramCard from '../../components/custom/AlaramCard';
 import ReservationCard from '../../components/custom/reservationCard/ReservationCard';
 import { useNavigate } from 'react-router';
 import EmptyCard from '../../components/custom/customCard/EmptyCard';
-import { dummyReservaitonListCard } from '../../utils/dummy';
+import {
+  dummyCardData,
+  dummyMonthCount1,
+  dummyMonthCount2,
+  dummyReservaitonListCard
+} from '../../utils/dummy';
 import Wrap from './Wrap';
 /**
  * ******************************************************
  * 대시보드 화면
+ * 기획 설명 추가 필요
+ * 운동 시작 버튼을 누른 경우 운동 종료 시간을 누른 경우는 타이머 설정을 할 것인지?
+ * 운동 종료를 누른 경우 해당 정보를 화면에 그대로 노출 시키는지?
  * ******************************************************
  */
 
-const dummyMonthCount1 = [{ date: '2024-10-18', count: 1 }];
-const dummyMonthCount2 = [{ date: '2024-10-19', count: 1 }];
-const dummyCardData = [
-  { label: '센터명', value: '리온짐' },
-  { label: '요청 일시', value: '2024년 9월 1일 12시 00분' },
-  { label: '작성 기한', value: '2024년 9월 3일 11시 59분' }
-];
+const EMPTY_TIME = '00:00';
+const INITIAL_TIME = '0시간 0분';
 const name = '홍길동';
 const workMsg = (isWorking) =>
   isWorking
@@ -42,56 +45,123 @@ const Message = ({ name, workMessage }) => (
   </>
 );
 
+const renderWorkoutInfo = ({
+  state,
+  totalTime,
+  grey,
+  grey900,
+  handleTimer
+}) => {
+  const { isWorking, startTime, endTime } = state;
+
+  if (!isWorking) return null;
+  return (
+    <EmptyCard
+      direction={'row'}
+      justifyContent={'start'}
+      padding={'24px'}
+      gap={13}
+    >
+      <Stack gap={2}>
+        <Stack gap={0.5} onClick={() => handleTimer('isStart')}>
+          <Typography
+            variant="Body14/regular"
+            color={grey}
+            children={'운동시작'}
+          />
+          <Typography
+            variant="Body20/bold"
+            children={startTime}
+            color={grey900}
+          />
+        </Stack>
+        <Stack gap={0.5} onClick={() => handleTimer('isEnd')}>
+          <Typography
+            variant="Body14/regular"
+            color={grey}
+            children={'운동종료'}
+          />
+          <Typography
+            variant="Body20/bold"
+            children={endTime}
+            color={grey900}
+          />
+        </Stack>
+      </Stack>
+      <Stack gap={0.5}>
+        <Typography
+          variant="Body14/regular"
+          color={grey}
+          children={'총 운동 시간'}
+        />
+        <Typography
+          variant="Body20/bold"
+          children={totalTime}
+          color={grey900}
+        />
+      </Stack>
+    </EmptyCard>
+  );
+};
+
 export default function DashboardPage() {
-  const theme = useTheme();
-  const { palette } = theme;
+  const { palette } = useTheme();
   const light = palette.mode === 'light';
-  const grey900 = light ? theme.palette.grey[900] : 'white';
+  const grey900 = light ? palette.grey[900] : 'white';
   const grey400 = palette.grey[400];
   const grey = light ? palette.grey[500] : palette.grey[600];
   const blgrey = light ? palette.grey.A200 : grey400;
 
   const navigate = useNavigate();
 
-  const [isWorking, setIsWorking] = useState(false);
-  const [alaram, setAlaram] = useState(false);
+  const [state, setState] = useState({
+    isWorking: false,
+    isAlaram: false,
+    isStart: false,
+    isEnd: false,
+    startTime: EMPTY_TIME,
+    endTime: EMPTY_TIME
+  });
+  const { isWorking, isAlaram, isStart, isEnd, startTime, endTime } = state;
 
-  const [isStart, setIsStart] = useState(false);
-  const [isEnd, setIsEnd] = useState(false);
-  const [startValue, setStartValue] = useState('00:00');
-  const [endValue, setEndValue] = useState('00:00');
-  const [totalTime, setTotalTime] = useState('0시간 0분');
+  const [totalTime, setTotalTime] = useState(INITIAL_TIME);
 
   const toggleWorkingState = () => {
-    setIsWorking((prev) => !prev);
-    setAlaram((prev) => !prev);
+    setState((prev) => ({
+      ...prev,
+      isWorking: !prev.isWorking,
+      isAlaram: !prev.isAlaram
+    }));
   };
 
-  const handleTimeChange = (value) => {
-    value = value ? dayjs(value).format('HH:mm') : '00:00';
-    if (isStart) {
-      setStartValue(value);
-    } else {
-      setEndValue(value);
-    }
+  const handleTimeChange = (value: string) => {
+    const formattedValue = value ? dayjs(value).format('HH:mm') : EMPTY_TIME;
+    state.isStart
+      ? setState((prev) => ({ ...prev, startTime: formattedValue }))
+      : setState((prev) => ({ ...prev, endTime: formattedValue }));
+  };
+  const handleTimer = (type: string) => {
+    setState((prev) => ({ ...prev, [type]: true }));
   };
 
+  const calculatedTotlaTime = (start: string, end: string) => {
+    const today = dayjs().format(DateFormat); // 오늘 날짜 더해서 파싱
+
+    const startTime = dayjs(`${today} ${start}`, TimeDateFormat);
+    const endTime = dayjs(`${today} ${end}`, TimeDateFormat);
+    const totalMinutes = endTime.diff(startTime, 'minute');
+    const total =
+      totalMinutes > 0
+        ? `${Math.floor(totalMinutes / 60)} 시간 ${totalMinutes % 60} 분`
+        : '0시간 0분';
+    setTotalTime(total);
+  };
   const saveWorkTime = () => {
-    if (isStart) {
-      setIsStart((prev) => !prev);
-    } else {
-      setIsEnd((prev) => !prev);
-    }
-    if (startValue !== '00:00' && endValue !== '00:00') {
-      const today = dayjs().format(DateFormat); // 오늘 날짜 더해서 파싱
-
-      const startTime = dayjs(`${today} ${startValue}`, TimeDateFormat);
-      const endTime = dayjs(`${today} ${endValue}`, TimeDateFormat);
-      const total = endTime.diff(startTime, 'minute');
-      const hours = Math.floor(total / 60);
-      const min = total % 60;
-      setTotalTime(`${hours} 시간 ${min} 분`);
-    }
+    isStart
+      ? setState((prev) => ({ ...prev, isStart: false }))
+      : setState((prev) => ({ ...prev, isEnd: false }));
+    if (startTime !== EMPTY_TIME && endTime !== EMPTY_TIME)
+      calculatedTotlaTime(startTime, endTime);
   };
 
   return (
@@ -102,7 +172,6 @@ export default function DashboardPage() {
           orangeBadge={dummyMonthCount2}
         />
       </Wrap>
-
       <Wrap gap={1} padding={4}>
         <Typography
           variant="Body18/semiBold"
@@ -112,57 +181,14 @@ export default function DashboardPage() {
         <Typography
           variant="Body20/semiBold"
           lineHeight={'30px'}
-          children={<Message name={name} workMessage={workMsg(isWorking)} />}
+          children={
+            <Message name={name} workMessage={workMsg(state.isWorking)} />
+          }
         />
 
-        {isWorking && (
-          <EmptyCard
-            direction={'row'}
-            justifyContent={'start'}
-            padding={'24px'}
-            gap={13}
-          >
-            <Stack gap={2}>
-              <Stack gap={0.5} onClick={() => setIsStart((prev) => !prev)}>
-                <Typography
-                  variant="Body14/regular"
-                  color={grey}
-                  children={'운동시작'}
-                />
-                <Typography
-                  variant="Body20/bold"
-                  children={startValue}
-                  color={grey900}
-                />
-              </Stack>
-              <Stack gap={0.5} onClick={() => setIsEnd((prev) => !prev)}>
-                <Typography
-                  variant="Body14/regular"
-                  color={grey}
-                  children={'운동종료'}
-                />
-                <Typography
-                  variant="Body20/bold"
-                  children={endValue}
-                  color={grey900}
-                />
-              </Stack>
-            </Stack>
-            <Stack gap={0.5}>
-              <Typography
-                variant="Body14/regular"
-                color={grey}
-                children={'총 운동 시간'}
-              />
+        {/* 운동 시간 데이터 */}
+        {renderWorkoutInfo({ state, totalTime, grey, grey900, handleTimer })}
 
-              <Typography
-                variant="Body20/bold"
-                children={totalTime}
-                color={grey900}
-              />
-            </Stack>
-          </EmptyCard>
-        )}
         {/* 버튼 color primary일때, alpha 색 들어가는거 막기  */}
         <Button
           color="primary"
@@ -183,7 +209,7 @@ export default function DashboardPage() {
           color={grey900}
         />
         <Divider></Divider>
-        {!alaram ? (
+        {!isAlaram ? (
           <EmptyCard
             margin={'12px 20px 32px'}
             children={'알림 내용이 없습니다.'}
@@ -204,8 +230,7 @@ export default function DashboardPage() {
       <TimePicker
         open={isStart || isEnd}
         onClose={() => {
-          setIsStart(false);
-          setIsEnd(false);
+          setState((prev) => ({ ...prev, isStart: true, isEnd: true }));
         }}
         title={
           isStart

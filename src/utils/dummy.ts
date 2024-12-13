@@ -15,6 +15,15 @@ export const dummyCondition2 = [
   '4. 강습을 중도 해지하고자 할 경우(환불), 위약금(납부된 전체 금액의 10%)과 함께 진행된 수업료(수업료 정산은 1세션 기준 / [Lv3 70,000 / Lv2 60,000 / Lv1 50,000]를 기준으로 하며, 수업 횟수 정산은 회원 서명이'
 ];
 
+// dashboardPage
+export const dummyMonthCount1 = [{ date: '2024-12-14', count: 1 }];
+export const dummyMonthCount2 = [{ date: '2024-12-13', count: 1 }];
+export const dummyCardData = [
+  { label: '센터명', value: '리온짐' },
+  { label: '요청 일시', value: '2024년 12월 7일 12시 00분' },
+  { label: '작성 기한', value: '2024년 12월 13일 11시 59분' }
+];
+
 // contractTable
 export const contractList = [
   { label: '이름', value: '김철수' },

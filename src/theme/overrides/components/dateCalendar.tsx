@@ -5,12 +5,15 @@ import { Theme } from '@mui/material/styles';
 // ----------------------------------------------------------------------
 
 export function dateCalendar(theme: Theme) {
-  const light = (theme.palette.mode = 'light');
+  const light = theme.palette.mode === 'light'; // 수정: '='를 '==='로 변경
   const { palette } = theme;
+  // const sm = theme.breakpoints.down
+
   const grey800 = palette.grey[800];
-  const primarylig = palette.primary.light;
-  const headerGrey = light ? grey800 : grey800;
-  const errorDk = palette.error.dark;
+  const primaryLight = palette.primary.light; // 변수 이름 수정
+  const errorDark = palette.error.dark;
+
+  const headerColor = light ? grey800 : grey800; // 중복 제거
 
   return {
     MuiDateCalendar: {
@@ -19,25 +22,28 @@ export function dateCalendar(theme: Theme) {
           '&.main-calendar': {
             width: '100%',
 
-            // calendar-body
+            // Calendar body styling
             '.MuiPickersFadeTransitionGroup-root': {
               maxHeight: 248,
               paddingLeft: 12,
               paddingRight: 12,
 
-              // month & year
+              // Month & Year calendar styling
               '&:has(.MuiMonthCalendar-root), &:has(.MuiYearCalendar-root)': {
                 display: 'flex',
                 justifyContent: 'center'
               },
+
               '.MuiYearCalendar-root::-webkit-scrollbar': { display: 'none' },
 
               '> div': {
                 maxHeight: 'inherit',
 
                 '.MuiDayCalendar-root': { maxHeight: 'inherit' },
+
                 '.MuiDayCalendar-header': {
                   gap: 14,
+                  justifyContent: 'space-between',
                   marginTop: 6,
                   marginBottom: 6,
 
@@ -46,7 +52,7 @@ export function dateCalendar(theme: Theme) {
                     fontSize: 13,
                     lineHeight: '25px',
                     fontWeight: 400,
-                    color: headerGrey
+                    color: headerColor
                   }
                 },
 
@@ -57,40 +63,49 @@ export function dateCalendar(theme: Theme) {
                     height: '100%',
                     display: 'flex',
                     flexDirection: 'column',
-
                     gap: 7,
-                    // 7*4 = 24 + weekLine(24+30*5) + dayline(42) 하면 220 pb 20 공간 딱 남음
+
                     '> div': {
                       gap: 20,
+                      justifyContent: 'space-between',
                       margin: 0,
+
                       button: {
                         span: {
                           lineHeight: '25px'
                         },
                         width: 30,
                         height: 30,
+
                         '.MuiBadge-badge': {
                           top: '11px',
                           right: '6px'
                         }
                       },
+
+                      // Today's day and selected day styling
                       '.MuiPickersDay-today, [aria-selected="true"]': {
                         paddingLeft: 8,
                         paddingRight: 8,
+
                         '.MuiBadge-badge': {
                           top: '9px',
                           right: '6px'
                         }
                       },
+
+                      // Selected day styling
                       '[aria-selected="true"]': {
-                        backgroundColor: primarylig,
+                        backgroundColor: primaryLight,
                         color: 'white !important'
                       },
+
+                      // Error and primary color days
                       '[aria-colindex="1"]': {
-                        color: errorDk
+                        color: errorDark
                       },
                       '[aria-colindex="7"]': {
-                        color: primarylig
+                        color: primaryLight
                       }
                     }
                   }
