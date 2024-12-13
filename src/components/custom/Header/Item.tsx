@@ -2,6 +2,7 @@ import { Box, Typography, useTheme } from '@mui/material';
 import Icon from '../../Icon';
 import { Iheader } from './types';
 import { useNavigate } from 'react-router';
+import { Prev } from '../../Icon/HeaderIcon';
 
 export default function Item({ isStart, isEnd, title }: Iheader) {
   const theme = useTheme();
@@ -11,27 +12,23 @@ export default function Item({ isStart, isEnd, title }: Iheader) {
   const navigate = useNavigate();
   return (
     <Box display={'flex'} width={'100%'}>
-      {isStart && (
-        <Icon
-          name={'ArrowBackIosNewRounded'}
-          sx={{ marginTop: 2 }}
-          size={24}
-          onClick={() => navigate(-1)}
-        />
-      )}
-
+      <Box width={22} paddingTop={0.1}>
+        {!isStart && <Prev onClick={() => navigate(-1)} />}
+      </Box>
       <Box flex={1}>
         {title && (
           <Typography
             variant="Body18/bold"
-            lineHeight={'26px'}
+            lineHeight={'27px'}
             children={title}
             color={black}
             sx={{ display: 'flex', justifyContent: 'center' }}
           />
         )}
       </Box>
-      {isEnd && <Icon size={24} name={'BellSvg'} />}
+      <Box width={22} paddingTop={0.1}>
+        {isEnd && <Icon size={24} name={'BellSvg'} />}
+      </Box>
     </Box>
   );
 }

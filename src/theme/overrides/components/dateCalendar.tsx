@@ -44,6 +44,7 @@ export function dateCalendar(theme: Theme) {
                   span: {
                     height: 30,
                     fontSize: 13,
+                    lineHeight: '25px',
                     fontWeight: 400,
                     color: headerGrey
                   }
@@ -63,6 +64,9 @@ export function dateCalendar(theme: Theme) {
                       gap: 20,
                       margin: 0,
                       button: {
+                        span: {
+                          lineHeight: '25px'
+                        },
                         width: 30,
                         height: 30,
                         '.MuiBadge-badge': {

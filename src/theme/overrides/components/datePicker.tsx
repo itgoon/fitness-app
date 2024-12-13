@@ -173,7 +173,8 @@ export function datePicker(theme: Theme) {
                           button: {
                             width: 30,
                             height: 30,
-                            fontSize: 15
+                            fontSize: 15,
+                            lineHeight: '25px'
                           },
                           '.MuiPickersDay-today, [aria-selected="true"]': {
                             paddingLeft: 8,

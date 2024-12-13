@@ -10,7 +10,8 @@ export default function WeekCalendar({
   format = DateReqFormat,
   greenBadge,
   orangeBadge,
-  layoutSx
+  layoutSx,
+  onClick
 }: IWeekCalendar) {
   const theme = useTheme();
   const { palette } = theme;
@@ -39,29 +40,34 @@ export default function WeekCalendar({
   return (
     <Box
       className={'weekCalendar'}
-      sx={{ display: 'flex', padding: '12px', ...layoutSx }}
+      display={'flex'}
+      padding={1.5}
+      sx={{ ...layoutSx }}
     >
       {dateList.map((item, key) => {
         const isToday = dayjs().isSame(dayjs(item.date, format), 'day');
+        const typoColor = isToday ? black : grey600;
+        const font13 = isToday ? 'Body13/semiBold' : 'Body13/regular';
+        const font15 = isToday ? 'Body15/regular' : 'Body15/light';
         const isGreen = greenBadge?.some((evt) => item === evt.date) || false;
         const isOrange = orangeBadge?.some((evt) => item === evt.date) || false;
 
         return (
           <Button
-            sx={{ flex: 1, minWidth: 46, minHeight: 60 }}
-            onClick={() => console.log(item)}
+            sx={{ flex: 1, minWidth: 46, minHeight: 54, padding: '0 0 6px' }}
+            onClick={onClick}
             key={key}
           >
             <Stack gap={1}>
               <Typography
-                variant={isToday ? 'Body13/semiBold' : 'Body13/regular'}
-                color={isToday ? black : grey600}
+                variant={font13}
+                color={typoColor}
                 children={isToday ? '오늘' : item.day}
               />
               <Stack>
                 <Typography
-                  variant={isToday ? 'Body15/regular' : 'Body15/light'}
-                  color={isToday ? black : grey600}
+                  variant={font15}
+                  color={typoColor}
                   children={dayjs(item.date).format('D')}
                 />
 

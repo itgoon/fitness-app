@@ -8,8 +8,17 @@ import {
 } from '@mui/material';
 import { DateView } from '@mui/x-date-pickers';
 import { useNavigate } from 'react-router';
-import Icon from '../../../Icon';
 import { CalendarHeaderProps } from '../types';
+import { Prev, Next, More } from '../../../Icon/HeaderIcon';
+
+const layoutSx = {
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  gap: 1,
+  padding: '15px 16px',
+  height: 56
+};
 
 export default function CalendarHeader(props: CalendarHeaderProps) {
   const { palette } = useTheme();
@@ -39,95 +48,62 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
     onMonthChange(newMonth, direction === 'next' ? 'left' : 'right');
   };
 
-  return (
-    <>
-      {!isModal ? (
-        <Stack className="MuiPickersCalendarHeader-root">
-          <Box
-            display={'flex'}
-            alignItems={'center'}
-            gap={0.5}
-            py={'15px'}
-            px={'16px'}
-            height={56}
-          >
-            {!isBadge && (
-              <Icon
-                name={'ArrowBackIosNewRounded'}
-                size={22}
-                onClick={() => navigate(-1)}
-              />
-            )}
-            <Box
-              display={'flex'}
-              flex={1}
-              justifyContent={'center'}
-              alignItems={'center'}
-            >
-              <Typography onClick={toggleView} variant="Body18/semiBold">
-                {month}
-              </Typography>
-              <Icon
-                size={29}
-                name="ExpandMoreRounded"
-                onClick={toggleView}
-                color={palette.grey[600]}
-              />
-            </Box>
-          </Box>
-
-          {isBadge && (
-            <Stack paddingX={1.5} gap={1}>
-              <Box display={'flex'} gap={2.5} paddingX={2.3}>
-                <Box>
-                  <Badge
-                    sx={{ '.MuiBadge-badge': { top: '-5px', right: '5px' } }}
-                    color={'warning'}
-                    variant={'alway'}
-                  />
-                  <Typography variant="Body14/regular" children={'레슨'} />
-                </Box>
-                <Box>
-                  <Badge
-                    sx={{ '.MuiBadge-badge': { top: '-4px', right: '3px' } }}
-                    color={'success'}
-                    variant={'online'}
-                  />
-                  <Typography variant="Body14/regular" children={'운동'} />
-                </Box>
-              </Box>
-              <Divider />
-            </Stack>
-          )}
-        </Stack>
-      ) : (
-        <Stack className="MuiPickersCalendarHeader-root">
-          <Box
-            display={'flex'}
-            alignItems={'center'}
-            justifyContent={'center'}
-            gap={1}
-            py={1.87}
-            height={56}
-          >
-            <Icon
-              name={'ArrowBackIosRounded'}
-              color="#BDBDBD"
-              size={20}
-              onClick={() => changeMonth('prev')}
-            />
-            <Typography variant="Body18/semiBold" onClick={toggleView}>
-              {month}
-            </Typography>
-            <Icon
-              color="#BDBDBD"
-              name={'ArrowForwardIosRounded'}
-              size={20}
-              onClick={() => changeMonth('next')}
-            />
-          </Box>
-        </Stack>
-      )}
-    </>
+  const renderBadges = () => (
+    <Stack paddingX={1.5} gap={1}>
+      <Box display={'flex'} gap={3.25} paddingX={2.3}>
+        <Box>
+          <Badge
+            sx={{ '.MuiBadge-badge': { top: '-4px', right: '3px' } }}
+            color={'warning'}
+            variant={'alway'}
+          />
+          <Typography variant="Body14/regular">레슨</Typography>
+        </Box>
+        <Box>
+          <Badge
+            sx={{ '.MuiBadge-badge': { top: '-4px', right: '4px' } }}
+            color={'success'}
+            variant={'online'}
+          />
+          <Typography variant="Body14/regular">운동</Typography>
+        </Box>
+      </Box>
+      <Divider />
+    </Stack>
   );
+
+  const renderStandardHeader = () => (
+    <Stack className="MuiPickersCalendarHeader-root">
+      <Box sx={{ ...layoutSx }}>
+        {!isBadge && <Prev onClick={() => navigate(-1)} />}
+        <Box
+          display={'flex'}
+          flex={1}
+          gap={0.5}
+          justifyContent={'center'}
+          alignItems={'center'}
+        >
+          <Typography onClick={toggleView} variant="Body18/semiBold">
+            {month}
+          </Typography>
+          <More onClick={toggleView} />
+        </Box>
+      </Box>
+      {isBadge && renderBadges()}
+    </Stack>
+  );
+
+  const renderModalHeader = () => (
+    <Stack className="MuiPickersCalendarHeader-root">
+      <Box sx={{ ...layoutSx }}>
+        <Prev color={'#BDBDBD'} size={20} onClick={() => changeMonth('prev')} />
+        <Typography variant="Body18/semiBold" onClick={toggleView}>
+          {month}
+        </Typography>
+        <Next color={'#BDBDBD'} size={20} onClick={() => changeMonth('next')} />
+      </Box>
+    </Stack>
+  );
+
+  return isModal ? renderModalHeader() : renderStandardHeader();
 }
