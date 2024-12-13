@@ -30,7 +30,6 @@ const findHeader = (menu: NavItemType[], path: string): NavItemType[] => {
       }
     }
   }
-
   return breadcrumbs.length > 0 ? breadcrumbs : [];
 };
 

@@ -6,6 +6,7 @@ import ServerDay from './PickersDay';
 import { Divider } from '@mui/material';
 import CalendarHeader from '../CalendarHeader';
 import { IDatePicker, workData } from '../types';
+import dayjs from 'dayjs';
 
 /**
  * 일정 탭, 레슨 예약 탭에서 사용되는 데이트 캘린더
@@ -16,7 +17,8 @@ export default function DateCalendar({
   workData,
   onChange,
   isBadge = false,
-  isModal
+  isModal,
+  value
 }: IDatePicker) {
   const [highlightedDays, setHighlightedDays] = useState<workData[]>([]);
 
@@ -66,6 +68,7 @@ export default function DateCalendar({
             } as any
           }}
           sx={isBadge ? {} : { maxHeight: 288, height: 288 }}
+          value={value ? dayjs(value) : dayjs()}
           onChange={(e) => onChange && onChange(e)}
         />
       </LocalizationProvider>

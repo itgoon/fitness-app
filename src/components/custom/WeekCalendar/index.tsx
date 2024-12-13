@@ -5,6 +5,9 @@ import { Badge, Box, Stack, Typography, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { DateReqFormat } from '../../../utils/formatTime';
 import Button from '../../Button';
+import { useNavigate } from 'react-router';
+
+const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
 
 export default function WeekCalendar({
   format = DateReqFormat,
@@ -13,11 +16,11 @@ export default function WeekCalendar({
   layoutSx,
   onClick
 }: IWeekCalendar) {
-  const theme = useTheme();
-  const { palette } = theme;
+  const { palette } = useTheme();
   const light = palette.mode === 'light';
   const grey600 = light ? palette.grey[600] : palette.common.white;
   const black = light ? palette.common.black : palette.common.white;
+  const navigate = useNavigate();
   const [dateList, setDateList] = useState<
     { date: string; day: string }[] | []
   >([]);
@@ -26,17 +29,19 @@ export default function WeekCalendar({
   }, []);
 
   const settingDate = () => {
-    const week = ['일', '월', '화', '수', '목', '금', '토'];
     const firstDay = dayjs().startOf('week');
     let list = Array.from({ length: 7 }, (_, index) => {
       const date = firstDay.add(index, 'day');
-      const day = week[dayjs().subtract(index, 'day').day()];
+      const day = WEEKDAYS[dayjs().subtract(index, 'day').day()];
       return { date: date.format(format), day };
     });
 
     setDateList(list);
   };
-
+  const getTypographyVariant = (isToday: boolean, type: 'day' | 'date') => {
+    if (type === 'day') return isToday ? 'Body13/semiBold' : 'Body13/regular';
+    return isToday ? 'Body15/regular' : 'Body15/light';
+  };
   return (
     <Box
       className={'weekCalendar'}
@@ -47,26 +52,24 @@ export default function WeekCalendar({
       {dateList.map((item, key) => {
         const isToday = dayjs().isSame(dayjs(item.date, format), 'day');
         const typoColor = isToday ? black : grey600;
-        const font13 = isToday ? 'Body13/semiBold' : 'Body13/regular';
-        const font15 = isToday ? 'Body15/regular' : 'Body15/light';
         const isGreen = greenBadge?.some((evt) => item === evt.date) || false;
         const isOrange = orangeBadge?.some((evt) => item === evt.date) || false;
 
         return (
           <Button
             sx={{ flex: 1, minWidth: 46, minHeight: 54, padding: '0 0 6px' }}
-            onClick={onClick}
+            onClick={() => navigate(`/schedule?date=${item.date}`)}
             key={key}
           >
             <Stack gap={1}>
               <Typography
-                variant={font13}
+                variant={getTypographyVariant(isToday, 'day')}
                 color={typoColor}
                 children={isToday ? '오늘' : item.day}
               />
               <Stack>
                 <Typography
-                  variant={font15}
+                  variant={getTypographyVariant(isToday, 'date')}
                   color={typoColor}
                   children={dayjs(item.date).format('D')}
                 />

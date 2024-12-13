@@ -10,6 +10,7 @@ import {
 import DateCalendar from '../../components/custom/calendar/DateCalendar';
 import Tabs from '../../components/custom/Tabs/Tabs';
 import TabPanel from '../../components/custom/Tabs/TabPanel';
+import { useLocation } from 'react-router';
 /**
  * ******************************************************
  * 일정 화면
@@ -17,9 +18,16 @@ import TabPanel from '../../components/custom/Tabs/TabPanel';
  */
 export default function Schedule() {
   const [tabValue, setTabValue] = useState(0);
+  const params = useLocation();
+  const paramsDate = params.search.split('=')[1];
+
   return (
     <Box>
-      <DateCalendar isBadge={true} workData={dummyMonthWorkoutList} />
+      <DateCalendar
+        isBadge={true}
+        workData={dummyMonthWorkoutList}
+        value={paramsDate}
+      />
       <Box pt={3}>
         <Tabs
           value={tabValue}

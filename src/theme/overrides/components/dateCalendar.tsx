@@ -7,7 +7,7 @@ import { Theme } from '@mui/material/styles';
 export function dateCalendar(theme: Theme) {
   const light = theme.palette.mode === 'light'; // 수정: '='를 '==='로 변경
   const { palette } = theme;
-  // const sm = theme.breakpoints.down
+  const up = theme.breakpoints.between('sm', 'lg');
 
   const grey800 = palette.grey[800];
   const primaryLight = palette.primary.light; // 변수 이름 수정
@@ -27,6 +27,11 @@ export function dateCalendar(theme: Theme) {
               maxHeight: 248,
               paddingLeft: 12,
               paddingRight: 12,
+              // [theme.breakpoints.down('sm')]: {},
+              // [theme.breakpoints.up('sm')]: {
+              //   paddingLeft: 40,
+              //   paddingRight: 40
+              // },
 
               // Month & Year calendar styling
               '&:has(.MuiMonthCalendar-root), &:has(.MuiYearCalendar-root)': {

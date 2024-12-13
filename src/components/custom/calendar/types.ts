@@ -28,6 +28,7 @@ export interface IDatePicker {
   workData?: workData[];
   isBadge?: boolean;
   isModal?: boolean;
+  value?: string;
   onChange?: (e: any) => void;
 }
 
