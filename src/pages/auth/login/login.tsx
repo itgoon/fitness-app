@@ -97,7 +97,7 @@ export default function LoginView() {
             backgroundColor: '#FEE500',
             color: palette.common.black
           }}
-          onClick={() => onClick()}
+          onClick={() => navigate('/dashboard')}
         />
         <Button
           startIcon={'Apple'}

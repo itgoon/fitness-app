@@ -1,0 +1,1 @@
+import{j as t,m as r}from"./index-wTuU1FAT.js";const s={position:"fixed",left:0,top:0,width:"100%",height:"100vh",zIndex:1};function a({bgcolor:e="#00000033",children:o,isOpen:i=!0,onClose:n}){return t.jsx(t.Fragment,{children:i&&t.jsxs(r,{sx:{...s},bgcolor:e,onClick:n,children:[o," "]})})}export{a as O};
