@@ -1,8 +1,8 @@
-import react from "@vitejs/plugin-react-swc";
-import path from "path";
-import { defineConfig } from "vite";
-import checker from "vite-plugin-checker";
-import svgr from "vite-plugin-svgr";
+import react from '@vitejs/plugin-react';
+import path from 'path';
+import { defineConfig } from 'vite';
+import checker from 'vite-plugin-checker';
+import svgr from 'vite-plugin-svgr';
 
 // ----------------------------------------------------------------------
 
@@ -22,18 +22,18 @@ export default defineConfig({
   ],
   build: {
     // outDir: path.join(__dirname, 'build'),
-    outDir: "build",
+    outDir: 'build',
     chunkSizeWarningLimit: 1600
   },
   resolve: {
     alias: [
       {
         find: /^~(.+)/,
-        replacement: path.join(process.cwd(), "node_modules/$1")
+        replacement: path.join(process.cwd(), 'node_modules/$1')
       },
       {
         find: /^src(.+)/,
-        replacement: path.join(process.cwd(), "src/$1")
+        replacement: path.join(process.cwd(), 'src/$1')
       }
     ]
   },
