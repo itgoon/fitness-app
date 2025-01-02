@@ -38,7 +38,7 @@ export const ComponentsOverview = () => {
     <div
       id="components-overview"
       className="sb-unstyled"
-      style={{ paddingTop: 30 }}
+      style={{ : 30 }}
     >
       <h2>Components overview</h2>
 

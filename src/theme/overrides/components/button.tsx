@@ -1,0 +1,244 @@
+import { buttonClasses, ButtonProps } from '@mui/material/Button';
+import { alpha, Theme } from '@mui/material/styles';
+import { pxSize } from 'src/utils/style';
+
+// ----------------------------------------------------------------------
+
+const COLORS = [
+  'primary',
+  'secondary',
+  'info',
+  'success',
+  'warning',
+  'error'
+] as const;
+
+// NEW VARIANT
+declare module '@mui/material/Button' {
+  interface ButtonPropsVariantOverrides {
+    soft: true;
+  }
+}
+
+// ----------------------------------------------------------------------
+
+export function button(theme: Theme) {
+  const lightMode = theme.palette.mode === 'light';
+
+  const rootStyles = (ownerState: ButtonProps) => {
+    const inheritColor = ownerState.color === 'inherit';
+
+    const containedVariant = ownerState.variant === 'contained';
+
+    const outlinedVariant = ownerState.variant === 'outlined';
+
+    const textVariant = ownerState.variant === 'text';
+
+    const softVariant = ownerState.variant === 'soft';
+
+    const smallSize = ownerState.size === 'small';
+
+    const mediumSize = !ownerState?.size || ownerState.size === 'medium';
+
+    const largeSize = ownerState.size === 'large';
+    const startIcon =
+      ownerState.startIcon !== '' || ownerState.startIcon !== undefined;
+
+    const defaultStyle = {
+      ...(inheritColor && {
+        // CONTAINED
+        ...(containedVariant && {
+          color: lightMode
+            ? theme.palette.common.white
+            : theme.palette.grey[800],
+          backgroundColor: lightMode
+            ? theme.palette.common.black
+            : theme.palette.common.white,
+          boxShadow: 'none',
+          '&:hover': {
+            backgroundColor: lightMode
+              ? theme.palette.grey[700]
+              : theme.palette.grey[400]
+          }
+        }),
+        // OUTLINED
+        ...(outlinedVariant && {
+          borderColor: theme.palette.grey[200],
+          '&:hover': {
+            backgroundColor: theme.palette.action.hover
+          }
+        }),
+        // TEXT
+        ...(textVariant && {
+          '&:hover': {
+            backgroundColor: theme.palette.action.hover
+          }
+        }),
+        // SOFT
+        ...(softVariant && {
+          backgroundColor: '#eeeff1',
+          color: '#007AFF',
+          borderRadius: 14,
+          fontSize: '17px !important',
+          fontWeight: '400 !important',
+          '&:hover': {
+            backgroundColor: alpha('#eeeff1', 0.32)
+          }
+        })
+      }),
+      ...(outlinedVariant && {
+        '&:hover': {
+          borderColor: 'currentColor'
+          // boxShadow: '0 0 0 0.5px currentColor'
+        }
+      })
+    };
+
+    const colorStyle = COLORS.map((color) => ({
+      ...(ownerState.color === color && {
+        // CONTAINED
+        ...(containedVariant && {
+          backgroundColor: color === 'error' && `${theme.palette.error.dark}`,
+          '&:hover': {
+            boxShadow: theme.customShadows[color]
+          }
+        }),
+        // SOFT
+        ...(softVariant && {
+          backgroundColor: '#e5e5e5',
+          color: '#007AFF',
+          borderRadius: 14,
+          fontSize: '17px !important',
+          fontWeight: '400 !important',
+          '&:hover': {
+            backgroundColor: alpha('#e5e5e5', 0.32)
+          },
+          ...(ownerState.color === 'secondary' && {
+            backgroundColor: '#eeeff1',
+            fontWeight: '600 !important'
+          }),
+          ...(ownerState.color === 'error' && {
+            color: theme.palette.error.dark
+          })
+        }),
+        // TEXT
+        ...(textVariant && {
+          ...(ownerState.color === 'secondary' && {
+            color: theme.palette.grey[400],
+            '&:hover': {
+              backgroundColor: alpha(theme.palette.secondary.main, 0.08)
+            }
+          })
+        }),
+        ...(outlinedVariant && {
+          ...(ownerState.color === 'error' && {
+            color: theme.palette.error.dark,
+            borderColor: theme.palette.grey[200],
+            '&:hover': {
+              backgroundColor: alpha(theme.palette.error.main, 0.08)
+            }
+          }),
+          ...(ownerState.color === 'primary' && {
+            color: theme.palette.grey[900],
+            borderColor: theme.palette.grey[300],
+            '&:hover': {
+              borderColor: theme.palette.primary.main,
+              color: theme.palette.primary.main
+            }
+          }),
+          ...(ownerState.color === 'secondary' && {
+            borderColor: theme.palette.grey[200],
+            color: theme.palette.grey[900],
+            '&:hover': {
+              borderColor: theme.palette.primary.main
+            }
+          })
+        })
+      })
+    }));
+
+    const disabledState = {
+      [`&.${buttonClasses.disabled}`]: {
+        // SOFT
+        color: theme.palette.grey.A100,
+        backgroundColor: alpha(theme.palette.primary.main, 0.45),
+        ...(softVariant && {
+          backgroundColor: theme.palette.action.disabledBackground
+        }),
+        ...(containedVariant && {
+          color: lightMode
+            ? theme.palette.common.white
+            : theme.palette.grey[800],
+          backgroundColor: alpha(theme.palette.primary.main, 0.45)
+        }),
+        ...(outlinedVariant && {
+          backgroundColor: 'transparentColor',
+          borderColor: theme.palette.grey[200],
+          color: theme.palette.grey[400]
+        })
+      }
+    };
+
+    const size = {
+      ...(smallSize && {
+        height: pxSize.sm,
+        fontSize: 13,
+        paddingLeft: 8,
+        paddingRight: 8,
+        ...(textVariant && {
+          paddingLeft: 4,
+          paddingRight: 4
+        })
+      }),
+
+      ...(mediumSize && {
+        paddingLeft: 12,
+        height: pxSize.md,
+        paddingRight: 12,
+        fontSize: 16,
+        fontWeight: 600,
+        ...(textVariant && {
+          paddingLeft: 8,
+          paddingRight: 8
+        })
+      }),
+      ...(largeSize && {
+        height: pxSize.lg,
+        fontSize: 18,
+        fontWeight: 600,
+        paddingLeft: 16,
+        paddingRight: 16,
+        justifyContent: 'center',
+
+        ...(textVariant && {
+          paddingLeft: 10,
+          paddingRight: 10
+        })
+      })
+    };
+
+    const iconButtonStyle = {
+      ...(startIcon &&
+        largeSize && {
+          padding: '14px 24px',
+
+          '& .MuiButton-startIcon': {
+            margin: 0,
+            '& svg': {
+              // TODO 아이콘 크기에 접근하려면 이곳으로
+            }
+          }
+        })
+    };
+    return [defaultStyle, ...colorStyle, disabledState, size, iconButtonStyle];
+  };
+
+  return {
+    MuiButton: {
+      styleOverrides: {
+        root: ({ ownerState }: { ownerState: ButtonProps }) =>
+          rootStyles(ownerState)
+      }
+    }
+  };
+}

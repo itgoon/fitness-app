@@ -1,0 +1,46 @@
+export const ResponseEmployees = {
+  count: 5,
+  infos: [
+    {
+      id: "1",
+      email: "shin0251@hotmail.com",
+      name: "오군영",
+      phone: "010-8878-6545",
+      position: "대표",
+      part: "총괄",
+    },
+    {
+      id: "2",
+      email: "shin0251@hotmail.com",
+      name: "김가현",
+      phone: "010-5456-2478",
+      position: "팀장",
+      part: "개발",
+    },
+    {
+      id: "3",
+      email: "shin0251@hotmail.com",
+      name: "박건우",
+      phone: "010-8555-8877",
+      position: "사원",
+      part: "개발",
+    },
+    {
+      id: "4",
+      email: "shin0251@hotmail.com",
+      name: "임종한",
+      phone: "010-4565-5654",
+      position: "사원",
+      part: "개발",
+    },
+    {
+      id: "5",
+      email: "shin0251@hotmail.com",
+      name: "이기호",
+      phone: "010-4565-5654",
+      position: "사원",
+      part: "기획",
+    },
+  ],
+  result: 1,
+};

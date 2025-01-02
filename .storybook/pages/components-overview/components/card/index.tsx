@@ -1,9 +1,9 @@
-import React from "react";
-import kebab from "lodash.kebabcase";
-import cn from "classnames";
+import React from 'react';
+import kebab from 'lodash.kebabcase';
+import cn from 'classnames';
 
-import { createComponentUrl } from "../../../../utils/createComponentUrl";
-import styles from "./index.module.css";
+import { createComponentUrl } from '../../../../utils/createComponentUrl';
+import styles from './index.module.css';
 
 type CardProps = {
   componentName: string;
@@ -16,16 +16,16 @@ enum ImageState {
   ERROR
 }
 
-const COMPONENTS_WITH_SAFE_ZONE = ["SidePanel"];
+const COMPONENTS_WITH_SAFE_ZONE = ['SidePanel'];
 
 const Typography = ({ children }) => {
   return (
     <span
       style={{
-        textAlign: "center",
-        fontWeight: "bold",
+        textAlign: 'center',
+        fontWeight: 'bold',
         fontSize: 16,
-        width: "100%"
+        width: '100%'
       }}
     >
       {children}
@@ -46,14 +46,9 @@ export const Card: React.FC<CardProps> = ({ componentName, mode }) => {
 
   const handleLoad = () => setImageState(ImageState.LOADED);
 
-  console.log(
-    "createImageUrl(componentName, mode) : ",
-    createImageUrl(componentName, mode),
-    componentName
-  );
   return (
     <a href={createComponentUrl(componentName)} className={styles.card}>
-      <figure style={{ textAlign: "center" }}>
+      <figure style={{ textAlign: 'center' }}>
         <div className={styles.imageWrapper}>
           {imageState === ImageState.ERROR && (
             <div
@@ -94,6 +89,6 @@ export const Card: React.FC<CardProps> = ({ componentName, mode }) => {
 
 function createImageUrl(componentName: string, mode: string) {
   return `./images/${kebab(componentName)}-${
-    mode === "dark" ? "dark-" : ""
+    mode === 'dark' ? 'dark-' : ''
   }preview-snap.png`;
 }

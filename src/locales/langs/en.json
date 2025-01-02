@@ -1,0 +1,19 @@
+{
+  "오비서": "Oh's ",
+  "대시보드": "Dashboard",
+  "파트너관리": "Partner",
+  "파트너목록": "Partner's list",
+  "파트너등록": "Partner Registration",
+  "대표지점": "represent store",
+  "지점": "store",
+  "지점목록": "store list",
+  "삭제": "Delete",
+  "이름": "name",
+  "이메일": "email",
+  "연락처": "phone",
+  "지점명": "store name",
+  "주소": "address",
+  "대표연락처": "contact information",
+  "담당자": "manager",
+  "파트너를 삭제하시겠습니까": "Do you want to delete partner {{str}}?"
+}
