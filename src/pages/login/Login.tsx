@@ -98,7 +98,7 @@ const LoginPage = () => {
                 type="round"
                 width="100%"
                 color="--social-kakao-color"
-                onClick={onKakaoLogin}
+                onClick={() => navigate("/dashboard")}
               >
                 <CP.Icon
                   name="mingcute:kakao-talk-fill"
