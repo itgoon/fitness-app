@@ -9,5 +9,4 @@ export interface IWeekCalendar {
   greenBadge?: count[];
   orangeBadge?: count[];
   layoutSx?: CSSProperties;
-  onClick?: (e: any) => void;
 }

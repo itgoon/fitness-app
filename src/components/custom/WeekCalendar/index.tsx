@@ -13,8 +13,7 @@ export default function WeekCalendar({
   format = DateReqFormat,
   greenBadge,
   orangeBadge,
-  layoutSx,
-  onClick
+  layoutSx
 }: IWeekCalendar) {
   const { palette } = useTheme();
   const light = palette.mode === 'light';

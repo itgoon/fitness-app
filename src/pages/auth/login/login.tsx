@@ -66,7 +66,9 @@ export default function LoginView() {
       // }
     }
   });
-
+  const onClick = () => {
+    navigate('/dashboard');
+  };
   return (
     <Stack
       sx={{
@@ -95,6 +97,7 @@ export default function LoginView() {
             backgroundColor: '#FEE500',
             color: palette.common.black
           }}
+          onClick={() => onClick()}
         />
         <Button
           startIcon={'Apple'}
@@ -103,6 +106,7 @@ export default function LoginView() {
           variant="contained"
           sx={{ height: 52 }}
           children={'Apple 계정으로 시작하기'}
+          onClick={() => onClick()}
         />
       </Stack>
     </Stack>

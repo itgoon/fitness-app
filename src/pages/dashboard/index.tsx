@@ -170,10 +170,6 @@ export default function DashboardPage() {
         <WeekCalendar
           greenBadge={dummyMonthCount1}
           orangeBadge={dummyMonthCount2}
-          // onClick={(date) => {
-          //   navigate(`/schedule?date=${date}`);
-          //   console.log('date.target: ', date);
-          // }}
         />
       </Wrap>
       <Wrap gap={1} padding={4}>

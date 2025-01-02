@@ -115,15 +115,15 @@ export const dummyReservaitonListCard: cardData[] = [
 
 // calendar dummydata
 export const dummyMonthWorkoutList = [
-  { type: 'lesson', date: '2024-10-05' },
-  { type: 'lesson', date: '2024-10-29' },
-  { type: 'workout', date: '2024-10-29' },
-  { type: 'lesson', date: '2024-10-31' },
-  { type: 'workout', date: '2024-10-30' },
-  { type: 'lesson', date: '2024-10-21' },
-  { type: 'workout', date: '2024-10-20' },
-  { type: 'lesson', date: '2024-10-01' },
-  { type: 'workout', date: '2024-10-22' }
+  { type: 'lesson', date: '2024-12-05' },
+  { type: 'lesson', date: '2024-12-29' },
+  { type: 'workout', date: '2024-12-29' },
+  { type: 'lesson', date: '2024-12-31' },
+  { type: 'workout', date: '2024-12-30' },
+  { type: 'lesson', date: '2024-12-21' },
+  { type: 'workout', date: '2024-12-20' },
+  { type: 'lesson', date: '2024-12-01' },
+  { type: 'workout', date: '2024-12-22' }
 ];
 // 일정 페이지
 //
