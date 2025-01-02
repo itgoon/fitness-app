@@ -106,6 +106,7 @@ export default function LoginView() {
           variant="contained"
           sx={{ height: 52 }}
           children={'Apple 계정으로 시작하기'}
+          onClick={() => onClick()}
         />
       </Stack>
     </Stack>
