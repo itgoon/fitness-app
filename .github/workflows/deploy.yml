@@ -40,7 +40,7 @@ jobs:
 
       - name: Install dependencies
         # run: npm ci --force
-        run: pnpm install --frozen-lockfile
+        run: pnpm install --no-frozen-lockfile
         if: steps.cache.outputs.cache-hit != 'true'
 
       - name: Set PUBLIC_URL
