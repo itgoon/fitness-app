@@ -1,4 +1,4 @@
-import { ReactJSX } from '@emotion/react/types/jsx-namespace';
+// import { ReactJSX } from '@emotion/react/types/jsx-namespace';
 import React, { PropsWithChildren } from 'react';
 
 interface StepFlowProps {
@@ -13,9 +13,9 @@ export default function StepFlow({
 }: PropsWithChildren<StepFlowProps>) {
   const currentChild = React.Children.toArray(children)[activeStep];
 
-  if (React.isValidElement(currentChild)) {
-    return React.cloneElement(currentChild as ReactJSX.Element, { onNext });
-  }
+  // if (React.isValidElement(currentChild)) {
+  //   return React.cloneElement(currentChild as ReactJSX.Element, { onNext });
+  // }
 
   return currentChild;
 }

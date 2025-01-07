@@ -16,7 +16,7 @@ import WeightSvg from './weight.svg?react';
 
 // 계약서 / 예약 완료 페이지 컴포넌트
 import CloseSvg from './CloseSvg.svg?react';
-import CheckSvg from './Check.svg?react';
+import CheckSvg from './check.svg?react';
 import DumbelSvg from './dumbelSvg.svg?react';
 import OrangeLargeSvg from './OrangeLarge.svg?react';
 import BlueLargeSvg from './BlueLargeSvg.svg?react';

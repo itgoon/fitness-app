@@ -4,7 +4,6 @@ import { Select, MenuItem, FormLabel, FormControl } from '@mui/material';
 
 import { localStorageGetItem } from 'src/utils/storageAvailable';
 
-import { CodeService } from 'src/service';
 import { useTranslate } from 'src/locales';
 
 import { RHFSelect } from 'src/components/hookForm';
@@ -48,11 +47,7 @@ const SelectBox = ({
   }, [comboType, comboName, params, langStorage]);
 
   const loadComboList = useCallback(async () => {
-    const { data, meta } = await CodeService.loadComboList(comboType, comboName, params);
-    if (meta.errCode !== 0) {
-      return alert(t('exception.unknown.server.error'));
-    }
-    return setCombos(data);
+    //
   }, [comboType, comboName, params]);
 
   return (
@@ -66,7 +61,7 @@ const SelectBox = ({
           zIndex: 2,
           backgroundColor: 'white',
           position: 'absolute',
-          fontSize: '0.75em',
+          fontSize: '0.75em'
         }}
         // id={`select_${props.name}`}
         htmlFor={`select_${props.name}`}
@@ -103,7 +98,7 @@ const SelectBox = ({
           value={combos.length > 0 ? value || '' : ''}
           inputProps={{
             id: `select_${props.name}`,
-            'aria-label': `select_${props.name}`,
+            'aria-label': `select_${props.name}`
           }}
         >
           {isNone && (
@@ -113,7 +108,10 @@ const SelectBox = ({
           )}
 
           {combos.map((option) => (
-            <MenuItem key={`select_${props.name}_item_${option.value}`} value={option.value}>
+            <MenuItem
+              key={`select_${props.name}_item_${option.value}`}
+              value={option.value}
+            >
               {t(option.translate)}
             </MenuItem>
           ))}
