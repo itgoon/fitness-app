@@ -6,7 +6,6 @@ import { useTranslation } from 'react-i18next';
 import { localStorageGetItem } from 'src/utils/storageAvailable';
 
 import Store from 'src/store';
-import { TranslateService } from 'src/service';
 
 import { useSettingsContext } from 'src/components/settings';
 
@@ -46,11 +45,7 @@ export function useTranslate() {
     if (!authState?.token) return;
 
     try {
-      const { meta, data } = await TranslateService.loadTranslate(newlang);
-      if (meta.errCode === 0) {
-        i18n.removeResourceBundle(newlang, 'translations');
-        i18n.addResourceBundle(newlang, 'translations', data);
-      }
+      //
     } catch (err) {}
   };
 

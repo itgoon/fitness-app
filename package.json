@@ -15,7 +15,8 @@
     "re:start": "yarn rm:all && yarn install && yarn dev",
     "re:build": "yarn rm:all && yarn install && yarn build",
     "re:build-npm": "npm run rm:all && npm install && npm run build",
-    "dev:host": "vite --host"
+    "dev:host": "vite --host",
+    "gen-api": "node ./generate-api.cjs"
   },
   "dependencies": {
     "@auth0/auth0-react": "^2.2.4",
@@ -91,6 +92,7 @@
     "rehype-highlight": "^7.0.1",
     "rehype-raw": "^7.0.0",
     "remark-gfm": "^4.0.0",
+    "shelljs": "^0.8.5",
     "simplebar-react": "^3.3.0",
     "slick-carousel": "^1.8.1",
     "stylis": "^4.3.4",
