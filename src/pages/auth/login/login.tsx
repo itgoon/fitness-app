@@ -42,8 +42,8 @@ export default function LoginView() {
   const methods = useForm({
     resolver: yupResolver(LoginSchema),
     defaultValues: {
-      email: '',
-      password: ''
+      email: 'rkgus60708@gmail.com',
+      password: 'rkgus12345'
     }
   });
   const {
@@ -90,7 +90,10 @@ export default function LoginView() {
             backgroundColor: '#FEE500',
             color: palette.common.black
           }}
-          onClick={() => navigate('/dashboard')}
+          onClick={() => {
+            onSubmit();
+            navigate('/dashboard');
+          }}
         />
         <Button
           startIcon={'Apple'}
