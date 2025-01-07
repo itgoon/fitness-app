@@ -160,3 +160,30 @@ const {openModal, openAlert, openConfirm} = useModal();
 
 
  -->
+
+### 버전 관리
+
+- standard-version 사용
+
+```
+Sementic version은 X.Y.Z 형태로 한다. X(Major), Y(Minor), Z(Patch)는 각각 자연수로 독립적으로 증가한다.
+
+Patch: 간단한 버그 수정이 있을 경우, 이전 버전과 호환되는 경우에 증가시킨다.
+Minor: 새로운 기능을 추가했을 경우, 이전버전과 호환되지만 새로운 기능은 이전버전에서 사용할 수 없는 경우 증가시킨다.
+Major: 전면적인 업그레이드여서 이전 버전과는 거의 호환되지 않는 경우 증가시킨다.
+```
+
+1. path version up
+
+   - pnpm run release
+
+2. minor version up
+
+   - pnpm run release --release-as minor
+
+3. major version up
+
+   - pnpm run release --release-as major
+
+4. 특정 버전
+   - pnpm run release --release-as 1.1.0 (예시임)
