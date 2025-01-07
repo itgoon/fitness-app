@@ -1,17 +1,15 @@
-import { m } from "framer-motion";
+import { m } from 'framer-motion';
 
-import IconButton from "@mui/material/IconButton";
-import MenuItem from "@mui/material/MenuItem";
-import { alpha } from "@mui/material/styles";
+import IconButton from '@mui/material/IconButton';
+import MenuItem from '@mui/material/MenuItem';
+import { alpha } from '@mui/material/styles';
 
-import { useRouter } from "src/routes/hooks";
+import { useRouter } from 'src/routes/hooks';
 
-import { logout } from "src/service/authService";
-
-import { useRecoilState } from "recoil";
-import { varHover } from "src/components/animate";
-import CustomPopover, { usePopover } from "src/components/customPopover";
-import Store from "src/store";
+import { useRecoilState } from 'recoil';
+import { varHover } from 'src/components/animate';
+import CustomPopover, { usePopover } from 'src/components/customPopover';
+import Store from 'src/store';
 
 // ----------------------------------------------------------------------
 
@@ -20,7 +18,6 @@ export default function AccountPopover() {
   const popover = usePopover();
   const [auth, setAuth] = useRecoilState(Store.Auth.authState);
   const handleLogout = () => {
-    logout();
     setAuth(undefined);
   };
   return (
@@ -49,7 +46,7 @@ export default function AccountPopover() {
       >
         <MenuItem
           onClick={handleLogout}
-          sx={{ m: 1, fontWeight: "fontWeightBold", color: "error.main" }}
+          sx={{ m: 1, fontWeight: 'fontWeightBold', color: 'error.main' }}
         >
           Logout
         </MenuItem>

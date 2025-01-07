@@ -11,9 +11,9 @@ import { useTheme } from '@mui/material';
 import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
 import { useAuth } from 'src/hooks/useAuth';
-import { ReqLogin } from '../../../types/auth';
 import Button from 'src/components/Button';
 import Icon from 'src/components/Icon';
+import { AuthService } from 'src/service';
 
 // ----------------------------------------------------------------------
 
@@ -33,15 +33,16 @@ export default function LoginView() {
 
     navigate('/dashboard');
   }, [auth]);
+
   const LoginSchema = Yup.object().shape({
-    userId: Yup.string().required('이메일을 입력해주새요.'),
+    email: Yup.string().required('이메일을 입력해주새요.'),
     password: Yup.string().required('비밀번호를 입력해주세요.')
   });
 
-  const methods = useForm<ReqLogin>({
+  const methods = useForm({
     resolver: yupResolver(LoginSchema),
     defaultValues: {
-      userId: '',
+      email: '',
       password: ''
     }
   });
@@ -50,25 +51,17 @@ export default function LoginView() {
     formState: { isSubmitting }
   } = methods;
 
-  const onSubmit = handleSubmit(async (data: ReqLogin) => {
+  const onSubmit = handleSubmit(async (data) => {
     try {
-      login(data);
-      // const { meta } = await auth.login({
-      //   ...data,
-      // });
-      // if (meta.errCode !== 0) {
-      //   alert(meta.errMsg ? meta.errMsg : '관리자에게 문의 바랍니다.');
-      // }
+      AuthService.login(data);
     } catch (err) {
-      // const { meta } = err.response.data;
-      // if (meta.errCode !== 0) {
-      //   alert(meta.errMsg ? meta.errMsg : '관리자에게 문의 바랍니다.');
-      // }
+      //
     }
   });
   const onClick = () => {
     navigate('/dashboard');
   };
+
   return (
     <Stack
       sx={{

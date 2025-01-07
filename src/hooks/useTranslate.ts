@@ -3,7 +3,6 @@
 import { useRecoilState } from 'recoil';
 
 import Store from 'src/store';
-import { TranslateService } from 'src/service';
 
 interface Props {
   getTranslate: (key: string) => string;
@@ -14,7 +13,9 @@ interface Props {
  * @returns
  */
 export const useDataTranslate = (): Props => {
-  const [translate, setTranslate] = useRecoilState(Store.Translate.translateState);
+  const [translate, setTranslate] = useRecoilState(
+    Store.Translate.translateState
+  );
 
   const getTranslate = (key: string): string => {
     if (!translate) return key;
@@ -27,9 +28,7 @@ export const useDataTranslate = (): Props => {
     if (translate) return;
 
     try {
-      const { meta, data } = await TranslateService.loadTranslate('ko');
-      if (meta.errCode !== 0) errMsg = meta.errMsg;
-      else setTranslate(data);
+      //
     } catch (err) {
       const { meta } = err.response.data;
       if (meta.errCode !== 0) errMsg = meta.errMsg;
