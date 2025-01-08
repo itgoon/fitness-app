@@ -13,7 +13,7 @@ import ThemeProvider from 'src/theme';
 import { RecoilRoot } from 'recoil';
 import { MotionLazy } from 'src/components/animate/MotionLazy';
 import ProgressBar from 'src/components/progressBar';
-import { SettingsDrawer, SettingsProvider } from 'src/components/settings';
+import { SettingsProvider } from 'src/components/settings';
 import SnackbarProvider from 'src/components/snackbar/SnackbarProvider';
 import AuthProvider from './provider/AuthProvider';
 import ModalProvider from './provider/ModalProvider';
@@ -54,7 +54,6 @@ export default function App() {
               <SnackbarProvider>
                 <AuthProvider>
                   <ModalProvider>
-                    <SettingsDrawer />
                     <SignProvider>
                       <CardProvider>
                         <EditProvider>

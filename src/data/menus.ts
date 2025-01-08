@@ -29,7 +29,9 @@ export const menus: NavItemType[] = [
     title: '일정',
     url: '/schedule',
     isHeader: false,
-    isBottom: true
+    isStart: false,
+    isBottom: true,
+    isEnd: true
   },
   {
     id: 'schedule/detail',
@@ -44,7 +46,7 @@ export const menus: NavItemType[] = [
     id: 'contract',
     title: '약관 및 규정',
     url: '/contract',
-    isHeader: false,
+    isHeader: true,
     isBottom: false
   },
   {

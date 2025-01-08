@@ -14,7 +14,9 @@ import dayjs from 'dayjs';
  */
 export default function CardDetail() {
   const [activeStep, setActiveStep] = useState(0);
+
   const { selectedCard } = useCardContext();
+
   const stepTitle = [
     dayjs(selectedCard.date).format('MM월 DD일 dddd'),
     '레슨 예약'

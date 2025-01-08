@@ -1,71 +1,46 @@
 import { Box } from '@mui/material';
-import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import { NavItemType, menus } from '../../../data/menus';
 import Item from './Item';
-import { Iheader } from './types';
 
-const findHeader = (menu: NavItemType[], path: string): NavItemType[] => {
-  const breadcrumbs: NavItemType[] = [];
+// 불필요한 코드가 너무 많음. 안쓰는걸 안지움
+// 하나의 컴포넌트, 함수에서 너무 많이 처리함
+// 불필요한 useEffect
 
-  const traverse = (menuItem: NavItemType): boolean => {
-    console.log(menuItem);
-
+const findHeader = (menu: NavItemType[], path: string) => {
+  const traverse = (menuItem: NavItemType) => {
     if (menuItem.url === path) {
-      breadcrumbs.push(menuItem);
-      return true; // Found the path
-    }
-    if (menuItem.isHeader === false) {
-      return false;
+      return menuItem;
     }
 
-    return false;
+    return null;
   };
 
-  // 각 메뉴 항목을 순회하며 탐색 시작
   for (const item of menu) {
-    if (item.isHeader) {
-      if (traverse(item)) {
-        break; // 하나의 경로를 찾으면 탐색 종료
-      }
+    if (traverse(item)) {
+      return traverse(item);
     }
   }
-  return breadcrumbs.length > 0 ? breadcrumbs : [];
 };
 
-// TODO: 함수 변경 및 menus 구조 변경
-export default function Header({ stepTitle, isStart }: Iheader) {
-  // state
+export default function Header() {
   const location = useLocation();
+
   const currentLocation = location.pathname;
-  const [breadcrumbs, setBreadcrumbs] = useState<NavItemType[] | undefined>([]);
 
-  useEffect(() => {
-    const foundBreadcrumbs = findHeader(menus, currentLocation);
-    setBreadcrumbs(foundBreadcrumbs);
-  }, [currentLocation]);
+  const current = findHeader(menus, currentLocation);
 
-  if (stepTitle !== undefined && stepTitle !== '') {
-    return (
-      <Box role="presentation" height={56} py={1.88} px={2}>
-        <Item isStart={isStart} title={stepTitle} />
-      </Box>
-    );
-  }
+  if (!current?.isHeader) return null;
+
   return (
     <>
-      {breadcrumbs && breadcrumbs.length > 0 && (
-        <Box role="presentation" height={56} py={1.88} px={2}>
-          {breadcrumbs?.map((item, key) => (
-            <Item
-              key={key}
-              isStart={item.isStart}
-              isEnd={item.isEnd}
-              title={item.title}
-            />
-          ))}
-        </Box>
-      )}
+      <Box role="presentation" height={56} py={1.88} px={2}>
+        <Item
+          isStart={current?.isStart}
+          isEnd={current?.isEnd}
+          title={current?.title}
+        />
+      </Box>
     </>
   );
 }

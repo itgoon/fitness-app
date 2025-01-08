@@ -104,7 +104,7 @@ const renderWorkoutInfo = ({
   );
 };
 
-export default function DashboardPage() {
+export default function HomePage() {
   const { palette } = useTheme();
   const light = palette.mode === 'light';
   const grey900 = light ? palette.grey[900] : 'white';
@@ -172,6 +172,7 @@ export default function DashboardPage() {
           orangeBadge={dummyMonthCount2}
         />
       </Wrap>
+
       <Wrap gap={1} padding={4}>
         <Typography
           variant="Body18/semiBold"
@@ -208,7 +209,7 @@ export default function DashboardPage() {
           sx={{ padding: '32px 20px 0' }}
           color={grey900}
         />
-        <Divider></Divider>
+        <Divider />
         {!isAlaram ? (
           <EmptyCard
             margin={'12px 20px 32px'}
@@ -239,7 +240,7 @@ export default function DashboardPage() {
         }
         onClick={saveWorkTime}
         onChange={handleTimeChange}
-      ></TimePicker>
+      />
     </Stack>
   );
 }

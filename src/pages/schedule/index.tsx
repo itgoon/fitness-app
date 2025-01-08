@@ -28,6 +28,7 @@ export default function Schedule() {
         workData={dummyMonthWorkoutList}
         value={paramsDate}
       />
+
       <Box pt={3}>
         <Tabs
           value={tabValue}

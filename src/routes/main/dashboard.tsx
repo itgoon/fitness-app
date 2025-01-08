@@ -7,8 +7,8 @@ import { LoadingScreen } from 'src/components/loadingScreen';
 import { AuthGuard } from '../components';
 
 // ----------------------------------------------------------------------
-// Dashboard
-const DashboardPage = lazy(() => import('src/pages/dashboard'));
+// Home
+const HomePage = lazy(() => import('src/pages/home'));
 const SchedulePage = lazy(() => import('src/pages/schedule'));
 const ScheduleCardDetail = lazy(() => import('src/pages/schedule/CardDetail'));
 const MemberPage = lazy(() => import('src/pages/member'));
@@ -39,12 +39,10 @@ export const dashboardRoutes = [
     children: [
       {
         path: 'dashboard',
-
-        children: [{ element: <DashboardPage />, index: true }]
+        children: [{ element: <HomePage />, index: true }]
       },
       {
         path: 'schedule',
-
         children: [
           { element: <SchedulePage />, index: true },
           { path: 'detail/:id', element: <ScheduleCardDetail /> }
