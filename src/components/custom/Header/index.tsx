@@ -1,46 +1,51 @@
-import { Box } from '@mui/material';
-import { useLocation } from 'react-router-dom';
-import { NavItemType, menus } from '../../../data/menus';
-import Item from './Item';
+import { Box, Typography, useTheme } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Prev } from '../../Icon/HeaderIcon';
+import Icon from '../../Icon';
 
 // 불필요한 코드가 너무 많음. 안쓰는걸 안지움
 // 하나의 컴포넌트, 함수에서 너무 많이 처리함
 // 불필요한 useEffect
 
-const findHeader = (menu: NavItemType[], path: string) => {
-  const traverse = (menuItem: NavItemType) => {
-    if (menuItem.url === path) {
-      return menuItem;
-    }
+interface IHeader {
+  currentData: any;
+}
+export default function Header({ currentData }: IHeader) {
+  const theme = useTheme();
+  const { palette } = theme;
+  const light = palette.mode === 'light';
+  const black = light ? palette.common.black : palette.common.white;
+  const navigate = useNavigate();
 
-    return null;
-  };
+  const { title, url } = currentData;
+  const isStartIcon = url !== '/dashboard';
 
-  for (const item of menu) {
-    if (traverse(item)) {
-      return traverse(item);
-    }
-  }
-};
-
-export default function Header() {
-  const location = useLocation();
-
-  const currentLocation = location.pathname;
-
-  const current = findHeader(menus, currentLocation);
-
-  if (!current?.isHeader) return null;
+  if (!currentData?.isHeader) return null;
 
   return (
-    <>
-      <Box role="presentation" height={56} py={1.88} px={2}>
-        <Item
-          isStart={current?.isStart}
-          isEnd={current?.isEnd}
-          title={current?.title}
-        />
+    <header
+      role="presentation"
+      style={{ height: 56, paddingBlock: 15, paddingInline: 16 }}
+    >
+      <Box display={'flex'} alignItems={'center'} width={'100%'}>
+        <Box width={22} paddingTop={0.25}>
+          {isStartIcon && <Prev onClick={() => navigate(-1)} />}
+        </Box>
+        <Box flex={1}>
+          {title && (
+            <Typography
+              variant="Body18/bold"
+              children={title}
+              color={black}
+              sx={{ display: 'flex', justifyContent: 'center' }}
+            />
+          )}
+        </Box>
+
+        <Box width={22} paddingTop={0.25}>
+          {!isStartIcon && <Icon size={24} name={'BellSvg'} />}
+        </Box>
       </Box>
-    </>
+    </header>
   );
 }
