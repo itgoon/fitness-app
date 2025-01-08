@@ -2,13 +2,14 @@ import { Box, Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router-dom';
 import { Prev } from '../../Icon/HeaderIcon';
 import Icon from '../../Icon';
+import { NavItemType } from '../../../data/menus';
 
 // 불필요한 코드가 너무 많음. 안쓰는걸 안지움
 // 하나의 컴포넌트, 함수에서 너무 많이 처리함
 // 불필요한 useEffect
 
 interface IHeader {
-  currentData: any;
+  currentData: NavItemType | null;
 }
 export default function Header({ currentData }: IHeader) {
   const theme = useTheme();
@@ -17,10 +18,9 @@ export default function Header({ currentData }: IHeader) {
   const black = light ? palette.common.black : palette.common.white;
   const navigate = useNavigate();
 
-  const { title, url } = currentData;
+  const title = currentData?.title ?? '';
+  const url = currentData?.url ?? '';
   const isStartIcon = url !== '/dashboard';
-
-  if (!currentData?.isHeader) return null;
 
   return (
     <header
