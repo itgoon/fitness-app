@@ -38,7 +38,7 @@ export default function RecordList({
     onDelete();
 
     const updatedData = clickedImg?.imageUrls.filter(
-      (_, imgIndex) => !selectedIndex.some(([_, sIndex]) => sIndex === imgIndex)
+      (_, imgIndex) => !selectedIndex.some(([, sIndex]) => sIndex === imgIndex)
     );
     setClickedImg((prev) => ({
       ...prev,
@@ -69,7 +69,6 @@ export default function RecordList({
                     }}
                     src={img}
                     alt={img}
-                    onClick={() => onHandleViewr(listKey, imageKey, arr)}
                   />
                   {isEdit && (
                     <Box

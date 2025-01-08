@@ -3,6 +3,7 @@ import {
   SetStateAction,
   createContext,
   useContext,
+  useMemo,
   useState
 } from 'react';
 
@@ -16,8 +17,13 @@ const CardContext = createContext<CardContextType | undefined>(undefined);
 export const CardProvider = ({ children }: any) => {
   const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
 
+  const providerValue = useMemo(
+    () => ({ selectedCard, setSelectedCard }),
+    [selectedCard]
+  );
+
   return (
-    <CardContext.Provider value={{ selectedCard, setSelectedCard }}>
+    <CardContext.Provider value={providerValue}>
       {children}
     </CardContext.Provider>
   );

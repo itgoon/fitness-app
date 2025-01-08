@@ -1,11 +1,10 @@
-import { default as MuiTable } from '@mui/material/Table';
+import MuiTable from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableRow from '@mui/material/TableRow';
 import Scrollbar from 'src/components/scrollbar';
 import { TableHeadCustom, TableNoData, TableProps } from 'src/components/table';
-
 import { Box, Pagination } from '@mui/material';
 import UserTableFiltersResult from './TableFiltersResult';
 

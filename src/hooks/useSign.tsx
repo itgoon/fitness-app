@@ -8,7 +8,7 @@ import {
   useRef,
   useState
 } from 'react';
-import { default as ReactSignatureCanvas } from 'react-signature-canvas';
+import { ReactSignatureCanvas } from 'react-signature-canvas';
 
 type SignType = {
   data: string;
@@ -57,7 +57,7 @@ export const useSign = () => {
     const binaryData = atob(data.split(',')[1]);
     const array: number[] = [];
 
-    for (let i = 0; i < binaryData.length; i++) {
+    for (let i = 0; i < binaryData.length; i += 1) {
       array.push(binaryData.charCodeAt(i));
     }
 
