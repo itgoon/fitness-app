@@ -4,6 +4,7 @@ import {
   SetStateAction,
   createContext,
   useContext,
+  useMemo,
   useRef,
   useState
 } from 'react';
@@ -22,12 +23,9 @@ const SignContext = createContext<SignContextType | undefined>(undefined);
 
 export const SignProvider = ({ children }: { children: ReactNode }) => {
   const [sign, setSign] = useState<SignType | null>({ data: '', original: '' });
+  const value = useMemo(() => ({ sign, setSign }), [sign]);
 
-  return (
-    <SignContext.Provider value={{ sign, setSign }}>
-      {children}
-    </SignContext.Provider>
-  );
+  return <SignContext.Provider value={value}>{children}</SignContext.Provider>;
 };
 
 export const useSignContext = () => {

@@ -1,4 +1,4 @@
-import Table from '@mui/material/Table';
+import { default as MuiTable } from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
 import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
@@ -19,7 +19,7 @@ type Props = {
   onSelectRow?: (e: any) => void;
 };
 
-export default function TableEmptyRows({
+export default function Table({
   table,
   // emptyRows,
   totalElements,
@@ -41,7 +41,7 @@ export default function TableEmptyRows({
 
       <TableContainer sx={{ position: 'relative', overflow: 'unset' }}>
         <Scrollbar>
-          <Table size={table.dense ? 'small' : 'medium'} sx={{}}>
+          <MuiTable size={table.dense ? 'small' : 'medium'} sx={{}}>
             <TableHeadCustom
               headLabel={columns}
               rowCount={totalElements}
@@ -97,19 +97,9 @@ export default function TableEmptyRows({
                 <TableNoData notFound={list.length === 0} />
               )}
             </TableBody>
-          </Table>
+          </MuiTable>
         </Scrollbar>
       </TableContainer>
-
-      {/* <TablePaginationCustom
-        count={totalElements}
-        page={table.page}
-        rowsPerPage={table.rowsPerPage}
-        onPageChange={table.onChangePage}
-        onRowsPerPageChange={table.onChangeRowsPerPage}
-        dense={table.dense}
-        onChangeDense={table.onChangeDense}
-      /> */}
 
       {totalElements > table?.rowsPerPage && (
         <Box
@@ -122,8 +112,7 @@ export default function TableEmptyRows({
         >
           <Pagination
             page={table.page + 1}
-            // count={3}
-            count={Math.round(totalElements / table?.rowsPerPage)}
+            count={Math.round(totalElements / (table?.rowsPerPage || 1))}
             onChange={(e, page: number) => {
               table.onChangePage(e, page - 1);
             }}

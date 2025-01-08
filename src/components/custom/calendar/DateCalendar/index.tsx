@@ -6,7 +6,7 @@ import { Divider } from '@mui/material';
 import dayjs from 'dayjs';
 import ServerDay from './PickersDay';
 import CalendarHeader from '../CalendarHeader';
-import { IDatePicker, workData as IWorkData } from '../types';
+import { IDatePicker, typeWorkData } from '../types';
 
 /**
  * 일정 탭, 레슨 예약 탭에서 사용되는 데이트 캘린더
@@ -20,7 +20,7 @@ export default function DateCalendar({
   isModal,
   value
 }: IDatePicker) {
-  const [highlightedDays, setHighlightedDays] = useState<IWorkData[]>([]);
+  const [highlightedDays, setHighlightedDays] = useState<typeWorkData[]>([]);
 
   useEffect(() => {
     if (workData) {
@@ -29,10 +29,10 @@ export default function DateCalendar({
   }, []);
 
   // 같은 날짜가 있는지 그리고 두 값의 타입이 다른 값은 type을 all 로 변경하여 배열에 집어넣어서 리턴해야 한다.
-  const reducingArray = (array: workData[]): workData[] => {
-    const workDayList = array.reduce<workData[]>((acc, current) => {
+  const reducingArray = (array: typeWorkData[]): typeWorkData[] => {
+    const workDayList = array.reduce<typeWorkData[]>((acc, current) => {
       // 현재 날짜와 같은 날짜가 이미 acc에 있는지 확인
-      const existing = acc.find((item) => item.date === current.date);
+      const existing = acc.find((item) => item?.date === current.date);
 
       if (existing) {
         // 같은 날짜가 있으면, 'type'을 'all'로 설정

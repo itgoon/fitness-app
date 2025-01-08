@@ -10,4 +10,4 @@ export { default as TablePaginationCustom } from './TablePaginationCustom';
 export { default as TableSelectedAction } from './TableSelectedAction';
 export { default as TableSkeleton } from './TableSkeleton';
 
-export { default as DataTable } from './Table';
+export { default as Table } from './Table';

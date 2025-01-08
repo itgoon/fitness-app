@@ -9,16 +9,16 @@ import { NavItemType } from '../../../data/menus';
 // 불필요한 useEffect
 
 interface IHeader {
-  currentData: NavItemType | null;
+  currentData?: NavItemType | null;
+  title?: string;
 }
-export default function Header({ currentData }: IHeader) {
+export default function Header({ currentData, title }: IHeader) {
   const theme = useTheme();
   const { palette } = theme;
   const light = palette.mode === 'light';
   const black = light ? palette.common.black : palette.common.white;
   const navigate = useNavigate();
-
-  const title = currentData?.title ?? '';
+  const headerTitle = currentData?.title ?? '';
   const url = currentData?.url ?? '';
   const isStartIcon = url !== '/dashboard';
 
@@ -32,10 +32,10 @@ export default function Header({ currentData }: IHeader) {
           {isStartIcon && <Prev onClick={() => navigate(-1)} />}
         </Box>
         <Box flex={1}>
-          {title && (
+          {headerTitle && (
             <Typography
               variant="Body18/bold"
-              children={title}
+              children={headerTitle}
               color={black}
               sx={{ display: 'flex', justifyContent: 'center' }}
             />

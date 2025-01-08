@@ -29,13 +29,11 @@ const getMenuItemByPath = (
     }
     return null;
   };
-  for (const item of menu) {
-    if (traverse(item)) {
-      return traverse(item);
-    }
-  }
 
-  return null;
+  return menu.reduce<NavItemType | null>(
+    (acc, item) => acc || traverse(item),
+    null
+  );
 };
 
 export default function DashboardLayout({ children }: Props) {

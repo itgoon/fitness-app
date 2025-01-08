@@ -38,7 +38,7 @@ export default function RecordList({
     onDelete();
 
     const updatedData = clickedImg?.imageUrls.filter(
-      (_, index) => !selectedIndex.some(([_, sIndex]) => sIndex === index)
+      (_, imgIndex) => !selectedIndex.some(([_, sIndex]) => sIndex === imgIndex)
     );
     setClickedImg((prev) => ({
       ...prev,

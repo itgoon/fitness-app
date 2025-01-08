@@ -15,7 +15,7 @@ export interface DatePickerProps
   sx?: CSSProperties;
 }
 
-export type workData = {
+export type typeWorkData = {
   type: string;
   date: string;
 };
@@ -26,7 +26,7 @@ export interface ICalenderModal {
 }
 // calendar
 export interface IDatePicker {
-  workData?: workData[];
+  workData?: typeWorkData[];
   isBadge?: boolean;
   isModal?: boolean;
   value?: string;

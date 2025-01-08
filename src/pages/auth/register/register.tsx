@@ -50,27 +50,8 @@ export default function RegisterView() {
     formState: { isSubmitting }
   } = methods;
 
-  const onSubmit = handleSubmit(async (data: ReqLogin) => {
-    try {
-      // auth.login({
-      //   ...data,
-      // });
-      // const { meta } = await auth.login({
-      //   ...data,
-      // });
-      // if (meta.errCode !== 0) {
-      //   alert(meta.errMsg ? meta.errMsg : '관리자에게 문의 바랍니다.');
-      // }
-    } catch (err) {
-      // const { meta } = err.response.data;
-      // if (meta.errCode !== 0) {
-      //   alert(meta.errMsg ? meta.errMsg : '관리자에게 문의 바랍니다.');
-      // }
-    }
-  });
-
   return (
-    <FormProvider methods={methods} onSubmit={onSubmit}>
+    <FormProvider methods={methods} onSubmit={() => {}}>
       <Box height="calc(100% - 56px)">
         <StepFlow activeStep={activeStep} onNext={onNext}>
           <Step1 data={data} setData={setData} />

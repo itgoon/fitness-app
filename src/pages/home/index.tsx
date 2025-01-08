@@ -33,13 +33,13 @@ import Wrap from './Wrap';
 const EMPTY_TIME = '00:00';
 const INITIAL_TIME = '0시간 0분';
 const name = '홍길동';
-const workMsg = (isWorking) =>
+const workMsg = (isWorking: boolean) =>
   isWorking
     ? '오늘도 목표를 향해 같이 달려가봐요'
     : '오늘 운동을 시작하지 않으셨네요!';
-const Message = ({ name, workMessage }) => (
+const Message = ({ userName, workMessage }) => (
   <>
-    <span>{name} 님,</span>
+    <span>{userName} 님,</span>
     <br />
     <span>{workMessage}</span>
   </>
@@ -56,12 +56,7 @@ const renderWorkoutInfo = ({
 
   if (!isWorking) return null;
   return (
-    <EmptyCard
-      direction="row"
-      justifyContent="start"
-      padding="24px"
-      gap={13}
-    >
+    <EmptyCard direction="row" justifyContent="start" padding="24px" gap={13}>
       <Stack gap={2}>
         <Stack gap={0.5} onClick={() => handleTimer('isStart')}>
           <Typography
@@ -183,7 +178,7 @@ export default function HomePage() {
           variant="Body20/semiBold"
           lineHeight="30px"
           children={
-            <Message name={name} workMessage={workMsg(state.isWorking)} />
+            <Message userName={name} workMessage={workMsg(state.isWorking)} />
           }
         />
 
@@ -211,10 +206,7 @@ export default function HomePage() {
         />
         <Divider />
         {!isAlaram ? (
-          <EmptyCard
-            margin="12px 20px 32px"
-            children="알림 내용이 없습니다."
-          />
+          <EmptyCard margin="12px 20px 32px" children="알림 내용이 없습니다." />
         ) : (
           <>
             <AlaramCard

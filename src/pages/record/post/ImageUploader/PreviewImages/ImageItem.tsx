@@ -20,6 +20,7 @@ export default function ImageItem({ image, onClick }: IImageItem) {
       />
       <img
         src={image}
+        alt="기록"
         style={{
           width: '100%',
           height: '100%',

@@ -1,4 +1,10 @@
-import { createContext, PropsWithChildren, useContext, useState } from 'react';
+import {
+  createContext,
+  PropsWithChildren,
+  useContext,
+  useMemo,
+  useState
+} from 'react';
 
 type edit = boolean;
 interface IEditState {
@@ -9,12 +15,8 @@ const EditContext = createContext<IEditState | undefined>(undefined);
 export const EditProvider = ({ children }: PropsWithChildren) => {
   const [isEdit, setIsEdit] = useState<edit>(false);
   const toggleEdit = () => setIsEdit((prev) => !prev);
-
-  return (
-    <EditContext.Provider value={{ isEdit, toggleEdit }}>
-      {children}
-    </EditContext.Provider>
-  );
+  const value = useMemo(() => ({ isEdit, toggleEdit }), [isEdit]);
+  return <EditContext.Provider value={value}>{children}</EditContext.Provider>;
 };
 
 export const useEditContext = () => {

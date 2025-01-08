@@ -39,9 +39,9 @@ export const menus: NavItemType[] = [
     isFooter: false
   },
   {
-    title: '센터 네임',
+    title: '센터 이름',
     url: '/viewcontract',
-    isHeader: false,
+    isHeader: true,
     isBottom: false,
     isFooter: false
   },

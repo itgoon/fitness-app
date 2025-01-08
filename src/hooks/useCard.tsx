@@ -13,7 +13,7 @@ interface CardContextType {
 }
 const CardContext = createContext<CardContextType | undefined>(undefined);
 
-export const CardProvider = ({ children }) => {
+export const CardProvider = ({ children }: any) => {
   const [selectedCard, setSelectedCard] = useState<CardType | null>(null);
 
   return (
