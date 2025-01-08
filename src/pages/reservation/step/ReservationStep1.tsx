@@ -11,7 +11,8 @@ import DateCalendar from '../../../components/custom/calendar/DateCalendar';
  * ******************************************************
  */
 
-const generateTimeSlotes = (startHour, endHour): TimeSlot[] => Array.from({ length: endHour - startHour + 1 }, (_, index) => {
+const generateTimeSlotes = (startHour, endHour): TimeSlot[] =>
+  Array.from({ length: endHour - startHour + 1 }, (_, index) => {
     const hour = startHour + index;
     return { time: `${hour < 10 ? '0' : ''}${hour}:00`, disabled: false };
   });
@@ -96,6 +97,7 @@ export default function ReservationStep1({
                   </Box>
                 );
               }
+              return null;
             })}
           </Stack>
         </Stack>

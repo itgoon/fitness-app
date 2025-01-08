@@ -1,5 +1,5 @@
 import { RefObject } from 'react';
-import { default as ReactSignatureCanvas } from 'react-signature-canvas';
+import { ReactSignatureCanvas } from 'react-signature-canvas';
 
 export interface ISign {
   placeholder: string;

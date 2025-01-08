@@ -33,11 +33,13 @@ import Wrap from './Wrap';
 const EMPTY_TIME = '00:00';
 const INITIAL_TIME = '0시간 0분';
 const name = '홍길동';
+
 const workMsg = (isWorking: boolean) =>
   isWorking
     ? '오늘도 목표를 향해 같이 달려가봐요'
     : '오늘 운동을 시작하지 않으셨네요!';
-const Message = ({ userName, workMessage }) => (
+
+const Message = ({ userName, workMessage }: any) => (
   <>
     <span>{userName} 님,</span>
     <br />
@@ -142,15 +144,16 @@ export default function HomePage() {
   const calculatedTotlaTime = (start: string, end: string) => {
     const today = dayjs().format(DateFormat); // 오늘 날짜 더해서 파싱
 
-    const startTime = dayjs(`${today} ${start}`, TimeDateFormat);
-    const endTime = dayjs(`${today} ${end}`, TimeDateFormat);
-    const totalMinutes = endTime.diff(startTime, 'minute');
+    const _startTime = dayjs(`${today} ${start}`, TimeDateFormat);
+    const _endTime = dayjs(`${today} ${end}`, TimeDateFormat);
+    const totalMinutes = _endTime.diff(startTime, 'minute');
     const total =
       totalMinutes > 0
         ? `${Math.floor(totalMinutes / 60)} 시간 ${totalMinutes % 60} 분`
         : '0시간 0분';
     setTotalTime(total);
   };
+
   const saveWorkTime = () => {
     isStart
       ? setState((prev) => ({ ...prev, isStart: false }))

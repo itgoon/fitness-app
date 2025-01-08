@@ -27,7 +27,7 @@ export default function Header({ currentData, title }: IHeader) {
       role="presentation"
       style={{ height: 56, paddingBlock: 15, paddingInline: 16 }}
     >
-      <Box display={'flex'} alignItems={'center'} width={'100%'}>
+      <Box display="flex" alignItems="center" width="100%">
         <Box width={22} paddingTop={0.25}>
           {isStartIcon && <Prev onClick={() => navigate(-1)} />}
         </Box>
@@ -43,7 +43,7 @@ export default function Header({ currentData, title }: IHeader) {
         </Box>
 
         <Box width={22} paddingTop={0.25}>
-          {!isStartIcon && <Icon size={24} name={'BellSvg'} />}
+          {!isStartIcon && <Icon size={24} name="BellSvg" />}
         </Box>
       </Box>
     </header>

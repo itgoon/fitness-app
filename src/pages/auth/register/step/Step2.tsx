@@ -41,10 +41,7 @@ export default function Step2({ onNext }: StepProps) {
 
   // 랜더링시 타이머
   useEffect(() => {
-    // eslint-disable-next-line no-undef
-    let interval: NodeJS.Timeout;
-
-    interval = setInterval(() => {
+    const interval = setInterval(() => {
       setTimer((prev) => {
         if (prev <= 1) {
           return 0;
@@ -52,6 +49,7 @@ export default function Step2({ onNext }: StepProps) {
         return prev - 1;
       });
     }, 1000);
+
     return () => clearInterval(interval);
   }, []);
 
