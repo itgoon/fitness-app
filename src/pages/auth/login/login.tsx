@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router';
 import Button from 'src/components/Button';
 import Icon from 'src/components/Icon';
 import FormProvider, { RHFTextField } from 'src/components/hookForm';
-import { useLoginMutation } from 'src/hooks/mutations/authMutations';
+import { useAuth } from 'src/hooks/useAuth';
 import { LoginSchema } from './_schema';
 
 // ----------------------------------------------------------------------
@@ -19,7 +19,7 @@ import { LoginSchema } from './_schema';
 export default function LoginView() {
   const navigate = useNavigate();
 
-  const { mutate: loginMutate } = useLoginMutation();
+  const { auth, login } = useAuth();
 
   const methods = useForm({
     resolver: yupResolver(LoginSchema),
@@ -34,11 +34,8 @@ export default function LoginView() {
   } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
-    loginMutate(data, {
-      onSuccess: () => {
-        navigate('/dashboard');
-      }
-    });
+    login(data);
+    navigate('/dashboard');
   });
 
   const onKakaoLogin = () => {
