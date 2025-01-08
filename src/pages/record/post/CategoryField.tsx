@@ -9,17 +9,17 @@ export default function CategoryField() {
   return (
     <Stack>
       <FieldTitle label="어떤 기록을 남기시나요" />
-      <Box display={'flex'} gap={2} width={'100%'}>
+      <Box display="flex" gap={2} width="100%">
         <Button
-          variant={'outlined'}
-          color={'primary'}
+          variant="outlined"
+          color="primary"
           onClick={() => setValue('type', 'workout')}
         >
           운동
         </Button>
         <Button
-          variant={'outlined'}
-          color={'primary'}
+          variant="outlined"
+          color="primary"
           onClick={() => setValue('type', 'diet')}
         >
           식단

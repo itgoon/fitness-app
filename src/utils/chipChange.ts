@@ -1,4 +1,5 @@
 import { IconsType } from '../components/Icon/types';
+
 interface chipResult {
   chipLabel: string;
   iconName: IconsType;

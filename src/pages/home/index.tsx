@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 
 import { Divider, Stack, Typography, useTheme } from '@mui/material';
 import { useState } from 'react';
+import { useNavigate } from 'react-router';
 import Button from '../../components/Button';
 import {
   DateFormat,
@@ -12,7 +13,6 @@ import TimePicker from '../../components/custom/TimePicker';
 import WeekCalendar from '../../components/custom/WeekCalendar';
 import AlaramCard from '../../components/custom/AlaramCard';
 import ReservationCard from '../../components/custom/reservationCard/ReservationCard';
-import { useNavigate } from 'react-router';
 import EmptyCard from '../../components/custom/customCard/EmptyCard';
 import {
   dummyCardData,
@@ -57,9 +57,9 @@ const renderWorkoutInfo = ({
   if (!isWorking) return null;
   return (
     <EmptyCard
-      direction={'row'}
-      justifyContent={'start'}
-      padding={'24px'}
+      direction="row"
+      justifyContent="start"
+      padding="24px"
       gap={13}
     >
       <Stack gap={2}>
@@ -67,7 +67,7 @@ const renderWorkoutInfo = ({
           <Typography
             variant="Body14/regular"
             color={grey}
-            children={'운동시작'}
+            children="운동시작"
           />
           <Typography
             variant="Body20/bold"
@@ -79,7 +79,7 @@ const renderWorkoutInfo = ({
           <Typography
             variant="Body14/regular"
             color={grey}
-            children={'운동종료'}
+            children="운동종료"
           />
           <Typography
             variant="Body20/bold"
@@ -92,7 +92,7 @@ const renderWorkoutInfo = ({
         <Typography
           variant="Body14/regular"
           color={grey}
-          children={'총 운동 시간'}
+          children="총 운동 시간"
         />
         <Typography
           variant="Body20/bold"
@@ -166,7 +166,7 @@ export default function HomePage() {
 
   return (
     <Stack>
-      <Wrap padding={'0 !important'}>
+      <Wrap padding="0 !important">
         <WeekCalendar
           greenBadge={dummyMonthCount1}
           orangeBadge={dummyMonthCount2}
@@ -181,7 +181,7 @@ export default function HomePage() {
         />
         <Typography
           variant="Body20/semiBold"
-          lineHeight={'30px'}
+          lineHeight="30px"
           children={
             <Message name={name} workMessage={workMsg(state.isWorking)} />
           }
@@ -193,7 +193,7 @@ export default function HomePage() {
         {/* 버튼 color primary일때, alpha 색 들어가는거 막기  */}
         <Button
           color="primary"
-          typoVariant={'Body18/semiBold'}
+          typoVariant="Body18/semiBold"
           size="large"
           variant={!isWorking ? 'contained' : 'outlined'}
           children={!isWorking ? '운동시작' : '운동종료'}
@@ -205,15 +205,15 @@ export default function HomePage() {
       <Wrap gap={1.5} sx={{ padding: '0 !important' }}>
         <Typography
           variant="Body18/bold"
-          children={'오늘의 알림'}
+          children="오늘의 알림"
           sx={{ padding: '32px 20px 0' }}
           color={grey900}
         />
         <Divider />
         {!isAlaram ? (
           <EmptyCard
-            margin={'12px 20px 32px'}
-            children={'알림 내용이 없습니다.'}
+            margin="12px 20px 32px"
+            children="알림 내용이 없습니다."
           />
         ) : (
           <>

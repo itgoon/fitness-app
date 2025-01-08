@@ -11,14 +11,14 @@ export default function Sign({ placeholder, date, onClick }: ISign) {
   return (
     <Stack gap={3}>
       <Typography
-        display={'flex'}
-        justifyContent={'center'}
-        variant={'Body20/semiBold'}
+        display="flex"
+        justifyContent="center"
+        variant="Body20/semiBold"
         children={date}
       />
       <Box
-        display={'flex'}
-        justifyContent={'center'}
+        display="flex"
+        justifyContent="center"
         bgcolor={blgrey}
         py={4.62}
         borderRadius={0.5}

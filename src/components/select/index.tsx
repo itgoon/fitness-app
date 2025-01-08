@@ -37,10 +37,10 @@ export default function Select({
         // id={props.name}
         name={String(props?.name)}
         error={!!props?.error}
-        size={'medium'}
+        size="medium"
         // helperText={props?.error ? props.error?.message : props?.helperText}
         sx={{ textTransform: 'capitalize', ...sx }}
-        value={value ? value : ''}
+        value={value || ''}
         displayEmpty
         renderValue={(v) => (
           <span

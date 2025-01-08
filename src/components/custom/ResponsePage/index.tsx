@@ -6,10 +6,10 @@ import {
   Typography,
   useTheme
 } from '@mui/material';
+import { useNavigate } from 'react-router';
 import Icon from '../../Icon';
 import Button from '../../Button';
 import { IResponsePage } from './types';
-import { useNavigate } from 'react-router';
 
 export default function ResponsePage({
   iconName = 'CheckSvg',
@@ -26,11 +26,11 @@ export default function ResponsePage({
   const grey500 = palette.grey[500];
   const navigate = useNavigate();
   return (
-    <Stack justifyContent={'space-between'} height={'100%'}>
-      <Stack alignItems={'center'} gap={7.5}>
-        <Stack alignItems={'center'} gap={2}>
+    <Stack justifyContent="space-between" height="100%">
+      <Stack alignItems="center" gap={7.5}>
+        <Stack alignItems="center" gap={2}>
           <Icon name={iconName} size={iconSize} />
-          <Typography variant={'Body20/semiBold'} children={title} />
+          <Typography variant="Body20/semiBold" children={title} />
         </Stack>
         <List sx={{ width: '100%', padding: 0 }}>
           {dataList?.map((li, key) => (
@@ -50,22 +50,22 @@ export default function ResponsePage({
         </List>
       </Stack>
 
-      <Box width={'100%'} display={'flex'} gap={1}>
+      <Box width="100%" display="flex" gap={1}>
         <Button
-          size={'large'}
+          size="large"
           color="primary"
-          typoVariant={'Body18/semiBold'}
+          typoVariant="Body18/semiBold"
           children={closeMsg}
-          variant={'outlined'}
+          variant="outlined"
           onClick={onClick}
         />
         <Button
-          size={'large'}
+          size="large"
           color="primary"
-          typoVariant={'Body18/semiBold'}
+          typoVariant="Body18/semiBold"
           children={clickMsg}
-          variant={'contained'}
-          onClick={() => (onHome ? onHome : navigate('/dashboard'))}
+          variant="contained"
+          onClick={() => (onHome || navigate('/dashboard'))}
         />
       </Box>
     </Stack>

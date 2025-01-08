@@ -23,16 +23,16 @@ export default function TabTable() {
 
   return (
     <Stack gap={3}>
-      <ContractTable title={'결제 정보'} list={contractList} />
+      <ContractTable title="결제 정보" list={contractList} />
 
       <Stack gap={0.5}>
         <Box sx={{ ...singSx }}>
-          <Typography children={'작성일'} />
-          <Typography children={'2024년 08월 19일'} />
+          <Typography children="작성일" />
+          <Typography children="2024년 08월 19일" />
         </Box>
         <Box sx={{ ...singSx }}>
           {/* TODO: 임의로 높이 변경 */}
-          <Typography children={'서명'} />
+          <Typography children="서명" />
           {sign?.data && (
             <img
               src={sign?.data}

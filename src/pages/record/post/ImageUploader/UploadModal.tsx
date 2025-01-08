@@ -10,25 +10,20 @@ export default function UploadModal({ onUpload }: UploadModalProps) {
     <Stack gap={1} px={0.81} zIndex={1}>
       <Stack gap={0.1}>
         <Button
-          size={'large'}
-          variant={'soft'}
-          isTopRadius={true}
-          children={'사진 업로드'}
+          size="large"
+          variant="soft"
+          isTopRadius
+          children="사진 업로드"
           onClick={onUpload}
         />
         <Button
-          size={'large'}
-          variant={'soft'}
-          isBottomRadius={true}
-          children={'사진 촬영'}
+          size="large"
+          variant="soft"
+          isBottomRadius
+          children="사진 촬영"
         />
       </Stack>
-      <Button
-        size={'large'}
-        variant={'soft'}
-        color={'secondary'}
-        children={'취소'}
-      />
+      <Button size="large" variant="soft" color="secondary" children="취소" />
     </Stack>
   );
 }

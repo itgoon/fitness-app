@@ -3,6 +3,7 @@ import Slider from 'react-slick';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 import { useEffect, useRef } from 'react';
+
 interface ICarousel {
   list: string[];
   height: number | string;
@@ -31,7 +32,7 @@ export default function CustomCarousel({
   afterChange
 }: ICarousel) {
   const { palette } = useTheme();
-  const white = palette.common.white;
+  const { white } = palette.common;
   const grey400 = palette.grey[400];
   const totalCount = list.length;
   const sliderRef = useRef<Slider>(null);
@@ -41,14 +42,15 @@ export default function CustomCarousel({
       sliderRef.current.slickGoTo(imgIndex);
     }
   }, [imgIndex]);
-  //TODO: height css고치기
+  // TODO: height css고치기
   return (
-    <Stack position={'relative'} gap={2}>
+    <Stack position="relative" gap={2}>
       <Slider {...settings} initialSlide={imgIndex} afterChange={afterChange}>
         {list.map((img, index) => (
           <Box height={height}>
             <img
               key={index}
+              alt="img"
               src={img}
               style={{ width: '100%', height: '100%', objectFit: 'cover' }}
             />
@@ -56,12 +58,12 @@ export default function CustomCarousel({
         ))}
       </Slider>
       <Chip
-        variant={'soft'}
-        color={'secondary'}
+        variant="soft"
+        color="secondary"
         label={`# ${content}`}
         sx={{ position: 'absolute', bottom: 52, left: 16 }}
       />
-      <Typography textAlign={'center'} color={white} variant={'Body15/Bold'}>
+      <Typography textAlign="center" color={white} variant="Body15/Bold">
         <span>{imgIndex + 1} </span>
         <span style={{ color: grey400, fontWeight: 400 }}>
           {` / ${totalCount}`}

@@ -10,7 +10,7 @@ export default function FieldTitle({ label, sx }: FieldTitleProps) {
 
   return (
     <Typography
-      variant={'Body14/semiBold'}
+      variant="Body14/semiBold"
       marginBottom={1.5}
       color={palette.mode === 'light' ? 'grey.900' : 'white'}
       sx={sx}

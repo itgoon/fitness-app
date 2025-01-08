@@ -7,9 +7,9 @@ interface IImageItem {
 }
 export default function ImageItem({ image, onClick }: IImageItem) {
   return (
-    <Box minWidth={80} maxWidth={80} height={80} position={'relative'}>
+    <Box minWidth={80} maxWidth={80} height={80} position="relative">
       <Icon
-        name={'DeleteImageSvg'}
+        name="DeleteImageSvg"
         size={20}
         sx={{
           position: 'absolute',

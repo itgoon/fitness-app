@@ -7,7 +7,7 @@ import Scrollbar from 'src/components/scrollbar';
 import { TableHeadCustom, TableNoData, TableProps } from 'src/components/table';
 
 import { Box, Pagination } from '@mui/material';
-import UserTableFiltersResult from '../../components/table/TableFiltersResult';
+import UserTableFiltersResult from './TableFiltersResult';
 
 // ----------------------------------------------------------------------
 

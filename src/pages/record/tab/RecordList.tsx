@@ -1,9 +1,9 @@
 import { Box, Checkbox, Stack, Typography, useTheme } from '@mui/material';
 import dayjs from 'dayjs';
+import { useState } from 'react';
 import Icon from '../../../components/Icon';
 import { DateViewFormat } from '../../../utils/formatTime';
 import { IRecordList, TdietRecordList } from '../types';
-import { useState } from 'react';
 import ImageViewer from './ImageViewer';
 
 export default function RecordList({
@@ -37,9 +37,9 @@ export default function RecordList({
   const viewerDelete = () => {
     onDelete();
 
-    const updatedData = clickedImg?.imageUrls.filter((_, index) => {
-      return !selectedIndex.some(([_, sIndex]) => sIndex === index);
-    });
+    const updatedData = clickedImg?.imageUrls.filter(
+      (_, index) => !selectedIndex.some(([_, sIndex]) => sIndex === index)
+    );
     setClickedImg((prev) => ({
       ...prev,
       imageUrls: updatedData
@@ -54,12 +54,12 @@ export default function RecordList({
           <Stack key={listKey} gap={2}>
             <Typography
               children={dayjs(arr.date).format(DateViewFormat)}
-              variant={'Body15/light'}
+              variant="Body15/light"
               color={grey600}
             />
-            <Box display={'flex'} flexWrap={'wrap'} gap={0.25}>
+            <Box display="flex" flexWrap="wrap" gap={0.25}>
               {arr.imageUrls.map((img, imageKey) => (
-                <Box position={'relative'} key={imageKey} width={'32.9%'}>
+                <Box position="relative" key={imageKey} width="32.9%">
                   <img
                     style={{
                       aspectRatio: '1/1',
@@ -73,27 +73,27 @@ export default function RecordList({
                   />
                   {isEdit && (
                     <Box
-                      width={'100%'}
-                      height={'100%'}
-                      display={'flex'}
-                      justifyContent={'end'}
-                      alignItems={'end'}
-                      position={'absolute'}
+                      width="100%"
+                      height="100%"
+                      display="flex"
+                      justifyContent="end"
+                      alignItems="end"
+                      position="absolute"
                       top={0}
                       left={0}
-                      bgcolor={'#0000004D'}
+                      bgcolor="#0000004D"
                       onClick={() => onChange(listKey, imageKey)}
                     >
                       <Checkbox
-                        color={'success'}
+                        color="success"
                         checked={selectedIndex.some(
                           ([fIndex, sIndex]) =>
                             fIndex === listKey && sIndex === imageKey
                         )}
                         checkedIcon={
-                          <Icon name={'CheckCircleOutlineRounded'} size={20} />
+                          <Icon name="CheckCircleOutlineRounded" size={20} />
                         }
-                        icon={<Icon name={'GalleryCheckSvg'} size={20} />}
+                        icon={<Icon name="GalleryCheckSvg" size={20} />}
                         sx={{ mr: 0.63, mb: 0.63 }}
                       />
                     </Box>

@@ -1,5 +1,6 @@
 import { Box, Chip, Divider, Stack, Typography, useTheme } from '@mui/material';
 
+import { useNavigate } from 'react-router';
 import { chipChange } from '../../../../utils/chipChange';
 import Icon from '../../../../components/Icon';
 import EmptyCard from '../../../../components/custom/customCard/EmptyCard';
@@ -8,7 +9,6 @@ import { getPeriodTime, getTimeDifference } from '../../../../utils/formatTime';
 import ListWrap from './ListWrap';
 import { useModal } from '../../../../hooks/useModal';
 import { IStep } from '../../types';
-import { useNavigate } from 'react-router';
 
 export default function DetailStep1({ onNext, selectedCard }: IStep) {
   const { openConfirm } = useModal();
@@ -34,19 +34,19 @@ export default function DetailStep1({ onNext, selectedCard }: IStep) {
         <Icon name={chip.largeIconName} size={60} />
         <Stack gap={0.5}>
           <Typography
-            variant={'Body14/light'}
+            variant="Body14/light"
             color={grey600}
             children={isUndefined ? '레슨 예약 시간' : '총 운동 시간'}
           />
           <Box sx={layoutSx}>
             <Typography
-              variant={'Body28/semiBold'}
+              variant="Body28/semiBold"
               children={
                 isUndefined ? getPeriodTime(time) : getTimeDifference(time)
               }
             />
             {isUndefined && (
-              <Chip size={'small'} color={chipState} label={chip.chipLabel} />
+              <Chip size="small" color={chipState} label={chip.chipLabel} />
             )}
           </Box>
         </Stack>
@@ -58,10 +58,10 @@ export default function DetailStep1({ onNext, selectedCard }: IStep) {
 
       {isWarning && (
         <Button
-          size={'small'}
-          variant={'outlined'}
-          color={'error'}
-          children={'예약 취소'}
+          size="small"
+          variant="outlined"
+          color="error"
+          children="예약 취소"
           onClick={() =>
             openConfirm({
               title: '',

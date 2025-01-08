@@ -41,20 +41,20 @@ export default function Step1({ onNext }: StepProps) {
 
   return (
     <Stack gap={3}>
-      <Condition title={'개인정보 수집 및 이용'} children={dummyCondition} />
+      <Condition title="개인정보 수집 및 이용" children={dummyCondition} />
       <Condition
-        title={'헬스장 이용 정책 및 규정 '}
+        title="헬스장 이용 정책 및 규정 "
         children={dummyCondition2}
         layoutSx={{ paddingBottom: 12.5 }}
       />
       <div ref={btnRef}>
         <Button
-          size={'large'}
+          size="large"
           disabled={!isBtnVisible}
-          variant={'contained'}
-          color={'primary'}
+          variant="contained"
+          color="primary"
           onClick={onNext}
-          children={'아래로 내려 동의하기'}
+          children="아래로 내려 동의하기"
         />
       </div>
     </Stack>

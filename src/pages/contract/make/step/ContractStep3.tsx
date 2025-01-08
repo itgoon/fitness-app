@@ -9,12 +9,12 @@ const signDataList = [
 
 export default function Step3() {
   return (
-    <Stack justifyContent={'space-between'} height={'100%'}>
+    <Stack justifyContent="space-between" height="100%">
       <ResponsePage
         onClick={() => console.log('회원권 보기')}
-        title={'서명 등록이 완료되었습니다.'}
-        closeMsg={'회원권 보기'}
-        clickMsg={'홈으로'}
+        title="서명 등록이 완료되었습니다."
+        closeMsg="회원권 보기"
+        clickMsg="홈으로"
         dataList={signDataList}
       />
     </Stack>

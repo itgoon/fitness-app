@@ -1,9 +1,9 @@
 import { Box, Dialog } from '@mui/material';
+import { useState } from 'react';
 import QrCardSvg from '../../../assets/svgs/Card.svg';
 import QrCardData from './QrCardData';
 import QrEmptyData from './QrEmptyData';
 import { IQrModal } from './types';
-import { useState } from 'react';
 import ExpansionQR from './ExpansionQR';
 
 /**

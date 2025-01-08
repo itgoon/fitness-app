@@ -7,6 +7,7 @@ import {
   useTheme
 } from '@mui/material';
 import Icon from 'src/components/Icon';
+
 interface ICondition {
   label: string;
   onClick?: () => void;
@@ -26,9 +27,9 @@ export default function RegisterCondition({
   const grey900 = light ? theme.palette.grey[900] : 'white';
   return (
     <Box
-      display={'flex'}
-      alignItems={'center'}
-      justifyContent={'space-between'}
+      display="flex"
+      alignItems="center"
+      justifyContent="space-between"
     >
       <FormControlLabel
         label={
@@ -38,13 +39,13 @@ export default function RegisterCondition({
           <Checkbox
             checked={isChecked}
             onChange={onChange}
-            checkedIcon={<Icon name={'CheckBoxSvg'} />}
-            icon={<Icon name={'CheckBoxSvg'} />}
+            checkedIcon={<Icon name="CheckBoxSvg" />}
+            icon={<Icon name="CheckBoxSvg" />}
             sx={{ padding: 1 }}
           />
         }
       />
-      {onClick && <Icon name="ArrowForwardIosRounded" onClick={onClick}></Icon>}
+      {onClick && <Icon name="ArrowForwardIosRounded" onClick={onClick} />}
     </Box>
   );
 }

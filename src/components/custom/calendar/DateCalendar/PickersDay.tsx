@@ -6,9 +6,9 @@ import { workData } from '../types';
 const renderBadge = (work: workData) => {
   switch (work.type) {
     case 'lesson':
-      return <Badge color={'warning'} variant={'alway'} />;
+      return <Badge color="warning" variant="alway" />;
     case 'workout':
-      return <Badge color={'success'} variant={'online'} />;
+      return <Badge color="success" variant="online" />;
     case 'all':
       return (
         <>
@@ -18,8 +18,8 @@ const renderBadge = (work: workData) => {
                 right: '11px !important'
               }
             }}
-            color={'warning'}
-            variant={'alway'}
+            color="warning"
+            variant="alway"
           />
           <Badge
             sx={{
@@ -27,11 +27,13 @@ const renderBadge = (work: workData) => {
                 right: '1px !important'
               }
             }}
-            color={'success'}
-            variant={'online'}
+            color="success"
+            variant="online"
           />
         </>
       );
+    default:
+      return null;
   }
 };
 export default function ServerDay(

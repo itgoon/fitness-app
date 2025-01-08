@@ -4,14 +4,14 @@
 /* eslint-disable consistent-return */
 import { ReactNode } from 'react';
 
+import { useLocation } from 'react-router';
+import { Box } from '@mui/material';
 import Main from './main';
 import NavBottom from './navBottom';
 import Footer from './footer';
-import { useLocation } from 'react-router';
 import Header from '../../components/custom/Header';
 import { useEditContext } from '../../hooks/useEditState';
 import { NavItemType, menus } from '../../data/menus';
-import { Box } from '@mui/material';
 
 // ----------------------------------------------------------------------
 
@@ -50,10 +50,10 @@ export default function DashboardLayout({ children }: Props) {
   return (
     <Box
       minHeight={1}
-      display={'flex'}
-      height={'100%'}
-      width={'100%'}
-      overflow={'hidden'}
+      display="flex"
+      height="100%"
+      width="100%"
+      overflow="hidden"
       flexDirection={{ xs: 'column', lg: 'row' }}
     >
       {isHeader && <Header currentData={current} />}

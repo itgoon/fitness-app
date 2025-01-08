@@ -1,9 +1,6 @@
 import { Box, Typography } from '@mui/material';
 import { RefObject, useEffect } from 'react';
-import {
-  default as ReactSignatureCanvas,
-  default as SignatureCanvas
-} from 'react-signature-canvas';
+import { ReactSignatureCanvas, SignatureCanvas } from 'react-signature-canvas';
 
 export interface SignProps {
   signRef: RefObject<ReactSignatureCanvas>;
@@ -47,7 +44,7 @@ export default function SignCanvas({
         ...style
       }}
     >
-      <div style={style}></div>
+      <div style={style} />
       {!isSigned && (
         <Box sx={{ position: 'absolute', top: '45%', left: '30%' }}>
           <Typography children={placeholder} color={typoColor} />
@@ -57,10 +54,10 @@ export default function SignCanvas({
         ref={signRef}
         penColor="black"
         canvasProps={{
-          defaultValue: defaultValue,
+          defaultValue,
           className: 'signature-canvas',
-          height: height,
-          width: width,
+          height,
+          width,
           // width: width, //windowSize?.width,
           style: {
             background: 'transparent'

@@ -1,9 +1,9 @@
 import { Box, Typography, useTheme } from '@mui/material';
-import Icon from '../../Icon';
 import { useNavigate } from 'react-router';
+import Icon from '../../Icon';
 import { Prev } from '../../Icon/HeaderIcon';
 
-export default function Item({ isStart, isEnd, title }) {
+export default function Item({ isStart, isEnd, title }: any) {
   const theme = useTheme();
   const { palette } = theme;
   const light = palette.mode === 'light';
@@ -11,7 +11,7 @@ export default function Item({ isStart, isEnd, title }) {
   const navigate = useNavigate();
 
   return (
-    <Box display={'flex'} alignItems={'center'} width={'100%'}>
+    <Box display="flex" alignItems="center" width="100%">
       <Box width={22} paddingTop={0.25}>
         {isStart && <Prev onClick={() => navigate(-1)} />}
       </Box>
@@ -27,7 +27,7 @@ export default function Item({ isStart, isEnd, title }) {
       </Box>
 
       <Box width={22} paddingTop={0.25}>
-        {isEnd && <Icon size={24} name={'BellSvg'} />}
+        {isEnd && <Icon size={24} name="BellSvg" />}
       </Box>
     </Box>
   );

@@ -22,9 +22,9 @@ export default function Condition({ title, children, layoutSx }: ICondition) {
 
   return (
     <Stack gap={3} sx={{ ...layoutSx }}>
-      <Box padding={'12px 16px'} bgcolor={bgColor}>
+      <Box padding="12px 16px" bgcolor={bgColor}>
         <Typography
-          variant={'Body16/bold'}
+          variant="Body16/bold"
           color={titleColor}
           children={`[${title}]`}
         />
@@ -36,7 +36,7 @@ export default function Condition({ title, children, layoutSx }: ICondition) {
               <Typography
                 key={key}
                 color={descColor}
-                variant={'Body14/light'}
+                variant="Body14/light"
                 children={typo}
               />
               <br />
@@ -45,7 +45,7 @@ export default function Condition({ title, children, layoutSx }: ICondition) {
         ) : (
           <Typography
             color={descColor}
-            variant={'Body14/light'}
+            variant="Body14/light"
             children={children}
           />
         )}

@@ -30,8 +30,8 @@ export default function Button({
       return (
         <Typography
           sx={{ flex: 1 }}
-          color={typoColor ? typoColor : 'inherit'}
-          variant={typoVariant ? typoVariant : 'Body14/regular'}
+          color={typoColor || 'inherit'}
+          variant={typoVariant || 'Body14/regular'}
         >
           {children}
         </Typography>

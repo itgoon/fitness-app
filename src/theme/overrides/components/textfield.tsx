@@ -181,7 +181,7 @@ export function textField(theme: Theme) {
             }
           },
 
-          ['&.isView']: {
+          '&.isView': {
             '.MuiInputBase-root': {
               fieldset: {
                 border: '0px'

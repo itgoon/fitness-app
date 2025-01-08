@@ -1,4 +1,4 @@
-import { createContext, useContext, useState } from 'react';
+import { createContext, PropsWithChildren, useContext, useState } from 'react';
 
 type edit = boolean;
 interface IEditState {
@@ -6,7 +6,7 @@ interface IEditState {
   toggleEdit: () => void;
 }
 const EditContext = createContext<IEditState | undefined>(undefined);
-export const EditProvider = ({ children }) => {
+export const EditProvider = ({ children }: PropsWithChildren) => {
   const [isEdit, setIsEdit] = useState<edit>(false);
   const toggleEdit = () => setIsEdit((prev) => !prev);
 

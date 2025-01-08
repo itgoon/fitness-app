@@ -8,7 +8,7 @@ export default function TabPanel({ value, index, children }: ITabPanel) {
       hidden={value !== index}
       id={`full-width-tabpanel-${index}`}
       aria-labelledby={`full-width-tab-${index}`}
-      height={'inherit'}
+      height="inherit"
     >
       {children}
     </Box>

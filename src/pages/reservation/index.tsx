@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
-import StepFlow from '../../components/custom/StepFlow';
-import ReservationStep1 from './step/ReservationStep1';
 import { useState } from 'react';
 import dayjs from 'dayjs';
+import StepFlow from '../../components/custom/StepFlow';
+import ReservationStep1 from './step/ReservationStep1';
 import { TimeDateFormatKR, getTimeCheck } from '../../utils/formatTime';
 import { IReservationList } from './types';
 import ReservationStep2 from './step/ReservationStep2';
@@ -34,8 +34,8 @@ export default function ReservationPage() {
 
   return (
     <>
-      <Header isStart={true} stepTitle={stepTitle[activeStep]} />
-      <Box height={'calc(100% - 56px)'}>
+      <Header isStart stepTitle={stepTitle[activeStep]} />
+      <Box height="calc(100% - 56px)">
         <StepFlow activeStep={activeStep} onNext={onNext}>
           <ReservationStep1
             reservationList={reservationList}

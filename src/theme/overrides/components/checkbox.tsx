@@ -4,7 +4,7 @@ import { CheckboxProps, checkboxClasses } from '@mui/material/Checkbox';
 // ----------------------------------------------------------------------
 
 export function checkbox(theme: Theme) {
-  const palette = theme.palette;
+  const {palette} = theme;
   return {
     MuiCheckbox: {
       styleOverrides: {

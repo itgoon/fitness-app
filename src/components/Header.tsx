@@ -12,7 +12,7 @@ export default function Header({
   right
 }: PropsWithChildren<HeaderProps>) {
   return (
-    <Stack justifyContent={'space-between'} sx={{ height: 56 }}>
+    <Stack justifyContent="space-between" sx={{ height: 56 }}>
       {left}
       <Typography variant="Body18/bold">{children}</Typography>
       {right}

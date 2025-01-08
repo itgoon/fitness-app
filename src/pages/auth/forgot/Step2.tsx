@@ -20,7 +20,7 @@ export default function Step2({ onNext }: StepProps) {
   return (
     <Stack>
       <Stack spacing={2} sx={{ mb: 5, textAlign: 'center' }}>
-        <Typography variant="h5" children={'비밀번호 재설정'} />
+        <Typography variant="h5" children="비밀번호 재설정" />
         <Typography>
           변경하시는 계정이 아래 계정이 맞는지 확인 후
           <br /> 변경하실 새 비밀번호를 입력해주세요.
@@ -51,7 +51,7 @@ export default function Step2({ onNext }: StepProps) {
           }}
         />
         <Typography
-          children={'8 ~ 20자의 영문, 숫자를 조합하여 비밀번호를 입력해주세요.'}
+          children="8 ~ 20자의 영문, 숫자를 조합하여 비밀번호를 입력해주세요."
         />
         <RHFTextField
           type="password"
@@ -80,7 +80,7 @@ export default function Step2({ onNext }: StepProps) {
           variant="contained"
           type="submit"
           onClick={onNext}
-          children={'비밀번호 변경'}
+          children="비밀번호 변경"
         />
       </Stack>
     </Stack>

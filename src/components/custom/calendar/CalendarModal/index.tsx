@@ -11,9 +11,9 @@ export default function CalenderModal({
     <Dialog className="calendar-modal" open={open} onClose={onClose}>
       <DateCalendar
         onChange={onChange}
-        isModal={true}
+        isModal
         isBadge={false}
-      ></DateCalendar>
+       />
     </Dialog>
   );
 }

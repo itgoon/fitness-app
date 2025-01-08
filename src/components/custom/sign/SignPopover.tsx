@@ -34,14 +34,14 @@ export default function SignPopover({
       }}
       {...other}
     >
-      <Stack direction={'row'} justifyContent={'space-between'}>
+      <Stack direction="row" justifyContent="space-between">
         <Typography
-          children={'서명을 입력해주세요'}
+          children="서명을 입력해주세요"
           variant="Body18/semiBold"
-          color={'primary'}
+          color="primary"
         />
         <Typography
-          children={'지우기'}
+          children="지우기"
           variant="Body16/regular"
           color={grey600}
           onClick={clear}
@@ -52,7 +52,7 @@ export default function SignPopover({
       <Box bgcolor={grey300} borderRadius={1.5}>
         <SignCanvas
           defaultValue={data}
-          placeholder={'여기에 서명해주세요'}
+          placeholder="여기에 서명해주세요"
           typoColor={grey500}
           signRef={signRef}
           isSigned={isSigned}
@@ -60,21 +60,21 @@ export default function SignPopover({
         />
       </Box>
 
-      <Stack direction={'row'} gap={2}>
+      <Stack direction="row" gap={2}>
         <Button
           variant="outlined"
           color="inherit"
           onClick={onClose}
-          children={'취소'}
-          typoVariant={'Body16/semiBold'}
+          children="취소"
+          typoVariant="Body16/semiBold"
           sx={{ minHeight: 48 }}
         />
         <Button
           variant="contained"
           color="primary"
           onClick={onClick}
-          children={'서명 완료'}
-          typoVariant={'Body16/semiBold'}
+          children="서명 완료"
+          typoVariant="Body16/semiBold"
           sx={{ minHeight: 48 }}
         />
       </Stack>

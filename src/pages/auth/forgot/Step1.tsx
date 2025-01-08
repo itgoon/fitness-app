@@ -91,7 +91,7 @@ export default function Step1({ onNext }: StepProps) {
             variant="outlined"
             onClick={sendCode}
             sx={{ height: '53px' }}
-            children={'인증하기'}
+            children="인증하기"
           />
         </Box>
         {isActive && (
@@ -118,10 +118,10 @@ export default function Step1({ onNext }: StepProps) {
               혹시 인증번호를 받지 못하셨나요?{' '}
               <Button
                 component="span"
-                size={'small'}
+                size="small"
                 onClick={resendCode}
                 disabled={!canResendCode}
-                children={'인증번호 재전송'}
+                children="인증번호 재전송"
               />
             </Typography>
           </>
@@ -132,12 +132,12 @@ export default function Step1({ onNext }: StepProps) {
           size="large"
           variant="contained"
           onClick={onNext}
-          children={'인증 완료'}
+          children="인증 완료"
         />
 
         <Button
           onClick={() => navigate('/login')}
-          children={'로그인으로 돌아가기'}
+          children="로그인으로 돌아가기"
         />
       </Stack>
     </Stack>

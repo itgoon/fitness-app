@@ -4,10 +4,10 @@ import { paths } from 'src/routes/paths';
 
 import { useTranslate } from 'src/locales';
 
-import Iconify from '../../components/iconify';
-import Icon from '../../components/Icon';
 import { useLocation } from 'react-router';
 import { useTheme } from '@mui/material';
+import Iconify from '../../components/iconify';
+import Icon from '../../components/Icon';
 
 // ----------------------------------------------------------------------
 
@@ -38,7 +38,7 @@ const ICONS = {
 
 export function useNavData() {
   const { t } = useTranslate();
-  const pathname = useLocation().pathname;
+  const {pathname} = useLocation();
   const { palette } = useTheme();
 
   const renderIcon = (iconName: any) => {

@@ -25,8 +25,7 @@ export function RHFSelect({ name, helperText, ...other }: RHFSelectProps) {
     <Controller
       name={name}
       control={control}
-      render={({ field, fieldState: { error } }) => {
-        return (
+      render={({ field, fieldState: { error } }) => (
           <FormControl error={!!error} sx={{ width: '100%' }}>
             <MuiSelect {...other} error={!!error} />
             {(!!error || helperText) && (
@@ -35,8 +34,7 @@ export function RHFSelect({ name, helperText, ...other }: RHFSelectProps) {
               </FormHelperText>
             )}
           </FormControl>
-        );
-      }}
+        )}
     />
   );
 }

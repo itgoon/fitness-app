@@ -8,9 +8,9 @@ export default function Step3() {
   return (
     <Stack>
       <Stack spacing={2} sx={{ mb: 5, textAlign: 'center' }}>
-        <Typography variant="h5" children={'비밀번호가 재설정 되었습니다.'} />
+        <Typography variant="h5" children="비밀번호가 재설정 되었습니다." />
         <Typography
-          children={'로그인 페이지로 이동하여 다시 로그인해주세요.'}
+          children="로그인 페이지로 이동하여 다시 로그인해주세요."
         />
       </Stack>
 
@@ -20,7 +20,7 @@ export default function Step3() {
         size="large"
         variant="contained"
         onClick={() => navigate('/login')}
-        children={'로그인 하기'}
+        children="로그인 하기"
       />
     </Stack>
   );

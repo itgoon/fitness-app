@@ -1,13 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Box, Stack } from '@mui/material';
-import { DateReqFormat } from '../../../utils/formatTime';
 import dayjs from 'dayjs';
-import { useModal } from '../../../hooks/useModal';
-import Button from '../../../components/Button';
 import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
-import { recordSchema } from './_schema';
 import FormProvider from 'src/components/hookForm';
+import { DateReqFormat } from '../../../utils/formatTime';
+import { useModal } from '../../../hooks/useModal';
+import Button from '../../../components/Button';
+import { recordSchema } from './_schema';
 import CategoryField from './CategoryField';
 import ImageUploader from './ImageUploader';
 import DateField from './DateField';
@@ -48,7 +48,7 @@ export default function Post() {
   });
 
   return (
-    <Stack height={'100%'} justifyContent={'space-between'}>
+    <Stack height="100%" justifyContent="space-between">
       <FormProvider methods={methods}>
         <ImageUploader />
 
@@ -60,9 +60,9 @@ export default function Post() {
 
       <Box px={2.5}>
         <Button
-          variant={'contained'}
-          color={'primary'}
-          size={'large'}
+          variant="contained"
+          color="primary"
+          size="large"
           onClick={handleConformModal}
         >
           등록하기

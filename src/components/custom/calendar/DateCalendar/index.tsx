@@ -2,11 +2,11 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar as CustomDateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import { useEffect, useState } from 'react';
-import ServerDay from './PickersDay';
 import { Divider } from '@mui/material';
-import CalendarHeader from '../CalendarHeader';
-import { IDatePicker, workData } from '../types';
 import dayjs from 'dayjs';
+import ServerDay from './PickersDay';
+import CalendarHeader from '../CalendarHeader';
+import { IDatePicker, workData as IWorkData } from '../types';
 
 /**
  * 일정 탭, 레슨 예약 탭에서 사용되는 데이트 캘린더
@@ -20,7 +20,7 @@ export default function DateCalendar({
   isModal,
   value
 }: IDatePicker) {
-  const [highlightedDays, setHighlightedDays] = useState<workData[]>([]);
+  const [highlightedDays, setHighlightedDays] = useState<IWorkData[]>([]);
 
   useEffect(() => {
     if (workData) {
@@ -55,11 +55,9 @@ export default function DateCalendar({
           className="main-calendar"
           showDaysOutsideCurrentMonth
           slots={{
-            calendarHeader: (e) => {
-              return (
-                <CalendarHeader isModal={isModal} isBadge={isBadge} {...e} />
-              );
-            },
+            calendarHeader: (e) => (
+              <CalendarHeader isModal={isModal} isBadge={isBadge} {...e} />
+            ),
             day: ServerDay
           }}
           slotProps={{

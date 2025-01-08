@@ -62,8 +62,7 @@ export default function Record() {
     setSelectedIndex(selectionArray);
   };
 
-  const onDelete = () => {
-    return dietList
+  const onDelete = () => dietList
       .map((list, idx) => {
         if (selectedIndex.some(([fIndex, sIndex]) => fIndex === idx)) {
           return {
@@ -79,7 +78,6 @@ export default function Record() {
         return list;
       })
       .filter((list) => list?.imageUrls.length > 0);
-  };
 
   const viewImageDelete = () => {
     const updatedData = onDelete();
@@ -96,9 +94,9 @@ export default function Record() {
 
         if (updatedData[firstIndex]?.imageUrls.length > secondIndex) {
           return [[firstIndex, secondIndex]];
-        } else {
+        } 
           return [[firstIndex, updatedData[firstIndex].imageUrls.length - 1]];
-        }
+        
       }
       return [];
     });
@@ -131,8 +129,8 @@ export default function Record() {
         <Tabs
           value={tabValue}
           onChange={(e, newValue) => setTabValue(newValue)}
-          frLabel={'운동'}
-          secLabel={'식단'}
+          frLabel="운동"
+          secLabel="식단"
         />
         <TabPanel value={tabValue} index={0}>
           {dietList?.length > 0 ? <WorkoutTab>work</WorkoutTab> : <EmptyList />}

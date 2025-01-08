@@ -4,8 +4,8 @@ import Box, { BoxProps } from '@mui/material/Box';
 
 import { useResponsive } from 'src/hooks/useResponsive';
 
-import { varContainer } from './variants';
 import { ReactNode } from 'react';
+import { varContainer } from './variants';
 
 // ----------------------------------------------------------------------
 

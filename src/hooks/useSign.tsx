@@ -72,7 +72,7 @@ export const useSign = () => {
 
   const saveSign = () => {
     if (signRef.current && signRef.current.isEmpty()) {
-      return;
+      //
     } else {
       setSign({ data: getFile(), original: getOriginalFile() });
       console.log('sign: useSign ', sign);

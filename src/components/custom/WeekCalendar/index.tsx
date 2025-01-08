@@ -1,11 +1,11 @@
 import dayjs from 'dayjs';
 
-import { IWeekCalendar } from './types';
 import { Badge, Box, Stack, Typography, useTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { IWeekCalendar } from './types';
 import { DateReqFormat } from '../../../utils/formatTime';
 import Button from '../../Button';
-import { useNavigate } from 'react-router';
 
 const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
 
@@ -29,7 +29,7 @@ export default function WeekCalendar({
 
   const settingDate = () => {
     const firstDay = dayjs().startOf('week');
-    let list = Array.from({ length: 7 }, (_, index) => {
+    const list = Array.from({ length: 7 }, (_, index) => {
       const date = firstDay.add(index, 'day');
       const day = WEEKDAYS[dayjs().subtract(index, 'day').day()];
       return { date: date.format(format), day };
@@ -43,8 +43,8 @@ export default function WeekCalendar({
   };
   return (
     <Box
-      className={'weekCalendar'}
-      display={'flex'}
+      className="weekCalendar"
+      display="flex"
       padding={1.5}
       sx={{ ...layoutSx }}
     >
@@ -73,7 +73,7 @@ export default function WeekCalendar({
                   children={dayjs(item.date).format('D')}
                 />
 
-                <Box display={'flex'} gap={1} ml={1.4}>
+                <Box display="flex" gap={1} ml={1.4}>
                   {isOrange && <Badge color="warning" variant="alway" />}
                   {isGreen && <Badge color="success" variant="online" />}
                 </Box>

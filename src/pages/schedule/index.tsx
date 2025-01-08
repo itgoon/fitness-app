@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import { useState } from 'react';
+import { useLocation } from 'react-router';
 import WorkOutRecord from './tab/WorkOutRecord';
 import ReservationList from './tab/ReservationList';
 import {
@@ -10,7 +11,6 @@ import {
 import DateCalendar from '../../components/custom/calendar/DateCalendar';
 import Tabs from '../../components/custom/Tabs/Tabs';
 import TabPanel from '../../components/custom/Tabs/TabPanel';
-import { useLocation } from 'react-router';
 /**
  * ******************************************************
  * 일정 화면
@@ -24,7 +24,7 @@ export default function Schedule() {
   return (
     <Box>
       <DateCalendar
-        isBadge={true}
+        isBadge
         workData={dummyMonthWorkoutList}
         value={paramsDate}
       />
@@ -33,8 +33,8 @@ export default function Schedule() {
         <Tabs
           value={tabValue}
           onChange={(e, newValue) => setTabValue(newValue)}
-          frLabel={'운동 기록'}
-          secLabel={'예약 내역'}
+          frLabel="운동 기록"
+          secLabel="예약 내역"
         />
         <Box px={2.5} py={3}>
           <TabPanel value={tabValue} index={0}>

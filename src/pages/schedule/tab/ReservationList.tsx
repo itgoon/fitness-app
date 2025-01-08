@@ -1,9 +1,9 @@
 import { Box, Stack } from '@mui/system';
+import { Typography, useTheme } from '@mui/material';
+import { useNavigate } from 'react-router';
 import ReservationCard from '../../../components/custom/reservationCard/ReservationCard';
 import { IReservationList } from '../types';
-import { Typography, useTheme } from '@mui/material';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
-import { useNavigate } from 'react-router';
 import { useCardContext } from '../../../hooks/useCard';
 
 export default function ReservationList({ cardDataList }: IReservationList) {
@@ -25,7 +25,7 @@ export default function ReservationList({ cardDataList }: IReservationList) {
         <EmptyCard
           children={
             <Typography
-              variant={'Body16/regular'}
+              variant="Body16/regular"
               lineHeight="24px"
               color={grey500}
             >

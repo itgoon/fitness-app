@@ -1,6 +1,6 @@
 import * as MUIICON from '@mui/icons-material';
-import * as SVGICON from '../../assets/svgs';
 import { useEffect, useMemo, useRef } from 'react';
+import * as SVGICON from '../../assets/svgs';
 import { IconProps } from './types';
 
 // ----------------------------------------------------------------------
