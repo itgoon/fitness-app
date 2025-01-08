@@ -21,10 +21,10 @@ export const login = async ({
     } = data;
 
     // 추후 리팩토링
-    saveTokenToStorage('serviceToken1', accessToken);
-    saveTokenToStorage('refreshToken1', refreshToken);
-    saveTokenToStorage('centerToken', center);
-    saveTokenToStorage('roleToken', role);
+    saveTokenToStorage('serviceToken-app', accessToken);
+    saveTokenToStorage('refreshToken-app', refreshToken);
+    saveTokenToStorage('centerToken-app', center);
+    saveTokenToStorage('roleToken-app', role);
 
     return data;
   }

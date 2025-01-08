@@ -3,12 +3,14 @@ import { AuthApi, Configuration } from '../api';
 
 axios.interceptors.request.use(
   (config) => {
-    const token = localStorage.getItem('serviceToken1') || '';
-    const center = localStorage.getItem('centerToken') || '';
+    const token = localStorage.getItem('serviceToken-app') || '';
+    const center = localStorage.getItem('centerToken-app') || '';
+    const role = localStorage.getItem('roleToken-app') || '';
 
     if (token && !config.headers.Authorization) {
       config.headers.Authorization = `Bearer ${token}`;
       config.headers.center = center;
+      config.headers.role = role;
     }
 
     return config;
