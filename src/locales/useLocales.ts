@@ -42,7 +42,7 @@ export function useTranslate() {
   );
 
   const loadTranslate = async (newlang: string) => {
-    if (!authState?.token) return;
+    // if (!authState?.token) return;
 
     try {
       //

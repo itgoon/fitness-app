@@ -43,8 +43,6 @@
     "@mui/x-date-pickers": "^6.20.2",
     "@react-pdf/renderer": "^3.4.5",
     "@supabase/supabase-js": "^2.47.10",
-    "@tanstack/react-query": "^5.62.16",
-    "@tanstack/react-query-devtools": "^5.62.16",
     "apexcharts": "^3.54.1",
     "autosuggest-highlight": "^3.3.4",
     "aws-amplify": "^6.11.0",
@@ -141,10 +139,5 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
-  },
-  "commitlint": {
-    "extends": [
-      "@commitlint/config-conventional"
-    ]
   }
 }
