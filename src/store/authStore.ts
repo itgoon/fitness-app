@@ -3,18 +3,23 @@ import { recoilPersist } from 'recoil-persist';
 
 import { localStorageEffect } from 'src/utils/localStorage';
 
-import { ResAuthInfo, ResAuthenticate } from 'src/types/auth';
+import { ResAuthInfo } from 'src/types/auth';
 
 const { persistAtom } = recoilPersist();
+
+export const initialAuthState = {
+  isLoggedIn: false,
+  isInitialized: false,
+  user: null
+};
 
 /**
  * 인증 정보 저장소
  */
-export const authState = atom<ResAuthenticate | undefined>({
+export const authState = atom<typeof initialAuthState>({
   key: `auth`,
   default: undefined,
-  effects_UNSTABLE: [persistAtom],
-  effects: [localStorageEffect('auth')]
+  effects_UNSTABLE: [persistAtom]
 });
 
 /**

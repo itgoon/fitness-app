@@ -17,9 +17,7 @@ export default function AccountPopover() {
   const router = useRouter();
   const popover = usePopover();
   const [auth, setAuth] = useRecoilState(Store.Auth.authState);
-  const handleLogout = () => {
-    setAuth(undefined);
-  };
+  const handleLogout = () => {};
   return (
     <>
       <IconButton

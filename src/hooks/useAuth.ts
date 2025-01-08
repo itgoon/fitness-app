@@ -1,10 +1,8 @@
 import { useCallback } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useRecoilState } from 'recoil';
-
+import { AuthService } from 'src/service';
 import Store from 'src/store';
-
-import { ReqLogin } from 'src/types/auth';
 
 /**
  * 인증 Hooks
@@ -12,26 +10,26 @@ import { ReqLogin } from 'src/types/auth';
  */
 export const useAuth = () => {
   const navigate = useNavigate();
-  const [loading, setLoading] = useRecoilState(Store.Layout.loadingState);
+
   const [auth, setAuth] = useRecoilState(Store.Auth.authState);
 
   // 로그인
+  const login = useCallback(
+    async ({ email, password }: { email: string; password: string }) => {
+      const result = await AuthService.login({ email, password });
 
-  const login = useCallback(async (params: ReqLogin) => {
-    // console.log({ serviceToken }, { user });
-    // if (!user?.id) return;
+      if (result) {
+        setAuth({
+          ...auth,
+          isLoggedIn: true,
+          isInitialized: true
+        });
+      }
 
-    // setAuth({
-    //   ...data,
-    //   // user: user,
-    //   token: data.serviceToken,
-    //   isLoggedIn: true,
-    //   isInitialized: true
-    //   // user,
-    // });
-
-    navigate('/dashboard');
-  }, []);
+      return result;
+    },
+    []
+  );
 
   // 로그아웃
   const logout = async () => {
