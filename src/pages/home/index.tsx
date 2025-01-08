@@ -1,6 +1,6 @@
 import dayjs from 'dayjs';
 
-import { Divider, Stack, Typography, useTheme } from '@mui/material';
+import {  Stack, Typography, useTheme } from '@mui/material';
 import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import Button from '../../components/Button';
@@ -11,16 +11,13 @@ import {
 } from '../../utils/formatTime';
 import TimePicker from '../../components/custom/TimePicker';
 import WeekCalendar from '../../components/custom/WeekCalendar';
-import AlaramCard from '../../components/custom/AlaramCard';
-import ReservationCard from '../../components/custom/reservationCard/ReservationCard';
-import EmptyCard from '../../components/custom/customCard/EmptyCard';
 import {
-  dummyCardData,
   dummyMonthCount1,
   dummyMonthCount2,
-  dummyReservaitonListCard
 } from '../../utils/dummy';
 import Wrap from './Wrap';
+import WorkoutData from './WorkoutData';
+import Bottom from './Bottom';
 /**
  * ******************************************************
  * 대시보드 화면
@@ -47,79 +44,22 @@ const Message = ({ userName, workMessage }: any) => (
   </>
 );
 
-const renderWorkoutInfo = ({
-  state,
-  totalTime,
-  grey,
-  grey900,
-  handleTimer
-}) => {
-  const { isWorking, startTime, endTime } = state;
-
-  if (!isWorking) return null;
-  return (
-    <EmptyCard direction="row" justifyContent="start" padding="24px" gap={13}>
-      <Stack gap={2}>
-        <Stack gap={0.5} onClick={() => handleTimer('isStart')}>
-          <Typography
-            variant="Body14/regular"
-            color={grey}
-            children="운동시작"
-          />
-          <Typography
-            variant="Body20/bold"
-            children={startTime}
-            color={grey900}
-          />
-        </Stack>
-        <Stack gap={0.5} onClick={() => handleTimer('isEnd')}>
-          <Typography
-            variant="Body14/regular"
-            color={grey}
-            children="운동종료"
-          />
-          <Typography
-            variant="Body20/bold"
-            children={endTime}
-            color={grey900}
-          />
-        </Stack>
-      </Stack>
-      <Stack gap={0.5}>
-        <Typography
-          variant="Body14/regular"
-          color={grey}
-          children="총 운동 시간"
-        />
-        <Typography
-          variant="Body20/bold"
-          children={totalTime}
-          color={grey900}
-        />
-      </Stack>
-    </EmptyCard>
-  );
-};
-
 export default function HomePage() {
   const { palette } = useTheme();
   const light = palette.mode === 'light';
-  const grey900 = light ? palette.grey[900] : 'white';
-  const grey400 = palette.grey[400];
   const grey = light ? palette.grey[500] : palette.grey[600];
-  const blgrey = light ? palette.grey.A200 : grey400;
 
-  const navigate = useNavigate();
+  const today = dayjs().format(MontFormatKR)
 
   const [state, setState] = useState({
     isWorking: false,
-    isAlaram: false,
+    isAlarm: false,
     isStart: false,
     isEnd: false,
     startTime: EMPTY_TIME,
     endTime: EMPTY_TIME
   });
-  const { isWorking, isAlaram, isStart, isEnd, startTime, endTime } = state;
+  const { isWorking, isAlarm, isStart, isEnd, startTime, endTime } = state;
 
   const [totalTime, setTotalTime] = useState(INITIAL_TIME);
 
@@ -127,7 +67,7 @@ export default function HomePage() {
     setState((prev) => ({
       ...prev,
       isWorking: !prev.isWorking,
-      isAlaram: !prev.isAlaram
+      isAlarm: !prev.isAlarm
     }));
   };
 
@@ -142,11 +82,11 @@ export default function HomePage() {
   };
 
   const calculatedTotlaTime = (start: string, end: string) => {
-    const today = dayjs().format(DateFormat); // 오늘 날짜 더해서 파싱
+    const today = dayjs().format(DateFormat);
 
     const _startTime = dayjs(`${today} ${start}`, TimeDateFormat);
     const _endTime = dayjs(`${today} ${end}`, TimeDateFormat);
-    const totalMinutes = _endTime.diff(startTime, 'minute');
+    const totalMinutes = _endTime.diff(_startTime, 'minute');
     const total =
       totalMinutes > 0
         ? `${Math.floor(totalMinutes / 60)} 시간 ${totalMinutes % 60} 분`
@@ -165,30 +105,19 @@ export default function HomePage() {
   return (
     <Stack>
       <Wrap padding="0 !important">
-        <WeekCalendar
-          greenBadge={dummyMonthCount1}
-          orangeBadge={dummyMonthCount2}
-        />
+        <WeekCalendar  greenBadge={dummyMonthCount1}  orangeBadge={dummyMonthCount2} />
       </Wrap>
 
       <Wrap gap={1} padding={4}>
-        <Typography
-          variant="Body18/semiBold"
-          children={`${dayjs().format(MontFormatKR)}`}
-          color={grey}
-        />
-        <Typography
-          variant="Body20/semiBold"
-          lineHeight="30px"
-          children={
-            <Message userName={name} workMessage={workMsg(state.isWorking)} />
-          }
-        />
+        
+        <Typography variant="Body18/semiBold" color={grey}>{today} </Typography>
+        
+        <Typography  variant="Body20/semiBold" lineHeight="30px" > 
+          {<Message userName={name} workMessage={workMsg(state.isWorking)} />}
+        </Typography>
 
-        {/* 운동 시간 데이터 */}
-        {renderWorkoutInfo({ state, totalTime, grey, grey900, handleTimer })}
+        <WorkoutData state={state} onClick={handleTimer} totalTime={totalTime}/>
 
-        {/* 버튼 color primary일때, alpha 색 들어가는거 막기  */}
         <Button
           color="primary"
           typoVariant="Body18/semiBold"
@@ -200,29 +129,8 @@ export default function HomePage() {
         />
       </Wrap>
 
-      <Wrap gap={1.5} sx={{ padding: '0 !important' }}>
-        <Typography
-          variant="Body18/bold"
-          children="오늘의 알림"
-          sx={{ padding: '32px 20px 0' }}
-          color={grey900}
-        />
-        <Divider />
-        {!isAlaram ? (
-          <EmptyCard margin="12px 20px 32px" children="알림 내용이 없습니다." />
-        ) : (
-          <>
-            <AlaramCard
-              isEmpty={false}
-              title="새로운 서명요청이 있습니다!"
-              dataList={dummyCardData}
-              onClick={() => navigate('/contract')}
-              onClickMsg="서명하기"
-            />
-            <ReservationCard cardData={dummyReservaitonListCard[0]} />
-          </>
-        )}
-      </Wrap>
+      <Bottom isAlarm={isAlarm} />
+      
       <TimePicker
         open={isStart || isEnd}
         onClose={() => {
