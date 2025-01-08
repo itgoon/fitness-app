@@ -14,7 +14,7 @@ export const authState = atom<ResAuthenticate | undefined>({
   key: `auth`,
   default: undefined,
   effects_UNSTABLE: [persistAtom],
-  effects: [localStorageEffect('auth')],
+  effects: [localStorageEffect('auth')]
 });
 
 /**
@@ -24,12 +24,12 @@ export const authInfoState = atom<ResAuthInfo | undefined>({
   key: `authInfo`,
   default: undefined,
   effects_UNSTABLE: [persistAtom],
-  effects: [localStorageEffect('authInfo')],
+  effects: [localStorageEffect('authInfo')]
 });
 
 export const authBrandState = atom<any>({
   key: `brand`,
   default: undefined,
   effects_UNSTABLE: [persistAtom],
-  effects: [localStorageEffect('brand')],
+  effects: [localStorageEffect('brand')]
 });

@@ -14,7 +14,7 @@ export default function LoadingScreen({ sx, ...other }: BoxProps) {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        ...sx,
+        ...sx
       }}
       {...other}
     >

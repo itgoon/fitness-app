@@ -26,18 +26,18 @@ export default function ReservationCard({
   const dateKR = dayjs(cardData?.date).format(MontFormatKR);
 
   const chipState = cardData?.chipState;
-  const chipLabel = chipChange(chipState).chipLabel;
+  const {chipLabel} = chipChange(chipState);
 
   return (
     <Stack gap={1.5} sx={{ padding: '8px 20px 32px', ...layoutSx }}>
-      <Stack direction={'row'} alignItems={'center'} gap={1}>
+      <Stack direction="row" alignItems="center" gap={1}>
         <Typography
           variant="Body18/semiBold"
           color={grey900}
           children={dateKR}
         />
         {chipLabel && (
-          <Chip size={'small'} color={chipState} label={chipLabel} />
+          <Chip size="small" color={chipState} label={chipLabel} />
         )}
       </Stack>
 

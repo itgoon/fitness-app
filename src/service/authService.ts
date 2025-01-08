@@ -1,3 +1,4 @@
+import { MemberDto } from 'src/api';
 import api from 'src/utils/api';
 import { saveTokenToStorage } from 'src/utils/token';
 
@@ -20,11 +21,21 @@ export const login = async ({
     } = data;
 
     // 추후 리팩토링
-    saveTokenToStorage('serviceToken1', accessToken);
-    saveTokenToStorage('refreshToken1', refreshToken);
-    saveTokenToStorage('centerToken', center);
-    saveTokenToStorage('roleToken', role);
+    saveTokenToStorage('serviceToken-app', accessToken);
+    saveTokenToStorage('refreshToken-app', refreshToken);
+    saveTokenToStorage('centerToken-app', center);
+    saveTokenToStorage('roleToken-app', role);
 
     return data;
   }
+};
+
+export const me = async () => {
+  const res = await api.auth.authControllerGetLoginInfo();
+
+  const {
+    data: { data }
+  } = res;
+
+  return data as MemberDto;
 };

@@ -76,8 +76,7 @@ declare module '@mui/material/Typography' {
 }
 export const primaryFont = 'Pretendard';
 export const secondaryFont = 'Barlow, sans-serif';
-const customVariant = () => {
-  return {
+const customVariant = () => ({
     'Body28/semiBold': {
       fontWeight: 600,
       fontSize: pxToRem(28),
@@ -204,8 +203,7 @@ const customVariant = () => {
       fontSize: pxToRem(11),
       lineHeight: '22px'
     }
-  };
-};
+  });
 
 // ----------------------------------------------------------------------
 

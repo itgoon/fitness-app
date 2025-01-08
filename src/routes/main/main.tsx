@@ -13,7 +13,7 @@ const Page404 = lazy(() => import('src/pages/404'));
 
 // ----------------------------------------------------------------------
 
-export const mainRoutes = [
+export const errorRoutes = [
   {
     element: (
       <MainLayout>
@@ -25,7 +25,7 @@ export const mainRoutes = [
     children: [
       { path: '500', element: <Page500 /> },
       { path: '404', element: <Page404 /> },
-      { path: '403', element: <Page403 /> },
-    ],
-  },
+      { path: '403', element: <Page403 /> }
+    ]
+  }
 ];

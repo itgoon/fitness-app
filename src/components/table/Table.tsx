@@ -1,13 +1,12 @@
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableContainer from "@mui/material/TableContainer";
-import TableRow from "@mui/material/TableRow";
-import Scrollbar from "src/components/scrollbar";
-import { TableHeadCustom, TableNoData, TableProps } from "src/components/table";
-
-import { Box, Pagination } from "@mui/material";
-import UserTableFiltersResult from "../../components/table/TableFiltersResult";
+import MuiTable from '@mui/material/Table';
+import TableBody from '@mui/material/TableBody';
+import TableCell from '@mui/material/TableCell';
+import TableContainer from '@mui/material/TableContainer';
+import TableRow from '@mui/material/TableRow';
+import Scrollbar from 'src/components/scrollbar';
+import { TableHeadCustom, TableNoData, TableProps } from 'src/components/table';
+import { Box, Pagination } from '@mui/material';
+import UserTableFiltersResult from './TableFiltersResult';
 
 // ----------------------------------------------------------------------
 
@@ -19,13 +18,13 @@ type Props = {
   onSelectRow?: (e: any) => void;
 };
 
-export default function TableEmptyRows({
+export default function Table({
   table,
   // emptyRows,
   totalElements,
   list,
   columns,
-  onSelectRow,
+  onSelectRow
 }: Props) {
   const getRowNumber = (idx) => {
     const no = totalElements - idx;
@@ -36,12 +35,12 @@ export default function TableEmptyRows({
     <>
       <UserTableFiltersResult
         results={totalElements}
-        sx={{ p: 2.5, pt: 0, display: "flex", alignItems: "flex-end" }}
+        sx={{ p: 2.5, pt: 0, display: 'flex', alignItems: 'flex-end' }}
       />
 
-      <TableContainer sx={{ position: "relative", overflow: "unset" }}>
+      <TableContainer sx={{ position: 'relative', overflow: 'unset' }}>
         <Scrollbar>
-          <Table size={table.dense ? "small" : "medium"} sx={{}}>
+          <MuiTable size={table.dense ? 'small' : 'medium'} sx={{}}>
             <TableHeadCustom
               headLabel={columns}
               rowCount={totalElements}
@@ -55,12 +54,12 @@ export default function TableEmptyRows({
                     hover
                     selected={table.selected.includes(String(row.id))}
                     onClick={() => (onSelectRow ? onSelectRow(row) : {})}
-                    style={{ cursor: "pointer" }}
+                    style={{ cursor: 'pointer' }}
                     key={`row_${getRowNumber(idx)}`}
                   >
                     {columns
                       .filter((column) => {
-                        if (column.id === "") {
+                        if (column.id === '') {
                           if (!column.Cell) return false;
                         }
                         return true;
@@ -68,19 +67,19 @@ export default function TableEmptyRows({
                       .map((column, colIdx) => {
                         // if (!column?.id) return;
 
-                        let text = row[column.id] ? row[column.id] : "";
+                        let text = row[column.id] ? row[column.id] : '';
                         if (column?.Cell) text = column?.Cell(row);
 
                         let align:
-                          | "center"
-                          | "left"
-                          | "right"
-                          | "inherit"
-                          | "justify"
-                          | undefined = "center";
-                        if (!column.align) align = "center";
-                        else if (column.align === "left") align = "left";
-                        else if (column.align === "right") align = "right";
+                          | 'center'
+                          | 'left'
+                          | 'right'
+                          | 'inherit'
+                          | 'justify'
+                          | undefined = 'center';
+                        if (!column.align) align = 'center';
+                        else if (column.align === 'left') align = 'left';
+                        else if (column.align === 'right') align = 'right';
 
                         return (
                           <TableCell
@@ -97,33 +96,22 @@ export default function TableEmptyRows({
                 <TableNoData notFound={list.length === 0} />
               )}
             </TableBody>
-          </Table>
+          </MuiTable>
         </Scrollbar>
       </TableContainer>
-
-      {/* <TablePaginationCustom
-        count={totalElements}
-        page={table.page}
-        rowsPerPage={table.rowsPerPage}
-        onPageChange={table.onChangePage}
-        onRowsPerPageChange={table.onChangeRowsPerPage}
-        dense={table.dense}
-        onChangeDense={table.onChangeDense}
-      /> */}
 
       {totalElements > table?.rowsPerPage && (
         <Box
           sx={{
-            paddingTop: "20px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
+            paddingTop: '20px',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
           }}
         >
           <Pagination
             page={table.page + 1}
-            // count={3}
-            count={Math.round(totalElements / table?.rowsPerPage)}
+            count={Math.round(totalElements / (table?.rowsPerPage || 1))}
             onChange={(e, page: number) => {
               table.onChangePage(e, page - 1);
             }}

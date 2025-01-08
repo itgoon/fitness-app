@@ -1,8 +1,8 @@
 import { Box } from '@mui/material';
-import StepFlow from '../../components/custom/StepFlow';
-import ReservationStep1 from './step/ReservationStep1';
 import { useState } from 'react';
 import dayjs from 'dayjs';
+import StepFlow from '../../components/custom/StepFlow';
+import ReservationStep1 from './step/ReservationStep1';
 import { TimeDateFormatKR, getTimeCheck } from '../../utils/formatTime';
 import { IReservationList } from './types';
 import ReservationStep2 from './step/ReservationStep2';
@@ -15,7 +15,7 @@ import Header from '../../components/custom/Header';
  */
 const stepTitle = ['', '레슨 예약', '레슨예약'];
 export default function ReservationPage() {
-  const [activeStep, setActiveStep] = useState(0);
+  const [activeStep, setActiveStep] = useState(1);
 
   const [reservationList, setReservationList] = useState<IReservationList>({
     date: dayjs().format(TimeDateFormatKR),
@@ -33,18 +33,15 @@ export default function ReservationPage() {
   ];
 
   return (
-    <>
-      <Header isStart={true} stepTitle={stepTitle[activeStep]} />
-      <Box height={'calc(100% - 56px)'}>
-        <StepFlow activeStep={activeStep} onNext={onNext}>
-          <ReservationStep1
-            reservationList={reservationList}
-            setReservationList={setReservationList}
-          />
-          <ReservationStep2 reservationData={reservationData} />
-          <ReservationStep3 reservationData={reservationData} />
-        </StepFlow>
-      </Box>
-    </>
+    <Box height="calc(100% - 56px)">
+      <StepFlow activeStep={activeStep} onNext={onNext}>
+        <ReservationStep1
+          reservationList={reservationList}
+          setReservationList={setReservationList}
+        />
+        <ReservationStep2 reservationData={reservationData} />
+        <ReservationStep3 reservationData={reservationData} />
+      </StepFlow>
+    </Box>
   );
 }

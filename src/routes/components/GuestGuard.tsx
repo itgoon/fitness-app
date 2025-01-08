@@ -13,9 +13,9 @@ export default function GuestGuard({ children }: PropsWithChildren) {
     if (auth?.isLoggedIn) {
       navigate(location?.state?.from ? location?.state?.from : 'dashboard', {
         state: {
-          from: '',
+          from: ''
         },
-        replace: true,
+        replace: true
       });
     }
   }, [auth, navigate, location]);

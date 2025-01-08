@@ -18,33 +18,33 @@ export default function RecordBottom({
   const { openConfirm } = useModal();
   return (
     <Box
-      display={'flex'}
-      justifyContent={'space-between'}
-      width={'100%'}
+      display="flex"
+      justifyContent="space-between"
+      width="100%"
       height={56}
       px={2.5}
       py={2}
-      position={'absolute'}
+      position="absolute"
       left={0}
       bottom={0}
       zIndex={999}
-      bgcolor={'white'}
+      bgcolor="white"
       borderTop={`1px solid ${borderTop}`}
     >
       <Typography
-        variant={'Body14/regular'}
+        variant="Body14/regular"
         color={primary}
-        children={`전체 선택`}
+        children="전체 선택"
         onClick={onSelectAll}
       />
       <Typography
-        variant={'Body16/semiBold'}
+        variant="Body16/semiBold"
         children={`${selectImageCount}개 선택됨`}
       />
       <Typography
-        variant={'Body14/regular'}
+        variant="Body14/regular"
         color={errorDk}
-        children={`삭제`}
+        children="삭제"
         onClick={() => {
           if (selectImageCount !== 0) {
             openConfirm({

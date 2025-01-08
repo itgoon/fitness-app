@@ -94,11 +94,11 @@ export default function NavList({ data, slotProps }: NavListProps) {
           anchorEl={navRef.current}
           anchorOrigin={{
             vertical: 'bottom',
-            horizontal: 'left',
+            horizontal: 'left'
           }}
           transformOrigin={{
             vertical: 'top',
-            horizontal: 'left',
+            horizontal: 'left'
           }}
           slotProps={{
             paper: {
@@ -117,29 +117,41 @@ export default function NavList({ data, slotProps }: NavListProps) {
                   p: 2,
                   minWidth: 160,
                   left: 'auto',
-                  right: 'auto',
+                  right: 'auto'
                 }),
                 ...(openMenu && {
-                  pointerEvents: 'auto',
-                }),
-              },
-            },
+                  pointerEvents: 'auto'
+                })
+              }
+            }
           }}
           sx={{
-            pointerEvents: 'none',
+            pointerEvents: 'none'
           }}
         >
           {singleList ? (
             <NavSubList data={data.children} slotProps={slotProps} />
           ) : (
-            <Masonry columns={4} spacing={3} defaultColumns={4} defaultSpacing={3}>
-              <NavSubList data={data.children} slotProps={slotProps} sx={{ mb: 2.5 }} />
+            <Masonry
+              columns={4}
+              spacing={3}
+              defaultColumns={4}
+              defaultSpacing={3}
+            >
+              <NavSubList
+                data={data.children}
+                slotProps={slotProps}
+                sx={{ mb: 2.5 }}
+              />
             </Masonry>
           )}
 
           <Stack spacing={3}>
             {!!data.moreLink && (
-              <MenuMoreLink path={data.moreLink.path} title={data.moreLink.title} />
+              <MenuMoreLink
+                path={data.moreLink.path}
+                title={data.moreLink.title}
+              />
             )}
 
             {!!data.products && (

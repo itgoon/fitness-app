@@ -1,9 +1,9 @@
 import { Box, Stack, Typography, useTheme } from '@mui/material';
+import { useNavigate } from 'react-router';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
 import ReservationCard from '../../../components/custom/reservationCard/ReservationCard';
 import { IWorkOutRecord } from '../types';
 import { useCardContext } from '../../../hooks/useCard';
-import { useNavigate } from 'react-router';
 
 export default function WorkOutRecord({ cardDataList }: IWorkOutRecord) {
   const { setSelectedCard } = useCardContext();
@@ -22,7 +22,7 @@ export default function WorkOutRecord({ cardDataList }: IWorkOutRecord) {
         <EmptyCard
           children={
             <Typography
-              variant={'Body16/regular'}
+              variant="Body16/regular"
               lineHeight="24px"
               color={grey500}
             >

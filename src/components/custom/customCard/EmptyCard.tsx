@@ -34,14 +34,14 @@ export default function EmptyCard({
 
   return (
     <Box
-      display={'flex'}
-      justifyContent={justifyContent ? justifyContent : 'center'}
+      display="flex"
+      justifyContent={justifyContent || 'center'}
       alignItems={alignItems}
       flexDirection={direction}
       gap={gap}
       bgcolor={blgrey}
       margin={margin}
-      padding={padding ? padding : '12px 0'}
+      padding={padding || '12px 0'}
       borderRadius={borderRadius}
       sx={{ ...sx }}
     >

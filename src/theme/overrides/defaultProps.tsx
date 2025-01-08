@@ -75,166 +75,166 @@ export function defaultProps(theme: Theme) {
           error: <Iconify icon="solar:danger-bold" width={24} />,
           info: <Iconify icon="eva:info-fill" width={24} />,
           success: <Iconify icon="eva:checkmark-circle-2-fill" width={24} />,
-          warning: <Iconify icon="eva:alert-triangle-fill" width={24} />,
-        },
-      },
+          warning: <Iconify icon="eva:alert-triangle-fill" width={24} />
+        }
+      }
     },
     MuiStack: {
       defaultProps: {
-        useFlexGap: true,
-      },
+        useFlexGap: true
+      }
     },
     MuiAppBar: {
       defaultProps: {
-        color: 'transparent',
-      },
+        color: 'transparent'
+      }
     },
     MuiAvatarGroup: {
       defaultProps: {
-        max: 4,
-      },
+        max: 4
+      }
     },
     MuiButtonGroup: {
       defaultProps: {
-        disableElevation: true,
-      },
+        disableElevation: true
+      }
     },
     MuiButton: {
       defaultProps: {
         color: 'inherit',
-        disableElevation: true,
-      },
+        disableElevation: true
+      }
     },
     MuiCardHeader: {
       defaultProps: {
         titleTypographyProps: { variant: 'h6' },
         subheaderTypographyProps: {
           variant: 'body2',
-          marginTop: theme.spacing(0.5),
-        },
-      },
+          marginTop: theme.spacing(0.5)
+        }
+      }
     },
     MuiChip: {
       defaultProps: {
-        deleteIcon: <Iconify icon="solar:close-circle-bold" />,
-      },
+        deleteIcon: <Iconify icon="solar:close-circle-bold" />
+      }
     },
     MuiDialogActions: {
       defaultProps: {
-        disableSpacing: true,
-      },
+        disableSpacing: true
+      }
     },
     MuiFab: {
       defaultProps: {
-        color: 'primary',
-      },
+        color: 'primary'
+      }
     },
     MuiLink: {
       defaultProps: {
-        underline: 'hover',
-      },
+        underline: 'hover'
+      }
     },
     MuiListItemText: {
       defaultProps: {
         primaryTypographyProps: {
-          typography: 'subtitle2',
+          typography: 'subtitle2'
         },
         secondaryTypographyProps: {
-          component: 'span',
-        },
-      },
+          component: 'span'
+        }
+      }
     },
     MuiPaper: {
       defaultProps: {
-        elevation: 0,
-      },
+        elevation: 0
+      }
     },
     MuiSkeleton: {
       defaultProps: {
         animation: 'wave',
-        variant: 'rounded',
-      },
+        variant: 'rounded'
+      }
     },
     MuiFilledInput: {
       defaultProps: {
-        disableUnderline: true,
-      },
+        disableUnderline: true
+      }
     },
     MuiFormHelperText: {
       defaultProps: {
-        component: 'div',
-      },
+        component: 'div'
+      }
     },
     MuiTab: {
       defaultProps: {
         disableRipple: true,
-        iconPosition: 'start',
-      },
+        iconPosition: 'start'
+      }
     },
     MuiTabs: {
       defaultProps: {
         textColor: 'inherit',
         variant: 'scrollable',
-        allowScrollButtonsMobile: true,
-      },
+        allowScrollButtonsMobile: true
+      }
     },
     MuiTablePagination: {
       defaultProps: {
         backIconButtonProps: {
-          size: 'small',
+          size: 'small'
         },
         nextIconButtonProps: {
-          size: 'small',
-        },
-      },
+          size: 'small'
+        }
+      }
     },
     MuiSlider: {
       defaultProps: {
-        size: 'small',
-      },
+        size: 'small'
+      }
     },
     MuiAutocomplete: {
       defaultProps: {
-        popupIcon: <ArrowDownIcon />,
-      },
+        popupIcon: <ArrowDownIcon />
+      }
     },
     MuiSelect: {
       defaultProps: {
-        IconComponent: ArrowDownIcon,
-      },
+        IconComponent: ArrowDownIcon
+      }
     },
     MuiNativeSelect: {
       defaultProps: {
-        IconComponent: ArrowDownIcon,
-      },
+        IconComponent: ArrowDownIcon
+      }
     },
     MuiCheckbox: {
       defaultProps: {
         size: 'small',
         icon: <CheckboxIcon />,
         checkedIcon: <CheckboxCheckedIcon />,
-        indeterminateIcon: <CheckboxIndeterminateIcon />,
-      },
+        indeterminateIcon: <CheckboxIndeterminateIcon />
+      }
     },
     MuiRadio: {
       defaultProps: {
         size: 'small',
         icon: <RadioIcon />,
-        checkedIcon: <RadioCheckedIcon />,
-      },
+        checkedIcon: <RadioCheckedIcon />
+      }
     },
     MuiRating: {
       defaultProps: {
         emptyIcon: <RatingIcon />,
-        icon: <RatingIcon />,
-      },
+        icon: <RatingIcon />
+      }
     },
     MuiTreeView: {
       defaultProps: {
         defaultCollapseIcon: <TreeViewCollapseIcon />,
         defaultExpandIcon: <TreeViewExpandIcon />,
-        defaultEndIcon: <TreeViewEndIcon />,
-      },
+        defaultEndIcon: <TreeViewEndIcon />
+      }
     },
     MuiDataGrid: {
       defaultProps: {
@@ -261,53 +261,84 @@ export function defaultProps(theme: Theme) {
               sx={{ color: 'text.disabled' }}
             />
           ),
-          columnMenuIcon: () => <Iconify width={20} icon="mingcute:more-1-fill" />,
+          columnMenuIcon: () => (
+            <Iconify width={20} icon="mingcute:more-1-fill" />
+          ),
           columnMenuSortAscendingIcon: () => (
             <Iconify width={20} icon="solar:alt-arrow-up-bold-duotone" />
           ),
           columnMenuSortDescendingIcon: () => (
             <Iconify width={20} icon="solar:alt-arrow-down-bold-duotone" />
           ),
-          columnMenuFilterIcon: () => <Iconify width={20} icon="solar:filter-bold" />,
-          columnMenuHideIcon: () => <Iconify width={20} icon="solar:eye-closed-bold" />,
-          columnMenuManageColumnsIcon: () => <Iconify width={20} icon="solar:eye-bold" />,
-          columnSelectorIcon: () => <Iconify width={20} icon="solar:eye-bold" />,
+          columnMenuFilterIcon: () => (
+            <Iconify width={20} icon="solar:filter-bold" />
+          ),
+          columnMenuHideIcon: () => (
+            <Iconify width={20} icon="solar:eye-closed-bold" />
+          ),
+          columnMenuManageColumnsIcon: () => (
+            <Iconify width={20} icon="solar:eye-bold" />
+          ),
+          columnSelectorIcon: () => (
+            <Iconify width={20} icon="solar:eye-bold" />
+          ),
           // filter
-          filterPanelDeleteIcon: () => <Iconify width={20} icon="eva:close-fill" />,
-          openFilterButtonIcon: () => <Iconify width={20} icon="solar:filter-bold" />,
+          filterPanelDeleteIcon: () => (
+            <Iconify width={20} icon="eva:close-fill" />
+          ),
+          openFilterButtonIcon: () => (
+            <Iconify width={20} icon="solar:filter-bold" />
+          ),
           columnFilteredIcon: () => (
-            <Iconify width={16} icon="solar:filter-bold" sx={{ color: 'text.primary' }} />
+            <Iconify
+              width={16}
+              icon="solar:filter-bold"
+              sx={{ color: 'text.primary' }}
+            />
           ),
           // density
           densityCompactIcon: () => (
-            <Iconify width={20} icon="material-symbols:table-rows-narrow-rounded" />
+            <Iconify
+              width={20}
+              icon="material-symbols:table-rows-narrow-rounded"
+            />
           ),
-          densityStandardIcon: () => <Iconify width={20} icon="mingcute:rows-4-fill" />,
-          densityComfortableIcon: () => <Iconify width={20} icon="mingcute:rows-2-fill" />,
+          densityStandardIcon: () => (
+            <Iconify width={20} icon="mingcute:rows-4-fill" />
+          ),
+          densityComfortableIcon: () => (
+            <Iconify width={20} icon="mingcute:rows-2-fill" />
+          ),
           // export
           exportIcon: () => <Iconify width={20} icon="solar:export-bold" />,
           // quick filter
           quickFilterIcon: () => (
-            <Iconify width={24} icon="eva:search-fill" sx={{ color: 'text.secondary' }} />
+            <Iconify
+              width={24}
+              icon="eva:search-fill"
+              sx={{ color: 'text.secondary' }}
+            />
           ),
-          quickFilterClearIcon: () => <Iconify width={20} icon="eva:close-fill" />,
+          quickFilterClearIcon: () => (
+            <Iconify width={20} icon="eva:close-fill" />
+          )
         },
         slotProps: {
           basePopper: {
-            placement: 'bottom-end',
+            placement: 'bottom-end'
           },
           baseTextField: {
             variant: 'outlined',
-            InputLabelProps: { shrink: true },
+            InputLabelProps: { shrink: true }
           },
           baseFormControl: {
-            variant: 'outlined',
+            variant: 'outlined'
           },
           baseSelect: {
-            variant: 'outlined',
-          },
-        },
-      },
-    },
+            variant: 'outlined'
+          }
+        }
+      }
+    }
   };
 }

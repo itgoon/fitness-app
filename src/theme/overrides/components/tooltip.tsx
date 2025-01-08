@@ -9,12 +9,12 @@ export function tooltip(theme: Theme) {
     MuiTooltip: {
       styleOverrides: {
         tooltip: {
-          backgroundColor: theme.palette.grey[lightMode ? 800 : 700],
+          backgroundColor: theme.palette.grey[lightMode ? 800 : 700]
         },
         arrow: {
-          color: theme.palette.grey[lightMode ? 800 : 700],
-        },
-      },
-    },
+          color: theme.palette.grey[lightMode ? 800 : 700]
+        }
+      }
+    }
   };
 }

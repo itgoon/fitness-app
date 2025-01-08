@@ -43,7 +43,7 @@ export const QRCustomerData: customerData = {
   count: { label: '레슨 횟수', value: '10회' },
   trainer: { label: '담당강사', value: '홍길동' },
   contractDate: { label: '계약 일자', value: '2024.08.04' },
-  effectiveDate: { label: '유효 일자', value: '2024.12.30' }
+  effectiveDate: { label: '유효 일자', value: '2025.12.30' }
 };
 
 export const QRCenterData = [

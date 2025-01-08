@@ -20,7 +20,7 @@ export default function ExpansionQR({ centerData, onBack }: IExpansionQR) {
       gap={5}
       alignItems="center"
       justifyContent="center"
-      bgcolor={'white'}
+      bgcolor="white"
       onClick={onBack}
     >
       <Stack border="1px solid black">
@@ -46,10 +46,10 @@ export default function ExpansionQR({ centerData, onBack }: IExpansionQR) {
     <Stack
       minWidth={340}
       height={424}
-      justifyContent={'center'}
+      justifyContent="center"
       px={4}
       gap={3}
-      bgcolor={'white'}
+      bgcolor="white"
       onClick={onBack}
     >
       <Typography variant="Body24/bold" onClick={handleCenterToggle}>

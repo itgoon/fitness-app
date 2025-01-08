@@ -20,13 +20,19 @@ export default function UploadAvatar({
   sx,
   ...other
 }: UploadProps) {
-  const { getRootProps, getInputProps, isDragActive, isDragReject, fileRejections } = useDropzone({
+  const {
+    getRootProps,
+    getInputProps,
+    isDragActive,
+    isDragReject,
+    fileRejections
+  } = useDropzone({
     multiple: false,
     disabled,
     accept: {
-      'image/*': [],
+      'image/*': []
     },
-    ...other,
+    ...other
   });
 
   const hasFile = !!file;
@@ -42,7 +48,7 @@ export default function UploadAvatar({
       sx={{
         width: 1,
         height: 1,
-        borderRadius: '50%',
+        borderRadius: '50%'
       }}
     />
   );
@@ -65,26 +71,28 @@ export default function UploadAvatar({
         bgcolor: (theme) => alpha(theme.palette.grey[500], 0.08),
         transition: (theme) =>
           theme.transitions.create(['opacity'], {
-            duration: theme.transitions.duration.shorter,
+            duration: theme.transitions.duration.shorter
           }),
         '&:hover': {
-          opacity: 0.72,
+          opacity: 0.72
         },
         ...(hasError && {
           color: 'error.main',
-          bgcolor: (theme) => alpha(theme.palette.error.main, 0.08),
+          bgcolor: (theme) => alpha(theme.palette.error.main, 0.08)
         }),
         ...(hasFile && {
           zIndex: 9,
           opacity: 0,
           color: 'common.white',
-          bgcolor: (theme) => alpha(theme.palette.grey[900], 0.64),
-        }),
+          bgcolor: (theme) => alpha(theme.palette.grey[900], 0.64)
+        })
       }}
     >
       <Iconify icon="solar:camera-add-bold" width={32} />
 
-      <Typography variant="caption">{file ? 'Update photo' : 'Upload photo'}</Typography>
+      <Typography variant="caption">
+        {file ? 'Update photo' : 'Upload photo'}
+      </Typography>
     </Stack>
   );
 
@@ -95,7 +103,7 @@ export default function UploadAvatar({
         height: 1,
         overflow: 'hidden',
         borderRadius: '50%',
-        position: 'relative',
+        position: 'relative'
       }}
     >
       {renderPreview}
@@ -115,26 +123,27 @@ export default function UploadAvatar({
           cursor: 'pointer',
           overflow: 'hidden',
           borderRadius: '50%',
-          border: (theme) => `1px dashed ${alpha(theme.palette.grey[500], 0.2)}`,
+          border: (theme) =>
+            `1px dashed ${alpha(theme.palette.grey[500], 0.2)}`,
           ...(isDragActive && {
-            opacity: 0.72,
+            opacity: 0.72
           }),
           ...(disabled && {
             opacity: 0.48,
-            pointerEvents: 'none',
+            pointerEvents: 'none'
           }),
           ...(hasError && {
-            borderColor: 'error.main',
+            borderColor: 'error.main'
           }),
           ...(hasFile && {
             ...(hasError && {
-              bgcolor: (theme) => alpha(theme.palette.error.main, 0.08),
+              bgcolor: (theme) => alpha(theme.palette.error.main, 0.08)
             }),
             '&:hover .upload-placeholder': {
-              opacity: 1,
-            },
+              opacity: 1
+            }
           }),
-          ...sx,
+          ...sx
         }}
       >
         <input {...getInputProps()} />

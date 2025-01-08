@@ -1,15 +1,15 @@
-import { lazy, Suspense } from "react";
-import { Outlet } from "react-router-dom";
+import { lazy, Suspense } from 'react';
+import { Outlet } from 'react-router-dom';
 
-import { SplashScreen } from "src/components/loadingScreen";
-import AuthLayout from "src/layouts/auth/auth";
-import { GuestGuard } from "../components";
+import { SplashScreen } from 'src/components/loadingScreen';
+import AuthLayout from 'src/layouts/auth/auth';
+import { GuestGuard } from '../components';
 
 // ----------------------------------------------------------------------
 
-const LoginPage = lazy(() => import("src/pages/auth/login"));
-const RegisterPage = lazy(() => import("src/pages/auth/register"));
-const ForgotPage = lazy(() => import("src/pages/auth/forgot"));
+const LoginPage = lazy(() => import('src/pages/auth/login'));
+const RegisterPage = lazy(() => import('src/pages/auth/register'));
+const ForgotPage = lazy(() => import('src/pages/auth/forgot'));
 
 // ----------------------------------------------------------------------
 
@@ -25,10 +25,10 @@ export const authRoutes = [
       </GuestGuard>
     ),
     children: [
-      { path: "", element: <LoginPage /> },
-      { path: "login", element: <LoginPage /> },
-      { path: "register", element: <RegisterPage /> },
-      { path: "forgot", element: <ForgotPage /> }
+      { path: '', element: <LoginPage /> },
+      { path: 'login', element: <LoginPage /> },
+      { path: 'register', element: <RegisterPage /> },
+      { path: 'forgot', element: <ForgotPage /> }
     ]
   }
 ];

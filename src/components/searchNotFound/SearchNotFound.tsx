@@ -13,7 +13,7 @@ export default function SearchNotFound({ query, sx, ...other }: Props) {
       sx={{
         bgcolor: 'unset',
         textAlign: 'center',
-        ...sx,
+        ...sx
       }}
       {...other}
     >

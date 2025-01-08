@@ -9,12 +9,12 @@ export default function Step3() {
     <Stack spacing={2.5}>
       <Typography
         sx={{ textAlign: 'center' }}
-        children={'회원가입이 완료 되었습니다!'}
+        children="회원가입이 완료 되었습니다!"
       />
 
       <Typography
         sx={{ textAlign: 'center' }}
-        children={'로그인 후 지금 바로 서비스를 이용해 보세요.'}
+        children="로그인 후 지금 바로 서비스를 이용해 보세요."
       />
       <Button
         fullWidth
@@ -23,7 +23,7 @@ export default function Step3() {
         type="submit"
         variant="contained"
         onClick={() => navigate('/login')}
-        children={'로그인 후 이용하기'}
+        children="로그인 후 이용하기"
       />
     </Stack>
   );

@@ -2,8 +2,8 @@ import {
   MenuItem,
   Select as MuiSelect,
   SelectProps as MuiSelectProps
-} from "@mui/material";
-import { useTheme } from "@mui/material/styles";
+} from '@mui/material';
+import { useTheme } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
@@ -37,10 +37,10 @@ export default function Select({
         // id={props.name}
         name={String(props?.name)}
         error={!!props?.error}
-        size={"medium"}
+        size="medium"
         // helperText={props?.error ? props.error?.message : props?.helperText}
-        sx={{ textTransform: "capitalize", ...sx }}
-        value={value ? value : ""}
+        sx={{ textTransform: 'capitalize', ...sx }}
+        value={value || ''}
         displayEmpty
         renderValue={(v) => (
           <span
@@ -50,7 +50,7 @@ export default function Select({
                 : theme.palette.text.disabled
             }}
           >
-            {v?.length ? v : `${isAll ? "전체" : "선택"}`}
+            {v?.length ? v : `${isAll ? '전체' : '선택'}`}
           </span>
         )}
         // inputProps={{

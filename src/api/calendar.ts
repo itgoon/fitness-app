@@ -12,11 +12,15 @@ const URL = endpoints.calendar;
 const options = {
   revalidateIfStale: false,
   revalidateOnFocus: false,
-  revalidateOnReconnect: false,
+  revalidateOnReconnect: false
 };
 
 export function useGetEvents() {
-  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher, options);
+  const { data, isLoading, error, isValidating } = useSWR(
+    URL,
+    fetcher,
+    options
+  );
   const memoizedValue = useMemo(
     () =>
       // const events = data?.events.map((event: ICalendarEvent) => ({
@@ -30,7 +34,7 @@ export function useGetEvents() {
         eventsLoading: isLoading,
         eventsError: error,
         eventsValidating: isValidating,
-        eventsEmpty: true,
+        eventsEmpty: true
         // eventsEmpty: !isLoading && !data?.events.length,
       }),
     [data?.events, error, isLoading, isValidating]
@@ -58,7 +62,7 @@ export async function createEvent(eventData: ICalendarEvent) {
 
       return {
         ...currentData,
-        events,
+        events
       };
     },
     false
@@ -80,13 +84,14 @@ export async function updateEvent(eventData: Partial<ICalendarEvent>) {
   mutate(
     URL,
     (currentData: any) => {
-      const events: ICalendarEvent[] = currentData.events.map((event: ICalendarEvent) =>
-        event.id === eventData.id ? { ...event, ...eventData } : event
+      const events: ICalendarEvent[] = currentData.events.map(
+        (event: ICalendarEvent) =>
+          event.id === eventData.id ? { ...event, ...eventData } : event
       );
 
       return {
         ...currentData,
-        events,
+        events
       };
     },
     false
@@ -114,7 +119,7 @@ export async function deleteEvent(eventId: string) {
 
       return {
         ...currentData,
-        events,
+        events
       };
     },
     false

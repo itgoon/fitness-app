@@ -79,21 +79,33 @@ export default function NavList({ data, slotProps }: NavListProps) {
             ...(singleList && {
               p: 2,
               width: 'auto',
-              minWidth: 160,
-            }),
+              minWidth: 160
+            })
           }}
         >
           {singleList ? (
             <NavSubList data={data.children} slotProps={slotProps} />
           ) : (
-            <Masonry columns={3} spacing={3} defaultColumns={3} defaultSpacing={3}>
-              <NavSubList data={data.children} slotProps={slotProps} sx={{ mb: 2.5 }} />
+            <Masonry
+              columns={3}
+              spacing={3}
+              defaultColumns={3}
+              defaultSpacing={3}
+            >
+              <NavSubList
+                data={data.children}
+                slotProps={slotProps}
+                sx={{ mb: 2.5 }}
+              />
             </Masonry>
           )}
 
           <Stack spacing={3}>
             {!!data.moreLink && (
-              <MenuMoreLink path={data.moreLink.path} title={data.moreLink.title} />
+              <MenuMoreLink
+                path={data.moreLink.path}
+                title={data.moreLink.title}
+              />
             )}
 
             {!!data.products && (

@@ -11,9 +11,17 @@ type PresetsOptionsProps = {
   onChange: (newValue: string) => void;
 };
 
-export default function PresetsOptions({ value, onChange }: PresetsOptionsProps) {
+export default function PresetsOptions({
+  value,
+  onChange
+}: PresetsOptionsProps) {
   return (
-    <Box columnGap={2} rowGap={1.5} display="grid" gridTemplateColumns="repeat(3, 1fr)">
+    <Box
+      columnGap={2}
+      rowGap={1.5}
+      display="grid"
+      gridTemplateColumns="repeat(3, 1fr)"
+    >
       {presetOptions.map((option) => {
         const selected = value === option.name;
 
@@ -24,11 +32,12 @@ export default function PresetsOptions({ value, onChange }: PresetsOptionsProps)
             sx={{
               height: 56,
               borderRadius: 1,
-              border: (theme) => `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
+              border: (theme) =>
+                `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
               ...(selected && {
                 borderColor: 'transparent',
-                bgcolor: alpha(option.value, 0.08),
-              }),
+                bgcolor: alpha(option.value, 0.08)
+              })
             }}
           >
             <Box
@@ -39,11 +48,11 @@ export default function PresetsOptions({ value, onChange }: PresetsOptionsProps)
                 bgcolor: option.value,
                 transition: (theme) =>
                   theme.transitions.create(['transform'], {
-                    duration: theme.transitions.duration.shorter,
+                    duration: theme.transitions.duration.shorter
                   }),
                 ...(selected && {
-                  transform: 'scale(2)',
-                }),
+                  transform: 'scale(2)'
+                })
               }}
             />
           </ButtonBase>

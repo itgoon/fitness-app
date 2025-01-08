@@ -23,8 +23,8 @@ export default function ContractTable({ list, title, gap }: IContractTable) {
 
   if (list === undefined) return;
   return (
-    <Stack gap={gap ? gap : 2}>
-      <Typography variant={'Body18/bold'} children={title} color={black} />
+    <Stack gap={gap || 2}>
+      <Typography variant="Body18/bold" children={title} color={black} />
       <List disablePadding>
         {list.map((li, key) => (
           <MenuItem
@@ -32,12 +32,12 @@ export default function ContractTable({ list, title, gap }: IContractTable) {
             sx={{ padding: 0, margin: `0 !important`, minHeight: 48 }}
           >
             <Typography
-              variant={'Body14/semiBold'}
+              variant="Body14/semiBold"
               bgcolor={bgColor}
               width={90}
               height={48}
-              alignContent={'center'}
-              textAlign={'center'}
+              alignContent="center"
+              textAlign="center"
               color={white}
               borderTop={key !== 0 ? `1px solid ${white}` : undefined}
             >
@@ -45,7 +45,7 @@ export default function ContractTable({ list, title, gap }: IContractTable) {
             </Typography>
             <Typography
               variant="Body16/regular"
-              width={`calc(100% - 90px)`}
+              width="calc(100% - 90px)"
               height={48}
               color={black}
               padding={1.5}

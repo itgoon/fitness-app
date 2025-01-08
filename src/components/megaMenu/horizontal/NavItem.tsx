@@ -13,7 +13,10 @@ import { NavItemProps, NavItemStateProps } from '../types';
 // ----------------------------------------------------------------------
 
 const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
-  ({ title, path, icon, open, active, hasChild, externalLink, ...other }, ref) => {
+  (
+    { title, path, icon, open, active, hasChild, externalLink, ...other },
+    ref
+  ) => {
     const renderContent = (
       <StyledNavItem
         disableRipple
@@ -35,13 +38,25 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
           </Box>
         )}
 
-        {hasChild && <Iconify width={16} className="arrow" icon="eva:arrow-ios-downward-fill" />}
+        {hasChild && (
+          <Iconify
+            width={16}
+            className="arrow"
+            icon="eva:arrow-ios-downward-fill"
+          />
+        )}
       </StyledNavItem>
     );
 
     if (externalLink)
       return (
-        <Link href={path} target="_blank" rel="noopener" underline="none" color="inherit">
+        <Link
+          href={path}
+          target="_blank"
+          rel="noopener"
+          underline="none"
+          color="inherit"
+        >
           {renderContent}
         </Link>
       );
@@ -59,7 +74,7 @@ export default NavItem;
 // ----------------------------------------------------------------------
 
 const StyledNavItem = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== 'active',
+  shouldForwardProp: (prop) => prop !== 'active'
 })<NavItemStateProps>(({ active, open, theme }) => {
   const opened = open && !active;
 
@@ -69,26 +84,26 @@ const StyledNavItem = styled(ListItemButton, {
     minHeight: '100%',
     fontWeight: theme.typography.fontWeightMedium,
     transition: theme.transitions.create(['all'], {
-      duration: theme.transitions.duration.shorter,
+      duration: theme.transitions.duration.shorter
     }),
     '&:hover': {
-      backgroundColor: 'transparent',
+      backgroundColor: 'transparent'
     },
     '& .icon': {
       width: 20,
       height: 20,
       flexShrink: 0,
-      marginRight: theme.spacing(1),
+      marginRight: theme.spacing(1)
     },
     '& .arrow': {
-      marginLeft: theme.spacing(0.75),
+      marginLeft: theme.spacing(0.75)
     },
     ...(active && {
       color: theme.palette.primary.main,
-      fontWeight: theme.typography.fontWeightSemiBold,
+      fontWeight: theme.typography.fontWeightSemiBold
     }),
     ...(opened && {
-      opacity: 0.64,
-    }),
+      opacity: 0.64
+    })
   };
 });

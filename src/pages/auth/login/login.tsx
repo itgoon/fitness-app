@@ -1,19 +1,13 @@
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useForm } from 'react-hook-form';
-import * as Yup from 'yup';
-
 import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
-
-import { useBoolean } from 'src/hooks/useBoolean';
-
-import { useTheme } from '@mui/material';
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router';
-import { useAuth } from 'src/hooks/useAuth';
 import Button from 'src/components/Button';
 import Icon from 'src/components/Icon';
-import { AuthService } from 'src/service';
+import FormProvider, { RHFTextField } from 'src/components/hookForm';
+import { useLoginMutation } from 'src/hooks/mutations/authMutations';
+import { LoginSchema } from './_schema';
 
 // ----------------------------------------------------------------------
 
@@ -24,26 +18,14 @@ import { AuthService } from 'src/service';
  */
 export default function LoginView() {
   const navigate = useNavigate();
-  const { auth, login } = useAuth();
-  const password = useBoolean();
-  const { palette } = useTheme();
 
-  useEffect(() => {
-    if (!auth?.isLoggedIn) return;
-
-    navigate('/dashboard');
-  }, [auth]);
-
-  const LoginSchema = Yup.object().shape({
-    email: Yup.string().required('이메일을 입력해주새요.'),
-    password: Yup.string().required('비밀번호를 입력해주세요.')
-  });
+  const { mutate: loginMutate } = useLoginMutation();
 
   const methods = useForm({
     resolver: yupResolver(LoginSchema),
     defaultValues: {
-      email: 'rkgus60708@gmail.com',
-      password: 'rkgus12345'
+      email: '',
+      password: ''
     }
   });
   const {
@@ -52,58 +34,117 @@ export default function LoginView() {
   } = methods;
 
   const onSubmit = handleSubmit(async (data) => {
-    try {
-      AuthService.login(data);
-    } catch (err) {
-      //
-    }
+    loginMutate(data, {
+      onSuccess: () => {
+        navigate('/dashboard');
+      }
+    });
   });
-  const onClick = () => {
+
+  const onKakaoLogin = () => {
+    // onSubmit();
     navigate('/dashboard');
+    // window.ReactNativeWebView.postMessage(JSON.stringify({ type: 'signinKakao' }));
   };
 
   return (
     <Stack
       sx={{
-        backgroundColor: palette.primary.main,
-        flex: 1,
-        gap: 34,
-        justifyContent: 'end',
-        padding: 2.5
+        backgroundColor: 'primary.main',
+        width: '100%',
+        height: '100%',
+        px: 2.5,
+        display: 'flex',
+        justifyContent: 'center'
       }}
     >
-      <Stack sx={{ alignItems: 'center', gap: 3 }}>
-        <Typography variant="Body20/light" color={palette.common.white}>
-          오늘을 위한 당신의 스마트 비서
-        </Typography>
-        <Icon name="AppLogoSmall" size={186} sx={{ height: 64 }} />
-      </Stack>
-      <Stack gap={1.5}>
-        <Button
-          startIcon={'Kakao'}
-          size={'large'}
-          variant="contained"
-          typoVariant={'Body15/regular'}
-          children={'카카오 계정으로 시작하기'}
-          sx={{
-            height: 52,
-            backgroundColor: '#FEE500',
-            color: palette.common.black
-          }}
-          onClick={() => {
-            onSubmit();
-            navigate('/dashboard');
-          }}
-        />
-        <Button
-          startIcon={'Apple'}
-          typoVariant={'Body15/regular'}
-          size={'large'}
-          variant="contained"
-          sx={{ height: 52 }}
-          children={'Apple 계정으로 시작하기'}
-          onClick={() => onClick()}
-        />
+      <Stack gap={8}>
+        <Stack sx={{ alignItems: 'center', gap: 3 }}>
+          <Typography variant="Body20/light" color="white">
+            오늘을 위한 당신의 스마트 비서
+          </Typography>
+          <Icon name="AppLogoSmall" size={186} sx={{ height: 64 }} />
+        </Stack>
+
+        <FormProvider methods={methods}>
+          <Stack gap={4}>
+            <RHFTextField
+              name="email"
+              placeholder="이메일"
+              size="large"
+              variant="standard"
+              inputProps={{
+                sx: {
+                  color: 'white',
+                  borderBottom: '1px solid',
+                  backgroundColor: 'transparent',
+                  borderColor: 'grey.300',
+                  '&::placeholder': {
+                    color: 'primary.lighter'
+                  }
+                }
+              }}
+            />
+            <RHFTextField
+              name="password"
+              placeholder="비밀번호"
+              size="large"
+              variant="standard"
+              inputProps={{
+                sx: {
+                  color: 'white',
+                  borderBottom: '1px solid',
+                  backgroundColor: 'transparent',
+                  borderColor: 'grey.300',
+                  '&::placeholder': {
+                    color: 'primary.lighter'
+                  }
+                }
+              }}
+            />
+
+            <Button
+              size="large"
+              variant="contained"
+              typoVariant="Body15/regular"
+              disabled={isSubmitting}
+              onClick={onSubmit}
+              sx={{
+                height: 52,
+                backgroundColor: '#ffffff',
+                color: 'text.primary'
+              }}
+            >
+              로그인
+            </Button>
+          </Stack>
+        </FormProvider>
+
+        <Stack gap={1.5}>
+          <Button
+            startIcon="Kakao"
+            size="large"
+            variant="contained"
+            typoVariant="Body15/regular"
+            sx={{
+              height: 52,
+              backgroundColor: '#FEE500',
+              color: 'text.primary'
+            }}
+            onClick={onKakaoLogin}
+          >
+            카카오 계정으로 시작하기
+          </Button>
+          <Button
+            startIcon="Apple"
+            typoVariant="Body15/regular"
+            size="large"
+            variant="contained"
+            sx={{ height: 52 }}
+          >
+            Apple 계정으로 시작하기
+          </Button>
+        </Stack>
       </Stack>
     </Stack>
   );

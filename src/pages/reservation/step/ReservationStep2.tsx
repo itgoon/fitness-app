@@ -9,19 +9,19 @@ export default function ReservationStep2({ reservationData, onNext }: IStep) {
 
   if (!reservationData) return;
   return (
-    <Stack height={'100%'} px={2.5} pt={5} justifyContent={'space-between'}>
+    <Stack height="100%" px={2.5} pt={5} justifyContent="space-between">
       <Stack gap={2}>
         <Typography
-          variant={'Body20/semiBold'}
-          children={'아래 예약 정보를 확인해주세요'}
+          variant="Body20/semiBold"
+          children="아래 예약 정보를 확인해주세요"
         />
         <EmptyCard>
-          <Stack width={'100%'} px={2.5} py={1} gap={0.5}>
+          <Stack width="100%" px={2.5} py={1} gap={0.5}>
             <Stack gap={2}>
               {reservationData?.map((data, key) => (
                 <Box
-                  display={'flex'}
-                  justifyContent={'space-between'}
+                  display="flex"
+                  justifyContent="space-between"
                   key={key}
                 >
                   <Typography
@@ -37,10 +37,10 @@ export default function ReservationStep2({ reservationData, onNext }: IStep) {
         </EmptyCard>
       </Stack>
       <Button
-        size={'large'}
-        variant={'contained'}
-        color={'primary'}
-        children={'예약하기'}
+        size="large"
+        variant="contained"
+        color="primary"
+        children="예약하기"
         onClick={onNext}
       />
     </Stack>

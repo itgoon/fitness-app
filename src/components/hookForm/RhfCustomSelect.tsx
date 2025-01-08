@@ -1,16 +1,16 @@
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from 'react-hook-form';
 
-import Box from "@mui/material/Box";
-import Checkbox from "@mui/material/Checkbox";
-import Chip from "@mui/material/Chip";
-import FormControl, { FormControlProps } from "@mui/material/FormControl";
-import FormHelperText from "@mui/material/FormHelperText";
-import InputLabel from "@mui/material/InputLabel";
-import MenuItem from "@mui/material/MenuItem";
-import Select from "@mui/material/Select";
-import TextField, { TextFieldProps } from "@mui/material/TextField";
-import { SxProps, Theme } from "@mui/material/styles";
-import { ReactNode } from "react";
+import Box from '@mui/material/Box';
+import Checkbox from '@mui/material/Checkbox';
+import Chip from '@mui/material/Chip';
+import FormControl, { FormControlProps } from '@mui/material/FormControl';
+import FormHelperText from '@mui/material/FormHelperText';
+import InputLabel from '@mui/material/InputLabel';
+import MenuItem from '@mui/material/MenuItem';
+import Select from '@mui/material/Select';
+import TextField, { TextFieldProps } from '@mui/material/TextField';
+import { SxProps, Theme } from '@mui/material/styles';
+import { ReactNode } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -49,13 +49,13 @@ export function RHFSelect({
                 sx: {
                   ...(!native && {
                     maxHeight:
-                      typeof maxHeight === "number" ? maxHeight : "unset"
+                      typeof maxHeight === 'number' ? maxHeight : 'unset'
                   }),
                   ...PaperPropsSx
                 }
               }
             },
-            sx: { textTransform: "capitalize" }
+            sx: { textTransform: 'capitalize' }
           }}
           error={!!error}
           helperText={error ? error?.message : helperText}
@@ -101,12 +101,12 @@ export function RHFMultiSelect({
     );
 
     if (!selectedItems.length && placeholder) {
-      return <Box sx={{ color: "text.disabled" }}>{placeholder}</Box>;
+      return <Box sx={{ color: 'text.disabled' }}>{placeholder}</Box>;
     }
 
     if (chip) {
       return (
-        <Box sx={{ display: "flex", flexWrap: "wrap", gap: 0.5 }}>
+        <Box sx={{ display: 'flex', flexWrap: 'wrap', gap: 0.5 }}>
           {selectedItems.map((item) => (
             <Chip key={item.value} size="small" label={item.label} />
           ))}
@@ -114,7 +114,7 @@ export function RHFMultiSelect({
       );
     }
 
-    return selectedItems.map((item) => item.label).join(", ");
+    return selectedItems.map((item) => item.label).join(', ');
   };
 
   return (

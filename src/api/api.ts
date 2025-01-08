@@ -51,6 +51,31 @@ export type AuthControllerGetLoginInfo200ResponseData = MemberDto;
 /**
  * 
  * @export
+ * @interface CenterControllerFindOne200Response
+ */
+export interface CenterControllerFindOne200Response {
+    /**
+     * \'SUCCπESS\' | \'FAIL\'
+     * @type {string}
+     * @memberof CenterControllerFindOne200Response
+     */
+    'result'?: string;
+    /**
+     * 
+     * @type {CenterControllerFindOne200ResponseData}
+     * @memberof CenterControllerFindOne200Response
+     */
+    'data'?: CenterControllerFindOne200ResponseData;
+}
+/**
+ * @type CenterControllerFindOne200ResponseData
+ * @export
+ */
+export type CenterControllerFindOne200ResponseData = CenterDto;
+
+/**
+ * 
+ * @export
  * @interface CenterDto
  */
 export interface CenterDto {
@@ -114,6 +139,80 @@ export interface CenterDto {
      * @memberof CenterDto
      */
     'startAt': string | null;
+}
+/**
+ * 
+ * @export
+ * @interface CenterPolicyControllerFindOne200Response
+ */
+export interface CenterPolicyControllerFindOne200Response {
+    /**
+     * \'SUCCπESS\' | \'FAIL\'
+     * @type {string}
+     * @memberof CenterPolicyControllerFindOne200Response
+     */
+    'result'?: string;
+    /**
+     * 
+     * @type {CenterPolicyControllerFindOne200ResponseData}
+     * @memberof CenterPolicyControllerFindOne200Response
+     */
+    'data'?: CenterPolicyControllerFindOne200ResponseData;
+}
+/**
+ * @type CenterPolicyControllerFindOne200ResponseData
+ * @export
+ */
+export type CenterPolicyControllerFindOne200ResponseData = CenterPolicyDto;
+
+/**
+ * 
+ * @export
+ * @interface CenterPolicyDto
+ */
+export interface CenterPolicyDto {
+    /**
+     * 생성일자
+     * @type {string}
+     * @memberof CenterPolicyDto
+     */
+    'createdAt': string;
+    /**
+     * 수정일자
+     * @type {string}
+     * @memberof CenterPolicyDto
+     */
+    'updatedAt': string;
+    /**
+     * 약관 정책일련번호
+     * @type {number}
+     * @memberof CenterPolicyDto
+     */
+    'cpSeq': number;
+    /**
+     * 개인정보약관
+     * @type {string}
+     * @memberof CenterPolicyDto
+     */
+    'personalInfo': string;
+    /**
+     * 이용정책규정
+     * @type {string}
+     * @memberof CenterPolicyDto
+     */
+    'provision': string;
+    /**
+     * 약관 정책일련번호
+     * @type {number}
+     * @memberof CenterPolicyDto
+     */
+    'centerSeq': number;
+    /**
+     * 개인정보약관
+     * @type {string}
+     * @memberof CenterPolicyDto
+     */
+    'centerNm': string;
 }
 /**
  * 
@@ -254,31 +353,6 @@ export interface CodeGroupsDto {
 /**
  * 
  * @export
- * @interface ContractControllerCreate200Response
- */
-export interface ContractControllerCreate200Response {
-    /**
-     * \'SUCCπESS\' | \'FAIL\'
-     * @type {string}
-     * @memberof ContractControllerCreate200Response
-     */
-    'result'?: string;
-    /**
-     * 
-     * @type {ContractControllerCreate200ResponseData}
-     * @memberof ContractControllerCreate200Response
-     */
-    'data'?: ContractControllerCreate200ResponseData;
-}
-/**
- * @type ContractControllerCreate200ResponseData
- * @export
- */
-export type ContractControllerCreate200ResponseData = ContractDto;
-
-/**
- * 
- * @export
  * @interface ContractControllerFindAll200Response
  */
 export interface ContractControllerFindAll200Response {
@@ -300,6 +374,31 @@ export interface ContractControllerFindAll200Response {
  * @export
  */
 export type ContractControllerFindAll200ResponseData = ContractsDto;
+
+/**
+ * 
+ * @export
+ * @interface ContractControllerFindOne200Response
+ */
+export interface ContractControllerFindOne200Response {
+    /**
+     * \'SUCCπESS\' | \'FAIL\'
+     * @type {string}
+     * @memberof ContractControllerFindOne200Response
+     */
+    'result'?: string;
+    /**
+     * 
+     * @type {ContractControllerFindOne200ResponseData}
+     * @memberof ContractControllerFindOne200Response
+     */
+    'data'?: ContractControllerFindOne200ResponseData;
+}
+/**
+ * @type ContractControllerFindOne200ResponseData
+ * @export
+ */
+export type ContractControllerFindOne200ResponseData = ContractDto;
 
 /**
  * 
@@ -332,53 +431,29 @@ export interface ContractDto {
      */
     'product': ProductDto;
     /**
-     * 회원
-     * @type {MemberDto}
+     * 센터
+     * @type {CenterDto}
      * @memberof ContractDto
      */
-    'member': MemberDto;
+    'center': CenterDto;
     /**
-     * 담당직원
+     * 담당트레이너
      * @type {MemberDto}
      * @memberof ContractDto
      */
     'empMember': MemberDto;
-    /**
-     * 연결 계약서들
-     * @type {ContractDto}
-     * @memberof ContractDto
-     */
-    'sibilingCtrs': ContractDto;
-    /**
-     * 연결 대표 계약서
-     * @type {ContractDto}
-     * @memberof ContractDto
-     */
-    'sibilingCtr': ContractDto;
-    /**
-     * 운동목적
-     * @type {string}
-     * @memberof ContractDto
-     */
-    'purpose': string;
-    /**
-     * 방문경로
-     * @type {string}
-     * @memberof ContractDto
-     */
-    'visit': string;
-    /**
-     * 메모
-     * @type {string}
-     * @memberof ContractDto
-     */
-    'memo': string;
     /**
      * 시작일자 YYYY-MM-DD
      * @type {string}
      * @memberof ContractDto
      */
     'startedAt': string;
+    /**
+     * 종료일자 YYYY-MM-DD
+     * @type {string}
+     * @memberof ContractDto
+     */
+    'endAt': string;
     /**
      * 결제수단
      * @type {string}
@@ -398,56 +473,6 @@ export interface ContractDto {
      */
     'sign': string;
 }
-/**
- * 
- * @export
- * @interface ContractProgressControllerCreate200Response
- */
-export interface ContractProgressControllerCreate200Response {
-    /**
-     * \'SUCCπESS\' | \'FAIL\'
-     * @type {string}
-     * @memberof ContractProgressControllerCreate200Response
-     */
-    'result'?: string;
-    /**
-     * 
-     * @type {ContractProgressControllerCreate200ResponseData}
-     * @memberof ContractProgressControllerCreate200Response
-     */
-    'data'?: ContractProgressControllerCreate200ResponseData;
-}
-/**
- * @type ContractProgressControllerCreate200ResponseData
- * @export
- */
-export type ContractProgressControllerCreate200ResponseData = ContractProgressDto;
-
-/**
- * 
- * @export
- * @interface ContractProgressControllerFindAll200Response
- */
-export interface ContractProgressControllerFindAll200Response {
-    /**
-     * \'SUCCπESS\' | \'FAIL\'
-     * @type {string}
-     * @memberof ContractProgressControllerFindAll200Response
-     */
-    'result'?: string;
-    /**
-     * 
-     * @type {ContractProgressControllerFindAll200ResponseData}
-     * @memberof ContractProgressControllerFindAll200Response
-     */
-    'data'?: ContractProgressControllerFindAll200ResponseData;
-}
-/**
- * @type ContractProgressControllerFindAll200ResponseData
- * @export
- */
-export type ContractProgressControllerFindAll200ResponseData = ContractProgresssDto;
-
 /**
  * 
  * @export
@@ -500,25 +525,6 @@ export interface ContractProgressDto {
 /**
  * 
  * @export
- * @interface ContractProgresssDto
- */
-export interface ContractProgresssDto {
-    /**
-     * 
-     * @type {Array<ContractProgressDto>}
-     * @memberof ContractProgresssDto
-     */
-    'data': Array<ContractProgressDto>;
-    /**
-     * 
-     * @type {PageMetaDto}
-     * @memberof ContractProgresssDto
-     */
-    'meta': PageMetaDto;
-}
-/**
- * 
- * @export
  * @interface ContractsDto
  */
 export interface ContractsDto {
@@ -534,228 +540,6 @@ export interface ContractsDto {
      * @memberof ContractsDto
      */
     'meta': PageMetaDto;
-}
-/**
- * 
- * @export
- * @interface CreateContractDto
- */
-export interface CreateContractDto {
-    /**
-     * 상품일련번호
-     * @type {number}
-     * @memberof CreateContractDto
-     */
-    'pdtSeq': number;
-    /**
-     * 회원
-     * @type {number}
-     * @memberof CreateContractDto
-     */
-    'mbrSeq'?: number;
-    /**
-     * 회원명
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'mbrNm': string;
-    /**
-     * 성별 Male / Female
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'mbrSex': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'mbrTel': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'mbrBirth'?: string | null;
-    /**
-     * 주소
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'mbrAddr'?: string | null;
-    /**
-     * 상세주소
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'mbrAddrDetail'?: string | null;
-    /**
-     * 담당직원
-     * @type {number}
-     * @memberof CreateContractDto
-     */
-    'empMbrSeq': number;
-    /**
-     * 연결계약서
-     * @type {number}
-     * @memberof CreateContractDto
-     */
-    'sibilingCtrSeq'?: number;
-    /**
-     * 운동목적, required : true
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'purpose': string;
-    /**
-     * 방문경로
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'visit': string;
-    /**
-     * 메모
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'memo'?: string | null;
-    /**
-     * 시작일자 YYYY-MM-DD
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'startedAt': string;
-    /**
-     * 결제수단
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'payType': string;
-    /**
-     * 결제금액
-     * @type {number}
-     * @memberof CreateContractDto
-     */
-    'pay': number;
-    /**
-     * 서명이미지
-     * @type {string}
-     * @memberof CreateContractDto
-     */
-    'sign'?: string | null;
-}
-/**
- * 
- * @export
- * @interface CreateContractProgressDto
- */
-export interface CreateContractProgressDto {
-    /**
-     * 서명이미지
-     * @type {string}
-     * @memberof CreateContractProgressDto
-     */
-    'ctrPrgSign'?: string | null;
-    /**
-     * 회차
-     * @type {number}
-     * @memberof CreateContractProgressDto
-     */
-    'ctrPrgCnt'?: number;
-    /**
-     * 일정Seq
-     * @type {number}
-     * @memberof CreateContractProgressDto
-     */
-    'schSeq'?: number;
-    /**
-     * 계약seq
-     * @type {number}
-     * @memberof CreateContractProgressDto
-     */
-    'ctrSeq'?: number;
-}
-/**
- * 
- * @export
- * @interface CreateMemberDto
- */
-export interface CreateMemberDto {
-    /**
-     * 이메일형식
-     * @type {string}
-     * @memberof CreateMemberDto
-     */
-    'mbrEmail'?: string;
-    /**
-     * 비밀번호
-     * @type {string}
-     * @memberof CreateMemberDto
-     */
-    'mbrPwd'?: string;
-    /**
-     * 이름
-     * @type {string}
-     * @memberof CreateMemberDto
-     */
-    'mbrNm'?: string | null;
-    /**
-     * 연락처 000-0000-0000
-     * @type {string}
-     * @memberof CreateMemberDto
-     */
-    'mbrTel'?: string | null;
-    /**
-     * 생년월일 YYYY-MM-DD
-     * @type {string}
-     * @memberof CreateMemberDto
-     */
-    'mbrBirth'?: string | null;
-    /**
-     * 성별 Male / Female
-     * @type {string}
-     * @memberof CreateMemberDto
-     */
-    'mbrSex'?: string | null;
-    /**
-     * 
-     * @type {RoleType}
-     * @memberof CreateMemberDto
-     */
-    'roleType'?: RoleType;
-}
-
-
-/**
- * 
- * @export
- * @interface CreateMultiContractDto
- */
-export interface CreateMultiContractDto {
-    /**
-     * 가입 회원 목록
-     * @type {Array<MultiContractMemberDto>}
-     * @memberof CreateMultiContractDto
-     */
-    'members': Array<MultiContractMemberDto>;
-    /**
-     * 상품일련번호
-     * @type {number}
-     * @memberof CreateMultiContractDto
-     */
-    'pdtSeq': number;
-    /**
-     * 담당직원
-     * @type {number}
-     * @memberof CreateMultiContractDto
-     */
-    'empMbrSeq': number;
-    /**
-     * 시작일자 YYYY-MM-DD
-     * @type {string}
-     * @memberof CreateMultiContractDto
-     */
-    'startedAt': string;
 }
 /**
  * 
@@ -821,51 +605,39 @@ export interface CreateMultiScheduleDto {
 /**
  * 
  * @export
- * @interface CreateProductDto
+ * @interface CreateUserTokenDto
  */
-export interface CreateProductDto {
+export interface CreateUserTokenDto {
     /**
-     * 상품명
+     * 멤버일련번호
+     * @type {number}
+     * @memberof CreateUserTokenDto
+     */
+    'mbrSeq'?: number;
+    /**
+     * 디바이스ID
      * @type {string}
-     * @memberof CreateProductDto
+     * @memberof CreateUserTokenDto
      */
-    'pdtNm'?: string | null;
+    'deviceId'?: string | null;
     /**
-     * 상품카테고리일련번호
-     * @type {number}
-     * @memberof CreateProductDto
-     */
-    'pdtCtgSeq'?: number;
-    /**
-     * 상품가격
-     * @type {number}
-     * @memberof CreateProductDto
-     */
-    'pdtPrice'?: number;
-    /**
-     * 이용횟수
-     * @type {number}
-     * @memberof CreateProductDto
-     */
-    'pdtCount': number;
-    /**
-     * 유효기간(일수 OR 일자)
-     * @type {number}
-     * @memberof CreateProductDto
-     */
-    'pdtExpPeriod': number;
-    /**
-     * 판매시작일YYYY-MM-DD
+     * 디바이스version
      * @type {string}
-     * @memberof CreateProductDto
+     * @memberof CreateUserTokenDto
      */
-    'pdtSaleStartedAt': string;
+    'deviceVersion'?: string | null;
     /**
-     * 판매종료일YYYY-MM-DD
+     * 디바이스토큰
      * @type {string}
-     * @memberof CreateProductDto
+     * @memberof CreateUserTokenDto
      */
-    'pdtSaleEndAt': string;
+    'deviceToken'?: string | null;
+    /**
+     * 디바이스OS
+     * @type {string}
+     * @memberof CreateUserTokenDto
+     */
+    'deviceOs'?: string | null;
 }
 /**
  * 
@@ -989,91 +761,6 @@ export interface MemberDto {
      * @memberof MemberDto
      */
     'mbrRoles': Array<MbrRoleDto>;
-}
-/**
- * 
- * @export
- * @interface MultiContractMemberDto
- */
-export interface MultiContractMemberDto {
-    /**
-     * 회원
-     * @type {number}
-     * @memberof MultiContractMemberDto
-     */
-    'mbrSeq'?: number;
-    /**
-     * 회원명
-     * @type {string}
-     * @memberof MultiContractMemberDto
-     */
-    'mbrNm': string;
-    /**
-     * 성별 Male / Female
-     * @type {string}
-     * @memberof MultiContractMemberDto
-     */
-    'mbrSex': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MultiContractMemberDto
-     */
-    'mbrTel': string;
-    /**
-     * 
-     * @type {string}
-     * @memberof MultiContractMemberDto
-     */
-    'mbrBirth'?: string | null;
-    /**
-     * 주소
-     * @type {string}
-     * @memberof MultiContractMemberDto
-     */
-    'mbrAddr'?: string | null;
-    /**
-     * 상세주소
-     * @type {string}
-     * @memberof MultiContractMemberDto
-     */
-    'mbrAddrDetail'?: string | null;
-    /**
-     * 운동목적, required : true
-     * @type {string}
-     * @memberof MultiContractMemberDto
-     */
-    'purpose': string;
-    /**
-     * 방문경로
-     * @type {string}
-     * @memberof MultiContractMemberDto
-     */
-    'visit': string;
-    /**
-     * 메모
-     * @type {string}
-     * @memberof MultiContractMemberDto
-     */
-    'memo'?: string | null;
-    /**
-     * 서명이미지
-     * @type {string}
-     * @memberof MultiContractMemberDto
-     */
-    'sign'?: string | null;
-    /**
-     * 결제수단
-     * @type {string}
-     * @memberof MultiContractMemberDto
-     */
-    'payType': string;
-    /**
-     * 결제금액
-     * @type {number}
-     * @memberof MultiContractMemberDto
-     */
-    'pay': number;
 }
 /**
  * 
@@ -1301,56 +988,6 @@ export interface ProductCategoryDto {
 /**
  * 
  * @export
- * @interface ProductControllerCreate200Response
- */
-export interface ProductControllerCreate200Response {
-    /**
-     * \'SUCCπESS\' | \'FAIL\'
-     * @type {string}
-     * @memberof ProductControllerCreate200Response
-     */
-    'result'?: string;
-    /**
-     * 
-     * @type {ProductControllerCreate200ResponseData}
-     * @memberof ProductControllerCreate200Response
-     */
-    'data'?: ProductControllerCreate200ResponseData;
-}
-/**
- * @type ProductControllerCreate200ResponseData
- * @export
- */
-export type ProductControllerCreate200ResponseData = ProductDto;
-
-/**
- * 
- * @export
- * @interface ProductControllerFindAll200Response
- */
-export interface ProductControllerFindAll200Response {
-    /**
-     * \'SUCCπESS\' | \'FAIL\'
-     * @type {string}
-     * @memberof ProductControllerFindAll200Response
-     */
-    'result'?: string;
-    /**
-     * 
-     * @type {ProductControllerFindAll200ResponseData}
-     * @memberof ProductControllerFindAll200Response
-     */
-    'data'?: ProductControllerFindAll200ResponseData;
-}
-/**
- * @type ProductControllerFindAll200ResponseData
- * @export
- */
-export type ProductControllerFindAll200ResponseData = ProductsDto;
-
-/**
- * 
- * @export
  * @interface ProductDto
  */
 export interface ProductDto {
@@ -1409,52 +1046,17 @@ export interface ProductDto {
      */
     'pdtSaleEndAt': string;
     /**
-     * 
-     * @type {ProductSaleType}
+     * 상품타입 코드로 넣어주세요 
+     * @type {string}
      * @memberof ProductDto
      */
-    'pdtType'?: ProductSaleType;
+    'pdtType': string;
     /**
      * 상품카테고리
      * @type {ProductCategoryDto}
      * @memberof ProductDto
      */
     'productCategory': ProductCategoryDto;
-}
-
-
-/**
- * 
- * @export
- * @enum {string}
- */
-
-export const ProductSaleType = {
-    None: 'None',
-    Period: 'Period'
-} as const;
-
-export type ProductSaleType = typeof ProductSaleType[keyof typeof ProductSaleType];
-
-
-/**
- * 
- * @export
- * @interface ProductsDto
- */
-export interface ProductsDto {
-    /**
-     * 
-     * @type {Array<ProductDto>}
-     * @memberof ProductsDto
-     */
-    'data': Array<ProductDto>;
-    /**
-     * 
-     * @type {PageMetaDto}
-     * @memberof ProductsDto
-     */
-    'meta': PageMetaDto;
 }
 /**
  * 
@@ -1659,9 +1261,15 @@ export interface RecordFileDto {
      * @memberof RecordFileDto
      */
     'order': number;
+    /**
+     * 파일  메모(파일과 같은 순서로 , 로 구분해 보내주세요. 없을 시 공란 으로 보내주세요.)
+     * @type {string}
+     * @memberof RecordFileDto
+     */
+    'desc'?: string | null;
 }
 /**
- * 등록 파일 타입 FITNESS | DIET
+ * 기존 그대로 보내주세요. 수정X
  * @export
  * @enum {string}
  */
@@ -1789,7 +1397,7 @@ export interface RoleDto {
 
 
 /**
- * 
+ * role type
  * @export
  * @enum {string}
  */
@@ -1856,6 +1464,19 @@ export interface ScheduleControllerFindUserSchedule200Response {
  */
 export type ScheduleControllerFindUserSchedule200ResponseData = SchedulesDto;
 
+/**
+ * 
+ * @export
+ * @interface ScheduleControllerFindUserScheduleList200Response
+ */
+export interface ScheduleControllerFindUserScheduleList200Response {
+    /**
+     * \'SUCCESS\' | \'FAIL\'
+     * @type {string}
+     * @memberof ScheduleControllerFindUserScheduleList200Response
+     */
+    'result'?: string;
+}
 /**
  * 
  * @export
@@ -1953,198 +1574,6 @@ export interface SchedulesDto {
      * @memberof SchedulesDto
      */
     'meta': PageMetaDto;
-}
-/**
- * 
- * @export
- * @interface UpdateContractDto
- */
-export interface UpdateContractDto {
-    /**
-     * 
-     * @type {string}
-     * @memberof UpdateContractDto
-     */
-    'mbrTel'?: string | null;
-    /**
-     * 주소
-     * @type {string}
-     * @memberof UpdateContractDto
-     */
-    'mbrAddr'?: string | null;
-    /**
-     * 상세주소
-     * @type {string}
-     * @memberof UpdateContractDto
-     */
-    'mbrAddrDetail'?: string | null;
-    /**
-     * 담당직원
-     * @type {number}
-     * @memberof UpdateContractDto
-     */
-    'empMbrSeq'?: number;
-    /**
-     * 연결계약서
-     * @type {number}
-     * @memberof UpdateContractDto
-     */
-    'sibilingCtrSeq'?: number;
-    /**
-     * 운동목적
-     * @type {string}
-     * @memberof UpdateContractDto
-     */
-    'purpose'?: string | null;
-    /**
-     * 방문경로
-     * @type {string}
-     * @memberof UpdateContractDto
-     */
-    'visit'?: string | null;
-    /**
-     * 메모
-     * @type {string}
-     * @memberof UpdateContractDto
-     */
-    'memo'?: string | null;
-    /**
-     * 시작일자 YYYY-MM-DD
-     * @type {string}
-     * @memberof UpdateContractDto
-     */
-    'startedAt'?: string | null;
-    /**
-     * 결제수단
-     * @type {string}
-     * @memberof UpdateContractDto
-     */
-    'payType': string;
-    /**
-     * 결제금액
-     * @type {number}
-     * @memberof UpdateContractDto
-     */
-    'pay': number;
-    /**
-     * 서명이미지
-     * @type {string}
-     * @memberof UpdateContractDto
-     */
-    'sign'?: string | null;
-    /**
-     * 일시정지 일수
-     * @type {number}
-     * @memberof UpdateContractDto
-     */
-    'pauseDateCnt'?: number;
-}
-/**
- * 
- * @export
- * @interface UpdateContractProgressDto
- */
-export interface UpdateContractProgressDto {
-    /**
-     * 서명이미지
-     * @type {string}
-     * @memberof UpdateContractProgressDto
-     */
-    'ctrPrgSign'?: string | null;
-    /**
-     * 회차
-     * @type {number}
-     * @memberof UpdateContractProgressDto
-     */
-    'ctrPrgCnt'?: number;
-    /**
-     * 일정Seq
-     * @type {number}
-     * @memberof UpdateContractProgressDto
-     */
-    'schSeq'?: number;
-    /**
-     * 계약seq
-     * @type {number}
-     * @memberof UpdateContractProgressDto
-     */
-    'ctrSeq'?: number;
-}
-/**
- * 
- * @export
- * @interface UpdateMemberDto
- */
-export interface UpdateMemberDto {
-    /**
-     * 이름
-     * @type {string}
-     * @memberof UpdateMemberDto
-     */
-    'mbrNm'?: string | null;
-    /**
-     * 연락처 000-0000-0000
-     * @type {string}
-     * @memberof UpdateMemberDto
-     */
-    'mbrTel'?: string | null;
-    /**
-     * 
-     * @type {RoleType}
-     * @memberof UpdateMemberDto
-     */
-    'roleType'?: RoleType;
-}
-
-
-/**
- * 
- * @export
- * @interface UpdateProductDto
- */
-export interface UpdateProductDto {
-    /**
-     * 상품명
-     * @type {string}
-     * @memberof UpdateProductDto
-     */
-    'pdtNm'?: string | null;
-    /**
-     * 상품카테고리일련번호
-     * @type {number}
-     * @memberof UpdateProductDto
-     */
-    'pdtCtgSeq'?: number;
-    /**
-     * 상품가격
-     * @type {number}
-     * @memberof UpdateProductDto
-     */
-    'pdtPrice'?: number;
-    /**
-     * 이용횟수
-     * @type {number}
-     * @memberof UpdateProductDto
-     */
-    'pdtCount': number;
-    /**
-     * 유효기간(일수 OR 일자)
-     * @type {number}
-     * @memberof UpdateProductDto
-     */
-    'pdtExpPeriod': number;
-    /**
-     * 판매시작일YYYY-MM-DD
-     * @type {string}
-     * @memberof UpdateProductDto
-     */
-    'pdtSaleStartedAt': string;
-    /**
-     * 판매종료일YYYY-MM-DD
-     * @type {string}
-     * @memberof UpdateProductDto
-     */
-    'pdtSaleEndAt': string;
 }
 /**
  * 
@@ -2322,151 +1751,119 @@ export interface UpdateScheduleDto {
 /**
  * 
  * @export
- * @interface UserControllerCreate200Response
+ * @interface UpdateUserTokenDto
  */
-export interface UserControllerCreate200Response {
+export interface UpdateUserTokenDto {
+    /**
+     * 멤버일련번호
+     * @type {number}
+     * @memberof UpdateUserTokenDto
+     */
+    'mbrSeq'?: number;
+    /**
+     * 디바이스ID
+     * @type {string}
+     * @memberof UpdateUserTokenDto
+     */
+    'deviceId'?: string | null;
+    /**
+     * 디바이스version
+     * @type {string}
+     * @memberof UpdateUserTokenDto
+     */
+    'deviceVersion'?: string | null;
+    /**
+     * 디바이스토큰
+     * @type {string}
+     * @memberof UpdateUserTokenDto
+     */
+    'deviceToken'?: string | null;
+    /**
+     * 디바이스OS
+     * @type {string}
+     * @memberof UpdateUserTokenDto
+     */
+    'deviceOs'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface UserTokenControllerFindOne200Response
+ */
+export interface UserTokenControllerFindOne200Response {
     /**
      * \'SUCCπESS\' | \'FAIL\'
      * @type {string}
-     * @memberof UserControllerCreate200Response
+     * @memberof UserTokenControllerFindOne200Response
      */
     'result'?: string;
     /**
      * 
-     * @type {UserControllerCreate200ResponseData}
-     * @memberof UserControllerCreate200Response
+     * @type {UserTokenControllerFindOne200ResponseData}
+     * @memberof UserTokenControllerFindOne200Response
      */
-    'data'?: UserControllerCreate200ResponseData;
+    'data'?: UserTokenControllerFindOne200ResponseData;
 }
 /**
- * @type UserControllerCreate200ResponseData
+ * @type UserTokenControllerFindOne200ResponseData
  * @export
  */
-export type UserControllerCreate200ResponseData = UserDto;
+export type UserTokenControllerFindOne200ResponseData = UserTokenDto;
 
 /**
  * 
  * @export
- * @interface UserControllerDelete200Response
+ * @interface UserTokenDto
  */
-export interface UserControllerDelete200Response {
-    /**
-     * \'SUCCESS\' | \'FAIL\'
-     * @type {string}
-     * @memberof UserControllerDelete200Response
-     */
-    'result'?: string;
-}
-/**
- * 
- * @export
- * @interface UserControllerFindAllList200Response
- */
-export interface UserControllerFindAllList200Response {
-    /**
-     * \'SUCCπESS\' | \'FAIL\'
-     * @type {string}
-     * @memberof UserControllerFindAllList200Response
-     */
-    'result'?: string;
-    /**
-     * 
-     * @type {UserControllerFindAllList200ResponseData}
-     * @memberof UserControllerFindAllList200Response
-     */
-    'data'?: UserControllerFindAllList200ResponseData;
-}
-/**
- * @type UserControllerFindAllList200ResponseData
- * @export
- */
-export type UserControllerFindAllList200ResponseData = UsersDto;
-
-/**
- * 
- * @export
- * @interface UserDto
- */
-export interface UserDto {
+export interface UserTokenDto {
     /**
      * 생성일자
      * @type {string}
-     * @memberof UserDto
+     * @memberof UserTokenDto
      */
     'createdAt': string;
     /**
      * 수정일자
      * @type {string}
-     * @memberof UserDto
+     * @memberof UserTokenDto
      */
     'updatedAt': string;
     /**
-     * 회원일련번호
+     * 유저토큰일련번호
      * @type {number}
-     * @memberof UserDto
+     * @memberof UserTokenDto
+     */
+    'tkSeq': number;
+    /**
+     * 멤버일련번호
+     * @type {number}
+     * @memberof UserTokenDto
      */
     'mbrSeq'?: number;
     /**
-     * 회원식별자-이메일
+     * 디바이스id
      * @type {string}
-     * @memberof UserDto
+     * @memberof UserTokenDto
      */
-    'mbrEmail'?: string | null;
+    'deviceId'?: string | null;
     /**
-     * 연락처
+     * 디바이스version
      * @type {string}
-     * @memberof UserDto
+     * @memberof UserTokenDto
      */
-    'mbrTel'?: string | null;
+    'deviceVersion'?: string | null;
     /**
-     * 회원명
+     * 디바이스토큰
      * @type {string}
-     * @memberof UserDto
+     * @memberof UserTokenDto
      */
-    'mbrNm'?: string | null;
+    'deviceToken'?: string | null;
     /**
-     * 생년월일
+     * 디바이스OS
      * @type {string}
-     * @memberof UserDto
+     * @memberof UserTokenDto
      */
-    'mbrBirth'?: string | null;
-    /**
-     * 메모
-     * @type {string}
-     * @memberof UserDto
-     */
-    'mbrMemo'?: string | null;
-    /**
-     * 권한목록
-     * @type {Array<MbrRoleDto>}
-     * @memberof UserDto
-     */
-    'mbrRoles': Array<MbrRoleDto>;
-    /**
-     * 계약목록
-     * @type {Array<ContractDto>}
-     * @memberof UserDto
-     */
-    'contracts': Array<ContractDto>;
-}
-/**
- * 
- * @export
- * @interface UsersDto
- */
-export interface UsersDto {
-    /**
-     * 
-     * @type {Array<UserDto>}
-     * @memberof UsersDto
-     */
-    'data': Array<UserDto>;
-    /**
-     * 
-     * @type {PageMetaDto}
-     * @memberof UsersDto
-     */
-    'meta': PageMetaDto;
+    'deviceOs'?: string | null;
 }
 
 /**
@@ -2663,6 +2060,222 @@ export class AuthApi extends BaseAPI {
 
 
 /**
+ * CenterApi - axios parameter creator
+ * @export
+ */
+export const CenterApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 센터 정보를 조회한다.
+         * @summary 센터 정보조회 API
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        centerControllerFindOne: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/center`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication center required
+            await setApiKeyToObject(localVarHeaderParameter, "center", configuration)
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * CenterApi - functional programming interface
+ * @export
+ */
+export const CenterApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = CenterApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 센터 정보를 조회한다.
+         * @summary 센터 정보조회 API
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async centerControllerFindOne(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CenterControllerFindOne200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.centerControllerFindOne(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CenterApi.centerControllerFindOne']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * CenterApi - factory interface
+ * @export
+ */
+export const CenterApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = CenterApiFp(configuration)
+    return {
+        /**
+         * 센터 정보를 조회한다.
+         * @summary 센터 정보조회 API
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        centerControllerFindOne(options?: RawAxiosRequestConfig): AxiosPromise<CenterControllerFindOne200Response> {
+            return localVarFp.centerControllerFindOne(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * CenterApi - object-oriented interface
+ * @export
+ * @class CenterApi
+ * @extends {BaseAPI}
+ */
+export class CenterApi extends BaseAPI {
+    /**
+     * 센터 정보를 조회한다.
+     * @summary 센터 정보조회 API
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CenterApi
+     */
+    public centerControllerFindOne(options?: RawAxiosRequestConfig) {
+        return CenterApiFp(this.configuration).centerControllerFindOne(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
+ * CenterPolicyApi - axios parameter creator
+ * @export
+ */
+export const CenterPolicyApiAxiosParamCreator = function (configuration?: Configuration) {
+    return {
+        /**
+         * 약관 정책 정보를 조회한다.
+         * @summary 약관 정책 정보조회 API
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        centerPolicyControllerFindOne: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/center-policy`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+
+            // authentication center required
+            await setApiKeyToObject(localVarHeaderParameter, "center", configuration)
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+    }
+};
+
+/**
+ * CenterPolicyApi - functional programming interface
+ * @export
+ */
+export const CenterPolicyApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = CenterPolicyApiAxiosParamCreator(configuration)
+    return {
+        /**
+         * 약관 정책 정보를 조회한다.
+         * @summary 약관 정책 정보조회 API
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async centerPolicyControllerFindOne(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<CenterPolicyControllerFindOne200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.centerPolicyControllerFindOne(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['CenterPolicyApi.centerPolicyControllerFindOne']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+    }
+};
+
+/**
+ * CenterPolicyApi - factory interface
+ * @export
+ */
+export const CenterPolicyApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = CenterPolicyApiFp(configuration)
+    return {
+        /**
+         * 약관 정책 정보를 조회한다.
+         * @summary 약관 정책 정보조회 API
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        centerPolicyControllerFindOne(options?: RawAxiosRequestConfig): AxiosPromise<CenterPolicyControllerFindOne200Response> {
+            return localVarFp.centerPolicyControllerFindOne(options).then((request) => request(axios, basePath));
+        },
+    };
+};
+
+/**
+ * CenterPolicyApi - object-oriented interface
+ * @export
+ * @class CenterPolicyApi
+ * @extends {BaseAPI}
+ */
+export class CenterPolicyApi extends BaseAPI {
+    /**
+     * 약관 정책 정보를 조회한다.
+     * @summary 약관 정책 정보조회 API
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof CenterPolicyApi
+     */
+    public centerPolicyControllerFindOne(options?: RawAxiosRequestConfig) {
+        return CenterPolicyApiFp(this.configuration).centerPolicyControllerFindOne(options).then((request) => request(this.axios, this.basePath));
+    }
+}
+
+
+
+/**
  * CodeApi - axios parameter creator
  * @export
  */
@@ -2848,138 +2461,12 @@ export class CodeApi extends BaseAPI {
 export const ContractApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 계약 생성한다.
-         * @summary 계약 생성 API
-         * @param {CreateContractDto} createContractDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractControllerCreate: async (createContractDto: CreateContractDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createContractDto' is not null or undefined
-            assertParamExists('contractControllerCreate', 'createContractDto', createContractDto)
-            const localVarPath = `/contract`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createContractDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 1:n 계약 생성한다.
-         * @summary 1:n 계약 생성 API
-         * @param {CreateMultiContractDto} createMultiContractDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractControllerCreateMulti: async (createMultiContractDto: CreateMultiContractDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createMultiContractDto' is not null or undefined
-            assertParamExists('contractControllerCreateMulti', 'createMultiContractDto', createMultiContractDto)
-            const localVarPath = `/contract/multi`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createMultiContractDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 계약 삭제한다.
-         * @summary 계약 삭제 API
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractControllerDelete: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('contractControllerDelete', 'id', id)
-            const localVarPath = `/contract/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
          * 계약 목록을 조회한다.
          * @summary 계약 목록 조회 API
-         * @param {Order} [order] 
-         * @param {string | null} [orderField] 
-         * @param {number} [page] 
-         * @param {number} [take] 
-         * @param {string | null} [q] 회원이름,회원 전화번호 검색
-         * @param {number} [empMbrSeq] 직원ID
-         * @param {string | null} [month] 월조회
-         * @param {string | null} [ctrState] 계약상태(상담/재등록/신규) - codeGroup:CTR04
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contractControllerFindAll: async (order?: Order, orderField?: string | null, page?: number, take?: number, q?: string | null, empMbrSeq?: number, month?: string | null, ctrState?: string | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contractControllerFindAll: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/contract`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -2998,38 +2485,6 @@ export const ContractApiAxiosParamCreator = function (configuration?: Configurat
             // authentication bearer required
             // http bearer authentication required
             await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (order !== undefined) {
-                localVarQueryParameter['order'] = order;
-            }
-
-            if (orderField !== undefined) {
-                localVarQueryParameter['orderField'] = orderField;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-
-            if (q !== undefined) {
-                localVarQueryParameter['q'] = q;
-            }
-
-            if (empMbrSeq !== undefined) {
-                localVarQueryParameter['empMbrSeq'] = empMbrSeq;
-            }
-
-            if (month !== undefined) {
-                localVarQueryParameter['month'] = month;
-            }
-
-            if (ctrState !== undefined) {
-                localVarQueryParameter['ctrState'] = ctrState;
-            }
 
 
     
@@ -3065,9 +2520,8 @@ export const ContractApiAxiosParamCreator = function (configuration?: Configurat
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+            // authentication center required
+            await setApiKeyToObject(localVarHeaderParameter, "center", configuration)
 
 
     
@@ -3081,18 +2535,18 @@ export const ContractApiAxiosParamCreator = function (configuration?: Configurat
             };
         },
         /**
-         * 계약 정보를 수정한다.
-         * @summary 계약 정보 수정 API
+         * 계약 서명 등록한다.
+         * @summary 계약 서명 등록 API
          * @param {number} id 
-         * @param {UpdateContractDto} updateContractDto 
+         * @param {any} sign 서명파일
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contractControllerUpdate: async (id: number, updateContractDto: UpdateContractDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        contractControllerUpdate: async (id: number, sign: any, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
             assertParamExists('contractControllerUpdate', 'id', id)
-            // verify required parameter 'updateContractDto' is not null or undefined
-            assertParamExists('contractControllerUpdate', 'updateContractDto', updateContractDto)
+            // verify required parameter 'sign' is not null or undefined
+            assertParamExists('contractControllerUpdate', 'sign', sign)
             const localVarPath = `/contract/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
@@ -3105,19 +2559,20 @@ export const ContractApiAxiosParamCreator = function (configuration?: Configurat
             const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
 
 
+            if (sign !== undefined) { 
+                localVarFormParams.append('sign', new Blob([JSON.stringify(sign)], { type: "application/json", }));
+            }
     
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
+    
+            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
+    
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateContractDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = localVarFormParams;
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -3135,60 +2590,13 @@ export const ContractApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ContractApiAxiosParamCreator(configuration)
     return {
         /**
-         * 계약 생성한다.
-         * @summary 계약 생성 API
-         * @param {CreateContractDto} createContractDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contractControllerCreate(createContractDto: CreateContractDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contractControllerCreate(createContractDto, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ContractApi.contractControllerCreate']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 1:n 계약 생성한다.
-         * @summary 1:n 계약 생성 API
-         * @param {CreateMultiContractDto} createMultiContractDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contractControllerCreateMulti(createMultiContractDto: CreateMultiContractDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contractControllerCreateMulti(createMultiContractDto, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ContractApi.contractControllerCreateMulti']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 계약 삭제한다.
-         * @summary 계약 삭제 API
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contractControllerDelete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerDelete200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contractControllerDelete(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ContractApi.contractControllerDelete']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
          * 계약 목록을 조회한다.
          * @summary 계약 목록 조회 API
-         * @param {Order} [order] 
-         * @param {string | null} [orderField] 
-         * @param {number} [page] 
-         * @param {number} [take] 
-         * @param {string | null} [q] 회원이름,회원 전화번호 검색
-         * @param {number} [empMbrSeq] 직원ID
-         * @param {string | null} [month] 월조회
-         * @param {string | null} [ctrState] 계약상태(상담/재등록/신규) - codeGroup:CTR04
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contractControllerFindAll(order?: Order, orderField?: string | null, page?: number, take?: number, q?: string | null, empMbrSeq?: number, month?: string | null, ctrState?: string | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractControllerFindAll200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contractControllerFindAll(order, orderField, page, take, q, empMbrSeq, month, ctrState, options);
+        async contractControllerFindAll(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractControllerFindAll200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.contractControllerFindAll(options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ContractApi.contractControllerFindAll']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -3200,22 +2608,22 @@ export const ContractApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contractControllerFindOne(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractControllerCreate200Response>> {
+        async contractControllerFindOne(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractControllerFindOne200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.contractControllerFindOne(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ContractApi.contractControllerFindOne']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 계약 정보를 수정한다.
-         * @summary 계약 정보 수정 API
+         * 계약 서명 등록한다.
+         * @summary 계약 서명 등록 API
          * @param {number} id 
-         * @param {UpdateContractDto} updateContractDto 
+         * @param {any} sign 서명파일
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async contractControllerUpdate(id: number, updateContractDto: UpdateContractDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contractControllerUpdate(id, updateContractDto, options);
+        async contractControllerUpdate(id: number, sign: any, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractControllerFindOne200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.contractControllerUpdate(id, sign, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ContractApi.contractControllerUpdate']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -3231,44 +2639,13 @@ export const ContractApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = ContractApiFp(configuration)
     return {
         /**
-         * 계약 생성한다.
-         * @summary 계약 생성 API
-         * @param {ContractApiContractControllerCreateRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractControllerCreate(requestParameters: ContractApiContractControllerCreateRequest, options?: RawAxiosRequestConfig): AxiosPromise<ContractControllerCreate200Response> {
-            return localVarFp.contractControllerCreate(requestParameters.createContractDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 1:n 계약 생성한다.
-         * @summary 1:n 계약 생성 API
-         * @param {ContractApiContractControllerCreateMultiRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractControllerCreateMulti(requestParameters: ContractApiContractControllerCreateMultiRequest, options?: RawAxiosRequestConfig): AxiosPromise<ContractControllerCreate200Response> {
-            return localVarFp.contractControllerCreateMulti(requestParameters.createMultiContractDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 계약 삭제한다.
-         * @summary 계약 삭제 API
-         * @param {ContractApiContractControllerDeleteRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractControllerDelete(requestParameters: ContractApiContractControllerDeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerDelete200Response> {
-            return localVarFp.contractControllerDelete(requestParameters.id, options).then((request) => request(axios, basePath));
-        },
-        /**
          * 계약 목록을 조회한다.
          * @summary 계약 목록 조회 API
-         * @param {ContractApiContractControllerFindAllRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contractControllerFindAll(requestParameters: ContractApiContractControllerFindAllRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<ContractControllerFindAll200Response> {
-            return localVarFp.contractControllerFindAll(requestParameters.order, requestParameters.orderField, requestParameters.page, requestParameters.take, requestParameters.q, requestParameters.empMbrSeq, requestParameters.month, requestParameters.ctrState, options).then((request) => request(axios, basePath));
+        contractControllerFindAll(options?: RawAxiosRequestConfig): AxiosPromise<ContractControllerFindAll200Response> {
+            return localVarFp.contractControllerFindAll(options).then((request) => request(axios, basePath));
         },
         /**
          * 계약 정보를 조회한다.
@@ -3277,126 +2654,21 @@ export const ContractApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contractControllerFindOne(requestParameters: ContractApiContractControllerFindOneRequest, options?: RawAxiosRequestConfig): AxiosPromise<ContractControllerCreate200Response> {
+        contractControllerFindOne(requestParameters: ContractApiContractControllerFindOneRequest, options?: RawAxiosRequestConfig): AxiosPromise<ContractControllerFindOne200Response> {
             return localVarFp.contractControllerFindOne(requestParameters.id, options).then((request) => request(axios, basePath));
         },
         /**
-         * 계약 정보를 수정한다.
-         * @summary 계약 정보 수정 API
+         * 계약 서명 등록한다.
+         * @summary 계약 서명 등록 API
          * @param {ContractApiContractControllerUpdateRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        contractControllerUpdate(requestParameters: ContractApiContractControllerUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<ContractControllerCreate200Response> {
-            return localVarFp.contractControllerUpdate(requestParameters.id, requestParameters.updateContractDto, options).then((request) => request(axios, basePath));
+        contractControllerUpdate(requestParameters: ContractApiContractControllerUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<ContractControllerFindOne200Response> {
+            return localVarFp.contractControllerUpdate(requestParameters.id, requestParameters.sign, options).then((request) => request(axios, basePath));
         },
     };
 };
-
-/**
- * Request parameters for contractControllerCreate operation in ContractApi.
- * @export
- * @interface ContractApiContractControllerCreateRequest
- */
-export interface ContractApiContractControllerCreateRequest {
-    /**
-     * 
-     * @type {CreateContractDto}
-     * @memberof ContractApiContractControllerCreate
-     */
-    readonly createContractDto: CreateContractDto
-}
-
-/**
- * Request parameters for contractControllerCreateMulti operation in ContractApi.
- * @export
- * @interface ContractApiContractControllerCreateMultiRequest
- */
-export interface ContractApiContractControllerCreateMultiRequest {
-    /**
-     * 
-     * @type {CreateMultiContractDto}
-     * @memberof ContractApiContractControllerCreateMulti
-     */
-    readonly createMultiContractDto: CreateMultiContractDto
-}
-
-/**
- * Request parameters for contractControllerDelete operation in ContractApi.
- * @export
- * @interface ContractApiContractControllerDeleteRequest
- */
-export interface ContractApiContractControllerDeleteRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof ContractApiContractControllerDelete
-     */
-    readonly id: number
-}
-
-/**
- * Request parameters for contractControllerFindAll operation in ContractApi.
- * @export
- * @interface ContractApiContractControllerFindAllRequest
- */
-export interface ContractApiContractControllerFindAllRequest {
-    /**
-     * 
-     * @type {Order}
-     * @memberof ContractApiContractControllerFindAll
-     */
-    readonly order?: Order
-
-    /**
-     * 
-     * @type {string}
-     * @memberof ContractApiContractControllerFindAll
-     */
-    readonly orderField?: string | null
-
-    /**
-     * 
-     * @type {number}
-     * @memberof ContractApiContractControllerFindAll
-     */
-    readonly page?: number
-
-    /**
-     * 
-     * @type {number}
-     * @memberof ContractApiContractControllerFindAll
-     */
-    readonly take?: number
-
-    /**
-     * 회원이름,회원 전화번호 검색
-     * @type {string}
-     * @memberof ContractApiContractControllerFindAll
-     */
-    readonly q?: string | null
-
-    /**
-     * 직원ID
-     * @type {number}
-     * @memberof ContractApiContractControllerFindAll
-     */
-    readonly empMbrSeq?: number
-
-    /**
-     * 월조회
-     * @type {string}
-     * @memberof ContractApiContractControllerFindAll
-     */
-    readonly month?: string | null
-
-    /**
-     * 계약상태(상담/재등록/신규) - codeGroup:CTR04
-     * @type {string}
-     * @memberof ContractApiContractControllerFindAll
-     */
-    readonly ctrState?: string | null
-}
 
 /**
  * Request parameters for contractControllerFindOne operation in ContractApi.
@@ -3426,11 +2698,11 @@ export interface ContractApiContractControllerUpdateRequest {
     readonly id: number
 
     /**
-     * 
-     * @type {UpdateContractDto}
+     * 서명파일
+     * @type {any}
      * @memberof ContractApiContractControllerUpdate
      */
-    readonly updateContractDto: UpdateContractDto
+    readonly sign: any
 }
 
 /**
@@ -3441,51 +2713,14 @@ export interface ContractApiContractControllerUpdateRequest {
  */
 export class ContractApi extends BaseAPI {
     /**
-     * 계약 생성한다.
-     * @summary 계약 생성 API
-     * @param {ContractApiContractControllerCreateRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContractApi
-     */
-    public contractControllerCreate(requestParameters: ContractApiContractControllerCreateRequest, options?: RawAxiosRequestConfig) {
-        return ContractApiFp(this.configuration).contractControllerCreate(requestParameters.createContractDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 1:n 계약 생성한다.
-     * @summary 1:n 계약 생성 API
-     * @param {ContractApiContractControllerCreateMultiRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContractApi
-     */
-    public contractControllerCreateMulti(requestParameters: ContractApiContractControllerCreateMultiRequest, options?: RawAxiosRequestConfig) {
-        return ContractApiFp(this.configuration).contractControllerCreateMulti(requestParameters.createMultiContractDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 계약 삭제한다.
-     * @summary 계약 삭제 API
-     * @param {ContractApiContractControllerDeleteRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContractApi
-     */
-    public contractControllerDelete(requestParameters: ContractApiContractControllerDeleteRequest, options?: RawAxiosRequestConfig) {
-        return ContractApiFp(this.configuration).contractControllerDelete(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
      * 계약 목록을 조회한다.
      * @summary 계약 목록 조회 API
-     * @param {ContractApiContractControllerFindAllRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContractApi
      */
-    public contractControllerFindAll(requestParameters: ContractApiContractControllerFindAllRequest = {}, options?: RawAxiosRequestConfig) {
-        return ContractApiFp(this.configuration).contractControllerFindAll(requestParameters.order, requestParameters.orderField, requestParameters.page, requestParameters.take, requestParameters.q, requestParameters.empMbrSeq, requestParameters.month, requestParameters.ctrState, options).then((request) => request(this.axios, this.basePath));
+    public contractControllerFindAll(options?: RawAxiosRequestConfig) {
+        return ContractApiFp(this.configuration).contractControllerFindAll(options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -3501,1143 +2736,15 @@ export class ContractApi extends BaseAPI {
     }
 
     /**
-     * 계약 정보를 수정한다.
-     * @summary 계약 정보 수정 API
+     * 계약 서명 등록한다.
+     * @summary 계약 서명 등록 API
      * @param {ContractApiContractControllerUpdateRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
      * @memberof ContractApi
      */
     public contractControllerUpdate(requestParameters: ContractApiContractControllerUpdateRequest, options?: RawAxiosRequestConfig) {
-        return ContractApiFp(this.configuration).contractControllerUpdate(requestParameters.id, requestParameters.updateContractDto, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-
-/**
- * ContractProgressApi - axios parameter creator
- * @export
- */
-export const ContractProgressApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 계약회차 생성한다.
-         * @summary 계약회차 생성 API
-         * @param {CreateContractProgressDto} createContractProgressDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractProgressControllerCreate: async (createContractProgressDto: CreateContractProgressDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createContractProgressDto' is not null or undefined
-            assertParamExists('contractProgressControllerCreate', 'createContractProgressDto', createContractProgressDto)
-            const localVarPath = `/contract-progress`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createContractProgressDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 계약회차 삭제한다.
-         * @summary 계약회차 삭제 API
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractProgressControllerDelete: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('contractProgressControllerDelete', 'id', id)
-            const localVarPath = `/contract-progress/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 계약회차 목록을 조회한다.
-         * @summary 계약회차 목록 조회 API
-         * @param {Order} [order] 
-         * @param {string | null} [orderField] 
-         * @param {number} [page] 
-         * @param {number} [take] 
-         * @param {string | null} [q] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractProgressControllerFindAll: async (order?: Order, orderField?: string | null, page?: number, take?: number, q?: string | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/contract-progress`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (order !== undefined) {
-                localVarQueryParameter['order'] = order;
-            }
-
-            if (orderField !== undefined) {
-                localVarQueryParameter['orderField'] = orderField;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-
-            if (q !== undefined) {
-                localVarQueryParameter['q'] = q;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 계약회차 정보를 조회한다.
-         * @summary 계약회차 정보조회 API
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractProgressControllerFindOne: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('contractProgressControllerFindOne', 'id', id)
-            const localVarPath = `/contract-progress/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 계약회차 정보를 수정한다.
-         * @summary 계약회차 정보 수정 API
-         * @param {number} id 
-         * @param {UpdateContractProgressDto} updateContractProgressDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractProgressControllerUpdate: async (id: number, updateContractProgressDto: UpdateContractProgressDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('contractProgressControllerUpdate', 'id', id)
-            // verify required parameter 'updateContractProgressDto' is not null or undefined
-            assertParamExists('contractProgressControllerUpdate', 'updateContractProgressDto', updateContractProgressDto)
-            const localVarPath = `/contract-progress/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateContractProgressDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * ContractProgressApi - functional programming interface
- * @export
- */
-export const ContractProgressApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = ContractProgressApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 계약회차 생성한다.
-         * @summary 계약회차 생성 API
-         * @param {CreateContractProgressDto} createContractProgressDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contractProgressControllerCreate(createContractProgressDto: CreateContractProgressDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractProgressControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contractProgressControllerCreate(createContractProgressDto, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ContractProgressApi.contractProgressControllerCreate']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 계약회차 삭제한다.
-         * @summary 계약회차 삭제 API
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contractProgressControllerDelete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerDelete200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contractProgressControllerDelete(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ContractProgressApi.contractProgressControllerDelete']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 계약회차 목록을 조회한다.
-         * @summary 계약회차 목록 조회 API
-         * @param {Order} [order] 
-         * @param {string | null} [orderField] 
-         * @param {number} [page] 
-         * @param {number} [take] 
-         * @param {string | null} [q] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contractProgressControllerFindAll(order?: Order, orderField?: string | null, page?: number, take?: number, q?: string | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractProgressControllerFindAll200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contractProgressControllerFindAll(order, orderField, page, take, q, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ContractProgressApi.contractProgressControllerFindAll']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 계약회차 정보를 조회한다.
-         * @summary 계약회차 정보조회 API
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contractProgressControllerFindOne(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractProgressControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contractProgressControllerFindOne(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ContractProgressApi.contractProgressControllerFindOne']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 계약회차 정보를 수정한다.
-         * @summary 계약회차 정보 수정 API
-         * @param {number} id 
-         * @param {UpdateContractProgressDto} updateContractProgressDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async contractProgressControllerUpdate(id: number, updateContractProgressDto: UpdateContractProgressDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ContractProgressControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.contractProgressControllerUpdate(id, updateContractProgressDto, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ContractProgressApi.contractProgressControllerUpdate']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-    }
-};
-
-/**
- * ContractProgressApi - factory interface
- * @export
- */
-export const ContractProgressApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = ContractProgressApiFp(configuration)
-    return {
-        /**
-         * 계약회차 생성한다.
-         * @summary 계약회차 생성 API
-         * @param {ContractProgressApiContractProgressControllerCreateRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractProgressControllerCreate(requestParameters: ContractProgressApiContractProgressControllerCreateRequest, options?: RawAxiosRequestConfig): AxiosPromise<ContractProgressControllerCreate200Response> {
-            return localVarFp.contractProgressControllerCreate(requestParameters.createContractProgressDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 계약회차 삭제한다.
-         * @summary 계약회차 삭제 API
-         * @param {ContractProgressApiContractProgressControllerDeleteRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractProgressControllerDelete(requestParameters: ContractProgressApiContractProgressControllerDeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerDelete200Response> {
-            return localVarFp.contractProgressControllerDelete(requestParameters.id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 계약회차 목록을 조회한다.
-         * @summary 계약회차 목록 조회 API
-         * @param {ContractProgressApiContractProgressControllerFindAllRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractProgressControllerFindAll(requestParameters: ContractProgressApiContractProgressControllerFindAllRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<ContractProgressControllerFindAll200Response> {
-            return localVarFp.contractProgressControllerFindAll(requestParameters.order, requestParameters.orderField, requestParameters.page, requestParameters.take, requestParameters.q, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 계약회차 정보를 조회한다.
-         * @summary 계약회차 정보조회 API
-         * @param {ContractProgressApiContractProgressControllerFindOneRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractProgressControllerFindOne(requestParameters: ContractProgressApiContractProgressControllerFindOneRequest, options?: RawAxiosRequestConfig): AxiosPromise<ContractProgressControllerCreate200Response> {
-            return localVarFp.contractProgressControllerFindOne(requestParameters.id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 계약회차 정보를 수정한다.
-         * @summary 계약회차 정보 수정 API
-         * @param {ContractProgressApiContractProgressControllerUpdateRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        contractProgressControllerUpdate(requestParameters: ContractProgressApiContractProgressControllerUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<ContractProgressControllerCreate200Response> {
-            return localVarFp.contractProgressControllerUpdate(requestParameters.id, requestParameters.updateContractProgressDto, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * Request parameters for contractProgressControllerCreate operation in ContractProgressApi.
- * @export
- * @interface ContractProgressApiContractProgressControllerCreateRequest
- */
-export interface ContractProgressApiContractProgressControllerCreateRequest {
-    /**
-     * 
-     * @type {CreateContractProgressDto}
-     * @memberof ContractProgressApiContractProgressControllerCreate
-     */
-    readonly createContractProgressDto: CreateContractProgressDto
-}
-
-/**
- * Request parameters for contractProgressControllerDelete operation in ContractProgressApi.
- * @export
- * @interface ContractProgressApiContractProgressControllerDeleteRequest
- */
-export interface ContractProgressApiContractProgressControllerDeleteRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof ContractProgressApiContractProgressControllerDelete
-     */
-    readonly id: number
-}
-
-/**
- * Request parameters for contractProgressControllerFindAll operation in ContractProgressApi.
- * @export
- * @interface ContractProgressApiContractProgressControllerFindAllRequest
- */
-export interface ContractProgressApiContractProgressControllerFindAllRequest {
-    /**
-     * 
-     * @type {Order}
-     * @memberof ContractProgressApiContractProgressControllerFindAll
-     */
-    readonly order?: Order
-
-    /**
-     * 
-     * @type {string}
-     * @memberof ContractProgressApiContractProgressControllerFindAll
-     */
-    readonly orderField?: string | null
-
-    /**
-     * 
-     * @type {number}
-     * @memberof ContractProgressApiContractProgressControllerFindAll
-     */
-    readonly page?: number
-
-    /**
-     * 
-     * @type {number}
-     * @memberof ContractProgressApiContractProgressControllerFindAll
-     */
-    readonly take?: number
-
-    /**
-     * 
-     * @type {string}
-     * @memberof ContractProgressApiContractProgressControllerFindAll
-     */
-    readonly q?: string | null
-}
-
-/**
- * Request parameters for contractProgressControllerFindOne operation in ContractProgressApi.
- * @export
- * @interface ContractProgressApiContractProgressControllerFindOneRequest
- */
-export interface ContractProgressApiContractProgressControllerFindOneRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof ContractProgressApiContractProgressControllerFindOne
-     */
-    readonly id: number
-}
-
-/**
- * Request parameters for contractProgressControllerUpdate operation in ContractProgressApi.
- * @export
- * @interface ContractProgressApiContractProgressControllerUpdateRequest
- */
-export interface ContractProgressApiContractProgressControllerUpdateRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof ContractProgressApiContractProgressControllerUpdate
-     */
-    readonly id: number
-
-    /**
-     * 
-     * @type {UpdateContractProgressDto}
-     * @memberof ContractProgressApiContractProgressControllerUpdate
-     */
-    readonly updateContractProgressDto: UpdateContractProgressDto
-}
-
-/**
- * ContractProgressApi - object-oriented interface
- * @export
- * @class ContractProgressApi
- * @extends {BaseAPI}
- */
-export class ContractProgressApi extends BaseAPI {
-    /**
-     * 계약회차 생성한다.
-     * @summary 계약회차 생성 API
-     * @param {ContractProgressApiContractProgressControllerCreateRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContractProgressApi
-     */
-    public contractProgressControllerCreate(requestParameters: ContractProgressApiContractProgressControllerCreateRequest, options?: RawAxiosRequestConfig) {
-        return ContractProgressApiFp(this.configuration).contractProgressControllerCreate(requestParameters.createContractProgressDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 계약회차 삭제한다.
-     * @summary 계약회차 삭제 API
-     * @param {ContractProgressApiContractProgressControllerDeleteRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContractProgressApi
-     */
-    public contractProgressControllerDelete(requestParameters: ContractProgressApiContractProgressControllerDeleteRequest, options?: RawAxiosRequestConfig) {
-        return ContractProgressApiFp(this.configuration).contractProgressControllerDelete(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 계약회차 목록을 조회한다.
-     * @summary 계약회차 목록 조회 API
-     * @param {ContractProgressApiContractProgressControllerFindAllRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContractProgressApi
-     */
-    public contractProgressControllerFindAll(requestParameters: ContractProgressApiContractProgressControllerFindAllRequest = {}, options?: RawAxiosRequestConfig) {
-        return ContractProgressApiFp(this.configuration).contractProgressControllerFindAll(requestParameters.order, requestParameters.orderField, requestParameters.page, requestParameters.take, requestParameters.q, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 계약회차 정보를 조회한다.
-     * @summary 계약회차 정보조회 API
-     * @param {ContractProgressApiContractProgressControllerFindOneRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContractProgressApi
-     */
-    public contractProgressControllerFindOne(requestParameters: ContractProgressApiContractProgressControllerFindOneRequest, options?: RawAxiosRequestConfig) {
-        return ContractProgressApiFp(this.configuration).contractProgressControllerFindOne(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 계약회차 정보를 수정한다.
-     * @summary 계약회차 정보 수정 API
-     * @param {ContractProgressApiContractProgressControllerUpdateRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ContractProgressApi
-     */
-    public contractProgressControllerUpdate(requestParameters: ContractProgressApiContractProgressControllerUpdateRequest, options?: RawAxiosRequestConfig) {
-        return ContractProgressApiFp(this.configuration).contractProgressControllerUpdate(requestParameters.id, requestParameters.updateContractProgressDto, options).then((request) => request(this.axios, this.basePath));
-    }
-}
-
-
-
-/**
- * ProductApi - axios parameter creator
- * @export
- */
-export const ProductApiAxiosParamCreator = function (configuration?: Configuration) {
-    return {
-        /**
-         * 상품 생성한다.
-         * @summary 상품 생성 API
-         * @param {CreateProductDto} createProductDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productControllerCreate: async (createProductDto: CreateProductDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createProductDto' is not null or undefined
-            assertParamExists('productControllerCreate', 'createProductDto', createProductDto)
-            const localVarPath = `/product`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'POST', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createProductDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 상품 삭제한다.
-         * @summary 상품 삭제 API
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productControllerDelete: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('productControllerDelete', 'id', id)
-            const localVarPath = `/product/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'DELETE', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 상품 목록을 조회한다.
-         * @summary 상품 목록 조회 API
-         * @param {Order} [order] 
-         * @param {string | null} [orderField] 
-         * @param {number} [page] 
-         * @param {number} [take] 
-         * @param {string | null} [q] 상품명 검색
-         * @param {string | null} [pdtCtgSeq] 상품카테고리Seq
-         * @param {string | null} [state] 상태(판매중 (progress) |마감 (end)), 없을 경우 전체
-         * @param {ProductSaleType} [pdtType] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productControllerFindAll: async (order?: Order, orderField?: string | null, page?: number, take?: number, q?: string | null, pdtCtgSeq?: string | null, state?: string | null, pdtType?: ProductSaleType, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            const localVarPath = `/product`;
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication center required
-            await setApiKeyToObject(localVarHeaderParameter, "center", configuration)
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (order !== undefined) {
-                localVarQueryParameter['order'] = order;
-            }
-
-            if (orderField !== undefined) {
-                localVarQueryParameter['orderField'] = orderField;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-
-            if (q !== undefined) {
-                localVarQueryParameter['q'] = q;
-            }
-
-            if (pdtCtgSeq !== undefined) {
-                localVarQueryParameter['pdtCtgSeq'] = pdtCtgSeq;
-            }
-
-            if (state !== undefined) {
-                localVarQueryParameter['state'] = state;
-            }
-
-            if (pdtType !== undefined) {
-                localVarQueryParameter['pdtType'] = pdtType;
-            }
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 상품 정보를 조회한다.
-         * @summary 상품 정보조회 API
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productControllerFindOne: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('productControllerFindOne', 'id', id)
-            const localVarPath = `/product/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 상품 정보를 수정한다.
-         * @summary 상품 정보 수정 API
-         * @param {number} id 
-         * @param {UpdateProductDto} updateProductDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productControllerUpdate: async (id: number, updateProductDto: UpdateProductDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('productControllerUpdate', 'id', id)
-            // verify required parameter 'updateProductDto' is not null or undefined
-            assertParamExists('productControllerUpdate', 'updateProductDto', updateProductDto)
-            const localVarPath = `/product/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            localVarHeaderParameter['Content-Type'] = 'application/json';
-
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateProductDto, localVarRequestOptions, configuration)
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-    }
-};
-
-/**
- * ProductApi - functional programming interface
- * @export
- */
-export const ProductApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = ProductApiAxiosParamCreator(configuration)
-    return {
-        /**
-         * 상품 생성한다.
-         * @summary 상품 생성 API
-         * @param {CreateProductDto} createProductDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async productControllerCreate(createProductDto: CreateProductDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerCreate(createProductDto, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProductApi.productControllerCreate']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 상품 삭제한다.
-         * @summary 상품 삭제 API
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async productControllerDelete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerDelete200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerDelete(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProductApi.productControllerDelete']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 상품 목록을 조회한다.
-         * @summary 상품 목록 조회 API
-         * @param {Order} [order] 
-         * @param {string | null} [orderField] 
-         * @param {number} [page] 
-         * @param {number} [take] 
-         * @param {string | null} [q] 상품명 검색
-         * @param {string | null} [pdtCtgSeq] 상품카테고리Seq
-         * @param {string | null} [state] 상태(판매중 (progress) |마감 (end)), 없을 경우 전체
-         * @param {ProductSaleType} [pdtType] 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async productControllerFindAll(order?: Order, orderField?: string | null, page?: number, take?: number, q?: string | null, pdtCtgSeq?: string | null, state?: string | null, pdtType?: ProductSaleType, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductControllerFindAll200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerFindAll(order, orderField, page, take, q, pdtCtgSeq, state, pdtType, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProductApi.productControllerFindAll']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 상품 정보를 조회한다.
-         * @summary 상품 정보조회 API
-         * @param {number} id 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async productControllerFindOne(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerFindOne(id, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProductApi.productControllerFindOne']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 상품 정보를 수정한다.
-         * @summary 상품 정보 수정 API
-         * @param {number} id 
-         * @param {UpdateProductDto} updateProductDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async productControllerUpdate(id: number, updateProductDto: UpdateProductDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ProductControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.productControllerUpdate(id, updateProductDto, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['ProductApi.productControllerUpdate']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-    }
-};
-
-/**
- * ProductApi - factory interface
- * @export
- */
-export const ProductApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = ProductApiFp(configuration)
-    return {
-        /**
-         * 상품 생성한다.
-         * @summary 상품 생성 API
-         * @param {ProductApiProductControllerCreateRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productControllerCreate(requestParameters: ProductApiProductControllerCreateRequest, options?: RawAxiosRequestConfig): AxiosPromise<ProductControllerCreate200Response> {
-            return localVarFp.productControllerCreate(requestParameters.createProductDto, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 상품 삭제한다.
-         * @summary 상품 삭제 API
-         * @param {ProductApiProductControllerDeleteRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productControllerDelete(requestParameters: ProductApiProductControllerDeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerDelete200Response> {
-            return localVarFp.productControllerDelete(requestParameters.id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 상품 목록을 조회한다.
-         * @summary 상품 목록 조회 API
-         * @param {ProductApiProductControllerFindAllRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productControllerFindAll(requestParameters: ProductApiProductControllerFindAllRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<ProductControllerFindAll200Response> {
-            return localVarFp.productControllerFindAll(requestParameters.order, requestParameters.orderField, requestParameters.page, requestParameters.take, requestParameters.q, requestParameters.pdtCtgSeq, requestParameters.state, requestParameters.pdtType, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 상품 정보를 조회한다.
-         * @summary 상품 정보조회 API
-         * @param {ProductApiProductControllerFindOneRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productControllerFindOne(requestParameters: ProductApiProductControllerFindOneRequest, options?: RawAxiosRequestConfig): AxiosPromise<ProductControllerCreate200Response> {
-            return localVarFp.productControllerFindOne(requestParameters.id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 상품 정보를 수정한다.
-         * @summary 상품 정보 수정 API
-         * @param {ProductApiProductControllerUpdateRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        productControllerUpdate(requestParameters: ProductApiProductControllerUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<ProductControllerCreate200Response> {
-            return localVarFp.productControllerUpdate(requestParameters.id, requestParameters.updateProductDto, options).then((request) => request(axios, basePath));
-        },
-    };
-};
-
-/**
- * Request parameters for productControllerCreate operation in ProductApi.
- * @export
- * @interface ProductApiProductControllerCreateRequest
- */
-export interface ProductApiProductControllerCreateRequest {
-    /**
-     * 
-     * @type {CreateProductDto}
-     * @memberof ProductApiProductControllerCreate
-     */
-    readonly createProductDto: CreateProductDto
-}
-
-/**
- * Request parameters for productControllerDelete operation in ProductApi.
- * @export
- * @interface ProductApiProductControllerDeleteRequest
- */
-export interface ProductApiProductControllerDeleteRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof ProductApiProductControllerDelete
-     */
-    readonly id: number
-}
-
-/**
- * Request parameters for productControllerFindAll operation in ProductApi.
- * @export
- * @interface ProductApiProductControllerFindAllRequest
- */
-export interface ProductApiProductControllerFindAllRequest {
-    /**
-     * 
-     * @type {Order}
-     * @memberof ProductApiProductControllerFindAll
-     */
-    readonly order?: Order
-
-    /**
-     * 
-     * @type {string}
-     * @memberof ProductApiProductControllerFindAll
-     */
-    readonly orderField?: string | null
-
-    /**
-     * 
-     * @type {number}
-     * @memberof ProductApiProductControllerFindAll
-     */
-    readonly page?: number
-
-    /**
-     * 
-     * @type {number}
-     * @memberof ProductApiProductControllerFindAll
-     */
-    readonly take?: number
-
-    /**
-     * 상품명 검색
-     * @type {string}
-     * @memberof ProductApiProductControllerFindAll
-     */
-    readonly q?: string | null
-
-    /**
-     * 상품카테고리Seq
-     * @type {string}
-     * @memberof ProductApiProductControllerFindAll
-     */
-    readonly pdtCtgSeq?: string | null
-
-    /**
-     * 상태(판매중 (progress) |마감 (end)), 없을 경우 전체
-     * @type {string}
-     * @memberof ProductApiProductControllerFindAll
-     */
-    readonly state?: string | null
-
-    /**
-     * 
-     * @type {ProductSaleType}
-     * @memberof ProductApiProductControllerFindAll
-     */
-    readonly pdtType?: ProductSaleType
-}
-
-/**
- * Request parameters for productControllerFindOne operation in ProductApi.
- * @export
- * @interface ProductApiProductControllerFindOneRequest
- */
-export interface ProductApiProductControllerFindOneRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof ProductApiProductControllerFindOne
-     */
-    readonly id: number
-}
-
-/**
- * Request parameters for productControllerUpdate operation in ProductApi.
- * @export
- * @interface ProductApiProductControllerUpdateRequest
- */
-export interface ProductApiProductControllerUpdateRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof ProductApiProductControllerUpdate
-     */
-    readonly id: number
-
-    /**
-     * 
-     * @type {UpdateProductDto}
-     * @memberof ProductApiProductControllerUpdate
-     */
-    readonly updateProductDto: UpdateProductDto
-}
-
-/**
- * ProductApi - object-oriented interface
- * @export
- * @class ProductApi
- * @extends {BaseAPI}
- */
-export class ProductApi extends BaseAPI {
-    /**
-     * 상품 생성한다.
-     * @summary 상품 생성 API
-     * @param {ProductApiProductControllerCreateRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProductApi
-     */
-    public productControllerCreate(requestParameters: ProductApiProductControllerCreateRequest, options?: RawAxiosRequestConfig) {
-        return ProductApiFp(this.configuration).productControllerCreate(requestParameters.createProductDto, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 상품 삭제한다.
-     * @summary 상품 삭제 API
-     * @param {ProductApiProductControllerDeleteRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProductApi
-     */
-    public productControllerDelete(requestParameters: ProductApiProductControllerDeleteRequest, options?: RawAxiosRequestConfig) {
-        return ProductApiFp(this.configuration).productControllerDelete(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 상품 목록을 조회한다.
-     * @summary 상품 목록 조회 API
-     * @param {ProductApiProductControllerFindAllRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProductApi
-     */
-    public productControllerFindAll(requestParameters: ProductApiProductControllerFindAllRequest = {}, options?: RawAxiosRequestConfig) {
-        return ProductApiFp(this.configuration).productControllerFindAll(requestParameters.order, requestParameters.orderField, requestParameters.page, requestParameters.take, requestParameters.q, requestParameters.pdtCtgSeq, requestParameters.state, requestParameters.pdtType, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 상품 정보를 조회한다.
-     * @summary 상품 정보조회 API
-     * @param {ProductApiProductControllerFindOneRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProductApi
-     */
-    public productControllerFindOne(requestParameters: ProductApiProductControllerFindOneRequest, options?: RawAxiosRequestConfig) {
-        return ProductApiFp(this.configuration).productControllerFindOne(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 상품 정보를 수정한다.
-     * @summary 상품 정보 수정 API
-     * @param {ProductApiProductControllerUpdateRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof ProductApi
-     */
-    public productControllerUpdate(requestParameters: ProductApiProductControllerUpdateRequest, options?: RawAxiosRequestConfig) {
-        return ProductApiFp(this.configuration).productControllerUpdate(requestParameters.id, requestParameters.updateProductDto, options).then((request) => request(this.axios, this.basePath));
+        return ContractApiFp(this.configuration).contractControllerUpdate(requestParameters.id, requestParameters.sign, options).then((request) => request(this.axios, this.basePath));
     }
 }
 
@@ -5083,7 +3190,7 @@ export const RecordApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async recordControllerDelete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerDelete200Response>> {
+        async recordControllerDelete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleControllerFindUserScheduleList200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.recordControllerDelete(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RecordApi.recordControllerDelete']?.[localVarOperationServerIndex]?.url;
@@ -5184,7 +3291,7 @@ export const RecordApiFactory = function (configuration?: Configuration, basePat
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        recordControllerDelete(requestParameters: RecordApiRecordControllerDeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerDelete200Response> {
+        recordControllerDelete(requestParameters: RecordApiRecordControllerDeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<ScheduleControllerFindUserScheduleList200Response> {
             return localVarFp.recordControllerDelete(requestParameters.id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5445,10 +3552,11 @@ export const RecordFileApiAxiosParamCreator = function (configuration?: Configur
          * @param {RecordFileType} type 
          * @param {Array<any>} files 파일
          * @param {string} rcdDate 기록일자 YYYY-MM-DD
+         * @param {string | null} [filesDesc] 파일별 메모(파일과 같은 순서로 , 로 구분해 보내주세요. 없을 시 공란 으로 보내주세요.)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        recordFileControllerCreateFile: async (type: RecordFileType, files: Array<any>, rcdDate: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        recordFileControllerCreateFile: async (type: RecordFileType, files: Array<any>, rcdDate: string, filesDesc?: string | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'type' is not null or undefined
             assertParamExists('recordFileControllerCreateFile', 'type', type)
             // verify required parameter 'files' is not null or undefined
@@ -5480,6 +3588,10 @@ export const RecordFileApiAxiosParamCreator = function (configuration?: Configur
                 localVarFormParams.append('files', files.join(COLLECTION_FORMATS.csv));
             }
 
+    
+            if (filesDesc !== undefined) { 
+                localVarFormParams.append('filesDesc', filesDesc as any);
+            }
     
             if (rcdDate !== undefined) { 
                 localVarFormParams.append('rcdDate', rcdDate as any);
@@ -5632,6 +3744,77 @@ export const RecordFileApiAxiosParamCreator = function (configuration?: Configur
                 options: localVarRequestOptions,
             };
         },
+        /**
+         * 파일을 수정한다.
+         * @summary 파일 수정 API
+         * @param {Array<any>} files 추가 파일
+         * @param {RecordFileType} type 
+         * @param {string} rcdDate 기록일자 기존 그대로 보내주세요. 수정X
+         * @param {string} fileNames 전체 파일 이름 리스트 - 기존&amp;추가 파일의 이름으로 리스트, 삭제된 파일 제외, 목록 순서대로 ,로 구분해서 주세요.
+         * @param {string | null} [filesDesc] 파일별 메모(파일과 같은 순서로 , 로 구분해 보내주세요. 없을 시 공란 으로 보내주세요.)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        recordFileControllerUpdate: async (files: Array<any>, type: RecordFileType, rcdDate: string, fileNames: string, filesDesc?: string | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'files' is not null or undefined
+            assertParamExists('recordFileControllerUpdate', 'files', files)
+            // verify required parameter 'type' is not null or undefined
+            assertParamExists('recordFileControllerUpdate', 'type', type)
+            // verify required parameter 'rcdDate' is not null or undefined
+            assertParamExists('recordFileControllerUpdate', 'rcdDate', rcdDate)
+            // verify required parameter 'fileNames' is not null or undefined
+            assertParamExists('recordFileControllerUpdate', 'fileNames', fileNames)
+            const localVarPath = `/record-file`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
+            }
+
+            const localVarRequestOptions = { method: 'PATCH', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
+            const localVarFormParams = new ((configuration && configuration.formDataCtor) || FormData)();
+
+            // authentication bearer required
+            // http bearer authentication required
+            await setBearerAuthToObject(localVarHeaderParameter, configuration)
+
+            if (files) {
+                localVarFormParams.append('files', files.join(COLLECTION_FORMATS.csv));
+            }
+
+    
+            if (filesDesc !== undefined) { 
+                localVarFormParams.append('filesDesc', filesDesc as any);
+            }
+    
+            if (type !== undefined) { 
+                localVarFormParams.append('type', type as any);
+            }
+    
+            if (rcdDate !== undefined) { 
+                localVarFormParams.append('rcdDate', rcdDate as any);
+            }
+    
+            if (fileNames !== undefined) { 
+                localVarFormParams.append('fileNames', fileNames as any);
+            }
+    
+    
+            localVarHeaderParameter['Content-Type'] = 'multipart/form-data';
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+            localVarRequestOptions.data = localVarFormParams;
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
     }
 };
 
@@ -5648,11 +3831,12 @@ export const RecordFileApiFp = function(configuration?: Configuration) {
          * @param {RecordFileType} type 
          * @param {Array<any>} files 파일
          * @param {string} rcdDate 기록일자 YYYY-MM-DD
+         * @param {string | null} [filesDesc] 파일별 메모(파일과 같은 순서로 , 로 구분해 보내주세요. 없을 시 공란 으로 보내주세요.)
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async recordFileControllerCreateFile(type: RecordFileType, files: Array<any>, rcdDate: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RecordControllerUpdate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.recordFileControllerCreateFile(type, files, rcdDate, options);
+        async recordFileControllerCreateFile(type: RecordFileType, files: Array<any>, rcdDate: string, filesDesc?: string | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RecordControllerUpdate200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.recordFileControllerCreateFile(type, files, rcdDate, filesDesc, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RecordFileApi.recordFileControllerCreateFile']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -5664,7 +3848,7 @@ export const RecordFileApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async recordFileControllerDelete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerDelete200Response>> {
+        async recordFileControllerDelete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleControllerFindUserScheduleList200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.recordFileControllerDelete(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RecordFileApi.recordFileControllerDelete']?.[localVarOperationServerIndex]?.url;
@@ -5677,7 +3861,7 @@ export const RecordFileApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async recordFileControllerDeleteMulti(requestBody: Array<string>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerDelete200Response>> {
+        async recordFileControllerDeleteMulti(requestBody: Array<string>, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleControllerFindUserScheduleList200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.recordFileControllerDeleteMulti(requestBody, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['RecordFileApi.recordFileControllerDeleteMulti']?.[localVarOperationServerIndex]?.url;
@@ -5699,6 +3883,23 @@ export const RecordFileApiFp = function(configuration?: Configuration) {
             const localVarOperationServerBasePath = operationServerMap['RecordFileApi.recordFileControllerFindAll']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
+        /**
+         * 파일을 수정한다.
+         * @summary 파일 수정 API
+         * @param {Array<any>} files 추가 파일
+         * @param {RecordFileType} type 
+         * @param {string} rcdDate 기록일자 기존 그대로 보내주세요. 수정X
+         * @param {string} fileNames 전체 파일 이름 리스트 - 기존&amp;추가 파일의 이름으로 리스트, 삭제된 파일 제외, 목록 순서대로 ,로 구분해서 주세요.
+         * @param {string | null} [filesDesc] 파일별 메모(파일과 같은 순서로 , 로 구분해 보내주세요. 없을 시 공란 으로 보내주세요.)
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async recordFileControllerUpdate(files: Array<any>, type: RecordFileType, rcdDate: string, fileNames: string, filesDesc?: string | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<RecordControllerUpdate200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.recordFileControllerUpdate(files, type, rcdDate, fileNames, filesDesc, options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['RecordFileApi.recordFileControllerUpdate']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
     }
 };
 
@@ -5717,7 +3918,7 @@ export const RecordFileApiFactory = function (configuration?: Configuration, bas
          * @throws {RequiredError}
          */
         recordFileControllerCreateFile(requestParameters: RecordFileApiRecordFileControllerCreateFileRequest, options?: RawAxiosRequestConfig): AxiosPromise<RecordControllerUpdate200Response> {
-            return localVarFp.recordFileControllerCreateFile(requestParameters.type, requestParameters.files, requestParameters.rcdDate, options).then((request) => request(axios, basePath));
+            return localVarFp.recordFileControllerCreateFile(requestParameters.type, requestParameters.files, requestParameters.rcdDate, requestParameters.filesDesc, options).then((request) => request(axios, basePath));
         },
         /**
          * 개별 삭제한다.
@@ -5726,7 +3927,7 @@ export const RecordFileApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        recordFileControllerDelete(requestParameters: RecordFileApiRecordFileControllerDeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerDelete200Response> {
+        recordFileControllerDelete(requestParameters: RecordFileApiRecordFileControllerDeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<ScheduleControllerFindUserScheduleList200Response> {
             return localVarFp.recordFileControllerDelete(requestParameters.id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5736,7 +3937,7 @@ export const RecordFileApiFactory = function (configuration?: Configuration, bas
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        recordFileControllerDeleteMulti(requestParameters: RecordFileApiRecordFileControllerDeleteMultiRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerDelete200Response> {
+        recordFileControllerDeleteMulti(requestParameters: RecordFileApiRecordFileControllerDeleteMultiRequest, options?: RawAxiosRequestConfig): AxiosPromise<ScheduleControllerFindUserScheduleList200Response> {
             return localVarFp.recordFileControllerDeleteMulti(requestParameters.requestBody, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5748,6 +3949,16 @@ export const RecordFileApiFactory = function (configuration?: Configuration, bas
          */
         recordFileControllerFindAll(requestParameters: RecordFileApiRecordFileControllerFindAllRequest, options?: RawAxiosRequestConfig): AxiosPromise<RecordFileControllerFindAll200Response> {
             return localVarFp.recordFileControllerFindAll(requestParameters.type, requestParameters.startDate, requestParameters.endDate, requestParameters.order, options).then((request) => request(axios, basePath));
+        },
+        /**
+         * 파일을 수정한다.
+         * @summary 파일 수정 API
+         * @param {RecordFileApiRecordFileControllerUpdateRequest} requestParameters Request parameters.
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        recordFileControllerUpdate(requestParameters: RecordFileApiRecordFileControllerUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<RecordControllerUpdate200Response> {
+            return localVarFp.recordFileControllerUpdate(requestParameters.files, requestParameters.type, requestParameters.rcdDate, requestParameters.fileNames, requestParameters.filesDesc, options).then((request) => request(axios, basePath));
         },
     };
 };
@@ -5778,6 +3989,13 @@ export interface RecordFileApiRecordFileControllerCreateFileRequest {
      * @memberof RecordFileApiRecordFileControllerCreateFile
      */
     readonly rcdDate: string
+
+    /**
+     * 파일별 메모(파일과 같은 순서로 , 로 구분해 보내주세요. 없을 시 공란 으로 보내주세요.)
+     * @type {string}
+     * @memberof RecordFileApiRecordFileControllerCreateFile
+     */
+    readonly filesDesc?: string | null
 }
 
 /**
@@ -5844,6 +4062,48 @@ export interface RecordFileApiRecordFileControllerFindAllRequest {
 }
 
 /**
+ * Request parameters for recordFileControllerUpdate operation in RecordFileApi.
+ * @export
+ * @interface RecordFileApiRecordFileControllerUpdateRequest
+ */
+export interface RecordFileApiRecordFileControllerUpdateRequest {
+    /**
+     * 추가 파일
+     * @type {Array<any>}
+     * @memberof RecordFileApiRecordFileControllerUpdate
+     */
+    readonly files: Array<any>
+
+    /**
+     * 
+     * @type {RecordFileType}
+     * @memberof RecordFileApiRecordFileControllerUpdate
+     */
+    readonly type: RecordFileType
+
+    /**
+     * 기록일자 기존 그대로 보내주세요. 수정X
+     * @type {string}
+     * @memberof RecordFileApiRecordFileControllerUpdate
+     */
+    readonly rcdDate: string
+
+    /**
+     * 전체 파일 이름 리스트 - 기존&amp;추가 파일의 이름으로 리스트, 삭제된 파일 제외, 목록 순서대로 ,로 구분해서 주세요.
+     * @type {string}
+     * @memberof RecordFileApiRecordFileControllerUpdate
+     */
+    readonly fileNames: string
+
+    /**
+     * 파일별 메모(파일과 같은 순서로 , 로 구분해 보내주세요. 없을 시 공란 으로 보내주세요.)
+     * @type {string}
+     * @memberof RecordFileApiRecordFileControllerUpdate
+     */
+    readonly filesDesc?: string | null
+}
+
+/**
  * RecordFileApi - object-oriented interface
  * @export
  * @class RecordFileApi
@@ -5859,7 +4119,7 @@ export class RecordFileApi extends BaseAPI {
      * @memberof RecordFileApi
      */
     public recordFileControllerCreateFile(requestParameters: RecordFileApiRecordFileControllerCreateFileRequest, options?: RawAxiosRequestConfig) {
-        return RecordFileApiFp(this.configuration).recordFileControllerCreateFile(requestParameters.type, requestParameters.files, requestParameters.rcdDate, options).then((request) => request(this.axios, this.basePath));
+        return RecordFileApiFp(this.configuration).recordFileControllerCreateFile(requestParameters.type, requestParameters.files, requestParameters.rcdDate, requestParameters.filesDesc, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
@@ -5897,6 +4157,18 @@ export class RecordFileApi extends BaseAPI {
     public recordFileControllerFindAll(requestParameters: RecordFileApiRecordFileControllerFindAllRequest, options?: RawAxiosRequestConfig) {
         return RecordFileApiFp(this.configuration).recordFileControllerFindAll(requestParameters.type, requestParameters.startDate, requestParameters.endDate, requestParameters.order, options).then((request) => request(this.axios, this.basePath));
     }
+
+    /**
+     * 파일을 수정한다.
+     * @summary 파일 수정 API
+     * @param {RecordFileApiRecordFileControllerUpdateRequest} requestParameters Request parameters.
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof RecordFileApi
+     */
+    public recordFileControllerUpdate(requestParameters: RecordFileApiRecordFileControllerUpdateRequest, options?: RawAxiosRequestConfig) {
+        return RecordFileApiFp(this.configuration).recordFileControllerUpdate(requestParameters.files, requestParameters.type, requestParameters.rcdDate, requestParameters.fileNames, requestParameters.filesDesc, options).then((request) => request(this.axios, this.basePath));
+    }
 }
 
 
@@ -5908,8 +4180,8 @@ export class RecordFileApi extends BaseAPI {
 export const ScheduleApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 일정 생성한다.
-         * @summary 일정 생성 API
+         * 예약 생성한다.
+         * @summary 예약 생성 API
          * @param {CreateMultiScheduleDto} createMultiScheduleDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6217,8 +4489,8 @@ export const ScheduleApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = ScheduleApiAxiosParamCreator(configuration)
     return {
         /**
-         * 일정 생성한다.
-         * @summary 일정 생성 API
+         * 예약 생성한다.
+         * @summary 예약 생성 API
          * @param {CreateMultiScheduleDto} createMultiScheduleDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6236,7 +4508,7 @@ export const ScheduleApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async scheduleControllerDelete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerDelete200Response>> {
+        async scheduleControllerDelete(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleControllerFindUserScheduleList200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.scheduleControllerDelete(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ScheduleApi.scheduleControllerDelete']?.[localVarOperationServerIndex]?.url;
@@ -6286,7 +4558,7 @@ export const ScheduleApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async scheduleControllerFindUserScheduleList(schType?: string | null, startDate?: string | null, endDate?: string | null, month?: string | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerDelete200Response>> {
+        async scheduleControllerFindUserScheduleList(schType?: string | null, startDate?: string | null, endDate?: string | null, month?: string | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleControllerFindUserScheduleList200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.scheduleControllerFindUserScheduleList(schType, startDate, endDate, month, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['ScheduleApi.scheduleControllerFindUserScheduleList']?.[localVarOperationServerIndex]?.url;
@@ -6317,8 +4589,8 @@ export const ScheduleApiFactory = function (configuration?: Configuration, baseP
     const localVarFp = ScheduleApiFp(configuration)
     return {
         /**
-         * 일정 생성한다.
-         * @summary 일정 생성 API
+         * 예약 생성한다.
+         * @summary 예약 생성 API
          * @param {ScheduleApiScheduleControllerCreateRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
@@ -6333,7 +4605,7 @@ export const ScheduleApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scheduleControllerDelete(requestParameters: ScheduleApiScheduleControllerDeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerDelete200Response> {
+        scheduleControllerDelete(requestParameters: ScheduleApiScheduleControllerDeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<ScheduleControllerFindUserScheduleList200Response> {
             return localVarFp.scheduleControllerDelete(requestParameters.id, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6363,7 +4635,7 @@ export const ScheduleApiFactory = function (configuration?: Configuration, baseP
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        scheduleControllerFindUserScheduleList(requestParameters: ScheduleApiScheduleControllerFindUserScheduleListRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerDelete200Response> {
+        scheduleControllerFindUserScheduleList(requestParameters: ScheduleApiScheduleControllerFindUserScheduleListRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<ScheduleControllerFindUserScheduleList200Response> {
             return localVarFp.scheduleControllerFindUserScheduleList(requestParameters.schType, requestParameters.startDate, requestParameters.endDate, requestParameters.month, options).then((request) => request(axios, basePath));
         },
         /**
@@ -6555,8 +4827,8 @@ export interface ScheduleApiScheduleControllerUpdateRequest {
  */
 export class ScheduleApi extends BaseAPI {
     /**
-     * 일정 생성한다.
-     * @summary 일정 생성 API
+     * 예약 생성한다.
+     * @summary 예약 생성 API
      * @param {ScheduleApiScheduleControllerCreateRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
@@ -6630,22 +4902,22 @@ export class ScheduleApi extends BaseAPI {
 
 
 /**
- * UserApi - axios parameter creator
+ * UserTokenApi - axios parameter creator
  * @export
  */
-export const UserApiAxiosParamCreator = function (configuration?: Configuration) {
+export const UserTokenApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 센터 회원을 생성한다.
-         * @summary 센터 회원 생성 API
-         * @param {CreateMemberDto} createMemberDto 
+         * 유저토큰 생성한다.
+         * @summary 유저토큰 생성 API
+         * @param {CreateUserTokenDto} createUserTokenDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerCreate: async (createMemberDto: CreateMemberDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'createMemberDto' is not null or undefined
-            assertParamExists('userControllerCreate', 'createMemberDto', createMemberDto)
-            const localVarPath = `/user`;
+        userTokenControllerCreate: async (createUserTokenDto: CreateUserTokenDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            // verify required parameter 'createUserTokenDto' is not null or undefined
+            assertParamExists('userTokenControllerCreate', 'createUserTokenDto', createUserTokenDto)
+            const localVarPath = `/user-token`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6657,10 +4929,6 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -6668,7 +4936,7 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(createMemberDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(createUserTokenDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6676,17 +4944,16 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * 센터 회원을 삭제한다.
-         * @summary 센터 회원 삭제 API
-         * @param {number} id 
-         * @param {string} [q] 회원이름 or 전화번호 
+         * 유저토큰 삭제한다.
+         * @summary 유저토큰 삭제 API - 실 데이터 삭제됨.
+         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerDelete: async (id: number, q?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        userTokenControllerDelete: async (id: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('userControllerDelete', 'id', id)
-            const localVarPath = `/user/{id}`
+            assertParamExists('userTokenControllerDelete', 'id', id)
+            const localVarPath = `/user-token/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6699,17 +4966,6 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication center required
-            await setApiKeyToObject(localVarHeaderParameter, "center", configuration)
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (q !== undefined) {
-                localVarQueryParameter['q'] = q;
-            }
-
 
     
             setSearchParams(localVarUrlObj, localVarQueryParameter);
@@ -6722,22 +4978,15 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * 센터 회원 목록 리스트를 조회한다.
-         * @summary  센터 회원 리스트 조회 API
-         * @param {string} type 검색유형 전체(All)|신규(New)|유효(Effect)|예정(Expect)|마감(End)
-         * @param {Order} [order] 
-         * @param {string | null} [orderField] 
-         * @param {number} [page] 
-         * @param {number} [take] 
-         * @param {string | null} [q] 회원이름 or 전화번호 
-         * @param {string | null} [empMbrSeq] 
+         * 유저토큰 정보를 조회한다.
+         * @summary 유저토큰 정보조회 API
+         * @param {string} [token] token
+         * @param {string} [id] id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerFindAllList: async (type: string, order?: Order, orderField?: string | null, page?: number, take?: number, q?: string | null, empMbrSeq?: string | null, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'type' is not null or undefined
-            assertParamExists('userControllerFindAllList', 'type', type)
-            const localVarPath = `/user`;
+        userTokenControllerFindOne: async (token?: string, id?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/user-token`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
             let baseOptions;
@@ -6749,39 +4998,12 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication center required
-            await setApiKeyToObject(localVarHeaderParameter, "center", configuration)
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-            if (order !== undefined) {
-                localVarQueryParameter['order'] = order;
+            if (token !== undefined) {
+                localVarQueryParameter['token'] = token;
             }
 
-            if (orderField !== undefined) {
-                localVarQueryParameter['orderField'] = orderField;
-            }
-
-            if (page !== undefined) {
-                localVarQueryParameter['page'] = page;
-            }
-
-            if (take !== undefined) {
-                localVarQueryParameter['take'] = take;
-            }
-
-            if (q !== undefined) {
-                localVarQueryParameter['q'] = q;
-            }
-
-            if (type !== undefined) {
-                localVarQueryParameter['type'] = type;
-            }
-
-            if (empMbrSeq !== undefined) {
-                localVarQueryParameter['empMbrSeq'] = empMbrSeq;
+            if (id !== undefined) {
+                localVarQueryParameter['id'] = id;
             }
 
 
@@ -6796,57 +5018,19 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             };
         },
         /**
-         * 회원 정보를 조회한다.
-         * @summary 회원 정보조회 API
-         * @param {number} id 
+         * 유저토큰 정보를 수정한다.
+         * @summary 유저토큰 정보 수정 API
+         * @param {string} id 
+         * @param {UpdateUserTokenDto} updateUserTokenDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerFindOne: async (id: number, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        userTokenControllerUpdate: async (id: string, updateUserTokenDto: UpdateUserTokenDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             // verify required parameter 'id' is not null or undefined
-            assertParamExists('userControllerFindOne', 'id', id)
-            const localVarPath = `/user/{id}`
-                .replace(`{${"id"}}`, encodeURIComponent(String(id)));
-            // use dummy base URL string because the URL constructor only accepts absolute URLs.
-            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
-            let baseOptions;
-            if (configuration) {
-                baseOptions = configuration.baseOptions;
-            }
-
-            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
-            const localVarHeaderParameter = {} as any;
-            const localVarQueryParameter = {} as any;
-
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
-
-    
-            setSearchParams(localVarUrlObj, localVarQueryParameter);
-            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
-            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-
-            return {
-                url: toPathString(localVarUrlObj),
-                options: localVarRequestOptions,
-            };
-        },
-        /**
-         * 센터 회원 정보를 수정한다.
-         * @summary 센터 회원 정보 수정 API
-         * @param {number} id 
-         * @param {UpdateMemberDto} updateMemberDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        userControllerUpdate: async (id: number, updateMemberDto: UpdateMemberDto, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
-            // verify required parameter 'id' is not null or undefined
-            assertParamExists('userControllerUpdate', 'id', id)
-            // verify required parameter 'updateMemberDto' is not null or undefined
-            assertParamExists('userControllerUpdate', 'updateMemberDto', updateMemberDto)
-            const localVarPath = `/user/{id}`
+            assertParamExists('userTokenControllerUpdate', 'id', id)
+            // verify required parameter 'updateUserTokenDto' is not null or undefined
+            assertParamExists('userTokenControllerUpdate', 'updateUserTokenDto', updateUserTokenDto)
+            const localVarPath = `/user-token/{id}`
                 .replace(`{${"id"}}`, encodeURIComponent(String(id)));
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -6859,10 +5043,6 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            // authentication bearer required
-            // http bearer authentication required
-            await setBearerAuthToObject(localVarHeaderParameter, configuration)
-
 
     
             localVarHeaderParameter['Content-Type'] = 'application/json';
@@ -6870,7 +5050,7 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
             setSearchParams(localVarUrlObj, localVarQueryParameter);
             let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
             localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
-            localVarRequestOptions.data = serializeDataIfNeeded(updateMemberDto, localVarRequestOptions, configuration)
+            localVarRequestOptions.data = serializeDataIfNeeded(updateUserTokenDto, localVarRequestOptions, configuration)
 
             return {
                 url: toPathString(localVarUrlObj),
@@ -6881,339 +5061,242 @@ export const UserApiAxiosParamCreator = function (configuration?: Configuration)
 };
 
 /**
- * UserApi - functional programming interface
+ * UserTokenApi - functional programming interface
  * @export
  */
-export const UserApiFp = function(configuration?: Configuration) {
-    const localVarAxiosParamCreator = UserApiAxiosParamCreator(configuration)
+export const UserTokenApiFp = function(configuration?: Configuration) {
+    const localVarAxiosParamCreator = UserTokenApiAxiosParamCreator(configuration)
     return {
         /**
-         * 센터 회원을 생성한다.
-         * @summary 센터 회원 생성 API
-         * @param {CreateMemberDto} createMemberDto 
+         * 유저토큰 생성한다.
+         * @summary 유저토큰 생성 API
+         * @param {CreateUserTokenDto} createUserTokenDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userControllerCreate(createMemberDto: CreateMemberDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerCreate(createMemberDto, options);
+        async userTokenControllerCreate(createUserTokenDto: CreateUserTokenDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserTokenControllerFindOne200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userTokenControllerCreate(createUserTokenDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerCreate']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['UserTokenApi.userTokenControllerCreate']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 센터 회원을 삭제한다.
-         * @summary 센터 회원 삭제 API
-         * @param {number} id 
-         * @param {string} [q] 회원이름 or 전화번호 
+         * 유저토큰 삭제한다.
+         * @summary 유저토큰 삭제 API - 실 데이터 삭제됨.
+         * @param {string} id 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userControllerDelete(id: number, q?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerDelete200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerDelete(id, q, options);
+        async userTokenControllerDelete(id: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<ScheduleControllerFindUserScheduleList200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userTokenControllerDelete(id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerDelete']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['UserTokenApi.userTokenControllerDelete']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 센터 회원 목록 리스트를 조회한다.
-         * @summary  센터 회원 리스트 조회 API
-         * @param {string} type 검색유형 전체(All)|신규(New)|유효(Effect)|예정(Expect)|마감(End)
-         * @param {Order} [order] 
-         * @param {string | null} [orderField] 
-         * @param {number} [page] 
-         * @param {number} [take] 
-         * @param {string | null} [q] 회원이름 or 전화번호 
-         * @param {string | null} [empMbrSeq] 
+         * 유저토큰 정보를 조회한다.
+         * @summary 유저토큰 정보조회 API
+         * @param {string} [token] token
+         * @param {string} [id] id
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userControllerFindAllList(type: string, order?: Order, orderField?: string | null, page?: number, take?: number, q?: string | null, empMbrSeq?: string | null, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerFindAllList200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerFindAllList(type, order, orderField, page, take, q, empMbrSeq, options);
+        async userTokenControllerFindOne(token?: string, id?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserTokenControllerFindOne200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userTokenControllerFindOne(token, id, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerFindAllList']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['UserTokenApi.userTokenControllerFindOne']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 회원 정보를 조회한다.
-         * @summary 회원 정보조회 API
-         * @param {number} id 
+         * 유저토큰 정보를 수정한다.
+         * @summary 유저토큰 정보 수정 API
+         * @param {string} id 
+         * @param {UpdateUserTokenDto} updateUserTokenDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userControllerFindOne(id: number, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerFindOne(id, options);
+        async userTokenControllerUpdate(id: string, updateUserTokenDto: UpdateUserTokenDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserTokenControllerFindOne200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userTokenControllerUpdate(id, updateUserTokenDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerFindOne']?.[localVarOperationServerIndex]?.url;
-            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
-        },
-        /**
-         * 센터 회원 정보를 수정한다.
-         * @summary 센터 회원 정보 수정 API
-         * @param {number} id 
-         * @param {UpdateMemberDto} updateMemberDto 
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        async userControllerUpdate(id: number, updateMemberDto: UpdateMemberDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserControllerCreate200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userControllerUpdate(id, updateMemberDto, options);
-            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
-            const localVarOperationServerBasePath = operationServerMap['UserApi.userControllerUpdate']?.[localVarOperationServerIndex]?.url;
+            const localVarOperationServerBasePath = operationServerMap['UserTokenApi.userTokenControllerUpdate']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
     }
 };
 
 /**
- * UserApi - factory interface
+ * UserTokenApi - factory interface
  * @export
  */
-export const UserApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
-    const localVarFp = UserApiFp(configuration)
+export const UserTokenApiFactory = function (configuration?: Configuration, basePath?: string, axios?: AxiosInstance) {
+    const localVarFp = UserTokenApiFp(configuration)
     return {
         /**
-         * 센터 회원을 생성한다.
-         * @summary 센터 회원 생성 API
-         * @param {UserApiUserControllerCreateRequest} requestParameters Request parameters.
+         * 유저토큰 생성한다.
+         * @summary 유저토큰 생성 API
+         * @param {UserTokenApiUserTokenControllerCreateRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerCreate(requestParameters: UserApiUserControllerCreateRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerCreate200Response> {
-            return localVarFp.userControllerCreate(requestParameters.createMemberDto, options).then((request) => request(axios, basePath));
+        userTokenControllerCreate(requestParameters: UserTokenApiUserTokenControllerCreateRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserTokenControllerFindOne200Response> {
+            return localVarFp.userTokenControllerCreate(requestParameters.createUserTokenDto, options).then((request) => request(axios, basePath));
         },
         /**
-         * 센터 회원을 삭제한다.
-         * @summary 센터 회원 삭제 API
-         * @param {UserApiUserControllerDeleteRequest} requestParameters Request parameters.
+         * 유저토큰 삭제한다.
+         * @summary 유저토큰 삭제 API - 실 데이터 삭제됨.
+         * @param {UserTokenApiUserTokenControllerDeleteRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerDelete(requestParameters: UserApiUserControllerDeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerDelete200Response> {
-            return localVarFp.userControllerDelete(requestParameters.id, requestParameters.q, options).then((request) => request(axios, basePath));
+        userTokenControllerDelete(requestParameters: UserTokenApiUserTokenControllerDeleteRequest, options?: RawAxiosRequestConfig): AxiosPromise<ScheduleControllerFindUserScheduleList200Response> {
+            return localVarFp.userTokenControllerDelete(requestParameters.id, options).then((request) => request(axios, basePath));
         },
         /**
-         * 센터 회원 목록 리스트를 조회한다.
-         * @summary  센터 회원 리스트 조회 API
-         * @param {UserApiUserControllerFindAllListRequest} requestParameters Request parameters.
+         * 유저토큰 정보를 조회한다.
+         * @summary 유저토큰 정보조회 API
+         * @param {UserTokenApiUserTokenControllerFindOneRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerFindAllList(requestParameters: UserApiUserControllerFindAllListRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerFindAllList200Response> {
-            return localVarFp.userControllerFindAllList(requestParameters.type, requestParameters.order, requestParameters.orderField, requestParameters.page, requestParameters.take, requestParameters.q, requestParameters.empMbrSeq, options).then((request) => request(axios, basePath));
+        userTokenControllerFindOne(requestParameters: UserTokenApiUserTokenControllerFindOneRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<UserTokenControllerFindOne200Response> {
+            return localVarFp.userTokenControllerFindOne(requestParameters.token, requestParameters.id, options).then((request) => request(axios, basePath));
         },
         /**
-         * 회원 정보를 조회한다.
-         * @summary 회원 정보조회 API
-         * @param {UserApiUserControllerFindOneRequest} requestParameters Request parameters.
+         * 유저토큰 정보를 수정한다.
+         * @summary 유저토큰 정보 수정 API
+         * @param {UserTokenApiUserTokenControllerUpdateRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userControllerFindOne(requestParameters: UserApiUserControllerFindOneRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerCreate200Response> {
-            return localVarFp.userControllerFindOne(requestParameters.id, options).then((request) => request(axios, basePath));
-        },
-        /**
-         * 센터 회원 정보를 수정한다.
-         * @summary 센터 회원 정보 수정 API
-         * @param {UserApiUserControllerUpdateRequest} requestParameters Request parameters.
-         * @param {*} [options] Override http request option.
-         * @throws {RequiredError}
-         */
-        userControllerUpdate(requestParameters: UserApiUserControllerUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserControllerCreate200Response> {
-            return localVarFp.userControllerUpdate(requestParameters.id, requestParameters.updateMemberDto, options).then((request) => request(axios, basePath));
+        userTokenControllerUpdate(requestParameters: UserTokenApiUserTokenControllerUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserTokenControllerFindOne200Response> {
+            return localVarFp.userTokenControllerUpdate(requestParameters.id, requestParameters.updateUserTokenDto, options).then((request) => request(axios, basePath));
         },
     };
 };
 
 /**
- * Request parameters for userControllerCreate operation in UserApi.
+ * Request parameters for userTokenControllerCreate operation in UserTokenApi.
  * @export
- * @interface UserApiUserControllerCreateRequest
+ * @interface UserTokenApiUserTokenControllerCreateRequest
  */
-export interface UserApiUserControllerCreateRequest {
+export interface UserTokenApiUserTokenControllerCreateRequest {
     /**
      * 
-     * @type {CreateMemberDto}
-     * @memberof UserApiUserControllerCreate
+     * @type {CreateUserTokenDto}
+     * @memberof UserTokenApiUserTokenControllerCreate
      */
-    readonly createMemberDto: CreateMemberDto
+    readonly createUserTokenDto: CreateUserTokenDto
 }
 
 /**
- * Request parameters for userControllerDelete operation in UserApi.
+ * Request parameters for userTokenControllerDelete operation in UserTokenApi.
  * @export
- * @interface UserApiUserControllerDeleteRequest
+ * @interface UserTokenApiUserTokenControllerDeleteRequest
  */
-export interface UserApiUserControllerDeleteRequest {
+export interface UserTokenApiUserTokenControllerDeleteRequest {
     /**
      * 
-     * @type {number}
-     * @memberof UserApiUserControllerDelete
-     */
-    readonly id: number
-
-    /**
-     * 회원이름 or 전화번호 
      * @type {string}
-     * @memberof UserApiUserControllerDelete
+     * @memberof UserTokenApiUserTokenControllerDelete
      */
-    readonly q?: string
+    readonly id: string
 }
 
 /**
- * Request parameters for userControllerFindAllList operation in UserApi.
+ * Request parameters for userTokenControllerFindOne operation in UserTokenApi.
  * @export
- * @interface UserApiUserControllerFindAllListRequest
+ * @interface UserTokenApiUserTokenControllerFindOneRequest
  */
-export interface UserApiUserControllerFindAllListRequest {
+export interface UserTokenApiUserTokenControllerFindOneRequest {
     /**
-     * 검색유형 전체(All)|신규(New)|유효(Effect)|예정(Expect)|마감(End)
+     * token
      * @type {string}
-     * @memberof UserApiUserControllerFindAllList
+     * @memberof UserTokenApiUserTokenControllerFindOne
      */
-    readonly type: string
+    readonly token?: string
 
     /**
-     * 
-     * @type {Order}
-     * @memberof UserApiUserControllerFindAllList
-     */
-    readonly order?: Order
-
-    /**
-     * 
+     * id
      * @type {string}
-     * @memberof UserApiUserControllerFindAllList
+     * @memberof UserTokenApiUserTokenControllerFindOne
      */
-    readonly orderField?: string | null
-
-    /**
-     * 
-     * @type {number}
-     * @memberof UserApiUserControllerFindAllList
-     */
-    readonly page?: number
-
-    /**
-     * 
-     * @type {number}
-     * @memberof UserApiUserControllerFindAllList
-     */
-    readonly take?: number
-
-    /**
-     * 회원이름 or 전화번호 
-     * @type {string}
-     * @memberof UserApiUserControllerFindAllList
-     */
-    readonly q?: string | null
-
-    /**
-     * 
-     * @type {string}
-     * @memberof UserApiUserControllerFindAllList
-     */
-    readonly empMbrSeq?: string | null
+    readonly id?: string
 }
 
 /**
- * Request parameters for userControllerFindOne operation in UserApi.
+ * Request parameters for userTokenControllerUpdate operation in UserTokenApi.
  * @export
- * @interface UserApiUserControllerFindOneRequest
+ * @interface UserTokenApiUserTokenControllerUpdateRequest
  */
-export interface UserApiUserControllerFindOneRequest {
+export interface UserTokenApiUserTokenControllerUpdateRequest {
     /**
      * 
-     * @type {number}
-     * @memberof UserApiUserControllerFindOne
+     * @type {string}
+     * @memberof UserTokenApiUserTokenControllerUpdate
      */
-    readonly id: number
+    readonly id: string
+
+    /**
+     * 
+     * @type {UpdateUserTokenDto}
+     * @memberof UserTokenApiUserTokenControllerUpdate
+     */
+    readonly updateUserTokenDto: UpdateUserTokenDto
 }
 
 /**
- * Request parameters for userControllerUpdate operation in UserApi.
+ * UserTokenApi - object-oriented interface
  * @export
- * @interface UserApiUserControllerUpdateRequest
- */
-export interface UserApiUserControllerUpdateRequest {
-    /**
-     * 
-     * @type {number}
-     * @memberof UserApiUserControllerUpdate
-     */
-    readonly id: number
-
-    /**
-     * 
-     * @type {UpdateMemberDto}
-     * @memberof UserApiUserControllerUpdate
-     */
-    readonly updateMemberDto: UpdateMemberDto
-}
-
-/**
- * UserApi - object-oriented interface
- * @export
- * @class UserApi
+ * @class UserTokenApi
  * @extends {BaseAPI}
  */
-export class UserApi extends BaseAPI {
+export class UserTokenApi extends BaseAPI {
     /**
-     * 센터 회원을 생성한다.
-     * @summary 센터 회원 생성 API
-     * @param {UserApiUserControllerCreateRequest} requestParameters Request parameters.
+     * 유저토큰 생성한다.
+     * @summary 유저토큰 생성 API
+     * @param {UserTokenApiUserTokenControllerCreateRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
+     * @memberof UserTokenApi
      */
-    public userControllerCreate(requestParameters: UserApiUserControllerCreateRequest, options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).userControllerCreate(requestParameters.createMemberDto, options).then((request) => request(this.axios, this.basePath));
+    public userTokenControllerCreate(requestParameters: UserTokenApiUserTokenControllerCreateRequest, options?: RawAxiosRequestConfig) {
+        return UserTokenApiFp(this.configuration).userTokenControllerCreate(requestParameters.createUserTokenDto, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 센터 회원을 삭제한다.
-     * @summary 센터 회원 삭제 API
-     * @param {UserApiUserControllerDeleteRequest} requestParameters Request parameters.
+     * 유저토큰 삭제한다.
+     * @summary 유저토큰 삭제 API - 실 데이터 삭제됨.
+     * @param {UserTokenApiUserTokenControllerDeleteRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
+     * @memberof UserTokenApi
      */
-    public userControllerDelete(requestParameters: UserApiUserControllerDeleteRequest, options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).userControllerDelete(requestParameters.id, requestParameters.q, options).then((request) => request(this.axios, this.basePath));
+    public userTokenControllerDelete(requestParameters: UserTokenApiUserTokenControllerDeleteRequest, options?: RawAxiosRequestConfig) {
+        return UserTokenApiFp(this.configuration).userTokenControllerDelete(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 센터 회원 목록 리스트를 조회한다.
-     * @summary  센터 회원 리스트 조회 API
-     * @param {UserApiUserControllerFindAllListRequest} requestParameters Request parameters.
+     * 유저토큰 정보를 조회한다.
+     * @summary 유저토큰 정보조회 API
+     * @param {UserTokenApiUserTokenControllerFindOneRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
+     * @memberof UserTokenApi
      */
-    public userControllerFindAllList(requestParameters: UserApiUserControllerFindAllListRequest, options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).userControllerFindAllList(requestParameters.type, requestParameters.order, requestParameters.orderField, requestParameters.page, requestParameters.take, requestParameters.q, requestParameters.empMbrSeq, options).then((request) => request(this.axios, this.basePath));
+    public userTokenControllerFindOne(requestParameters: UserTokenApiUserTokenControllerFindOneRequest = {}, options?: RawAxiosRequestConfig) {
+        return UserTokenApiFp(this.configuration).userTokenControllerFindOne(requestParameters.token, requestParameters.id, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**
-     * 회원 정보를 조회한다.
-     * @summary 회원 정보조회 API
-     * @param {UserApiUserControllerFindOneRequest} requestParameters Request parameters.
+     * 유저토큰 정보를 수정한다.
+     * @summary 유저토큰 정보 수정 API
+     * @param {UserTokenApiUserTokenControllerUpdateRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
      * @throws {RequiredError}
-     * @memberof UserApi
+     * @memberof UserTokenApi
      */
-    public userControllerFindOne(requestParameters: UserApiUserControllerFindOneRequest, options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).userControllerFindOne(requestParameters.id, options).then((request) => request(this.axios, this.basePath));
-    }
-
-    /**
-     * 센터 회원 정보를 수정한다.
-     * @summary 센터 회원 정보 수정 API
-     * @param {UserApiUserControllerUpdateRequest} requestParameters Request parameters.
-     * @param {*} [options] Override http request option.
-     * @throws {RequiredError}
-     * @memberof UserApi
-     */
-    public userControllerUpdate(requestParameters: UserApiUserControllerUpdateRequest, options?: RawAxiosRequestConfig) {
-        return UserApiFp(this.configuration).userControllerUpdate(requestParameters.id, requestParameters.updateMemberDto, options).then((request) => request(this.axios, this.basePath));
+    public userTokenControllerUpdate(requestParameters: UserTokenApiUserTokenControllerUpdateRequest, options?: RawAxiosRequestConfig) {
+        return UserTokenApiFp(this.configuration).userTokenControllerUpdate(requestParameters.id, requestParameters.updateUserTokenDto, options).then((request) => request(this.axios, this.basePath));
     }
 }
 

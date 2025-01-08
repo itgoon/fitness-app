@@ -18,7 +18,7 @@ export default function MenuMoreLink({ title, path }: NavLink) {
         typography: 'caption',
         display: 'inline-flex',
         alignSelf: 'flex-end',
-        fontWeight: 'fontWeightBold',
+        fontWeight: 'fontWeightBold'
       }}
     >
       {title} <Iconify icon="eva:arrow-ios-forward-fill" width={16} />

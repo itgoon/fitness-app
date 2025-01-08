@@ -1,11 +1,11 @@
-import _ from "lodash";
-import moment from "moment";
+import _ from 'lodash';
+import moment from 'moment';
 
-import { ResponseUser } from "src/_mock/map/users";
+import { ResponseUser } from 'src/_mock/map/users';
 
 const getMembershipInfo = (membershipInfos, playerId = 44350) => {
   let findData = membershipInfos.filter((item) => item.playerID === playerId);
-  findData = _.sortBy(findData, ["state"]);
+  findData = _.sortBy(findData, ['state']);
   return findData.length > 0 ? findData[0] : undefined;
 };
 
@@ -27,26 +27,26 @@ export const loadUsers = async (params: any): Promise<any> => {
   items.infos = items.infos
     .filter((item) => {
       const findItem = getMembershipInfo(items.membershipInfos, item.playerID);
-      if (params.type === "ALL") return true;
+      if (params.type === 'ALL') return true;
 
       if (!findItem) return false;
 
-      if (params.type === "ACTIVE") {
+      if (params.type === 'ACTIVE') {
         if (
           moment().isBetween(
-            moment(1e3 * findItem.startTime).format("YYYY-MM-DD"),
-            moment(1e3 * findItem.endTime).format("YYYY-MM-DD")
+            moment(1e3 * findItem.startTime).format('YYYY-MM-DD'),
+            moment(1e3 * findItem.endTime).format('YYYY-MM-DD')
           )
         ) {
           return true;
         }
         return false;
       }
-      if (params.type === "INACTIVE") {
+      if (params.type === 'INACTIVE') {
         if (
           moment().isBetween(
-            moment(1e3 * findItem.startTime).format("YYYY-MM-DD"),
-            moment(1e3 * findItem.endTime).format("YYYY-MM-DD")
+            moment(1e3 * findItem.startTime).format('YYYY-MM-DD'),
+            moment(1e3 * findItem.endTime).format('YYYY-MM-DD')
           )
         ) {
           return false;
@@ -54,11 +54,11 @@ export const loadUsers = async (params: any): Promise<any> => {
 
         return true;
       }
-      if (params.type === "PAUSE") {
+      if (params.type === 'PAUSE') {
         if (
           moment().isBetween(
-            moment(1e3 * findItem.startTime).format("YYYY-MM-DD"),
-            moment(1e3 * findItem.endTime).format("YYYY-MM-DD")
+            moment(1e3 * findItem.startTime).format('YYYY-MM-DD'),
+            moment(1e3 * findItem.endTime).format('YYYY-MM-DD')
           )
         ) {
           return false;

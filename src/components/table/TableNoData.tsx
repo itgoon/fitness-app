@@ -21,7 +21,7 @@ export default function TableNoData({ notFound, sx }: Props) {
             title="No Data"
             sx={{
               py: 10,
-              ...sx,
+              ...sx
             }}
           />
         </TableCell>

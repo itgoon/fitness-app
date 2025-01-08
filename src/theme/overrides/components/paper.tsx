@@ -7,12 +7,12 @@ export function paper(theme: Theme) {
     MuiPaper: {
       styleOverrides: {
         root: {
-          backgroundImage: 'none',
+          backgroundImage: 'none'
         },
         outlined: {
-          borderColor: alpha(theme.palette.grey[500], 0.16),
-        },
-      },
-    },
+          borderColor: alpha(theme.palette.grey[500], 0.16)
+        }
+      }
+    }
   };
 }

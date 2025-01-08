@@ -1,20 +1,20 @@
-import { PaginationProps } from "@mui/material/Pagination";
-import { paginationItemClasses } from "@mui/material/PaginationItem";
-import { alpha, Theme } from "@mui/material/styles";
+import { PaginationProps } from '@mui/material/Pagination';
+import { paginationItemClasses } from '@mui/material/PaginationItem';
+import { alpha, Theme } from '@mui/material/styles';
 
 // ----------------------------------------------------------------------
 
 const COLORS = [
-  "primary",
-  "secondary",
-  "info",
-  "success",
-  "warning",
-  "error",
+  'primary',
+  'secondary',
+  'info',
+  'success',
+  'warning',
+  'error'
 ] as const;
 
 // NEW VARIANT
-declare module "@mui/material/Pagination" {
+declare module '@mui/material/Pagination' {
   interface PaginationPropsVariantOverrides {
     soft: true;
   }
@@ -30,27 +30,27 @@ declare module "@mui/material/Pagination" {
 // ----------------------------------------------------------------------
 
 export function pagination(theme: Theme) {
-  const lightMode = theme.palette.mode === "light";
+  const lightMode = theme.palette.mode === 'light';
 
   const rootStyles = (ownerState: PaginationProps) => {
-    const defaultColor = ownerState.color === "standard";
+    const defaultColor = ownerState.color === 'standard';
 
-    const filledVariant = ownerState.variant === "text";
+    const filledVariant = ownerState.variant === 'text';
 
-    const outlinedVariant = ownerState.variant === "outlined";
+    const outlinedVariant = ownerState.variant === 'outlined';
 
-    const softVariant = ownerState.variant === "soft";
+    const softVariant = ownerState.variant === 'soft';
 
     const defaultStyle = {
       [`& .${paginationItemClasses.root}`]: {
         ...(outlinedVariant && {
-          borderColor: alpha(theme.palette.grey[500], 0.24),
+          borderColor: alpha(theme.palette.grey[500], 0.24)
         }),
 
         [`&.${paginationItemClasses.selected}`]: {
           fontWeight: theme.typography.fontWeightSemiBold,
           ...(outlinedVariant && {
-            borderColor: "currentColor",
+            borderColor: 'currentColor'
           }),
 
           ...(defaultColor && {
@@ -60,15 +60,15 @@ export function pagination(theme: Theme) {
                 ? theme.palette.common.white
                 : theme.palette.grey[800],
               backgroundColor: theme.palette.text.primary,
-              "&:hover": {
+              '&:hover': {
                 backgroundColor: lightMode
                   ? theme.palette.grey[700]
-                  : theme.palette.grey[100],
-              },
-            }),
-          }),
-        },
-      },
+                  : theme.palette.grey[100]
+              }
+            })
+          })
+        }
+      }
     };
 
     const colorStyle = COLORS.map((color) => ({
@@ -78,16 +78,16 @@ export function pagination(theme: Theme) {
             ...(ownerState.color === color && {
               // SOFT
               ...(softVariant && {
-                color: theme.palette[color][lightMode ? "dark" : "light"],
+                color: theme.palette[color][lightMode ? 'dark' : 'light'],
                 backgroundColor: alpha(theme.palette[color].main, 0.08),
-                "&:hover": {
-                  backgroundColor: alpha(theme.palette[color].main, 0.16),
-                },
-              }),
-            }),
-          },
-        },
-      }),
+                '&:hover': {
+                  backgroundColor: alpha(theme.palette[color].main, 0.16)
+                }
+              })
+            })
+          }
+        }
+      })
     }));
 
     return [defaultStyle, ...colorStyle];
@@ -97,8 +97,8 @@ export function pagination(theme: Theme) {
     MuiPagination: {
       styleOverrides: {
         root: ({ ownerState }: { ownerState: PaginationProps }) =>
-          rootStyles(ownerState),
-      },
-    },
+          rootStyles(ownerState)
+      }
+    }
   };
 }

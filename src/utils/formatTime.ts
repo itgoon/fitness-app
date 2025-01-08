@@ -2,6 +2,7 @@ import { format, getTime, formatDistanceToNow } from 'date-fns';
 import dayjs from 'dayjs';
 
 import 'dayjs/locale/ko';
+
 dayjs.locale('ko');
 // ----------------------------------------------------------------------
 
@@ -112,6 +113,5 @@ export function getTimeDifference(timeString) {
 }
 
 // 남은 날짜 계산
-export const getRemainDays = (startDay, endDay) => {
-  return dayjs(endDay).diff(dayjs(startDay), 'day');
-};
+export const getRemainDays = (startDay, endDay) =>
+  dayjs(endDay).diff(dayjs(startDay), 'day');

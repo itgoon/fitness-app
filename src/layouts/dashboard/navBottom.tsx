@@ -2,8 +2,8 @@ import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { useLayoutEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
-import { useNavData } from './configNavigation';
 import { useTheme } from '@mui/material';
+import { useNavData } from './configNavigation';
 import QrModal from '../../components/custom/QrModal';
 import { QRCenterData, QRCustomerData } from '../../utils/dummy';
 
@@ -52,8 +52,7 @@ export default function NavBottom() {
         }}
         onClick={(newValue) => openModal(newValue)}
       >
-        {list?.map((item) => {
-          return (
+        {list?.map((item) => (
             <BottomNavigationAction
               sx={{
                 minWidth: 64,
@@ -69,8 +68,7 @@ export default function NavBottom() {
               icon={item?.icon}
               value={item.path}
             />
-          );
-        })}
+          ))}
         {/* <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
       <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
       <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}

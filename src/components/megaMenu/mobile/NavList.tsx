@@ -79,12 +79,12 @@ export default function NavList({ data, slotProps }: NavListProps) {
           open={openMenu}
           onClose={handleCloseMenu}
           slotProps={{
-            backdrop: { invisible: true },
+            backdrop: { invisible: true }
           }}
           PaperProps={{
             sx: {
-              width: rectWidth - 8,
-            },
+              width: rectWidth - 8
+            }
           }}
         >
           <NavSubList
@@ -113,7 +113,11 @@ function NavSubList({ data, slotProps, title, onCloseMenu }: NavSubListProps) {
           <Iconify icon="eva:arrow-ios-back-fill" width={16} />
         </IconButton>
 
-        <Typography noWrap variant="subtitle1" sx={{ textTransform: 'capitalize' }}>
+        <Typography
+          noWrap
+          variant="subtitle1"
+          sx={{ textTransform: 'capitalize' }}
+        >
           {title}
         </Typography>
       </Stack>
@@ -134,7 +138,7 @@ function NavSubList({ data, slotProps, title, onCloseMenu }: NavSubListProps) {
                   px: 2.5,
                   fontSize: 11,
                   color: 'text.secondary',
-                  ...slotProps?.subheader,
+                  ...slotProps?.subheader
                 }}
               >
                 {list.subheader}
@@ -142,7 +146,8 @@ function NavSubList({ data, slotProps, title, onCloseMenu }: NavSubListProps) {
             )}
 
             {list.items.map((link) => {
-              const active = pathname === link.path || pathname === `${link.path}/`;
+              const active =
+                pathname === link.path || pathname === `${link.path}/`;
 
               return (
                 <ListItemButton
@@ -155,13 +160,16 @@ function NavSubList({ data, slotProps, title, onCloseMenu }: NavSubListProps) {
                     fontSize: 13,
                     ...(active && {
                       fontWeight: 'fontWeightSemiBold',
-                      color: theme.palette.mode === 'light' ? 'primary.main' : 'primary.light',
+                      color:
+                        theme.palette.mode === 'light'
+                          ? 'primary.main'
+                          : 'primary.light',
                       bgcolor: alpha(theme.palette.primary.main, 0.08),
                       '&:hover': {
-                        bgcolor: alpha(theme.palette.primary.main, 0.16),
-                      },
+                        bgcolor: alpha(theme.palette.primary.main, 0.16)
+                      }
                     }),
-                    ...slotProps?.subItem,
+                    ...slotProps?.subItem
                   }}
                 >
                   <Box
@@ -174,11 +182,16 @@ function NavSubList({ data, slotProps, title, onCloseMenu }: NavSubListProps) {
                       flexShrink: 0,
                       display: 'flex',
                       alignItems: 'center',
-                      justifyContent: 'center',
+                      justifyContent: 'center'
                     }}
                   >
                     <Box
-                      sx={{ width: 4, height: 4, borderRadius: '50%', bgcolor: 'currentColor' }}
+                      sx={{
+                        width: 4,
+                        height: 4,
+                        borderRadius: '50%',
+                        bgcolor: 'currentColor'
+                      }}
                     />
                   </Box>
 
@@ -190,7 +203,7 @@ function NavSubList({ data, slotProps, title, onCloseMenu }: NavSubListProps) {
                       maxWidth: 1,
                       overflow: 'hidden',
                       whiteSpace: 'nowrap',
-                      textOverflow: 'ellipsis',
+                      textOverflow: 'ellipsis'
                     }}
                   >
                     {link.title}

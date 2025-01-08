@@ -1,4 +1,4 @@
-import { Box } from "@mui/material";
+import { Box } from '@mui/material';
 /**
  * ******************************************************
  * 대시보드 화면

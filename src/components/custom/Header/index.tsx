@@ -1,71 +1,51 @@
-import { Box } from '@mui/material';
-import { useEffect, useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import { NavItemType, menus } from '../../../data/menus';
-import Item from './Item';
-import { Iheader } from './types';
+import { Box, Typography, useTheme } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Prev } from '../../Icon/HeaderIcon';
+import Icon from '../../Icon';
+import { NavItemType } from '../../../data/menus';
 
-const findHeader = (menu: NavItemType[], path: string): NavItemType[] => {
-  const breadcrumbs: NavItemType[] = [];
+// 불필요한 코드가 너무 많음. 안쓰는걸 안지움
+// 하나의 컴포넌트, 함수에서 너무 많이 처리함
+// 불필요한 useEffect
 
-  const traverse = (menuItem: NavItemType): boolean => {
-    console.log(menuItem);
+interface IHeader {
+  currentData?: NavItemType | null;
+  title?: string;
+}
+export default function Header({ currentData, title }: IHeader) {
+  const theme = useTheme();
+  const { palette } = theme;
+  const light = palette.mode === 'light';
+  const black = light ? palette.common.black : palette.common.white;
+  const navigate = useNavigate();
+  const headerTitle = currentData?.title ?? '';
+  const url = currentData?.url ?? '';
+  const isStartIcon = url !== '/dashboard';
 
-    if (menuItem.url === path) {
-      breadcrumbs.push(menuItem);
-      return true; // Found the path
-    }
-    if (menuItem.isHeader === false) {
-      return false;
-    }
-
-    return false;
-  };
-
-  // 각 메뉴 항목을 순회하며 탐색 시작
-  for (const item of menu) {
-    if (item.isHeader) {
-      if (traverse(item)) {
-        break; // 하나의 경로를 찾으면 탐색 종료
-      }
-    }
-  }
-  return breadcrumbs.length > 0 ? breadcrumbs : [];
-};
-
-// TODO: 함수 변경 및 menus 구조 변경
-export default function Header({ stepTitle, isStart }: Iheader) {
-  // state
-  const location = useLocation();
-  const currentLocation = location.pathname;
-  const [breadcrumbs, setBreadcrumbs] = useState<NavItemType[] | undefined>([]);
-
-  useEffect(() => {
-    const foundBreadcrumbs = findHeader(menus, currentLocation);
-    setBreadcrumbs(foundBreadcrumbs);
-  }, [currentLocation]);
-
-  if (stepTitle !== undefined && stepTitle !== '') {
-    return (
-      <Box role="presentation" height={56} py={1.88} px={2}>
-        <Item isStart={isStart} title={stepTitle} />
-      </Box>
-    );
-  }
   return (
-    <>
-      {breadcrumbs && breadcrumbs.length > 0 && (
-        <Box role="presentation" height={56} py={1.88} px={2}>
-          {breadcrumbs?.map((item, key) => (
-            <Item
-              key={key}
-              isStart={item.isStart}
-              isEnd={item.isEnd}
-              title={item.title}
-            />
-          ))}
+    <header
+      role="presentation"
+      style={{ height: 56, paddingBlock: 15, paddingInline: 16 }}
+    >
+      <Box display="flex" alignItems="center" width="100%">
+        <Box width={22} paddingTop={0.25}>
+          {isStartIcon && <Prev onClick={() => navigate(-1)} />}
         </Box>
-      )}
-    </>
+        <Box flex={1}>
+          {headerTitle && (
+            <Typography
+              variant="Body18/bold"
+              children={headerTitle}
+              color={black}
+              sx={{ display: 'flex', justifyContent: 'center' }}
+            />
+          )}
+        </Box>
+
+        <Box width={22} paddingTop={0.25}>
+          {!isStartIcon && <Icon size={24} name="BellSvg" />}
+        </Box>
+      </Box>
+    </header>
   );
 }

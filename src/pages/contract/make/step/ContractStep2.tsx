@@ -42,20 +42,20 @@ export default function Step2({ onNext }: StepProps) {
   };
 
   return (
-    <Stack height={'100%'} justifyContent={'space-between'}>
+    <Stack height="100%" justifyContent="space-between">
       <Stack gap={5}>
-        <ContractTable title={'결제 정보'} list={contractList} />
+        <ContractTable title="결제 정보" list={contractList} />
         <Stack gap={3}>
           <Typography
-            display={'flex'}
-            justifyContent={'center'}
-            variant={'Body20/semiBold'}
-            children={'2024년 08월 19일'}
+            display="flex"
+            justifyContent="center"
+            variant="Body20/semiBold"
+            children="2024년 08월 19일"
           />
           <Box
-            display={'flex'}
-            justifyContent={'center'}
-            alignItems={'center'}
+            display="flex"
+            justifyContent="center"
+            alignItems="center"
             bgcolor={blgrey}
             height={100}
             borderRadius={0.5}
@@ -72,7 +72,7 @@ export default function Step2({ onNext }: StepProps) {
               <Typography
                 variant="Body18/regular"
                 color={grey600}
-                children={'클릭해서 서명하기'}
+                children="클릭해서 서명하기"
               />
             )}
           </Box>
@@ -81,10 +81,10 @@ export default function Step2({ onNext }: StepProps) {
 
       {isSigned && sign?.data !== '' && (
         <Button
-          size={'large'}
-          variant={'contained'}
-          color={'primary'}
-          children={'서명 완료'}
+          size="large"
+          variant="contained"
+          color="primary"
+          children="서명 완료"
           onClick={() =>
             openConfirm({
               title: '',

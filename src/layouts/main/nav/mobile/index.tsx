@@ -46,8 +46,8 @@ export default function NavMobile({ data }: NavProps) {
         PaperProps={{
           sx: {
             pb: 5,
-            width: 260,
-          },
+            width: 260
+          }
         }}
       >
         <Scrollbar>

@@ -4,10 +4,11 @@ import {
   SetStateAction,
   createContext,
   useContext,
+  useMemo,
   useRef,
   useState
 } from 'react';
-import { default as ReactSignatureCanvas } from 'react-signature-canvas';
+import { ReactSignatureCanvas } from 'react-signature-canvas';
 
 type SignType = {
   data: string;
@@ -22,12 +23,9 @@ const SignContext = createContext<SignContextType | undefined>(undefined);
 
 export const SignProvider = ({ children }: { children: ReactNode }) => {
   const [sign, setSign] = useState<SignType | null>({ data: '', original: '' });
+  const value = useMemo(() => ({ sign, setSign }), [sign]);
 
-  return (
-    <SignContext.Provider value={{ sign, setSign }}>
-      {children}
-    </SignContext.Provider>
-  );
+  return <SignContext.Provider value={value}>{children}</SignContext.Provider>;
 };
 
 export const useSignContext = () => {
@@ -59,7 +57,7 @@ export const useSign = () => {
     const binaryData = atob(data.split(',')[1]);
     const array: number[] = [];
 
-    for (let i = 0; i < binaryData.length; i++) {
+    for (let i = 0; i < binaryData.length; i += 1) {
       array.push(binaryData.charCodeAt(i));
     }
 
@@ -72,7 +70,7 @@ export const useSign = () => {
 
   const saveSign = () => {
     if (signRef.current && signRef.current.isEmpty()) {
-      return;
+      //
     } else {
       setSign({ data: getFile(), original: getOriginalFile() });
       console.log('sign: useSign ', sign);

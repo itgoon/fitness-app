@@ -7,16 +7,16 @@ export function timeline(theme: Theme) {
     MuiTimelineDot: {
       styleOverrides: {
         root: {
-          boxShadow: 'none',
-        },
-      },
+          boxShadow: 'none'
+        }
+      }
     },
     MuiTimelineConnector: {
       styleOverrides: {
         root: {
-          backgroundColor: theme.palette.divider,
-        },
-      },
-    },
+          backgroundColor: theme.palette.divider
+        }
+      }
+    }
   };
 }

@@ -7,12 +7,12 @@ export function treeView(theme: Theme) {
     MuiTreeItem: {
       styleOverrides: {
         label: {
-          ...theme.typography.body2,
+          ...theme.typography.body2
         },
         iconContainer: {
-          width: 'auto',
-        },
-      },
-    },
+          width: 'auto'
+        }
+      }
+    }
   };
 }

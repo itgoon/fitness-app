@@ -1,9 +1,9 @@
-import _ from "lodash";
-import { ResponsePartners } from "src/_mock/map/partners";
+import _ from 'lodash';
+import { ResponsePartners } from 'src/_mock/map/partners';
 
 const getMembershipInfo = (membershipInfos, playerId = 44350) => {
   let findData = membershipInfos.filter((item) => item.playerID === playerId);
-  findData = _.sortBy(findData, ["state"]);
+  findData = _.sortBy(findData, ['state']);
   return findData.length > 0 ? findData[0] : undefined;
 };
 

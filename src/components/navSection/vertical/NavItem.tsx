@@ -86,7 +86,11 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
           <Iconify
             width={16}
             className="arrow"
-            icon={open ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'}
+            icon={
+              open
+                ? 'eva:arrow-ios-downward-fill'
+                : 'eva:arrow-ios-forward-fill'
+            }
           />
         )}
       </StyledNavItem>
@@ -111,8 +115,8 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
           underline="none"
           sx={{
             ...(disabled && {
-              cursor: 'default',
-            }),
+              cursor: 'default'
+            })
           }}
         >
           {renderContent}
@@ -127,8 +131,8 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
         underline="none"
         sx={{
           ...(disabled && {
-            cursor: 'default',
-          }),
+            cursor: 'default'
+          })
         }}
       >
         {renderContent}
@@ -142,7 +146,7 @@ export default NavItem;
 // ----------------------------------------------------------------------
 
 const StyledNavItem = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== 'active',
+  shouldForwardProp: (prop) => prop !== 'active'
 })<NavItemStateProps>(({ active, open, depth, theme }) => {
   const subItem = depth !== 1;
 
@@ -156,7 +160,7 @@ const StyledNavItem = styled(ListItemButton, {
     display: 'block',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
+    textOverflow: 'ellipsis'
   } as const;
 
   const baseStyles = {
@@ -164,33 +168,34 @@ const StyledNavItem = styled(ListItemButton, {
       marginBottom: 4,
       borderRadius: 8,
       color: theme.palette.text.secondary,
-      padding: theme.spacing(0.5, 1, 0.5, 1.5),
+      padding: theme.spacing(0.5, 1, 0.5, 1.5)
     },
     icon: {
       width: 24,
       height: 24,
       flexShrink: 0,
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(2)
     },
     label: {
       ...noWrapStyles,
       ...theme.typography.body2,
       textTransform: 'capitalize',
-      fontWeight: theme.typography[active ? 'fontWeightSemiBold' : 'fontWeightMedium'],
+      fontWeight:
+        theme.typography[active ? 'fontWeightSemiBold' : 'fontWeightMedium']
     },
     caption: {
       ...noWrapStyles,
       ...theme.typography.caption,
-      color: theme.palette.text.disabled,
+      color: theme.palette.text.disabled
     },
     info: {
       display: 'inline-flex',
-      marginLeft: theme.spacing(0.75),
+      marginLeft: theme.spacing(0.75)
     },
     arrow: {
       flexShrink: 0,
-      marginLeft: theme.spacing(0.75),
-    },
+      marginLeft: theme.spacing(0.75)
+    }
   } as const;
 
   return {
@@ -199,35 +204,37 @@ const StyledNavItem = styled(ListItemButton, {
       ...baseStyles.item,
       minHeight: 44,
       '& .icon': {
-        ...baseStyles.icon,
+        ...baseStyles.icon
       },
       '& .sub-icon': {
-        display: 'none',
+        display: 'none'
       },
       '& .label': {
-        ...baseStyles.label,
+        ...baseStyles.label
       },
       '& .caption': {
-        ...baseStyles.caption,
+        ...baseStyles.caption
       },
       '& .info': {
-        ...baseStyles.info,
+        ...baseStyles.info
       },
       '& .arrow': {
-        ...baseStyles.arrow,
+        ...baseStyles.arrow
       },
       ...(active && {
         color:
-          theme.palette.mode === 'light' ? theme.palette.primary.main : theme.palette.primary.light,
+          theme.palette.mode === 'light'
+            ? theme.palette.primary.main
+            : theme.palette.primary.light,
         backgroundColor: alpha(theme.palette.primary.main, 0.08),
         '&:hover': {
-          backgroundColor: alpha(theme.palette.primary.main, 0.16),
-        },
+          backgroundColor: alpha(theme.palette.primary.main, 0.16)
+        }
       }),
       ...(opened && {
         color: theme.palette.text.primary,
-        backgroundColor: theme.palette.action.hover,
-      }),
+        backgroundColor: theme.palette.action.hover
+      })
     }),
 
     // Sub item
@@ -235,7 +242,7 @@ const StyledNavItem = styled(ListItemButton, {
       ...baseStyles.item,
       minHeight: 36,
       '& .icon': {
-        ...baseStyles.icon,
+        ...baseStyles.icon
       },
       '& .sub-icon': {
         ...baseStyles.icon,
@@ -249,34 +256,34 @@ const StyledNavItem = styled(ListItemButton, {
           borderRadius: '50%',
           backgroundColor: theme.palette.text.disabled,
           transition: theme.transitions.create(['transform'], {
-            duration: theme.transitions.duration.shorter,
+            duration: theme.transitions.duration.shorter
           }),
           ...(active && {
             transform: 'scale(2)',
-            backgroundColor: theme.palette.primary.main,
-          }),
-        },
+            backgroundColor: theme.palette.primary.main
+          })
+        }
       },
       '& .label': {
-        ...baseStyles.label,
+        ...baseStyles.label
       },
       '& .caption': {
-        ...baseStyles.caption,
+        ...baseStyles.caption
       },
       '& .info': {
-        ...baseStyles.info,
+        ...baseStyles.info
       },
       '& .arrow': {
-        ...baseStyles.arrow,
+        ...baseStyles.arrow
       },
       ...(active && {
-        color: theme.palette.text.primary,
-      }),
+        color: theme.palette.text.primary
+      })
     }),
 
     // Deep sub item
     ...(deepSubItem && {
-      paddingLeft: `${theme.spacing(Number(depth))} !important`,
-    }),
+      paddingLeft: `${theme.spacing(Number(depth))} !important`
+    })
   };
 });

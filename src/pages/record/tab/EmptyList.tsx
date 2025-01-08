@@ -15,26 +15,24 @@ export default function EmptyList() {
 
   const navigate = useNavigate();
   return (
-    <Stack pt={27} alignItems={'center'} gap={1.5}>
-      <Stack alignItems={'center'}>
+    <Stack pt={27} alignItems="center" gap={1.5}>
+      <Stack alignItems="center">
         <Typography
-          variant={'Body20/bold'}
-          children={'아직 등록된 기록이 없네요!'}
+          variant="Body20/bold"
+          children="아직 등록된 기록이 없네요!"
         />
         <Typography
-          variant={'Body16/light'}
+          variant="Body16/light"
           color={grey600}
           paddingX={5.5}
-          textAlign={'center'}
-          children={
-            '식단과 운동 기록을 사진과 영상으로 남겨 나의 루틴을 만들어보세요.'
-          }
+          textAlign="center"
+          children="식단과 운동 기록을 사진과 영상으로 남겨 나의 루틴을 만들어보세요."
         />
       </Stack>
       <Typography
         color={primaryligh}
-        variant={'Body16/light'}
-        children={'신규 등록'}
+        variant="Body16/light"
+        children="신규 등록"
         onClick={() => navigate('/record/post')}
       />
     </Stack>

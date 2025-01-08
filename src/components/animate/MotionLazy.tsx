@@ -1,5 +1,5 @@
-import { m, domMax, LazyMotion } from "framer-motion";
-import { ReactNode } from "react";
+import { m, domMax, LazyMotion } from 'framer-motion';
+import { ReactNode } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -10,7 +10,7 @@ type Props = {
 export function MotionLazy({ children }: Props) {
   return (
     <LazyMotion strict features={domMax}>
-      <m.div style={{ height: "100%" }}> {children} </m.div>
+      <m.div style={{ height: '100%' }}> {children} </m.div>
     </LazyMotion>
   );
 }

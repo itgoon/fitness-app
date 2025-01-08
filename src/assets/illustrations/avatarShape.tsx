@@ -15,7 +15,7 @@ function AvatarShape({ sx, ...other }: BoxProps) {
       xmlns="http://www.w3.org/2000/svg"
       sx={{
         color: 'background.paper',
-        ...sx,
+        ...sx
       }}
       {...other}
     >

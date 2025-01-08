@@ -9,13 +9,24 @@ import { StyledLabel } from './styles';
 // ----------------------------------------------------------------------
 
 const Label = forwardRef<HTMLSpanElement, LabelProps>(
-  ({ children, color = 'default', variant = 'soft', startIcon, endIcon, sx, ...other }, ref) => {
+  (
+    {
+      children,
+      color = 'default',
+      variant = 'soft',
+      startIcon,
+      endIcon,
+      sx,
+      ...other
+    },
+    ref
+  ) => {
     const theme = useTheme();
 
     const iconStyles = {
       width: 16,
       height: 16,
-      '& svg, img': { width: 1, height: 1, objectFit: 'cover' },
+      '& svg, img': { width: 1, height: 1, objectFit: 'cover' }
     };
 
     return (
@@ -26,7 +37,7 @@ const Label = forwardRef<HTMLSpanElement, LabelProps>(
         sx={{
           ...(startIcon && { pl: 0.75 }),
           ...(endIcon && { pr: 0.75 }),
-          ...sx,
+          ...sx
         }}
         theme={theme}
         {...other}

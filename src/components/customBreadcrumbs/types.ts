@@ -1,5 +1,5 @@
-import { BreadcrumbsProps } from "@mui/material/Breadcrumbs";
-import { ReactElement, ReactNode } from "react";
+import { BreadcrumbsProps } from '@mui/material/Breadcrumbs';
+import { ReactElement, ReactNode } from 'react';
 
 // ----------------------------------------------------------------------
 

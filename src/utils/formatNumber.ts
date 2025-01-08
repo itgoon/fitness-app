@@ -12,13 +12,13 @@ type InputValue = string | number | null;
 function getLocaleCode() {
   const {
     currentLang: {
-      numberFormat: { code, currency },
-    },
+      numberFormat: { code, currency }
+    }
   } = getLocales();
 
   return {
     code: code ?? 'en-US',
-    currency: currency ?? 'USD',
+    currency: currency ?? 'USD'
   };
 }
 
@@ -33,7 +33,7 @@ export function fNumber(inputValue: InputValue) {
 
   const fm = new Intl.NumberFormat(code, {
     minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
+    maximumFractionDigits: 2
   }).format(number);
 
   return fm;
@@ -52,7 +52,7 @@ export function fCurrency(inputValue: InputValue) {
     style: 'currency',
     currency,
     minimumFractionDigits: 0,
-    maximumFractionDigits: 2,
+    maximumFractionDigits: 2
   }).format(number);
 
   return fm;
@@ -70,7 +70,7 @@ export function fPercent(inputValue: InputValue) {
   const fm = new Intl.NumberFormat(code, {
     style: 'percent',
     minimumFractionDigits: 0,
-    maximumFractionDigits: 1,
+    maximumFractionDigits: 1
   }).format(number);
 
   return fm;
@@ -87,7 +87,7 @@ export function fShortenNumber(inputValue: InputValue) {
 
   const fm = new Intl.NumberFormat(code, {
     notation: 'compact',
-    maximumFractionDigits: 2,
+    maximumFractionDigits: 2
   }).format(number);
 
   return fm.replace(/[A-Z]/g, (match) => match.toLowerCase());

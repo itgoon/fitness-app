@@ -1,6 +1,6 @@
 import * as MUIICON from '@mui/icons-material';
+import { useMemo } from 'react';
 import * as SVGICON from '../../assets/svgs';
-import { useEffect, useMemo, useRef } from 'react';
 import { IconProps } from './types';
 
 // ----------------------------------------------------------------------
@@ -17,16 +17,6 @@ export default function Icon({
 }: IconProps) {
   const LibraryIcon = (MUIICON as any)[name];
   const Component = LibraryIcon || (SVGICON as any)[name];
-  const svgRef = useRef<SVGSVGElement | null>(null);
-
-  useEffect(() => {
-    if (svgRef.current && fill) {
-      const paths = svgRef.current.querySelectorAll('path');
-      paths.forEach((path) => {
-        path.setAttribute('fill', `${fill} !important`); // fill 속성 설정
-      });
-    }
-  }, [fill]);
 
   const styleProps = useMemo(
     () => ({
@@ -43,8 +33,7 @@ export default function Icon({
             color: color || 'inhreit',
             cursor: onClick !== undefined ? 'pointer' : 'auto',
             ...sx
-          },
-      ref: svgRef // ref를 여기서 추가
+          }
     }),
     [size, color, onClick, sx]
   );

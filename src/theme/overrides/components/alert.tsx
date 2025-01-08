@@ -22,15 +22,16 @@ export function alert(theme: Theme) {
         // STANDARD
         ...(standardVariant && {
           color: theme.palette[color][lightMode ? 'darker' : 'lighter'],
-          backgroundColor: theme.palette[color][lightMode ? 'lighter' : 'darker'],
+          backgroundColor:
+            theme.palette[color][lightMode ? 'lighter' : 'darker'],
           [`& .${alertClasses.icon}`]: {
-            color: theme.palette[color][lightMode ? 'main' : 'light'],
-          },
+            color: theme.palette[color][lightMode ? 'main' : 'light']
+          }
         }),
         // FILLED
         ...(filledVariant && {
           color: theme.palette[color].contrastText,
-          backgroundColor: theme.palette[color].main,
+          backgroundColor: theme.palette[color].main
         }),
         // OUTLINED
         ...(outlinedVariant && {
@@ -38,10 +39,10 @@ export function alert(theme: Theme) {
           color: theme.palette[color][lightMode ? 'dark' : 'light'],
           border: `solid 1px ${alpha(theme.palette[color].main, 0.16)}`,
           [`& .${alertClasses.icon}`]: {
-            color: theme.palette[color].main,
-          },
-        }),
-      }),
+            color: theme.palette[color].main
+          }
+        })
+      })
     }));
 
     return [...colorStyle];
@@ -50,19 +51,20 @@ export function alert(theme: Theme) {
   return {
     MuiAlert: {
       styleOverrides: {
-        root: ({ ownerState }: { ownerState: AlertProps }) => rootStyles(ownerState),
+        root: ({ ownerState }: { ownerState: AlertProps }) =>
+          rootStyles(ownerState),
         icon: {
-          opacity: 1,
-        },
-      },
+          opacity: 1
+        }
+      }
     },
     MuiAlertTitle: {
       styleOverrides: {
         root: {
           marginBottom: theme.spacing(0.5),
-          fontWeight: theme.typography.fontWeightSemiBold,
-        },
-      },
-    },
+          fontWeight: theme.typography.fontWeightSemiBold
+        }
+      }
+    }
   };
 }

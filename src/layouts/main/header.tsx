@@ -1,28 +1,28 @@
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import AppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import Container from "@mui/material/Container";
-import { useTheme } from "@mui/material/styles";
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Container from '@mui/material/Container';
+import { useTheme } from '@mui/material/styles';
 
-import { useResponsive } from "src/hooks/useResponsive";
+import { useResponsive } from 'src/hooks/useResponsive';
 
-import { bgBlur } from "src/theme/css";
+import { bgBlur } from 'src/theme/css';
 
-import NavMobile from "./nav/mobile";
-import NavDesktop from "./nav/desktop";
-import { HEADER } from "../configLayout";
-import { navConfig } from "./configNavigation";
-import LoginButton from "../common/loginButton";
-import HeaderShadow from "../common/headerShadow";
-import SettingsButton from "../common/settingsButton";
+import NavMobile from './nav/mobile';
+import NavDesktop from './nav/desktop';
+import { HEADER } from '../configLayout';
+import { navConfig } from './configNavigation';
+import LoginButton from '../common/loginButton';
+import HeaderShadow from '../common/headerShadow';
+import SettingsButton from '../common/settingsButton';
 
 // ----------------------------------------------------------------------
 
 export default function Header() {
   const theme = useTheme();
 
-  const mdUp = useResponsive("up", "md");
+  const mdUp = useResponsive('up', 'md');
 
   return (
     <AppBar>
@@ -33,7 +33,7 @@ export default function Header() {
             xs: HEADER.H_MOBILE,
             md: HEADER.H_DESKTOP
           },
-          transition: theme.transitions.create(["height"], {
+          transition: theme.transitions.create(['height'], {
             easing: theme.transitions.easing.easeInOut,
             duration: theme.transitions.duration.shorter
           }),
@@ -42,7 +42,7 @@ export default function Header() {
           })
         }}
       >
-        <Container sx={{ height: 1, display: "flex", alignItems: "center" }}>
+        <Container sx={{ height: 1, display: 'flex', alignItems: 'center' }}>
           {/* <Badge
             sx={{
               [`& .${badgeClasses.badge}`]: {
@@ -73,7 +73,7 @@ export default function Header() {
 
           <Stack
             alignItems="center"
-            direction={{ xs: "row", md: "row-reverse" }}
+            direction={{ xs: 'row', md: 'row-reverse' }}
           >
             {mdUp && <LoginButton />}
 

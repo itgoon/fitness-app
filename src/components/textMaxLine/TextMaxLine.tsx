@@ -9,7 +9,18 @@ import useTypography from './useTypography';
 // ----------------------------------------------------------------------
 
 const TextMaxLine = forwardRef<HTMLAnchorElement, TextMaxLineProps>(
-  ({ asLink, variant = 'body1', line = 2, persistent = false, children, sx, ...other }, ref) => {
+  (
+    {
+      asLink,
+      variant = 'body1',
+      line = 2,
+      persistent = false,
+      children,
+      sx,
+      ...other
+    },
+    ref
+  ) => {
     const { lineHeight } = useTypography(variant);
 
     const styles = {
@@ -19,14 +30,20 @@ const TextMaxLine = forwardRef<HTMLAnchorElement, TextMaxLineProps>(
       WebkitLineClamp: line,
       WebkitBoxOrient: 'vertical',
       ...(persistent && {
-        height: lineHeight * line,
+        height: lineHeight * line
       }),
-      ...sx,
+      ...sx
     } as const;
 
     if (asLink) {
       return (
-        <Link color="inherit" ref={ref} variant={variant} sx={{ ...styles }} {...other}>
+        <Link
+          color="inherit"
+          ref={ref}
+          variant={variant}
+          sx={{ ...styles }}
+          {...other}
+        >
           {children}
         </Link>
       );

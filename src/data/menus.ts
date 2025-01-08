@@ -1,86 +1,76 @@
 import { ReactNode } from 'react';
 
 export type NavItemType = {
-  isHeader?: boolean;
-  isBottom?: boolean;
-  children?: NavItemType[];
-  id?: string;
-  title?: ReactNode | string;
+  title: ReactNode | string;
   url: string;
-  isStart?: boolean;
-  isEnd?: boolean;
-  isCard?: boolean;
-  cardDate?: boolean;
-  cardPlace?: boolean;
+  isHeader: boolean;
+  isBottom: boolean;
+  isFooter: boolean;
+  children?: NavItemType[];
 };
 
 export const menus: NavItemType[] = [
   {
-    id: 'dashboard',
     title: '홈',
     url: '/dashboard',
     isHeader: true,
     isBottom: true,
-    isStart: false,
-    isEnd: true
+    isFooter: true
   },
   {
-    id: 'schedule',
     title: '일정',
     url: '/schedule',
     isHeader: false,
-    isBottom: true
+    isBottom: true,
+    isFooter: false
   },
   {
-    id: 'schedule/detail',
     title: '일정',
     url: '/schedule/detail',
-    isHeader: false,
+    isHeader: true,
     isBottom: false,
-    isCard: true,
-    cardDate: true
+    isFooter: false
   },
   {
-    id: 'contract',
     title: '약관 및 규정',
     url: '/contract',
-    isHeader: false,
-    isBottom: false
+    isHeader: true,
+    isBottom: false,
+    isFooter: false
   },
   {
-    id: 'viewcontract',
-    // title: '센터 네임',
+    title: '센터 이름',
     url: '/viewcontract',
-    isHeader: false,
-    isBottom: false
+    isHeader: true,
+    isBottom: false,
+    isFooter: false
   },
   {
-    id: 'reservation',
     title: '예약',
     url: '/reservation',
     isHeader: false,
-    isBottom: false
+    isBottom: false,
+    isFooter: false
   },
   {
-    id: 'record',
     title: '기록',
     url: '/record',
     isHeader: false,
-    isBottom: true
+    isBottom: true,
+    isFooter: false
   },
   {
-    id: 'recordPost',
     title: '기록 등록',
     url: '/record/post',
     isHeader: true,
     isBottom: false,
-    isStart: true
+    isFooter: false
   },
   {
-    id: 'more',
     title: '더보기',
     url: '/more',
     isHeader: false,
-    isBottom: true
+    isBottom: true,
+    isFooter: false
   }
 ];

@@ -13,7 +13,21 @@ import { NavItemProps, NavItemStateProps } from '../types';
 // ----------------------------------------------------------------------
 
 const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
-  ({ title, path, icon, caption, depth, open, active, hasChild, externalLink, ...other }, ref) => {
+  (
+    {
+      title,
+      path,
+      icon,
+      caption,
+      depth,
+      open,
+      active,
+      hasChild,
+      externalLink,
+      ...other
+    },
+    ref
+  ) => {
     const renderContent = (
       <StyledNavItem
         ref={ref}
@@ -47,7 +61,11 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
           <Iconify
             width={16}
             className="arrow"
-            icon={open ? 'eva:arrow-ios-downward-fill' : 'eva:arrow-ios-forward-fill'}
+            icon={
+              open
+                ? 'eva:arrow-ios-downward-fill'
+                : 'eva:arrow-ios-forward-fill'
+            }
           />
         )}
       </StyledNavItem>
@@ -59,7 +77,13 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
 
     if (externalLink)
       return (
-        <Link href={path} target="_blank" rel="noopener" color="inherit" underline="none">
+        <Link
+          href={path}
+          target="_blank"
+          rel="noopener"
+          color="inherit"
+          underline="none"
+        >
           {renderContent}
         </Link>
       );
@@ -77,7 +101,7 @@ export default NavItem;
 // ----------------------------------------------------------------------
 
 const StyledNavItem = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== 'active',
+  shouldForwardProp: (prop) => prop !== 'active'
 })<NavItemStateProps>(({ active, open, depth, hasChild, theme }) => {
   const subItem = depth !== 1;
 
@@ -89,36 +113,36 @@ const StyledNavItem = styled(ListItemButton, {
     display: 'block',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
+    textOverflow: 'ellipsis'
   } as const;
 
   const baseStyles = {
     item: {
-      ...theme.typography.body2,
+      ...theme.typography.body2
     },
     icon: {
       width: 20,
       height: 20,
-      flexShrink: 0,
+      flexShrink: 0
     },
     textContainer: {
       minWidth: 0,
       flex: '1 1 auto',
       display: 'inline-flex',
-      flexDirection: 'column',
+      flexDirection: 'column'
     },
     label: {
-      ...noWrapStyles,
+      ...noWrapStyles
     },
     caption: {
       ...noWrapStyles,
       ...theme.typography.caption,
-      color: theme.palette.text.disabled,
+      color: theme.palette.text.disabled
     },
     arrow: {
       flexShrink: 0,
-      marginLeft: theme.spacing(0.75),
-    },
+      marginLeft: theme.spacing(0.75)
+    }
   } as const;
 
   return {
@@ -130,31 +154,31 @@ const StyledNavItem = styled(ListItemButton, {
       fontWeight: theme.typography.fontWeightMedium,
       '& .icon': {
         ...baseStyles.icon,
-        marginRight: theme.spacing(2),
+        marginRight: theme.spacing(2)
       },
       '& .text-container': {
-        ...baseStyles.textContainer,
+        ...baseStyles.textContainer
       },
       '& .label': {
-        ...baseStyles.label,
+        ...baseStyles.label
       },
       '& .caption': {
-        ...baseStyles.caption,
+        ...baseStyles.caption
       },
       '& .arrow': {
-        ...baseStyles.arrow,
+        ...baseStyles.arrow
       },
       ...(active && {
         color: theme.palette.primary.main,
         fontWeight: theme.typography.fontWeightSemiBold,
         backgroundColor: alpha(theme.palette.primary.main, 0.08),
         '&:hover': {
-          backgroundColor: alpha(theme.palette.primary.main, 0.16),
-        },
+          backgroundColor: alpha(theme.palette.primary.main, 0.16)
+        }
       }),
       ...(opened && {
-        backgroundColor: theme.palette.action.hover,
-      }),
+        backgroundColor: theme.palette.action.hover
+      })
     }),
 
     // Sub item
@@ -171,35 +195,35 @@ const StyledNavItem = styled(ListItemButton, {
         position: 'absolute',
         backgroundColor: theme.palette.divider,
         ...(active && {
-          backgroundColor: theme.palette.text.primary,
-        }),
+          backgroundColor: theme.palette.text.primary
+        })
       },
       '& .icon': {
         ...baseStyles.icon,
-        marginLeft: theme.spacing(2),
+        marginLeft: theme.spacing(2)
       },
       '& .text-container': {
         ...baseStyles.textContainer,
-        marginLeft: theme.spacing(2),
+        marginLeft: theme.spacing(2)
       },
       '& .label': {
-        ...baseStyles.label,
+        ...baseStyles.label
       },
       '& .caption': {
-        ...baseStyles.caption,
+        ...baseStyles.caption
       },
       '& .arrow': {
-        ...baseStyles.arrow,
+        ...baseStyles.arrow
       },
       ...(active && {
         color: theme.palette.text.primary,
         backgroundColor: theme.palette.action.selected,
-        fontWeight: theme.typography.fontWeightSemiBold,
+        fontWeight: theme.typography.fontWeightSemiBold
       }),
       ...(opened && {
         color: theme.palette.text.primary,
-        backgroundColor: theme.palette.action.hover,
-      }),
-    }),
+        backgroundColor: theme.palette.action.hover
+      })
+    })
   };
 });

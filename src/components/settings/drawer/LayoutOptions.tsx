@@ -20,7 +20,7 @@ export default function LayoutOptions({ options, value, onChange }: Props) {
     const baseStyles = {
       flexShrink: 0,
       borderRadius: 0.5,
-      bgcolor: 'grey.500',
+      bgcolor: 'grey.500'
     };
 
     const circle = (
@@ -29,7 +29,7 @@ export default function LayoutOptions({ options, value, onChange }: Props) {
           ...baseStyles,
           width: 8,
           height: 8,
-          ...(selected && { background }),
+          ...(selected && { background })
         }}
       />
     );
@@ -42,9 +42,9 @@ export default function LayoutOptions({ options, value, onChange }: Props) {
           height: 3,
           opacity: 0.48,
           ...(option === 'horizontal' && {
-            width: 12,
+            width: 12
           }),
-          ...(selected && { background }),
+          ...(selected && { background })
         }}
       />
     );
@@ -58,9 +58,9 @@ export default function LayoutOptions({ options, value, onChange }: Props) {
           maxWidth: 12,
           opacity: 0.24,
           ...(option === 'horizontal' && {
-            width: 8,
+            width: 8
           }),
-          ...(selected && { background }),
+          ...(selected && { background })
         }}
       />
     );
@@ -76,15 +76,15 @@ export default function LayoutOptions({ options, value, onChange }: Props) {
           height: 1,
           borderRight: `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
           ...(option === 'mini' && {
-            width: 16,
+            width: 16
           }),
           ...(option === 'horizontal' && {
             width: 1,
             height: 16,
             alignItems: 'center',
             borderRight: 'unset',
-            borderBottom: `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
-          }),
+            borderBottom: `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`
+          })
         }}
       >
         {circle}
@@ -105,8 +105,8 @@ export default function LayoutOptions({ options, value, onChange }: Props) {
           bgcolor: 'grey.500',
           ...(selected && {
             opacity: 0.24,
-            background: `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`,
-          }),
+            background: `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`
+          })
         }}
       />
     </Box>
@@ -134,11 +134,11 @@ export default function LayoutOptions({ options, value, onChange }: Props) {
                     ? theme.palette.grey[500]
                     : theme.palette.common.black,
                   0.08
-                )}`,
+                )}`
               }),
               ...(option === 'horizontal' && {
-                flexDirection: 'column',
-              }),
+                flexDirection: 'column'
+              })
             }}
           >
             {renderNav(option, selected)}

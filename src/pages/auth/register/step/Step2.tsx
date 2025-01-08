@@ -9,8 +9,8 @@ import { Stack } from '@mui/system';
 import { ChangeEvent, useCallback, useEffect, useState } from 'react';
 import Button from 'src/components/Button';
 import { useBoolean } from 'src/hooks/useBoolean';
-import Wrap from './Wrap';
 import TextField from 'src/components/TextField';
+import Wrap from './Wrap';
 import RegisterCondition from '../Conditions/RegisterCondition';
 
 const INITIAL_TIMER = 180;
@@ -41,10 +41,7 @@ export default function Step2({ onNext }: StepProps) {
 
   // 랜더링시 타이머
   useEffect(() => {
-    // eslint-disable-next-line no-undef
-    let interval: NodeJS.Timeout;
-
-    interval = setInterval(() => {
+    const interval = setInterval(() => {
       setTimer((prev) => {
         if (prev <= 1) {
           return 0;
@@ -52,6 +49,7 @@ export default function Step2({ onNext }: StepProps) {
         return prev - 1;
       });
     }, 1000);
+
     return () => clearInterval(interval);
   }, []);
 
@@ -113,17 +111,17 @@ export default function Step2({ onNext }: StepProps) {
   };
 
   return (
-    <Stack height={'100%'} justifyContent={'space-between'}>
+    <Stack height="100%" justifyContent="space-between">
       <Wrap>
         <Stack gap={5} paddingLeft={0.5} paddingRight={0.5}>
           <Stack gap={4}>
             <Typography
-              variant={'Body24/semiBold'}
-              children={'휴대폰번호로 전송된 6자리 인증번호를 입력해주세요'}
+              variant="Body24/semiBold"
+              children="휴대폰번호로 전송된 6자리 인증번호를 입력해주세요"
             />
 
             <TextField
-              error={isVerified ? true : false}
+              error={!!isVerified}
               helperText={
                 isVerified ? '잘못된 인증번호 입니다. 다시 입력해주세요.' : ''
               }
@@ -154,13 +152,13 @@ export default function Step2({ onNext }: StepProps) {
           <Stack gap={1.5}>
             <Typography
               color={palette.grey[600]}
-              variant={'Body14/light'}
-              children={'혹시 인증번호를 받지 못하셨나요?'}
+              variant="Body14/light"
+              children="혹시 인증번호를 받지 못하셨나요?"
             />
             <Button
               variant="soft"
               onClick={resendCode}
-              children={'인증번호 재전송'}
+              children="인증번호 재전송"
             />
           </Stack>
         </Stack>
@@ -168,9 +166,9 @@ export default function Step2({ onNext }: StepProps) {
       {canResendCode && (
         <Button
           variant="contained"
-          color={'primary'}
-          children={'완료'}
-          size={'large'}
+          color="primary"
+          children="완료"
+          size="large"
           onClick={sendCode}
           sx={{ borderRadius: 0 }}
         />
@@ -181,18 +179,18 @@ export default function Step2({ onNext }: StepProps) {
         anchor="bottom"
       >
         <Stack gap={4}>
-          <Typography children={'회원가입 약관을 확인해주세요'} />
+          <Typography children="회원가입 약관을 확인해주세요" />
 
           {/* check list */}
           <Stack gap={2}>
             <RegisterCondition
               label="약관 전체 동의"
-              variant={'Body16/bold'}
+              variant="Body16/bold"
               isChecked={isAll}
               onChange={checkAll}
             />
 
-            <Divider></Divider>
+            <Divider />
             <RegisterCondition
               label="[필수] 오비서 이용약관 동의"
               isChecked={isCheck1}
@@ -216,18 +214,18 @@ export default function Step2({ onNext }: StepProps) {
           {/* btn */}
           <Stack gap={0.5}>
             <Button
-              variant={'contained'}
-              disabled={isCheck1 && isCheck2 ? false : true}
+              variant="contained"
+              disabled={!(isCheck1 && isCheck2)}
               color="primary"
-              size={'large'}
+              size="large"
               onClick={onNext}
-              children={'약관 동의'}
+              children="약관 동의"
             />
 
             <Button
               color="secondary"
-              children={'닫기'}
-              size={'large'}
+              children="닫기"
+              size="large"
               onClick={() => setOpenCondition(false)}
             />
           </Stack>

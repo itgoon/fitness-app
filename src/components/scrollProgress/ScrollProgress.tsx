@@ -5,7 +5,14 @@ import Box, { BoxProps } from '@mui/material/Box';
 // ----------------------------------------------------------------------
 
 export interface ScrollProgressProps extends BoxProps {
-  color?: 'inherit' | 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
+  color?:
+    | 'inherit'
+    | 'primary'
+    | 'secondary'
+    | 'info'
+    | 'success'
+    | 'warning'
+    | 'error';
   size?: number;
   scrollYProgress: MotionValue<number>;
 }
@@ -20,7 +27,7 @@ export default function ScrollProgress({
   const scaleX = useSpring(scrollYProgress, {
     stiffness: 100,
     damping: 30,
-    restDelta: 0.001,
+    restDelta: 0.001
   });
 
   return (
@@ -37,9 +44,9 @@ export default function ScrollProgress({
         bgcolor: 'text.primary',
         ...(color !== 'inherit' && {
           background: (theme) =>
-            `linear-gradient(135deg, ${theme.palette[color].light} 0%, ${theme.palette[color].main} 100%)`,
+            `linear-gradient(135deg, ${theme.palette[color].light} 0%, ${theme.palette[color].main} 100%)`
         }),
-        ...sx,
+        ...sx
       }}
       style={{ scaleX }}
       {...other}

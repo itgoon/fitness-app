@@ -50,20 +50,20 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
 
   const renderBadges = () => (
     <Stack paddingX={1.5} gap={1}>
-      <Box display={'flex'} gap={3.25} paddingX={2.3}>
+      <Box display="flex" gap={3.25} paddingX={2.3}>
         <Box>
           <Badge
             sx={{ '.MuiBadge-badge': { top: '-4px', right: '3px' } }}
-            color={'warning'}
-            variant={'alway'}
+            color="warning"
+            variant="alway"
           />
           <Typography variant="Body14/regular">레슨</Typography>
         </Box>
         <Box>
           <Badge
             sx={{ '.MuiBadge-badge': { top: '-4px', right: '4px' } }}
-            color={'success'}
-            variant={'online'}
+            color="success"
+            variant="online"
           />
           <Typography variant="Body14/regular">운동</Typography>
         </Box>
@@ -77,11 +77,11 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
       <Box sx={{ ...layoutSx }}>
         {!isBadge && <Prev onClick={() => navigate(-1)} />}
         <Box
-          display={'flex'}
+          display="flex"
           flex={1}
           gap={0.5}
-          justifyContent={'center'}
-          alignItems={'center'}
+          justifyContent="center"
+          alignItems="center"
         >
           <Typography onClick={toggleView} variant="Body18/semiBold">
             {month}
@@ -96,11 +96,11 @@ export default function CalendarHeader(props: CalendarHeaderProps) {
   const renderModalHeader = () => (
     <Stack className="MuiPickersCalendarHeader-root">
       <Box sx={{ ...layoutSx }}>
-        <Prev color={'#BDBDBD'} size={20} onClick={() => changeMonth('prev')} />
+        <Prev color="#BDBDBD" size={20} onClick={() => changeMonth('prev')} />
         <Typography variant="Body18/semiBold" onClick={toggleView}>
           {month}
         </Typography>
-        <Next color={'#BDBDBD'} size={20} onClick={() => changeMonth('next')} />
+        <Next color="#BDBDBD" size={20} onClick={() => changeMonth('next')} />
       </Box>
     </Stack>
   );

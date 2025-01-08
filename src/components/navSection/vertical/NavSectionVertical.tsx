@@ -57,12 +57,12 @@ function Group({ subheader, items, slotProps }: NavGroupProps) {
               p: (theme) => theme.spacing(2, 1, 1, 1.5),
               transition: (theme) =>
                 theme.transitions.create(['color'], {
-                  duration: theme.transitions.duration.shortest,
+                  duration: theme.transitions.duration.shortest
                 }),
               '&:hover': {
-                color: 'text.primary',
+                color: 'text.primary'
               },
-              ...slotProps?.subheader,
+              ...slotProps?.subheader
             }}
           >
             {subheader}

@@ -9,9 +9,9 @@ export function menu(theme: Theme) {
     MuiMenuItem: {
       styleOverrides: {
         root: {
-          ...menuItem(theme),
-        },
-      },
-    },
+          ...menuItem(theme)
+        }
+      }
+    }
   };
 }

@@ -73,7 +73,11 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
           <Iconify
             width={16}
             className="arrow"
-            icon={subItem ? 'eva:arrow-ios-forward-fill' : 'eva:arrow-ios-downward-fill'}
+            icon={
+              subItem
+                ? 'eva:arrow-ios-forward-fill'
+                : 'eva:arrow-ios-downward-fill'
+            }
           />
         )}
       </StyledNavItem>
@@ -94,8 +98,8 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
           underline="none"
           sx={{
             ...(disabled && {
-              cursor: 'default',
-            }),
+              cursor: 'default'
+            })
           }}
         >
           {renderContent}
@@ -110,8 +114,8 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
         underline="none"
         sx={{
           ...(disabled && {
-            cursor: 'default',
-          }),
+            cursor: 'default'
+          })
         }}
       >
         {renderContent}
@@ -125,7 +129,7 @@ export default NavItem;
 // ----------------------------------------------------------------------
 
 const StyledNavItem = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== 'active',
+  shouldForwardProp: (prop) => prop !== 'active'
 })<NavItemStateProps>(({ active, open, depth, theme }) => {
   const subItem = depth !== 1;
 
@@ -136,28 +140,28 @@ const StyledNavItem = styled(ListItemButton, {
       ...theme.typography.body2,
       borderRadius: 6,
       color: theme.palette.text.secondary,
-      fontWeight: theme.typography.fontWeightMedium,
+      fontWeight: theme.typography.fontWeightMedium
     },
     icon: {
       width: 22,
       height: 22,
       flexShrink: 0,
-      marginRight: theme.spacing(1),
+      marginRight: theme.spacing(1)
     },
     label: {
-      textTransform: 'capitalize',
+      textTransform: 'capitalize'
     },
     caption: {
       marginLeft: theme.spacing(0.75),
-      color: theme.palette.text.disabled,
+      color: theme.palette.text.disabled
     },
     info: {
       display: 'inline-flex',
-      marginLeft: theme.spacing(0.75),
+      marginLeft: theme.spacing(0.75)
     },
     arrow: {
-      marginLeft: theme.spacing(0.75),
-    },
+      marginLeft: theme.spacing(0.75)
+    }
   } as const;
 
   return {
@@ -168,30 +172,30 @@ const StyledNavItem = styled(ListItemButton, {
       flexShrink: 0,
       padding: theme.spacing(0, 0.75),
       '& .icon': {
-        ...baseStyles.icon,
+        ...baseStyles.icon
       },
       '& .label': {
         ...baseStyles.label,
-        whiteSpace: 'nowrap',
+        whiteSpace: 'nowrap'
       },
       '& .caption': {
-        ...baseStyles.caption,
+        ...baseStyles.caption
       },
       '& .info': {
-        ...baseStyles.info,
+        ...baseStyles.info
       },
       '& .arrow': {
-        ...baseStyles.arrow,
+        ...baseStyles.arrow
       },
       ...(active && {
         color: theme.palette.text.primary,
         backgroundColor: theme.palette.action.selected,
-        fontWeight: theme.typography.fontWeightSemiBold,
+        fontWeight: theme.typography.fontWeightSemiBold
       }),
       ...(opened && {
         color: theme.palette.text.primary,
-        backgroundColor: theme.palette.action.hover,
-      }),
+        backgroundColor: theme.palette.action.hover
+      })
     }),
 
     // Sub item
@@ -200,31 +204,31 @@ const StyledNavItem = styled(ListItemButton, {
       minHeight: 34,
       padding: theme.spacing(0, 1),
       '& .icon': {
-        ...baseStyles.icon,
+        ...baseStyles.icon
       },
       '& .label': {
         ...baseStyles.label,
-        flexGrow: 1,
+        flexGrow: 1
       },
       '& .caption': {
-        ...baseStyles.caption,
+        ...baseStyles.caption
       },
       '& .info': {
-        ...baseStyles.info,
+        ...baseStyles.info
       },
       '& .arrow': {
         ...baseStyles.arrow,
-        marginRight: theme.spacing(-0.5),
+        marginRight: theme.spacing(-0.5)
       },
       ...(active && {
         color: theme.palette.text.primary,
         backgroundColor: theme.palette.action.selected,
-        fontWeight: theme.typography.fontWeightSemiBold,
+        fontWeight: theme.typography.fontWeightSemiBold
       }),
       ...(opened && {
         color: theme.palette.text.primary,
-        backgroundColor: theme.palette.action.hover,
-      }),
-    }),
+        backgroundColor: theme.palette.action.hover
+      })
+    })
   };
 });

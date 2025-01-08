@@ -1,8 +1,8 @@
 import { MultiSectionDigitalClock } from '@mui/x-date-pickers';
-import { ITimePicker } from './types';
 import { Drawer, Typography } from '@mui/material';
 import { useEffect, useRef, useState } from 'react';
 import { throttle } from 'lodash';
+import { ITimePicker } from './types';
 import Button from '../../Button';
 
 export default function TimePicker({
@@ -64,7 +64,7 @@ export default function TimePicker({
         size="large"
         variant="contained"
         color="primary"
-        children={'저장'}
+        children="저장"
         onClick={onClick}
       />
     </Drawer>

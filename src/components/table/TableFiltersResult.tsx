@@ -1,6 +1,6 @@
-import Box from "@mui/material/Box";
-import Paper from "@mui/material/Paper";
-import Stack, { StackProps } from "@mui/material/Stack";
+import Box from '@mui/material/Box';
+import Paper from '@mui/material/Paper';
+import Stack, { StackProps } from '@mui/material/Stack';
 
 // ----------------------------------------------------------------------
 
@@ -20,9 +20,9 @@ export default function UserTableFiltersResult({
 }: Props) {
   return (
     <Stack spacing={1.5} {...other}>
-      <Box sx={{ typography: "body2" }}>
+      <Box sx={{ typography: 'body2' }}>
         <strong>{results}</strong>
-        <Box component="span" sx={{ color: "text.secondary", ml: 0.25 }}>
+        <Box component="span" sx={{ color: 'text.secondary', ml: 0.25 }}>
           results found
         </Box>
       </Box>
@@ -68,13 +68,13 @@ function Block({ label, children, sx, ...other }: BlockProps) {
       sx={{
         p: 1,
         borderRadius: 1,
-        overflow: "hidden",
-        borderStyle: "dashed",
+        overflow: 'hidden',
+        borderStyle: 'dashed',
         ...sx
       }}
       {...other}
     >
-      <Box component="span" sx={{ typography: "subtitle2" }}>
+      <Box component="span" sx={{ typography: 'subtitle2' }}>
         {label}
       </Box>
 

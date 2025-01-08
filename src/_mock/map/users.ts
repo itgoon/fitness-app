@@ -24,7 +24,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: 'ef593dda-62bc-402c-9590-e0c4c9bccff8',
@@ -49,7 +49,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '45e13b5e-ea34-4ff2-9e02-77d609730e88',
@@ -74,7 +74,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '31f84d54-f03c-4a2a-8fcc-834953e2ba97',
@@ -99,7 +99,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '06b3cc1b-94aa-45f3-8eff-b0d76914a16f',
@@ -124,7 +124,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: 'd1fa7575-46a2-4175-a8c2-e5820d59618a',
@@ -149,7 +149,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '15eaf4fb-ecd3-4661-9ae5-3ee769fad887',
@@ -160,7 +160,8 @@ export const ResponseUser = {
       name: '정은서',
       phone: '010-9315-5441',
       playerID: 45143,
-      profileURL: 'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
+      profileURL:
+        'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
       registTime: 1712718595,
       sex: 2,
       clubSimpleList: null,
@@ -173,7 +174,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '4e5ca9a4-9582-4ea2-a43d-594e324a53ef',
@@ -198,7 +199,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '842836c2-d72a-4c50-ad0a-d79310753dd5',
@@ -209,7 +210,8 @@ export const ResponseUser = {
       name: '김민지',
       phone: '010-2586-4968',
       playerID: 44976,
-      profileURL: 'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
+      profileURL:
+        'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
       registTime: 1712216271,
       sex: 2,
       clubSimpleList: null,
@@ -222,7 +224,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '6d95a5c5-ba3a-409c-8ed6-d48585b0a1ac',
@@ -247,7 +249,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '6cc55152-080a-4311-b13e-9474d96b50b7',
@@ -258,7 +260,8 @@ export const ResponseUser = {
       name: '김예은',
       phone: '010-6580-8275',
       playerID: 44639,
-      profileURL: 'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
+      profileURL:
+        'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
       registTime: 1711336437,
       sex: 2,
       clubSimpleList: null,
@@ -271,7 +274,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '5e76840a-3026-475b-9b61-4703c1bb570f',
@@ -282,7 +285,8 @@ export const ResponseUser = {
       name: '태유정',
       phone: '010-9479-9989',
       playerID: 44556,
-      profileURL: 'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
+      profileURL:
+        'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
       registTime: 1710983021,
       sex: 2,
       clubSimpleList: null,
@@ -295,7 +299,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '43a0ac0d-809b-46e5-b3c7-e2debd675903',
@@ -306,7 +310,8 @@ export const ResponseUser = {
       name: '김준',
       phone: '010-8554-1086',
       playerID: 44527,
-      profileURL: 'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
+      profileURL:
+        'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
       registTime: 1710846225,
       sex: 1,
       clubSimpleList: null,
@@ -319,7 +324,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '577c3c02-836c-4f82-8fae-9bb6daceb608',
@@ -344,7 +349,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '72f103fe-2a0a-464a-b96d-0018a69f7af0',
@@ -355,7 +360,8 @@ export const ResponseUser = {
       name: '임성훈',
       phone: '010-3523-3428',
       playerID: 44350,
-      profileURL: 'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
+      profileURL:
+        'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
       registTime: 1710332099,
       sex: 1,
       clubSimpleList: null,
@@ -368,7 +374,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '09faebe5-c34e-49dd-a386-5eb1237d29f1',
@@ -393,7 +399,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: 'a094d667-6c51-4832-9401-0798a5390a33',
@@ -404,7 +410,8 @@ export const ResponseUser = {
       name: '김창하',
       phone: '821-0922-4440',
       playerID: 44271,
-      profileURL: 'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
+      profileURL:
+        'https://t1.kakaocdn.net/account_images/default_profile.jpeg.twg.thumb.R640x640',
       registTime: 1710215970,
       sex: 1,
       clubSimpleList: null,
@@ -417,7 +424,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '0d9014de-9455-4e46-8268-54c50e3ef412',
@@ -442,7 +449,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '241e3fa7-2d01-415b-a898-a7a78182eb13',
@@ -467,7 +474,7 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
+      weight: null
     },
     {
       clubMemberID: '3c574166-5cbd-43b5-94ad-a10d6312fd50',
@@ -492,8 +499,8 @@ export const ResponseUser = {
       membershipList: null,
       pointH: null,
       tutorialFlag: null,
-      weight: null,
-    },
+      weight: null
+    }
   ],
   membershipInfos: [
     {
@@ -537,7 +544,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '0eb9b7f5-333d-4d99-9d46-0053a67323f7',
@@ -580,7 +587,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '0f29b9eb-8a08-49d6-a2ed-ee211231afe2',
@@ -623,7 +630,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '15593a6c-bd5e-4ebd-8829-ab2394e2b7e9',
@@ -666,7 +673,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '1feb1593-4eb4-43fd-856c-10532222dd3a',
@@ -709,7 +716,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '26ec7aaa-0a7a-4dd3-92d0-7562e2c79c91',
@@ -752,7 +759,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '2735c5be-ed63-4fb8-9165-2a868d950b1c',
@@ -795,7 +802,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '2a51f4c6-d924-4450-a199-dea19bb74e8f',
@@ -838,7 +845,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '2e2444e8-63a2-4004-9c99-87b1ff4e9d80',
@@ -881,7 +888,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '3a1b1c81-db1b-4b14-8c11-35917166a808',
@@ -924,7 +931,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '3cf0a04a-789f-43ec-a942-e1d343de2e7e',
@@ -967,7 +974,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '3eb6cc65-e20a-417f-a23d-5e9d46e403b8',
@@ -1010,7 +1017,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '428e5d8a-7a4f-43d9-9959-8777933d4ad6',
@@ -1053,7 +1060,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '474f9500-ec2e-4a55-a5f5-71828c1697f5',
@@ -1096,7 +1103,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '4a2e2e36-c513-4b14-9049-1ef3b9266dbe',
@@ -1139,7 +1146,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '4aa12b79-02c0-402e-900c-1ce06832f08f',
@@ -1182,7 +1189,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '548a310e-c7e3-4dd0-b098-292ac305a0eb',
@@ -1225,7 +1232,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '68a3d60d-5eb7-455f-a281-35596fa0dd33',
@@ -1268,7 +1275,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '6e68b5c0-d887-4b82-8661-1a6c3d323b0a',
@@ -1311,7 +1318,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '6f8256df-ba0a-4c1c-88aa-cab093d001bd',
@@ -1354,7 +1361,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '6f989579-4ae2-4440-a3c0-ee5b4852401f',
@@ -1397,7 +1404,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: '7ad5ad5b-4ebc-499d-80be-f5f3dee8b332',
@@ -1440,7 +1447,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: 'ad9efe44-c8c9-4291-81dd-e1b78085a5f6',
@@ -1483,7 +1490,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: 'c49bec0f-e9d2-4a83-b233-3ed076709188',
@@ -1526,7 +1533,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: 'cbe04be6-9a4b-4f56-b140-4e83deb8023a',
@@ -1569,7 +1576,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: 'e17142cc-82ee-4766-83be-55035a31d6c8',
@@ -1612,7 +1619,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: 'e7b7ca97-b130-43b6-b037-d634407e3f51',
@@ -1655,7 +1662,7 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
+      controlList: []
     },
     {
       clubMembershipID: 'f11c50f5-39f5-4823-996c-57dd1722fa0a',
@@ -1698,8 +1705,8 @@ export const ResponseUser = {
       subscriptionID: '',
       holdList: [],
       coaches: [],
-      controlList: [],
-    },
+      controlList: []
+    }
   ],
-  result: 1,
+  result: 1
 };

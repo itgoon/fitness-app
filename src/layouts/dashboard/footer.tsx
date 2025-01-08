@@ -20,8 +20,8 @@ export default function Footer() {
   const IsDashboard = pathname === '/dashboard';
 
   const mainFooter = (
-    <Stack padding={'60px 20px'} gap={2}>
-      <Logo isFooter={true} />
+    <Stack padding="60px 20px" gap={2}>
+      <Logo isFooter />
       <List component="nav">
         {footerList.map((li, key) => (
           <ListItem key={key} sx={{ padding: 0, paddingBottom: 0.5 }}>

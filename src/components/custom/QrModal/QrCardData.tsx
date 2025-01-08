@@ -6,11 +6,11 @@ import {
   useTheme
 } from '@mui/material';
 import dayjs from 'dayjs';
-import { getRemainDays } from '../../../utils/formatTime';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router';
+import { getRemainDays } from '../../../utils/formatTime';
 import Button from '../../Button';
 import { IQrCardData } from './types';
-import { useNavigate } from 'react-router';
 import QRCode from './QRCode';
 
 export default function QrCardData({
@@ -21,7 +21,7 @@ export default function QrCardData({
   const navigate = useNavigate();
   const { palette } = useTheme();
   const contrast = '#9CAFEC';
-  const white = palette.common.white;
+  const {white} = palette.common;
 
   const [isDetail, setIsDetail] = useState(false);
   const [remainDay, setRemainDay] = useState<number>(0);

@@ -80,7 +80,7 @@ function Separator() {
         width: 4,
         height: 4,
         borderRadius: '50%',
-        bgcolor: 'text.disabled',
+        bgcolor: 'text.disabled'
       }}
     />
   );

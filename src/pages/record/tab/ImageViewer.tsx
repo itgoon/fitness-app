@@ -1,8 +1,8 @@
 import { Box, Stack } from '@mui/material';
+import { useState } from 'react';
 import Icon from '../../../components/Icon';
 import { IimageViewer } from '../types';
 import Overlay from '../../../components/custom/Overlay/indext';
-import { useState } from 'react';
 import Button from '../../../components/Button';
 import CustomCarousel from '../../../components/custom/CustomCarousel/index';
 import { useModal } from '../../../hooks/useModal';
@@ -41,17 +41,17 @@ export default function ImageViewer({
     <Overlay bgcolor="#000">
       <Overlay isOpen={isOverlayOpen} onClose={() => setIsOverlayOpen(false)} />
 
-      <Stack height={'100%'} justifyContent={'space-between'}>
+      <Stack height="100%" justifyContent="space-between">
         {/* header */}
-        <Box display={'flex'} justifyContent={'space-between'} px={2.5} py={3}>
-          <Icon name={'FileDownloadSvg'} {...IconSx} />
-          <Box display={'flex'} gap={3}>
+        <Box display="flex" justifyContent="space-between" px={2.5} py={3}>
+          <Icon name="FileDownloadSvg" {...IconSx} />
+          <Box display="flex" gap={3}>
             <Icon
-              name={'MoreVertRounded'}
+              name="MoreVertRounded"
               {...IconSx}
               onClick={() => setIsOverlayOpen((prev) => !prev)}
             />
-            <Icon name={'CloseRounded'} {...IconSx} onClick={onClose} />
+            <Icon name="CloseRounded" {...IconSx} onClick={onClose} />
           </Box>
         </Box>
 
@@ -70,8 +70,8 @@ export default function ImageViewer({
           {isOverlayOpen && (
             <>
               <Button
-                children={'기록 삭제'}
-                color={'error'}
+                children="기록 삭제"
+                color="error"
                 {...BtnSx}
                 onClick={() =>
                   openConfirm({
@@ -85,7 +85,7 @@ export default function ImageViewer({
                 }
               />
               <Button
-                children={'취소'}
+                children="취소"
                 {...BtnSx}
                 onClick={() => setIsOverlayOpen((prev) => !prev)}
               />

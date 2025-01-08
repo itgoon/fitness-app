@@ -57,7 +57,7 @@ export default function ConfirmDialog({
         {!action && (
           <Button
             variant="contained"
-            color={clickColor ? clickColor : 'primary'}
+            color={clickColor || 'primary'}
             onClick={onClick}
           >
             {clickMsg}

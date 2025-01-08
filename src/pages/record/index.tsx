@@ -54,16 +54,16 @@ export default function Record() {
 
   const selectAll = () => {
     const selectionArray: number[][] = [];
-    dietList.map((list, fIdx) => {
-      list.imageUrls.map((li, sIdx) => {
+    dietList.forEach((list, fIdx) => {
+      list.imageUrls.forEach((li, sIdx) => {
         selectionArray.push([fIdx, sIdx]);
       });
     });
     setSelectedIndex(selectionArray);
   };
 
-  const onDelete = () => {
-    return dietList
+  const onDelete = () =>
+    dietList
       .map((list, idx) => {
         if (selectedIndex.some(([fIndex, sIndex]) => fIndex === idx)) {
           return {
@@ -79,26 +79,19 @@ export default function Record() {
         return list;
       })
       .filter((list) => list?.imageUrls.length > 0);
-  };
 
   const viewImageDelete = () => {
     const updatedData = onDelete();
     setDietList(updatedData);
 
-    // setSelectedIndex((prevState) =>
-    //   prevState.map(([fIdx, sIdx]) => {
-    //     return [fIdx, sIdx + 1];
-    //   })
-    // );
     setSelectedIndex((prevState) => {
       if (prevState.length > 0) {
         const [firstIndex, secondIndex] = prevState[0];
 
         if (updatedData[firstIndex]?.imageUrls.length > secondIndex) {
           return [[firstIndex, secondIndex]];
-        } else {
-          return [[firstIndex, updatedData[firstIndex].imageUrls.length - 1]];
         }
+        return [[firstIndex, updatedData[firstIndex].imageUrls.length - 1]];
       }
       return [];
     });
@@ -131,8 +124,8 @@ export default function Record() {
         <Tabs
           value={tabValue}
           onChange={(e, newValue) => setTabValue(newValue)}
-          frLabel={'운동'}
-          secLabel={'식단'}
+          frLabel="운동"
+          secLabel="식단"
         />
         <TabPanel value={tabValue} index={0}>
           {dietList?.length > 0 ? <WorkoutTab>work</WorkoutTab> : <EmptyList />}

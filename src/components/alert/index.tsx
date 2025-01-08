@@ -1,4 +1,4 @@
-import { Backdrop, AlertTitle, Alert as MAlert } from "@mui/material";
+import { Backdrop, AlertTitle, Alert as MAlert } from '@mui/material';
 
 interface Props {
   open: boolean;
@@ -9,12 +9,12 @@ interface Props {
 
 const Alert = ({ open, title, subtitle, onClose }: Props) => (
   <Backdrop
-    sx={{ color: "#fff", zIndex: (theme) => theme.zIndex.drawer + 110 }}
+    sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 110 }}
     open={open}
   >
     <MAlert severity="success" onClose={onClose}>
       <AlertTitle>{title}</AlertTitle>
-      {subtitle || ""}
+      {subtitle || ''}
     </MAlert>
   </Backdrop>
 );

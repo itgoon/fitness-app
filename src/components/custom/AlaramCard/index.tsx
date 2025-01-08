@@ -20,10 +20,10 @@ export default function AlaramCard({
   return (
     <EmptyCard
       borderRadius={2}
-      padding={'24px 20px'}
+      padding="24px 20px"
       gap={3}
-      margin={'12px 20px 24px'}
-      direction={'column'}
+      margin="12px 20px 24px"
+      direction="column"
     >
       {title && (
         <Typography variant="Body18/bold" children={title} color={grey900} />
@@ -31,14 +31,14 @@ export default function AlaramCard({
 
       <Stack padding={0} gap={1}>
         {dataList?.map((data, key) => (
-          <Box key={key} display={'flex'} justifyContent={'space-between'}>
+          <Box key={key} display="flex" justifyContent="space-between">
             <Typography
-              variant={'Body14/light'}
+              variant="Body14/light"
               color={grey600}
               children={data.label}
             />
             <Typography
-              variant={'Body15/semiBold'}
+              variant="Body15/semiBold"
               children={data.value}
               color={grey900}
             />
@@ -47,8 +47,8 @@ export default function AlaramCard({
       </Stack>
       {onClick && (
         <Button
-          variant={'contained'}
-          color={'primary'}
+          variant="contained"
+          color="primary"
           children={onClickMsg}
           onClick={onClick}
         />

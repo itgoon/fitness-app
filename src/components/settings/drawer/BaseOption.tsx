@@ -1,8 +1,8 @@
-import Stack from "@mui/material/Stack";
-import { alpha } from "@mui/material/styles";
-import ButtonBase from "@mui/material/ButtonBase";
+import Stack from '@mui/material/Stack';
+import { alpha } from '@mui/material/styles';
+import ButtonBase from '@mui/material/ButtonBase';
 
-import SvgColor from "../../svgColor";
+import SvgColor from '../../svgColor';
 
 // ----------------------------------------------------------------------
 
@@ -35,16 +35,16 @@ export default function BaseOptions({
               border: (theme) =>
                 `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
               ...(selected && {
-                bgcolor: "background.paper",
+                bgcolor: 'background.paper',
                 boxShadow: (theme) =>
                   `-24px 8px 24px -4px ${alpha(
-                    theme.palette.mode === "light"
+                    theme.palette.mode === 'light'
                       ? theme.palette.grey[500]
                       : theme.palette.common.black,
                     0.08
                   )}`
               }),
-              "& .svg-color": {
+              '& .svg-color': {
                 background: (theme) =>
                   `linear-gradient(135deg, ${theme.palette.grey[500]} 0%, ${theme.palette.grey[600]} 100%)`,
                 ...(selected && {

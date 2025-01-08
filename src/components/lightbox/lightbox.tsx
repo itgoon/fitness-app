@@ -43,20 +43,24 @@ export default function Lightbox({
           disabledCaptions,
           disabledSlideshow,
           disabledThumbnails,
-          disabledFullscreen,
+          disabledFullscreen
         })}
         on={{
           view: ({ index }: { index: number }) => {
             if (onGetCurrentIndex) {
               onGetCurrentIndex(index);
             }
-          },
+          }
         }}
         toolbar={{
           buttons: [
-            <DisplayTotal key={0} totalItems={totalItems} disabledTotal={disabledTotal} />,
-            'close',
-          ],
+            <DisplayTotal
+              key={0}
+              totalItems={totalItems}
+              disabledTotal={disabledTotal}
+            />,
+            'close'
+          ]
         }}
         render={{
           iconClose: () => <Iconify width={24} icon="carbon:close" />,
@@ -66,8 +70,12 @@ export default function Lightbox({
           iconSlideshowPause: () => <Iconify width={24} icon="carbon:pause" />,
           iconPrev: () => <Iconify width={32} icon="carbon:chevron-left" />,
           iconNext: () => <Iconify width={32} icon="carbon:chevron-right" />,
-          iconExitFullscreen: () => <Iconify width={24} icon="carbon:center-to-fit" />,
-          iconEnterFullscreen: () => <Iconify width={24} icon="carbon:fit-to-screen" />,
+          iconExitFullscreen: () => (
+            <Iconify width={24} icon="carbon:center-to-fit" />
+          ),
+          iconEnterFullscreen: () => (
+            <Iconify width={24} icon="carbon:fit-to-screen" />
+          )
         }}
         {...other}
       />
@@ -83,7 +91,7 @@ export function getPlugins({
   disabledCaptions,
   disabledSlideshow,
   disabledThumbnails,
-  disabledFullscreen,
+  disabledFullscreen
 }: LightBoxProps) {
   let plugins = [Captions, Fullscreen, Slideshow, Thumbnails, Video, Zoom];
 
@@ -131,7 +139,7 @@ export function DisplayTotal({ totalItems, disabledTotal }: DisplayTotalProps) {
         typography: 'body2',
         alignItems: 'center',
         display: 'inline-flex',
-        justifyContent: 'center',
+        justifyContent: 'center'
       }}
     >
       <strong> {currentIndex + 1} </strong> / {totalItems}

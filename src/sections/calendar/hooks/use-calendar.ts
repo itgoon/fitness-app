@@ -7,7 +7,11 @@ import { useResponsive } from 'src/hooks/useResponsive';
 
 import { fTimestamp } from 'src/utils/formatTime';
 
-import { ICalendarView, ICalendarRange, ICalendarEvent } from 'src/types/calendar';
+import {
+  ICalendarView,
+  ICalendarRange,
+  ICalendarEvent
+} from 'src/types/calendar';
 
 // ----------------------------------------------------------------------
 
@@ -26,7 +30,9 @@ export default function useCalendar() {
 
   const [selectedRange, setSelectedRange] = useState<ICalendarRange>(null);
 
-  const [view, setView] = useState<ICalendarView>(smUp ? 'dayGridMonth' : 'listWeek');
+  const [view, setView] = useState<ICalendarView>(
+    smUp ? 'dayGridMonth' : 'listWeek'
+  );
 
   const onOpenForm = useCallback(() => {
     setOpenForm(true);
@@ -97,7 +103,7 @@ export default function useCalendar() {
       onOpenForm();
       setSelectedRange({
         start: fTimestamp(arg.start),
-        end: fTimestamp(arg.end),
+        end: fTimestamp(arg.end)
       });
     },
     [calendarEl, onOpenForm]
@@ -114,28 +120,34 @@ export default function useCalendar() {
   );
 
   const onResizeEvent = useCallback(
-    (arg: EventResizeDoneArg, updateEvent: (eventData: Partial<ICalendarEvent>) => void) => {
+    (
+      arg: EventResizeDoneArg,
+      updateEvent: (eventData: Partial<ICalendarEvent>) => void
+    ) => {
       const { event } = arg;
 
       updateEvent({
         id: event.id,
         allDay: event.allDay,
         start: fTimestamp(event.start),
-        end: fTimestamp(event.end),
+        end: fTimestamp(event.end)
       });
     },
     []
   );
 
   const onDropEvent = useCallback(
-    (arg: EventDropArg, updateEvent: (eventData: Partial<ICalendarEvent>) => void) => {
+    (
+      arg: EventDropArg,
+      updateEvent: (eventData: Partial<ICalendarEvent>) => void
+    ) => {
       const { event } = arg;
 
       updateEvent({
         id: event.id,
         allDay: event.allDay,
         start: fTimestamp(event.start),
-        end: fTimestamp(event.end),
+        end: fTimestamp(event.end)
       });
     },
     []
@@ -174,6 +186,6 @@ export default function useCalendar() {
     selectEventId,
     selectedRange,
     //
-    onClickEventInFilters,
+    onClickEventInFilters
   };
 }

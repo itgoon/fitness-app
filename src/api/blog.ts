@@ -18,7 +18,7 @@ export function useGetPosts() {
       postsLoading: isLoading,
       postsError: error,
       postsValidating: isValidating,
-      postsEmpty: !isLoading && !data?.posts.length,
+      postsEmpty: !isLoading && !data?.posts.length
     }),
     [data?.posts, error, isLoading, isValidating]
   );
@@ -38,7 +38,7 @@ export function useGetPost(title: string) {
       post: data?.post as IPostItem,
       postLoading: isLoading,
       postError: error,
-      postValidating: isValidating,
+      postValidating: isValidating
     }),
     [data?.post, error, isLoading, isValidating]
   );
@@ -59,7 +59,7 @@ export function useGetLatestPosts(title: string) {
       latestPostsLoading: isLoading,
       latestPostsError: error,
       latestPostsValidating: isValidating,
-      latestPostsEmpty: !isLoading && !data?.latestPosts.length,
+      latestPostsEmpty: !isLoading && !data?.latestPosts.length
     }),
     [data?.latestPosts, error, isLoading, isValidating]
   );
@@ -73,7 +73,7 @@ export function useSearchPosts(query: string) {
   const URL = query ? [endpoints.post.search, { params: { query } }] : '';
 
   const { data, isLoading, error, isValidating } = useSWR(URL, fetcher, {
-    keepPreviousData: true,
+    keepPreviousData: true
   });
 
   const memoizedValue = useMemo(
@@ -82,7 +82,7 @@ export function useSearchPosts(query: string) {
       searchLoading: isLoading,
       searchError: error,
       searchValidating: isValidating,
-      searchEmpty: !isLoading && !data?.results.length,
+      searchEmpty: !isLoading && !data?.results.length
     }),
     [data?.results, error, isLoading, isValidating]
   );

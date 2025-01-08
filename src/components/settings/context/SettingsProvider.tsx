@@ -1,16 +1,16 @@
-import isEqual from "lodash/isEqual";
-import { useMemo, useState, useEffect, useCallback, ReactNode } from "react";
+import isEqual from 'lodash/isEqual';
+import { useMemo, useState, useEffect, useCallback, ReactNode } from 'react';
 
-import { useLocalStorage } from "src/hooks/useLocalStorage";
+import { useLocalStorage } from 'src/hooks/useLocalStorage';
 
-import { localStorageGetItem } from "src/utils/storageAvailable";
+import { localStorageGetItem } from 'src/utils/storageAvailable';
 
-import { SettingsValueProps } from "../types";
-import { SettingsContext } from "./SettingsContext";
+import { SettingsValueProps } from '../types';
+import { SettingsContext } from './SettingsContext';
 
 // ----------------------------------------------------------------------
 
-const STORAGE_KEY = "settings";
+const STORAGE_KEY = 'settings';
 
 type SettingsProviderProps = {
   children: ReactNode;
@@ -28,11 +28,11 @@ export function SettingsProvider({
 
   const [openDrawer, setOpenDrawer] = useState(false);
 
-  const isArabic = localStorageGetItem("i18nextLng") === "ar";
+  const isArabic = localStorageGetItem('i18nextLng') === 'ar';
 
   useEffect(() => {
     if (isArabic) {
-      onChangeDirectionByLang("ar");
+      onChangeDirectionByLang('ar');
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isArabic]);
@@ -40,7 +40,7 @@ export function SettingsProvider({
   // Direction by lang
   const onChangeDirectionByLang = useCallback(
     (lang: string) => {
-      update("themeDirection", lang === "ar" ? "rtl" : "ltr");
+      update('themeDirection', lang === 'ar' ? 'rtl' : 'ltr');
     },
     [update]
   );

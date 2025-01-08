@@ -28,7 +28,7 @@ export default function SettingsDrawer() {
   const labelStyles = {
     mb: 1.5,
     color: 'text.disabled',
-    fontWeight: 'fontWeightSemiBold',
+    fontWeight: 'fontWeightSemiBold'
   };
 
   const renderHead = (
@@ -64,7 +64,9 @@ export default function SettingsDrawer() {
 
       <BaseOptions
         value={settings.themeMode}
-        onChange={(newValue: string) => settings.onUpdate('themeMode', newValue)}
+        onChange={(newValue: string) =>
+          settings.onUpdate('themeMode', newValue)
+        }
         options={['light', 'dark']}
         icons={['sun', 'moon']}
       />
@@ -79,7 +81,9 @@ export default function SettingsDrawer() {
 
       <BaseOptions
         value={settings.themeContrast}
-        onChange={(newValue: string) => settings.onUpdate('themeContrast', newValue)}
+        onChange={(newValue: string) =>
+          settings.onUpdate('themeContrast', newValue)
+        }
         options={['default', 'bold']}
         icons={['contrast', 'contrast_bold']}
       />
@@ -94,7 +98,9 @@ export default function SettingsDrawer() {
 
       <BaseOptions
         value={settings.themeDirection}
-        onChange={(newValue: string) => settings.onUpdate('themeDirection', newValue)}
+        onChange={(newValue: string) =>
+          settings.onUpdate('themeDirection', newValue)
+        }
         options={['ltr', 'rtl']}
         icons={['align_left', 'align_right']}
       />
@@ -109,7 +115,9 @@ export default function SettingsDrawer() {
 
       <LayoutOptions
         value={settings.themeLayout}
-        onChange={(newValue: string) => settings.onUpdate('themeLayout', newValue)}
+        onChange={(newValue: string) =>
+          settings.onUpdate('themeLayout', newValue)
+        }
         options={['vertical', 'horizontal', 'mini']}
       />
     </div>
@@ -123,7 +131,7 @@ export default function SettingsDrawer() {
         sx={{
           ...labelStyles,
           display: 'inline-flex',
-          alignItems: 'center',
+          alignItems: 'center'
         }}
       >
         Stretch
@@ -134,7 +142,9 @@ export default function SettingsDrawer() {
 
       <StretchOptions
         value={settings.themeStretch}
-        onChange={() => settings.onUpdate('themeStretch', !settings.themeStretch)}
+        onChange={() =>
+          settings.onUpdate('themeStretch', !settings.themeStretch)
+        }
       />
     </div>
   );
@@ -147,7 +157,9 @@ export default function SettingsDrawer() {
 
       <PresetsOptions
         value={settings.themeColorPresets}
-        onChange={(newValue: string) => settings.onUpdate('themeColorPresets', newValue)}
+        onChange={(newValue: string) =>
+          settings.onUpdate('themeColorPresets', newValue)
+        }
       />
     </div>
   );
@@ -158,13 +170,13 @@ export default function SettingsDrawer() {
       open={settings.open}
       onClose={settings.onClose}
       slotProps={{
-        backdrop: { invisible: true },
+        backdrop: { invisible: true }
       }}
       sx={{
         [`& .${drawerClasses.paper}`]: {
           ...paper({ theme, bgcolor: theme.palette.background.default }),
-          width: 280,
-        },
+          width: 280
+        }
       }}
     >
       {renderHead}

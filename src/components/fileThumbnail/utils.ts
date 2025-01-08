@@ -132,7 +132,7 @@ export function fileData(file: ExtendFile | string) {
       key: file,
       preview: file,
       name: fileNameByUrl(file),
-      type: fileTypeByUrl(file),
+      type: fileTypeByUrl(file)
     };
   }
 
@@ -145,6 +145,6 @@ export function fileData(file: ExtendFile | string) {
     type: file.type,
     preview: file.preview,
     lastModified: file.lastModified,
-    lastModifiedDate: file.lastModifiedDate,
+    lastModifiedDate: file.lastModifiedDate
   };
 }
