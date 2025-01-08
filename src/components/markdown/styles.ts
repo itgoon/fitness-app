@@ -18,7 +18,7 @@ const StyledMarkdown = styled('div')(({ theme }) => {
     br: {
       display: 'grid',
       content: '""',
-      marginTop: '0.75em',
+      marginTop: '0.75em'
     },
 
     // Divider
@@ -30,15 +30,15 @@ const StyledMarkdown = styled('div')(({ theme }) => {
       WebkitFlexShrink: 0,
       borderStyle: 'solid',
       borderBottomWidth: 'thin',
-      borderColor: theme.palette.divider,
+      borderColor: theme.palette.divider
     },
 
     // List
     '& ul, & ol': {
       margin: 0,
       '& li': {
-        lineHeight: 2,
-      },
+        lineHeight: 2
+      }
     },
 
     // Blockquote
@@ -53,12 +53,12 @@ const StyledMarkdown = styled('div')(({ theme }) => {
       borderRadius: theme.shape.borderRadius * 2,
       backgroundColor: theme.palette.background.neutral,
       [theme.breakpoints.up('md')]: {
-        width: '80%',
+        width: '80%'
       },
       '& p, & span': {
         marginBottom: 0,
         fontSize: 'inherit',
-        fontFamily: 'inherit',
+        fontFamily: 'inherit'
       },
       '&:before': {
         left: 16,
@@ -67,8 +67,8 @@ const StyledMarkdown = styled('div')(({ theme }) => {
         fontSize: '3em',
         content: '"\\201C"',
         position: 'absolute',
-        color: theme.palette.text.disabled,
-      },
+        color: theme.palette.text.disabled
+      }
     },
 
     // Code Block
@@ -79,7 +79,9 @@ const StyledMarkdown = styled('div')(({ theme }) => {
       padding: theme.spacing(2),
       color: theme.palette.common.white,
       borderRadius: theme.shape.borderRadius,
-      backgroundColor: lightMode ? theme.palette.grey[900] : alpha(theme.palette.grey[500], 0.16),
+      backgroundColor: lightMode
+        ? theme.palette.grey[900]
+        : alpha(theme.palette.grey[500], 0.16)
     },
     '& code': {
       fontSize: 14,
@@ -88,7 +90,7 @@ const StyledMarkdown = styled('div')(({ theme }) => {
       padding: theme.spacing(0.2, 0.5),
       color: theme.palette.warning[lightMode ? 'darker' : 'lighter'],
       backgroundColor: theme.palette.warning[lightMode ? 'lighter' : 'darker'],
-      '&.hljs': { padding: 0, backgroundColor: 'transparent' },
+      '&.hljs': { padding: 0, backgroundColor: 'transparent' }
     },
 
     // Table
@@ -98,11 +100,11 @@ const StyledMarkdown = styled('div')(({ theme }) => {
       border: `1px solid ${theme.palette.divider}`,
       'th, td': {
         padding: theme.spacing(1),
-        border: `1px solid ${theme.palette.divider}`,
+        border: `1px solid ${theme.palette.divider}`
       },
       'tbody tr:nth-of-type(odd)': {
-        backgroundColor: theme.palette.background.neutral,
-      },
+        backgroundColor: theme.palette.background.neutral
+      }
     },
 
     // Checkbox
@@ -118,11 +120,11 @@ const StyledMarkdown = styled('div')(({ theme }) => {
           height: 17,
           borderRadius: 3,
           position: 'absolute',
-          backgroundColor: theme.palette.grey[lightMode ? 300 : 700],
+          backgroundColor: theme.palette.grey[lightMode ? 300 : 700]
         },
         '&:checked': {
           '&:before': {
-            backgroundColor: theme.palette.primary.main,
+            backgroundColor: theme.palette.primary.main
           },
           '&:after': {
             content: '""',
@@ -135,11 +137,11 @@ const StyledMarkdown = styled('div')(({ theme }) => {
             msTransform: 'rotate(45deg)',
             WebkitTransform: 'rotate(45deg)',
             border: `solid ${theme.palette.common.white}`,
-            borderWidth: '0 2px 2px 0',
-          },
-        },
-      },
-    },
+            borderWidth: '0 2px 2px 0'
+          }
+        }
+      }
+    }
   };
 });
 

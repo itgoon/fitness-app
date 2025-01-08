@@ -5,7 +5,12 @@ import { NavProps } from '../types';
 
 // ----------------------------------------------------------------------
 
-export default function MegaMenuDesktopHorizontal({ data, sx, slotProps, ...other }: NavProps) {
+export default function MegaMenuDesktopHorizontal({
+  data,
+  sx,
+  slotProps,
+  ...other
+}: NavProps) {
   return (
     <Stack
       component="nav"
@@ -14,7 +19,7 @@ export default function MegaMenuDesktopHorizontal({ data, sx, slotProps, ...othe
       spacing={3}
       sx={{
         height: 1,
-        ...sx,
+        ...sx
       }}
       {...other}
     >

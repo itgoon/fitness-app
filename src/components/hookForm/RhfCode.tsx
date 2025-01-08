@@ -36,7 +36,7 @@ export default function RHFCode({ name, onChange, ...other }: RHFCodesProps) {
             length={6}
             TextFieldsProps={{
               error: !!error,
-              placeholder: '-',
+              placeholder: '-'
             }}
             onChange={handleChange}
             {...other}

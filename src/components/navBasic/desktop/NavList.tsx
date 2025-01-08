@@ -82,16 +82,20 @@ export default function NavList({ data, depth, slotProps }: NavListProps) {
                 mt: '-2px',
                 minWidth: 160,
                 ...(openMenu && {
-                  pointerEvents: 'auto',
-                }),
-              },
-            },
+                  pointerEvents: 'auto'
+                })
+              }
+            }
           }}
           sx={{
-            pointerEvents: 'none',
+            pointerEvents: 'none'
           }}
         >
-          <NavSubList data={data.children} depth={depth} slotProps={slotProps} />
+          <NavSubList
+            data={data.children}
+            depth={depth}
+            slotProps={slotProps}
+          />
         </Popover>
       )}
     </>
@@ -104,7 +108,12 @@ function NavSubList({ data, depth, slotProps }: NavSubListProps) {
   return (
     <Stack spacing={0.5}>
       {data.map((list) => (
-        <NavList key={list.title} data={list} depth={depth + 1} slotProps={slotProps} />
+        <NavList
+          key={list.title}
+          data={list}
+          depth={depth + 1}
+          slotProps={slotProps}
+        />
       ))}
     </Stack>
   );

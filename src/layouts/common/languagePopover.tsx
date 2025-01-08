@@ -1,14 +1,14 @@
-import { m } from "framer-motion";
-import { useCallback } from "react";
+import { m } from 'framer-motion';
+import { useCallback } from 'react';
 
-import IconButton from "@mui/material/IconButton";
-import MenuItem from "@mui/material/MenuItem";
+import IconButton from '@mui/material/IconButton';
+import MenuItem from '@mui/material/MenuItem';
 
-import { useLocales, useTranslate } from "src/locales";
+import { useLocales, useTranslate } from 'src/locales';
 
-import { varHover } from "src/components/animate";
-import CustomPopover, { usePopover } from "src/components/customPopover";
-import Iconify from "src/components/iconify";
+import { varHover } from 'src/components/animate';
+import CustomPopover, { usePopover } from 'src/components/customPopover';
+import Iconify from 'src/components/iconify';
 
 // ----------------------------------------------------------------------
 
@@ -40,8 +40,8 @@ export default function LanguagePopover() {
           width: 40,
           height: 40,
           ...(popover.open && {
-            bgcolor: "action.selected",
-          }),
+            bgcolor: 'action.selected'
+          })
         }}
       >
         <Iconify

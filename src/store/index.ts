@@ -5,7 +5,7 @@ import * as Translate from './translateStore';
 const Store = {
   Auth,
   Translate,
-  Layout,
+  Layout
 };
 
 export default Store;

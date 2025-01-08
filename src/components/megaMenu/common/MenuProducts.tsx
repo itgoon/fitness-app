@@ -7,7 +7,11 @@ import { RouterLink } from 'src/routes/components';
 import Image from '../../image';
 import { NavProducts } from '../types';
 import TextMaxLine from '../../textMaxLine';
-import Carousel, { useCarousel, CarouselDots, CarouselArrows } from '../../carousel';
+import Carousel, {
+  useCarousel,
+  CarouselDots,
+  CarouselArrows
+} from '../../carousel';
 
 // ----------------------------------------------------------------------
 
@@ -17,15 +21,19 @@ type Props = {
   sx?: SxProps<Theme>;
 };
 
-export default function MenuProducts({ products, displayProduct = 8, sx }: Props) {
+export default function MenuProducts({
+  products,
+  displayProduct = 8,
+  sx
+}: Props) {
   const theme = useTheme();
 
   const carousel = useCarousel({
     slidesToShow: displayProduct,
     slidesToScroll: displayProduct,
     ...CarouselDots({
-      sx: { mt: 3 },
-    }),
+      sx: { mt: 3 }
+    })
   });
 
   return (
@@ -36,11 +44,11 @@ export default function MenuProducts({ products, displayProduct = 8, sx }: Props
         onPrev={carousel.onPrev}
         leftButtonProps={{
           size: 'small',
-          sx: { top: 'calc(50% - 36px)', left: -8 },
+          sx: { top: 'calc(50% - 36px)', left: -8 }
         }}
         rightButtonProps={{
           size: 'small',
-          sx: { top: 'calc(50% - 36px)', right: -8 },
+          sx: { top: 'calc(50% - 36px)', right: -8 }
         }}
       >
         <Carousel ref={carousel.carouselRef} {...carousel.carouselSettings}>
@@ -56,8 +64,8 @@ export default function MenuProducts({ products, displayProduct = 8, sx }: Props
                 display: 'block',
                 transition: theme.transitions.create('all'),
                 '&:hover': {
-                  color: 'primary.main',
-                },
+                  color: 'primary.main'
+                }
               }}
             >
               <Image
@@ -68,7 +76,10 @@ export default function MenuProducts({ products, displayProduct = 8, sx }: Props
                 sx={{ borderRadius: 1, mb: 1 }}
               />
 
-              <TextMaxLine variant="caption" sx={{ fontWeight: 'fontWeightSemiBold' }}>
+              <TextMaxLine
+                variant="caption"
+                sx={{ fontWeight: 'fontWeightSemiBold' }}
+              >
                 {product.name}
               </TextMaxLine>
             </Link>

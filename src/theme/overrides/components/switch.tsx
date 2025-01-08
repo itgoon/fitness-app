@@ -17,12 +17,12 @@ export function switches(theme: Theme) {
         width: 14,
         height: 14,
         boxShadow: 'none',
-        color: theme.palette.common.white,
+        color: theme.palette.common.white
       },
       [`& .${switchClasses.track}`]: {
         opacity: 1,
         borderRadius: 14,
-        backgroundColor: alpha(theme.palette.grey[500], 0.48),
+        backgroundColor: alpha(theme.palette.grey[500], 0.48)
       },
       [`& .${switchClasses.switchBase}`]: {
         left: 3,
@@ -32,24 +32,24 @@ export function switches(theme: Theme) {
           [`& .${switchClasses.thumb}`]: {
             ...(color === 'default' &&
               !lightMode && {
-                color: theme.palette.grey[800],
-              }),
+                color: theme.palette.grey[800]
+              })
           },
           [`&+.${switchClasses.track}`]: {
             opacity: 1,
             ...(color === 'default' && {
-              backgroundColor: theme.palette.text.primary,
-            }),
-          },
+              backgroundColor: theme.palette.text.primary
+            })
+          }
         },
         [`&.${switchClasses.disabled}`]: {
           [`& .${switchClasses.thumb}`]: {
-            opacity: lightMode ? 1 : 0.48,
+            opacity: lightMode ? 1 : 0.48
           },
           [`&+.${switchClasses.track}`]: {
-            opacity: 0.48,
-          },
-        },
+            opacity: 0.48
+          }
+        }
       },
       // Small
       [`&.${switchClasses.sizeSmall}`]: {
@@ -58,23 +58,24 @@ export function switches(theme: Theme) {
         height: 24,
         [`& .${switchClasses.thumb}`]: {
           width: 10,
-          height: 10,
+          height: 10
         },
         [`& .${switchClasses.switchBase}`]: {
           padding: 7,
           [`&.${switchClasses.checked}`]: {
-            transform: 'translateX(9px)',
-          },
-        },
-      },
+            transform: 'translateX(9px)'
+          }
+        }
+      }
     };
   };
 
   return {
     MuiSwitch: {
       styleOverrides: {
-        root: ({ ownerState }: { ownerState: SwitchProps }) => rootStyles(ownerState),
-      },
-    },
+        root: ({ ownerState }: { ownerState: SwitchProps }) =>
+          rootStyles(ownerState)
+      }
+    }
   };
 }

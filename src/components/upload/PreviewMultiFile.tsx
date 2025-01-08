@@ -14,7 +14,12 @@ import FileThumbnail, { fileData } from '../fileThumbnail';
 
 // ----------------------------------------------------------------------
 
-export default function MultiFilePreview({ thumbnail, files, onRemove, sx }: UploadProps) {
+export default function MultiFilePreview({
+  thumbnail,
+  files,
+  onRemove,
+  sx
+}: UploadProps) {
   return (
     <AnimatePresence initial={false}>
       {files?.map((file) => {
@@ -38,8 +43,9 @@ export default function MultiFilePreview({ thumbnail, files, onRemove, sx }: Upl
                 borderRadius: 1.25,
                 overflow: 'hidden',
                 position: 'relative',
-                border: (theme) => `solid 1px ${alpha(theme.palette.grey[500], 0.16)}`,
-                ...sx,
+                border: (theme) =>
+                  `solid 1px ${alpha(theme.palette.grey[500], 0.16)}`,
+                ...sx
               }}
             >
               <FileThumbnail
@@ -62,8 +68,8 @@ export default function MultiFilePreview({ thumbnail, files, onRemove, sx }: Upl
                     color: 'common.white',
                     bgcolor: (theme) => alpha(theme.palette.grey[900], 0.48),
                     '&:hover': {
-                      bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72),
-                    },
+                      bgcolor: (theme) => alpha(theme.palette.grey[900], 0.72)
+                    }
                   }}
                 >
                   <Iconify icon="mingcute:close-line" width={14} />
@@ -86,8 +92,9 @@ export default function MultiFilePreview({ thumbnail, files, onRemove, sx }: Upl
               py: 1,
               px: 1.5,
               borderRadius: 1,
-              border: (theme) => `solid 1px ${alpha(theme.palette.grey[500], 0.16)}`,
-              ...sx,
+              border: (theme) =>
+                `solid 1px ${alpha(theme.palette.grey[500], 0.16)}`,
+              ...sx
             }}
           >
             <FileThumbnail file={file} />
@@ -97,7 +104,7 @@ export default function MultiFilePreview({ thumbnail, files, onRemove, sx }: Upl
               secondary={isNotFormatFile ? '' : fData(size)}
               secondaryTypographyProps={{
                 component: 'span',
-                typography: 'caption',
+                typography: 'caption'
               }}
             />
 

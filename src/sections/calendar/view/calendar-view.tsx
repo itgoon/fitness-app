@@ -26,7 +26,11 @@ import { CALENDAR_COLOR_OPTIONS } from 'src/_mock/_calendar';
 import Iconify from 'src/components/iconify';
 import { useSettingsContext } from 'src/components/settings';
 
-import { ICalendarEvent, ICalendarFilters, ICalendarFilterValue } from 'src/types/calendar';
+import {
+  ICalendarEvent,
+  ICalendarFilters,
+  ICalendarFilterValue
+} from 'src/types/calendar';
 
 import { useEvent, useCalendar } from '../hooks'; // => request placed at the top
 
@@ -41,7 +45,7 @@ import CalendarFiltersResult from '../calendar-filters-result';
 const defaultFilters: ICalendarFilters = {
   colors: [],
   startDate: null,
-  endDate: null,
+  endDate: null
 };
 
 // ----------------------------------------------------------------------
@@ -84,7 +88,7 @@ export default function CalendarView() {
     selectEventId,
     selectedRange,
     //
-    onClickEventInFilters,
+    onClickEventInFilters
   } = useCalendar();
 
   const currentEvent = useEvent(events, selectEventId, selectedRange, openForm);
@@ -93,23 +97,27 @@ export default function CalendarView() {
     onInitialView();
   }, [onInitialView]);
 
-  const handleFilters = useCallback((name: string, value: ICalendarFilterValue) => {
-    setFilters((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
-  }, []);
+  const handleFilters = useCallback(
+    (name: string, value: ICalendarFilterValue) => {
+      setFilters((prevState) => ({
+        ...prevState,
+        [name]: value
+      }));
+    },
+    []
+  );
 
   const handleResetFilters = useCallback(() => {
     setFilters(defaultFilters);
   }, []);
 
-  const canReset = !!filters.colors.length || (!!filters.startDate && !!filters.endDate);
+  const canReset =
+    !!filters.colors.length || (!!filters.startDate && !!filters.endDate);
 
   const dataFiltered = applyFilter({
     inputData: events,
     filters,
-    dateError,
+    dateError
   });
 
   const renderResults = (
@@ -133,7 +141,7 @@ export default function CalendarView() {
           alignItems="center"
           justifyContent="space-between"
           sx={{
-            mb: { xs: 3, md: 5 },
+            mb: { xs: 3, md: 5 }
           }}
         >
           <Typography variant="h4">Calendar</Typography>
@@ -190,7 +198,7 @@ export default function CalendarView() {
                 dayGridPlugin,
                 timelinePlugin,
                 timeGridPlugin,
-                interactionPlugin,
+                interactionPlugin
               ]}
             />
           </StyledCalendar>
@@ -204,7 +212,7 @@ export default function CalendarView() {
         onClose={onCloseForm}
         transitionDuration={{
           enter: theme.transitions.duration.shortest,
-          exit: theme.transitions.duration.shortest - 80,
+          exit: theme.transitions.duration.shortest - 80
         }}
       >
         <DialogTitle sx={{ minHeight: 76 }}>
@@ -243,7 +251,7 @@ export default function CalendarView() {
 function applyFilter({
   inputData,
   filters,
-  dateError,
+  dateError
 }: {
   inputData: ICalendarEvent[];
   filters: ICalendarFilters;
@@ -256,12 +264,16 @@ function applyFilter({
   inputData = stabilizedThis.map((el) => el[0]);
 
   if (colors.length) {
-    inputData = inputData.filter((event) => colors.includes(event.color as string));
+    inputData = inputData.filter((event) =>
+      colors.includes(event.color as string)
+    );
   }
 
   if (!dateError) {
     if (startDate && endDate) {
-      inputData = inputData.filter((event) => isBetween(event.start, startDate, endDate));
+      inputData = inputData.filter((event) =>
+        isBetween(event.start, startDate, endDate)
+      );
     }
   }
 

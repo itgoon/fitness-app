@@ -7,7 +7,10 @@ import { koKR as koKRCore, enUS as enUSCore } from '@mui/material/locale';
 // data grid (MUI)
 import { koKR as koKRDataGrid, enUS as enUSDataGrid } from '@mui/x-data-grid';
 // date pickers (MUI)
-import { koKR as koKRDate, enUS as enUSDate } from '@mui/x-date-pickers/locales';
+import {
+  koKR as koKRDate,
+  enUS as enUSDate
+} from '@mui/x-date-pickers/locales';
 
 // PLEASE REMOVE `LOCAL STORAGE` WHEN YOU CHANGE SETTINGS.
 // ----------------------------------------------------------------------
@@ -21,8 +24,8 @@ export const allLangs = [
     icon: 'flagpack:kr',
     numberFormat: {
       code: 'ko-KR',
-      currency: 'KOR',
-    },
+      currency: 'KOR'
+    }
   },
   {
     label: 'English',
@@ -32,9 +35,9 @@ export const allLangs = [
     icon: 'flagpack:gb-nir',
     numberFormat: {
       code: 'en-US',
-      currency: 'USD',
-    },
-  },
+      currency: 'USD'
+    }
+  }
 ];
 
 export const defaultLang = allLangs[0]; // English

@@ -12,11 +12,15 @@ const URL = endpoints.kanban;
 const options = {
   revalidateIfStale: false,
   revalidateOnFocus: false,
-  revalidateOnReconnect: false,
+  revalidateOnReconnect: false
 };
 
 export function useGetBoard() {
-  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher, options);
+  const { data, isLoading, error, isValidating } = useSWR(
+    URL,
+    fetcher,
+    options
+  );
 
   const memoizedValue = useMemo(
     () => ({
@@ -24,7 +28,7 @@ export function useGetBoard() {
       boardLoading: isLoading,
       boardError: error,
       boardValidating: isValidating,
-      boardEmpty: !isLoading && !data?.board.ordered.length,
+      boardEmpty: !isLoading && !data?.board.ordered.length
     }),
     [data?.board, error, isLoading, isValidating]
   );
@@ -52,7 +56,7 @@ export async function createColumn(columnData: IKanbanColumn) {
       const columns = {
         ...board.columns,
         // add new column in board.columns
-        [columnData.id]: columnData,
+        [columnData.id]: columnData
       };
 
       // add new column in board.ordered
@@ -63,8 +67,8 @@ export async function createColumn(columnData: IKanbanColumn) {
         board: {
           ...board,
           columns,
-          ordered,
-        },
+          ordered
+        }
       };
     },
     false
@@ -96,16 +100,16 @@ export async function updateColumn(columnId: string, columnName: string) {
         // update column in board.columns
         [column.id]: {
           ...column,
-          name: columnName,
-        },
+          name: columnName
+        }
       };
 
       return {
         ...currentData,
         board: {
           ...board,
-          columns,
-        },
+          columns
+        }
       };
     },
     false
@@ -130,8 +134,8 @@ export async function moveColumn(newOrdered: string[]) {
         ...currentData,
         board: {
           ...board,
-          ordered,
-        },
+          ordered
+        }
       };
     },
     false
@@ -176,8 +180,8 @@ export async function clearColumn(columnId: string) {
         [column.id]: {
           ...column,
           // delete task in column
-          taskIds: [],
-        },
+          taskIds: []
+        }
       };
 
       return {
@@ -185,8 +189,8 @@ export async function clearColumn(columnId: string) {
         board: {
           ...board,
           columns,
-          tasks,
-        },
+          tasks
+        }
       };
     },
     false
@@ -232,8 +236,8 @@ export async function deleteColumn(columnId: string) {
           ...board,
           columns,
           tasks,
-          ordered,
-        },
+          ordered
+        }
       };
     },
     false
@@ -265,14 +269,14 @@ export async function createTask(columnId: string, taskData: IKanbanTask) {
         [columnId]: {
           ...column,
           // add task in column
-          taskIds: [...column.taskIds, taskData.id],
-        },
+          taskIds: [...column.taskIds, taskData.id]
+        }
       };
 
       // add task in board.tasks
       const tasks = {
         ...board.tasks,
-        [taskData.id]: taskData,
+        [taskData.id]: taskData
       };
 
       return {
@@ -280,8 +284,8 @@ export async function createTask(columnId: string, taskData: IKanbanTask) {
         board: {
           ...board,
           columns,
-          tasks,
-        },
+          tasks
+        }
       };
     },
     false
@@ -308,15 +312,15 @@ export async function updateTask(taskData: IKanbanTask) {
       const tasks = {
         ...board.tasks,
         // add task in board.tasks
-        [taskData.id]: taskData,
+        [taskData.id]: taskData
       };
 
       return {
         ...currentData,
         board: {
           ...board,
-          tasks,
-        },
+          tasks
+        }
       };
     },
     false
@@ -341,8 +345,8 @@ export async function moveTask(updateColumns: Record<string, IKanbanColumn>) {
         ...currentData,
         board: {
           ...board,
-          columns,
-        },
+          columns
+        }
       };
     },
     false
@@ -382,8 +386,8 @@ export async function deleteTask(columnId: string, taskId: string) {
         [column.id]: {
           ...column,
           // delete tasks in column
-          taskIds: column.taskIds.filter((id: string) => id !== taskId),
-        },
+          taskIds: column.taskIds.filter((id: string) => id !== taskId)
+        }
       };
 
       // delete tasks in board.tasks
@@ -394,8 +398,8 @@ export async function deleteTask(columnId: string, taskId: string) {
         board: {
           ...board,
           columns,
-          tasks,
-        },
+          tasks
+        }
       };
     },
     false

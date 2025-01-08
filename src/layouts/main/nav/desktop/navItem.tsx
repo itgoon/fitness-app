@@ -16,7 +16,10 @@ import { NavItemProps, NavItemStateProps } from '../types';
 // ----------------------------------------------------------------------
 
 export const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
-  ({ title, path, open, active, hasChild, externalLink, subItem, ...other }, ref) => {
+  (
+    { title, path, open, active, hasChild, externalLink, subItem, ...other },
+    ref
+  ) => {
     const renderContent = (
       <StyledNavItem
         disableRipple
@@ -29,7 +32,13 @@ export const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
       >
         {title}
 
-        {hasChild && <Iconify width={16} icon="eva:arrow-ios-downward-fill" sx={{ ml: 1 }} />}
+        {hasChild && (
+          <Iconify
+            width={16}
+            icon="eva:arrow-ios-downward-fill"
+            sx={{ ml: 1 }}
+          />
+        )}
       </StyledNavItem>
     );
 
@@ -39,7 +48,13 @@ export const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
 
     if (externalLink) {
       return (
-        <Link href={path} target="_blank" rel="noopener" color="inherit" underline="none">
+        <Link
+          href={path}
+          target="_blank"
+          rel="noopener"
+          color="inherit"
+          underline="none"
+        >
           {renderContent}
         </Link>
       );
@@ -56,7 +71,7 @@ export const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
 // ----------------------------------------------------------------------
 
 const StyledNavItem = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== 'active' && prop !== 'subItem',
+  shouldForwardProp: (prop) => prop !== 'active' && prop !== 'subItem'
 })<NavItemStateProps>(({ open, active, subItem, theme }) => {
   const opened = open && !active;
 
@@ -70,8 +85,8 @@ const StyledNavItem = styled(ListItemButton, {
     position: 'absolute',
     backgroundColor: 'currentColor',
     ...(active && {
-      color: theme.palette.primary.main,
-    }),
+      color: theme.palette.primary.main
+    })
   };
 
   return {
@@ -82,28 +97,28 @@ const StyledNavItem = styled(ListItemButton, {
       height: '100%',
       fontWeight: theme.typography.fontWeightMedium,
       transition: theme.transitions.create(['all'], {
-        duration: theme.transitions.duration.shorter,
+        duration: theme.transitions.duration.shorter
       }),
       '&:hover': {
         opacity: 0.64,
         backgroundColor: 'transparent',
         '&:before': {
-          ...dotStyles,
-        },
+          ...dotStyles
+        }
       },
       ...(active && {
         color: theme.palette.primary.main,
         fontWeight: theme.typography.fontWeightSemiBold,
         '&:before': {
-          ...dotStyles,
-        },
+          ...dotStyles
+        }
       }),
       ...(opened && {
         opacity: 0.64,
         '&:before': {
-          ...dotStyles,
-        },
-      }),
+          ...dotStyles
+        }
+      })
     }),
 
     // Sub item
@@ -114,23 +129,23 @@ const StyledNavItem = styled(ListItemButton, {
       color: theme.palette.text.secondary,
       fontWeight: theme.typography.fontWeightMedium,
       transition: theme.transitions.create(['all'], {
-        duration: theme.transitions.duration.shorter,
+        duration: theme.transitions.duration.shorter
       }),
       '&:hover': {
         backgroundColor: 'transparent',
         color: theme.palette.text.primary,
         '&:before': {
-          ...dotStyles,
-        },
+          ...dotStyles
+        }
       },
       ...(active && {
         color: theme.palette.text.primary,
         fontWeight: theme.typography.fontWeightSemiBold,
         '&:before': {
-          ...dotStyles,
-        },
-      }),
-    }),
+          ...dotStyles
+        }
+      })
+    })
   };
 });
 
@@ -140,9 +155,18 @@ type NavItemDashboardProps = LinkProps & {
   path: string;
 };
 
-export function NavItemDashboard({ path, sx, ...other }: NavItemDashboardProps) {
+export function NavItemDashboard({
+  path,
+  sx,
+  ...other
+}: NavItemDashboardProps) {
   return (
-    <Link component={RouterLink} href={path} sx={{ width: 1, height: 1 }} {...other}>
+    <Link
+      component={RouterLink}
+      href={path}
+      sx={{ width: 1, height: 1 }}
+      {...other}
+    >
       <CardActionArea
         sx={{
           height: 1,
@@ -151,7 +175,7 @@ export function NavItemDashboard({ path, sx, ...other }: NavItemDashboardProps) 
           color: 'text.disabled',
           bgcolor: 'background.neutral',
           px: { md: 3, lg: 10 },
-          ...sx,
+          ...sx
         }}
       >
         <m.div
@@ -159,7 +183,7 @@ export function NavItemDashboard({ path, sx, ...other }: NavItemDashboardProps) 
           whileHover="hover"
           variants={{
             hover: { scale: 1.02 },
-            tap: { scale: 0.98 },
+            tap: { scale: 0.98 }
           }}
         >
           <Box

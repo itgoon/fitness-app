@@ -13,10 +13,10 @@ export function popover(theme: Theme) {
           ...paper({ theme, dropdown: true }),
           [`& .${listClasses.root}`]: {
             paddingTop: 0,
-            paddingBottom: 0,
-          },
-        },
-      },
-    },
+            paddingBottom: 0
+          }
+        }
+      }
+    }
   };
 }

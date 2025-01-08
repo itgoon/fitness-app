@@ -1,11 +1,11 @@
-import Button from "@mui/material/Button";
-import Stack from "@mui/material/Stack";
+import Button from '@mui/material/Button';
+import Stack from '@mui/material/Stack';
 
-import { useRouter } from "src/routes/hooks";
+import { useRouter } from 'src/routes/hooks';
 
-import { useTranslate } from "src/locales";
+import { useTranslate } from 'src/locales';
 
-import { User } from "src/types/user";
+import { User } from 'src/types/user';
 
 // ----------------------------------------------------------------------
 
@@ -22,19 +22,19 @@ export default function UserToolbar({ user }: Props) {
     <>
       <Stack sx={{ mb: { xs: 3 }, mt: 2 }}>
         <Stack
-          direction={{ xs: "column", md: "row" }}
+          direction={{ xs: 'column', md: 'row' }}
           justifyContent="flex-end"
           spacing={1}
           sx={{ width: 1 }}
         >
           <Button variant="contained" color="success">
-            {t("목록")}
+            {t('목록')}
           </Button>
           <Button variant="contained" color="info">
-            {t("수정")}
+            {t('수정')}
           </Button>
           <Button variant="contained" color="error">
-            {t("탈퇴")}
+            {t('탈퇴')}
           </Button>
         </Stack>
       </Stack>

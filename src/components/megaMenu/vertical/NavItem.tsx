@@ -13,7 +13,10 @@ import { NavItemProps, NavItemStateProps } from '../types';
 // ----------------------------------------------------------------------
 
 const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
-  ({ title, path, icon, open, active, hasChild, externalLink, ...other }, ref) => {
+  (
+    { title, path, icon, open, active, hasChild, externalLink, ...other },
+    ref
+  ) => {
     const renderContent = (
       <StyledNavItem ref={ref} open={open} active={active} {...other}>
         {icon && (
@@ -28,13 +31,25 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
           </Box>
         )}
 
-        {hasChild && <Iconify width={16} className="arrow" icon="eva:arrow-ios-forward-fill" />}
+        {hasChild && (
+          <Iconify
+            width={16}
+            className="arrow"
+            icon="eva:arrow-ios-forward-fill"
+          />
+        )}
       </StyledNavItem>
     );
 
     if (externalLink)
       return (
-        <Link href={path} target="_blank" rel="noopener" underline="none" color="inherit">
+        <Link
+          href={path}
+          target="_blank"
+          rel="noopener"
+          underline="none"
+          color="inherit"
+        >
           {renderContent}
         </Link>
       );
@@ -52,7 +67,7 @@ export default NavItem;
 // ----------------------------------------------------------------------
 
 const StyledNavItem = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== 'active',
+  shouldForwardProp: (prop) => prop !== 'active'
 })<NavItemStateProps>(({ active, open, theme }) => {
   const opened = open && !active;
 
@@ -65,25 +80,25 @@ const StyledNavItem = styled(ListItemButton, {
       width: 20,
       height: 20,
       flexShrink: 0,
-      marginRight: theme.spacing(2),
+      marginRight: theme.spacing(2)
     },
     '& .label': {
-      flexGrow: 1,
+      flexGrow: 1
     },
     '& .arrow': {
-      marginLeft: theme.spacing(0.75),
+      marginLeft: theme.spacing(0.75)
     },
     ...(active && {
       color: theme.palette.primary.main,
       fontWeight: theme.typography.fontWeightSemiBold,
       backgroundColor: alpha(theme.palette.primary.main, 0.08),
       '&:hover': {
-        backgroundColor: alpha(theme.palette.primary.main, 0.16),
-      },
+        backgroundColor: alpha(theme.palette.primary.main, 0.16)
+      }
     }),
     ...(opened && {
       color: theme.palette.text.primary,
-      backgroundColor: theme.palette.action.hover,
-    }),
+      backgroundColor: theme.palette.action.hover
+    })
   };
 });

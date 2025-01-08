@@ -21,100 +21,100 @@ export function dataGrid(theme: Theme) {
         root: {
           '--unstable_DataGrid-radius': 0,
           '--unstable_DataGrid-headWeight': theme.typography.fontWeightSemiBold,
-          borderWidth: 0,
+          borderWidth: 0
         },
         withBorderColor: {
-          borderColor: theme.palette.divider,
+          borderColor: theme.palette.divider
         },
         // Column
         columnHeaders: {
-          borderBottom: 0,
+          borderBottom: 0
         },
         columnHeader: {
           fontSize: 14,
           color: theme.palette.text.secondary,
           backgroundColor: theme.palette.background.neutral,
           '&--sorted': {
-            color: theme.palette.text.primary,
-          },
+            color: theme.palette.text.primary
+          }
         },
         columnSeparator: {
-          color: theme.palette.divider,
+          color: theme.palette.divider
         },
         // Row, Cell
         cell: {
           borderBottom: `1px dashed`,
           '&--editing': {
             boxShadow: 'none !important',
-            backgroundColor: `${alpha(theme.palette.primary.main, 0.08)} !important`,
-          },
+            backgroundColor: `${alpha(theme.palette.primary.main, 0.08)} !important`
+          }
         },
         // Toolbar
         toolbarContainer: {
           gap: theme.spacing(2),
-          padding: theme.spacing(2),
+          padding: theme.spacing(2)
         },
         toolbarQuickFilter: {
           padding: 0,
           width: '100%',
           [theme.breakpoints.up('md')]: {
-            width: 'unset',
-          },
+            width: 'unset'
+          }
         },
         // Paper
         paper: {
           ...paperStyles,
-          padding: 0,
+          padding: 0
         },
         menu: {
           [`& .${paperClasses.root}`]: {
             ...paperStyles,
-            minWidth: 140,
+            minWidth: 140
           },
           [`& .${listClasses.root}`]: {
             padding: 0,
             [`& .${listItemIconClasses.root}`]: {
               minWidth: 0,
-              marginRight: theme.spacing(2),
-            },
-          },
+              marginRight: theme.spacing(2)
+            }
+          }
         },
         // Icons
         menuIcon: {
           [`& .${iconButtonClasses.root}`]: {
             margin: theme.spacing(0, 1),
-            padding: theme.spacing(0.25),
-          },
+            padding: theme.spacing(0.25)
+          }
         },
         iconButtonContainer: {
           [`& .${iconButtonClasses.root}`]: {
             padding: theme.spacing(0.25),
-            marginLeft: theme.spacing(1),
-          },
+            marginLeft: theme.spacing(1)
+          }
         },
         // Footer
         footerContainer: {
           minHeight: 'auto',
-          borderTop: `1px dashed`,
+          borderTop: `1px dashed`
         },
         selectedRowCount: {
           display: 'none',
-          whiteSpace: 'nowrap',
+          whiteSpace: 'nowrap'
         },
         overlay: {
           [`& .${circularProgressClasses.root}`]: {
-            color: theme.palette.text.primary,
-          },
+            color: theme.palette.text.primary
+          }
         },
         // Columns Panel
         panelHeader: {
-          padding: theme.spacing(2, 2, 0, 2),
+          padding: theme.spacing(2, 2, 0, 2)
         },
         panelContent: {
-          padding: theme.spacing(1),
+          padding: theme.spacing(1)
         },
         columnsPanelRow: {
-          margin: theme.spacing(0.5, 0),
+          margin: theme.spacing(0.5, 0)
         },
         panelFooter: {
           display: 'none',
@@ -125,28 +125,28 @@ export function dataGrid(theme: Theme) {
           [`& .${buttonClasses.root}`]: {
             padding: theme.spacing(0.5, 1.5),
             '&:first-of-type': {
-              border: `solid 1px ${alpha(theme.palette.grey[500], 0.24)}`,
+              border: `solid 1px ${alpha(theme.palette.grey[500], 0.24)}`
             },
             '&:last-of-type': {
               color: theme.palette.background.paper,
-              backgroundColor: theme.palette.text.primary,
-            },
-          },
+              backgroundColor: theme.palette.text.primary
+            }
+          }
         },
         filterForm: {
           alignItems: 'center',
           gap: theme.spacing(1.5),
-          padding: theme.spacing(1),
+          padding: theme.spacing(1)
         },
         filterFormValueInput: {
           [`& .${formControlClasses.root}`]: {
-            width: '100%',
+            width: '100%'
           },
           [`& .${inputLabelClasses.root}`]: {
-            transform: 'translate(14px, -9px) scale(0.75)',
-          },
-        },
-      },
-    },
+            transform: 'translate(14px, -9px) scale(0.75)'
+          }
+        }
+      }
+    }
   };
 }

@@ -1,33 +1,33 @@
-import Stack from "@mui/material/Stack";
-import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import LinearProgress from "@mui/material/LinearProgress";
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import MenuItem from '@mui/material/MenuItem';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import LinearProgress from '@mui/material/LinearProgress';
 
-import { useResponsive } from "src/hooks/useResponsive";
+import { useResponsive } from 'src/hooks/useResponsive';
 
-import { fDate } from "src/utils/formatTime";
+import { fDate } from 'src/utils/formatTime';
 
-import Iconify from "src/components/iconify";
-import CustomPopover, { usePopover } from "src/components/customPopover";
+import Iconify from 'src/components/iconify';
+import CustomPopover, { usePopover } from 'src/components/customPopover';
 
-import { ICalendarView } from "src/types/calendar";
+import { ICalendarView } from 'src/types/calendar';
 
 // ----------------------------------------------------------------------
 
 const VIEW_OPTIONS = [
   {
-    value: "dayGridMonth",
-    label: "Month",
-    icon: "mingcute:calendar-month-line"
+    value: 'dayGridMonth',
+    label: 'Month',
+    icon: 'mingcute:calendar-month-line'
   },
-  { value: "timeGridWeek", label: "Week", icon: "mingcute:calendar-week-line" },
-  { value: "timeGridDay", label: "Day", icon: "mingcute:calendar-day-line" },
+  { value: 'timeGridWeek', label: 'Week', icon: 'mingcute:calendar-week-line' },
+  { value: 'timeGridDay', label: 'Day', icon: 'mingcute:calendar-day-line' },
   {
-    value: "listWeek",
-    label: "Agenda",
-    icon: "fluent:calendar-agenda-24-regular"
+    value: 'listWeek',
+    label: 'Agenda',
+    icon: 'fluent:calendar-agenda-24-regular'
   }
 ] as const;
 
@@ -54,7 +54,7 @@ export default function CalendarToolbar({
   onChangeView,
   onOpenFilters
 }: Props) {
-  const smUp = useResponsive("up", "sm");
+  const smUp = useResponsive('up', 'sm');
 
   const popover = usePopover();
 
@@ -66,7 +66,7 @@ export default function CalendarToolbar({
         direction="row"
         alignItems="center"
         justifyContent="space-between"
-        sx={{ p: 2.5, pr: 2, position: "relative" }}
+        sx={{ p: 2.5, pr: 2, position: 'relative' }}
       >
         {smUp && (
           <Button
@@ -115,7 +115,7 @@ export default function CalendarToolbar({
             sx={{
               height: 2,
               width: 1,
-              position: "absolute",
+              position: 'absolute',
               bottom: 0,
               left: 0
             }}

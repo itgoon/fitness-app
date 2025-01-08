@@ -1,6 +1,6 @@
-import { Controller, useFormContext } from "react-hook-form";
+import { Controller, useFormContext } from 'react-hook-form';
 
-import TextField, { TextFieldProps } from "@mui/material/TextField";
+import TextField, { TextFieldProps } from '@mui/material/TextField';
 
 // ----------------------------------------------------------------------
 
@@ -32,13 +32,13 @@ export default function RHFTextField({
         <TextField
           {...field}
           fullWidth
-          className={`${isView ? `isView` : ""} ${className}`}
+          className={`${isView ? `isView` : ''} ${className}`}
           variant={variant}
           type={type}
           size={size}
-          value={type === "number" && field.value === 0 ? "" : field.value}
+          value={type === 'number' && field.value === 0 ? '' : field.value}
           onChange={(e) => {
-            if (type === "number") {
+            if (type === 'number') {
               field.onChange(Number(e.target.value));
             } else {
               field.onChange(e.target.value);

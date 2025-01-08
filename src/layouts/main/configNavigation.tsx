@@ -10,7 +10,7 @@ export const navConfig = [
   {
     title: 'Home',
     icon: <Iconify icon="solar:home-2-bold-duotone" />,
-    path: '/',
+    path: '/'
   },
   {
     title: 'Pages',
@@ -24,22 +24,22 @@ export const navConfig = [
           { title: 'Register (modern)', path: paths.auth.register },
           {
             title: 'Forgot password (modern)',
-            path: paths.auth.forgotPassword,
-          },
-        ],
+            path: paths.auth.forgotPassword
+          }
+        ]
       },
       {
         subheader: 'Error',
         items: [
           { title: 'Page 403', path: paths.page403 },
           { title: 'Page 404', path: paths.page404 },
-          { title: 'Page 500', path: paths.page500 },
-        ],
+          { title: 'Page 500', path: paths.page500 }
+        ]
       },
       {
         subheader: 'Dashboard',
-        items: [{ title: 'Dashboard', path: PATH_AFTER_LOGIN }],
-      },
-    ],
-  },
+        items: [{ title: 'Dashboard', path: PATH_AFTER_LOGIN }]
+      }
+    ]
+  }
 ];

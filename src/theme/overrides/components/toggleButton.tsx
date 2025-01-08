@@ -1,9 +1,19 @@
 import { Theme, alpha } from '@mui/material/styles';
-import { ToggleButtonProps, toggleButtonClasses } from '@mui/material/ToggleButton';
+import {
+  ToggleButtonProps,
+  toggleButtonClasses
+} from '@mui/material/ToggleButton';
 
 // ----------------------------------------------------------------------
 
-const COLORS = ['primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
+const COLORS = [
+  'primary',
+  'secondary',
+  'info',
+  'success',
+  'warning',
+  'error'
+] as const;
 
 // ----------------------------------------------------------------------
 
@@ -12,17 +22,20 @@ export function toggleButton(theme: Theme) {
     const defaultStyle = {
       [`&.${toggleButtonClasses.selected}`]: {
         borderColor: 'currentColor',
-        boxShadow: '0 0 0 0.5px currentColor',
-      },
+        boxShadow: '0 0 0 0.5px currentColor'
+      }
     };
 
     const colorStyle = COLORS.map((color) => ({
       ...(ownerState.color === color && {
         '&:hover': {
           borderColor: alpha(theme.palette[color].main, 0.48),
-          backgroundColor: alpha(theme.palette[color].main, theme.palette.action.hoverOpacity),
-        },
-      }),
+          backgroundColor: alpha(
+            theme.palette[color].main,
+            theme.palette.action.hoverOpacity
+          )
+        }
+      })
     }));
 
     const disabledState = {
@@ -30,9 +43,9 @@ export function toggleButton(theme: Theme) {
         [`&.${toggleButtonClasses.selected}`]: {
           color: theme.palette.action.disabled,
           backgroundColor: theme.palette.action.selected,
-          borderColor: theme.palette.action.disabledBackground,
-        },
-      },
+          borderColor: theme.palette.action.disabledBackground
+        }
+      }
     };
 
     return [defaultStyle, ...colorStyle, disabledState];
@@ -41,27 +54,28 @@ export function toggleButton(theme: Theme) {
   return {
     MuiToggleButton: {
       styleOverrides: {
-        root: ({ ownerState }: { ownerState: ToggleButtonProps }) => rootStyles(ownerState),
-      },
+        root: ({ ownerState }: { ownerState: ToggleButtonProps }) =>
+          rootStyles(ownerState)
+      }
     },
     MuiToggleButtonGroup: {
       styleOverrides: {
         root: {
           borderRadius: theme.shape.borderRadius,
           backgroundColor: theme.palette.background.paper,
-          border: `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`,
+          border: `solid 1px ${alpha(theme.palette.grey[500], 0.08)}`
         },
         grouped: {
           margin: 4,
           [`&.${toggleButtonClasses.selected}`]: {
-            boxShadow: 'none',
+            boxShadow: 'none'
           },
           '&:not(:first-of-type), &:not(:last-of-type)': {
             borderRadius: theme.shape.borderRadius,
-            borderColor: 'transparent',
-          },
-        },
-      },
-    },
+            borderColor: 'transparent'
+          }
+        }
+      }
+    }
   };
 }

@@ -18,7 +18,7 @@ export function Block({ label, children, sx, ...other }: BlockProps) {
         borderRadius: 1,
         overflow: 'hidden',
         borderStyle: 'dashed',
-        ...sx,
+        ...sx
       }}
       {...other}
     >

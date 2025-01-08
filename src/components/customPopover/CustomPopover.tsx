@@ -32,12 +32,12 @@ export default function CustomPopover({
             [`& .${menuItemClasses.root}`]: {
               '& svg': {
                 mr: 2,
-                flexShrink: 0,
-              },
+                flexShrink: 0
+              }
             },
-            ...sx,
-          },
-        },
+            ...sx
+          }
+        }
       }}
       {...other}
     >

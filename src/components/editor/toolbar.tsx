@@ -2,7 +2,14 @@ import { StyledEditorToolbar } from './styles';
 
 // ----------------------------------------------------------------------
 
-const HEADINGS = ['Heading 1', 'Heading 2', 'Heading 3', 'Heading 4', 'Heading 5', 'Heading 6'];
+const HEADINGS = [
+  'Heading 1',
+  'Heading 2',
+  'Heading 3',
+  'Heading 4',
+  'Heading 5',
+  'Heading 6'
+];
 
 export const formats = [
   'align',
@@ -27,7 +34,7 @@ export const formats = [
   'strike',
   'table',
   'underline',
-  'video',
+  'video'
 ];
 
 type EditorToolbarProps = {

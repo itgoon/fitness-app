@@ -78,11 +78,15 @@ export default function NavList({ data }: NavListProps) {
                 p: theme.spacing(5, 1, 1, 3),
                 top: HEADER.H_DESKTOP_OFFSET,
                 maxWidth: theme.breakpoints.values.lg,
-                boxShadow: theme.customShadows.dropdown,
+                boxShadow: theme.customShadows.dropdown
               }}
             >
               {data.children.map((list) => (
-                <NavSubList key={list.subheader} subheader={list.subheader} data={list.items} />
+                <NavSubList
+                  key={list.subheader}
+                  subheader={list.subheader}
+                  data={list.items}
+                />
               ))}
             </Paper>
           </Fade>
@@ -108,9 +112,9 @@ function NavSubList({ data, subheader, sx, ...other }: NavSubListProps) {
         pb: 2,
         ...(dashboard && {
           pb: 0,
-          maxWidth: { md: 1 / 3, lg: 540 },
+          maxWidth: { md: 1 / 3, lg: 540 }
         }),
-        ...sx,
+        ...sx
       }}
       {...other}
     >
@@ -120,7 +124,7 @@ function NavSubList({ data, subheader, sx, ...other }: NavSubListProps) {
           p: 0,
           typography: 'overline',
           fontSize: 11,
-          color: 'text.primary',
+          color: 'text.primary'
         }}
       >
         {subheader}

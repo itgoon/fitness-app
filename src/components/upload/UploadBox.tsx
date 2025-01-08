@@ -8,11 +8,18 @@ import { UploadProps } from './types';
 
 // ----------------------------------------------------------------------
 
-export default function UploadBox({ placeholder, error, disabled, sx, ...other }: UploadProps) {
-  const { getRootProps, getInputProps, isDragActive, isDragReject } = useDropzone({
-    disabled,
-    ...other,
-  });
+export default function UploadBox({
+  placeholder,
+  error,
+  disabled,
+  sx,
+  ...other
+}: UploadProps) {
+  const { getRootProps, getInputProps, isDragActive, isDragReject } =
+    useDropzone({
+      disabled,
+      ...other
+    });
 
   const hasError = isDragReject || error;
 
@@ -33,21 +40,21 @@ export default function UploadBox({ placeholder, error, disabled, sx, ...other }
         bgcolor: (theme) => alpha(theme.palette.grey[500], 0.08),
         border: (theme) => `dashed 1px ${alpha(theme.palette.grey[500], 0.16)}`,
         ...(isDragActive && {
-          opacity: 0.72,
+          opacity: 0.72
         }),
         ...(disabled && {
           opacity: 0.48,
-          pointerEvents: 'none',
+          pointerEvents: 'none'
         }),
         ...(hasError && {
           color: 'error.main',
           borderColor: 'error.main',
-          bgcolor: (theme) => alpha(theme.palette.error.main, 0.08),
+          bgcolor: (theme) => alpha(theme.palette.error.main, 0.08)
         }),
         '&:hover': {
-          opacity: 0.72,
+          opacity: 0.72
         },
-        ...sx,
+        ...sx
       }}
     >
       <input {...getInputProps()} />

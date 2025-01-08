@@ -57,13 +57,17 @@ export default function NavList({ data, depth, slotProps }: NavListProps) {
         className={active ? 'active' : ''}
         sx={{
           mb: `${slotProps?.gap}px`,
-          ...(depth === 1 ? slotProps?.rootItem : slotProps?.subItem),
+          ...(depth === 1 ? slotProps?.rootItem : slotProps?.subItem)
         }}
       />
 
       {!!data.children && (
         <Collapse in={openMenu} unmountOnExit>
-          <NavSubList data={data.children} depth={depth} slotProps={slotProps} />
+          <NavSubList
+            data={data.children}
+            depth={depth}
+            slotProps={slotProps}
+          />
         </Collapse>
       )}
     </>
@@ -76,7 +80,12 @@ function NavSubList({ data, depth, slotProps }: NavSubListProps) {
   return (
     <>
       {data.map((list) => (
-        <NavList key={list.title} data={list} depth={depth + 1} slotProps={slotProps} />
+        <NavList
+          key={list.title}
+          data={list}
+          depth={depth + 1}
+          slotProps={slotProps}
+        />
       ))}
     </>
   );

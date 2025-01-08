@@ -19,7 +19,7 @@ export default function MenuTags({ tags, ...other }: Props) {
         variant="caption"
         sx={{
           mr: 0.5,
-          fontWeight: 'fontWeightBold',
+          fontWeight: 'fontWeightBold'
         }}
       >
         Hot Products:
@@ -35,8 +35,8 @@ export default function MenuTags({ tags, ...other }: Props) {
             color: 'text.secondary',
             transition: (theme) => theme.transitions.create(['color']),
             '&:hover': {
-              color: 'text.primary',
-            },
+              color: 'text.primary'
+            }
           }}
         >
           {index === 0 ? tag.title : `, ${tag.title} `}

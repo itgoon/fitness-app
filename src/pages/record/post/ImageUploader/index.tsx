@@ -1,12 +1,15 @@
 import { Box } from '@mui/material';
-import UploadButton from './UploadButton';
-import PreviewImages from './PreviewImages';
 import { ChangeEvent, useRef } from 'react';
 import { useFormContext } from 'react-hook-form';
+import useModals from 'src/hooks/useModals';
+import UploadButton from './UploadButton';
+import PreviewImages from './PreviewImages';
 import UploadModal from './UploadModal';
 
 export default function ImageUploader() {
   const { setValue, getValues } = useFormContext();
+
+  const { modals, addModal } = useModals();
 
   const fileInputRef = useRef<HTMLInputElement | null>(null);
 
@@ -32,23 +35,30 @@ export default function ImageUploader() {
         }
       ]);
     }
+  };
 
-    // 모달 띄우기
+  const onClick = () => {
+    addModal(<UploadModal onUpload={onUpload} />);
   };
 
   return (
     <Box
-      display={'flex'}
+      display="flex"
       gap={2}
-      overflow={'scroll'}
-      width={'100%'}
+      overflow="scroll"
+      width="100%"
       pl={2.5}
       pt={3}
       mb={4}
     >
-      <UploadButton ref={fileInputRef} onFileChange={onFileChange} />
+      <UploadButton
+        ref={fileInputRef}
+        onFileChange={onFileChange}
+        onClick={onClick}
+      />
       <PreviewImages />
-      <UploadModal onUpload={onUpload} />
+
+      {modals}
     </Box>
   );
 }

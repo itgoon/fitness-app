@@ -18,7 +18,9 @@ export const loadVisitors = async (params: any): Promise<any> => {
 
   if (params.searchText && params.searchText.length > 0) {
     items.infos = items.infos.filter(
-      (item) => item.name.includes(params.searchText) || item.phone.includes(params.searchText)
+      (item) =>
+        item.name.includes(params.searchText) ||
+        item.phone.includes(params.searchText)
     );
   }
   items.infos = items.infos.filter((item) => {

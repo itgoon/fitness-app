@@ -17,12 +17,16 @@ function NavSectionHorizontal({ data, slotProps, sx, ...other }: NavProps) {
       spacing={`${slotProps?.gap || 6}px`}
       sx={{
         mx: 'auto',
-        ...sx,
+        ...sx
       }}
       {...other}
     >
       {data.map((group, index) => (
-        <Group key={group.subheader || index} items={group.items} slotProps={slotProps} />
+        <Group
+          key={group.subheader || index}
+          items={group.items}
+          slotProps={slotProps}
+        />
       ))}
     </Stack>
   );

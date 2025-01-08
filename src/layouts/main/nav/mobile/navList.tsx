@@ -46,8 +46,8 @@ export default function NavList({ data }: NavListProps) {
             data={data.children}
             slotProps={{
               rootItem: {
-                minHeight: 36,
-              },
+                minHeight: 36
+              }
             }}
             sx={{
               [`& .${stackClasses.root}`]: {
@@ -58,13 +58,14 @@ export default function NavList({ data }: NavListProps) {
                     backgroundPosition: 'center',
                     bgcolor: 'background.neutral',
                     backgroundRepeat: 'no-repeat',
-                    backgroundImage: 'url(/assets/illustrations/illustration_dashboard.png)',
+                    backgroundImage:
+                      'url(/assets/illustrations/illustration_dashboard.png)',
                     '& .label': {
-                      display: 'none',
-                    },
-                  },
-                },
-              },
+                      display: 'none'
+                    }
+                  }
+                }
+              }
             }}
           />
         </Collapse>

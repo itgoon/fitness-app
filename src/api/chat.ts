@@ -8,7 +8,7 @@ import {
   IChatMessage,
   IChatParticipant,
   IChatConversation,
-  IChatConversations,
+  IChatConversations
 } from 'src/types/chat';
 
 // ----------------------------------------------------------------------
@@ -16,13 +16,17 @@ import {
 const options = {
   revalidateIfStale: false,
   revalidateOnFocus: false,
-  revalidateOnReconnect: false,
+  revalidateOnReconnect: false
 };
 
 export function useGetContacts() {
   const URL = [endpoints.chat, { params: { endpoint: 'contacts' } }];
 
-  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher, options);
+  const { data, isLoading, error, isValidating } = useSWR(
+    URL,
+    fetcher,
+    options
+  );
 
   const memoizedValue = useMemo(
     () => ({
@@ -30,7 +34,7 @@ export function useGetContacts() {
       contactsLoading: isLoading,
       contactsError: error,
       contactsValidating: isValidating,
-      contactsEmpty: !isLoading && !data?.contacts.length,
+      contactsEmpty: !isLoading && !data?.contacts.length
     }),
     [data?.contacts, error, isLoading, isValidating]
   );
@@ -43,7 +47,11 @@ export function useGetContacts() {
 export function useGetConversations() {
   const URL = [endpoints.chat, { params: { endpoint: 'conversations' } }];
 
-  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher, options);
+  const { data, isLoading, error, isValidating } = useSWR(
+    URL,
+    fetcher,
+    options
+  );
 
   const memoizedValue = useMemo(() => {
     const byId = keyBy(data?.conversations, 'id') || {};
@@ -52,12 +60,12 @@ export function useGetConversations() {
     return {
       conversations: {
         byId,
-        allIds,
+        allIds
       } as IChatConversations,
       conversationsLoading: isLoading,
       conversationsError: error,
       conversationsValidating: isValidating,
-      conversationsEmpty: !isLoading && !allIds.length,
+      conversationsEmpty: !isLoading && !allIds.length
     };
   }, [data?.conversations, error, isLoading, isValidating]);
 
@@ -71,14 +79,18 @@ export function useGetConversation(conversationId: string) {
     ? [endpoints.chat, { params: { conversationId, endpoint: 'conversation' } }]
     : '';
 
-  const { data, isLoading, error, isValidating } = useSWR(URL, fetcher, options);
+  const { data, isLoading, error, isValidating } = useSWR(
+    URL,
+    fetcher,
+    options
+  );
 
   const memoizedValue = useMemo(
     () => ({
       conversation: data?.conversation as IChatConversation,
       conversationLoading: isLoading,
       conversationError: error,
-      conversationValidating: isValidating,
+      conversationValidating: isValidating
     }),
     [data?.conversation, error, isLoading, isValidating]
   );
@@ -88,14 +100,20 @@ export function useGetConversation(conversationId: string) {
 
 // ----------------------------------------------------------------------
 
-export async function sendMessage(conversationId: string, messageData: IChatMessage) {
-  const CONVERSATIONS_URL = [endpoints.chat, { params: { endpoint: 'conversations' } }];
+export async function sendMessage(
+  conversationId: string,
+  messageData: IChatMessage
+) {
+  const CONVERSATIONS_URL = [
+    endpoints.chat,
+    { params: { endpoint: 'conversations' } }
+  ];
 
   const CONVERSATION_URL = [
     endpoints.chat,
     {
-      params: { conversationId, endpoint: 'conversation' },
-    },
+      params: { conversationId, endpoint: 'conversation' }
+    }
   ];
 
   /**
@@ -114,11 +132,11 @@ export async function sendMessage(conversationId: string, messageData: IChatMess
 
       const conversation = {
         ...currentConversation,
-        messages: [...currentConversation.messages, messageData],
+        messages: [...currentConversation.messages, messageData]
       };
 
       return {
-        conversation,
+        conversation
       };
     },
     false
@@ -137,13 +155,13 @@ export async function sendMessage(conversationId: string, messageData: IChatMess
           conversation.id === conversationId
             ? {
                 ...conversation,
-                messages: [...conversation.messages, messageData],
+                messages: [...conversation.messages, messageData]
               }
             : conversation
       );
 
       return {
-        conversations,
+        conversations
       };
     },
     false
@@ -167,10 +185,13 @@ export async function createConversation(conversationData: IChatConversation) {
   mutate(
     URL,
     (currentData: any) => {
-      const conversations: IChatConversation[] = [...currentData.conversations, conversationData];
+      const conversations: IChatConversation[] = [
+        ...currentData.conversations,
+        conversationData
+      ];
       return {
         ...currentData,
-        conversations,
+        conversations
       };
     },
     false
@@ -196,18 +217,20 @@ export async function clickConversation(conversationId: string) {
     [
       URL,
       {
-        params: { endpoint: 'conversations' },
-      },
+        params: { endpoint: 'conversations' }
+      }
     ],
     (currentData: any) => {
       const conversations: IChatConversations = currentData.conversations.map(
         (conversation: IChatConversation) =>
-          conversation.id === conversationId ? { ...conversation, unreadCount: 0 } : conversation
+          conversation.id === conversationId
+            ? { ...conversation, unreadCount: 0 }
+            : conversation
       );
 
       return {
         ...currentData,
-        conversations,
+        conversations
       };
     },
     false

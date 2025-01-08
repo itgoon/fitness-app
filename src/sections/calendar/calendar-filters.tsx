@@ -1,29 +1,29 @@
-import { useCallback } from "react";
-import orderBy from "lodash/orderBy";
+import { useCallback } from 'react';
+import orderBy from 'lodash/orderBy';
 
-import Box from "@mui/material/Box";
-import Stack from "@mui/material/Stack";
-import Badge from "@mui/material/Badge";
-import Drawer from "@mui/material/Drawer";
-import Divider from "@mui/material/Divider";
-import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
-import ListItemText from "@mui/material/ListItemText";
-import ListItemButton from "@mui/material/ListItemButton";
-import { DatePicker } from "@mui/x-date-pickers/DatePicker";
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import Badge from '@mui/material/Badge';
+import Drawer from '@mui/material/Drawer';
+import Divider from '@mui/material/Divider';
+import Tooltip from '@mui/material/Tooltip';
+import IconButton from '@mui/material/IconButton';
+import Typography from '@mui/material/Typography';
+import ListItemText from '@mui/material/ListItemText';
+import ListItemButton from '@mui/material/ListItemButton';
+import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
-import { fDateTime } from "src/utils/formatTime";
+import { fDateTime } from 'src/utils/formatTime';
 
-import Iconify from "src/components/iconify";
-import Scrollbar from "src/components/scrollbar";
-import { ColorPicker } from "src/components/colorUtils";
+import Iconify from 'src/components/iconify';
+import Scrollbar from 'src/components/scrollbar';
+import { ColorPicker } from 'src/components/colorUtils';
 
 import {
   ICalendarEvent,
   ICalendarFilters,
   ICalendarFilterValue
-} from "src/types/calendar";
+} from 'src/types/calendar';
 
 // ----------------------------------------------------------------------
 
@@ -63,21 +63,21 @@ export default function CalendarFilters({
 }: Props) {
   const handleFilterColors = useCallback(
     (newValue: string | string[]) => {
-      onFilters("colors", newValue as string[]);
+      onFilters('colors', newValue as string[]);
     },
     [onFilters]
   );
 
   const handleFilterStartDate = useCallback(
     (newValue: Date | null) => {
-      onFilters("startDate", newValue);
+      onFilters('startDate', newValue);
     },
     [onFilters]
   );
 
   const handleFilterEndDate = useCallback(
     (newValue: Date | null) => {
-      onFilters("endDate", newValue);
+      onFilters('endDate', newValue);
     },
     [onFilters]
   );
@@ -136,7 +136,7 @@ export default function CalendarFilters({
           slotProps={{
             textField: {
               error: dateError,
-              helperText: dateError && "End date must be later than start date"
+              helperText: dateError && 'End date must be later than start date'
             }
           }}
         />
@@ -151,7 +151,7 @@ export default function CalendarFilters({
       </Typography>
 
       <Scrollbar sx={{ height: 1 }}>
-        {orderBy(events, ["end"], ["desc"]).map((event) => (
+        {orderBy(events, ['end'], ['desc']).map((event) => (
           <ListItemButton
             key={event.id}
             onClick={() => onClickEvent(`${event.id}`)}
@@ -166,8 +166,8 @@ export default function CalendarFilters({
                 left: 0,
                 width: 0,
                 height: 0,
-                position: "absolute",
-                borderRight: "10px solid transparent",
+                position: 'absolute',
+                borderRight: '10px solid transparent',
                 borderTop: `10px solid ${event.color}`
               }}
             />
@@ -183,21 +183,21 @@ export default function CalendarFilters({
                 <Typography
                   variant="caption"
                   component="div"
-                  sx={{ fontSize: 11, color: "text.disabled" }}
+                  sx={{ fontSize: 11, color: 'text.disabled' }}
                 >
                   {event.allDay ? (
-                    fDateTime(event.start, "dd MMM yy")
+                    fDateTime(event.start, 'dd MMM yy')
                   ) : (
                     <>
-                      {`${fDateTime(event.start, "dd MMM yy p")} - ${fDateTime(
+                      {`${fDateTime(event.start, 'dd MMM yy p')} - ${fDateTime(
                         event.end,
-                        "dd MMM yy p"
+                        'dd MMM yy p'
                       )}`}
                     </>
                   )}
                 </Typography>
               }
-              sx={{ display: "flex", flexDirection: "column-reverse" }}
+              sx={{ display: 'flex', flexDirection: 'column-reverse' }}
             />
           </ListItemButton>
         ))}
@@ -219,7 +219,7 @@ export default function CalendarFilters({
     >
       {renderHead}
 
-      <Divider sx={{ borderStyle: "dashed" }} />
+      <Divider sx={{ borderStyle: 'dashed' }} />
 
       {renderColors}
 

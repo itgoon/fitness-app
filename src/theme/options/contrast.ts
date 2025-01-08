@@ -1,15 +1,15 @@
-import { grey } from "../palette";
-import { customShadows } from "../customShadows";
+import { grey } from '../palette';
+import { customShadows } from '../customShadows';
 
 // ----------------------------------------------------------------------
 
 export function createContrast(
-  contrast: "default" | "bold",
-  mode: "light" | "dark"
+  contrast: 'default' | 'bold',
+  mode: 'light' | 'dark'
 ) {
   const theme = {
-    ...(contrast === "bold" &&
-      mode === "light" && {
+    ...(contrast === 'bold' &&
+      mode === 'light' && {
         palette: {
           background: {
             default: grey[200]
@@ -19,7 +19,7 @@ export function createContrast(
   };
 
   const components = {
-    ...(contrast === "bold" && {
+    ...(contrast === 'bold' && {
       MuiCard: {
         styleOverrides: {
           root: {

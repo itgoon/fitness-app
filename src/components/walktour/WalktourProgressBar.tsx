@@ -10,7 +10,11 @@ type Props = {
   onGoStep: (index: number) => void;
 };
 
-export default function WalktourProgressBar({ totalSteps, currentStep, onGoStep }: Props) {
+export default function WalktourProgressBar({
+  totalSteps,
+  currentStep,
+  onGoStep
+}: Props) {
   const theme = useTheme();
 
   const barStyles = {
@@ -19,7 +23,7 @@ export default function WalktourProgressBar({ totalSteps, currentStep, onGoStep 
     content: '""',
     position: 'absolute',
     width: `calc(100% / ${totalSteps} * ${currentStep})`,
-    background: `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`,
+    background: `linear-gradient(135deg, ${theme.palette.primary.light} 0%, ${theme.palette.primary.main} 100%)`
   };
 
   return (
@@ -30,7 +34,7 @@ export default function WalktourProgressBar({ totalSteps, currentStep, onGoStep 
         width: 1,
         bottom: -1,
         position: 'absolute',
-        '&:before': barStyles,
+        '&:before': barStyles
       }}
     >
       {[...Array(totalSteps)].map((_, index) => {
@@ -51,9 +55,12 @@ export default function WalktourProgressBar({ totalSteps, currentStep, onGoStep 
               '&:hover': {
                 bgcolor: 'action.hover',
                 ...(currentStep >= stepIndex && {
-                  bgcolor: alpha(theme.palette.primary.main, theme.palette.action.hoverOpacity),
-                }),
-              },
+                  bgcolor: alpha(
+                    theme.palette.primary.main,
+                    theme.palette.action.hoverOpacity
+                  )
+                })
+              }
             }}
           />
         );

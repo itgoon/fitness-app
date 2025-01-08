@@ -70,7 +70,13 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
           </Box>
         )}
 
-        {hasChild && <Iconify width={16} className="arrow" icon="eva:arrow-ios-forward-fill" />}
+        {hasChild && (
+          <Iconify
+            width={16}
+            className="arrow"
+            icon="eva:arrow-ios-forward-fill"
+          />
+        )}
       </StyledNavItem>
     );
 
@@ -90,8 +96,8 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
           sx={{
             width: 1,
             ...(disabled && {
-              cursor: 'default',
-            }),
+              cursor: 'default'
+            })
           }}
         >
           {renderContent}
@@ -107,8 +113,8 @@ const NavItem = forwardRef<HTMLDivElement, NavItemProps>(
         sx={{
           width: 1,
           ...(disabled && {
-            cursor: 'default',
-          }),
+            cursor: 'default'
+          })
         }}
       >
         {renderContent}
@@ -122,7 +128,7 @@ export default NavItem;
 // ----------------------------------------------------------------------
 
 const StyledNavItem = styled(ListItemButton, {
-  shouldForwardProp: (prop) => prop !== 'active',
+  shouldForwardProp: (prop) => prop !== 'active'
 })<NavItemStateProps>(({ active, open, depth, theme }) => {
   const subItem = depth !== 1;
 
@@ -136,25 +142,25 @@ const StyledNavItem = styled(ListItemButton, {
     display: 'block',
     overflow: 'hidden',
     whiteSpace: 'nowrap',
-    textOverflow: 'ellipsis',
+    textOverflow: 'ellipsis'
   } as const;
 
   const baseStyles = {
     item: {
       borderRadius: 6,
-      color: theme.palette.text.secondary,
+      color: theme.palette.text.secondary
     },
     icon: {
       width: 22,
       height: 22,
-      flexShrink: 0,
+      flexShrink: 0
     },
     label: {
-      textTransform: 'capitalize',
+      textTransform: 'capitalize'
     },
     caption: {
-      color: theme.palette.text.disabled,
-    },
+      color: theme.palette.text.disabled
+    }
   } as const;
 
   return {
@@ -171,36 +177,38 @@ const StyledNavItem = styled(ListItemButton, {
       margin: theme.spacing(0, 0.5),
       fontWeight: theme.typography.fontWeightSemiBold,
       '& .icon': {
-        ...baseStyles.icon,
+        ...baseStyles.icon
       },
       '& .label': {
         ...noWrapStyles,
         ...baseStyles.label,
-        marginTop: theme.spacing(0.5),
+        marginTop: theme.spacing(0.5)
       },
       '& .caption': {
         ...baseStyles.caption,
         top: 11,
         left: 6,
-        position: 'absolute',
+        position: 'absolute'
       },
       '& .arrow': {
         top: 11,
         right: 6,
-        position: 'absolute',
+        position: 'absolute'
       },
       ...(active && {
         fontWeight: theme.typography.fontWeightBold,
         backgroundColor: alpha(theme.palette.primary.main, 0.08),
-        color: lightMode ? theme.palette.primary.main : theme.palette.primary.light,
+        color: lightMode
+          ? theme.palette.primary.main
+          : theme.palette.primary.light,
         '&:hover': {
-          backgroundColor: alpha(theme.palette.primary.main, 0.16),
-        },
+          backgroundColor: alpha(theme.palette.primary.main, 0.16)
+        }
       }),
       ...(opened && {
         color: theme.palette.text.primary,
-        backgroundColor: theme.palette.action.hover,
-      }),
+        backgroundColor: theme.palette.action.hover
+      })
     }),
 
     // Sub item
@@ -212,33 +220,33 @@ const StyledNavItem = styled(ListItemButton, {
       fontWeight: theme.typography.fontWeightMedium,
       '& .icon': {
         ...baseStyles.icon,
-        marginRight: theme.spacing(1),
+        marginRight: theme.spacing(1)
       },
       '& .label': {
         ...baseStyles.label,
-        flexGrow: 1,
+        flexGrow: 1
       },
       '& .caption': {
         ...baseStyles.caption,
-        marginLeft: theme.spacing(0.75),
+        marginLeft: theme.spacing(0.75)
       },
       '& .info': {
         display: 'inline-flex',
-        marginLeft: theme.spacing(0.75),
+        marginLeft: theme.spacing(0.75)
       },
       '& .arrow': {
         marginLeft: theme.spacing(0.75),
-        marginRight: theme.spacing(-0.5),
+        marginRight: theme.spacing(-0.5)
       },
       ...(active && {
         color: theme.palette.text.primary,
         backgroundColor: theme.palette.action.selected,
-        fontWeight: theme.typography.fontWeightSemiBold,
+        fontWeight: theme.typography.fontWeightSemiBold
       }),
       ...(opened && {
         color: theme.palette.text.primary,
-        backgroundColor: theme.palette.action.hover,
-      }),
-    }),
+        backgroundColor: theme.palette.action.hover
+      })
+    })
   };
 });

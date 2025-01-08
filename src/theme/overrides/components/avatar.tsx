@@ -1,10 +1,21 @@
 import { AvatarProps } from '@mui/material/Avatar';
 import { alpha, Theme } from '@mui/material/styles';
-import { AvatarGroupProps, avatarGroupClasses } from '@mui/material/AvatarGroup';
+import {
+  AvatarGroupProps,
+  avatarGroupClasses
+} from '@mui/material/AvatarGroup';
 
 // ----------------------------------------------------------------------
 
-const COLORS = ['default', 'primary', 'secondary', 'info', 'success', 'warning', 'error'] as const;
+const COLORS = [
+  'default',
+  'primary',
+  'secondary',
+  'info',
+  'success',
+  'warning',
+  'error'
+] as const;
 
 const colorByName = (name: string) => {
   const charAt = name.charAt(0).toLowerCase();
@@ -36,21 +47,21 @@ export function avatar(theme: Theme) {
               props: { color: 'default' },
               style: {
                 color: theme.palette.text.secondary,
-                backgroundColor: alpha(theme.palette.grey[500], 0.24),
-              },
+                backgroundColor: alpha(theme.palette.grey[500], 0.24)
+              }
             }
           : {
               props: { color },
               style: {
                 color: theme.palette[color].contrastText,
-                backgroundColor: theme.palette[color].main,
-              },
+                backgroundColor: theme.palette[color].main
+              }
             }
       ),
 
       styleOverrides: {
         rounded: {
-          borderRadius: theme.shape.borderRadius * 1.5,
+          borderRadius: theme.shape.borderRadius * 1.5
         },
         colorDefault: ({ ownerState }: { ownerState: AvatarProps }) => {
           const color = colorByName(`${ownerState.alt}`);
@@ -60,16 +71,16 @@ export function avatar(theme: Theme) {
               ...(color !== 'default'
                 ? {
                     color: theme.palette[color].contrastText,
-                    backgroundColor: theme.palette[color].main,
+                    backgroundColor: theme.palette[color].main
                   }
                 : {
                     color: theme.palette.text.secondary,
-                    backgroundColor: alpha(theme.palette.grey[500], 0.24),
-                  }),
-            }),
+                    backgroundColor: alpha(theme.palette.grey[500], 0.24)
+                  })
+            })
           };
-        },
-      },
+        }
+      }
     },
     MuiAvatarGroup: {
       styleOverrides: {
@@ -87,14 +98,14 @@ export function avatar(theme: Theme) {
               '&:first-of-type': {
                 left: 0,
                 bottom: 0,
-                zIndex: 9,
+                zIndex: 9
               },
               '&:last-of-type': {
                 top: 0,
-                right: 0,
-              },
-            },
-          }),
+                right: 0
+              }
+            }
+          })
         }),
         avatar: {
           fontSize: 16,
@@ -102,10 +113,10 @@ export function avatar(theme: Theme) {
           '&:first-of-type': {
             fontSize: 12,
             color: theme.palette.primary.dark,
-            backgroundColor: theme.palette.primary.lighter,
-          },
-        },
-      },
-    },
+            backgroundColor: theme.palette.primary.lighter
+          }
+        }
+      }
+    }
   };
 }

@@ -46,8 +46,8 @@ const Image = forwardRef<HTMLSpanElement, ImageProps>(
         height: 1,
         zIndex: 1,
         position: 'absolute',
-        background: overlay || alpha(theme.palette.grey[900], 0.48),
-      },
+        background: overlay || alpha(theme.palette.grey[900], 0.48)
+      }
     };
 
     const content = (
@@ -68,7 +68,9 @@ const Image = forwardRef<HTMLSpanElement, ImageProps>(
         effect={disabledEffect ? undefined : effect}
         useIntersectionObserver={useIntersectionObserver}
         wrapperClassName={wrapperClassName || 'component-image-wrapper'}
-        placeholderSrc={disabledEffect ? '/assets/transparent.png' : '/assets/placeholder.svg'}
+        placeholderSrc={
+          disabledEffect ? '/assets/transparent.png' : '/assets/placeholder.svg'
+        }
         //
         sx={{
           width: 1,
@@ -78,8 +80,8 @@ const Image = forwardRef<HTMLSpanElement, ImageProps>(
           ...(!!ratio && {
             top: 0,
             left: 0,
-            position: 'absolute',
-          }),
+            position: 'absolute'
+          })
         }}
       />
     );
@@ -95,7 +97,7 @@ const Image = forwardRef<HTMLSpanElement, ImageProps>(
           verticalAlign: 'bottom',
           display: 'inline-block',
           ...(!!ratio && {
-            width: 1,
+            width: 1
           }),
           '& span.component-image-wrapper': {
             width: 1,
@@ -103,11 +105,11 @@ const Image = forwardRef<HTMLSpanElement, ImageProps>(
             verticalAlign: 'bottom',
             backgroundSize: 'cover !important',
             ...(!!ratio && {
-              pt: getRatio(ratio),
-            }),
+              pt: getRatio(ratio)
+            })
           },
           ...overlayStyles,
-          ...sx,
+          ...sx
         }}
         {...other}
       >

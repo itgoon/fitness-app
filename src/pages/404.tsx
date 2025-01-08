@@ -22,8 +22,8 @@ export default function NotFoundPage() {
 
       <m.div variants={varBounce().in}>
         <Typography sx={{ color: 'text.secondary' }}>
-          요청하신 페이지가 존재하지 않거나, 접근할 수 없는 페이지입니다. 입력하신 페이지 주소가
-          정확한지 확인해 주시기 바랍니다.
+          요청하신 페이지가 존재하지 않거나, 접근할 수 없는 페이지입니다.
+          입력하신 페이지 주소가 정확한지 확인해 주시기 바랍니다.
         </Typography>
       </m.div>
 
@@ -31,7 +31,7 @@ export default function NotFoundPage() {
         <PageNotFoundIllustration
           sx={{
             height: 260,
-            my: { xs: 5, sm: 10 },
+            my: { xs: 5, sm: 10 }
           }}
         />
       </m.div>

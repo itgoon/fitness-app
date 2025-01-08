@@ -1,8 +1,8 @@
-import { AdapterDateFns } from "@mui/x-date-pickers/AdapterDateFns";
-import { LocalizationProvider as MuiLocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
+import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
+import { LocalizationProvider as MuiLocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 
-import { useLocales } from "./useLocales";
-import { ReactNode } from "react";
+import { useLocales } from './useLocales';
+import { ReactNode } from 'react';
 
 // ----------------------------------------------------------------------
 

@@ -6,29 +6,32 @@ import { MenuPopoverArrowValue } from './types';
 
 // ----------------------------------------------------------------------
 
-export const StyledArrow = styled('span')<{ arrow: MenuPopoverArrowValue }>(({ arrow, theme }) => {
+export const StyledArrow = styled('span')<{ arrow: MenuPopoverArrowValue }>(({
+  arrow,
+  theme
+}) => {
   const SIZE = 14;
 
   const POSITION = -(SIZE / 2) + 0.5;
 
   const topStyle = {
     top: POSITION,
-    transform: 'rotate(135deg)',
+    transform: 'rotate(135deg)'
   };
 
   const bottomStyle = {
     bottom: POSITION,
-    transform: 'rotate(-45deg)',
+    transform: 'rotate(-45deg)'
   };
 
   const leftStyle = {
     left: POSITION,
-    transform: 'rotate(45deg)',
+    transform: 'rotate(45deg)'
   };
 
   const rightStyle = {
     right: POSITION,
-    transform: 'rotate(-135deg)',
+    transform: 'rotate(-135deg)'
   };
 
   return {
@@ -38,11 +41,13 @@ export const StyledArrow = styled('span')<{ arrow: MenuPopoverArrowValue }>(({ a
     borderBottomLeftRadius: SIZE / 4,
     clipPath: 'polygon(0% 0%, 100% 100%, 0% 100%)',
     border: `solid 1px ${alpha(
-      theme.palette.mode === 'light' ? theme.palette.grey[500] : theme.palette.common.black,
+      theme.palette.mode === 'light'
+        ? theme.palette.grey[500]
+        : theme.palette.common.black,
       0.12
     )}`,
     ...bgBlur({
-      color: theme.palette.background.paper,
+      color: theme.palette.background.paper
     }),
     // Top
     ...(arrow === 'top-left' && { ...topStyle, left: 20 }),
@@ -50,7 +55,7 @@ export const StyledArrow = styled('span')<{ arrow: MenuPopoverArrowValue }>(({ a
       ...topStyle,
       left: 0,
       right: 0,
-      margin: 'auto',
+      margin: 'auto'
     }),
     ...(arrow === 'top-right' && { ...topStyle, right: 20 }),
     // Bottom
@@ -59,7 +64,7 @@ export const StyledArrow = styled('span')<{ arrow: MenuPopoverArrowValue }>(({ a
       ...bottomStyle,
       left: 0,
       right: 0,
-      margin: 'auto',
+      margin: 'auto'
     }),
     ...(arrow === 'bottom-right' && { ...bottomStyle, right: 20 }),
     // Left
@@ -68,7 +73,7 @@ export const StyledArrow = styled('span')<{ arrow: MenuPopoverArrowValue }>(({ a
       ...leftStyle,
       top: 0,
       bottom: 0,
-      margin: 'auto',
+      margin: 'auto'
     }),
     ...(arrow === 'left-bottom' && { ...leftStyle, bottom: 20 }),
     // Right
@@ -77,8 +82,8 @@ export const StyledArrow = styled('span')<{ arrow: MenuPopoverArrowValue }>(({ a
       ...rightStyle,
       top: 0,
       bottom: 0,
-      margin: 'auto',
+      margin: 'auto'
     }),
-    ...(arrow === 'right-bottom' && { ...rightStyle, bottom: 20 }),
+    ...(arrow === 'right-bottom' && { ...rightStyle, bottom: 20 })
   };
 });

@@ -1,8 +1,8 @@
-import { useRecoilState } from "recoil";
+import { useRecoilState } from 'recoil';
 
-import Store from "src/store";
+import Store from 'src/store';
 
-import Alert from "src/components/alert";
+import Alert from 'src/components/alert';
 
 /**
  * ******************************************************

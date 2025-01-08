@@ -1,3 +1,4 @@
+import { MemberDto } from 'src/api';
 import api from 'src/utils/api';
 import { saveTokenToStorage } from 'src/utils/token';
 
@@ -27,4 +28,14 @@ export const login = async ({
 
     return data;
   }
+};
+
+export const me = async () => {
+  const res = await api.auth.authControllerGetLoginInfo();
+
+  const {
+    data: { data }
+  } = res;
+
+  return data as MemberDto;
 };

@@ -8,14 +8,14 @@ import { _addressBooks } from './others';
 export const USER_STATUS_OPTIONS = [
   // { value: 'active', label: '활동중' },
   { value: 'active', label: '가입 후 로그인 이력 없는 회원' },
-  { value: 'banned', label: '학습 이력 없는 회원' },
+  { value: 'banned', label: '학습 이력 없는 회원' }
   // { value: 'rejected', label: '거부중' },
 ];
 
 export const USER_SERVICE_OPTIONS = [...Array(8)].map((_, index) => ({
   id: _mock.id(index),
   name: _mock.role(index),
-  price: _mock.number.price(index),
+  price: _mock.number.price(index)
 }));
 
 const ITEMS = [...Array(3)].map((__, index) => {
@@ -28,7 +28,7 @@ const ITEMS = [...Array(3)].map((__, index) => {
     description: _mock.sentence(index),
     price: USER_SERVICE_OPTIONS[index].price,
     service: USER_SERVICE_OPTIONS[index].name,
-    quantity: _mock.number.nativeS(index),
+    quantity: _mock.number.nativeS(index)
   };
 });
 
@@ -39,12 +39,18 @@ export const _users = [...Array(20)].map((_, index) => {
 
   const shipping = _mock.number.price(index + 3);
 
-  const subTotal = ITEMS.reduce((accumulator, item) => accumulator + item.price * item.quantity, 0);
+  const subTotal = ITEMS.reduce(
+    (accumulator, item) => accumulator + item.price * item.quantity,
+    0
+  );
 
   const totalAmount = subTotal - shipping - discount + taxes;
 
   const status =
-    (index % 2 && 'paid') || (index % 3 && 'pending') || (index % 4 && 'overdue') || 'draft';
+    (index % 2 && 'paid') ||
+    (index % 3 && 'pending') ||
+    (index % 4 && 'overdue') ||
+    'draft';
 
   return {
     id: _mock.id(index),
@@ -60,6 +66,6 @@ export const _users = [...Array(20)].map((_, index) => {
     userTo: _addressBooks[index + 1],
     sent: _mock.number.nativeS(index),
     createDate: subDays(new Date(), index),
-    dueDate: add(new Date(), { days: index + 15, hours: index }),
+    dueDate: add(new Date(), { days: index + 15, hours: index })
   };
 });

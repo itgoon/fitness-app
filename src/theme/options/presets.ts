@@ -11,15 +11,15 @@ export function createPresets(preset: PresetType) {
 
   const theme = {
     palette: {
-      primary: primaryColor,
+      primary: primaryColor
     },
     customShadows: {
-      primary: `0 8px 16px 0 ${alpha(`${primaryColor?.main}`, 0.24)}`,
-    },
+      primary: `0 8px 16px 0 ${alpha(`${primaryColor?.main}`, 0.24)}`
+    }
   };
 
   return {
-    ...theme,
+    ...theme
   };
 }
 
@@ -31,7 +31,7 @@ const cyan = {
   main: '#078DEE',
   dark: '#0351AB',
   darker: '#012972',
-  contrastText: '#FFFFFF',
+  contrastText: '#FFFFFF'
 };
 
 const purple = {
@@ -40,7 +40,7 @@ const purple = {
   main: '#7635dc',
   dark: '#431A9E',
   darker: '#200A69',
-  contrastText: '#FFFFFF',
+  contrastText: '#FFFFFF'
 };
 
 const blue = {
@@ -49,7 +49,7 @@ const blue = {
   main: '#2065D1',
   dark: '#103996',
   darker: '#061B64',
-  contrastText: '#FFFFFF',
+  contrastText: '#FFFFFF'
 };
 
 const orange = {
@@ -58,7 +58,7 @@ const orange = {
   main: '#fda92d',
   dark: '#B66816',
   darker: '#793908',
-  contrastText: grey[800],
+  contrastText: grey[800]
 };
 
 const red = {
@@ -67,7 +67,7 @@ const red = {
   main: '#FF3030',
   dark: '#B71833',
   darker: '#7A0930',
-  contrastText: '#FFFFFF',
+  contrastText: '#FFFFFF'
 };
 
 export const presetOptions = [
@@ -76,7 +76,7 @@ export const presetOptions = [
   { name: 'purple', value: purple.main },
   { name: 'blue', value: blue.main },
   { name: 'orange', value: orange.main },
-  { name: 'red', value: red.main },
+  { name: 'red', value: red.main }
 ];
 
 export function getPrimary(preset: PresetType) {
@@ -86,6 +86,6 @@ export function getPrimary(preset: PresetType) {
     purple,
     blue,
     orange,
-    red,
+    red
   }[preset];
 }

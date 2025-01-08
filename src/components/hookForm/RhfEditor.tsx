@@ -16,7 +16,7 @@ export default function RHFEditor({ name, helperText, ...other }: Props) {
     control,
     watch,
     setValue,
-    formState: { isSubmitSuccessful },
+    formState: { isSubmitSuccessful }
   } = useFormContext();
 
   const values = watch();
@@ -24,7 +24,7 @@ export default function RHFEditor({ name, helperText, ...other }: Props) {
   useEffect(() => {
     if (values[name] === '<p><br></p>') {
       setValue(name, '', {
-        shouldValidate: !isSubmitSuccessful,
+        shouldValidate: !isSubmitSuccessful
       });
     }
   }, [isSubmitSuccessful, name, setValue, values]);

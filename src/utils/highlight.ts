@@ -10,7 +10,7 @@ declare global {
 }
 
 hljs.configure({
-  languages: ['javascript', 'sh', 'bash', 'html', 'scss', 'css', 'json'],
+  languages: ['javascript', 'sh', 'bash', 'html', 'scss', 'css', 'json']
 });
 
 if (typeof window !== 'undefined') {
