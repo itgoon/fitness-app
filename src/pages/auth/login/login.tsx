@@ -62,6 +62,8 @@ export default function LoginView() {
     navigate('/dashboard');
   };
 
+  console.log(window.navigator.userAgent);
+
   return (
     <Stack
       sx={{
@@ -91,8 +93,9 @@ export default function LoginView() {
             color: palette.common.black
           }}
           onClick={() => {
-            onSubmit();
+            // onSubmit();
             navigate('/dashboard');
+            // window.ReactNativeWebView.postMessage(JSON.stringify({ type: 'signinKakao' }));
           }}
         />
         <Button

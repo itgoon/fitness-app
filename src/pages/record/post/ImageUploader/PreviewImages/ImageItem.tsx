@@ -1,12 +1,11 @@
 import { Box } from '@mui/material';
-import Icon from '../../../../components/Icon';
+import Icon from 'src/components/Icon';
 
 interface IImageItem {
   image?: string;
   onClick: (key: number) => void;
 }
 export default function ImageItem({ image, onClick }: IImageItem) {
-  if (!image) return;
   return (
     <Box minWidth={80} maxWidth={80} height={80} position={'relative'}>
       <Icon
