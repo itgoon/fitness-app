@@ -1,24 +1,31 @@
-import { Box } from '@mui/material';
+import { Box, Divider, Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
 import { useLocation } from 'react-router';
-import WorkOutRecord from './tab/WorkOutRecord';
-import ReservationList from './tab/ReservationList';
-import {
-  dummyMonthWorkoutList,
-  dummyReservaitonListCard,
-  dummyWorkOutRecordList
-} from '../../utils/dummy';
+import dayjs from 'dayjs';
+import WorkOutRecord from './WorkOutRecord';
+import ReservationList from './ReservationList';
+import { dummyMonthWorkoutList } from '../../utils/dummy';
 import DateCalendar from '../../components/custom/calendar/DateCalendar';
-import Tabs from '../../components/custom/Tabs/Tabs';
+
 /**
  * ******************************************************
  * 일정 화면
  * ******************************************************
  */
-export default function Schedule() {
-  const [tabValue, setTabValue] = useState(0);
+export default function SchedulePage() {
+  const today = dayjs().format('YYYY-MM-DD');
+
   const params = useLocation();
+
   const paramsDate = params.search.split('=')[1];
+
+  const [tabValue, setTabValue] = useState(0);
+
+  const [date, setDate] = useState(paramsDate || today);
+
+  const onDataChange = (newDate: string) => {
+    setDate(newDate);
+  };
 
   return (
     <Box>
@@ -26,21 +33,24 @@ export default function Schedule() {
         isBadge
         workData={dummyMonthWorkoutList}
         value={paramsDate}
+        onChange={(e) => onDataChange(dayjs(e).format('YYYY-MM-DD'))}
       />
+      <Divider sx={{ borderBottomWidth: 8 }} />
 
       <Box pt={3}>
         <Tabs
           value={tabValue}
           onChange={(e, newValue) => setTabValue(newValue)}
-          frLabel="운동 기록"
-          secLabel="예약 내역"
-        />
+          scrollButtons={false}
+          variant="fullWidth"
+        >
+          <Tab label="운동 기록" />
+          <Tab label="예약 내역" />
+        </Tabs>
+
         <Box px={2.5} py={3}>
-          {tabValue === 0 ? (
-            <WorkOutRecord cardDataList={dummyWorkOutRecordList} />
-          ) : (
-            <ReservationList cardDataList={dummyReservaitonListCard} />
-          )}
+          {tabValue === 0 && <WorkOutRecord date={date} />}
+          {tabValue === 1 && <ReservationList date={date} />}
         </Box>
       </Box>
     </Box>

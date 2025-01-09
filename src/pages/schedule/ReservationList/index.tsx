@@ -1,22 +1,25 @@
 import { Box, Stack } from '@mui/system';
 import { Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router';
-import ReservationCard from '../../../components/custom/reservationCard/ReservationCard';
-import { IReservationList } from '../types';
-import EmptyCard from '../../../components/custom/customCard/EmptyCard';
-import { useCardContext } from '../../../hooks/useCard';
+import { dummyReservaitonListCard } from 'src/utils/dummy';
+import EmptyCard from 'src/components/custom/customCard/EmptyCard';
+import ReservationCard from 'src/components/custom/reservationCard/ReservationCard';
 
-export default function ReservationList({ cardDataList }: IReservationList) {
-  const { setSelectedCard } = useCardContext();
+interface ReservationListProps {
+  date: string;
+}
+
+export default function ReservationList({ date }: ReservationListProps) {
+  const cardDataList = dummyReservaitonListCard;
+
   const navigate = useNavigate();
-  const theme = useTheme();
-  const { palette } = theme;
-  const light = palette.mode === 'light';
-  const grey500 = light ? palette.grey[500] : 'white';
 
-  const handleCardClick = (card, key) => {
-    navigate(`/schedule/detail/${key}`);
-    setSelectedCard(card);
+  const theme = useTheme();
+
+  const light = theme.palette.mode === 'light';
+
+  const onCardClick = () => {
+    navigate(`/schedule/detail/${date}`);
   };
 
   return (
@@ -27,7 +30,7 @@ export default function ReservationList({ cardDataList }: IReservationList) {
             <Typography
               variant="Body16/regular"
               lineHeight="24px"
-              color={grey500}
+              color={light ? 'grey.500' : 'white'}
             >
               아직 예약 내역이 없어요.
             </Typography>
@@ -36,7 +39,7 @@ export default function ReservationList({ cardDataList }: IReservationList) {
       ) : (
         <>
           {cardDataList?.map((card, key) => (
-            <Box key={key} py={1.5} onClick={() => handleCardClick(card, key)}>
+            <Box key={key} py={1.5} onClick={onCardClick}>
               <ReservationCard
                 cardData={card}
                 layoutSx={{ padding: 0 }}

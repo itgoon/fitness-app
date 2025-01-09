@@ -12,25 +12,34 @@ import { IStep } from '../../types';
 
 export default function DetailStep1({ onNext, selectedCard }: IStep) {
   const { openConfirm } = useModal();
+
   const navigate = useNavigate();
+
   const theme = useTheme();
-  const layoutSx = {
-    display: 'flex',
-    alignItems: 'center',
-    gap: 1
-  };
+
   const light = theme.palette.mode === 'light';
+
   const grey600 = light ? theme.palette.grey[600] : 'white';
 
   const { chipState, time } = selectedCard;
+
   const chip = chipChange(chipState);
 
   const isWarning = chipState === 'warning';
+
   const isUndefined = chipState !== undefined;
+
   if (selectedCard === null) navigate(-1);
   return (
     <>
-      <Box pt={6.5} sx={layoutSx}>
+      <Box
+        pt={6.5}
+        sx={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 1
+        }}
+      >
         <Icon name={chip.largeIconName} size={60} />
         <Stack gap={0.5}>
           <Typography
@@ -38,7 +47,13 @@ export default function DetailStep1({ onNext, selectedCard }: IStep) {
             color={grey600}
             children={isUndefined ? '레슨 예약 시간' : '총 운동 시간'}
           />
-          <Box sx={layoutSx}>
+          <Box
+            sx={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: 1
+            }}
+          >
             <Typography
               variant="Body28/semiBold"
               children={
