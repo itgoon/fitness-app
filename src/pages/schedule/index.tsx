@@ -10,7 +10,6 @@ import {
 } from '../../utils/dummy';
 import DateCalendar from '../../components/custom/calendar/DateCalendar';
 import Tabs from '../../components/custom/Tabs/Tabs';
-import TabPanel from '../../components/custom/Tabs/TabPanel';
 /**
  * ******************************************************
  * 일정 화면
@@ -37,12 +36,11 @@ export default function Schedule() {
           secLabel="예약 내역"
         />
         <Box px={2.5} py={3}>
-          <TabPanel value={tabValue} index={0}>
+          {tabValue === 0 ? (
             <WorkOutRecord cardDataList={dummyWorkOutRecordList} />
-          </TabPanel>
-          <TabPanel value={tabValue} index={1}>
+          ) : (
             <ReservationList cardDataList={dummyReservaitonListCard} />
-          </TabPanel>
+          )}
         </Box>
       </Box>
     </Box>
