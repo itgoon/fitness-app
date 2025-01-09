@@ -46,7 +46,7 @@ axios.interceptors.response.use(
 
 const api = () => {
   const configuration = new Configuration({
-    basePath: 'https://fitness-api-dev.itgoon.net/user' // Config.publicApiUrl
+    basePath: 'http://localhost:3000/user' // Config.publicApiUrl
   });
 
   return {
