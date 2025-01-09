@@ -1,15 +1,9 @@
-import dayjs from 'dayjs';
-
 import { Stack } from '@mui/material';
-import { useState } from 'react';
-import { DateFormat, TimeDateFormat } from '../../utils/formatTime';
-import TimePicker from '../../components/custom/TimePicker';
-import WeekCalendar from '../../components/custom/WeekCalendar';
-import { dummyMonthCount1, dummyMonthCount2 } from '../../utils/dummy';
 import Notification from './Notification';
 import WorkoutStatus from './WorkoutStatus';
 import Wrap from '../../components/custom/Wrap';
 import Divider from '../../components/custom/Divider';
+import WeekCalendar from './WeekCalendar';
 
 /**
  * ******************************************************
@@ -24,10 +18,7 @@ export default function HomePage() {
   return (
     <Stack>
       <Wrap padding="0 !important">
-        <WeekCalendar
-          greenBadge={dummyMonthCount1}
-          orangeBadge={dummyMonthCount2}
-        />
+        <WeekCalendar />
         <Divider />
       </Wrap>
 
