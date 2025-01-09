@@ -45,6 +45,7 @@ export default function AlaramCard({
           </Box>
         ))}
       </Stack>
+
       {onClick && (
         <Button
           variant="contained"

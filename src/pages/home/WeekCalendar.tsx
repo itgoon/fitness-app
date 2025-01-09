@@ -1,24 +1,27 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import dayjs from 'dayjs';
-
-import { Badge, Box, Stack, Typography, useTheme } from '@mui/material';
+import { Box, Stack, Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router';
+import { ScheduleService } from 'src/service';
 import { DateReqFormat } from '../../utils/formatTime';
 import Button from '../../components/Button';
 
 const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
 
 export default function WeekCalendar() {
+  const today = dayjs();
+
   const { palette } = useTheme();
+
+  const navigate = useNavigate();
+
   const light = palette.mode === 'light';
 
   const grey600 = light ? palette.grey[600] : palette.common.white;
+
   const black = light ? palette.common.black : palette.common.white;
 
-  const today = dayjs();
   const firstDay = today.startOf('week');
-
-  const navigate = useNavigate();
 
   const settingDate = () => {
     const list = Array.from({ length: 7 }, (_, index) => {
@@ -36,6 +39,16 @@ export default function WeekCalendar() {
   const getTypographyVariant = (isToday: boolean, type: 'day' | 'date') => {
     if (type === 'day') return isToday ? 'Body13/semiBold' : 'Body13/regular';
     return isToday ? 'Body15/regular' : 'Body15/light';
+  };
+
+  useEffect(() => {
+    loadScheduleList();
+  }, []);
+
+  const loadScheduleList = async () => {
+    const res = await ScheduleService.loadScheduleList({});
+
+    console.log(res);
   };
 
   return (
@@ -63,7 +76,7 @@ export default function WeekCalendar() {
                   variant={getTypographyVariant(isToday, 'date')}
                   color={typoColor}
                 >
-                  {dayjs(item.date).format('D')}{' '}
+                  {dayjs(item.date).format('D')}
                 </Typography>
 
                 {/* <Box display="flex" gap={1} ml={1.4}>

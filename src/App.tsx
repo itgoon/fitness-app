@@ -12,11 +12,14 @@ import { MotionLazy } from 'src/components/animate/MotionLazy';
 import ProgressBar from 'src/components/progressBar';
 import { SettingsProvider } from 'src/components/settings';
 import SnackbarProvider from 'src/components/snackbar/SnackbarProvider';
+import { useEffect, useState } from 'react';
 import AuthProvider from './provider/AuthProvider';
 import ModalProvider from './provider/ModalProvider';
 import { CardProvider } from './hooks/useCard';
 import { SignProvider } from './hooks/useSign';
 import { EditProvider } from './hooks/useEditState';
+import { CodeGroupsDto } from './api';
+import { CodeService } from './service';
 
 // ----------------------------------------------------------------------
 
@@ -32,6 +35,18 @@ export default function App() {
   `;
 
   console.info(`%c${charAt}`, 'color: #5BE49B');
+
+  const [code, setCode] = useState<CodeGroupsDto | null>(null);
+
+  useEffect(() => {
+    loadCode();
+  }, []);
+
+  const loadCode = async () => {
+    const res = await CodeService.loadCode({});
+
+    setCode(res);
+  };
 
   return (
     <LocalizationProvider>

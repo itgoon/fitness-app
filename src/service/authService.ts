@@ -2,6 +2,7 @@ import { MemberDto } from 'src/api';
 import api from 'src/utils/api';
 import { saveTokenToStorage } from 'src/utils/token';
 
+// 로그인
 export const login = async ({
   email,
   password
@@ -30,6 +31,7 @@ export const login = async ({
   }
 };
 
+// 사용자 정보 조회
 export const me = async () => {
   const res = await api.auth.authControllerGetLoginInfo();
 
