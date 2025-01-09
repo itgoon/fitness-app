@@ -7,8 +7,9 @@ import TimePicker from '../../components/custom/TimePicker';
 import WeekCalendar from '../../components/custom/WeekCalendar';
 import { dummyMonthCount1, dummyMonthCount2 } from '../../utils/dummy';
 import Wrap from './Wrap';
-import WorkoutStatus from './WorkoutStatus';
 import Notification from './Notification';
+import WorkoutStatus from './WorkoutStatus';
+import { IState } from './types';
 
 /**
  * ******************************************************
@@ -22,14 +23,6 @@ import Notification from './Notification';
 const EMPTY_TIME = '00:00';
 const INITIAL_TIME = '0시간 0분';
 
-export interface IState {
-  isWorking: boolean;
-  isAlarm: boolean;
-  isStart: boolean;
-  isEnd: boolean;
-  startTime: string;
-  endTime: string;
-}
 export default function HomePage() {
   const [state, setState] = useState<IState>({
     isWorking: false,
