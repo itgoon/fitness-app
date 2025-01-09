@@ -17,7 +17,7 @@ import WeekCalendar from './WeekCalendar';
 export default function HomePage() {
   return (
     <Stack>
-      <Wrap padding="0 !important">
+      <Wrap padding={0}>
         <WeekCalendar />
         <Divider />
       </Wrap>

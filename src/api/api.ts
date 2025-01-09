@@ -30,7 +30,7 @@ import { BASE_PATH, COLLECTION_FORMATS, BaseAPI, RequiredError, operationServerM
  */
 export interface AuthControllerGetLoginInfo200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof AuthControllerGetLoginInfo200Response
      */
@@ -55,7 +55,7 @@ export type AuthControllerGetLoginInfo200ResponseData = MemberDto;
  */
 export interface CenterControllerFindOne200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof CenterControllerFindOne200Response
      */
@@ -147,7 +147,7 @@ export interface CenterDto {
  */
 export interface CenterPolicyControllerFindOne200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof CenterPolicyControllerFindOne200Response
      */
@@ -264,7 +264,7 @@ export interface CodeDto {
  */
 export interface CodeGroupControllerFindAll200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof CodeGroupControllerFindAll200Response
      */
@@ -357,7 +357,7 @@ export interface CodeGroupsDto {
  */
 export interface ContractControllerFindAll200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof ContractControllerFindAll200Response
      */
@@ -382,7 +382,7 @@ export type ContractControllerFindAll200ResponseData = ContractsDto;
  */
 export interface ContractControllerFindOne200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof ContractControllerFindOne200Response
      */
@@ -911,7 +911,7 @@ export interface PartnerDto {
  */
 export interface ProductCategoriesControllerFindAll200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof ProductCategoriesControllerFindAll200Response
      */
@@ -1065,7 +1065,7 @@ export interface ProductDto {
  */
 export interface RecordControllerFindAll200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof RecordControllerFindAll200Response
      */
@@ -1090,7 +1090,7 @@ export type RecordControllerFindAll200ResponseData = RecordsDto;
  */
 export interface RecordControllerFindRecordToFitnessOneByDate200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof RecordControllerFindRecordToFitnessOneByDate200Response
      */
@@ -1115,7 +1115,7 @@ export type RecordControllerFindRecordToFitnessOneByDate200ResponseData = Record
  */
 export interface RecordControllerUpdate200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof RecordControllerUpdate200Response
      */
@@ -1183,7 +1183,7 @@ export interface RecordDto {
  */
 export interface RecordFileControllerFindAll200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof RecordFileControllerFindAll200Response
      */
@@ -1421,7 +1421,7 @@ export type RoleType = typeof RoleType[keyof typeof RoleType];
  */
 export interface ScheduleControllerCreate200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof ScheduleControllerCreate200Response
      */
@@ -1446,7 +1446,7 @@ export type ScheduleControllerCreate200ResponseData = ScheduleDto;
  */
 export interface ScheduleControllerFindUserSchedule200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
      * @memberof ScheduleControllerFindUserSchedule200Response
      */
@@ -1788,27 +1788,52 @@ export interface UpdateUserTokenDto {
 /**
  * 
  * @export
- * @interface UserTokenControllerFindOne200Response
+ * @interface UserTokenControllerCreate200Response
  */
-export interface UserTokenControllerFindOne200Response {
+export interface UserTokenControllerCreate200Response {
     /**
-     * \'SUCCπESS\' | \'FAIL\'
+     * \'SUCCESS\' | \'FAIL\'
      * @type {string}
-     * @memberof UserTokenControllerFindOne200Response
+     * @memberof UserTokenControllerCreate200Response
      */
     'result'?: string;
     /**
      * 
-     * @type {UserTokenControllerFindOne200ResponseData}
-     * @memberof UserTokenControllerFindOne200Response
+     * @type {UserTokenControllerCreate200ResponseData}
+     * @memberof UserTokenControllerCreate200Response
      */
-    'data'?: UserTokenControllerFindOne200ResponseData;
+    'data'?: UserTokenControllerCreate200ResponseData;
 }
 /**
- * @type UserTokenControllerFindOne200ResponseData
+ * @type UserTokenControllerCreate200ResponseData
  * @export
  */
-export type UserTokenControllerFindOne200ResponseData = UserTokenDto;
+export type UserTokenControllerCreate200ResponseData = UserTokenDto;
+
+/**
+ * 
+ * @export
+ * @interface UserTokenControllerFindAll200Response
+ */
+export interface UserTokenControllerFindAll200Response {
+    /**
+     * \'SUCCESS\' | \'FAIL\'
+     * @type {string}
+     * @memberof UserTokenControllerFindAll200Response
+     */
+    'result'?: string;
+    /**
+     * 
+     * @type {UserTokenControllerFindAll200ResponseData}
+     * @memberof UserTokenControllerFindAll200Response
+     */
+    'data'?: UserTokenControllerFindAll200ResponseData;
+}
+/**
+ * @type UserTokenControllerFindAll200ResponseData
+ * @export
+ */
+export type UserTokenControllerFindAll200ResponseData = UserTokensDto;
 
 /**
  * 
@@ -1864,6 +1889,19 @@ export interface UserTokenDto {
      * @memberof UserTokenDto
      */
     'deviceOs'?: string | null;
+}
+/**
+ * 
+ * @export
+ * @interface UserTokensDto
+ */
+export interface UserTokensDto {
+    /**
+     * 
+     * @type {Array<UserTokenDto>}
+     * @memberof UserTokensDto
+     */
+    'data': Array<UserTokenDto>;
 }
 
 /**
@@ -4908,7 +4946,7 @@ export class ScheduleApi extends BaseAPI {
 export const UserTokenApiAxiosParamCreator = function (configuration?: Configuration) {
     return {
         /**
-         * 유저토큰 생성한다.
+         * 유저토큰 생성한다. id, mbrSeq가 있을 경우 두 조건으로 이미 있는 토큰 있는지 확인 후 있으면 업데이트, 그 외 경우 생성
          * @summary 유저토큰 생성 API
          * @param {CreateUserTokenDto} createUserTokenDto 
          * @param {*} [options] Override http request option.
@@ -4978,14 +5016,12 @@ export const UserTokenApiAxiosParamCreator = function (configuration?: Configura
             };
         },
         /**
-         * 유저토큰 정보를 조회한다.
-         * @summary 유저토큰 정보조회 API
-         * @param {string} [token] token
-         * @param {string} [id] id
+         * 유저토큰 리스트 조회한다.
+         * @summary 유저토큰 정보 리스트 API
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userTokenControllerFindOne: async (token?: string, id?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+        userTokenControllerFindAll: async (options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
             const localVarPath = `/user-token`;
             // use dummy base URL string because the URL constructor only accepts absolute URLs.
             const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
@@ -4998,12 +5034,44 @@ export const UserTokenApiAxiosParamCreator = function (configuration?: Configura
             const localVarHeaderParameter = {} as any;
             const localVarQueryParameter = {} as any;
 
-            if (token !== undefined) {
-                localVarQueryParameter['token'] = token;
+
+    
+            setSearchParams(localVarUrlObj, localVarQueryParameter);
+            let headersFromBaseOptions = baseOptions && baseOptions.headers ? baseOptions.headers : {};
+            localVarRequestOptions.headers = {...localVarHeaderParameter, ...headersFromBaseOptions, ...options.headers};
+
+            return {
+                url: toPathString(localVarUrlObj),
+                options: localVarRequestOptions,
+            };
+        },
+        /**
+         * 유저토큰 정보를 조회한다.
+         * @summary 유저토큰 정보조회 API
+         * @param {string} [id] id
+         * @param {string} [mbrSeq] mbrSeq
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userTokenControllerFindOne: async (id?: string, mbrSeq?: string, options: RawAxiosRequestConfig = {}): Promise<RequestArgs> => {
+            const localVarPath = `/user-token/one`;
+            // use dummy base URL string because the URL constructor only accepts absolute URLs.
+            const localVarUrlObj = new URL(localVarPath, DUMMY_BASE_URL);
+            let baseOptions;
+            if (configuration) {
+                baseOptions = configuration.baseOptions;
             }
+
+            const localVarRequestOptions = { method: 'GET', ...baseOptions, ...options};
+            const localVarHeaderParameter = {} as any;
+            const localVarQueryParameter = {} as any;
 
             if (id !== undefined) {
                 localVarQueryParameter['id'] = id;
+            }
+
+            if (mbrSeq !== undefined) {
+                localVarQueryParameter['mbrSeq'] = mbrSeq;
             }
 
 
@@ -5068,13 +5136,13 @@ export const UserTokenApiFp = function(configuration?: Configuration) {
     const localVarAxiosParamCreator = UserTokenApiAxiosParamCreator(configuration)
     return {
         /**
-         * 유저토큰 생성한다.
+         * 유저토큰 생성한다. id, mbrSeq가 있을 경우 두 조건으로 이미 있는 토큰 있는지 확인 후 있으면 업데이트, 그 외 경우 생성
          * @summary 유저토큰 생성 API
          * @param {CreateUserTokenDto} createUserTokenDto 
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userTokenControllerCreate(createUserTokenDto: CreateUserTokenDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserTokenControllerFindOne200Response>> {
+        async userTokenControllerCreate(createUserTokenDto: CreateUserTokenDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserTokenControllerCreate200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userTokenControllerCreate(createUserTokenDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UserTokenApi.userTokenControllerCreate']?.[localVarOperationServerIndex]?.url;
@@ -5094,15 +5162,27 @@ export const UserTokenApiFp = function(configuration?: Configuration) {
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
         },
         /**
-         * 유저토큰 정보를 조회한다.
-         * @summary 유저토큰 정보조회 API
-         * @param {string} [token] token
-         * @param {string} [id] id
+         * 유저토큰 리스트 조회한다.
+         * @summary 유저토큰 정보 리스트 API
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userTokenControllerFindOne(token?: string, id?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserTokenControllerFindOne200Response>> {
-            const localVarAxiosArgs = await localVarAxiosParamCreator.userTokenControllerFindOne(token, id, options);
+        async userTokenControllerFindAll(options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserTokenControllerFindAll200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userTokenControllerFindAll(options);
+            const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
+            const localVarOperationServerBasePath = operationServerMap['UserTokenApi.userTokenControllerFindAll']?.[localVarOperationServerIndex]?.url;
+            return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
+        },
+        /**
+         * 유저토큰 정보를 조회한다.
+         * @summary 유저토큰 정보조회 API
+         * @param {string} [id] id
+         * @param {string} [mbrSeq] mbrSeq
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        async userTokenControllerFindOne(id?: string, mbrSeq?: string, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserTokenControllerCreate200Response>> {
+            const localVarAxiosArgs = await localVarAxiosParamCreator.userTokenControllerFindOne(id, mbrSeq, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UserTokenApi.userTokenControllerFindOne']?.[localVarOperationServerIndex]?.url;
             return (axios, basePath) => createRequestFunction(localVarAxiosArgs, globalAxios, BASE_PATH, configuration)(axios, localVarOperationServerBasePath || basePath);
@@ -5115,7 +5195,7 @@ export const UserTokenApiFp = function(configuration?: Configuration) {
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        async userTokenControllerUpdate(id: string, updateUserTokenDto: UpdateUserTokenDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserTokenControllerFindOne200Response>> {
+        async userTokenControllerUpdate(id: string, updateUserTokenDto: UpdateUserTokenDto, options?: RawAxiosRequestConfig): Promise<(axios?: AxiosInstance, basePath?: string) => AxiosPromise<UserTokenControllerCreate200Response>> {
             const localVarAxiosArgs = await localVarAxiosParamCreator.userTokenControllerUpdate(id, updateUserTokenDto, options);
             const localVarOperationServerIndex = configuration?.serverIndex ?? 0;
             const localVarOperationServerBasePath = operationServerMap['UserTokenApi.userTokenControllerUpdate']?.[localVarOperationServerIndex]?.url;
@@ -5132,13 +5212,13 @@ export const UserTokenApiFactory = function (configuration?: Configuration, base
     const localVarFp = UserTokenApiFp(configuration)
     return {
         /**
-         * 유저토큰 생성한다.
+         * 유저토큰 생성한다. id, mbrSeq가 있을 경우 두 조건으로 이미 있는 토큰 있는지 확인 후 있으면 업데이트, 그 외 경우 생성
          * @summary 유저토큰 생성 API
          * @param {UserTokenApiUserTokenControllerCreateRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userTokenControllerCreate(requestParameters: UserTokenApiUserTokenControllerCreateRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserTokenControllerFindOne200Response> {
+        userTokenControllerCreate(requestParameters: UserTokenApiUserTokenControllerCreateRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserTokenControllerCreate200Response> {
             return localVarFp.userTokenControllerCreate(requestParameters.createUserTokenDto, options).then((request) => request(axios, basePath));
         },
         /**
@@ -5152,14 +5232,23 @@ export const UserTokenApiFactory = function (configuration?: Configuration, base
             return localVarFp.userTokenControllerDelete(requestParameters.id, options).then((request) => request(axios, basePath));
         },
         /**
+         * 유저토큰 리스트 조회한다.
+         * @summary 유저토큰 정보 리스트 API
+         * @param {*} [options] Override http request option.
+         * @throws {RequiredError}
+         */
+        userTokenControllerFindAll(options?: RawAxiosRequestConfig): AxiosPromise<UserTokenControllerFindAll200Response> {
+            return localVarFp.userTokenControllerFindAll(options).then((request) => request(axios, basePath));
+        },
+        /**
          * 유저토큰 정보를 조회한다.
          * @summary 유저토큰 정보조회 API
          * @param {UserTokenApiUserTokenControllerFindOneRequest} requestParameters Request parameters.
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userTokenControllerFindOne(requestParameters: UserTokenApiUserTokenControllerFindOneRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<UserTokenControllerFindOne200Response> {
-            return localVarFp.userTokenControllerFindOne(requestParameters.token, requestParameters.id, options).then((request) => request(axios, basePath));
+        userTokenControllerFindOne(requestParameters: UserTokenApiUserTokenControllerFindOneRequest = {}, options?: RawAxiosRequestConfig): AxiosPromise<UserTokenControllerCreate200Response> {
+            return localVarFp.userTokenControllerFindOne(requestParameters.id, requestParameters.mbrSeq, options).then((request) => request(axios, basePath));
         },
         /**
          * 유저토큰 정보를 수정한다.
@@ -5168,7 +5257,7 @@ export const UserTokenApiFactory = function (configuration?: Configuration, base
          * @param {*} [options] Override http request option.
          * @throws {RequiredError}
          */
-        userTokenControllerUpdate(requestParameters: UserTokenApiUserTokenControllerUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserTokenControllerFindOne200Response> {
+        userTokenControllerUpdate(requestParameters: UserTokenApiUserTokenControllerUpdateRequest, options?: RawAxiosRequestConfig): AxiosPromise<UserTokenControllerCreate200Response> {
             return localVarFp.userTokenControllerUpdate(requestParameters.id, requestParameters.updateUserTokenDto, options).then((request) => request(axios, basePath));
         },
     };
@@ -5209,18 +5298,18 @@ export interface UserTokenApiUserTokenControllerDeleteRequest {
  */
 export interface UserTokenApiUserTokenControllerFindOneRequest {
     /**
-     * token
-     * @type {string}
-     * @memberof UserTokenApiUserTokenControllerFindOne
-     */
-    readonly token?: string
-
-    /**
      * id
      * @type {string}
      * @memberof UserTokenApiUserTokenControllerFindOne
      */
     readonly id?: string
+
+    /**
+     * mbrSeq
+     * @type {string}
+     * @memberof UserTokenApiUserTokenControllerFindOne
+     */
+    readonly mbrSeq?: string
 }
 
 /**
@@ -5252,7 +5341,7 @@ export interface UserTokenApiUserTokenControllerUpdateRequest {
  */
 export class UserTokenApi extends BaseAPI {
     /**
-     * 유저토큰 생성한다.
+     * 유저토큰 생성한다. id, mbrSeq가 있을 경우 두 조건으로 이미 있는 토큰 있는지 확인 후 있으면 업데이트, 그 외 경우 생성
      * @summary 유저토큰 생성 API
      * @param {UserTokenApiUserTokenControllerCreateRequest} requestParameters Request parameters.
      * @param {*} [options] Override http request option.
@@ -5276,6 +5365,17 @@ export class UserTokenApi extends BaseAPI {
     }
 
     /**
+     * 유저토큰 리스트 조회한다.
+     * @summary 유저토큰 정보 리스트 API
+     * @param {*} [options] Override http request option.
+     * @throws {RequiredError}
+     * @memberof UserTokenApi
+     */
+    public userTokenControllerFindAll(options?: RawAxiosRequestConfig) {
+        return UserTokenApiFp(this.configuration).userTokenControllerFindAll(options).then((request) => request(this.axios, this.basePath));
+    }
+
+    /**
      * 유저토큰 정보를 조회한다.
      * @summary 유저토큰 정보조회 API
      * @param {UserTokenApiUserTokenControllerFindOneRequest} requestParameters Request parameters.
@@ -5284,7 +5384,7 @@ export class UserTokenApi extends BaseAPI {
      * @memberof UserTokenApi
      */
     public userTokenControllerFindOne(requestParameters: UserTokenApiUserTokenControllerFindOneRequest = {}, options?: RawAxiosRequestConfig) {
-        return UserTokenApiFp(this.configuration).userTokenControllerFindOne(requestParameters.token, requestParameters.id, options).then((request) => request(this.axios, this.basePath));
+        return UserTokenApiFp(this.configuration).userTokenControllerFindOne(requestParameters.id, requestParameters.mbrSeq, options).then((request) => request(this.axios, this.basePath));
     }
 
     /**

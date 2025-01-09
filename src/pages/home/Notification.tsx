@@ -14,7 +14,7 @@ export default function Notification() {
   const navigate = useNavigate();
 
   return (
-    <Wrap gap={1.5} sx={{ padding: '0 !important' }}>
+    <Wrap gap={1.5} padding={0}>
       <Typography
         variant="Body18/bold"
         children="오늘의 알림"
@@ -23,18 +23,17 @@ export default function Notification() {
       />
       <Divider borderBottomWidth={1} />
 
-      <EmptyCard margin="12px 20px 32px" children="알림 내용이 없습니다." />
+      <EmptyCard margin="12px 20px 32px">알림 내용이 없습니다.</EmptyCard>
 
-      <>
-        <AlaramCard
-          isEmpty={false}
-          title="새로운 서명요청이 있습니다!"
-          dataList={dummyCardData}
-          onClick={() => navigate('/contract')}
-          onClickMsg="서명하기"
-        />
-        <ReservationCard cardData={dummyReservaitonListCard[0]} />
-      </>
+      <AlaramCard
+        isEmpty={false}
+        title="새로운 서명요청이 있습니다!"
+        dataList={dummyCardData}
+        onClick={() => navigate('/contract')}
+        onClickMsg="서명하기"
+      />
+
+      <ReservationCard cardData={dummyReservaitonListCard[0]} />
     </Wrap>
   );
 }
