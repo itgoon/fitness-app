@@ -1,10 +1,8 @@
 import { m } from 'framer-motion';
 import { useState, useEffect } from 'react';
-
 import { alpha } from '@mui/material/styles';
 import Box, { BoxProps } from '@mui/material/Box';
-
-import Logo from '../logo';
+import LogoMini from '../logo/logo_mini';
 
 // ----------------------------------------------------------------------
 
@@ -49,7 +47,7 @@ export default function SplashScreen({ sx, ...other }: BoxProps) {
             repeat: Infinity
           }}
         >
-          <Logo disabledLink sx={{ width: 64, height: 64 }} />
+          <LogoMini disabledLink sx={{ scale: 0.75 }} />
         </m.div>
 
         <Box

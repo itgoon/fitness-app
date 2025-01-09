@@ -1,10 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-
 import DashboardLayout from 'src/layouts/dashboard';
-
-import { LoadingScreen } from 'src/components/loadingScreen';
-import { AuthGuard } from '../components';
+import { LoadingScreen, SplashScreen } from 'src/components/loadingScreen';
+import AuthGuard from 'src/components/guard/AuthGuard';
 import WorkoutCardDetail from '../../pages/schedule/detail/WorkoutCardDetail';
 import ReservationCardDetail from '../../pages/schedule/detail/ReservationCardDetail';
 
@@ -31,7 +29,7 @@ export const dashboardRoutes = [
     element: (
       <AuthGuard>
         <DashboardLayout>
-          <Suspense fallback={<LoadingScreen />}>
+          <Suspense fallback={<SplashScreen />}>
             <Outlet />
           </Suspense>
         </DashboardLayout>
