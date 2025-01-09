@@ -24,9 +24,18 @@ export const menus: NavItemType[] = [
     isBottom: true,
     isFooter: false
   },
+
   {
-    title: '일정',
-    url: '/schedule/detail',
+    title: '운동 기록',
+    url: '/schedule/workout/2025-01-09',
+    isHeader: true,
+    isBottom: false,
+    isFooter: false
+  },
+
+  {
+    title: '예약 내역',
+    url: '/schedule/reservation',
     isHeader: true,
     isBottom: false,
     isFooter: false

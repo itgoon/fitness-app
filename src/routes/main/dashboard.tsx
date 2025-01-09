@@ -5,12 +5,13 @@ import DashboardLayout from 'src/layouts/dashboard';
 
 import { LoadingScreen } from 'src/components/loadingScreen';
 import { AuthGuard } from '../components';
+import WorkoutCardDetail from '../../pages/schedule/detail/WorkoutCardDetail';
+import ReservationCardDetail from '../../pages/schedule/detail/ReservationCardDetail';
 
 // ----------------------------------------------------------------------
 // Home
 const HomePage = lazy(() => import('src/pages/home'));
 const SchedulePage = lazy(() => import('src/pages/schedule'));
-const ScheduleCardDetail = lazy(() => import('src/pages/schedule/CardDetail'));
 const MemberPage = lazy(() => import('src/pages/member'));
 const RecordPage = lazy(() => import('src/pages/record'));
 const RecordPostPage = lazy(() => import('src/pages/record/post'));
@@ -45,7 +46,8 @@ export const dashboardRoutes = [
         path: 'schedule',
         children: [
           { element: <SchedulePage />, index: true },
-          { path: 'detail/:id', element: <ScheduleCardDetail /> }
+          { path: 'workout/:id', element: <WorkoutCardDetail /> },
+          { path: 'reservation/:id', element: <ReservationCardDetail /> }
         ]
       },
       {

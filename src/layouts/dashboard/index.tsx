@@ -12,7 +12,6 @@ import Footer from './footer';
 import Header from '../../components/custom/Header';
 import { useEditContext } from '../../hooks/useEditState';
 import { NavItemType, menus } from '../../data/menus';
-
 // ----------------------------------------------------------------------
 
 type Props = {

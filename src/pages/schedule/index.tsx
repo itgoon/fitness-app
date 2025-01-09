@@ -1,4 +1,4 @@
-import { Box, Divider, Tab, Tabs } from '@mui/material';
+import { Box, Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
 import { useLocation } from 'react-router';
 import dayjs from 'dayjs';
@@ -6,6 +6,7 @@ import WorkOutRecord from './WorkOutRecord';
 import ReservationList from './ReservationList';
 import { dummyMonthWorkoutList } from '../../utils/dummy';
 import DateCalendar from '../../components/custom/calendar/DateCalendar';
+import Divider from '../../components/custom/Divider';
 
 /**
  * ******************************************************
@@ -35,7 +36,7 @@ export default function SchedulePage() {
         value={paramsDate}
         onChange={(e) => onDataChange(dayjs(e).format('YYYY-MM-DD'))}
       />
-      <Divider sx={{ borderBottomWidth: 8 }} />
+      <Divider />
 
       <Box pt={3}>
         <Tabs
