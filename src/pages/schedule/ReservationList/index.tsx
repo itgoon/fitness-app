@@ -1,8 +1,7 @@
-import { Box, Stack } from '@mui/system';
-import { Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router';
-import { dummyReservaitonListCard } from 'src/utils/dummy';
-import ReservationCard from 'src/components/custom/reservationCard/ReservationCard';
+import { useEffect, useState } from 'react';
+import { ScheduleService } from 'src/service';
+import { ScheduleDto } from 'src/api';
 import EmptyReservationData from './EmptyReservationData';
 import ReservationData from './ReservationData';
 
@@ -11,7 +10,7 @@ interface ReservationListProps {
 }
 
 export default function ReservationList({ date }: ReservationListProps) {
-  const cardDataList = dummyReservaitonListCard;
+  const [reservationList, setReservationList] = useState<ScheduleDto[]>([]);
 
   const navigate = useNavigate();
 
@@ -19,13 +18,19 @@ export default function ReservationList({ date }: ReservationListProps) {
     navigate(`/schedule/reservation/${date}`);
   };
 
-  return (
-    <Stack gap={2}>
-      {cardDataList?.length === 0 ? (
-        <EmptyReservationData />
-      ) : (
-        <ReservationData cardDataList={cardDataList} onClick={onClick} />
-      )}
-    </Stack>
+  useEffect(() => {
+    loadScheduleList();
+  }, []);
+
+  const loadScheduleList = async () => {
+    const res = await ScheduleService.loadReservationList({});
+
+    setReservationList(res.data);
+  };
+
+  return reservationList?.length === 0 ? (
+    <EmptyReservationData />
+  ) : (
+    <ReservationData list={reservationList} onClick={onClick} />
   );
 }

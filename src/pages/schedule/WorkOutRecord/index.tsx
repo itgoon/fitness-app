@@ -1,7 +1,9 @@
 import { Stack } from '@mui/material';
 import { useNavigate } from 'react-router';
-import { dummyWorkOutRecordList } from 'src/utils/dummy';
-import WorkoutCard from './WorkoutCard';
+import { useEffect, useState } from 'react';
+import { RecordService } from 'src/service';
+import { RecordDto } from 'src/api';
+import WorkoutCardData from './WorkoutCardData';
 import EmptyWorkoutData from './EmptyWorkoutData';
 
 interface WorkOutRecordProps {
@@ -9,7 +11,7 @@ interface WorkOutRecordProps {
 }
 
 export default function WorkOutRecord({ date }: WorkOutRecordProps) {
-  const cardDataList = dummyWorkOutRecordList;
+  const [recordList, setRecordList] = useState<RecordDto[]>([]);
 
   const navigate = useNavigate();
 
@@ -17,12 +19,22 @@ export default function WorkOutRecord({ date }: WorkOutRecordProps) {
     navigate(`/schedule/workout/${date}`);
   };
 
+  useEffect(() => {
+    loadScheduleList();
+  }, []);
+
+  const loadScheduleList = async () => {
+    const res = await RecordService.loadRecordList();
+
+    setRecordList(res.data);
+  };
+
   return (
     <Stack gap={2}>
-      {cardDataList?.length === 0 ? (
+      {recordList?.length === 0 ? (
         <EmptyWorkoutData />
       ) : (
-        <WorkoutCard cardDataList={cardDataList} onClick={onClick} />
+        <WorkoutCardData list={recordList} onClick={onClick} />
       )}
     </Stack>
   );

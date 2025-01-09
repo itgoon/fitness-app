@@ -1,6 +1,5 @@
 import { Box, Chip, Divider, Stack, Typography, useTheme } from '@mui/material';
-
-import { useLocation, useNavigate } from 'react-router';
+import { useNavigate } from 'react-router';
 import { useModal } from '../../../hooks/useModal';
 import Icon from '../../../components/Icon';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
@@ -10,19 +9,21 @@ import Button from '../../../components/Button';
 export default function ReservedCard() {
   const { openConfirm } = useModal();
 
-  const location = useLocation();
   const navigate = useNavigate();
-
-  const date = '2025-01-09';
-  const onCancelled = () => {
-    navigate(`/schedule/reservation/cancelled/${date}`);
-  };
 
   const theme = useTheme();
 
   const light = theme.palette.mode === 'light';
 
   const grey600 = light ? theme.palette.grey[600] : 'white';
+
+  const date = '2025-01-09';
+
+  const onCancelled = () => {
+    navigate(`/schedule/reservation/cancelled/${date}`, {
+      state: { data: 123 }
+    });
+  };
 
   return (
     <>
