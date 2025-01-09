@@ -1,10 +1,10 @@
 import { Divider, Typography, useTheme } from '@mui/material';
+import { useNavigate } from 'react-router';
 import AlaramCard from '../../components/custom/AlaramCard';
 import ReservationCard from '../../components/custom/reservationCard/ReservationCard';
 import EmptyCard from '../../components/custom/customCard/EmptyCard';
 import { dummyCardData, dummyReservaitonListCard } from '../../utils/dummy';
 import Wrap from './Wrap';
-import { useNavigate } from 'react-router';
 
 interface INotification {
   isAlarm: boolean;

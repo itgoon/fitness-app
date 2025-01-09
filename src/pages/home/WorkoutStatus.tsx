@@ -1,11 +1,10 @@
 import { Typography, useTheme } from '@mui/material';
-import Button from '../../components/Button';
-
-import Wrap from './Wrap';
-import WorkoutData from './WorkoutData';
-import { MontFormatKR } from '../../utils/formatTime';
 import dayjs from 'dayjs';
-import { IState } from '.';
+import Button from '../../components/Button';
+import Wrap from './Wrap';
+import { MontFormatKR } from '../../utils/formatTime';
+import { IState } from './types';
+import TimeCard from './TimeCard';
 
 interface IWorkoutStatus {
   state: IState;
@@ -70,7 +69,7 @@ export default function WorkoutStatus({
         </span>
       </Typography>
 
-      <WorkoutData state={state} onClick={handleTimer} totalTime={totalTime} />
+      <TimeCard state={state} onClick={handleTimer} totalTime={totalTime} />
 
       {renderButton()}
     </Wrap>

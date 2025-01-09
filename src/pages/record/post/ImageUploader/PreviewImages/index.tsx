@@ -7,7 +7,7 @@ export default function PreviewImages() {
 
   const images = watch('images');
 
-  const onImageDelete = (name: number) => {
+  const onImageDelete = (preview: number) => {
     const prevImages = getValues('images') || [];
 
     const newImages = prevImages.filter((image) => image.preview !== preview);

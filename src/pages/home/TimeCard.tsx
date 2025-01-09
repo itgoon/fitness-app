@@ -1,6 +1,6 @@
 import { Stack, Typography, useTheme } from '@mui/material';
 import EmptyCard from '../../components/custom/customCard/EmptyCard';
-import { IState } from '.';
+import { IState } from './types';
 
 interface ITimeCard {
   state: IState;
@@ -21,18 +21,16 @@ export default function TimeCard({ state, onClick, totalTime }: ITimeCard) {
     label: string,
     time: string,
     clickAction: string
-  ) => {
-    return (
-      <Stack gap={0.5} onClick={() => onClick(clickAction)}>
-        <Typography variant="Body14/regular" color={grey}>
-          {label}
-        </Typography>
-        <Typography variant="Body20/bold" color={grey900}>
-          {time}
-        </Typography>
-      </Stack>
-    );
-  };
+  ) => (
+    <Stack gap={0.5} onClick={() => onClick(clickAction)}>
+      <Typography variant="Body14/regular" color={grey}>
+        {label}
+      </Typography>
+      <Typography variant="Body20/bold" color={grey900}>
+        {time}
+      </Typography>
+    </Stack>
+  );
 
   return (
     <EmptyCard direction="row" justifyContent="start" padding="24px" gap={13}>
