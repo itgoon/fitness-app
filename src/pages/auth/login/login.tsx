@@ -19,7 +19,7 @@ import { LoginSchema } from './_schema';
 export default function LoginView() {
   const navigate = useNavigate();
 
-  const { auth, login } = useAuth();
+  const { login } = useAuth();
 
   const methods = useForm({
     resolver: yupResolver(LoginSchema),

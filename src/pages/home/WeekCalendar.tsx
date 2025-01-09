@@ -1,6 +1,6 @@
 import { useEffect, useMemo } from 'react';
 import dayjs from 'dayjs';
-import { Box, Stack, Typography, useTheme } from '@mui/material';
+import { Badge, Box, Stack, Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { ScheduleService } from 'src/service';
 import { DateReqFormat } from '../../utils/formatTime';
@@ -47,8 +47,6 @@ export default function WeekCalendar() {
 
   const loadScheduleList = async () => {
     const res = await ScheduleService.loadScheduleList({});
-
-    console.log(res);
   };
 
   return (
@@ -79,10 +77,10 @@ export default function WeekCalendar() {
                   {dayjs(item.date).format('D')}
                 </Typography>
 
-                {/* <Box display="flex" gap={1} ml={1.4}>
-                  {isOrange && <Badge color="warning" variant="alway" />}
-                  {isGreen && <Badge color="success" variant="online" />}
-                </Box> */}
+                <Box display="flex" gap={1} ml={1.4}>
+                  <Badge color="warning" variant="alway" />
+                  <Badge color="success" variant="online" />
+                </Box>
               </Stack>
             </Stack>
           </Button>

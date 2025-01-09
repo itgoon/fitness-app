@@ -1,47 +1,45 @@
 import { Chip, Stack, Typography, useTheme } from '@mui/material';
 import dayjs from 'dayjs';
+import { ScheduleDto } from 'src/api';
+import { CSSProperties } from 'react';
 import CardBody from './CardBody';
 import { IReservationCard } from './types';
 import { MontFormatKR } from '../../../utils/formatTime';
 import { chipChange } from '../../../utils/chipChange';
 
-/**
- * ******************************************************
- * 예약 내역 알림 카드
- * 연동 정보 없을 때
- *
- * 대시보드 화면
- * 일정 화면
- * ******************************************************
- */
+interface ReservationCardProps {
+  card: ScheduleDto;
+  layoutSx?: CSSProperties;
+  cardSx?: CSSProperties;
+}
+
 export default function ReservationCard({
+  card,
   layoutSx,
-  cardSx,
-  cardData
-}: IReservationCard) {
-  const theme = useTheme();
-  const light = theme.palette.mode === 'light';
-  const grey900 = light ? theme.palette.grey[900] : 'white';
+  cardSx
+}: ReservationCardProps) {
+  // const theme = useTheme();
+  // const light = theme.palette.mode === 'light';
+  // const grey900 = light ? theme.palette.grey[900] : 'white';
 
-  const dateKR = dayjs(cardData?.date).format(MontFormatKR);
+  // const dateKR = dayjs(card?.date).format(MontFormatKR);
 
-  const chipState = cardData?.chipState;
-  const {chipLabel} = chipChange(chipState);
+  // const chipState = card?.chipState;
+  // const { chipLabel } = chipChange(chipState);
 
   return (
-    <Stack gap={1.5} sx={{ padding: '8px 20px 32px', ...layoutSx }}>
-      <Stack direction="row" alignItems="center" gap={1}>
-        <Typography
-          variant="Body18/semiBold"
-          color={grey900}
-          children={dateKR}
-        />
-        {chipLabel && (
-          <Chip size="small" color={chipState} label={chipLabel} />
-        )}
-      </Stack>
+    <div>123</div>
+    // <Stack gap={1.5} sx={{ padding: '8px 20px 32px', ...layoutSx }}>
+    //   <Stack direction="row" alignItems="center" gap={1}>
+    //     <Typography
+    //       variant="Body18/semiBold"
+    //       color={grey900}
+    //       children={dateKR}
+    //     />
+    //     {chipLabel && <Chip size="small" color={chipState} label={chipLabel} />}
+    //   </Stack>
 
-      <CardBody cardData={cardData} cardSx={cardSx} />
-    </Stack>
+    //   <CardBody cardData={cardData} cardSx={cardSx} />
+    // </Stack>
   );
 }
