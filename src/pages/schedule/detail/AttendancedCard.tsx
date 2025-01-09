@@ -4,7 +4,7 @@ import Icon from '../../../components/Icon';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
 import ListItem from './ListItem';
 
-export default function FinishedReservation() {
+export default function AttendancedCard() {
   const theme = useTheme();
 
   const light = theme.palette.mode === 'light';
@@ -12,7 +12,7 @@ export default function FinishedReservation() {
   const grey600 = light ? theme.palette.grey[600] : 'white';
 
   return (
-    <Stack gap={2.5} pt={5} px={2.5} height="calc(100% - 56px)">
+    <>
       <Box
         pt={6.5}
         sx={{
@@ -21,11 +21,11 @@ export default function FinishedReservation() {
           gap: 1
         }}
       >
-        <Icon name="Red" size={60} />
+        <Icon name="BlueLargeSvg" size={60} />
 
         <Stack gap={0.5}>
           <Typography variant="Body14/light" color={grey600}>
-            예약 취소
+            총 운동 시간
           </Typography>
 
           <Box
@@ -35,7 +35,8 @@ export default function FinishedReservation() {
               gap: 1
             }}
           >
-            <Chip size="small" color="primary" label="예약 취소" />
+            <Typography variant="Body28/semiBold">오전 9:00</Typography>
+            <Chip size="small" color="primary" label="출석" />
           </Box>
         </Stack>
       </Box>
@@ -49,6 +50,6 @@ export default function FinishedReservation() {
           <ListItem label="레슨 종료" value="19:00" />
         </Stack>
       </EmptyCard>
-    </Stack>
+    </>
   );
 }
