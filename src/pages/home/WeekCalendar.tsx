@@ -1,7 +1,6 @@
 import dayjs from 'dayjs';
 
 import { Badge, Box, Stack, Typography, useTheme } from '@mui/material';
-import { CSSProperties, useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { DateReqFormat } from '../../utils/formatTime';
 import Button from '../../components/Button';
