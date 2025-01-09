@@ -1,23 +1,15 @@
 import dayjs from 'dayjs';
 
-import {  Stack, Typography, useTheme } from '@mui/material';
+import { Stack } from '@mui/material';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import Button from '../../components/Button';
-import {
-  DateFormat,
-  MontFormatKR,
-  TimeDateFormat
-} from '../../utils/formatTime';
+import { DateFormat, TimeDateFormat } from '../../utils/formatTime';
 import TimePicker from '../../components/custom/TimePicker';
 import WeekCalendar from '../../components/custom/WeekCalendar';
-import {
-  dummyMonthCount1,
-  dummyMonthCount2,
-} from '../../utils/dummy';
+import { dummyMonthCount1, dummyMonthCount2 } from '../../utils/dummy';
 import Wrap from './Wrap';
-import WorkoutData from './WorkoutData';
-import Bottom from './Bottom';
+import WorkoutStatus from './WorkoutStatus';
+import Notification from './Notification';
+
 /**
  * ******************************************************
  * 대시보드 화면
@@ -29,29 +21,17 @@ import Bottom from './Bottom';
 
 const EMPTY_TIME = '00:00';
 const INITIAL_TIME = '0시간 0분';
-const name = '홍길동';
 
-const workMsg = (isWorking: boolean) =>
-  isWorking
-    ? '오늘도 목표를 향해 같이 달려가봐요'
-    : '오늘 운동을 시작하지 않으셨네요!';
-
-const Message = ({ userName, workMessage }: any) => (
-  <>
-    <span>{userName} 님,</span>
-    <br />
-    <span>{workMessage}</span>
-  </>
-);
-
+export interface IState {
+  isWorking: boolean;
+  isAlarm: boolean;
+  isStart: boolean;
+  isEnd: boolean;
+  startTime: string;
+  endTime: string;
+}
 export default function HomePage() {
-  const { palette } = useTheme();
-  const light = palette.mode === 'light';
-  const grey = light ? palette.grey[500] : palette.grey[600];
-
-  const today = dayjs().format(MontFormatKR)
-
-  const [state, setState] = useState({
+  const [state, setState] = useState<IState>({
     isWorking: false,
     isAlarm: false,
     isStart: false,
@@ -59,26 +39,16 @@ export default function HomePage() {
     startTime: EMPTY_TIME,
     endTime: EMPTY_TIME
   });
-  const { isWorking, isAlarm, isStart, isEnd, startTime, endTime } = state;
+
+  const { isAlarm, isStart, isEnd, startTime, endTime } = state;
 
   const [totalTime, setTotalTime] = useState(INITIAL_TIME);
-
-  const toggleWorkingState = () => {
-    setState((prev) => ({
-      ...prev,
-      isWorking: !prev.isWorking,
-      isAlarm: !prev.isAlarm
-    }));
-  };
 
   const handleTimeChange = (value: string) => {
     const formattedValue = value ? dayjs(value).format('HH:mm') : EMPTY_TIME;
     state.isStart
       ? setState((prev) => ({ ...prev, startTime: formattedValue }))
       : setState((prev) => ({ ...prev, endTime: formattedValue }));
-  };
-  const handleTimer = (type: string) => {
-    setState((prev) => ({ ...prev, [type]: true }));
   };
 
   const calculatedTotlaTime = (start: string, end: string) => {
@@ -105,36 +75,20 @@ export default function HomePage() {
   return (
     <Stack>
       <Wrap padding="0 !important">
-        <WeekCalendar  greenBadge={dummyMonthCount1}  orangeBadge={dummyMonthCount2} />
-      </Wrap>
-
-      <Wrap gap={1} padding={4}>
-        
-        <Typography variant="Body18/semiBold" color={grey}>{today} </Typography>
-        
-        <Typography  variant="Body20/semiBold" lineHeight="30px" > 
-          {<Message userName={name} workMessage={workMsg(state.isWorking)} />}
-        </Typography>
-
-        <WorkoutData state={state} onClick={handleTimer} totalTime={totalTime}/>
-
-        <Button
-          color="primary"
-          typoVariant="Body18/semiBold"
-          size="large"
-          variant={!isWorking ? 'contained' : 'outlined'}
-          children={!isWorking ? '운동시작' : '운동종료'}
-          sx={{ marginTop: 2, marginBottom: '-12px' }}
-          onClick={toggleWorkingState}
+        <WeekCalendar
+          greenBadge={dummyMonthCount1}
+          orangeBadge={dummyMonthCount2}
         />
       </Wrap>
 
-      <Bottom isAlarm={isAlarm} />
-      
+      <WorkoutStatus state={state} setState={setState} totalTime={totalTime} />
+
+      <Notification isAlarm={isAlarm} />
+
       <TimePicker
         open={isStart || isEnd}
         onClose={() => {
-          setState((prev) => ({ ...prev, isStart: true, isEnd: true }));
+          setState((prev) => ({ ...prev, isStart: false, isEnd: false }));
         }}
         title={
           isStart
