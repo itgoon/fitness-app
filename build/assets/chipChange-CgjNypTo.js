@@ -1,1 +1,0 @@
-const a=r=>({chipLabel:r==="warning"?"예약":r==="error"?"예약취소":r==="primary"?"출석":"",iconName:r==="warning"?"Orange":r==="error"?"Red":r==="primary"?"Blue":"DumbelSvg",largeIconName:r==="warning"?"OrangeLargeSvg":r==="error"?"Red":r==="primary"?"BlueLargeSvg":"DumbelLargeSvg"});export{a as c};
