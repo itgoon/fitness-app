@@ -9,15 +9,8 @@ interface IWrap {
 }
 export default function Wrap({ children, gap, padding, sx }: IWrap) {
   return (
-    <>
-      <Stack
-        gap={gap || 1}
-        padding={padding || 1}
-        sx={{ px: 2.5, ...sx }}
-      >
-        {children}
-      </Stack>
-      <Divider sx={{ borderBottomWidth: 8 }} />
-    </>
+    <Stack gap={gap || 1} padding={padding || 1} sx={{ px: 2.5, ...sx }}>
+      {children}
+    </Stack>
   );
 }

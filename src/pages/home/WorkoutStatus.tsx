@@ -1,56 +1,71 @@
+import { useState } from 'react';
 import { Typography, useTheme } from '@mui/material';
 import dayjs from 'dayjs';
 import Button from '../../components/Button';
-import Wrap from './Wrap';
-import { MontFormatKR } from '../../utils/formatTime';
+import {
+  DateFormat,
+  MontFormatKR,
+  TimeDateFormat
+} from '../../utils/formatTime';
 import { IState } from './types';
 import TimeCard from './TimeCard';
+import Wrap from '../../components/custom/Wrap';
+import TimePicker from '../../components/custom/TimePicker';
 
-interface IWorkoutStatus {
-  state: IState;
-  totalTime: string;
-  setState: React.Dispatch<React.SetStateAction<IState>>;
-}
 const name = '홍길동';
+const EMPTY_TIME = '00:00';
+const INITIAL_TIME = '0시간 0분';
 
-export default function WorkoutStatus({
-  state,
-  setState,
-  totalTime
-}: IWorkoutStatus) {
+export default function WorkoutStatus() {
   const { palette } = useTheme();
   const light = palette.mode === 'light';
   const grey = light ? palette.grey[500] : palette.grey[600];
   const today = dayjs().format(MontFormatKR);
 
-  const { isWorking } = state;
+  const [state, setState] = useState<IState>({
+    isWorking: false,
+    isStart: false,
+    isEnd: false,
+    startTime: EMPTY_TIME,
+    endTime: EMPTY_TIME,
+    totalTime: INITIAL_TIME
+  });
+
+  const { isWorking, isStart, isEnd, startTime, endTime, totalTime } = state;
 
   const toggleWorkingState = () => {
-    setState((prev) => ({
-      ...prev,
-      isWorking: !prev.isWorking,
-      isAlarm: !prev.isAlarm
-    }));
+    setState((prev) => ({ ...prev, isWorking: !prev.isWorking }));
   };
 
   const handleTimer = (type: string) => {
     setState((prev) => ({ ...prev, [type]: true }));
   };
 
-  const renderButton = () => {
-    const buttonProps = {
-      color: 'primary',
-      typoVariant: 'Body18/semiBold',
-      size: 'large',
-      sx: { marginTop: 2, marginBottom: '-12px' },
-      onClick: toggleWorkingState
-    } as const;
+  const handleTimeChange = (value: string) => {
+    const formattedValue = value ? dayjs(value).format('HH:mm') : EMPTY_TIME;
+    state.isStart
+      ? setState((prev) => ({ ...prev, startTime: formattedValue }))
+      : setState((prev) => ({ ...prev, endTime: formattedValue }));
+  };
 
-    return isWorking ? (
-      <Button {...buttonProps} variant="outlined" children="운동종료" />
-    ) : (
-      <Button {...buttonProps} variant="contained" children="운동시작" />
-    );
+  const calculatedTotlaTime = (start: string, end: string) => {
+    const _startTime = dayjs(`${today} ${start}`, TimeDateFormat);
+    const _endTime = dayjs(`${today} ${end}`, TimeDateFormat);
+    const totalMinutes = _endTime.diff(_startTime, 'minute');
+    const total =
+      totalMinutes > 0
+        ? `${Math.floor(totalMinutes / 60)} 시간 ${totalMinutes % 60} 분`
+        : '0시간 0분';
+
+    setState((prev) => ({ ...prev, totalTime: total }));
+  };
+
+  const saveWorkTime = () => {
+    isStart
+      ? setState((prev) => ({ ...prev, isStart: false }))
+      : setState((prev) => ({ ...prev, isEnd: false }));
+    if (startTime !== EMPTY_TIME && endTime !== EMPTY_TIME)
+      calculatedTotlaTime(startTime, endTime);
   };
 
   return (
@@ -69,9 +84,47 @@ export default function WorkoutStatus({
         </span>
       </Typography>
 
-      <TimeCard state={state} onClick={handleTimer} totalTime={totalTime} />
+      {isWorking && (
+        <TimeCard state={state} onClick={handleTimer} totalTime={totalTime} />
+      )}
 
-      {renderButton()}
+      {isWorking ? (
+        <Button
+          color="primary"
+          typoVariant="Body18/semiBold"
+          size="large"
+          sx={{ marginTop: 2, marginBottom: '-12px' }}
+          onClick={toggleWorkingState}
+          variant="outlined"
+        >
+          운동종료
+        </Button>
+      ) : (
+        <Button
+          color="primary"
+          typoVariant="Body18/semiBold"
+          size="large"
+          sx={{ marginTop: 2, marginBottom: '-12px' }}
+          onClick={toggleWorkingState}
+          variant="contained"
+        >
+          운동시작
+        </Button>
+      )}
+
+      <TimePicker
+        open={isStart || isEnd}
+        onClose={() => {
+          setState((prev) => ({ ...prev, isStart: false, isEnd: false }));
+        }}
+        title={
+          isStart
+            ? '운동 시작 시간을 선택해주세요'
+            : '운동 종료 시간을 선택해주세요'
+        }
+        onClick={saveWorkTime}
+        onChange={handleTimeChange}
+      />
     </Wrap>
   );
 }

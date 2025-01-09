@@ -14,8 +14,7 @@ export default function TimeCard({ state, onClick, totalTime }: ITimeCard) {
   const grey900 = light ? palette.grey[900] : 'white';
   const grey = light ? palette.grey[500] : palette.grey[600];
 
-  const { isWorking, startTime, endTime } = state;
-  if (!isWorking) return null;
+  const { startTime, endTime } = state;
 
   const renderTimeSection = (
     label: string,
