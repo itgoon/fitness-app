@@ -2,6 +2,7 @@ import dayjs, { Dayjs } from 'dayjs';
 import { Badge, Typography, useTheme } from '@mui/material';
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
 import { typeWorkData } from '../types';
+import React from 'react';
 
 const renderBadge = (work: typeWorkData) => {
   switch (work.type) {
@@ -36,6 +37,7 @@ const renderBadge = (work: typeWorkData) => {
       return null;
   }
 };
+
 export default function ServerDay(
   props: PickersDayProps<Dayjs> & { highlightedDays?: typeWorkData[] }
 ) {
@@ -50,20 +52,25 @@ export default function ServerDay(
   return (
     <>
       {hasWorkForDay ? (
-        workForDay.map((work, key) => (
+        workForDay.map((work, index) => (
           <PickersDay
             {...other}
             outsideCurrentMonth={outsideCurrentMonth}
             day={day as Dayjs}
-            key={key}
+            key={`pickers-day-${work.date}-${index}`}
           >
-            <Typography color="inherit" variant="Body15/light" lineHeight={25}>
+            <Typography
+              key={`typography-${dayjs(day).format('DD')}-${index}`}
+              color="inherit"
+              variant="Body15/light"
+              lineHeight={25}
+            >
               {dayjs(day).format('DD')}
             </Typography>
-            {renderBadge(work)}
+            <React.Fragment key={`badge-fragment-${work.type}-${index}`}>
+              {renderBadge(work)}
+            </React.Fragment>
           </PickersDay>
-
-          // </Badge>
         ))
       ) : (
         <PickersDay

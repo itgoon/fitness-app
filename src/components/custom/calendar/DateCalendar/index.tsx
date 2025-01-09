@@ -2,7 +2,7 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DateCalendar as CustomDateCalendar } from '@mui/x-date-pickers/DateCalendar';
 import dayjs from 'dayjs';
-import ServerDay from './PickersDay';
+import ServerDay from './ServerDay';
 import CalendarHeader from '../CalendarHeader';
 import { IDatePicker, typeWorkData } from '../types';
 
