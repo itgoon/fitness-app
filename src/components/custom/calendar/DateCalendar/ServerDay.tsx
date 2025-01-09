@@ -1,8 +1,8 @@
+import React from 'react';
 import dayjs, { Dayjs } from 'dayjs';
 import { Badge, Typography, useTheme } from '@mui/material';
 import { PickersDay, PickersDayProps } from '@mui/x-date-pickers/PickersDay';
 import { typeWorkData } from '../types';
-import React from 'react';
 
 const renderBadge = (work: typeWorkData) => {
   switch (work.type) {

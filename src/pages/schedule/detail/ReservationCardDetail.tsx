@@ -1,34 +1,28 @@
 import { Box, Chip, Divider, Stack, Typography, useTheme } from '@mui/material';
 
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { useModal } from '../../../hooks/useModal';
 import Icon from '../../../components/Icon';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
 import ListItem from './ListItem';
 import Button from '../../../components/Button';
 
-//   chipState?: 'error' | 'primary' | 'warning';
-
 export default function ReservationCardDetail() {
   const { openConfirm } = useModal();
 
+  const location = useLocation();
   const navigate = useNavigate();
+
+  const date = '2025-01-09';
+  const onCancelled = () => {
+    navigate(`/schedule/reservation/cancelled/${date}`);
+  };
 
   const theme = useTheme();
 
   const light = theme.palette.mode === 'light';
 
   const grey600 = light ? theme.palette.grey[600] : 'white';
-
-  // const { chipState, time } = selectedCard;
-
-  // const chip = chipChange(chipState);
-
-  // const isWarning = chipState === 'warning';
-
-  // const isUndefined = chipState !== undefined;
-
-  // if (selectedCard === null) navigate(-1);
 
   return (
     <Stack gap={2.5} pt={5} px={2.5} height="calc(100% - 56px)">
@@ -40,7 +34,7 @@ export default function ReservationCardDetail() {
           gap: 1
         }}
       >
-        <Icon name={'Orange'} size={60} />
+        <Icon name="Orange" size={60} />
 
         <Stack gap={0.5}>
           <Typography variant="Body14/light" color={grey600}>
@@ -80,7 +74,7 @@ export default function ReservationCardDetail() {
           openConfirm({
             title: '',
             content: '정말로 예약을 취소하시겠습니까?',
-            onClick: () => {},
+            onClick: () => onCancelled(),
             clickMsg: '예약취소',
             closeMsg: '아니요',
             clickColor: 'error'

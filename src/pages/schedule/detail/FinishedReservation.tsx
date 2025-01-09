@@ -1,9 +1,10 @@
-import { Box, Divider, Stack, Typography, useTheme } from '@mui/material';
+import { Box, Chip, Divider, Stack, Typography, useTheme } from '@mui/material';
+
 import Icon from '../../../components/Icon';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
 import ListItem from './ListItem';
 
-export default function WorkoutCardDetail() {
+export default function FinishedReservation() {
   const theme = useTheme();
 
   const light = theme.palette.mode === 'light';
@@ -20,7 +21,7 @@ export default function WorkoutCardDetail() {
           gap: 1
         }}
       >
-        <Icon name="DumbelLargeSvg" size={60} />
+        <Icon name="BlueLargeSvg" size={60} />
 
         <Stack gap={0.5}>
           <Typography variant="Body14/light" color={grey600}>
@@ -34,7 +35,8 @@ export default function WorkoutCardDetail() {
               gap: 1
             }}
           >
-            <Typography variant="Body28/semiBold">1시간 0분</Typography>
+            <Typography variant="Body28/semiBold">오전 9:00</Typography>
+            <Chip size="small" color="primary" label="출석" />
           </Box>
         </Stack>
       </Box>

@@ -1,5 +1,6 @@
 import { Box } from '@mui/material';
 import ReservationCard from '../../../components/custom/reservationCard/ReservationCard';
+
 import { cardData } from '../types';
 
 interface IWorkoutCard {

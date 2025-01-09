@@ -5,6 +5,7 @@ import { LoadingScreen, SplashScreen } from 'src/components/loadingScreen';
 import AuthGuard from 'src/components/guard/AuthGuard';
 import WorkoutCardDetail from '../../pages/schedule/detail/WorkoutCardDetail';
 import ReservationCardDetail from '../../pages/schedule/detail/ReservationCardDetail';
+import CancelledReservation from '../../pages/schedule/detail/CancelledReservation';
 
 // ----------------------------------------------------------------------
 // Home
@@ -45,7 +46,11 @@ export const dashboardRoutes = [
         children: [
           { element: <SchedulePage />, index: true },
           { path: 'workout/:id', element: <WorkoutCardDetail /> },
-          { path: 'reservation/:id', element: <ReservationCardDetail /> }
+          { path: 'reservation/:id', element: <ReservationCardDetail /> },
+          {
+            path: 'reservation/cancelled/:id',
+            element: <CancelledReservation />
+          }
         ]
       },
       {

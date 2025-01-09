@@ -41,6 +41,13 @@ export const menus: NavItemType[] = [
     isFooter: false
   },
   {
+    title: '예약 내역',
+    url: '/schedule/reservation/canelled',
+    isHeader: true,
+    isBottom: false,
+    isFooter: false
+  },
+  {
     title: '약관 및 규정',
     url: '/contract',
     isHeader: true,
