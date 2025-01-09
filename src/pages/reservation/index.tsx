@@ -15,7 +15,7 @@ import Header from '../../components/custom/Header';
  */
 const stepTitle = ['', '레슨 예약', '레슨예약'];
 export default function ReservationPage() {
-  const [activeStep, setActiveStep] = useState(1);
+  const [activeStep, setActiveStep] = useState(0);
 
   const [reservationList, setReservationList] = useState<IReservationList>({
     date: dayjs().format(TimeDateFormatKR),

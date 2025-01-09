@@ -1,8 +1,7 @@
 export interface IState {
   isWorking: boolean;
-  isStart: boolean;
-  isEnd: boolean;
+  isWorkingEnd: boolean;
   startTime: string;
   endTime: string;
-  totalTime: string;
+  totalTime: number;
 }
