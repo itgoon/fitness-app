@@ -1,3 +1,4 @@
+import { useMemo } from 'react';
 import dayjs from 'dayjs';
 
 import { Badge, Box, Stack, Typography, useTheme } from '@mui/material';
@@ -14,14 +15,15 @@ export default function WeekCalendar() {
   const grey600 = light ? palette.grey[600] : palette.common.white;
   const black = light ? palette.common.black : palette.common.white;
 
+  const today = dayjs();
+  const firstDay = today.startOf('week');
+
   const navigate = useNavigate();
 
   const settingDate = () => {
-    const firstDay = dayjs().startOf('week');
-
     const list = Array.from({ length: 7 }, (_, index) => {
       const date = firstDay.add(index, 'day');
-      const day = WEEKDAYS[dayjs().subtract(index, 'day').day()];
+      const day = WEEKDAYS[date.day()];
 
       return { date: date.format(DateReqFormat), day };
     });
@@ -29,7 +31,7 @@ export default function WeekCalendar() {
     return list;
   };
 
-  const dateList = settingDate();
+  const dateList = useMemo(() => settingDate(), []);
 
   const getTypographyVariant = (isToday: boolean, type: 'day' | 'date') => {
     if (type === 'day') return isToday ? 'Body13/semiBold' : 'Body13/regular';
