@@ -1,35 +1,26 @@
-import { ReactNode } from 'react';
 import { useLocation } from 'react-router';
 import { Box } from '@mui/material';
+import { PropsWithChildren } from 'react';
 import Main from './main';
-import NavBottom from './navBottom';
 import Footer from './footer';
-import Header from '../../components/custom/Header';
-import { NavItemType, menus } from '../../data/menus';
+import NavBottom from './navBottom';
+import { Menu, menus } from './config';
+import Header from './header';
+
 // ----------------------------------------------------------------------
 
-type Props = {
-  children: ReactNode;
-};
-
-const getMenuItemByPath = (
-  menu: NavItemType[],
-  path: string
-): NavItemType | null => {
-  const traverse = (menuItem: NavItemType): NavItemType | null => {
+const getMenuItemByPath = (menu: Menu[], path: string): Menu | null => {
+  const traverse = (menuItem: Menu): Menu | null => {
     if (menuItem.url === path) {
       return menuItem;
     }
     return null;
   };
 
-  return menu.reduce<NavItemType | null>(
-    (acc, item) => acc || traverse(item),
-    null
-  );
+  return menu.reduce<Menu | null>((acc, item) => acc || traverse(item), null);
 };
 
-export default function DashboardLayout({ children }: Props) {
+export default function BottomTabNaviLayout({ children }: PropsWithChildren) {
   const currentLocation = useLocation().pathname;
   const current = getMenuItemByPath(menus, currentLocation);
 

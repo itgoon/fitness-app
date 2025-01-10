@@ -26,7 +26,7 @@ export default function RecordHeader({ isEdit, handleEdit }: IRecordHeader) {
             name="AddRounded"
             sx={{ marginTop: -1, marginLeft: -2, color: '#262626' }}
             size={24}
-            onClick={() => navigate('/record/post')}
+            onClick={() => navigate('/record/new')}
           />
         )}
       </Box>

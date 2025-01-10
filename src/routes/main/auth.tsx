@@ -16,11 +16,11 @@ export const authRoutes = [
   {
     element: (
       <GuestGuard>
-        <AuthLayout>
-          <Suspense fallback={<SplashScreen />}>
+        <Suspense fallback={<SplashScreen />}>
+          <AuthLayout>
             <Outlet />
-          </Suspense>
-        </AuthLayout>
+          </AuthLayout>
+        </Suspense>
       </GuestGuard>
     ),
     children: [

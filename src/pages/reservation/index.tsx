@@ -7,7 +7,7 @@ import { TimeDateFormatKR, getTimeCheck } from '../../utils/formatTime';
 import { IReservationList } from './types';
 import ReservationStep2 from './step/ReservationStep2';
 import ReservationStep3 from './step/ReservationStep3';
-import Header from '../../components/custom/Header';
+
 /**
  * ******************************************************
  * 회원 클릭 -> 모달 -> 예약하기 버튼 클릭 ->  레슨 예약 화면

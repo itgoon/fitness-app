@@ -3,10 +3,10 @@ import { useNavigate } from 'react-router';
 import { ScheduleDto } from 'src/api';
 import { getTimeCheck } from 'src/utils/formatTime';
 import DetailCardTitle from 'src/components/custom/DetailCard/DetailCardTitle';
-import DetailCardSubTitle from 'src/components/custom/DetailCard/DetailCardSubTitle';
 import DetailCardBody from 'src/components/custom/DetailCard/DetailCardBody';
 import DetailCardInfo from 'src/components/custom/DetailCard/DetailCardInfo';
 import DetailCardIcon from 'src/components/custom/DetailCard/DetailCardIcon';
+import DetailCardSubTitle from 'src/components/custom/DetailCard/DetailCardSubtitle';
 import { useModal } from '../../../hooks/useModal';
 import Button from '../../../components/Button';
 

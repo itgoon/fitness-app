@@ -1,16 +1,15 @@
-export type NavItemType = {
+export type Menu = {
   title: string;
   url: string;
   isHeader: boolean;
   isBottom: boolean;
   isFooter: boolean;
-  children?: NavItemType[];
 };
 
-export const menus: NavItemType[] = [
+export const menus: Menu[] = [
   {
     title: '홈',
-    url: '/dashboard',
+    url: '/home',
     isHeader: true,
     isBottom: true,
     isFooter: true
@@ -20,13 +19,6 @@ export const menus: NavItemType[] = [
     url: '/schedule',
     isHeader: false,
     isBottom: true,
-    isFooter: false
-  },
-  {
-    title: '약관 및 규정',
-    url: '/contract',
-    isHeader: true,
-    isBottom: false,
     isFooter: false
   },
   {

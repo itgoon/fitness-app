@@ -5,16 +5,11 @@ const ROOTS = {
   REGISTER: '/register',
   FORGOTPASSWORD: '/forgot',
 
-  DASHBOARD: '/dashboard', // 대시보드
-  SCHEDULE: '/schedule', // 대시보드
-  RECORD: '/record', // 대시보드
-  MEMEBER: '/member', // 대시보드
-  MORE: '/more', // 대시보드
-
-  PARTNER: '/partner',
-  STORE: '/partner/store',
-  EMPLOYEE: '/employee',
-  NAVER: '/naver',
+  HOME: '/home',
+  SCHEDULE: '/schedule',
+  RECORD: '/record',
+  MEMEBER: '/member',
+  MORE: '/more',
   RESERVATION: '/reservation',
   MYPAGE: '/myPage'
 };
@@ -30,8 +25,8 @@ export const paths = {
     register: `${ROOTS.REGISTER}`,
     forgotPassword: `$${ROOTS.FORGOTPASSWORD}`
   },
-  dashboard: {
-    root: `${ROOTS.DASHBOARD}`
+  home: {
+    root: `${ROOTS.HOME}`
   },
   schedule: {
     root: `${ROOTS.SCHEDULE}`

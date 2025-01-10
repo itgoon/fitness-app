@@ -1,8 +1,6 @@
 import { lazy, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-
 import MainLayout from 'src/layouts/main';
-
 import { SplashScreen } from 'src/components/loadingScreen';
 
 // ----------------------------------------------------------------------
@@ -16,11 +14,11 @@ const Page404 = lazy(() => import('src/pages/404'));
 export const errorRoutes = [
   {
     element: (
-      <MainLayout>
-        <Suspense fallback={<SplashScreen />}>
+      <Suspense fallback={<SplashScreen />}>
+        <MainLayout>
           <Outlet />
-        </Suspense>
-      </MainLayout>
+        </MainLayout>
+      </Suspense>
     ),
     children: [
       { path: '500', element: <Page500 /> },

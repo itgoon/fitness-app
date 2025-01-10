@@ -1,8 +1,8 @@
 import { Navigate, useRoutes } from 'react-router-dom';
-
 import { authRoutes } from './auth';
-import { dashboardRoutes } from './dashboard';
 import { errorRoutes } from './error';
+import { bottomTabRoutes } from './bottomTab';
+import { stackRoutes } from './stack';
 
 // ----------------------------------------------------------------------
 
@@ -11,8 +11,11 @@ export default function Router() {
     // Auth routes
     ...authRoutes,
 
-    // Main routes
-    ...dashboardRoutes,
+    // Tab routes
+    ...bottomTabRoutes,
+
+    // Navi routers
+    ...stackRoutes,
 
     // Error routes
     ...errorRoutes,

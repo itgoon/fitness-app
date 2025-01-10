@@ -5,7 +5,7 @@ import { Container } from '@mui/material';
 
 export const SPACING = 0;
 
-export default function Main({ children, sx, ...other }: BoxProps) {
+export default function Main({ children, sx }: BoxProps) {
   return (
     <Box
       component="main"
@@ -15,7 +15,6 @@ export default function Main({ children, sx, ...other }: BoxProps) {
         overflow: 'hidden',
         ...sx
       }}
-      {...other}
     >
       <Container>{children}</Container>
     </Box>

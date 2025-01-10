@@ -1,9 +1,8 @@
 import { Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router';
 import AlaramCard from '../../components/custom/AlaramCard';
-import ReservationCard from '../../components/custom/reservationCard/ReservationCard';
 import EmptyCard from '../../components/custom/customCard/EmptyCard';
-import { dummyCardData, dummyReservaitonListCard } from '../../utils/dummy';
+import { dummyCardData } from '../../utils/dummy';
 import Wrap from '../../components/custom/Wrap';
 import Divider from '../../components/custom/Divider';
 
@@ -32,8 +31,6 @@ export default function Notification() {
         onClick={() => navigate('/contract')}
         onClickMsg="서명하기"
       />
-
-      <ReservationCard cardData={dummyReservaitonListCard[0]} />
     </Wrap>
   );
 }

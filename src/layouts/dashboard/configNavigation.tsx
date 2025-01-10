@@ -1,9 +1,6 @@
 import { useMemo } from 'react';
-
 import { paths } from 'src/routes/paths';
-
 import { useTranslate } from 'src/locales';
-
 import { useLocation } from 'react-router';
 import { useTheme } from '@mui/material';
 import Iconify from '../../components/iconify';
@@ -38,7 +35,7 @@ const ICONS = {
 
 export function useNavData() {
   const { t } = useTranslate();
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
   const { palette } = useTheme();
 
   const renderIcon = (iconName: any) => {
@@ -58,9 +55,9 @@ export function useNavData() {
         items: [
           {
             title: t('홈'),
-            path: paths.dashboard.root,
+            path: paths.home.root,
             icon: renderIcon(
-              pathname === paths.dashboard.root ? ICONS.homeColor : ICONS.home
+              pathname === paths.home.root ? ICONS.homeColor : ICONS.home
             )
           },
           {
