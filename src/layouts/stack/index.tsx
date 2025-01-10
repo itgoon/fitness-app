@@ -22,13 +22,11 @@ const getMenuItemByPath = (menu: Menu[], path: string): Menu | null => {
 export default function StackNaviLayout({ children }: PropsWithChildren) {
   const navigate = useNavigate();
 
-  const location = useLocation();
-
   const currentLocation = useLocation().pathname;
 
   const current = getMenuItemByPath(menus, currentLocation);
 
-  const title = current?.title || location.state.title;
+  const isHeader = current?.title ?? false;
 
   return (
     <Box
@@ -39,7 +37,12 @@ export default function StackNaviLayout({ children }: PropsWithChildren) {
       overflow="hidden"
       flexDirection="column"
     >
-      <Header left={<Prev onClick={() => navigate(-1)} />} title={title} />
+      {isHeader && (
+        <Header
+          left={<Prev onClick={() => navigate(-1)} />}
+          title={current?.title}
+        />
+      )}
 
       <Main sx={{ pt: current?.title ? 7 : 0 }}>{children}</Main>
     </Box>

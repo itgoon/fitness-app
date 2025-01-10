@@ -4,10 +4,10 @@ import { useNavigate } from 'react-router';
 import { CenterPolicyDto } from 'src/api';
 import Button from 'src/components/Button';
 import Sizer from 'src/components/common/Sizer';
+import TermsContent from 'src/components/Terms/TermsContent';
+import TermsTitle from 'src/components/Terms/TermsTitle';
 import { paths } from 'src/routes/paths';
 import { CenterService } from 'src/service';
-import TermsTitle from './Terms/TermsTitle';
-import TermsContent from './Terms/TermsContent';
 
 export default function TermsPage() {
   const navigate = useNavigate();
