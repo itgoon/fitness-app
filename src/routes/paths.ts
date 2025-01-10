@@ -30,7 +30,7 @@ export const paths = {
     root: `${ROOTS.HOME}`
   },
   schedule: {
-    root: `${ROOTS.SCHEDULE}`,
+    root: `${ROOTS.SCHEDULE}/list`,
     workout: (id: string) => `${ROOTS.SCHEDULE}/workout/${id}`,
     reservation: (id: string) => `${ROOTS.SCHEDULE}/reservation/${id}`
   },

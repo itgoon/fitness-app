@@ -14,6 +14,8 @@ import Divider from '../../../components/custom/Divider';
  * ******************************************************
  */
 export default function SchedulePage() {
+  const location = useLocation();
+
   const today = dayjs().format('YYYY-MM-DD');
 
   const params = useLocation();
@@ -22,7 +24,7 @@ export default function SchedulePage() {
 
   const [tabValue, setTabValue] = useState(0);
 
-  const [date, setDate] = useState(paramsDate || today);
+  const [date, setDate] = useState(location.state.date || today);
 
   const onDataChange = (newDate: string) => {
     setDate(newDate);
@@ -33,7 +35,7 @@ export default function SchedulePage() {
       <DateCalendar
         isBadge
         workData={dummyMonthWorkoutList}
-        value={paramsDate}
+        value={date}
         onChange={(e) => onDataChange(dayjs(e).format('YYYY-MM-DD'))}
       />
       <Divider />

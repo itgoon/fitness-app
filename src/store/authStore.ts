@@ -13,7 +13,7 @@ export const initialAuthState = {
  * 인증 정보 저장소
  */
 export const authState = atom<typeof initialAuthState>({
-  key: `auth`,
+  key: `auth-app`,
   default: undefined,
   effects_UNSTABLE: [persistAtom]
 });

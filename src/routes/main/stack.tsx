@@ -27,13 +27,13 @@ const ContractViewPage = lazy(() => import('src/pages/contract/view/page'));
 export const stackRoutes = [
   {
     element: (
-      // <AuthGuard>
-      <Suspense fallback={<SplashScreen />}>
-        <StackNaviLayout>
-          <Outlet />
-        </StackNaviLayout>
-      </Suspense>
-      // </AuthGuard>
+      <AuthGuard>
+        <Suspense fallback={<SplashScreen />}>
+          <StackNaviLayout>
+            <Outlet />
+          </StackNaviLayout>
+        </Suspense>
+      </AuthGuard>
     ),
     children: [
       {
