@@ -39,9 +39,15 @@ export default function LoginView() {
   });
 
   const onKakaoLogin = () => {
-    // onSubmit();
-    navigate('/dashboard');
-    // window.ReactNativeWebView.postMessage(JSON.stringify({ type: 'signinKakao' }));
+    window.ReactNativeWebView?.postMessage(
+      JSON.stringify({ type: 'signinKakao' })
+    );
+  };
+
+  const onAppleLogin = () => {
+    window.ReactNativeWebView?.postMessage(
+      JSON.stringify({ type: 'signinApple' })
+    );
   };
 
   return (
@@ -138,6 +144,7 @@ export default function LoginView() {
             size="large"
             variant="contained"
             sx={{ height: 52 }}
+            onClick={onAppleLogin}
           >
             Apple 계정으로 시작하기
           </Button>
