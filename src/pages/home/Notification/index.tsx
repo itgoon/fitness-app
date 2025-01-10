@@ -1,6 +1,7 @@
 import { Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router';
 import Sizer from 'src/components/common/Sizer';
+import { paths } from 'src/routes/paths';
 import AlaramCard from '../../../components/custom/AlaramCard';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
 import { dummyCardData } from '../../../utils/dummy';
@@ -29,7 +30,7 @@ export default function Notification() {
           isEmpty={false}
           title="새로운 서명요청이 있습니다!"
           dataList={dummyCardData}
-          onClick={() => navigate('/contract')}
+          onClick={() => navigate(paths.contract.terms)}
           onClickMsg="서명하기"
         />
       </Sizer>

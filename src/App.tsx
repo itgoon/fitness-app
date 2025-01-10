@@ -55,14 +55,8 @@ export default function App() {
             <SnackbarProvider>
               <AuthProvider>
                 <ModalProvider>
-                  <SignProvider>
-                    <CardProvider>
-                      <EditProvider>
-                        <ProgressBar />
-                        <Router />
-                      </EditProvider>
-                    </CardProvider>
-                  </SignProvider>
+                  <ProgressBar />
+                  <Router />
                 </ModalProvider>
               </AuthProvider>
             </SnackbarProvider>
