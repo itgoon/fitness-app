@@ -1,10 +1,10 @@
 import { lazy, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
 import DashboardLayout from 'src/layouts/dashboard';
-import { LoadingScreen, SplashScreen } from 'src/components/loadingScreen';
+import { SplashScreen } from 'src/components/loadingScreen';
 import AuthGuard from 'src/components/guard/AuthGuard';
 import WorkoutCardDetail from '../../pages/schedule/detail/WorkoutCardDetail';
-import ReservationCardDetail from '../../pages/schedule/detail/ReservationCardDetail';
+import ReservationCardDetail from '../../pages/schedule/detail';
 import CancelledReservation from '../../pages/schedule/detail/CancelledReservation';
 
 // ----------------------------------------------------------------------

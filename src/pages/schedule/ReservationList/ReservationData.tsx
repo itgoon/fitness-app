@@ -10,13 +10,10 @@ import CardIcon from 'src/components/custom/Card/CardIcon';
 
 interface IReservationData {
   list: ScheduleDto[];
-  onClick: () => void;
+  onClick: (id: number) => void;
 }
 
 export default function ReservationData({ list, onClick }: IReservationData) {
-  console.log('예약 리스트');
-  console.log(list);
-
   return (
     <Stack gap={2}>
       {list?.map((item, key) => (
@@ -25,7 +22,7 @@ export default function ReservationData({ list, onClick }: IReservationData) {
             {dayjs(item.schDate).format('M월 DD일 ddd요일')}
           </CardHeader>
 
-          <CardBody onClick={onClick}>
+          <CardBody onClick={() => onClick(item.schSeq)}>
             <CardIcon iconName="Red" />
 
             <Stack gap={1}>

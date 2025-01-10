@@ -14,8 +14,8 @@ export default function ReservationList({ date }: ReservationListProps) {
 
   const navigate = useNavigate();
 
-  const onClick = () => {
-    navigate(`/schedule/reservation/${date}`);
+  const onClick = (id: number) => {
+    navigate(`/schedule/reservation/${id}`);
   };
 
   useEffect(() => {

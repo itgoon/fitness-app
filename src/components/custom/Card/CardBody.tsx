@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 import { PropsWithChildren } from 'react';
 
 interface CardBodyProps {
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 export default function CardBody({
