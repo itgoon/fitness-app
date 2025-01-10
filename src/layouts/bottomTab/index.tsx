@@ -11,7 +11,7 @@ import { Menu, menus } from './config';
 
 const getMenuItemByPath = (menu: Menu[], path: string): Menu | null => {
   const traverse = (menuItem: Menu): Menu | null => {
-    if (menuItem.url === path) {
+    if (path.startsWith(menuItem.url)) {
       return menuItem;
     }
     return null;

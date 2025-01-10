@@ -1,15 +1,15 @@
 import { lazy, Suspense } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Navigate, Outlet } from 'react-router-dom';
 import { SplashScreen } from 'src/components/loadingScreen';
 import AuthGuard from 'src/components/guard/AuthGuard';
 import BottomTabNaviLayout from 'src/layouts/bottomTab';
 
 // ----------------------------------------------------------------------
 
-const HomePage = lazy(() => import('src/pages/home'));
-const SchedulePage = lazy(() => import('src/pages/schedule'));
-const RecordPage = lazy(() => import('src/pages/record'));
-const MorePage = lazy(() => import('src/pages/more'));
+const HomePage = lazy(() => import('src/pages/home/page'));
+const ScheduleListPage = lazy(() => import('src/pages/schedule/list/page'));
+const RecordPage = lazy(() => import('src/pages/record/page'));
+const MorePage = lazy(() => import('src/pages/more/page'));
 
 // ----------------------------------------------------------------------
 
@@ -31,7 +31,10 @@ export const bottomTabRoutes = [
       },
       {
         path: 'schedule',
-        children: [{ element: <SchedulePage />, index: true }]
+        children: [
+          { element: <Navigate to="list" replace />, index: true },
+          { path: 'list', element: <ScheduleListPage /> }
+        ]
       },
       {
         path: 'record',

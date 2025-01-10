@@ -37,6 +37,7 @@ export default function NavBottom() {
       setIsOpen((prev) => !prev);
     }
   };
+
   return (
     <>
       <BottomNavigation

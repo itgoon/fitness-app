@@ -3,8 +3,8 @@ import dayjs from 'dayjs';
 import { Badge, Box, Stack, Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { ScheduleService } from 'src/service';
-import { DateReqFormat } from '../../utils/formatTime';
-import Button from '../../components/Button';
+import { DateReqFormat } from '../../../utils/formatTime';
+import Button from '../../../components/Button';
 
 const WEEKDAYS = ['일', '월', '화', '수', '목', '금', '토'];
 

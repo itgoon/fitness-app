@@ -10,7 +10,7 @@ import { Menu, menus } from './config';
 
 const getMenuItemByPath = (menu: Menu[], path: string): Menu | null => {
   const traverse = (menuItem: Menu): Menu | null => {
-    if (menuItem.url === path) {
+    if (path.startsWith(menuItem.url)) {
       return menuItem;
     }
     return null;
@@ -22,11 +22,13 @@ const getMenuItemByPath = (menu: Menu[], path: string): Menu | null => {
 export default function StackNaviLayout({ children }: PropsWithChildren) {
   const navigate = useNavigate();
 
+  const location = useLocation();
+
   const currentLocation = useLocation().pathname;
 
   const current = getMenuItemByPath(menus, currentLocation);
 
-  const isHeader = current?.isHeader ?? false;
+  const title = current?.title || location.state.title;
 
   return (
     <Box
@@ -35,14 +37,9 @@ export default function StackNaviLayout({ children }: PropsWithChildren) {
       height="100%"
       width="100%"
       overflow="hidden"
-      flexDirection={{ xs: 'column', lg: 'row' }}
+      flexDirection="column"
     >
-      {isHeader && (
-        <Header
-          left={<Prev onClick={() => navigate(-1)} />}
-          title={current?.title || ''}
-        />
-      )}
+      <Header left={<Prev onClick={() => navigate(-1)} />} title={title} />
 
       <Main>{children}</Main>
     </Box>

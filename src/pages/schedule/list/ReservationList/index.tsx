@@ -2,6 +2,7 @@ import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 import { ScheduleService } from 'src/service';
 import { ScheduleDto } from 'src/api';
+import dayjs from 'dayjs';
 import EmptyReservationData from './EmptyReservationData';
 import ReservationData from './ReservationData';
 
@@ -14,10 +15,6 @@ export default function ReservationList({ date }: ReservationListProps) {
 
   const navigate = useNavigate();
 
-  const onClick = (id: number) => {
-    navigate(`/schedule/reservation/${id}`);
-  };
-
   useEffect(() => {
     loadScheduleList();
   }, []);
@@ -26,6 +23,12 @@ export default function ReservationList({ date }: ReservationListProps) {
     const res = await ScheduleService.loadReservationList({});
 
     setReservationList(res.data);
+  };
+
+  const onClick = (id: number) => {
+    navigate(`/schedule/reservation/${id}`, {
+      state: { title: dayjs(date).format('M월 DD일 ddd요일') }
+    });
   };
 
   return reservationList?.length === 0 ? (

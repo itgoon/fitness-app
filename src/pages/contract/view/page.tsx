@@ -1,21 +1,12 @@
 import { Box, Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
-import { useNavigate } from 'react-router';
-import Header from 'src/components/common/Header';
 import Sizer from 'src/components/common/Sizer';
-import { Prev } from 'src/components/Icon/HeaderIcon';
 
 export default function ContractViewPage() {
-  const navigate = useNavigate();
-
   const [tabValue, setTabValue] = useState(0);
 
   return (
     <>
-      <Header
-        left={<Prev onClick={() => navigate(-1)} />}
-        title="일단 리온짐"
-      />
       <Box pt={3}>
         <Tabs
           value={tabValue}

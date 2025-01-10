@@ -1,6 +1,5 @@
 import { Box } from '@mui/material';
 import { RecordDto } from 'src/api';
-import ReservationCard from '../../../components/custom/reservationCard/ReservationCard';
 
 interface IWorkoutCard {
   list: RecordDto[];

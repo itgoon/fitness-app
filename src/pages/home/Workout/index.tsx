@@ -8,7 +8,7 @@ import Card from './Card';
 
 const name = '홍길동';
 
-export default function WorkoutStatus() {
+export default function Workout() {
   const { palette } = useTheme();
   const light = palette.mode === 'light';
   const grey = light ? palette.grey[500] : palette.grey[600];

@@ -1,8 +1,8 @@
 import { Stack } from '@mui/material';
-import Notification from './Notification';
 import Divider from '../../components/custom/Divider';
 import WeekCalendar from './WeekCalendar';
-import WorkoutStatus from './workoutStatus/WorkoutStatus';
+import Workout from './Workout';
+import Notification from './Notification';
 
 /**
  * ******************************************************
@@ -19,7 +19,7 @@ export default function HomePage() {
       <WeekCalendar />
       <Divider />
 
-      <WorkoutStatus />
+      <Workout />
       <Divider />
 
       <Notification />

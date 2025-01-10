@@ -4,7 +4,6 @@ import { ScheduleService } from 'src/service';
 import { useParams } from 'react-router';
 import { ScheduleDto } from 'src/api';
 import ReservedCard from './ReservedCard';
-import AttendancedCard from './AttendancedCard';
 
 export default function ReservationCardDetail() {
   const params = useParams();

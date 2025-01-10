@@ -11,6 +11,7 @@ const ROOTS = {
   MEMEBER: '/member',
   MORE: '/more',
   RESERVATION: '/reservation',
+  CONTRACT: '/contract',
   MYPAGE: '/myPage'
 };
 
@@ -29,7 +30,9 @@ export const paths = {
     root: `${ROOTS.HOME}`
   },
   schedule: {
-    root: `${ROOTS.SCHEDULE}`
+    root: `${ROOTS.SCHEDULE}`,
+    workout: (id: string) => `${ROOTS.SCHEDULE}/workout/${id}`,
+    reservation: (id: string) => `${ROOTS.SCHEDULE}/reservation/${id}`
   },
   member: {
     root: `${ROOTS.MEMEBER}`
@@ -45,5 +48,11 @@ export const paths = {
   },
   reservation: {
     root: `${ROOTS.RESERVATION}`
+  },
+  contract: {
+    root: `${ROOTS.CONTRACT}`,
+    new: `${ROOTS.CONTRACT}/new`,
+    terms: `${ROOTS.CONTRACT}/terms`,
+    view: `${ROOTS.CONTRACT}/view`
   }
 };

@@ -4,9 +4,9 @@ import { useLocation } from 'react-router';
 import dayjs from 'dayjs';
 import WorkOutRecord from './WorkOutRecord';
 import ReservationList from './ReservationList';
-import { dummyMonthWorkoutList } from '../../utils/dummy';
-import DateCalendar from '../../components/custom/calendar/DateCalendar';
-import Divider from '../../components/custom/Divider';
+import { dummyMonthWorkoutList } from '../../../utils/dummy';
+import DateCalendar from '../../../components/custom/calendar/DateCalendar';
+import Divider from '../../../components/custom/Divider';
 
 /**
  * ******************************************************

@@ -3,8 +3,8 @@ import { Outlet } from 'react-router-dom';
 import { SplashScreen } from 'src/components/loadingScreen';
 import AuthGuard from 'src/components/guard/AuthGuard';
 import StackNaviLayout from 'src/layouts/stack';
-import WorkoutCardDetail from '../../pages/schedule/detail/WorkoutCardDetail';
-import ReservationCardDetail from '../../pages/schedule/detail';
+import WorkoutCardDetail from '../../pages/schedule/workout/page';
+import ReservationCardDetail from '../../pages/schedule/reservation/page';
 
 // ----------------------------------------------------------------------
 
@@ -12,7 +12,10 @@ import ReservationCardDetail from '../../pages/schedule/detail';
 const RecordPostPage = lazy(() => import('src/pages/record/new/page'));
 
 // 예약
-const ReservationPage = lazy(() => import('src/pages/reservation'));
+const ReservationPage = lazy(() => import('src/pages/reservation/page'));
+const ReservationCheckPage = lazy(
+  () => import('src/pages/reservation/check/page')
+);
 
 // 계약서
 const ContractTermsPage = lazy(() => import('src/pages/contract/terms/page'));
@@ -46,7 +49,10 @@ export const stackRoutes = [
       },
       {
         path: 'reservation',
-        children: [{ element: <ReservationPage /> }]
+        children: [
+          { path: '', element: <ReservationPage /> },
+          { path: 'check', element: <ReservationCheckPage /> }
+        ]
       },
       {
         path: 'contract',
