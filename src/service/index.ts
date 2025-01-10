@@ -7,12 +7,6 @@ import * as RecordService from './recordService';
 import * as RecordFileService from './recordFileService';
 import * as CenterService from './centerService';
 
-import * as EmployeeService from './employeeService';
-import * as PartnerService from './partnerService';
-import * as StoreService from './storeService';
-import * as UserService from './userService';
-import * as VisitorService from './visitorService';
-
 export {
   AuthService,
   CodeService,
@@ -21,10 +15,5 @@ export {
   ContractService,
   RecordService,
   RecordFileService,
-  EmployeeService,
-  PartnerService,
-  StoreService,
-  UserService,
-  VisitorService,
   CenterService
 };
