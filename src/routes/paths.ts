@@ -38,7 +38,8 @@ export const paths = {
     root: `${ROOTS.MEMEBERSHIP}`
   },
   record: {
-    root: `${ROOTS.RECORD}`
+    root: `${ROOTS.RECORD}`,
+    new: `${ROOTS.RECORD}/new`
   },
   more: {
     root: `${ROOTS.MORE}`

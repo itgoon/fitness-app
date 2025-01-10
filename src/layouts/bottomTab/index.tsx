@@ -27,6 +27,7 @@ export default function BottomTabNaviLayout({ children }: PropsWithChildren) {
   const isHeader = current?.isHeader ?? false;
   const isBottom = current?.isBottom ?? false;
   const isFooter = current?.isFooter ?? false;
+  const isSpacing = current?.isSpacing ?? false;
 
   // current에 따라 헤더 아이콘 결정
 
@@ -40,7 +41,7 @@ export default function BottomTabNaviLayout({ children }: PropsWithChildren) {
       flexDirection="column"
     >
       {isHeader && <Header title={current?.title || ''} />}
-      <Main sx={{ paddingBottom: isBottom ? 8 : 0 }}>
+      <Main sx={{ pb: isBottom ? 8 : 0, pt: isSpacing ? 7 : 0 }}>
         {children}
         {isFooter && <Footer />}
       </Main>

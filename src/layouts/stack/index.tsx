@@ -41,7 +41,7 @@ export default function StackNaviLayout({ children }: PropsWithChildren) {
     >
       <Header left={<Prev onClick={() => navigate(-1)} />} title={title} />
 
-      <Main>{children}</Main>
+      <Main sx={{ pt: current?.title ? 7 : 0 }}>{children}</Main>
     </Box>
   );
 }

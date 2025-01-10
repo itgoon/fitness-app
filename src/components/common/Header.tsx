@@ -13,11 +13,16 @@ export default function Header({ left, title, right }: HeaderProps) {
       component="header"
       role="presentation"
       sx={{
+        position: 'fixed',
+        top: 0,
+        width: '100%',
         height: 56,
         display: 'flex',
         justifyContent: 'center',
         alignItems: 'center',
-        px: 2
+        px: 2,
+        backgroundColor: 'white',
+        zIndex: 1000
       }}
     >
       {left}

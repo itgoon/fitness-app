@@ -1,8 +1,8 @@
-import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Header from 'src/components/common/Header';
 import Icon from 'src/components/Icon';
 import { useNavigate } from 'react-router';
+import { paths } from 'src/routes/paths';
 import Tabs from '../../components/custom/Tabs/Tabs';
 import { TdietRecordList } from './types';
 import TabPanel from '../../components/custom/Tabs/TabPanel';
@@ -119,56 +119,54 @@ export default function Record() {
 
   return (
     <>
-      <Box>
-        <Header
-          left={
-            <Icon
-              name="AddRounded"
-              sx={{ marginTop: -1, marginLeft: -2, color: '#262626' }}
-              size={24}
-              onClick={() => navigate('/record/new')}
-            />
-          }
-          title="기록"
-          right={
-            <Icon
-              size={22}
-              name="MoreVertRounded"
-              onClick={() => {
-                setIsEdit((prev) => !prev);
-                setSelectedIndex([]);
-              }}
-            />
-          }
-        />
+      <Header
+        left={
+          <Icon
+            name="AddRounded"
+            sx={{ marginTop: -1, marginLeft: -2, color: '#262626' }}
+            size={24}
+            onClick={() => navigate(paths.record.new)}
+          />
+        }
+        title="기록"
+        right={
+          <Icon
+            size={22}
+            name="MoreVertRounded"
+            onClick={() => {
+              setIsEdit((prev) => !prev);
+              setSelectedIndex([]);
+            }}
+          />
+        }
+      />
 
-        <Tabs
-          value={tabValue}
-          onChange={(e, newValue) => setTabValue(newValue)}
-          frLabel="운동"
-          secLabel="식단"
-        />
-        <TabPanel value={tabValue} index={0}>
-          {dietList?.length > 0 ? <WorkoutTab>work</WorkoutTab> : <EmptyList />}
-        </TabPanel>
-        <TabPanel value={tabValue} index={1}>
-          {dietList?.length > 0 ? (
-            <DietTab>
-              <RecordList
-                arrList={dietList}
-                isEdit={isEdit}
-                selectedIndex={selectedIndex}
-                onChange={handleSelect}
-                onClickImage={onClickImage}
-                onDelete={viewImageDelete}
-                afterChange={handleAfterChange}
-              />
-            </DietTab>
-          ) : (
-            <EmptyList />
-          )}
-        </TabPanel>
-      </Box>
+      <Tabs
+        value={tabValue}
+        onChange={(e, newValue) => setTabValue(newValue)}
+        frLabel="운동"
+        secLabel="식단"
+      />
+      <TabPanel value={tabValue} index={0}>
+        {dietList?.length > 0 ? <WorkoutTab>work</WorkoutTab> : <EmptyList />}
+      </TabPanel>
+      <TabPanel value={tabValue} index={1}>
+        {dietList?.length > 0 ? (
+          <DietTab>
+            <RecordList
+              arrList={dietList}
+              isEdit={isEdit}
+              selectedIndex={selectedIndex}
+              onChange={handleSelect}
+              onClickImage={onClickImage}
+              onDelete={viewImageDelete}
+              afterChange={handleAfterChange}
+            />
+          </DietTab>
+        ) : (
+          <EmptyList />
+        )}
+      </TabPanel>
 
       {isEdit && (
         <RecordBottom
