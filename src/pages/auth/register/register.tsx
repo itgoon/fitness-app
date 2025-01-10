@@ -1,16 +1,11 @@
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-
 import { useBoolean } from 'src/hooks/useBoolean';
-
 import FormProvider from 'src/components/hookForm';
-
 import { useState } from 'react';
-
 import { useResponsive } from 'src/hooks/useResponsive';
 import { Box } from '@mui/material';
-import { ReqLogin } from '../../../types/auth';
 import StepFlow from '../../../components/custom/StepFlow';
 import Step1 from './step/Step1';
 import Step2 from './step/Step2';
@@ -32,7 +27,7 @@ export default function RegisterView() {
     password: Yup.string().required('비밀번호를 입력해주세요.')
   });
 
-  const methods = useForm<ReqLogin>({
+  const methods = useForm({
     resolver: yupResolver(LoginSchema),
     defaultValues: {
       userId: '',

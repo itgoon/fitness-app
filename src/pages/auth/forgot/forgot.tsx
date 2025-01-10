@@ -1,11 +1,8 @@
 import * as Yup from 'yup';
 import { useForm } from 'react-hook-form';
 import { yupResolver } from '@hookform/resolvers/yup';
-
 import FormProvider from 'src/components/hookForm';
-
 import { useState } from 'react';
-import { ReqLogin } from '../../../types/auth';
 import Step1 from './Step1';
 import Step2 from './Step2';
 import Step3 from './Step3';
@@ -44,7 +41,7 @@ export default function ForgotView() {
     formState: { isSubmitting }
   } = methods;
 
-  const onSubmit = handleSubmit(async (data: ReqLogin) => {
+  const onSubmit = handleSubmit(async (data) => {
     try {
       // auth.login({
       //   ...data,

@@ -5,12 +5,10 @@ import { useRouter } from 'src/routes/hooks';
 
 import { useTranslate } from 'src/locales';
 
-import { User } from 'src/types/user';
-
 // ----------------------------------------------------------------------
 
 type Props = {
-  user: User;
+  user: any;
 };
 
 export default function UserToolbar({ user }: Props) {
