@@ -57,14 +57,16 @@ export function useNavData() {
             title: t('홈'),
             path: paths.home.root,
             icon: renderIcon(
-              pathname === paths.home.root ? ICONS.homeColor : ICONS.home
+              pathname.startsWith(paths.home.root)
+                ? ICONS.homeColor
+                : ICONS.home
             )
           },
           {
             title: '일정',
             path: paths.schedule.root,
             icon: renderIcon(
-              pathname === paths.schedule.root
+              pathname.startsWith(paths.schedule.root)
                 ? ICONS.calendarColor
                 : ICONS.calendar
             )
@@ -73,7 +75,7 @@ export function useNavData() {
             title: '회원권',
             path: paths.member.root,
             icon: renderIcon(
-              pathname === paths.member.root
+              pathname.startsWith(paths.member.root)
                 ? ICONS.membershipColor
                 : ICONS.membership
             )

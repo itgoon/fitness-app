@@ -18,6 +18,7 @@ import { CardProvider } from './hooks/useCard';
 import { SignProvider } from './hooks/useSign';
 import { EditProvider } from './hooks/useEditState';
 import useCode from './hooks/useCode';
+import { useMe } from './hooks/useMe';
 
 // ----------------------------------------------------------------------
 
@@ -35,6 +36,7 @@ export default function App() {
   console.info(`%c${charAt}`, 'color: #5BE49B');
 
   useCode();
+  useMe();
 
   return (
     <LocalizationProvider>

@@ -8,15 +8,18 @@ import { QRCenterData, QRCustomerData } from '../../utils/dummy';
 import QrModal from '../custom/QrModal';
 
 export default function NavBottom() {
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
   const theme = useTheme();
+
+  const navData = useNavData();
+
   const grey500 =
     theme.palette.mode === 'light' ? theme.palette.grey[500] : 'white';
-  const navData = useNavData();
-  const navigate = useNavigate();
-  const location = useLocation();
   const [list, setList] = useState<any[]>([]);
 
-  // modal
   const [isOpen, setIsOpen] = useState(false);
 
   useLayoutEffect(() => {

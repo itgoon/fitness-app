@@ -7,6 +7,7 @@ import Button from 'src/components/Button';
 import Icon from 'src/components/Icon';
 import FormProvider, { RHFTextField } from 'src/components/hookForm';
 import { useAuth } from 'src/hooks/useAuth';
+import { paths } from 'src/routes/paths';
 import { LoginSchema } from './_schema';
 
 // ----------------------------------------------------------------------
@@ -28,6 +29,7 @@ export default function LoginView() {
       password: ''
     }
   });
+
   const {
     handleSubmit,
     formState: { isSubmitting }
@@ -35,7 +37,7 @@ export default function LoginView() {
 
   const onSubmit = handleSubmit(async (data) => {
     login(data);
-    navigate('/dashboard');
+    navigate(paths.home.root);
   });
 
   const onKakaoLogin = () => {

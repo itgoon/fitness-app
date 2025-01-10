@@ -2,14 +2,16 @@ import { useState } from 'react';
 import { Stack, Typography, useTheme } from '@mui/material';
 import dayjs from 'dayjs';
 import Sizer from 'src/components/common/Sizer';
+import { useMe } from 'src/hooks/useMe';
 import Button from '../../../components/Button';
 import { MontFormatKR } from '../../../utils/formatTime';
 import Card from './Card';
 
-const name = '홍길동';
-
 export default function Workout() {
   const { palette } = useTheme();
+
+  const me = useMe();
+
   const light = palette.mode === 'light';
   const grey = light ? palette.grey[500] : palette.grey[600];
   const today = dayjs().format(MontFormatKR);
@@ -25,7 +27,7 @@ export default function Workout() {
 
         <Stack gap={2.5}>
           <Typography variant="Body20/semiBold" lineHeight="30px">
-            <span>{name} 님,</span>
+            <span>{me?.mbrNm} 님,</span>
             <br />
             <span>
               {isWorking
