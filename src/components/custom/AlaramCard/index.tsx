@@ -4,12 +4,10 @@ import Button from '../../Button';
 import EmptyCard from '../customCard/EmptyCard';
 
 export default function AlaramCard({
-  isEmpty = true,
   title,
   dataList,
   onClick,
-  onClickMsg,
-  margin
+  onClickMsg
 }: IAlaramCard) {
   const theme = useTheme();
   const { palette } = theme;
@@ -22,8 +20,8 @@ export default function AlaramCard({
       borderRadius={2}
       padding="24px 20px"
       gap={3}
-      margin="12px 20px 24px"
       direction="column"
+      sx={{ mt: 1.5, mb: 4 }}
     >
       {title && (
         <Typography variant="Body18/bold" children={title} color={grey900} />
@@ -45,6 +43,7 @@ export default function AlaramCard({
           </Box>
         ))}
       </Stack>
+
       {onClick && (
         <Button
           variant="contained"

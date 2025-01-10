@@ -52,23 +52,24 @@ export default function NavBottom() {
         }}
         onClick={(newValue) => openModal(newValue)}
       >
-        {list?.map((item) => (
-            <BottomNavigationAction
-              sx={{
-                minWidth: 64,
-                padding: 0,
-                span: {
-                  fontSize: 11,
-                  fontWeight: 500,
-                  color:
-                    item.path !== location.pathname ? grey500 : 'currentColor'
-                }
-              }}
-              label={item.title}
-              icon={item?.icon}
-              value={item.path}
-            />
-          ))}
+        {list?.map((item, key) => (
+          <BottomNavigationAction
+            key={key}
+            sx={{
+              minWidth: 64,
+              padding: 0,
+              span: {
+                fontSize: 11,
+                fontWeight: 500,
+                color:
+                  item.path !== location.pathname ? grey500 : 'currentColor'
+              }
+            }}
+            label={item.title}
+            icon={item?.icon}
+            value={item.path}
+          />
+        ))}
         {/* <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
       <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
       <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}

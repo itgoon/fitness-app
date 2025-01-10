@@ -5,17 +5,13 @@ const ROOTS = {
   REGISTER: '/register',
   FORGOTPASSWORD: '/forgot',
 
-  DASHBOARD: '/dashboard', // 대시보드
-  SCHEDULE: '/schedule', // 대시보드
-  RECORD: '/record', // 대시보드
-  MEMEBER: '/member', // 대시보드
-  MORE: '/more', // 대시보드
-
-  PARTNER: '/partner',
-  STORE: '/partner/store',
-  EMPLOYEE: '/employee',
-  NAVER: '/naver',
+  HOME: '/home',
+  SCHEDULE: '/schedule',
+  RECORD: '/record',
+  MEMEBER: '/member',
+  MORE: '/more',
   RESERVATION: '/reservation',
+  CONTRACT: '/contract',
   MYPAGE: '/myPage'
 };
 
@@ -30,11 +26,13 @@ export const paths = {
     register: `${ROOTS.REGISTER}`,
     forgotPassword: `$${ROOTS.FORGOTPASSWORD}`
   },
-  dashboard: {
-    root: `${ROOTS.DASHBOARD}`
+  home: {
+    root: `${ROOTS.HOME}`
   },
   schedule: {
-    root: `${ROOTS.SCHEDULE}`
+    root: `${ROOTS.SCHEDULE}`,
+    workout: (id: string) => `${ROOTS.SCHEDULE}/workout/${id}`,
+    reservation: (id: string) => `${ROOTS.SCHEDULE}/reservation/${id}`
   },
   member: {
     root: `${ROOTS.MEMEBER}`
@@ -50,5 +48,11 @@ export const paths = {
   },
   reservation: {
     root: `${ROOTS.RESERVATION}`
+  },
+  contract: {
+    root: `${ROOTS.CONTRACT}`,
+    new: `${ROOTS.CONTRACT}/new`,
+    terms: `${ROOTS.CONTRACT}/terms`,
+    view: `${ROOTS.CONTRACT}/view`
   }
 };

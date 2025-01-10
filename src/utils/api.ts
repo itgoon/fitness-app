@@ -1,5 +1,16 @@
 import axios from 'axios';
-import { AuthApi, Configuration } from '../api';
+import {
+  AuthApi,
+  CenterApi,
+  CenterPolicyApi,
+  CodeApi,
+  Configuration,
+  ContractApi,
+  ProductCategoriesApi,
+  RecordApi,
+  RecordFileApi,
+  ScheduleApi
+} from '../api';
 
 axios.interceptors.request.use(
   (config) => {
@@ -35,11 +46,19 @@ axios.interceptors.response.use(
 
 const api = () => {
   const configuration = new Configuration({
-    basePath: 'https://fitness-api-dev.itgoon.net/user' // Config.publicApiUrl
+    basePath: 'http://localhost:3000/user' // Config.publicApiUrl
   });
 
   return {
-    auth: new AuthApi(configuration)
+    auth: new AuthApi(configuration),
+    center: new CenterApi(configuration),
+    code: new CodeApi(configuration),
+    schedule: new ScheduleApi(configuration),
+    productCategories: new ProductCategoriesApi(configuration),
+    contract: new ContractApi(configuration),
+    record: new RecordApi(configuration),
+    recordFile: new RecordFileApi(configuration),
+    centerPolicy: new CenterPolicyApi(configuration)
   };
 };
 

@@ -22,7 +22,12 @@
     "forceConsistentCasingInFileNames": true
   },
   "exclude": ["node_modules"],
-  "include": ["src/**/*", "vite.config.mts", "commitlint.config.js"],
+  "include": [
+    "src/**/*",
+    "vite.config.mts",
+    "commitlint.config.js",
+    "global.d.ts"
+  ],
   "references": [
     {
       "path": "./tsconfig.node.json"

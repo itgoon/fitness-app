@@ -1,9 +1,8 @@
 import { lazy, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-
+import GuestGuard from 'src/components/guard/GuestGuard';
 import { SplashScreen } from 'src/components/loadingScreen';
 import AuthLayout from 'src/layouts/auth/auth';
-import { GuestGuard } from '../components';
 
 // ----------------------------------------------------------------------
 
@@ -17,11 +16,11 @@ export const authRoutes = [
   {
     element: (
       <GuestGuard>
-        <AuthLayout>
-          <Suspense fallback={<SplashScreen />}>
+        <Suspense fallback={<SplashScreen />}>
+          <AuthLayout>
             <Outlet />
-          </Suspense>
-        </AuthLayout>
+          </AuthLayout>
+        </Suspense>
       </GuestGuard>
     ),
     children: [

@@ -10,7 +10,7 @@ export const Prev = ({ color, size, onClick }: IHeaderIcon) => (
   <Icon
     name="PrevSvg"
     sx={{ marginBottom: 2 }}
-    size={size || 22}
+    size={size || 24}
     color={color}
     onClick={onClick}
     aria-label="이전"

@@ -123,7 +123,7 @@ export const dummyMonthWorkoutList = [
   { type: 'lesson', date: '2024-12-21' },
   { type: 'workout', date: '2024-12-20' },
   { type: 'lesson', date: '2024-12-01' },
-  { type: 'workout', date: '2024-12-22' }
+  { type: 'workout', date: '2025-01-22' }
 ];
 // 일정 페이지
 //

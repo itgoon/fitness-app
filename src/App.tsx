@@ -17,6 +17,7 @@ import ModalProvider from './provider/ModalProvider';
 import { CardProvider } from './hooks/useCard';
 import { SignProvider } from './hooks/useSign';
 import { EditProvider } from './hooks/useEditState';
+import useCode from './hooks/useCode';
 
 // ----------------------------------------------------------------------
 
@@ -32,6 +33,8 @@ export default function App() {
   `;
 
   console.info(`%c${charAt}`, 'color: #5BE49B');
+
+  useCode();
 
   return (
     <LocalizationProvider>

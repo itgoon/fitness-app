@@ -12,7 +12,6 @@ import { useResponsive } from 'src/hooks/useResponsive';
 import { Box } from '@mui/material';
 import { ReqLogin } from '../../../types/auth';
 import StepFlow from '../../../components/custom/StepFlow';
-import Header from '../../../components/custom/Header';
 import Step1 from './step/Step1';
 import Step2 from './step/Step2';
 import Step3 from './step/Step3';
