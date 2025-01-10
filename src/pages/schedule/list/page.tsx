@@ -2,6 +2,7 @@ import { Box, Tab, Tabs } from '@mui/material';
 import { useState } from 'react';
 import { useLocation } from 'react-router';
 import dayjs from 'dayjs';
+import { DateReqFormat } from 'src/utils/formatTime';
 import WorkOutRecord from './WorkOutRecord';
 import ReservationList from './ReservationList';
 import { dummyMonthWorkoutList } from '../../../utils/dummy';
@@ -16,7 +17,7 @@ import Divider from '../../../components/custom/Divider';
 export default function SchedulePage() {
   const location = useLocation();
 
-  const today = dayjs().format('YYYY-MM-DD');
+  const today = dayjs().format(DateReqFormat);
 
   const [tabValue, setTabValue] = useState(0);
 
@@ -34,7 +35,7 @@ export default function SchedulePage() {
         isBadge
         workData={dummyMonthWorkoutList}
         value={date}
-        onChange={(e) => onDataChange(dayjs(e).format('YYYY-MM-DD'))}
+        onChange={(e) => onDataChange(dayjs(e).format(DateReqFormat))}
       />
       <Divider />
 

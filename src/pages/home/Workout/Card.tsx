@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
+import { DateReqFormat } from 'src/utils/formatTime';
 import TimePicker from '../../../components/custom/TimePicker';
 import StartTimerCard from './StartTimerCard';
 import EndTimerCard from './EndTimerCard';
@@ -73,7 +74,7 @@ export default function Card({ isWorking }: ICard) {
   };
 
   const calculatedTotlaTime = (start: string, end: string) => {
-    const todayFormatted = dayjs().format('YYYY-MM-DD');
+    const todayFormatted = dayjs().format(DateReqFormat);
     const _startTime = dayjs(`${todayFormatted} ${start}`, 'YYYY-MM-DD HH:mm');
     const _endTime = dayjs(`${todayFormatted} ${end}`, 'YYYY-MM-DD HH:mm');
     const totalMinutes = _endTime.diff(_startTime, 'minute');
