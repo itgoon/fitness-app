@@ -71,9 +71,9 @@ export function useNavData() {
           },
           {
             title: '회원권',
-            path: paths.member.root,
+            path: paths.membership.root,
             icon: renderIcon(
-              pathname.startsWith(paths.member.root)
+              pathname.startsWith(paths.membership.root)
                 ? ICONS.membershipColor
                 : ICONS.membership
             )

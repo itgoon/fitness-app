@@ -18,6 +18,7 @@ export default function NavBottom() {
 
   const grey500 =
     theme.palette.mode === 'light' ? theme.palette.grey[500] : 'white';
+
   const [list, setList] = useState<any[]>([]);
 
   const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +37,7 @@ export default function NavBottom() {
   }, [navData, location]);
 
   const openModal = (newValue) => {
-    if (newValue === '/member') {
+    if (newValue === '/membership') {
       setIsOpen((prev) => !prev);
     }
   };
@@ -48,7 +49,7 @@ export default function NavBottom() {
         showLabels
         value={location?.pathname}
         onChange={(event, newValue) => {
-          if (newValue === '/member') {
+          if (newValue === '/membership') {
             openModal(newValue);
           } else {
             navigate(newValue);
@@ -74,10 +75,8 @@ export default function NavBottom() {
             value={item.path}
           />
         ))}
-        {/* <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}
       </BottomNavigation>
+
       <QrModal
         centerData={QRCenterData}
         customerData={QRCustomerData}
