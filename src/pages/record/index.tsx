@@ -1,9 +1,8 @@
 import { Box } from '@mui/material';
 import { useEffect, useState } from 'react';
-
-import RecordHeader from './layout/RecordHeader';
-import { useEditContext } from '../../hooks/useEditState';
-import RecordBottom from './layout/RecordBottom';
+import Header from 'src/components/common/Header';
+import Icon from 'src/components/Icon';
+import { useNavigate } from 'react-router';
 import Tabs from '../../components/custom/Tabs/Tabs';
 import { TdietRecordList } from './types';
 import TabPanel from '../../components/custom/Tabs/TabPanel';
@@ -12,6 +11,7 @@ import RecordList from './tab/RecordList';
 import EmptyList from './tab/EmptyList';
 import { dietRecords } from '../../utils/dummy';
 import WorkoutTab from './tab/WorkoutTab';
+import RecordBottom from './RecordBottom';
 
 /**
  * ******************************************************
@@ -20,12 +20,18 @@ import WorkoutTab from './tab/WorkoutTab';
  */
 
 export default function Record() {
+  const navigate = useNavigate();
+
   const [tabValue, setTabValue] = useState(0);
+
   const [workoutList, setWorkoutList] = useState([]);
+
   const [dietList, setDietList] = useState<TdietRecordList[]>([]);
+
   const [selectedIndex, setSelectedIndex] = useState<number[][]>([]);
 
-  const { isEdit, toggleEdit } = useEditContext();
+  const [isEdit, setIsEdit] = useState(false);
+
   useEffect(() => {
     setDietList(dietRecords);
   }, []);
@@ -114,13 +120,28 @@ export default function Record() {
   return (
     <>
       <Box>
-        <RecordHeader
-          isEdit={isEdit}
-          handleEdit={() => {
-            toggleEdit();
-            setSelectedIndex([]);
-          }}
+        <Header
+          left={
+            <Icon
+              name="AddRounded"
+              sx={{ marginTop: -1, marginLeft: -2, color: '#262626' }}
+              size={24}
+              onClick={() => navigate('/record/new')}
+            />
+          }
+          title="기록"
+          right={
+            <Icon
+              size={22}
+              name="MoreVertRounded"
+              onClick={() => {
+                setIsEdit((prev) => !prev);
+                setSelectedIndex([]);
+              }}
+            />
+          }
         />
+
         <Tabs
           value={tabValue}
           onChange={(e, newValue) => setTabValue(newValue)}

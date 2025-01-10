@@ -1,5 +1,5 @@
-import { Box, Typography, useTheme } from '@mui/material';
-import { CSSProperties, ReactElement, ReactNode } from 'react';
+import { Box, SxProps, Typography, useTheme } from '@mui/material';
+import { ReactElement, ReactNode } from 'react';
 
 interface IEmptyCard {
   margin?: string;
@@ -10,7 +10,7 @@ interface IEmptyCard {
   direction?: 'row' | 'column';
   justifyContent?: 'center' | 'space-between' | 'start' | 'end';
   alignItems?: 'center' | 'space-between' | 'start' | 'end';
-  sx?: CSSProperties;
+  sx?: SxProps;
 }
 export default function EmptyCard({
   margin,

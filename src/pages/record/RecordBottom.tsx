@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from '@mui/material';
-import { useModal } from '../../../hooks/useModal';
-import { IRecordBottom } from '../types';
+import { useModal } from 'src/hooks/useModal';
+import { IRecordBottom } from './types';
 
 /**
  * 기록 화면 바텀

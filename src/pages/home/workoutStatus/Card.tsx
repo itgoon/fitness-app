@@ -44,10 +44,10 @@ export default function Card({ isWorking }: ICard) {
         setTimerState((prev) => ({ ...prev, totalTime: elapsedTime }));
       }, 1000);
     } else {
-      const endTime = dayjs().format('HH:mm');
+      const _endTime = dayjs().format('HH:mm');
       setTimerState((prevState) => ({
         ...prevState,
-        endTime: endTime
+        _endTime
       }));
 
       clearInterval(timer);

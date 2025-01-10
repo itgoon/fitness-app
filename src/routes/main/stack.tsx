@@ -8,23 +8,29 @@ import ReservationCardDetail from '../../pages/schedule/detail';
 
 // ----------------------------------------------------------------------
 
-const RecordPostPage = lazy(() => import('src/pages/record/post'));
+// 기록
+const RecordPostPage = lazy(() => import('src/pages/record/new/page'));
+
+// 예약
 const ReservationPage = lazy(() => import('src/pages/reservation'));
-const ContractMakePage = lazy(() => import('src/pages/contract/make/index'));
-const ContractViewPage = lazy(() => import('src/pages/contract/view/index'));
+
+// 계약서
+const ContractTermsPage = lazy(() => import('src/pages/contract/terms/page'));
+const NewContractPage = lazy(() => import('src/pages/contract/new/page'));
+const ContractViewPage = lazy(() => import('src/pages/contract/view/page'));
 
 // ----------------------------------------------------------------------
 
 export const stackRoutes = [
   {
     element: (
-      // <AuthGuard>
-      <Suspense fallback={<SplashScreen />}>
-        <StackNaviLayout>
-          <Outlet />
-        </StackNaviLayout>
-      </Suspense>
-      // </AuthGuard>
+      <AuthGuard>
+        <Suspense fallback={<SplashScreen />}>
+          <StackNaviLayout>
+            <Outlet />
+          </StackNaviLayout>
+        </Suspense>
+      </AuthGuard>
     ),
     children: [
       {
@@ -44,11 +50,11 @@ export const stackRoutes = [
       },
       {
         path: 'contract',
-        children: [{ element: <ContractMakePage />, index: true }]
-      },
-      {
-        path: 'viewcontract',
-        children: [{ element: <ContractViewPage />, index: true }]
+        children: [
+          { path: 'terms', element: <ContractTermsPage /> },
+          { path: 'new', element: <NewContractPage /> },
+          { path: 'view', element: <ContractViewPage /> }
+        ]
       }
     ]
   }

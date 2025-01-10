@@ -3,9 +3,9 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { useLayoutEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useTheme } from '@mui/material';
-import QrModal from '../../components/custom/QrModal';
+import { useNavData } from 'src/layouts/dashboard/configNavigation';
 import { QRCenterData, QRCustomerData } from '../../utils/dummy';
-import { useNavData } from '../dashboard/configNavigation';
+import QrModal from '../custom/QrModal';
 
 export default function NavBottom() {
   const theme = useTheme();

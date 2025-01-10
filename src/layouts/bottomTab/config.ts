@@ -24,7 +24,7 @@ export const menus: Menu[] = [
   {
     title: '기록',
     url: '/record',
-    isHeader: true,
+    isHeader: false,
     isBottom: true,
     isFooter: false
   },

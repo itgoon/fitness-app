@@ -16,13 +16,13 @@ const MorePage = lazy(() => import('src/pages/more'));
 export const bottomTabRoutes = [
   {
     element: (
-      // <AuthGuard>
-      <Suspense fallback={<SplashScreen />}>
-        <BottomTabNaviLayout>
-          <Outlet />
-        </BottomTabNaviLayout>
-      </Suspense>
-      // </AuthGuard>
+      <AuthGuard>
+        <Suspense fallback={<SplashScreen />}>
+          <BottomTabNaviLayout>
+            <Outlet />
+          </BottomTabNaviLayout>
+        </Suspense>
+      </AuthGuard>
     ),
     children: [
       {

@@ -7,5 +7,5 @@ import { useAuth } from 'src/hooks/useAuth';
 export default function GuestGuard({ children }: PropsWithChildren) {
   const { isLoggedIn } = useAuth();
 
-  return isLoggedIn ? <Navigate to="/dashboard" /> : children;
+  return isLoggedIn ? <Navigate to="/home" /> : children;
 }

@@ -1,5 +1,5 @@
 import { List, ListItem, Stack, Typography } from '@mui/material';
-import Logo from '../../components/logo/logo';
+import Logo from '../logo';
 
 // ----------------------------------------------------------------------
 
