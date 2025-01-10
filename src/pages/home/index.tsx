@@ -1,9 +1,10 @@
 import { Stack } from '@mui/material';
 import Notification from './Notification';
-import WorkoutStatus from './WorkoutStatus';
+
 import Wrap from '../../components/custom/Wrap';
 import Divider from '../../components/custom/Divider';
 import WeekCalendar from './WeekCalendar';
+import WorkoutStatus from './workoutStatus/WorkoutStatus';
 
 /**
  * ******************************************************
