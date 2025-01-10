@@ -3,7 +3,7 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { useLayoutEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useTheme } from '@mui/material';
-import { useNavData } from 'src/layouts/dashboard/configNavigation';
+import { useNavData } from 'src/layouts/configNavigation';
 import { QRCenterData, QRCustomerData } from '../../utils/dummy';
 import QrModal from '../custom/QrModal';
 

@@ -1,10 +1,9 @@
 import { useMemo } from 'react';
 import { paths } from 'src/routes/paths';
-import { useTranslate } from 'src/locales';
 import { useLocation } from 'react-router';
 import { useTheme } from '@mui/material';
-import Iconify from '../../components/iconify';
-import Icon from '../../components/Icon';
+import Iconify from '../components/iconify';
+import Icon from '../components/Icon';
 
 // ----------------------------------------------------------------------
 
@@ -34,7 +33,6 @@ const ICONS = {
 // ----------------------------------------------------------------------
 
 export function useNavData() {
-  const { t } = useTranslate();
   const { pathname } = useLocation();
   const { palette } = useTheme();
 
@@ -51,10 +49,10 @@ export function useNavData() {
   const data = useMemo(
     () => [
       {
-        subheader: t('오비서'),
+        subheader: '오비서',
         items: [
           {
-            title: t('홈'),
+            title: '홈',
             path: paths.home.root,
             icon: renderIcon(
               pathname.startsWith(paths.home.root)
@@ -93,7 +91,7 @@ export function useNavData() {
         ]
       }
     ],
-    [t, pathname]
+    [pathname]
   );
 
   return data;

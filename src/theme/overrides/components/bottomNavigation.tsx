@@ -1,6 +1,6 @@
 import { Theme } from '@mui/material/styles';
+import { SPACING } from 'src/components/common/Main';
 import { HEADER } from 'src/layouts/configLayout';
-import { SPACING } from 'src/layouts/dashboard/main';
 
 // ----------------------------------------------------------------------
 

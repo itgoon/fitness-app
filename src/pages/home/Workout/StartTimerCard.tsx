@@ -1,3 +1,4 @@
+import { RecordService } from 'src/service';
 import Button from '../../../components/Button';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
 import RenderText from './RenderText';
@@ -21,6 +22,15 @@ export default function StartTimerCard({
 }: ITimeCard) {
   const formattedTime = formatTime(totalTime);
 
+  const onEndClick = async () => {
+    onHandleEnd();
+
+    // 운동 종료 요청
+    // await RecordService.updateEndTime({
+    //   updateRecordEndTimeDto: { rcdDate: '', rcdEndTime: '' }
+    // });
+  };
+
   return (
     <>
       <EmptyCard direction="row" justifyContent="start" padding="24px" gap={13}>
@@ -34,7 +44,7 @@ export default function StartTimerCard({
         typoVariant="Body18/semiBold"
         size="large"
         variant="outlined"
-        onClick={onHandleEnd}
+        onClick={onEndClick}
       >
         운동종료
       </Button>
