@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import TimePicker from '../../../components/custom/TimePicker';
 import StartTimerCard from './StartTimerCard';
 import EndTimerCard from './EndTimerCard';
+import WeightDrawer from './WeightDrawer';
 
 interface ICard {
   isWorking: boolean;
@@ -23,6 +24,8 @@ export default function Card({ isWorking }: ICard) {
     isStart: false,
     isEnd: false
   });
+
+  const [weightModalisOpen, setWeightModalIsOpen] = useState(false);
 
   const { startTime, endTime, totalTime } = timerState;
   const { isStart, isEnd } = isTimePicker;
@@ -91,7 +94,10 @@ export default function Card({ isWorking }: ICard) {
         <StartTimerCard
           startTime={startTime}
           totalTime={totalTime}
-          onHandleEnd={() => setIsWorkingEnd(true)}
+          onHandleEnd={() => {
+            setIsWorkingEnd(true);
+            setWeightModalIsOpen(true);
+          }}
         />
       ) : (
         <EndTimerCard
@@ -118,6 +124,11 @@ export default function Card({ isWorking }: ICard) {
         }
         onClick={saveWorkTime}
         onChange={handleTimeChange}
+      />
+
+      <WeightDrawer
+        isOpen={weightModalisOpen}
+        onClose={() => setWeightModalIsOpen(false)}
       />
     </>
   );
