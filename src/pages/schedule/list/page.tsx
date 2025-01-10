@@ -18,13 +18,11 @@ export default function SchedulePage() {
 
   const today = dayjs().format('YYYY-MM-DD');
 
-  const params = useLocation();
-
-  const paramsDate = params.search.split('=')[1];
-
   const [tabValue, setTabValue] = useState(0);
 
-  const [date, setDate] = useState(location.state.date || today);
+  const [date, setDate] = useState(
+    location.state ? location.state.date : today
+  );
 
   const onDataChange = (newDate: string) => {
     setDate(newDate);
