@@ -1,10 +1,10 @@
 import { useLocation } from 'react-router';
 import { Box } from '@mui/material';
 import { PropsWithChildren } from 'react';
-import Header from 'src/components/common/Header';
 import Footer from 'src/components/common/Footer';
 import NavBottom from 'src/components/common/NavBottom';
 import Main from 'src/components/common/Main';
+import Header from 'src/components/common/headers/Header';
 import { Menu, menus } from './config';
 
 // ----------------------------------------------------------------------
@@ -40,8 +40,8 @@ export default function BottomTabNaviLayout({ children }: PropsWithChildren) {
       overflow="hidden"
       flexDirection="column"
     >
-      {isHeader && <Header title={current?.title || ''} />}
       <Main sx={{ pb: isBottom ? 8 : 0, pt: isSpacing ? 7 : 0 }}>
+        {isHeader && <Header title={current?.title || ''} />}
         {children}
         {isFooter && <Footer />}
       </Main>

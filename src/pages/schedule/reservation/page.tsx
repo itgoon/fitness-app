@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { ScheduleService } from 'src/service';
 import { useParams } from 'react-router';
 import { ScheduleDto } from 'src/api';
+import StackHeader from 'src/components/common/headers/StackHeader';
 import ReservedCard from './ReservedCard';
 
 export default function ReservationCardDetail() {
@@ -24,11 +25,15 @@ export default function ReservationCardDetail() {
 
   return (
     // 헤더
-    <Stack gap={2.5} pt={5} px={2.5} height="calc(100% - 56px)">
-      <ReservedCard reservation={reservation} />
-      {/*
-      <AttendancedCard />
-       */}
-    </Stack>
+    <>
+      <StackHeader title="임시 헤더" />
+
+      <Stack gap={2.5} pt={5} px={2.5} height="calc(100% - 56px)">
+        <ReservedCard reservation={reservation} />
+        {/*
+        <AttendancedCard />
+         */}
+      </Stack>
+    </>
   );
 }

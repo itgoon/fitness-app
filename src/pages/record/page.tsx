@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import Header from 'src/components/common/Header';
 import Icon from 'src/components/Icon';
 import { useNavigate } from 'react-router';
 import { paths } from 'src/routes/paths';
+import Header from 'src/components/common/headers/Header';
 import Tabs from '../../components/custom/Tabs/Tabs';
 import { TdietRecordList } from './types';
 import TabPanel from '../../components/custom/Tabs/TabPanel';

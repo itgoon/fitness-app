@@ -1,13 +1,13 @@
 import { Box, Stack, Typography } from '@mui/material';
 import Button from 'src/components/Button';
-import Header from 'src/components/common/Header';
+import StackHeader from 'src/components/common/headers/StackHeader';
 import Sizer from 'src/components/common/Sizer';
 import Divider from 'src/components/custom/Divider';
 
 export default function ReservationPage() {
   return (
     <>
-      <Header title="임시 제목" />
+      <StackHeader title="임시 제목" />
 
       {/* 달력 */}
       <Box sx={{ backgroundColor: 'black', height: 300 }} />
