@@ -21,7 +21,6 @@ export default function Notification() {
         sx={{ padding: '32px 20px 0' }}
         color={grey900}
       />
-      <Divider borderBottomWidth={1} />
 
       <Sizer>
         <EmptyCard sx={{ mt: 1.5, mb: 4 }}>알림 내용이 없습니다.</EmptyCard>

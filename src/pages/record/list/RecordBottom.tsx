@@ -1,6 +1,6 @@
 import { Box, Typography, useTheme } from '@mui/material';
 import { useModal } from 'src/hooks/useModal';
-import { IRecordBottom } from './types';
+import { IRecordBottom } from '../types';
 
 /**
  * 기록 화면 바텀
@@ -16,6 +16,7 @@ export default function RecordBottom({
   const borderTop = palette.grey[200];
 
   const { openConfirm } = useModal();
+
   return (
     <Box
       display="flex"

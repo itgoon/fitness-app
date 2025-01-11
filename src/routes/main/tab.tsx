@@ -2,25 +2,25 @@ import { lazy, Suspense } from 'react';
 import { Navigate, Outlet } from 'react-router-dom';
 import { SplashScreen } from 'src/components/loadingScreen';
 import AuthGuard from 'src/components/guard/AuthGuard';
-import BottomTabNaviLayout from 'src/layouts/bottomTab';
+import TabNaviLayout from 'src/layouts/tab';
 
 // ----------------------------------------------------------------------
 
 const HomePage = lazy(() => import('src/pages/home/page'));
 const ScheduleListPage = lazy(() => import('src/pages/schedule/list/page'));
-const RecordPage = lazy(() => import('src/pages/record/page'));
+const RecordPage = lazy(() => import('src/pages/record/list/page'));
 const MorePage = lazy(() => import('src/pages/more/page'));
 
 // ----------------------------------------------------------------------
 
-export const bottomTabRoutes = [
+export const tabRoutes = [
   {
     element: (
       <AuthGuard>
         <Suspense fallback={<SplashScreen />}>
-          <BottomTabNaviLayout>
+          <TabNaviLayout>
             <Outlet />
-          </BottomTabNaviLayout>
+          </TabNaviLayout>
         </Suspense>
       </AuthGuard>
     ),

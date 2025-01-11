@@ -1,4 +1,4 @@
-import { Stack, useTheme } from '@mui/material';
+import { Stack } from '@mui/material';
 import { ReactNode } from 'react';
 
 interface IDietTab {
@@ -11,12 +11,5 @@ interface IDietTab {
  * ******************************************************
  */
 export default function WorkoutTab({ children }: IDietTab) {
-  const { palette } = useTheme();
-  const light = palette.mode === 'light';
-  const primarylig = palette.primary.light;
-  return (
-    <Stack padding={2} gap={1.5}>
-      {children}
-    </Stack>
-  );
+  return <Stack gap={1.5}>{children}</Stack>;
 }

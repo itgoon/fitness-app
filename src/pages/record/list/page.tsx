@@ -3,15 +3,12 @@ import Icon from 'src/components/Icon';
 import { useNavigate } from 'react-router';
 import { paths } from 'src/routes/paths';
 import Header from 'src/components/common/headers/Header';
-import Tabs from '../../components/custom/Tabs/Tabs';
-import { TdietRecordList } from './types';
-import TabPanel from '../../components/custom/Tabs/TabPanel';
-import DietTab from './tab/DietTab';
-import RecordList from './tab/RecordList';
-import EmptyList from './tab/EmptyList';
-import { dietRecords } from '../../utils/dummy';
-import WorkoutTab from './tab/WorkoutTab';
+import { Box, Tab, Tabs } from '@mui/material';
+import { dietRecords } from 'src/utils/dummy';
 import RecordBottom from './RecordBottom';
+import WorkoutTab from './WorkoutTab';
+import RecordList from './RecordList';
+import { TdietRecordList } from '../types';
 
 /**
  * ******************************************************
@@ -119,6 +116,7 @@ export default function Record() {
 
   return (
     <>
+      {/* 헤더 */}
       <Header
         left={
           <Icon
@@ -141,33 +139,33 @@ export default function Record() {
         }
       />
 
+      {/* 탭 */}
       <Tabs
         value={tabValue}
         onChange={(e, newValue) => setTabValue(newValue)}
-        frLabel="운동"
-        secLabel="식단"
-      />
-      <TabPanel value={tabValue} index={0}>
-        {dietList?.length > 0 ? <WorkoutTab>work</WorkoutTab> : <EmptyList />}
-      </TabPanel>
-      <TabPanel value={tabValue} index={1}>
-        {dietList?.length > 0 ? (
-          <DietTab>
-            <RecordList
-              arrList={dietList}
-              isEdit={isEdit}
-              selectedIndex={selectedIndex}
-              onChange={handleSelect}
-              onClickImage={onClickImage}
-              onDelete={viewImageDelete}
-              afterChange={handleAfterChange}
-            />
-          </DietTab>
-        ) : (
-          <EmptyList />
-        )}
-      </TabPanel>
+        scrollButtons={false}
+        variant="fullWidth"
+      >
+        <Tab label="운동" />
+        <Tab label="식단" />
+      </Tabs>
 
+      <Box px={2.5} py={3}>
+        {tabValue === 0 && <WorkoutTab>work</WorkoutTab>}
+        {tabValue === 1 && (
+          <RecordList
+            arrList={dietList}
+            isEdit={isEdit}
+            selectedIndex={selectedIndex}
+            onChange={handleSelect}
+            onClickImage={onClickImage}
+            onDelete={viewImageDelete}
+            afterChange={handleAfterChange}
+          />
+        )}
+      </Box>
+
+      {/* 삭제 UI */}
       {isEdit && (
         <RecordBottom
           selectImageCount={selectedIndex.length}

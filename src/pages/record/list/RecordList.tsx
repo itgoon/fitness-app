@@ -4,7 +4,7 @@ import { useState } from 'react';
 import Icon from '../../../components/Icon';
 import { DateViewFormat } from '../../../utils/formatTime';
 import { IRecordList, TdietRecordList } from '../types';
-import ImageViewer from './ImageViewer';
+import ImageViewer from '../tab/ImageViewer';
 
 export default function RecordList({
   arrList,
@@ -47,7 +47,7 @@ export default function RecordList({
   };
 
   return (
-    <>
+    <Stack gap={3}>
       {arrList.map((arr, listKey) => {
         if (arr.imageUrls.length === 0) return null;
         return (
@@ -112,6 +112,6 @@ export default function RecordList({
           onDelete={viewerDelete}
         />
       )}
-    </>
+    </Stack>
   );
 }

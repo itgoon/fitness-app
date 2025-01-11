@@ -20,7 +20,7 @@ const getMenuItemByPath = (menu: Menu[], path: string): Menu | null => {
   return menu.reduce<Menu | null>((acc, item) => acc || traverse(item), null);
 };
 
-export default function BottomTabNaviLayout({ children }: PropsWithChildren) {
+export default function TabNaviLayout({ children }: PropsWithChildren) {
   const currentLocation = useLocation().pathname;
   const current = getMenuItemByPath(menus, currentLocation);
 
