@@ -77,133 +77,133 @@ declare module '@mui/material/Typography' {
 export const primaryFont = 'Pretendard';
 export const secondaryFont = 'Barlow, sans-serif';
 const customVariant = () => ({
-    'Body28/semiBold': {
-      fontWeight: 600,
-      fontSize: pxToRem(28),
-      lineHeight: '36px'
-    },
-    'Body24/bold': {
-      fontWeight: 700,
-      fontSize: pxToRem(24),
-      lineHeight: '36px'
-    },
-    'Body24/semiBold': {
-      fontWeight: 600,
-      fontSize: pxToRem(24),
-      lineHeight: '36px'
-    },
-    'Body20/bold': {
-      fontWeight: 700,
-      fontSize: pxToRem(20),
-      lineHeight: '22px'
-    },
-    'Body20/semiBold': {
-      fontWeight: 600,
-      fontSize: pxToRem(20),
-      lineHeight: '22px'
-    },
-    'Body20/light': {
-      fontWeight: 400,
-      fontSize: pxToRem(20),
-      lineHeight: '22px'
-    },
-    'Body18/bold': {
-      fontWeight: 700,
-      fontSize: pxToRem(18),
-      lineHeight: '22px'
-    },
-    'Body18/semiBold': {
-      fontWeight: 600,
-      fontSize: pxToRem(18),
-      lineHeight: '22px'
-    },
-    'Body18/regular': {
-      fontWeight: 400,
-      fontSize: pxToRem(18),
-      lineHeight: '22px'
-    },
-    'Body16/bold': {
-      fontWeight: 700,
-      fontSize: pxToRem(16),
-      lineHeight: '22px'
-    },
-    'Body16/semiBold': {
-      fontWeight: 600,
-      fontSize: pxToRem(16),
-      lineHeight: '22px'
-    },
-    // TODo: 원래 400이었음 해당 바리안트 검색하고 피그마랑 대조하기
-    'Body16/regular': {
-      fontWeight: 500,
-      fontSize: pxToRem(16),
-      lineHeight: '22px'
-    },
-    'Body16/light': {
-      fontWeight: 400,
-      fontSize: pxToRem(16),
-      lineHeight: '22px'
-    },
-    'Body15/Bold': {
-      fontWeight: 700,
-      fontSize: pxToRem(15),
-      lineHeight: '24px'
-    },
-    'Body15/semiBold': {
-      fontWeight: 600,
-      fontSize: pxToRem(15),
-      lineHeight: '24px'
-    },
-    'Body15/regular': {
-      fontWeight: 500,
-      fontSize: pxToRem(15),
-      lineHeight: '24px'
-    },
-    'Body15/light': {
-      fontWeight: 400,
-      fontSize: pxToRem(15),
-      lineHeight: '24px'
-    },
-    'Body14/bold': {
-      fontWeight: 700,
-      fontSize: pxToRem(14),
-      lineHeight: '22px'
-    },
-    'Body14/semiBold': {
-      fontWeight: 600,
-      fontSize: pxToRem(14),
-      lineHeight: '22px'
-    },
-    'Body14/regular': {
-      fontWeight: 500,
-      fontSize: pxToRem(14),
-      lineHeight: '22px'
-    },
-    'Body14/light': {
-      fontWeight: 400,
-      fontSize: pxToRem(14),
-      lineHeight: '22px'
-    },
-    'Body13/semiBold': {
-      fontWeight: 600,
-      fontSize: pxToRem(13),
-      lineHeight: '18px'
-    },
-    'Body13/regular': {
-      fontWeight: 400,
-      fontSize: pxToRem(13),
-      lineHeight: '18px'
-    },
-    'Body12/semiBold': {
-      fontWeight: 600,
-      fontSize: pxToRem(12),
-      lineHeight: '22px'
-    },
-    'Body11/regular': {
-      fontWeight: 400,
-      fontSize: pxToRem(11),
-      lineHeight: '22px'
-    }
-  });
+  'Body28/semiBold': {
+    fontWeight: 600,
+    fontSize: pxToRem(28),
+    lineHeight: '36px'
+  },
+  'Body24/bold': {
+    fontWeight: 700,
+    fontSize: pxToRem(24),
+    lineHeight: '36px'
+  },
+  'Body24/semiBold': {
+    fontWeight: 600,
+    fontSize: pxToRem(24),
+    lineHeight: '36px'
+  },
+  'Body20/bold': {
+    fontWeight: 700,
+    fontSize: pxToRem(20),
+    lineHeight: '22px'
+  },
+  'Body20/semiBold': {
+    fontWeight: 600,
+    fontSize: pxToRem(20),
+    lineHeight: '22px'
+  },
+  'Body20/light': {
+    fontWeight: 400,
+    fontSize: pxToRem(20),
+    lineHeight: '22px'
+  },
+  'Body18/bold': {
+    fontWeight: 700,
+    fontSize: pxToRem(18),
+    lineHeight: '22px'
+  },
+  'Body18/semiBold': {
+    fontWeight: 600,
+    fontSize: pxToRem(18),
+    lineHeight: '22px'
+  },
+  'Body18/regular': {
+    fontWeight: 400,
+    fontSize: pxToRem(18),
+    lineHeight: '22px'
+  },
+  'Body16/bold': {
+    fontWeight: 700,
+    fontSize: pxToRem(16),
+    lineHeight: '24px'
+  },
+  'Body16/semiBold': {
+    fontWeight: 600,
+    fontSize: pxToRem(16),
+    lineHeight: '24px'
+  },
+  // TODo: 원래 400이었음 해당 바리안트 검색하고 피그마랑 대조하기
+  'Body16/regular': {
+    fontWeight: 500,
+    fontSize: pxToRem(16),
+    lineHeight: '24px'
+  },
+  'Body16/light': {
+    fontWeight: 400,
+    fontSize: pxToRem(16),
+    lineHeight: '24px'
+  },
+  'Body15/Bold': {
+    fontWeight: 700,
+    fontSize: pxToRem(15),
+    lineHeight: '24px'
+  },
+  'Body15/semiBold': {
+    fontWeight: 600,
+    fontSize: pxToRem(15),
+    lineHeight: '24px'
+  },
+  'Body15/regular': {
+    fontWeight: 500,
+    fontSize: pxToRem(15),
+    lineHeight: '24px'
+  },
+  'Body15/light': {
+    fontWeight: 400,
+    fontSize: pxToRem(15),
+    lineHeight: '24px'
+  },
+  'Body14/bold': {
+    fontWeight: 700,
+    fontSize: pxToRem(14),
+    lineHeight: '22px'
+  },
+  'Body14/semiBold': {
+    fontWeight: 600,
+    fontSize: pxToRem(14),
+    lineHeight: '22px'
+  },
+  'Body14/regular': {
+    fontWeight: 500,
+    fontSize: pxToRem(14),
+    lineHeight: '22px'
+  },
+  'Body14/light': {
+    fontWeight: 400,
+    fontSize: pxToRem(14),
+    lineHeight: '22px'
+  },
+  'Body13/semiBold': {
+    fontWeight: 600,
+    fontSize: pxToRem(13),
+    lineHeight: '18px'
+  },
+  'Body13/regular': {
+    fontWeight: 400,
+    fontSize: pxToRem(13),
+    lineHeight: '18px'
+  },
+  'Body12/semiBold': {
+    fontWeight: 600,
+    fontSize: pxToRem(12),
+    lineHeight: '22px'
+  },
+  'Body11/regular': {
+    fontWeight: 400,
+    fontSize: pxToRem(11),
+    lineHeight: '22px'
+  }
+});
 
 // ----------------------------------------------------------------------
 

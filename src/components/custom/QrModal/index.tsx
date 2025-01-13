@@ -1,67 +1,32 @@
-import { Box, Dialog } from '@mui/material';
-import { useState } from 'react';
-import QrCardSvg from '../../../assets/svgs/Card.svg';
-import QrCardData from './QrCardData';
-import QrEmptyData from './QrEmptyData';
-import { IQrModal } from './types';
-import ExpansionQR from './ExpansionQR';
+import { Modal } from '@mui/material';
+import ModalContainer from 'src/components/modals/ModalContainer';
+import { QRCustomerData } from 'src/utils/dummy';
+import QrCard from './QrCard';
+import QrEmptyCard from './QrEmptyCard';
 
-/**
- * ******************************************************
- * 회원권 탭 클릭 시 -> QrModal
- * 연동 정보 없을 때
- *
- * 연동 정보 있을 때 - 일반 화면
- * 센터 상세 정보 -> 계약서 가기
- * QR 클릭시 QR확대
- * 확대 화면에서 센터 정보 보기
- * ******************************************************
- */
-export default function QrModal({
-  customerData,
-  centerData,
-  open,
-  onClose
-}: IQrModal) {
-  const [isBasic, setIsBasic] = useState(false);
+interface QrModalProps {
+  onClose: () => void;
+}
+
+export default function QrModal({ onClose }: QrModalProps) {
+  const data = QRCustomerData;
 
   return (
-    <Dialog
-      open={open}
-      onClose={onClose}
-      sx={{
-        '.MuiPaper-root': {
-          backgroundColor: 'transparent',
-          borderRadius: !isBasic ? 2 : 2.5
-        }
-      }}
-    >
-      {!isBasic ? (
-        <Box
-          width={300}
-          height={400}
-          sx={{
-            backgroundImage: `url(${QrCardSvg})`,
-            backgroundSize: 'cover',
-            backgroundPosition: 'center'
-          }}
-        >
-          {customerData === undefined ? (
-            <QrEmptyData />
-          ) : (
-            <QrCardData
-              customerData={customerData}
-              onClick={() => setIsBasic((prev) => !prev)}
-              onClose={onClose}
-            />
-          )}
-        </Box>
-      ) : (
-        <ExpansionQR
-          centerData={centerData}
-          onBack={() => setIsBasic((prev) => !prev)}
-        />
-      )}
-    </Dialog>
+    <Modal open onClose={onClose}>
+      <ModalContainer
+        sx={{
+          width: 300,
+          height: 400,
+          backgroundImage: `
+          radial-gradient(circle at 50% 50%, rgba(17, 85, 243, 0.6) 0%, rgba(0, 65, 219, 0.6) 100%),
+          linear-gradient(106.31deg, #001EBF 0%, #001EBF 100%)
+        `,
+          py: 5,
+          px: 2.5
+        }}
+      >
+        {data ? <QrCard /> : <QrEmptyCard />}
+      </ModalContainer>
+    </Modal>
   );
 }

@@ -1,44 +1,32 @@
 import BottomNavigation from '@mui/material/BottomNavigation';
 import BottomNavigationAction from '@mui/material/BottomNavigationAction';
-import { useLayoutEffect, useState } from 'react';
+import { SyntheticEvent } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useTheme } from '@mui/material';
 import { useNavData } from 'src/layouts/configNavigation';
-import { QRCenterData, QRCustomerData } from '../../utils/dummy';
+import useModals from 'src/hooks/useModals';
 import QrModal from '../custom/QrModal';
 
 export default function NavBottom() {
+  const theme = useTheme();
+
   const navigate = useNavigate();
 
   const location = useLocation();
 
-  const theme = useTheme();
-
   const navData = useNavData();
 
-  const grey500 =
-    theme.palette.mode === 'light' ? theme.palette.grey[500] : 'white';
+  const { modals, addModal, removeModal } = useModals();
 
-  const [list, setList] = useState<any[]>([]);
+  const handleQrModal = () => {
+    addModal(<QrModal onClose={removeModal} />);
+  };
 
-  const [isOpen, setIsOpen] = useState(false);
-
-  useLayoutEffect(() => {
-    if (
-      !(
-        navData?.length > 0 &&
-        navData[0]?.items &&
-        navData[0]?.items?.length > 0
-      )
-    )
-      return setList([]);
-
-    setList(navData[0]?.items);
-  }, [navData, location]);
-
-  const openModal = (newValue) => {
+  const onChange = (event: SyntheticEvent<Element, Event>, newValue: any) => {
     if (newValue === '/membership') {
-      setIsOpen((prev) => !prev);
+      handleQrModal();
+    } else {
+      navigate(newValue);
     }
   };
 
@@ -48,18 +36,11 @@ export default function NavBottom() {
         sx={{ maxHeight: 64, gap: 1.5, px: 2 }}
         showLabels
         value={location?.pathname}
-        onChange={(event, newValue) => {
-          if (newValue === '/membership') {
-            openModal(newValue);
-          } else {
-            navigate(newValue);
-          }
-        }}
-        onClick={(newValue) => openModal(newValue)}
+        onChange={onChange}
       >
-        {list?.map((item, key) => (
+        {navData?.map((item) => (
           <BottomNavigationAction
-            key={key}
+            key={item.path}
             sx={{
               minWidth: 64,
               padding: 0,
@@ -67,7 +48,11 @@ export default function NavBottom() {
                 fontSize: 11,
                 fontWeight: 500,
                 color:
-                  item.path !== location.pathname ? grey500 : 'currentColor'
+                  item.path !== location.pathname
+                    ? theme.palette.mode === 'light'
+                      ? 'grey.500'
+                      : 'white'
+                    : 'currentColor'
               }
             }}
             label={item.title}
@@ -77,12 +62,7 @@ export default function NavBottom() {
         ))}
       </BottomNavigation>
 
-      <QrModal
-        centerData={QRCenterData}
-        customerData={QRCustomerData}
-        open={isOpen}
-        onClose={() => setIsOpen(false)}
-      />
+      {modals}
     </>
   );
 }

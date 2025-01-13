@@ -18,9 +18,6 @@ export interface IQrCardData {
 }
 
 export interface IQrModal {
-  customerData?: customerData;
-  centerData?: data[];
-  open: boolean;
   onClose: () => void;
 }
 
