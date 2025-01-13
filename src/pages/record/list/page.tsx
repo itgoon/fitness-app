@@ -3,7 +3,7 @@ import Icon from 'src/components/Icon';
 import { useNavigate } from 'react-router';
 import { paths } from 'src/routes/paths';
 import Header from 'src/components/common/headers/Header';
-import { Box, Tab, Tabs } from '@mui/material';
+import { Box, Tab, Tabs, Typography } from '@mui/material';
 import { RecordFileService } from 'src/service';
 import RecordBottom from './RecordBottom';
 import WorkoutList from './WorkoutList';
@@ -78,7 +78,9 @@ export default function RecordPage() {
         title="기록"
         right={
           isEdit ? (
-            '취소'
+            <Typography color="grey.900" onClick={() => setIsEdit(false)}>
+              취소
+            </Typography>
           ) : (
             <Icon size={22} name="MoreVertRounded" onClick={onMoreClick} />
           )
