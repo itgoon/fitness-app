@@ -1,61 +1,22 @@
-import { Box, Checkbox, Stack, Typography, useTheme } from '@mui/material';
-import dayjs from 'dayjs';
+import { Stack, useTheme } from '@mui/material';
 import { useState } from 'react';
-import Icon from '../../../components/Icon';
-import { DateViewFormat } from '../../../utils/formatTime';
-import { IRecordList, TdietRecordList } from '../types';
-import ImageViewer from '../tab/ImageViewer';
 
-export default function RecordList({
-  arrList,
-  isEdit,
-  selectedIndex,
-  onChange,
-  onClickImage,
-  onDelete,
-  afterChange
-}: IRecordList) {
-  const { palette } = useTheme();
-  const light = palette.mode === 'light';
-  const grey600 = light ? palette.grey[600] : 'white';
+export default function DietList() {
+  const theme = useTheme();
 
-  const [isOpenView, setIsOpenView] = useState(false);
-  const [clickedImg, setClickedImg] = useState<TdietRecordList>({
-    date: '',
-    type: '',
-    content: '',
-    imageName: [],
-    imageUrls: []
-  });
-
-  const onHandleViewr = (listIndex: number, imageIndex: number, arr: any) => {
-    onClickImage(listIndex, imageIndex);
-    setClickedImg(arr);
-    setIsOpenView(true);
-  };
-
-  const viewerDelete = () => {
-    onDelete();
-
-    const updatedData = clickedImg?.imageUrls.filter(
-      (_, imgIndex) => !selectedIndex.some(([, sIndex]) => sIndex === imgIndex)
-    );
-    setClickedImg((prev) => ({
-      ...prev,
-      imageUrls: updatedData
-    }));
-  };
+  const [isDetailOpen, setIsDetailOpen] = useState(false);
 
   return (
     <Stack gap={3}>
-      {arrList.map((arr, listKey) => {
+      식단 목록입니다.
+      {/* {([] as any).map((arr, listKey) => {
         if (arr.imageUrls.length === 0) return null;
         return (
           <Stack key={listKey} gap={2}>
             <Typography
               children={dayjs(arr.date).format(DateViewFormat)}
               variant="Body15/light"
-              color={grey600}
+              color={theme.palette.mode === 'light' ? 'grey.600' : 'white'}
             />
             <Box display="flex" flexWrap="wrap" gap={0.25}>
               {arr.imageUrls.map((img, imageKey) => (
@@ -102,8 +63,8 @@ export default function RecordList({
             </Box>
           </Stack>
         );
-      })}
-      {isOpenView && (
+      })} */}
+      {/* {isOpenView && (
         <ImageViewer
           selectedIndex={selectedIndex}
           clickedImg={clickedImg}
@@ -111,7 +72,7 @@ export default function RecordList({
           afterChange={afterChange}
           onDelete={viewerDelete}
         />
-      )}
+      )} */}
     </Stack>
   );
 }

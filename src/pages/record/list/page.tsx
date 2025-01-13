@@ -4,114 +4,63 @@ import { useNavigate } from 'react-router';
 import { paths } from 'src/routes/paths';
 import Header from 'src/components/common/headers/Header';
 import { Box, Tab, Tabs } from '@mui/material';
-import { dietRecords } from 'src/utils/dummy';
+import { RecordFileService } from 'src/service';
 import RecordBottom from './RecordBottom';
-import WorkoutTab from './WorkoutTab';
-import RecordList from './RecordList';
-import { TdietRecordList } from '../types';
+import WorkoutList from './WorkoutList';
+import DietList from './DietList';
 
 /**
  * ******************************************************
  * 기록 화면
  * ******************************************************
  */
-
-export default function Record() {
+export default function RecordPage() {
   const navigate = useNavigate();
 
   const [tabValue, setTabValue] = useState(0);
 
-  const [workoutList, setWorkoutList] = useState([]);
-
-  const [dietList, setDietList] = useState<TdietRecordList[]>([]);
-
-  const [selectedIndex, setSelectedIndex] = useState<number[][]>([]);
-
   const [isEdit, setIsEdit] = useState(false);
 
+  const [selectedItems, setSelectedItems] = useState<string[]>([]);
+
   useEffect(() => {
-    setDietList(dietRecords);
-  }, []);
+    loadRecordFileList();
+  }, [tabValue]);
 
-  const onClickImage = (firstIndex: number, secondIndex: number) => {
-    setSelectedIndex([[firstIndex, secondIndex]]);
-  };
-
-  const handleSelect = (firstIndex: number, secondIndex: number) => {
-    const isSelected = selectedIndex.some(
-      ([fIndex, sIndex]) => fIndex === firstIndex && sIndex === secondIndex
-    );
-    if (isSelected) {
-      // 선택 해제
-      setSelectedIndex((prev) =>
-        prev.filter(
-          ([fIndex, sIndex]) =>
-            !(fIndex === firstIndex && sIndex === secondIndex)
-        )
-      );
-    } else {
-      // 선택 추가
-      setSelectedIndex((prev) => [...prev, [firstIndex, secondIndex]]);
-    }
-  };
-
-  const selectAll = () => {
-    const selectionArray: number[][] = [];
-    dietList.forEach((list, fIdx) => {
-      list.imageUrls.forEach((li, sIdx) => {
-        selectionArray.push([fIdx, sIdx]);
-      });
+  // 리스트 패칭
+  const loadRecordFileList = async () => {
+    const res = await RecordFileService.loadRecordFileList({
+      type: tabValue === 0 ? 'FITNESS' : 'DIET'
     });
-    setSelectedIndex(selectionArray);
+
+    console.log(res);
   };
 
-  const onDelete = () =>
-    dietList
-      .map((list, idx) => {
-        if (selectedIndex.some(([fIndex, sIndex]) => fIndex === idx)) {
-          return {
-            ...list,
-            imageUrls: list.imageUrls.filter(
-              (_, secondIndex) =>
-                !selectedIndex.some(
-                  ([fIndex, sIndex]) => fIndex === idx && sIndex === secondIndex
-                )
-            )
-          };
-        }
-        return list;
-      })
-      .filter((list) => list?.imageUrls.length > 0);
+  // 탭 변경
+  const onTabChange = (event: React.SyntheticEvent, newValue: any) => {
+    setTabValue(newValue);
+    setIsEdit(false);
+    setSelectedItems([]);
+  };
 
-  const viewImageDelete = () => {
-    const updatedData = onDelete();
-    setDietList(updatedData);
+  // 더보기 클릭
+  const onMoreClick = () => {
+    setIsEdit((prev) => !prev);
+    setSelectedItems([]);
+  };
 
-    setSelectedIndex((prevState) => {
-      if (prevState.length > 0) {
-        const [firstIndex, secondIndex] = prevState[0];
+  // 전체 선택
+  const onAllSelect = () => {
+    setSelectedItems([]);
+  };
 
-        if (updatedData[firstIndex]?.imageUrls.length > secondIndex) {
-          return [[firstIndex, secondIndex]];
-        }
-        return [[firstIndex, updatedData[firstIndex].imageUrls.length - 1]];
-      }
-      return [];
+  // 삭제
+  const onDelete = async () => {
+    await RecordFileService.deleteMultiRecordFile({
+      requestBody: selectedItems
     });
-  };
 
-  const deleteDietList = () => {
-    const updatedData = onDelete();
-    setSelectedIndex([]);
-    setDietList(updatedData);
-  };
-
-  // slideChange
-  const handleAfterChange = (index) => {
-    setSelectedIndex((prevState: number[][]) => {
-      const currentState = prevState[0] || [0, 0]; // 현재 상태의 첫 번째 요소 가져오기
-      return [[currentState[0], index]]; // 2차원 배열 형태로 반환
-    });
+    loadRecordFileList();
   };
 
   return (
@@ -128,21 +77,18 @@ export default function Record() {
         }
         title="기록"
         right={
-          <Icon
-            size={22}
-            name="MoreVertRounded"
-            onClick={() => {
-              setIsEdit((prev) => !prev);
-              setSelectedIndex([]);
-            }}
-          />
+          isEdit ? (
+            '취소'
+          ) : (
+            <Icon size={22} name="MoreVertRounded" onClick={onMoreClick} />
+          )
         }
       />
 
       {/* 탭 */}
       <Tabs
         value={tabValue}
-        onChange={(e, newValue) => setTabValue(newValue)}
+        onChange={onTabChange}
         scrollButtons={false}
         variant="fullWidth"
       >
@@ -150,27 +96,18 @@ export default function Record() {
         <Tab label="식단" />
       </Tabs>
 
+      {/* 컨텐츠 */}
       <Box px={2.5} py={3}>
-        {tabValue === 0 && <WorkoutTab>work</WorkoutTab>}
-        {tabValue === 1 && (
-          <RecordList
-            arrList={dietList}
-            isEdit={isEdit}
-            selectedIndex={selectedIndex}
-            onChange={handleSelect}
-            onClickImage={onClickImage}
-            onDelete={viewImageDelete}
-            afterChange={handleAfterChange}
-          />
-        )}
+        {tabValue === 0 && <WorkoutList />}
+        {tabValue === 1 && <DietList />}
       </Box>
 
       {/* 삭제 UI */}
       {isEdit && (
         <RecordBottom
-          selectImageCount={selectedIndex.length}
-          onSelectAll={selectAll}
-          onDelete={deleteDietList}
+          onAllSelect={onAllSelect}
+          count={selectedItems.length}
+          onDelete={onDelete}
         />
       )}
     </>

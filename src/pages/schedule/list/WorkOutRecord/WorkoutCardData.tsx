@@ -14,12 +14,6 @@ export default function WorkoutCardData({ list, onClick }: IWorkoutCard) {
     <>
       {list?.map((card, key) => (
         <Box key={key} py={1.5} onClick={onClick}>
-          {/* <ReservationCard
-            key={key}
-            card={card}
-            layoutSx={{ padding: 0 }}
-            cardSx={{ alignItems: 'center' }}
-          /> */}
           운동 리스트
         </Box>
       ))}
