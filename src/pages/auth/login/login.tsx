@@ -8,6 +8,7 @@ import Icon from 'src/components/Icon';
 import FormProvider, { RHFTextField } from 'src/components/hookForm';
 import { useAuth } from 'src/hooks/useAuth';
 import { paths } from 'src/routes/paths';
+import useWebView from 'src/hooks/useWebView';
 import { LoginSchema } from './_schema';
 
 // ----------------------------------------------------------------------
@@ -19,6 +20,8 @@ import { LoginSchema } from './_schema';
  */
 export default function LoginView() {
   const navigate = useNavigate();
+
+  const { sendMessage } = useWebView();
 
   const { login } = useAuth();
 
@@ -41,15 +44,11 @@ export default function LoginView() {
   });
 
   const onKakaoLogin = () => {
-    window.ReactNativeWebView?.postMessage(
-      JSON.stringify({ type: 'signinKakao' })
-    );
+    sendMessage('signinKakao');
   };
 
   const onAppleLogin = () => {
-    window.ReactNativeWebView?.postMessage(
-      JSON.stringify({ type: 'signinApple' })
-    );
+    sendMessage('signinKakao');
   };
 
   return (
