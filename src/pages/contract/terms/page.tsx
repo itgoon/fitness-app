@@ -5,8 +5,8 @@ import { CenterPolicyDto } from 'src/api';
 import Button from 'src/components/Button';
 import ButtonWrapper from 'src/components/ButtonWrapper';
 import Sizer from 'src/components/common/Sizer';
-import TermsContent from 'src/components/terms/TermsContent';
-import TermsTitle from 'src/components/terms/TermsTitle';
+import TermsContent from 'src/components/Terms/TermsContent';
+import TermsTitle from 'src/components/Terms/TermsTitle';
 import { paths } from 'src/routes/paths';
 import { CenterService } from 'src/service';
 
