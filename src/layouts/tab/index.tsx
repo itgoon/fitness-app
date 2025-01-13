@@ -5,29 +5,20 @@ import Footer from 'src/components/common/Footer';
 import NavBottom from 'src/components/common/NavBottom';
 import Main from 'src/components/common/Main';
 import Header from 'src/components/common/headers/Header';
+import { getLayoutConfig } from 'src/utils/getLayoutConfig';
 import { Menu, menus } from './config';
 
 // ----------------------------------------------------------------------
 
-const getMenuItemByPath = (menu: Menu[], path: string): Menu | null => {
-  const traverse = (menuItem: Menu): Menu | null => {
-    if (path.startsWith(menuItem.url)) {
-      return menuItem;
-    }
-    return null;
-  };
-
-  return menu.reduce<Menu | null>((acc, item) => acc || traverse(item), null);
-};
-
 export default function TabNaviLayout({ children }: PropsWithChildren) {
   const currentLocation = useLocation().pathname;
-  const current = getMenuItemByPath(menus, currentLocation);
 
-  const isHeader = current?.isHeader ?? false;
-  const isBottom = current?.isBottom ?? false;
-  const isFooter = current?.isFooter ?? false;
-  const isSpacing = current?.isSpacing ?? false;
+  const config = getLayoutConfig<Menu>(menus, currentLocation);
+
+  const isHeader = config?.isHeader ?? false;
+  const isBottom = config?.isBottom ?? false;
+  const isFooter = config?.isFooter ?? false;
+  const isSpacing = config?.isSpacing ?? false;
 
   // current에 따라 헤더 아이콘 결정
 
@@ -41,7 +32,7 @@ export default function TabNaviLayout({ children }: PropsWithChildren) {
       flexDirection="column"
     >
       <Main sx={{ pb: isBottom ? 8 : 0, pt: isSpacing ? 7 : 0 }}>
-        {isHeader && <Header title={current?.title || ''} />}
+        {isHeader && <Header title={config?.title || ''} />}
         {children}
         {isFooter && <Footer />}
       </Main>
