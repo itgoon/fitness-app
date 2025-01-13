@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'react';
 import dayjs from 'dayjs';
+import { DateReqFormat } from 'src/utils/formatTime';
 import TimePicker from '../../../components/custom/TimePicker';
 import StartTimerCard from './StartTimerCard';
 import EndTimerCard from './EndTimerCard';
+import WeightDrawer from './WeightDrawer';
 
 interface ICard {
   isWorking: boolean;
@@ -23,6 +25,8 @@ export default function Card({ isWorking }: ICard) {
     isStart: false,
     isEnd: false
   });
+
+  const [weightModalisOpen, setWeightModalIsOpen] = useState(false);
 
   const { startTime, endTime, totalTime } = timerState;
   const { isStart, isEnd } = isTimePicker;
@@ -70,7 +74,7 @@ export default function Card({ isWorking }: ICard) {
   };
 
   const calculatedTotlaTime = (start: string, end: string) => {
-    const todayFormatted = dayjs().format('YYYY-MM-DD');
+    const todayFormatted = dayjs().format(DateReqFormat);
     const _startTime = dayjs(`${todayFormatted} ${start}`, 'YYYY-MM-DD HH:mm');
     const _endTime = dayjs(`${todayFormatted} ${end}`, 'YYYY-MM-DD HH:mm');
     const totalMinutes = _endTime.diff(_startTime, 'minute');
@@ -91,7 +95,10 @@ export default function Card({ isWorking }: ICard) {
         <StartTimerCard
           startTime={startTime}
           totalTime={totalTime}
-          onHandleEnd={() => setIsWorkingEnd(true)}
+          onHandleEnd={() => {
+            setIsWorkingEnd(true);
+            setWeightModalIsOpen(true);
+          }}
         />
       ) : (
         <EndTimerCard
@@ -118,6 +125,11 @@ export default function Card({ isWorking }: ICard) {
         }
         onClick={saveWorkTime}
         onChange={handleTimeChange}
+      />
+
+      <WeightDrawer
+        isOpen={weightModalisOpen}
+        onClose={() => setWeightModalIsOpen(false)}
       />
     </>
   );

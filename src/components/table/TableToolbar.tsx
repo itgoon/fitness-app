@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react';
-
 import Stack from '@mui/material/Stack';
 import MenuItem from '@mui/material/MenuItem';
 import Checkbox from '@mui/material/Checkbox';
@@ -9,18 +8,14 @@ import FormControl from '@mui/material/FormControl';
 import OutlinedInput from '@mui/material/OutlinedInput';
 import InputAdornment from '@mui/material/InputAdornment';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
-
 import { useTranslate } from 'src/locales';
-
 import Iconify from 'src/components/iconify';
-
-import { UserTableFilters, UserTableFilterValue } from 'src/types/user';
 
 // ----------------------------------------------------------------------
 
 type Props = {
-  filters: UserTableFilters;
-  onFilters: (name: string, value: UserTableFilterValue) => void;
+  filters: any;
+  onFilters: (name: string, value: any) => void;
   dateError: boolean;
   StatusOptions: string[];
   DutyOptions: string[];

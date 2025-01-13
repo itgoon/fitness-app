@@ -1,9 +1,8 @@
 import { PropsWithChildren } from 'react';
 import { Box } from '@mui/material';
 import Main from 'src/components/common/Main';
-import { Prev } from 'src/components/Icon/HeaderIcon';
-import { useLocation, useNavigate } from 'react-router';
-import Header from 'src/components/common/Header';
+import { useLocation } from 'react-router';
+import StackHeader from 'src/components/common/headers/StackHeader';
 import { Menu, menus } from './config';
 
 // ----------------------------------------------------------------------
@@ -20,15 +19,11 @@ const getMenuItemByPath = (menu: Menu[], path: string): Menu | null => {
 };
 
 export default function StackNaviLayout({ children }: PropsWithChildren) {
-  const navigate = useNavigate();
-
-  const location = useLocation();
-
   const currentLocation = useLocation().pathname;
 
   const current = getMenuItemByPath(menus, currentLocation);
 
-  const title = current?.title || location.state.title;
+  const isHeader = current?.title ?? false;
 
   return (
     <Box
@@ -39,9 +34,10 @@ export default function StackNaviLayout({ children }: PropsWithChildren) {
       overflow="hidden"
       flexDirection="column"
     >
-      <Header left={<Prev onClick={() => navigate(-1)} />} title={title} />
-
-      <Main>{children}</Main>
+      <Main sx={{ pt: current?.title ? 7 : 0 }}>
+        {isHeader && <StackHeader title={current?.title} />}
+        {children}
+      </Main>
     </Box>
   );
 }

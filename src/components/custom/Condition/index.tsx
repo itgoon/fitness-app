@@ -29,6 +29,7 @@ export default function Condition({ title, children, layoutSx }: ICondition) {
           children={`[${title}]`}
         />
       </Box>
+
       <Box>
         {isArray(children) ? (
           children.map((typo, key) => (

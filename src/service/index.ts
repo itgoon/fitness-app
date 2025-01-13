@@ -5,12 +5,7 @@ import * as ProductCategoriesService from './productCategoriesService';
 import * as ContractService from './contractService';
 import * as RecordService from './recordService';
 import * as RecordFileService from './recordFileService';
-
-import * as EmployeeService from './employeeService';
-import * as PartnerService from './partnerService';
-import * as StoreService from './storeService';
-import * as UserService from './userService';
-import * as VisitorService from './visitorService';
+import * as CenterService from './centerService';
 
 export {
   AuthService,
@@ -20,9 +15,5 @@ export {
   ContractService,
   RecordService,
   RecordFileService,
-  EmployeeService,
-  PartnerService,
-  StoreService,
-  UserService,
-  VisitorService
+  CenterService
 };

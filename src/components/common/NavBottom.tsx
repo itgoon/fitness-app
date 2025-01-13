@@ -3,20 +3,24 @@ import BottomNavigationAction from '@mui/material/BottomNavigationAction';
 import { useLayoutEffect, useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 import { useTheme } from '@mui/material';
-import { useNavData } from 'src/layouts/dashboard/configNavigation';
+import { useNavData } from 'src/layouts/configNavigation';
 import { QRCenterData, QRCustomerData } from '../../utils/dummy';
 import QrModal from '../custom/QrModal';
 
 export default function NavBottom() {
+  const navigate = useNavigate();
+
+  const location = useLocation();
+
   const theme = useTheme();
+
+  const navData = useNavData();
+
   const grey500 =
     theme.palette.mode === 'light' ? theme.palette.grey[500] : 'white';
-  const navData = useNavData();
-  const navigate = useNavigate();
-  const location = useLocation();
+
   const [list, setList] = useState<any[]>([]);
 
-  // modal
   const [isOpen, setIsOpen] = useState(false);
 
   useLayoutEffect(() => {
@@ -33,7 +37,7 @@ export default function NavBottom() {
   }, [navData, location]);
 
   const openModal = (newValue) => {
-    if (newValue === '/member') {
+    if (newValue === '/membership') {
       setIsOpen((prev) => !prev);
     }
   };
@@ -45,7 +49,7 @@ export default function NavBottom() {
         showLabels
         value={location?.pathname}
         onChange={(event, newValue) => {
-          if (newValue === '/member') {
+          if (newValue === '/membership') {
             openModal(newValue);
           } else {
             navigate(newValue);
@@ -71,10 +75,8 @@ export default function NavBottom() {
             value={item.path}
           />
         ))}
-        {/* <BottomNavigationAction label="Recents" icon={<RestoreIcon />} />
-      <BottomNavigationAction label="Favorites" icon={<FavoriteIcon />} />
-      <BottomNavigationAction label="Nearby" icon={<LocationOnIcon />} /> */}
       </BottomNavigation>
+
       <QrModal
         centerData={QRCenterData}
         customerData={QRCustomerData}

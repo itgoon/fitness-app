@@ -3,6 +3,7 @@ import dayjs from 'dayjs';
 import { Badge, Box, Stack, Typography, useTheme } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { ScheduleService } from 'src/service';
+import { paths } from 'src/routes/paths';
 import { DateReqFormat } from '../../../utils/formatTime';
 import Button from '../../../components/Button';
 
@@ -57,9 +58,11 @@ export default function WeekCalendar() {
 
         return (
           <Button
-            sx={{ flex: 1, minWidth: 46, minHeight: 54, padding: '0 0 6px' }}
-            onClick={() => navigate(`/schedule?date=${item.date}`)}
             key={key}
+            sx={{ flex: 1, minWidth: 46, minHeight: 54, padding: '0 0 6px' }}
+            onClick={() =>
+              navigate(paths.schedule.root, { state: { date: item.date } })
+            }
           >
             <Stack gap={1}>
               <Typography

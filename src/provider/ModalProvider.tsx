@@ -12,7 +12,6 @@ import Store from 'src/store';
 const ModalProvider = ({ children }: { children: any }) => {
   const [modalState, setModalState] = useRecoilState(Store.Layout.modalState);
 
-  console.log({ modalState });
   const s = () => {
     if (modalState.onClose) modalState.onClose();
     setModalState({

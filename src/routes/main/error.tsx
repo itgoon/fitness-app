@@ -1,13 +1,13 @@
 import { lazy, Suspense } from 'react';
 import { Outlet } from 'react-router-dom';
-import MainLayout from 'src/layouts/main';
 import { SplashScreen } from 'src/components/loadingScreen';
+import ErrorLayout from 'src/layouts/error/layout';
 
 // ----------------------------------------------------------------------
 
-const Page500 = lazy(() => import('src/pages/500'));
-const Page403 = lazy(() => import('src/pages/403'));
-const Page404 = lazy(() => import('src/pages/404'));
+const Page500 = lazy(() => import('src/pages/error/500'));
+const Page403 = lazy(() => import('src/pages/error/403'));
+const Page404 = lazy(() => import('src/pages/error/404'));
 
 // ----------------------------------------------------------------------
 
@@ -15,9 +15,9 @@ export const errorRoutes = [
   {
     element: (
       <Suspense fallback={<SplashScreen />}>
-        <MainLayout>
+        <ErrorLayout>
           <Outlet />
-        </MainLayout>
+        </ErrorLayout>
       </Suspense>
     ),
     children: [

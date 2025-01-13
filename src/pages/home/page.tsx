@@ -1,8 +1,8 @@
 import { Stack } from '@mui/material';
 import Divider from '../../components/custom/Divider';
-import WeekCalendar from './WeekCalendar';
 import Workout from './Workout';
 import Notification from './Notification';
+import WeekCalendar from './WeekCalendar';
 
 /**
  * ******************************************************

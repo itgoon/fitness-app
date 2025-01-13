@@ -1,7 +1,6 @@
 import { Box, Stack } from '@mui/material';
 import { useState } from 'react';
 import Icon from '../../../components/Icon';
-import { IimageViewer } from '../types';
 import Overlay from '../../../components/custom/Overlay/indext';
 import Button from '../../../components/Button';
 import CustomCarousel from '../../../components/custom/CustomCarousel/index';
@@ -30,7 +29,7 @@ export default function ImageViewer({
   onClose,
   onDelete,
   afterChange
-}: IimageViewer) {
+}: any) {
   const { openConfirm } = useModal();
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
   if (clickedImg === undefined || selectedIndex.length === 0) return null;

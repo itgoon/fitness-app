@@ -1,5 +1,5 @@
-import Box, { BoxProps } from '@mui/material/Box';
 import { Container } from '@mui/material';
+import Box, { BoxProps } from '@mui/material/Box';
 
 // ----------------------------------------------------------------------
 

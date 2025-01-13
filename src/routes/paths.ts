@@ -8,7 +8,7 @@ const ROOTS = {
   HOME: '/home',
   SCHEDULE: '/schedule',
   RECORD: '/record',
-  MEMEBER: '/member',
+  MEMEBERSHIP: '/membership',
   MORE: '/more',
   RESERVATION: '/reservation',
   CONTRACT: '/contract',
@@ -30,15 +30,16 @@ export const paths = {
     root: `${ROOTS.HOME}`
   },
   schedule: {
-    root: `${ROOTS.SCHEDULE}`,
+    root: `${ROOTS.SCHEDULE}/list`,
     workout: (id: string) => `${ROOTS.SCHEDULE}/workout/${id}`,
     reservation: (id: string) => `${ROOTS.SCHEDULE}/reservation/${id}`
   },
-  member: {
-    root: `${ROOTS.MEMEBER}`
+  membership: {
+    root: `${ROOTS.MEMEBERSHIP}`
   },
   record: {
-    root: `${ROOTS.RECORD}`
+    root: `${ROOTS.RECORD}`,
+    new: `${ROOTS.RECORD}/new`
   },
   more: {
     root: `${ROOTS.MORE}`
@@ -47,7 +48,8 @@ export const paths = {
     root: `${ROOTS.MYPAGE}`
   },
   reservation: {
-    root: `${ROOTS.RESERVATION}`
+    root: `${ROOTS.RESERVATION}`,
+    check: `${ROOTS.RESERVATION}/check`
   },
   contract: {
     root: `${ROOTS.CONTRACT}`,

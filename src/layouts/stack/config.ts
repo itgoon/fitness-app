@@ -29,7 +29,7 @@ export const menus: Menu[] = [
     url: '/schedule/workout'
   },
   {
-    title: '예약하기',
+    title: '',
     url: '/reservation'
   },
   {

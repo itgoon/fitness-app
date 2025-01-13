@@ -14,7 +14,6 @@ import { allLangs, defaultLang } from './configLang';
 // ----------------------------------------------------------------------
 
 export function useLocales() {
-  const [authInfo, setAuthInfo] = useRecoilState(Store.Auth.authInfoState);
   const langStorage = localStorageGetItem('i18nextLng');
   const currentLang =
     allLangs.find((lang) => lang.value === langStorage) || defaultLang;
@@ -28,7 +27,6 @@ export function useLocales() {
 
 export function useTranslate() {
   const { t, i18n, ready } = useTranslation();
-  const [authInfo, setAuthInfo] = useRecoilState(Store.Auth.authInfoState);
   const [authState, setAuth] = useRecoilState(Store.Auth.authState);
   const settings = useSettingsContext();
 
@@ -38,7 +36,7 @@ export function useTranslate() {
       i18n.changeLanguage(newlang);
       settings.onChangeDirectionByLang(newlang);
     },
-    [i18n, settings, authInfo, authState]
+    [i18n, settings, authState]
   );
 
   const loadTranslate = async (newlang: string) => {

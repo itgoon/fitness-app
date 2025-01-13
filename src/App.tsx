@@ -12,29 +12,15 @@ import { MotionLazy } from 'src/components/animate/MotionLazy';
 import ProgressBar from 'src/components/progressBar';
 import { SettingsProvider } from 'src/components/settings';
 import SnackbarProvider from 'src/components/snackbar/SnackbarProvider';
-import AuthProvider from './provider/AuthProvider';
 import ModalProvider from './provider/ModalProvider';
-import { CardProvider } from './hooks/useCard';
-import { SignProvider } from './hooks/useSign';
-import { EditProvider } from './hooks/useEditState';
 import useCode from './hooks/useCode';
+import { useMe } from './hooks/useMe';
 
 // ----------------------------------------------------------------------
 
 export default function App() {
-  const charAt = `
-
-  ░░░    ░░░
-  ▒▒▒▒  ▒▒▒▒
-  ▒▒ ▒▒▒▒ ▒▒
-  ▓▓  ▓▓  ▓▓
-  ██      ██
-
-  `;
-
-  console.info(`%c${charAt}`, 'color: #5BE49B');
-
   useCode();
+  useMe();
 
   return (
     <LocalizationProvider>
@@ -51,18 +37,10 @@ export default function App() {
         <ThemeProvider>
           <MotionLazy>
             <SnackbarProvider>
-              <AuthProvider>
-                <ModalProvider>
-                  <SignProvider>
-                    <CardProvider>
-                      <EditProvider>
-                        <ProgressBar />
-                        <Router />
-                      </EditProvider>
-                    </CardProvider>
-                  </SignProvider>
-                </ModalProvider>
-              </AuthProvider>
+              <ModalProvider>
+                <ProgressBar />
+                <Router />
+              </ModalProvider>
             </SnackbarProvider>
           </MotionLazy>
         </ThemeProvider>

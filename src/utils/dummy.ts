@@ -1,5 +1,4 @@
 import { customerData } from '../components/custom/QrModal/types';
-import { cardData } from '../pages/schedule/types';
 
 import MainPng from '../assets/images/main.png';
 import Gallery1 from '../assets/images/gallery1.jpeg';
@@ -62,7 +61,7 @@ export const dummyWorkOutRecordList = [
 ];
 
 // tabs 일정 페이지 reservationList
-export const dummyReservaitonListCard: cardData[] = [
+export const dummyReservaitonListCard: any[] = [
   {
     date: '2024-09-19',
     time: '8:00',
