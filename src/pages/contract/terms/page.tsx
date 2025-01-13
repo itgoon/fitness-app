@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { CenterPolicyDto } from 'src/api';
 import Button from 'src/components/Button';
+import ButtonWrapper from 'src/components/ButtonWrapper';
 import Sizer from 'src/components/common/Sizer';
 import TermsContent from 'src/components/Terms/TermsContent';
 import TermsTitle from 'src/components/Terms/TermsTitle';
@@ -38,7 +39,9 @@ export default function TermsPage() {
           <TermsTitle>헬스장 이용 정책 및 규정</TermsTitle>
           <TermsContent>{terms?.provision}</TermsContent>
         </Stack>
+      </Stack>
 
+      <ButtonWrapper>
         <Button
           size="large"
           variant="contained"
@@ -47,7 +50,7 @@ export default function TermsPage() {
         >
           아래로 내려 동의하기
         </Button>
-      </Stack>
+      </ButtonWrapper>
     </Sizer>
   );
 }
