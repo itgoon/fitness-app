@@ -25,7 +25,17 @@ export default function Header({ left, title, right }: HeaderProps) {
         zIndex: 1000
       }}
     >
-      {left}
+      <Box
+        sx={{
+          width: 24,
+          height: 24,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
+        }}
+      >
+        {left}
+      </Box>
 
       <Box
         sx={{
@@ -42,7 +52,7 @@ export default function Header({ left, title, right }: HeaderProps) {
         </Typography>
       </Box>
 
-      {right}
+      <Box sx={{ width: 24, height: 24 }}>{right}</Box>
     </Box>
   );
 }

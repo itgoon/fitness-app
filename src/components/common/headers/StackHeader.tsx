@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
 import { useNavigate } from 'react-router';
-import { Prev } from 'src/components/Icon/HeaderIcon';
+import Icon from 'src/components/Icon';
 import Header from './Header';
 
 interface HeaderProps {
@@ -10,5 +10,10 @@ interface HeaderProps {
 export default function StackHeader({ title }: HeaderProps) {
   const navigate = useNavigate();
 
-  return <Header left={<Prev onClick={() => navigate(-1)} />} title={title} />;
+  return (
+    <Header
+      left={<Icon name="PrevSvg" size={20} onClick={() => navigate(-1)} />}
+      title={title}
+    />
+  );
 }
