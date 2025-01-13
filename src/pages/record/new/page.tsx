@@ -5,13 +5,14 @@ import { useForm } from 'react-hook-form';
 import { useNavigate } from 'react-router';
 import FormProvider from 'src/components/hookForm';
 import Sizer from 'src/components/common/Sizer';
-import { DateReqFormat } from '../../../utils/formatTime';
+import ButtonWrapper from 'src/components/ButtonWrapper';
 import { useModal } from '../../../hooks/useModal';
 import Button from '../../../components/Button';
 import { recordSchema } from './_schema';
 import CategoryField from './CategoryField';
 import ImageUploader from './ImageUploader';
 import DateField from './DateField';
+import { DateReqFormat } from '../../../utils/formatTime';
 
 /**
  * ******************************************************
@@ -61,7 +62,7 @@ export default function Post() {
         </Sizer>
       </FormProvider>
 
-      <Sizer>
+      <ButtonWrapper>
         <Button
           variant="contained"
           color="primary"
@@ -70,7 +71,7 @@ export default function Post() {
         >
           등록하기
         </Button>
-      </Sizer>
+      </ButtonWrapper>
     </Stack>
   );
 }

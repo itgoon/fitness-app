@@ -1,4 +1,5 @@
-import { Box, Stack, Typography } from '@mui/material';
+import dayjs from 'dayjs';
+import { Stack, Typography } from '@mui/material';
 import { useNavigate } from 'react-router';
 import Button from 'src/components/Button';
 import ButtonWrapper from 'src/components/ButtonWrapper';
@@ -6,11 +7,10 @@ import Sizer from 'src/components/common/Sizer';
 import ContractTable from 'src/components/contractTable';
 import ConfirmModal from 'src/components/modals/ConfirmModal';
 import useModals from 'src/hooks/useModals';
-import SignModal from './SignModal';
 import { useState } from 'react';
 import { ContractService } from 'src/service';
+import SignModal from './SignModal';
 import SignCanvas from './SignCanvas';
-import dayjs from 'dayjs';
 import SignPreview from './SignPreview';
 
 export default function NewContractPage() {
