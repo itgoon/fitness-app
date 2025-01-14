@@ -1,7 +1,7 @@
 import {
-  Drawer,
   InputAdornment,
   Stack,
+  SwipeableDrawer,
   TextField,
   Typography
 } from '@mui/material';
@@ -10,10 +10,15 @@ import Button from 'src/components/Button';
 
 interface WeightDrawerProps {
   isOpen: boolean;
+  onOpen: () => void;
   onClose: () => void;
 }
 
-export default function WeightDrawer({ isOpen, onClose }: WeightDrawerProps) {
+export default function WeightDrawer({
+  isOpen,
+  onOpen,
+  onClose
+}: WeightDrawerProps) {
   const [weight, setWeight] = useState<number>(0);
 
   const onChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -23,7 +28,13 @@ export default function WeightDrawer({ isOpen, onClose }: WeightDrawerProps) {
   };
 
   return (
-    <Drawer anchor="bottom" open={isOpen} onClose={onClose}>
+    <SwipeableDrawer
+      anchor="bottom"
+      open={isOpen}
+      onOpen={onOpen}
+      onClose={onClose}
+      aria-hidden="false"
+    >
       <Stack spacing={5} sx={{ width: '100%', height: 274 }}>
         <Typography
           sx={{ fontSize: '20px', lineHeight: '30px', fontWeight: 600 }}
@@ -62,6 +73,6 @@ export default function WeightDrawer({ isOpen, onClose }: WeightDrawerProps) {
           확인
         </Button>
       </Stack>
-    </Drawer>
+    </SwipeableDrawer>
   );
 }

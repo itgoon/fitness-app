@@ -5,7 +5,6 @@ import { paths } from 'src/routes/paths';
 import AlaramCard from '../../../components/custom/AlaramCard';
 import EmptyCard from '../../../components/custom/customCard/EmptyCard';
 import { dummyCardData } from '../../../utils/dummy';
-import Divider from '../../../components/custom/Divider';
 
 export default function Notification() {
   const { palette } = useTheme();

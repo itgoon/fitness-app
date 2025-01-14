@@ -1,11 +1,15 @@
 import { Box, LinearProgress, Stack, Typography } from '@mui/material';
 import { QRCodeSVG } from 'qrcode.react';
+import { useState } from 'react';
+import QrDrawer from '../QrDrawer';
 
 interface CardFrontProps {
   toggleCard: () => void;
 }
 
 export default function CardFront({ toggleCard }: CardFrontProps) {
+  const [qrDrawerIsOpen, setQrDrawerIsOpen] = useState(false);
+
   return (
     <Box
       sx={{
@@ -35,7 +39,10 @@ export default function CardFront({ toggleCard }: CardFrontProps) {
         </Stack>
 
         <QRCodeSVG
-          onClick={() => console.log('슬라이드')}
+          onClick={(e) => {
+            e.stopPropagation();
+            setQrDrawerIsOpen(true);
+          }}
           value="https://example.com"
           size={100}
           bgColor="white"
@@ -62,6 +69,12 @@ export default function CardFront({ toggleCard }: CardFrontProps) {
           </Typography>
         </Stack>
       </Stack>
+
+      <QrDrawer
+        isOpen={qrDrawerIsOpen}
+        onOpen={() => setQrDrawerIsOpen(true)}
+        onClose={() => setQrDrawerIsOpen(false)}
+      />
     </Box>
   );
 }

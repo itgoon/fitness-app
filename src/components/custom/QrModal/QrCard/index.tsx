@@ -21,7 +21,7 @@ export default function QrCard() {
         conic-gradient(from 37deg at 50% 50%, rgba(0, 30, 191, 0.7) 0deg, rgba(199, 205, 252, 0.1) 360deg),
         conic-gradient(from 217deg at 50% 50%, rgba(0, 30, 191, 0.5) 0deg, rgba(199, 205, 252, 0.3) 360deg)
       `,
-        backgroundColor: 'blue',
+        backgroundColor: '#001EBF',
         boxShadow: 12,
         borderRadius: 1,
         transformStyle: 'preserve-3d',
