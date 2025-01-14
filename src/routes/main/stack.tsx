@@ -12,7 +12,7 @@ import ReservationCardDetail from '../../pages/schedule/reservation/page';
 const RecordPostPage = lazy(() => import('src/pages/record/new/page'));
 
 // 예약
-const ReservationPage = lazy(() => import('src/pages/reservation/page'));
+const ReservationPage = lazy(() => import('src/pages/reservation/list/page'));
 const ReservationCheckPage = lazy(
   () => import('src/pages/reservation/check/page')
 );
