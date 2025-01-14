@@ -2,7 +2,22 @@ import { Stack, Typography } from '@mui/material';
 
 export default function QrEmptyCard() {
   return (
-    <Stack height="100%" justifyContent="space-between" py={5} px={2.5}>
+    <Stack
+      sx={{
+        height: '100%',
+        justifyContent: 'space-between',
+        background: `
+        radial-gradient(circle at 50% 50%, rgba(17, 85, 243, 0.3) 0%, rgba(0, 65, 219, 0.9) 100%),
+        conic-gradient(from 37deg at 50% 50%, rgba(0, 30, 191, 0.7) 0deg, rgba(199, 205, 252, 0.1) 360deg),
+        conic-gradient(from 217deg at 50% 50%, rgba(0, 30, 191, 0.5) 0deg, rgba(199, 205, 252, 0.3) 360deg)
+      `,
+        backgroundColor: '#001EBF',
+        px: 2.5,
+        py: 5,
+        borderRadius: 1,
+        boxShadow: 12
+      }}
+    >
       <Stack gap={1}>
         <Typography variant="Body24/semiBold" color="white">
           연동된 헬스장이 없습니다.

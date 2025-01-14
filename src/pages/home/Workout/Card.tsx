@@ -129,6 +129,7 @@ export default function Card({ isWorking }: ICard) {
 
       <WeightDrawer
         isOpen={weightModalisOpen}
+        onOpen={() => setWeightModalIsOpen(true)}
         onClose={() => setWeightModalIsOpen(false)}
       />
     </>
