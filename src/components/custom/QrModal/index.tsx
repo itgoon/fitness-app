@@ -1,5 +1,4 @@
-import { Modal } from '@mui/material';
-import ModalContainer from 'src/components/modals/ModalContainer';
+import { Box, Modal } from '@mui/material';
 import { QRCustomerData } from 'src/utils/dummy';
 import QrCard from './QrCard';
 import QrEmptyCard from './QrEmptyCard';
@@ -13,20 +12,19 @@ export default function QrModal({ onClose }: QrModalProps) {
 
   return (
     <Modal open onClose={onClose}>
-      <ModalContainer
+      <Box
         sx={{
+          perspective: '1000px',
+          position: 'absolute',
+          top: '50%',
+          left: '50%',
+          transform: 'translate(-50%, -50%)',
           width: 300,
-          height: 400,
-          backgroundImage: `
-          radial-gradient(circle at 50% 50%, rgba(17, 85, 243, 0.6) 0%, rgba(0, 65, 219, 0.6) 100%),
-          linear-gradient(106.31deg, #001EBF 0%, #001EBF 100%)
-        `,
-          py: 5,
-          px: 2.5
+          height: 400
         }}
       >
         {data ? <QrCard /> : <QrEmptyCard />}
-      </ModalContainer>
+      </Box>
     </Modal>
   );
 }

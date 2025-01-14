@@ -13,43 +13,27 @@ export default function QrCard() {
   return (
     <Box
       sx={{
-        perspective: '1000px',
-        height: '100%'
+        position: 'relative',
+        width: '100%',
+        height: '100%',
+        background: `
+        radial-gradient(circle at 50% 50%, rgba(17, 85, 243, 0.3) 0%, rgba(0, 65, 219, 0.9) 100%),
+        conic-gradient(from 37deg at 50% 50%, rgba(0, 30, 191, 0.7) 0deg, rgba(199, 205, 252, 0.1) 360deg),
+        conic-gradient(from 217deg at 50% 50%, rgba(0, 30, 191, 0.5) 0deg, rgba(199, 205, 252, 0.3) 360deg)
+      `,
+        backgroundColor: 'blue',
+        boxShadow: 12,
+        borderRadius: 1,
+        transformStyle: 'preserve-3d',
+        transition: 'transform 0.6s',
+        transform: isFrontSide ? 'rotateY(0deg)' : 'rotateY(180deg)'
       }}
     >
-      <Box
-        sx={{
-          position: 'relative',
-          width: '100%',
-          height: '100%',
-          transformStyle: 'preserve-3d', // 3D 변환 효과
-          transition: 'transform 0.6s', // 뒤집을 때 애니메이션 적용
-          transform: isFrontSide ? 'rotateY(0deg)' : 'rotateY(180deg)' // 카드 뒤집기
-        }}
-      >
-        <Box
-          sx={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            backfaceVisibility: 'hidden' // 반대면 숨기기
-          }}
-        >
-          <CardFront toggleCard={toggleCard} />
-        </Box>
+      {/* 앞면 */}
+      <CardFront toggleCard={toggleCard} />
 
-        <Box
-          sx={{
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            backfaceVisibility: 'hidden', // 반대면 숨기기
-            transform: 'rotateY(180deg)' // 카드 뒷면은 180도 회전
-          }}
-        >
-          <CardBack toggleCard={toggleCard} />
-        </Box>
-      </Box>
+      {/* 뒷면 */}
+      <CardBack toggleCard={toggleCard} />
     </Box>
   );
 }

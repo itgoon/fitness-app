@@ -1,5 +1,3 @@
-import { customerData } from '../components/custom/QrModal/types';
-
 import MainPng from '../assets/images/main.png';
 import Gallery1 from '../assets/images/gallery1.jpeg';
 import Gallery2 from '../assets/images/gallery2.png';
@@ -36,7 +34,7 @@ export const contractList = [
 
 // QR 더미
 //  basic QR 데이터
-export const QRCustomerData: customerData = {
+export const QRCustomerData = {
   centerName: { label: '센터명', value: '리온짐' },
   lesson: { label: '레슨', value: '[Lv1] 10회' },
   count: { label: '레슨 횟수', value: '10회' },
