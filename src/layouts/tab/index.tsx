@@ -15,10 +15,10 @@ export default function TabNaviLayout({ children }: PropsWithChildren) {
 
   const config = getLayoutConfig<Menu>(menus, currentLocation);
 
-  const isHeader = config?.isHeader ?? false;
-  const isBottom = config?.isBottom ?? false;
-  const isFooter = config?.isFooter ?? false;
-  const isSpacing = config?.isSpacing ?? false;
+  const hasHeader = config?.hasHeader ?? false;
+  const hasBottom = config?.hasBottom ?? false;
+  const hasFooter = config?.hasFooter ?? false;
+  const hasSpacing = config?.hasSpacing ?? false;
 
   // current에 따라 헤더 아이콘 결정
 
@@ -31,12 +31,12 @@ export default function TabNaviLayout({ children }: PropsWithChildren) {
       overflow="hidden"
       flexDirection="column"
     >
-      <Main sx={{ pb: isBottom ? 8 : 0, pt: isSpacing ? 7 : 0 }}>
-        {isHeader && <Header title={config?.title || ''} />}
+      <Main sx={{ pb: hasBottom ? 8 : 0, pt: hasSpacing ? 7 : 0 }}>
+        {hasHeader && <Header title={config?.title || ''} />}
         {children}
-        {isFooter && <Footer />}
+        {hasFooter && <Footer />}
       </Main>
-      {isBottom && <NavBottom />}
+      {hasBottom && <NavBottom />}
     </Box>
   );
 }

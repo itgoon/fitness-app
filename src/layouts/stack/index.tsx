@@ -13,7 +13,9 @@ export default function StackNaviLayout({ children }: PropsWithChildren) {
 
   const config = getLayoutConfig<Menu>(menus, currentLocation);
 
-  const isHeader = config?.title ?? false;
+  const hasHeader = config?.hasHeader ?? false;
+
+  console.log(config);
 
   return (
     <Box
@@ -25,7 +27,7 @@ export default function StackNaviLayout({ children }: PropsWithChildren) {
       flexDirection="column"
     >
       <Main sx={{ pt: config?.title ? 7 : 0 }}>
-        {isHeader && <StackHeader title={config?.title} />}
+        {hasHeader && <StackHeader title={config?.title} />}
         {children}
       </Main>
     </Box>

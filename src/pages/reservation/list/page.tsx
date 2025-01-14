@@ -7,6 +7,8 @@ import { useCallback, useState } from 'react';
 import dayjs from 'dayjs';
 import Icon from 'src/components/Icon';
 import DateCalendar from 'src/components/DateCalendar';
+import { paths } from 'src/routes/paths';
+import { useNavigate } from 'react-router';
 import TimeSlot from './TimeSlot';
 import TimeSlotContainer from './TimeSlotContainer';
 import DateSelectDrawer from './DateSelectSwiper';
@@ -26,6 +28,8 @@ const dummy = [
 
 export default function ReservationPage() {
   const today = dayjs();
+
+  const navigate = useNavigate();
 
   const [date, setDate] = useState(today.format('YYYY-MM-DD'));
 
@@ -84,7 +88,13 @@ export default function ReservationPage() {
           </Stack>
 
           <ButtonWrapper>
-            <Button fullWidth size="large" variant="contained" color="primary">
+            <Button
+              fullWidth
+              size="large"
+              variant="contained"
+              color="primary"
+              onClick={() => navigate(paths.reservation.check)}
+            >
               다음
             </Button>
           </ButtonWrapper>
