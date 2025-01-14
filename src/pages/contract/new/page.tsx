@@ -54,32 +54,30 @@ export default function NewContractPage() {
 
   return (
     <Sizer>
-      <Stack height="100%" justifyContent="space-between">
-        <Stack gap={5} sx={{ pt: 4, pb: 15 }}>
-          {/* 테이블 */}
-          <Stack>
-            <Typography variant="Body18/bold" sx={{ mb: 2 }}>
-              결제 정보
-            </Typography>
-            <ContractTable id={id} />
-          </Stack>
+      <Stack sx={{ pt: 4, pb: 15 }}>
+        {/* 테이블 */}
+        <Stack sx={{ mb: 5 }}>
+          <Typography variant="Body18/bold" sx={{ mb: 2 }}>
+            결제 정보
+          </Typography>
+          <ContractTable id={id} />
+        </Stack>
 
-          {/* 서명 */}
-          <Stack>
-            <Typography
-              display="flex"
-              justifyContent="center"
-              variant="Body20/semiBold"
-              sx={{ mb: 3 }}
-            >
-              {today.format('YYYY년 MM월 DD일')}
-            </Typography>
-            {signFile?.preview ? (
-              <SignPreview preview={signFile.preview} />
-            ) : (
-              <SignCanvas onClick={handleSignModal} />
-            )}
-          </Stack>
+        {/* 서명 */}
+        <Stack>
+          <Typography
+            display="flex"
+            justifyContent="center"
+            variant="Body20/semiBold"
+            sx={{ mb: 3 }}
+          >
+            {today.format('YYYY년 MM월 DD일')}
+          </Typography>
+          {signFile?.preview ? (
+            <SignPreview preview={signFile.preview} />
+          ) : (
+            <SignCanvas onClick={handleSignModal} />
+          )}
         </Stack>
       </Stack>
 

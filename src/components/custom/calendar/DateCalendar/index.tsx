@@ -43,27 +43,25 @@ export default function DateCalendar({
     : [];
 
   return (
-    <>
-      <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
-        <CustomDateCalendar
-          className="main-calendar"
-          showDaysOutsideCurrentMonth
-          slots={{
-            calendarHeader: (e) => (
-              <CalendarHeader isModal={isModal} isBadge={isBadge} {...e} />
-            ),
-            day: ServerDay
-          }}
-          slotProps={{
-            day: {
-              highlightedDays
-            } as any
-          }}
-          sx={isBadge ? {} : { maxHeight: 288, height: 288 }}
-          value={value ? dayjs(value) : dayjs()}
-          onChange={(e) => onChange && onChange(e)}
-        />
-      </LocalizationProvider>
-    </>
+    <LocalizationProvider dateAdapter={AdapterDayjs} adapterLocale="ko">
+      <CustomDateCalendar
+        className="main-calendar"
+        showDaysOutsideCurrentMonth
+        slots={{
+          calendarHeader: (e) => (
+            <CalendarHeader isModal={isModal} isBadge={isBadge} {...e} />
+          ),
+          day: ServerDay
+        }}
+        slotProps={{
+          day: {
+            highlightedDays
+          } as any
+        }}
+        sx={isBadge ? {} : { maxHeight: 288, height: 288 }}
+        value={value ? dayjs(value) : dayjs()}
+        onChange={(e) => onChange && onChange(e)}
+      />
+    </LocalizationProvider>
   );
 }
