@@ -6,13 +6,15 @@ import { useNavigate } from 'react-router';
 import FormProvider from 'src/components/hookForm';
 import Sizer from 'src/components/common/Sizer';
 import ButtonWrapper from 'src/components/ButtonWrapper';
-import { useModal } from '../../../hooks/useModal';
+import useModals from 'src/hooks/useModals';
+import ConfirmModal from 'src/components/modals/ConfirmModal';
+import { paths } from 'src/routes/paths';
 import Button from '../../../components/Button';
 import { recordSchema } from './_schema';
 import CategoryField from './CategoryField';
 import ImageUploader from './ImageUploader';
-import DateField from './DateField';
 import { DateReqFormat } from '../../../utils/formatTime';
+import DateField from './DateField';
 
 /**
  * ******************************************************
@@ -23,34 +25,39 @@ export default function Post() {
   const navigate = useNavigate();
 
   const methods = useForm({
-    mode: 'all',
     resolver: yupResolver(recordSchema),
     defaultValues: {
-      type: '',
+      type: 'workout',
       images: [],
       rctDate: dayjs().format(DateReqFormat),
       content: ''
     }
   });
-  const { handleSubmit } = methods;
 
-  const { openConfirm } = useModal();
+  const { handleSubmit, getValues } = methods;
 
-  const handleConformModal = handleSubmit(async (data) => {
-    const type = data.type === 'workout' ? '운동 기록을 ' : '식단 기록을 ';
+  const { modals, addModal, removeModal } = useModals();
 
-    openConfirm({
-      title: '',
-      content: `${type}등록하시겠습니까?`,
-      onClick: () => navigate('/record'),
-      onClose: () => console.log('on Close data 저장', data),
-      clickMsg: '네',
-      closeMsg: '아니요'
-    });
+  const onSubmit = handleSubmit(async (data) => {
+    // 등록 API
+
+    navigate(paths.record.list);
   });
 
+  const handleConformModal = () => {
+    const type = getValues('type') === 'workout' ? '운동' : '식단';
+
+    addModal(
+      <ConfirmModal
+        title={`${type} 기록을 등록하시겠습니까?`}
+        onClose={removeModal}
+        onConfirm={onSubmit}
+      />
+    );
+  };
+
   return (
-    <Stack height="100%" justifyContent="space-between">
+    <>
       <FormProvider methods={methods}>
         <ImageUploader />
 
@@ -72,6 +79,8 @@ export default function Post() {
           등록하기
         </Button>
       </ButtonWrapper>
-    </Stack>
+
+      {modals}
+    </>
   );
 }

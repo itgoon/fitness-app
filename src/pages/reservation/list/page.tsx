@@ -6,7 +6,7 @@ import Divider from 'src/components/custom/Divider';
 import { useCallback, useState } from 'react';
 import dayjs from 'dayjs';
 import Icon from 'src/components/Icon';
-import DateCalendar from 'src/components/DateCalendar';
+import DateCalendar from 'src/components/dateCalendar';
 import { paths } from 'src/routes/paths';
 import { useNavigate } from 'react-router';
 import TimeSlot from './TimeSlot';
@@ -63,12 +63,12 @@ export default function ReservationPage() {
         }
       />
 
-      {/* 달력 */}
-      <DateCalendar value={dayjs(date)} onChange={(e) => onDateChange(e)} />
-      <Divider />
+      <Stack sx={{ pt: 7, pb: 15 }}>
+        {/* 달력 */}
+        <DateCalendar value={dayjs(date)} onChange={(e) => onDateChange(e)} />
+        <Divider />
 
-      {/* 레슨 시간 셀렉터 */}
-      <Stack sx={{ pb: 15 }}>
+        {/* 레슨 시간 셀렉터 */}
         <Sizer>
           <Stack sx={{ py: 4, gap: 3 }}>
             <Typography color="grey.900" variant="Body16/bold">

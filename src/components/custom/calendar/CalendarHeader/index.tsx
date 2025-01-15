@@ -21,8 +21,6 @@ const layoutSx = {
 };
 
 export default function CalendarHeader(props: CalendarHeaderProps) {
-  const { palette } = useTheme();
-
   const {
     currentMonth,
     onMonthChange,

@@ -21,6 +21,7 @@ export function dateCalendar(theme: Theme) {
         root: {
           '&.main-calendar': {
             width: '100%',
+            height: 288,
 
             // Calendar body styling
             '.MuiPickersFadeTransitionGroup-root': {
