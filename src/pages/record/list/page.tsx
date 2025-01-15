@@ -6,8 +6,8 @@ import Header from 'src/components/common/headers/Header';
 import { Box, Tab, Tabs, Typography } from '@mui/material';
 import { RecordFileService } from 'src/service';
 import RecordBottom from './RecordBottom';
-import WorkoutList from './WorkoutList';
-import DietList from './DietList';
+import WorkoutTab from './WorkoutTab';
+import DietTab from './DietTab';
 
 /**
  * ******************************************************
@@ -100,8 +100,8 @@ export default function RecordPage() {
 
       {/* 컨텐츠 */}
       <Box px={2.5} py={3}>
-        {tabValue === 0 && <WorkoutList />}
-        {tabValue === 1 && <DietList />}
+        {tabValue === 0 && <WorkoutTab />}
+        {tabValue === 1 && <DietTab />}
       </Box>
 
       {/* 삭제 UI */}

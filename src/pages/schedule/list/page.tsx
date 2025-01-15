@@ -3,11 +3,11 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import dayjs from 'dayjs';
 import { DateReqFormat } from 'src/utils/formatTime';
-import WorkOutRecord from './WorkOutRecord';
-import ReservationList from './ReservationList';
 import { dummyMonthWorkoutList } from '../../../utils/dummy';
 import DateCalendar from '../../../components/custom/calendar/DateCalendar';
 import Divider from '../../../components/custom/Divider';
+import WorkoutTab from './WorkoutTab';
+import ReservationTab from './ReservationTab';
 
 /**
  * ******************************************************
@@ -51,8 +51,8 @@ export default function SchedulePage() {
         </Tabs>
 
         <Box px={2.5} py={3}>
-          {tabValue === 0 && <WorkOutRecord date={date} />}
-          {tabValue === 1 && <ReservationList date={date} />}
+          {tabValue === 0 && <WorkoutTab date={date} />}
+          {tabValue === 1 && <ReservationTab date={date} />}
         </Box>
       </Box>
     </Box>

@@ -1,7 +1,7 @@
 import { Stack, useTheme } from '@mui/material';
 import { useState } from 'react';
 
-export default function DietList() {
+export default function DietTab() {
   const theme = useTheme();
 
   const [isDetailOpen, setIsDetailOpen] = useState(false);
