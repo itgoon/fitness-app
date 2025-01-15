@@ -15,8 +15,6 @@ export default function StackNaviLayout({ children }: PropsWithChildren) {
 
   const hasHeader = config?.hasHeader ?? false;
 
-  console.log(config);
-
   return (
     <Box
       minHeight={1}

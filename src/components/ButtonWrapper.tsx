@@ -11,7 +11,9 @@ export default function ButtonWrapper({ children }: PropsWithChildren) {
         px: 2.5,
         pt: 3,
         width: '100%',
-        backgroundColor: 'white'
+        backgroundColor: 'white',
+        display: 'flex',
+        gap: 1
       }}
     >
       {children}
