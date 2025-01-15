@@ -1,10 +1,11 @@
 import { Box, Stack } from '@mui/material';
 import { useState } from 'react';
+import useModals from 'src/hooks/useModals';
+import DeleteModal from 'src/components/modals/DeleteModal';
 import Icon from '../../../components/Icon';
 import Overlay from '../../../components/custom/Overlay/indext';
 import Button from '../../../components/Button';
 import CustomCarousel from '../../../components/custom/CustomCarousel/index';
-import { useModal } from '../../../hooks/useModal';
 
 const IconSx = {
   size: 24,
@@ -30,11 +31,25 @@ export default function ImageViewer({
   onDelete,
   afterChange
 }: any) {
-  const { openConfirm } = useModal();
+  const { modals, addModal, removeModal } = useModals();
+
   const [isOverlayOpen, setIsOverlayOpen] = useState(false);
+
   if (clickedImg === undefined || selectedIndex.length === 0) return null;
+
   const { content, imageUrls } = clickedImg;
+
   const currentIndex = selectedIndex[0][1];
+
+  const handleDeleteModal = () => {
+    addModal(
+      <DeleteModal
+        title="기록을 삭제하시겠습니까?"
+        onClose={removeModal}
+        onDelete={() => console.log('삭제')}
+      />
+    );
+  };
 
   return (
     <Overlay bgcolor="#000">
@@ -72,16 +87,7 @@ export default function ImageViewer({
                 children="기록 삭제"
                 color="error"
                 {...BtnSx}
-                onClick={() =>
-                  openConfirm({
-                    title: '',
-                    content: `기록을 삭제하시겠습니까?`,
-                    onClick: onDelete,
-                    clickMsg: '삭제',
-                    closeMsg: '취소',
-                    clickColor: 'error'
-                  })
-                }
+                onClick={handleDeleteModal}
               />
               <Button
                 children="취소"
@@ -92,6 +98,8 @@ export default function ImageViewer({
           )}
         </Stack>
       </Stack>
+
+      {modals}
     </Overlay>
   );
 }

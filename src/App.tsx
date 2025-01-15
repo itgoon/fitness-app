@@ -12,7 +12,6 @@ import { MotionLazy } from 'src/components/animate/MotionLazy';
 import ProgressBar from 'src/components/progressBar';
 import { SettingsProvider } from 'src/components/settings';
 import SnackbarProvider from 'src/components/snackbar/SnackbarProvider';
-import ModalProvider from './provider/ModalProvider';
 import useCode from './hooks/useCode';
 import { useMe } from './hooks/useMe';
 
@@ -37,10 +36,8 @@ export default function App() {
         <ThemeProvider>
           <MotionLazy>
             <SnackbarProvider>
-              <ModalProvider>
-                <ProgressBar />
-                <Router />
-              </ModalProvider>
+              <ProgressBar />
+              <Router />
             </SnackbarProvider>
           </MotionLazy>
         </ThemeProvider>

@@ -2,17 +2,21 @@ import { Button, Modal, Stack, Typography } from '@mui/material';
 import ModalContainer from './ModalContainer';
 
 interface DeleteModalProps {
-  onClose: VoidFunction;
+  onClose: () => void;
   onDelete: any;
   title: string;
   description?: React.ReactNode;
+  leftLabel?: string;
+  rightLabel?: string;
 }
 
 export default function DeleteModal({
   onClose,
   onDelete,
   title,
-  description
+  description,
+  leftLabel,
+  rightLabel
 }: DeleteModalProps) {
   const handleConfirm = () => {
     onDelete();
@@ -44,7 +48,7 @@ export default function DeleteModal({
             onClick={onClose}
             sx={{ height: 48 }}
           >
-            취소
+            {leftLabel || '취소'}
           </Button>
           <Button
             variant="contained"
@@ -53,7 +57,7 @@ export default function DeleteModal({
             onClick={handleConfirm}
             sx={{ height: 48 }}
           >
-            삭제
+            {rightLabel || '삭제'}
           </Button>
         </Stack>
       </ModalContainer>
