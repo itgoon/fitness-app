@@ -7,26 +7,40 @@ import Sizer from 'src/components/common/Sizer';
 import ContractTable from 'src/components/contractTable';
 import ConfirmModal from 'src/components/modals/ConfirmModal';
 import useModals from 'src/hooks/useModals';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { ContractService } from 'src/service';
 import { paths } from 'src/routes/paths';
+import ContractTableItem from 'src/components/contractTable/ContractTableItem';
+import { ContractDto } from 'src/api';
 import SignModal from './SignModal';
 import SignCanvas from './SignCanvas';
 import SignPreview from './SignPreview';
 
 export default function NewContractPage() {
+  const id = 123;
+
   const today = dayjs();
 
   const navigate = useNavigate();
 
-  const id = 4;
-
   const { modals, addModal, removeModal } = useModals();
+
+  const [contract, setContract] = useState<ContractDto | null>(null);
 
   const [signFile, setSignFile] = useState<{
     preview: string;
     file: File;
   } | null>(null);
+
+  useEffect(() => {
+    loadSingleContract();
+  }, []);
+
+  const loadSingleContract = async () => {
+    const res = await ContractService.loadSingleContract({ id });
+
+    setContract(res);
+  };
 
   const onFileChange = (preview: string, file: File) => {
     setSignFile((prev) => ({ ...prev, preview, file }));
@@ -61,7 +75,15 @@ export default function NewContractPage() {
           <Typography variant="Body18/bold" sx={{ mb: 2 }}>
             결제 정보
           </Typography>
-          <ContractTable id={id} />
+          <ContractTable>
+            <ContractTableItem title="이름" content="더미 데이터" />
+            <ContractTableItem title="성별" content="더미 데이터" />
+            <ContractTableItem title="레슨" content="더미 데이터" />
+            <ContractTableItem title="시작 일자" content="더미 데이터" />
+            <ContractTableItem title="유효 일자" content="더미 데이터" />
+            <ContractTableItem title="결제 방식" content="더미 데이터" />
+            <ContractTableItem title="결제 금액" content="더미 데이터" isLast />
+          </ContractTable>
         </Stack>
 
         {/* 서명 */}

@@ -6,11 +6,11 @@ import { RecordDto } from 'src/api';
 import WorkoutCardData from './WorkoutCardData';
 import EmptyWorkoutData from './EmptyWorkoutData';
 
-interface WorkOutRecordProps {
+interface WorkoutTabProps {
   date: string;
 }
 
-export default function WorkOutRecord({ date }: WorkOutRecordProps) {
+export default function WorkoutTab({ date }: WorkoutTabProps) {
   const [recordList, setRecordList] = useState<RecordDto[]>([]);
 
   const navigate = useNavigate();

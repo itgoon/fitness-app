@@ -6,11 +6,11 @@ import dayjs from 'dayjs';
 import EmptyReservationData from './EmptyReservationData';
 import ReservationData from './ReservationData';
 
-interface ReservationListProps {
+interface ReservationTabProps {
   date: string;
 }
 
-export default function ReservationList({ date }: ReservationListProps) {
+export default function ReservationTab({ date }: ReservationTabProps) {
   const [reservationList, setReservationList] = useState<ScheduleDto[]>([]);
 
   const navigate = useNavigate();
