@@ -39,6 +39,7 @@ export const paths = {
   },
   record: {
     root: `${ROOTS.RECORD}`,
+    list: `${ROOTS.RECORD}/list`,
     new: `${ROOTS.RECORD}/new`
   },
   more: {
@@ -49,7 +50,9 @@ export const paths = {
   },
   reservation: {
     root: `${ROOTS.RESERVATION}`,
-    check: `${ROOTS.RESERVATION}/check`
+    list: `${ROOTS.RESERVATION}/list`,
+    check: `${ROOTS.RESERVATION}/check`,
+    success: `${ROOTS.RESERVATION}/success`
   },
   contract: {
     root: `${ROOTS.CONTRACT}`,

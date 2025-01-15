@@ -3,6 +3,7 @@ import { Outlet } from 'react-router-dom';
 import { SplashScreen } from 'src/components/loadingScreen';
 import AuthGuard from 'src/components/guard/AuthGuard';
 import StackNaviLayout from 'src/layouts/stack';
+import ReservationSuccessPage from 'src/pages/reservation/success/page';
 import WorkoutCardDetail from '../../pages/schedule/workout/page';
 import ReservationCardDetail from '../../pages/schedule/reservation/page';
 
@@ -51,7 +52,8 @@ export const stackRoutes = [
         path: 'reservation',
         children: [
           { path: '', element: <ReservationPage /> },
-          { path: 'check', element: <ReservationCheckPage /> }
+          { path: 'check', element: <ReservationCheckPage /> },
+          { path: 'success', element: <ReservationSuccessPage /> }
         ]
       },
       {

@@ -39,13 +39,14 @@ export default function ReservationPage() {
 
   const onDateChange = useCallback((e: dayjs.Dayjs) => {
     setDate(dayjs(e).format('YYYY-MM-DD'));
+    setSelectedTime('');
   }, []);
 
   const onTimeChange = useCallback((time: string) => {
     setSelectedTime(time);
   }, []);
 
-  // 레슨 시간 데이터 패칭
+  // 레슨 관련 데이터 패칭
 
   return (
     <>
@@ -94,6 +95,7 @@ export default function ReservationPage() {
               variant="contained"
               color="primary"
               onClick={() => navigate(paths.reservation.check)}
+              disabled={!selectedTime}
             >
               다음
             </Button>

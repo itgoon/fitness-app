@@ -45,6 +45,11 @@ export const menus: Menu[] = [
         title: '레슨 예약',
         url: '/reservation/check',
         hasHeader: true
+      },
+      {
+        title: '레슨 예약',
+        url: '/reservation/success',
+        hasHeader: true
       }
     ]
   }

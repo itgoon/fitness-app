@@ -16,8 +16,6 @@ import SignPreview from './SignPreview';
 export default function NewContractPage() {
   const today = dayjs();
 
-  const navigate = useNavigate();
-
   const id = 4;
 
   const { modals, addModal, removeModal } = useModals();
@@ -26,8 +24,6 @@ export default function NewContractPage() {
     preview: string;
     file: File;
   } | null>(null);
-
-  console.log(signFile);
 
   const onFileChange = (preview: string, file: File) => {
     setSignFile((prev) => ({ ...prev, preview, file }));
