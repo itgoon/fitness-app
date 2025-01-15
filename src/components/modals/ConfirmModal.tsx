@@ -2,11 +2,12 @@ import { Button, Modal, Stack, Typography } from '@mui/material';
 import ModalContainer from './ModalContainer';
 
 interface ConfirmModalProps {
-  onClose: VoidFunction;
+  onClose: () => void;
   onConfirm: any;
   title: string;
   description?: React.ReactNode;
-  label?: string;
+  leftLabel?: string;
+  rightLabel?: string;
 }
 
 export default function ConfirmModal({
@@ -14,7 +15,8 @@ export default function ConfirmModal({
   onConfirm,
   title,
   description,
-  label
+  leftLabel,
+  rightLabel
 }: ConfirmModalProps) {
   const handleConfirm = () => {
     onConfirm();
@@ -46,7 +48,7 @@ export default function ConfirmModal({
             onClick={onClose}
             sx={{ height: 48 }}
           >
-            취소
+            {leftLabel || '취소'}
           </Button>
           <Button
             variant="contained"
@@ -55,7 +57,7 @@ export default function ConfirmModal({
             onClick={handleConfirm}
             sx={{ height: 48 }}
           >
-            {label || '확인'}
+            {rightLabel || '확인'}
           </Button>
         </Stack>
       </ModalContainer>

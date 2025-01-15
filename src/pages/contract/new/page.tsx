@@ -62,7 +62,7 @@ export default function NewContractPage() {
         onConfirm={onSubmit}
         onClose={removeModal}
         title="서명 등록을 완료하시곘습니까?"
-        label="서명 등록"
+        rightLabel="서명 등록"
       />
     );
   };

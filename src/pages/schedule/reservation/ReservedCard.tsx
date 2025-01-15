@@ -1,4 +1,4 @@
-import { Box, Chip, Divider, Stack } from '@mui/material';
+import { Box, Button, Chip, Divider, Stack } from '@mui/material';
 import { useNavigate } from 'react-router';
 import { ScheduleDto } from 'src/api';
 import { getTimeCheck } from 'src/utils/formatTime';
@@ -7,8 +7,8 @@ import DetailCardBody from 'src/components/custom/DetailCard/DetailCardBody';
 import DetailCardInfo from 'src/components/custom/DetailCard/DetailCardInfo';
 import DetailCardIcon from 'src/components/custom/DetailCard/DetailCardIcon';
 import DetailCardSubTitle from 'src/components/custom/DetailCard/DetailCardSubtitle';
-import { useModal } from '../../../hooks/useModal';
-import Button from '../../../components/Button';
+import useModals from 'src/hooks/useModals';
+import DeleteModal from 'src/components/modals/DeleteModal';
 
 interface ReservedCardProps {
   reservation: ScheduleDto | null;
@@ -17,12 +17,24 @@ interface ReservedCardProps {
 export default function ReservedCard({ reservation }: ReservedCardProps) {
   const navigate = useNavigate();
 
-  const { openConfirm } = useModal();
+  const { modals, addModal, removeModal } = useModals();
 
   const onCancle = () => {
     navigate(`/schedule/reservation/cancelled`, {
       state: { reservation }
     });
+  };
+
+  const handleCancleModal = () => {
+    addModal(
+      <DeleteModal
+        title="정말로 예약을 취소하시겠습니까?"
+        onClose={removeModal}
+        onDelete={onCancle}
+        leftLabel="아니요"
+        rightLabel="예약 취소"
+      />
+    );
   };
 
   return (
@@ -69,19 +81,12 @@ export default function ReservedCard({ reservation }: ReservedCardProps) {
         size="small"
         variant="outlined"
         color="error"
-        onClick={() =>
-          openConfirm({
-            title: '',
-            content: '정말로 예약을 취소하시겠습니까?',
-            onClick: onCancle,
-            clickMsg: '예약취소',
-            closeMsg: '아니요',
-            clickColor: 'error'
-          })
-        }
+        onClick={handleCancleModal}
       >
         예약 취소
       </Button>
+
+      {modals}
     </>
   );
 }
