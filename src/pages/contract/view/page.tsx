@@ -20,10 +20,8 @@ export default function ContractViewPage() {
       </Tabs>
 
       <Sizer>
-        <Box py={3}>
-          {tabValue === 0 && <ContractTab />}
-          {tabValue === 1 && <TermsTab />}
-        </Box>
+        {tabValue === 0 && <ContractTab />}
+        {tabValue === 1 && <TermsTab />}
       </Sizer>
     </>
   );

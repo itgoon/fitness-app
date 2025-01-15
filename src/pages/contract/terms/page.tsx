@@ -31,8 +31,8 @@ export default function TermsPage() {
 
   return (
     <Sizer>
-      <Stack sx={{ pt: 5, height: '100%' }}>
-        <Stack gap={3} sx={{ flex: 1 }}>
+      <Stack sx={{ pt: 5 }}>
+        <Stack gap={3}>
           <TermsTitle>개인정보 수집 및 이용</TermsTitle>
           <TermsContent>{terms?.personalInfo}</TermsContent>
 
