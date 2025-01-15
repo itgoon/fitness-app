@@ -15,7 +15,7 @@ import StepFlow from '../../../components/custom/StepFlow';
  * 비밀번호 찾기 화면
  * ******************************************************
  */
-export default function ForgotView() {
+export default function ForgotPage() {
   const LoginSchema = Yup.object().shape({
     userId: Yup.string().required('이메일을 입력해주새요.'),
     password: Yup.string().required('비밀번호를 입력해주세요.')

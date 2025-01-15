@@ -15,7 +15,7 @@ import Step3 from './step/Step3';
  * 회원가입 화면
  * ******************************************************
  */
-export default function RegisterView() {
+export default function RegisterPage() {
   const mdUp = useResponsive('up', 'md');
   const password = useBoolean();
 

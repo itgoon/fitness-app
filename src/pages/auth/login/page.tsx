@@ -18,7 +18,7 @@ import { LoginSchema } from './_schema';
  * 로그인 화면
  * ******************************************************
  */
-export default function LoginView() {
+export default function LoginPage() {
   const navigate = useNavigate();
 
   const { sendMessage } = useWebView();

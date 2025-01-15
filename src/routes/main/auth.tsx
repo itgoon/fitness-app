@@ -6,9 +6,9 @@ import AuthLayout from 'src/layouts/auth/auth';
 
 // ----------------------------------------------------------------------
 
-const LoginPage = lazy(() => import('src/pages/auth/login'));
-const RegisterPage = lazy(() => import('src/pages/auth/register'));
-const ForgotPage = lazy(() => import('src/pages/auth/forgot'));
+const LoginPage = lazy(() => import('src/pages/auth/login/page'));
+const RegisterPage = lazy(() => import('src/pages/auth/register/page'));
+const ForgotPage = lazy(() => import('src/pages/auth/forgot/page'));
 
 // ----------------------------------------------------------------------
 
