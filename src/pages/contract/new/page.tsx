@@ -9,12 +9,15 @@ import ConfirmModal from 'src/components/modals/ConfirmModal';
 import useModals from 'src/hooks/useModals';
 import { useState } from 'react';
 import { ContractService } from 'src/service';
+import { paths } from 'src/routes/paths';
 import SignModal from './SignModal';
 import SignCanvas from './SignCanvas';
 import SignPreview from './SignPreview';
 
 export default function NewContractPage() {
   const today = dayjs();
+
+  const navigate = useNavigate();
 
   const id = 4;
 
@@ -30,7 +33,9 @@ export default function NewContractPage() {
   };
 
   const onSubmit = async () => {
-    await ContractService.updateContract({ id, sign: signFile });
+    // await ContractService.updateContract({ id, sign: signFile });
+
+    navigate(paths.contract.success);
   };
 
   const handleSignModal = () => {
@@ -83,6 +88,7 @@ export default function NewContractPage() {
           size="large"
           variant="contained"
           color="primary"
+          disabled={!signFile}
           onClick={handleConfirmModal}
         >
           서명 완료

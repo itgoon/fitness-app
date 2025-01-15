@@ -22,6 +22,11 @@ export const menus: Menu[] = [
     hasHeader: true
   },
   {
+    title: '서명 완료',
+    url: '/contract/success',
+    hasHeader: true
+  },
+  {
     title: '기록 등록',
     url: '/record/new',
     hasHeader: true
@@ -47,7 +52,7 @@ export const menus: Menu[] = [
         hasHeader: true
       },
       {
-        title: '레슨 예약',
+        title: '예약 완료',
         url: '/reservation/success',
         hasHeader: true
       }

@@ -58,6 +58,7 @@ export const paths = {
     root: `${ROOTS.CONTRACT}`,
     new: `${ROOTS.CONTRACT}/new`,
     terms: `${ROOTS.CONTRACT}/terms`,
-    view: `${ROOTS.CONTRACT}/view`
+    view: `${ROOTS.CONTRACT}/view`,
+    success: `${ROOTS.CONTRACT}/success`
   }
 };
