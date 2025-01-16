@@ -3,11 +3,12 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import dayjs from 'dayjs';
 import { DateReqFormat } from 'src/utils/formatTime';
-import { dummyMonthWorkoutList } from '../../../utils/dummy';
-import DateCalendar from '../../../components/custom/calendar/DateCalendar';
+import DateCalendar from 'src/components/dateCalendar';
 import Divider from '../../../components/custom/Divider';
 import WorkoutTab from './WorkoutTab';
 import ReservationTab from './ReservationTab';
+import CalendarCaption from './Calendar/CalendarCaption';
+import CalendarHeader from './Calendar/CalendarHeader';
 
 /**
  * ******************************************************
@@ -30,13 +31,21 @@ export default function SchedulePage() {
   };
 
   return (
-    <Box>
+    <>
+      {/* 달력 */}
       <DateCalendar
-        isBadge
-        workData={dummyMonthWorkoutList}
-        value={date}
+        value={dayjs(date)}
         onChange={(e) => onDataChange(dayjs(e).format(DateReqFormat))}
+        slots={{
+          calendarHeader: (e) => (
+            <>
+              <CalendarHeader />
+              <CalendarCaption />
+            </>
+          )
+        }}
       />
+
       <Divider />
 
       <Box pt={3}>
@@ -55,6 +64,6 @@ export default function SchedulePage() {
           {tabValue === 1 && <ReservationTab date={date} />}
         </Box>
       </Box>
-    </Box>
+    </>
   );
 }
