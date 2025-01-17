@@ -14,8 +14,8 @@ export default function CustomDay({
       <Button
         onClick={() => onDaySelect(day)}
         sx={{
-          width: 20,
-          height: 20,
+          width: 30,
+          height: 30,
           borderRadius: '100%',
           padding: 0,
           minWidth: 'unset',

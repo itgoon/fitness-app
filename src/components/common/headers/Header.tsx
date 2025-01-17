@@ -21,7 +21,7 @@ export default function Header({ left, title, right }: HeaderProps) {
         justifyContent: 'center',
         alignItems: 'center',
         px: 2,
-        backgroundColor: 'white',
+        backgroundColor: 'background.paper',
         zIndex: 1000
       }}
     >

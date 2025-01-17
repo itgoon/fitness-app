@@ -57,7 +57,7 @@ export default function ReservationPage() {
             onClick={() => setDrawerIsOpen(true)}
             sx={{ display: 'flex', alignItems: 'center', gap: 0.25 }}
           >
-            <Box>{dayjs(date).format('YYYY년 MM월')}</Box>
+            <Box>{dayjs(date).format('YYYY년 M월')}</Box>
             <Icon name="KeyboardArrowDown" size={22} sx={{ color: 'grey' }} />
           </Box>
         }

@@ -3,12 +3,10 @@ import { useState } from 'react';
 import { useLocation } from 'react-router';
 import dayjs from 'dayjs';
 import { DateReqFormat } from 'src/utils/formatTime';
-import DateCalendar from 'src/components/dateCalendar';
 import Divider from '../../../components/custom/Divider';
 import WorkoutTab from './WorkoutTab';
 import ReservationTab from './ReservationTab';
-import CalendarCaption from './Calendar/CalendarCaption';
-import CalendarHeader from './Calendar/CalendarHeader';
+import Calendar from './Calendar';
 
 /**
  * ******************************************************
@@ -33,19 +31,10 @@ export default function SchedulePage() {
   return (
     <>
       {/* 달력 */}
-      <DateCalendar
+      <Calendar
         value={dayjs(date)}
         onChange={(e) => onDataChange(dayjs(e).format(DateReqFormat))}
-        slots={{
-          calendarHeader: (e) => (
-            <>
-              <CalendarHeader />
-              <CalendarCaption />
-            </>
-          )
-        }}
       />
-
       <Divider />
 
       <Box pt={3}>
